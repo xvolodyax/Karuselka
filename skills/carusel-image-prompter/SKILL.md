@@ -107,15 +107,17 @@ Verbatim text only; no substitutions; no extra labels; no duplicate text.
 Headline dominant, body smaller, pills tiny but legible. High contrast.
 
 [GRID RULES]
-Master aspect ratio 3:4, resolution 4K. 3 columns × 3 rows; thin gutters;
-each resulting cell is a standalone 3:4 vertical panel. Objects and key text
-stay inside each cell; no 2×3 grid; no 6-panel horizontal strip; consistent
-style across all 9 panels.
+Master aspect ratio 3:4, resolution 4K. 3 columns × 3 rows; zero visible gutters;
+each resulting cell is a standalone 3:4 vertical panel. Cells touch edge-to-edge:
+no white dividers, no borders, no whitespace, no outer frame. Use invisible cut
+lines at 1/3 and 2/3 only; full-bleed background reaches every cell edge.
+Objects and key text stay inside each cell; no 2×3 grid; no 6-panel horizontal
+strip; consistent style across all 9 panels.
 **Safe margin:** all headline/body/pills must stay **≥10–12% away from every
-grid line and cell edge**. Do not place text on gutters or near the bottom edge.
+imaginary cut line and cell edge**. Do not place text near the bottom edge.
 
 [NEGATIVE]
-wrong number of panels, horizontal strip, 2x3 grid, watermark, blurry, inconsistent styles.
+wrong number of panels, horizontal strip, 2x3 grid, visible gutters, white borders, outer frame, watermark, blurry, inconsistent styles.
 
 [TOPIC]
 Adapt scene for: {topic from brief}

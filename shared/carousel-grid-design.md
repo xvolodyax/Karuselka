@@ -27,6 +27,24 @@ slide-07  slide-08  slide-09
 
 В отличие от `seamless_panorama` (6480×1350), каждая панель — **отдельная композиция** в сетке. Общий только style lock (палитра, типографика, бренд).
 
+## Zero-gutter slicing
+
+Master **не должен** содержать видимые белые разделители, whitespace, borders или outer frame.
+Границы 3×3 — только воображаемые линии реза на 1/3 и 2/3 ширины/высоты.
+Фон каждой ячейки должен доходить до края full-bleed, а панели должны соприкасаться
+пиксель-в-пиксель.
+
+Canonical pipeline для новых прогонов:
+
+```text
+Kie master -> remove_grid_gutters.py -> strict slice_grid.py -> clean_slide_edges.py -> grid_gutter_qa.py
+```
+
+`remove_grid_gutters.py` и `clean_slide_edges.py` не делают crop/resize. Они заменяют
+только near-white pixels на точных cut-lines или outer edge strips, чтобы сохранить
+строгую геометрию. Если `grid_gutter_qa.py` после этого не `status: ok`, это BLOCKER
+на regenerate, не publish.
+
 ## Kie generation
 
 ```json
@@ -50,7 +68,7 @@ Kie i2i может не давать `4:5` в 4K. Поэтому pipeline бол
 
 Typography near cell bottom may bleed into row below after slice. Mitigations:
 
-- Prompt: safe margin 10–12% from all grid gutters and cell edges
+- Prompt: safe margin 10–12% from all imaginary cut lines and cell edges
 - Slice: only equal grid slice; **do not crop individual slides** because mixed
   heights break carousel geometry
 
@@ -58,7 +76,8 @@ Typography near cell bottom may bleed into row below after slice. Mitigations:
 
 ```bash
 python scripts/kie_run_prompt.py --workspace .
-python scripts/slice_grid.py -i master/source.png -o output/slides --cols 3 --rows 3
+# direct slice_grid.py использовать только для диагностики;
+# publish-ready runs идут через kie_run_prompt.py canonical pipeline.
 ```
 
 ## Publish

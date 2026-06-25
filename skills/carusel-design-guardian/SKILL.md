@@ -30,6 +30,7 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 | Vertical bleed — orphan text top strip rows 2–3 | yes |
 | Save cards on slides 7-8 useful | warn |
 | Any mixed aspect/size across the 9 publish assets | yes |
+| `grid-gutter-qa-clean.json` missing or `status != ok` | yes |
 | Style score ≥ 70 | yes |
 | Kie 400 recovery used aspect/resolution fallback before compact prompt retry | yes |
 | Copy matches CAROUSEL_SLIDE_COPY.json zones | warn |
@@ -45,7 +46,8 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 7. **Motion test:** if video exists, text remains stable and loop has no hard cut.
 8. **Bleed test:** inspect top 40px of slides 04–09 for orphan text from row above. If P0, request master regeneration with stronger safe-area; do not approve per-slide crop as publish asset.
 9. **Video source test:** frame 0 of `slide-01.mp4` must match `slide-01.png` (MAE ≤35):
-10. **Kie recovery provenance:** if slice recovered from Kie `400 Internal Error`, verify the successful run stayed `3:4 @ 4K` and used compact prompt retry before any aspect/resolution change. `prompt_char_count > 4500` after recovery is P0.
+10. **No-frame QA:** verify `carusel-memory/output/debug/grid-gutter-qa-clean.json` exists and has `status: ok`. White edge artifacts after canonical cleanup = P0.
+11. **Kie recovery provenance:** if slice recovered from Kie `400 Internal Error`, verify the successful run stayed `3:4 @ 4K` and used compact prompt retry before any aspect/resolution change. `prompt_char_count > 4500` after recovery is P0.
 
 ```bash
 python scripts/video_frame_qa.py \

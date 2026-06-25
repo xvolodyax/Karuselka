@@ -32,7 +32,11 @@ python scripts/kie_run_prompt.py \
   --prompt-json carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
 ```
 
-Внутри: `kie_carousel_gen.py` -> Kie `3:4` @ `4K` -> `slice_grid.py --cols 3 --rows 3`.
+Внутри: `kie_carousel_gen.py` -> Kie `3:4` @ `4K` -> `remove_grid_gutters.py`
+-> `slice_grid.py --cols 3 --rows 3` -> `clean_slide_edges.py` -> `grid_gutter_qa.py`.
+
+Это canonical no-frame pipeline для всех новых прогонов. Не обходить его ручным `slice_grid.py`,
+если цель — publish-ready slides без белых рамок.
 
 `3:4` — основной формат, не fallback. Grid 3×3 даёт 9 одинаковых панелей `3:4`.
 Если Kie возвращает повторный `400 Internal Error` на валидный `3:4 @ 4K` i2i payload,
@@ -45,6 +49,9 @@ python scripts/kie_run_prompt.py \
   "aspect_ratio_requested": "3:4",
   "aspect_ratio": "3:4",
   "resolution": "4K",
+  "gutter_cleanup": { "enabled": true, "status": "ok" },
+  "edge_cleanup": { "enabled": true, "status": "ok" },
+  "gutter_qa": { "enabled": true, "status": "ok" },
   "slice_status": "ok"
 }
 ```
@@ -66,7 +73,25 @@ slide-01 = верхний левый → motion + video.
 - manifest: `grid.cols=3`, `grid.rows=3`
 - все 9 PNG имеют одинаковый размер и одинаковый aspect ratio
 - не делать post-slice crop отдельных файлов
+- `remove-grid-gutters-report.json` есть и `total_changed` зафиксирован
+- `clean-slide-edges-report.json` есть, размер всех slide остаётся неизменным
+- `grid-gutter-qa-clean.json` со `status: ok`
 - если был Kie 400 на длинном prompt: fragment должен указать `prompt_compacted`, `prompt_char_count`, taskId retry
+
+## White gutters / edge artifacts (automatic)
+
+Known pitfall: даже при zero-gutter prompt Kie может нарисовать 1-3px светлые
+hairline artifacts на будущих линиях реза или внешних краях отдельных PNG.
+
+Recovery is automatic and geometry-safe:
+
+1. `remove_grid_gutters.py` чистит near-white pixels только на точных cut-lines
+   1/3 и 2/3 master. No crop, no resize.
+2. `slice_grid.py` режет строго равные ячейки.
+3. `clean_slide_edges.py` копирует внутренний фон на внешний edge strip 3px.
+   No crop, no resize; все PNG остаются одного размера.
+4. `grid_gutter_qa.py` проверяет internal cut-lines и edge strips. FAIL = BLOCKER,
+   не publish.
 
 ## Kie 400 / prompt complexity
 
@@ -85,7 +110,7 @@ Recovery order:
 Kie иногда кладёт body text слишком близко к нижнему краю ячейки → после slice на **rows 2–3**
 (slides 04–09) виден orphan-текст из ячейки сверху.
 
-**Prevention:** image-prompter — safe margin 10–12% от всех grid gutters и краёв ячейки (см. GRID RULES).
+**Prevention:** image-prompter — safe margin 10–12% от всех imaginary cut lines и краёв ячейки (см. GRID RULES).
 
 **Recovery:**
 

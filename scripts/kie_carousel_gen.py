@@ -20,6 +20,9 @@ from kie_common import find_env_file
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 SLICE_GRID = SCRIPT_DIR / "slice_grid.py"
+REMOVE_GRID_GUTTERS = SCRIPT_DIR / "remove_grid_gutters.py"
+CLEAN_SLIDE_EDGES = SCRIPT_DIR / "clean_slide_edges.py"
+GRID_GUTTER_QA = SCRIPT_DIR / "grid_gutter_qa.py"
 
 SLIDE_COUNT = 9
 GRID_COLS = 3
@@ -57,8 +60,9 @@ def build_grid_master_prompt(prompt_data: dict[str, Any], workspace: Path) -> st
     lines = [
         "Одно изображение — превью-сетка Instagram-карусели: ровно 9 равных панелей в сетке 3 колонки x 3 ряда.",
         "Каждая панель — вертикальный формат 3:4 (как отдельный слайд). НЕ горизонтальная полоса. НЕ 2×3.",
-        "Весь текст держать внутри safe-area: минимум 10–12% от линий сетки и краёв ячейки.",
-        "Между панелями тонкие визуальные границы или единый стиль бренда; каждая ячейка — самостоятельная композиция.",
+        "Весь текст держать внутри safe-area: минимум 10–12% от воображаемых линий реза и краёв ячейки.",
+        "Zero-gutter grid: не рисовать видимые разделители, белые рамки, whitespace или outer frame; ячейки соприкасаются пиксель-в-пиксель.",
+        "Фон и цветовые поля должны доходить до краёв каждой ячейки full-bleed; линии реза только воображаемые.",
         f"Палитра: {palette}." if palette else "",
         "",
         "Порядок панелей (слева направо, сверху вниз):",
@@ -106,6 +110,11 @@ def write_task_log(path: Path | None, data: dict[str, Any]) -> None:
     print(f"Task log: {path}")
 
 
+def run_subprocess_step(name: str, cmd: list[str]) -> int:
+    print(f"{name}:", " ".join(cmd))
+    return subprocess.run(cmd, check=False).returncode
+
+
 def run_grid_3x3(
     client: KieImageClient,
     prompt_data: dict[str, Any],
@@ -115,6 +124,9 @@ def run_grid_3x3(
     input_urls: list[str],
     callback_url: str | None,
     bleed_crop_top: int = 0,
+    gutter_cleanup: bool = True,
+    edge_cleanup: bool = True,
+    gutter_qa: bool = True,
 ) -> int:
     requested_aspect = prompt_data.get("aspect_ratio") or DEFAULT_ASPECT
     aspect_ratio = requested_aspect
@@ -131,8 +143,11 @@ def run_grid_3x3(
     slides_dir.mkdir(parents=True, exist_ok=True)
 
     source_out = master_dir / "source.png"
+    source_clean_out = master_dir / "source-zero-gutter-clean.png"
     master_out = master_dir / "master.png"
     manifest = workspace / "carusel-memory/output/slice-manifest.json"
+    debug_dir = workspace / "carusel-memory/output/debug"
+    debug_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"=== grid_3x3: one Kie task aspect={aspect_ratio} resolution={resolution} ===")
     print(f"Prompt length: {len(prompt)} chars")
@@ -168,17 +183,67 @@ def run_grid_3x3(
         "grid": {"cols": GRID_COLS, "rows": GRID_ROWS},
         "slide_count": SLIDE_COUNT,
         "source_path": str(source_out.resolve()),
+        "source_clean_path": str(source_clean_out.resolve()) if gutter_cleanup else None,
         "slides_dir": str(slides_dir.resolve()),
         "animate_slide": 1,
         "slice_status": "pending",
+        "gutter_cleanup": {
+            "enabled": gutter_cleanup,
+            "method": "near-white pixels on exact cut-lines; no crop, no resize",
+            "strip": 5,
+            "report": str((debug_dir / "remove-grid-gutters-report.json").resolve()),
+        },
+        "edge_cleanup": {
+            "enabled": edge_cleanup,
+            "method": "copy interior pixels over outer edge strips after equal slice; no crop, no resize",
+            "strip": 3,
+            "report": str((debug_dir / "clean-slide-edges-report.json").resolve()),
+        },
+        "gutter_qa": {
+            "enabled": gutter_qa,
+            "report": str((debug_dir / "grid-gutter-qa-clean.json").resolve()),
+        },
     }
     write_task_log(task_log_path, log)
+
+    source_for_slice = source_out
+    if gutter_cleanup:
+        rc = run_subprocess_step(
+            "Zero-gutter cleanup",
+            [
+                sys.executable,
+                str(REMOVE_GRID_GUTTERS),
+                "--input",
+                str(source_out.resolve()),
+                "--output",
+                str(source_clean_out.resolve()),
+                "--cols",
+                str(GRID_COLS),
+                "--rows",
+                str(GRID_ROWS),
+                "--strip",
+                "5",
+                "--white-threshold",
+                "235",
+                "--scrub-outer-frame",
+                "--report",
+                str((debug_dir / "remove-grid-gutters-report.json").resolve()),
+            ],
+        )
+        if rc != 0:
+            log["slice_status"] = "failed"
+            log["gutter_cleanup"]["status"] = "failed"
+            log["gutter_cleanup"]["exit_code"] = rc
+            write_task_log(task_log_path, log)
+            return rc
+        log["gutter_cleanup"]["status"] = "ok"
+        source_for_slice = source_clean_out
 
     cmd = [
         sys.executable,
         str(SLICE_GRID),
         "--input",
-        str(source_out.resolve()),
+        str(source_for_slice.resolve()),
         "--output-dir",
         str(slides_dir.resolve()),
         "--cols",
@@ -192,13 +257,64 @@ def run_grid_3x3(
     ]
     if bleed_crop_top > 0:
         cmd.extend(["--bleed-crop-top", str(bleed_crop_top)])
-    print("Slicing:", " ".join(cmd))
-    rc = subprocess.run(cmd, check=False).returncode
+    rc = run_subprocess_step("Slicing", cmd)
     if rc != 0:
         log["slice_status"] = "failed"
         log["slice_exit_code"] = rc
         write_task_log(task_log_path, log)
         return rc
+
+    if edge_cleanup:
+        rc = run_subprocess_step(
+            "Slide edge cleanup",
+            [
+                sys.executable,
+                str(CLEAN_SLIDE_EDGES),
+                "--slides-dir",
+                str(slides_dir.resolve()),
+                "--slides",
+                "1-9",
+                "--strip",
+                "3",
+                "--edges",
+                "top,right,bottom,left",
+                "--report",
+                str((debug_dir / "clean-slide-edges-report.json").resolve()),
+            ],
+        )
+        if rc != 0:
+            log["slice_status"] = "failed"
+            log["edge_cleanup"]["status"] = "failed"
+            log["edge_cleanup"]["exit_code"] = rc
+            write_task_log(task_log_path, log)
+            return rc
+        log["edge_cleanup"]["status"] = "ok"
+
+    if gutter_qa:
+        rc = run_subprocess_step(
+            "Gutter QA",
+            [
+                sys.executable,
+                str(GRID_GUTTER_QA),
+                "--master",
+                str(master_out.resolve()),
+                "--slides-dir",
+                str(slides_dir.resolve()),
+                "--max-internal-white",
+                "0.20",
+                "--max-edge-white",
+                "0.35",
+                "--output",
+                str((debug_dir / "grid-gutter-qa-clean.json").resolve()),
+            ],
+        )
+        if rc != 0:
+            log["slice_status"] = "failed"
+            log["gutter_qa"]["status"] = "failed"
+            log["gutter_qa"]["exit_code"] = rc
+            write_task_log(task_log_path, log)
+            return rc
+        log["gutter_qa"]["status"] = "ok"
 
     log["slice_status"] = "ok"
     write_task_log(task_log_path, log)
@@ -216,6 +332,21 @@ def main() -> int:
         type=int,
         default=0,
         help="Crop N px from top of rows 2+ during slice (0=off)",
+    )
+    p.add_argument(
+        "--no-gutter-cleanup",
+        action="store_true",
+        help="Disable automatic zero-gutter cleanup before slicing",
+    )
+    p.add_argument(
+        "--no-edge-cleanup",
+        action="store_true",
+        help="Disable automatic 1-3px edge artifact cleanup after slicing",
+    )
+    p.add_argument(
+        "--no-gutter-qa",
+        action="store_true",
+        help="Disable gutter/frame QA after slicing",
     )
     args = p.parse_args()
 
@@ -244,6 +375,9 @@ def main() -> int:
         return run_grid_3x3(
             client, data, workspace, task_log, resolution, input_urls, callback_url,
             bleed_crop_top=max(0, args.bleed_crop_top),
+            gutter_cleanup=not args.no_gutter_cleanup,
+            edge_cleanup=not args.no_edge_cleanup,
+            gutter_qa=not args.no_gutter_qa,
         )
 
     print(f"ERROR: unsupported generation_mode: {mode}", file=sys.stderr)

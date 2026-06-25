@@ -106,6 +106,15 @@
 - **Важно:** regenerated `publish-urls.json` должен указывать `video_source: kie_stream_upload_local_video` и `video_normalization`
 - **Кто:** upload, publish, design-guardian
 
+## 11.3 White gutters / edge hairlines after grid slice
+
+- **Симптом:** первые slides выглядят OK, но на 04-09 или отдельных edges остаются белые 1-3px рамки/hairlines
+- **Root cause:** Kie рисует visible gutters/outer frame в master или оставляет near-white pixels на будущих cut-lines; strict slice честно переносит их в PNG
+- **Решение:** canonical no-frame pipeline в `kie_carousel_gen.py`: `remove_grid_gutters.py` -> strict `slice_grid.py` -> `clean_slide_edges.py` -> `grid_gutter_qa.py`
+- **Важно:** не crop отдельных slides и не менять размеры; cleanup заменяет только near-white pixels на exact cut-lines/edge strips
+- **BLOCKER:** `grid-gutter-qa-clean.json` не `status: ok`
+- **Кто:** image-prompter, slice, design-guardian
+
 ## 12. Incident memory
 
 - Проблема не в списке → **incident** в `carusel-memory/pipeline-fix-queue.md`
