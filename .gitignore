@@ -1,0 +1,47 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Runtime memory and generated carousel assets
+carusel-memory/
+output/
+fragments/
+research/
+design/
+*.mp4
+*.mov
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.webp
+!assets/cover.png
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.cursor/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+publish-urls.json
+publish-log.md
+kie-task-log.json
+grok-video-task-log.json

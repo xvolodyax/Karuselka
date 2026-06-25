@@ -1,0 +1,25 @@
+{
+  "name": "carusel",
+  "displayName": "Каруселька",
+  "description": "Агентская система Cursor для создания 9-слайдовых Instagram-каруселей: research, copy, design, image/video generation, QA, upload and MCP publish.",
+  "version": "0.1.0",
+  "keywords": [
+    "instagram",
+    "carousel",
+    "karuselka",
+    "cursor",
+    "design-system",
+    "subagents",
+    "mcp",
+    "gpt-image-2",
+    "grok-video",
+    "3x3-grid"
+  ],
+  "author": {
+    "name": "Maya Pro"
+  },
+  "rules": "./rules/",
+  "skills": "./skills/",
+  "agents": "./agents/",
+  "commands": "./commands/"
+}

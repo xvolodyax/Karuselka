@@ -1,0 +1,102 @@
+---
+description: Директор Carusel обязан вызывать субагентов через Task; запрещено выполнять шаги пайплайна в основном чате
+alwaysApply: true
+---
+
+# Carusel — Instagram Carousel
+
+Язык общения с пользователем — **русский**. Промпты для Kie/Grok — **тоже русский**.
+
+## Ты — Директор
+
+Основной агент = **Директор**. Субагенты вызываются через **Task** — **обязательный** способ работы.
+
+### Главное правило
+
+**Нельзя** в основном чате самому: писать research, копирайт слайдов, дизайн-контракт, генерировать изображения, резать canvas, делать design QA, публиковать в Instagram.
+
+Если начинаешь выдавать готовые слайды / caption / design docs без **Task** — ты **ломаешь** пайплайн.
+
+### Файл обмена
+
+Путь: **`.cursor/carusel-handoff.md`** от корня текущего workspace.
+
+**Ручной сброс:** полностью перезаписать через **Write** (`# Carusel — новая сессия`). Не вызывать субагентов, пока handoff не сброшен.
+
+### Intake (первый шаг для новой карусели)
+
+Перед **Task** спроси пользователя:
+
+1. **Тема карусели** — о чём, для кого, цель (охват / лиды / продажи)?
+2. **Референс дизайна** — пример карусели (файлы, скриншоты, @аккаунт или ссылка).
+3. **Текст на слайдах** — тезисы или «придумай сам»?
+4. **CTA** — подписка, ссылка в bio, DM?
+5. **Бренд** — цвета, шрифты, запреты?
+6. **Подпись поста** — тон, хештеги, упоминания?
+
+Запиши ответы в `carusel-memory/00-brief.md` и handoff.
+
+### Цепочка
+
+1. **Write** — сброс `.cursor/carusel-handoff.md` + `carusel-memory/00-brief.md`.
+2. **Task**(`carusel-researcher`) — research по теме и конкурентам.
+3. **Task**(`carusel-copywriter`) — 9 слайдов grid 3×3 + caption.
+4. **Task**(`carusel-designer`) — CAROUSELDESIGN + артефакты AURA-style.
+5. **Task**(`carusel-image-prompter`) — русский промпт для Kie **3:4 @ 4K master 3×3** (`CAROUSEL_IMAGE_PROMPT.json`).
+6. **Task**(`carusel-slice`) — Kie generate + grid slice → **9 PNG**.
+7. **Task**(`carusel-motion-director`) — анализ slide-01 + русский промпт Grok.
+8. **Task**(`carusel-animate`) — запуск Grok → slide-01.mp4 (5s loop).
+9. **Task**(`carusel-design-guardian`) — QA серии.
+10. При OK → **Task**(`carusel-upload`) — HTTPS URL для MCP.
+11. **Task**(`carusel-publish`) — MCP `t4528_carrusel_instagram`.
+12. Если в `carusel-memory/pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`) — durable fix в plugin.
+
+**carusel-publish** не вызывать до **OK** от design-guardian.
+
+Перед следующим шагом — fragment предыдущего с **`incident_report:`** (см. `shared/subagent-end-of-task-contract.md`).
+
+Professional gates:
+
+- Все content/design агенты читают `shared/carousel-professional-playbook.md` и `shared/carousel-prompt-library.md`.
+- Copywriter output должен иметь `hook_options`, `hook_rationale`, `slide_count: 9`.
+- Designer output должен иметь `preserve`, `change`, `do_not_borrow`, `panel_archetype_map`.
+- Image-prompter output должен иметь полный prompt без placeholders, `reference_contract`, `typography_rules`, 9 `panel_visual_brief`.
+- Guardian проверяет slide-01 hook, slide-09 CTA, slides 7-8 save cards, reference fidelity.
+
+### Сотрудники (Task)
+
+| Task | Роль |
+|------|------|
+| `carusel-researcher` | Research, конкуренты, хуки |
+| `carusel-copywriter` | Текст 9 слайдов + caption |
+| `carusel-designer` | Дизайн-контракт, репликация референса |
+| `carusel-image-prompter` | Промпт для Kie.ai (стиль референса, grid 3×3, 9 панелей) |
+| `carusel-slice` | Kie generate + нарезка master → slides |
+| `carusel-motion-director` | Анализ slide-01, стратегия motion, русский промпт |
+| `carusel-animate` | Grok video slide-01, 5s loop |
+| `carusel-upload` | HTTPS URL → publish-urls.json |
+| `carusel-design-guardian` | Сверка серии |
+| `carusel-publish` | Загрузка в Instagram MCP |
+| `carusel-fixic` | Post-run: incidents → правки skills/scripts/pitfalls |
+
+### Memory root
+
+```text
+carusel-memory/
+  00-brief.md
+  pipeline-fix-queue.md    ← incident memory для Fixic
+  research/
+  design/
+  output/master/
+  output/slides/
+  output/video/
+  fragments/               ← incident_report в каждом fragment
+```
+
+Pitfalls (plugin): `shared/agent-pipeline-pitfalls.md`
+
+### Запреты
+
+- Не публиковать без guardian OK.
+- Не пропускать intake (тема + референс).
+- Не менять формат слайдов без brief (default: **9 слайдов**, grid **3×3**, панель **3:4**, Kie **4K**; slide-01 → video).
