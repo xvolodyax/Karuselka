@@ -16,7 +16,8 @@
     "cols": 3,
     "rows": 3,
     "order": "row-major",
-    "gutters_px": 0,
+    "gutters": "thin_white_seams",
+    "slice_method": "seam",
     "cell_is_self_contained": true
   },
   "animate_slide": 1,
@@ -28,15 +29,15 @@
     "carusel-memory/references/victoria-sheet.png",
     "carusel-memory/references/animals-viktoria-style-lock.png"
   ],
-  "prompt": "Одно master-изображение Instagram-карусели: сетка 3×3, ровно 9 равных вертикальных панелей 3:4, порядок row-major 01–09. Семья animals_viktoria_collage. Фон уголь #111111–#1a1a1a full-bleed, без видимых желобков, белых рамок и внешнего кадра. Палитра: белый #ffffff тяжёлый гротеск, маджента #ff006e тонкий скрипт и плашки, мягкое золото #c4a35a. Коллаж-вырезки, тип спереди и сзади катов. Референс animals-viktoria-style-lock.png = стиль+сетка+палитра. Референс victoria-sheet.png = только лицо и волосы Виктории, не одежда и не поза.\n\nPRESERVE: тёмный холст, маджента+белый тип, вырезки, рваные плашки, животные-метафоры с работой, Виктория только на 1 и 9.\nCHANGE: тема ping vs step; дословный английский текст; ночной телефон 11:42 PM, поводок, крючок, таблица PING/STEP, три слоя, три вопроса; кот на 1, пёс на 2, сова на 4; новая одежда и поза этого пака.\nDO NOT BORROW: португальский, чужие женские лица, Алёна, одежда и поза с листа, horror-стол, слоганы вне copy JSON, URL, чужие бренды, Academy, кириллица на панелях.\n\nВиктория только на панелях 1 и 9, одно лицо: овально-сердцевидное, высокие скулы, зелёные глаза с лёгким hazel, тёплый медово-пшеничный блонд с тёмными корнями как на victoria-sheet.png, никогда не осветлять. Чужих женских лиц нет. Одежда и поза НОВЫЕ и разные на 1 и 9.\n\nПанель01 hook motion-safe: Виктория сидит на краю тёмной кровати, 3/4, бордовая атласная блуза с открытым воротом, чёрные высокие брюки, волосы свободно на одно плечо, смотрит вниз на телефон в левой руке, свет экрана на лице. Чёрный кот смотрит на уведомление. Заголовок «Silent for 24 days. At 11:42 PM: 'Hey, you up?'» тело «The exact night you finally stopped checking his page.» Движение: свечение и кот; тип неподвижен.\nПанель02 problem: без Виктории. Пёс сидит у светящегося телефона — верность неотвеченному вопросу. «Your heart races like a month ago» «Another sleepless night sending screenshots: 'Does he miss me? Did he finally realize?'»\nПанель03 mistake: без Виктории, без животных. Крупный тип + короткий кожаный поводок. «The trap: mistaking impulse for love» «Looking for signs of destiny where someone is simply testing the length of their leash.» Маджента только на словах «The trap».\nПанель04 mechanism: без Виктории. Сова в темноте — ночное сканирование. Маленький рыболовный крючок. «This is not a step. It's a ping» «Zero effort. He sensed losing control and tossed a hook: 'Are you still waiting?'»\nПанель05 save: таблица-скрин. Без людей и животных. «Ping vs Real Step: The difference» «PING: Midnight texts, story views, zero actions.» «STEP: Daytime call, specific time and place to meet.» Маджента-плашки на словах PING и STEP.\nПанель06 save: три слоя-полосы. Без людей и животных. «What he texts vs what you hear» «Texts: 'Thinking of us.'» «You hear: 'He wants me back.'» «Reality: 'I need free validation tonight.'» Маджента на третьей полосе.\nПанель07 save: чек-лист. Без людей и животных. «3 questions before you hit send» «1. Is there concrete action?» «2. Has his behavior actually changed?» «3. Ready for another 3 weeks of silence?» Три маджента-пилюли 1 2 3.\nПанель08 recap: без Виктории и животных. «The rule that protects your peace» «Whoever wants to be near takes a step. Whoever is bored sends a ping. Never settle for an availability check.» Опционально малый золотой медальон Today Tarot внизу слева.\nПанель09 cta: та же Виктория, другая одежда и поза: чёрная кожаная куртка поверх графитовой водолазки, тёмно-шоколадные широкие брюки, стоит 3/4, подбородок чуть вверх, взгляд в камеру, правая рука вдоль тела. Крупный маджента-скрипт «STEP». «What is truly behind his text?» «Comment STEP below» «Comment STEP below. We'll DM you 3 free spreads in our bot to reveal his true motives.» Без животных, без URL.\n\nTYPOGRAPHY: verbatim text, no substitutions, no extra labels, no duplicate text. Заголовок доминирует, тело меньше. Только английская латиница. Safe-area ≥10–12% от всех воображаемых резов и краёв; текст не у нижнего края ячейки.\nGRID: master 3:4 @ 4K. 3 колонки × 3 ряда, нулевые желобки, каждая ячейка 3:4 full-bleed, не 2×3, не горизонтальная полоса.\nNEGATIVE: неверное число панелей, стрип, 2×3, белые рамки, watermark.",
-  "negative_prompt": "platinum, Alena, white cami, jeans from sheet, ivory blazer, other women's faces, Portuguese, horror, white-blonde, white camisole, spaghetti-strap, light-wash jeans, white blazer, studio-blazer, skulls, blood, dripping candles, ouija, demon faces, Victoria signature, extra labels, raw URLs, Academy, visible gutters, white frame, 2x3 grid, horizontal strip, Victoria on slides 2-8, animals on slides other than 1 2 4, Russian headlines, Cyrillic on panels",
+  "prompt": "Одно master-изображение Instagram-карусели: Canvas 3:4 @ 4K exact 3×3; nine 3:4 panels; thin white gutters; no bleed. Порядок row-major 01–09. Семья animals_viktoria_collage. Фон уголь #111111–#1a1a1a. Палитра: белый #ffffff тяжёлый гротеск, маджента #ff006e тонкий скрипт и рваные плашки, мягкое золото #c4a35a. Ночной телефон, животные и тип живут внутри каждой сцены. Тип спереди и сзади объектов. input[0] victoria-sheet.png = лицо и волосы Виктории (i2i lock). input[1] animals-viktoria-style-lock.png = только палитра и тип.\n\nPRESERVE: тёмный холст, маджента+белый тип, рваные плашки, животные-метафоры с работой, Виктория только на 1 и 9.\nCHANGE: тема ping vs step; дословный английский текст; ночной телефон 11:42 PM, поводок, крючок, таблица PING/STEP, три слоя, три вопроса; кот на 1, пёс на 2, сова на 4; новая одежда и поза этого пака.\nDO NOT BORROW: португальский, чужие женские лица, Алёна, одежда и поза с листа, horror-стол, слоганы вне copy JSON, URL, чужие бренды, Academy, кириллица на панелях.\n\nSame woman as input[0]. Green eyes, slight hazel. Warm honey/wheat blonde, darker roots. New clothes and pose on 1 and 9.\n\nПанель01 hook motion-safe: Виктория сидит на краю тёмной кровати, 3/4, бордовая атласная блуза с открытым воротом, чёрные высокие брюки, волосы свободно на одно плечо, смотрит вниз на телефон в левой руке, свет экрана на лице. Чёрный кот смотрит на уведомление. Заголовок «Silent for 24 days. At 11:42 PM: 'Hey, you up?'» тело «The exact night you finally stopped checking his page.» Движение: свечение и кот; тип неподвижен.\nПанель02 problem: без Виктории. Пёс сидит у светящегося телефона — верность неотвеченному вопросу. «Your heart races like a month ago» «Another sleepless night sending screenshots: 'Does he miss me? Did he finally realize?'»\nПанель03 mistake: без Виктории, без животных. Крупный тип + короткий кожаный поводок. «The trap: mistaking impulse for love» «Looking for signs of destiny where someone is simply testing the length of their leash.» Маджента только на словах «The trap».\nПанель04 mechanism: без Виктории. Сова в темноте — ночное сканирование. Маленький рыболовный крючок. «This is not a step. It's a ping» «Zero effort. He sensed losing control and tossed a hook: 'Are you still waiting?'»\nПанель05 save: таблица-скрин. Без людей и животных. «Ping vs Real Step: The difference» «PING: Midnight texts, story views, zero actions.» «STEP: Daytime call, specific time and place to meet.» Маджента-плашки на словах PING и STEP.\nПанель06 save: три слоя-полосы. Без людей и животных. «What he texts vs what you hear» «Texts: 'Thinking of us.'» «You hear: 'He wants me back.'» «Reality: 'I need free validation tonight.'» Маджента на третьей полосе.\nПанель07 save: чек-лист. Без людей и животных. «3 questions before you hit send» «1. Is there concrete action?» «2. Has his behavior actually changed?» «3. Ready for another 3 weeks of silence?» Три маджента-пилюли 1 2 3.\nПанель08 recap: без Виктории и животных. «The rule that protects your peace» «Whoever wants to be near takes a step. Whoever is bored sends a ping. Never settle for an availability check.» Опционально малый золотой медальон Today Tarot внизу слева.\nПанель09 cta: та же Виктория, другая одежда и поза: чёрная кожаная куртка поверх графитовой водолазки, тёмно-шоколадные широкие брюки, стоит 3/4, подбородок чуть вверх, взгляд в камеру, правая рука вдоль тела. Крупный маджента-скрипт «STEP». «What is truly behind his text?» «Comment STEP below» «Comment STEP below. We'll DM you 3 free spreads in our bot to reveal his true motives.» Без животных, без URL.\n\nTYPOGRAPHY: verbatim text, no substitutions, no extra labels, no duplicate text. Заголовок доминирует, тело меньше. Только английская латиница. Safe-area ≥10–12% от швов и краёв; текст не у нижнего края ячейки.\nGRID: master 3:4 @ 4K. 3 колонки × 3 ряда, thin white gutters at 1/3 and 2/3, code-cut on those seams, no bleed, no outer canvas frame, не 2×3, не горизонтальная полоса.\nNEGATIVE: неверное число панелей, стрип, 2×3, watermark.",
+  "negative_prompt": "platinum, Alena, white cami, jeans from sheet, ivory blazer, other women's faces, Portuguese, horror, white-blonde, white camisole, spaghetti-strap, light-wash jeans, white blazer, studio-blazer, skulls, blood, dripping candles, ouija, demon faces, Victoria signature, extra labels, raw URLs, Academy, cutout, die-cut, sticker outline, white outline, white halo, crooked halo, вырезка, стикер-контур, белый контур, белый ореол, 2x3 grid, horizontal strip, Victoria on slides 2-8, animals on slides other than 1 2 4, Russian headlines, Cyrillic on panels",
   "prompt_compacted": true,
-  "prompt_char_count": 4179,
+  "prompt_char_count": 4030,
   "prompt_compaction": {
     "active_prompt_max_chars": 4500,
     "details_in_structured_fields": true,
     "prompt_compacted": true,
-    "prompt_char_count": 4179
+    "prompt_char_count": 4030
   },
   "reference_contract": {
     "reference_role": "style + layout + face lock",
@@ -46,14 +47,14 @@
       "charcoal / matte black full-bleed field",
       "hot magenta #ff006e + white type mix",
       "soft gold metal accents",
-      "cutout collage on dark field",
-      "type layered behind and in front of cutouts",
+      "torn-paper / pill blocks on dark field",
+      "type layered behind and in front of subjects",
       "magenta torn-tape / pill blocks",
       "animals as emotion metaphors with a job",
       "Victoria on slides 1 and 9 only",
-      "3x3 row-major grid, each cell 3:4, zero visible gutters",
+      "3x3 row-major grid, each cell 3:4, thin white gutters, seam slice",
       "hook readable in 2 seconds at thumbnail",
-      "safe margin 10–12% from all cuts and edges"
+      "safe margin 10–12% from seams and edges"
     ],
     "change": [
       "topic: ping vs step",
@@ -96,7 +97,7 @@
       "pills": "magenta torn-tape / pill blocks for words already in copy"
     },
     "lighting": "night fashion; phone glow on slide 1 only warm practical",
-    "treatment": "cutout collage, thin edge, type in front of and behind subjects"
+    "treatment": "night collage graphic; torn-paper type blocks; subjects in-scene"
   },
   "wardrobe_this_pack": {
     "rule": "NEW clothes and pose. Slide 1 and 9 differ. Same woman. Not the sheet outfit.",
@@ -153,7 +154,7 @@
     {
       "slide": 1,
       "role": "hook",
-      "visual_only": "Night bedroom charcoal field. Victoria face/hair lock from victoria-sheet.png in NEW deep burgundy satin blouse + black high-waist trousers, seated 3/4 on dark bed edge, looking down at phone in left hand, screen glow on face, hair loose over one shoulder. Black cat cutout stares at the 11:42 PM notification. Motion-safe: glow and cat can drift; type locked. No other woman.",
+      "visual_only": "Night bedroom charcoal field. Victoria face/hair lock from victoria-sheet.png in NEW deep burgundy satin blouse + black high-waist trousers, seated 3/4 on dark bed edge, looking down at phone in left hand, screen glow on face, hair loose over one shoulder. Black cat in the scene stares at the 11:42 PM notification. Motion-safe: glow and cat can drift; type locked. No other woman.",
       "has_victoria": true,
       "animal": "cat",
       "exact_headline": "Silent for 24 days. At 11:42 PM: 'Hey, you up?'",
@@ -162,7 +163,7 @@
     {
       "slide": 2,
       "role": "problem",
-      "visual_only": "Type-led pain panel, 50–60% type. Mid-size dog cutout at bottom sits facing a glowing phone on a dark nightstand. Loyalty to the unanswered question, not a cute pet portrait. No Victoria. No other woman.",
+      "visual_only": "Type-led pain panel, 50–60% type. Mid-size dog at bottom sits facing a glowing phone on a dark nightstand. Loyalty to the unanswered question, not a cute pet portrait. No Victoria. No other woman.",
       "has_victoria": false,
       "animal": "dog",
       "exact_headline": "Your heart races like a month ago",
@@ -171,7 +172,7 @@
     {
       "slide": 3,
       "role": "mistake",
-      "visual_only": "Typography-first. Magenta accent only on the existing words The trap. Short leather leash / lead cutout as object metaphor. No animal. No Victoria.",
+      "visual_only": "Typography-first. Magenta accent only on the existing words The trap. Short leather leash / lead as object metaphor. No animal. No Victoria.",
       "has_victoria": false,
       "animal": null,
       "exact_headline": "The trap: mistaking impulse for love",
@@ -180,7 +181,7 @@
     {
       "slide": 4,
       "role": "mechanism",
-      "visual_only": "Owl cutout in the upper dark as night scan / worst-case loop. Small fishing-hook object from the body word hook, no extra caption. Headline contrast: not a step / It's a ping. No Victoria.",
+      "visual_only": "Owl in the upper dark as night scan / worst-case loop. Small fishing-hook object from the body word hook, no extra caption. Headline contrast: not a step / It's a ping. No Victoria.",
       "has_victoria": false,
       "animal": "owl",
       "exact_headline": "This is not a step. It's a ping",
@@ -198,7 +199,7 @@
     {
       "slide": 6,
       "role": "save_framework_b",
-      "visual_only": "Three stacked torn-paper bands: Texts / You hear / Reality. Meaning depth like slide-04, collage clothes from style lock. Magenta on the third band. No animal. No Victoria.",
+      "visual_only": "Three stacked torn-paper bands: Texts / You hear / Reality. Meaning depth like slide-04, palette from style lock. Magenta on the third band. No animal. No Victoria.",
       "has_victoria": false,
       "animal": null,
       "exact_headline": "What he texts vs what you hear",
@@ -236,5 +237,6 @@
   "input_urls": [
     "https://tempfile.redpandaai.co/kieai/378019/carusel-face-lock/victoria-sheet.png",
     "https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png"
-  ]
+  ],
+  "slice_method": "seam"
 }

@@ -38,7 +38,8 @@ flowchart TD
 | 10 | carusel-publish | video + 8 images |
 | 11 | carusel-fixic | incidents |
 
-Документация: `shared/carousel-grid-design.md`
+Документация: `shared/carousel-grid-design.md`, `shared/carousel-seam-slice-contract.md`, `shared/victoria-identity-lock.md`.
+Нарезка: **seam slice** (thin white gutters → code-cut). Face lock: `victoria-sheet.png` as `input_urls[0]`.
 
 Оркестрация: `shared/swarm-spawn-contract.md`. Director только оркестрирует.
 **Весь человеческий текст = Gemini** (`written_by: gemini` на dossier, 9 слайдах, caption).

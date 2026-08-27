@@ -26,7 +26,7 @@ class CanonGateTest(unittest.TestCase):
         self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
 
     def test_real_pack_passes(self) -> None:
-        pack = Path(__file__).resolve().parent.parent / "carusel-memory/packs/2026-08-27-v2"
+        pack = Path(__file__).resolve().parent.parent / "carusel-memory/packs/2026-08-27-swarm"
         if not pack.is_dir():
             self.skipTest("pack not in workspace")
         errors = gate.check_pack(pack)
@@ -160,6 +160,121 @@ class CanonGateTest(unittest.TestCase):
             "cami" in errors.lower() or "ivory" in errors.lower() or "clothes" in errors.lower(),
             errors,
         )
+
+    def test_sticker_prompt_fails_without_seams(self) -> None:
+        pack = self.tmp / "pack"
+        write(
+            pack / "PACK.json",
+            {
+                "visual_family": "animals_viktoria_collage",
+                "face_lock": "victoria-sheet.png",
+                "langs": ["ru"],
+                "trigger_words": {"ru": "ШАГ"},
+            },
+        )
+        slides = {
+            "slide_count": 9,
+            "visual_family": "animals_viktoria_collage",
+            "hook_is_scene": True,
+            "trigger_word": "ШАГ",
+            "product": "bot_three_spreads",
+            "slides": [
+                {
+                    "index": 1,
+                    "role": "hook",
+                    "hook_type": "scene",
+                    "headline": "Он молчал 24 дня. В 23:42: «Спишь?»",
+                    "body": "Ровно в тот вечер.",
+                    "victoria": True,
+                    "animal": "cat",
+                    "animal_job": "чуешь",
+                },
+                {
+                    "index": 2,
+                    "role": "pain",
+                    "headline": "Сердце колотится",
+                    "body": "Снова ночь.",
+                    "animal": "dog",
+                    "animal_job": "ждёт",
+                },
+                {
+                    "index": 3,
+                    "role": "mistake",
+                    "headline": "Ловушка импульса",
+                    "body": "Это не любовь.",
+                    "has_framework": True,
+                },
+                {
+                    "index": 4,
+                    "role": "mechanism",
+                    "headline": "Это пинг",
+                    "body": "Нулевые затраты.",
+                    "animal": "owl",
+                    "animal_job": "ночь",
+                },
+                {
+                    "index": 5,
+                    "role": "save",
+                    "headline": "Три вопроса",
+                    "body": "Есть действие?",
+                    "has_framework": True,
+                },
+                {
+                    "index": 6,
+                    "role": "save",
+                    "headline": "Что слышишь",
+                    "body": "Слышишь худшее.",
+                    "has_framework": True,
+                },
+                {
+                    "index": 7,
+                    "role": "save",
+                    "headline": "Рамка шага",
+                    "body": "Звонок днём.",
+                    "has_framework": True,
+                },
+                {
+                    "index": 8,
+                    "role": "recap",
+                    "headline": "Правило",
+                    "body": "Шаг или пинг.",
+                },
+                {
+                    "index": 9,
+                    "role": "cta",
+                    "headline": "Напиши ШАГ",
+                    "body": "3 расклада в боте",
+                    "victoria": True,
+                },
+            ],
+        }
+        write(pack / "ru" / "CAROUSEL_SLIDE_COPY.json", slides)
+        write(
+            pack / "ru" / "CAROUSEL_CAPTION.json",
+            {
+                "full_caption": "Напиши ШАГ @todaytaro_ru",
+                "trigger_word": "ШАГ",
+                "product": "bot_three_spreads",
+                "mentions": ["@todaytaro_ru"],
+            },
+        )
+        write(
+            pack / "ru" / "CAROUSEL_IMAGE_PROMPT.json",
+            {
+                "visual_family": "animals_viktoria_collage",
+                "face_lock": "victoria-sheet.png",
+                "slice_method": "zero-gutter",
+                "input_urls": ["https://example.com/other.png"],
+                "input_files_in_repo": ["carusel-memory/references/victoria-sheet.png"],
+                "prompt": "Zero-gutter cutout collage, white outline sticker around Victoria.",
+                "panel_visual_brief": [{"slide": 1, "visual_only": "sticker cutout"}],
+            },
+        )
+        for i in range(1, 10):
+            write(pack / "ru" / "slides" / f"slide-{i:02d}.png", "x")
+        errors = " ".join(gate.check_pack(pack))
+        self.assertTrue("sticker" in errors.lower() or "cutout" in errors.lower() or "halo" in errors.lower(), errors)
+        self.assertTrue("seam" in errors.lower() or "gutter" in errors.lower(), errors)
 
     def test_mechanic_hook_and_vibe_fail(self) -> None:
         pack = self.tmp / "pack"

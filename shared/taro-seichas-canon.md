@@ -44,7 +44,7 @@ Locale-контракт фиксировал handle и «без URL», но не
 Коротко:
 
 - charcoal/black + magenta `#ff006e` + white + soft gold
-- Victoria cutout на hook (1) и CTA (9). Face lock = **`victoria-sheet.png`**
+- Victoria in-scene на hook (1) и CTA (9). Face lock = **`victoria-sheet.png`**
   (карта внешности). Глаза: зелёные с лёгким hazel. Волосы: honey/wheat + darker roots
   **как на листе**. Platinum / Alena / `cover-refs/victoria.png` = FAIL.
 - Одежда и поза **новые в каждой карусели**. Не копировать white cami + jeans с листа.

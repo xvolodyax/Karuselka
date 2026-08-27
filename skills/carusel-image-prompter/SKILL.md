@@ -40,10 +40,15 @@ Fragment: `carusel-memory/fragments/image-prompter.md`
   "model": "gpt-image-2-image-to-image",
   "prompt": "Одно изображение: 9 равных панелей 3×3, каждая 3:4, стиль как референс...",
   "negative_prompt": "...",
-  "input_urls": ["https://HTTPS_REFERENCE"],
+  "input_urls": [
+    "https://HTTPS_VICTORIA_SHEET",
+    "https://HTTPS_STYLE_LOCK_PALETTE_ONLY"
+  ],
+  "slice_method": "seam",
+  "face_lock": "victoria-sheet.png",
   "aspect_ratio": "3:4",
   "resolution": "4K",
-  "grid": { "cols": 3, "rows": 3, "order": "row-major" },
+  "grid": { "cols": 3, "rows": 3, "order": "row-major", "gutters": "thin_white_seams" },
   "animate_slide": 1,
   "reference_contract": {
     "reference_role": "style + layout reference",
@@ -69,7 +74,7 @@ Fragment: `carusel-memory/fragments/image-prompter.md`
 }
 ```
 
-Контракт: `shared/carousel-grid-design.md`
+Контракт: `shared/carousel-grid-design.md`, `shared/carousel-seam-slice-contract.md`, `shared/victoria-identity-lock.md`.
 
 ## Правила промпта (русский)
 
@@ -107,17 +112,21 @@ Verbatim text only; no substitutions; no extra labels; no duplicate text.
 Headline dominant, body smaller, pills tiny but legible. High contrast.
 
 [GRID RULES]
-Master aspect ratio 3:4, resolution 4K. 3 columns × 3 rows; zero visible gutters;
-each resulting cell is a standalone 3:4 vertical panel. Cells touch edge-to-edge:
-no white dividers, no borders, no whitespace, no outer frame. Use invisible cut
-lines at 1/3 and 2/3 only; full-bleed background reaches every cell edge.
-Objects and key text stay inside each cell; no 2×3 grid; no 6-panel horizontal
-strip; consistent style across all 9 panels.
+Master aspect ratio 3:4, resolution 4K. Canvas exact 3×3; nine 3:4 panels;
+thin white gutters on the 1/3 and 2/3 lines; no bleed. Code cuts ON those seams
+(Excalibur method). No outer white frame around the whole canvas.
+People and animals live inside each scene — do not describe sticker/cutout/halo
+in the positive prompt (ban those words in negative_prompt only).
+input_urls[0] = victoria-sheet.png (i2i face lock). Short identity line.
+input_urls[1] = style lock for palette/type only — do not copy sticker outlines
+from that plate.
 **Safe margin:** all headline/body/pills must stay **≥10–12% away from every
-imaginary cut line and cell edge**. Do not place text near the bottom edge.
+seam and cell edge**. Do not place text near the bottom edge.
 
 [NEGATIVE]
-wrong number of panels, horizontal strip, 2x3 grid, visible gutters, white borders, outer frame, watermark, blurry, inconsistent styles.
+wrong number of panels, horizontal strip, 2x3 grid, outer canvas frame, watermark,
+blurry, inconsistent styles, cutout, die-cut, sticker outline, white halo,
+platinum, Alena, sheet cami+jeans.
 
 [TOPIC]
 Adapt scene for: {topic from brief}

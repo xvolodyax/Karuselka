@@ -49,6 +49,15 @@ SHEET_CLOTHES_RE = re.compile(
     r"light-wash jeans|white cami \+ jeans",
     re.I,
 )
+STICKER_HALO_RE = re.compile(
+    r"\b(cutout|die-cut|sticker outline|white outline|white halo|crooked halo|"
+    r"вырезк|стикер-контур|белый контур|белый ореол)\b",
+    re.I,
+)
+SEAM_RE = re.compile(
+    r"thin white gutter|white seam|бел(ые|ых) (желоб|шов|gutter)|seam_slice|slice_method.: .seam",
+    re.I,
+)
 FORBIDDEN_INPUT_RE = re.compile(
     r"cover-refs/victoria\.png|victoria-hair-lock|cover-old\.png|karusel-old/cover-old",
     re.I,
@@ -214,6 +223,11 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
             errors.append(f"{lang}: Alena / victoria.png / hair-lock / cover-old used as i2i input")
         if FACE_LOCK not in inputs and FACE_LOCK not in blob:
             errors.append(f"{lang}: i2i must use {FACE_LOCK}")
+        urls = prompt.get("input_urls") or []
+        if urls and FACE_LOCK not in str(urls[0]):
+            errors.append(f"{lang}: input_urls[0] must be {FACE_LOCK} (Excalibur i2i order)")
+        if str(prompt.get("slice_method") or "") != "seam":
+            errors.append(f"{lang}: slice_method must be seam (Excalibur white-gutter cut)")
         visual_positive = " ".join(
             [str(prompt.get("prompt") or "")]
             + [str(b.get("visual_only") or "") for b in (prompt.get("panel_visual_brief") or [])]
@@ -223,6 +237,13 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
                 f"{lang}: prompt copies sheet clothes/pose (white cami+jeans or ivory blazer). "
                 "Clothes must change. Ban those looks in negative_prompt only."
             )
+        if STICKER_HALO_RE.search(visual_positive):
+            errors.append(
+                f"{lang}: prompt asks for sticker/cutout/white halo. "
+                "Use a seamed canvas (Excalibur). Ban stickers in negative_prompt only."
+            )
+        if not SEAM_RE.search(blob):
+            errors.append(f"{lang}: prompt must request thin white gutters / seam slice")
         if PLATINUM_RE.search(visual_positive) and not re.search(
             r"fail|forbidden|not |не |ban|avoid|запрет|избегать", visual_positive, re.I
         ):
@@ -263,6 +284,7 @@ Verdict: PASS
 - (e) no platinum
 - (f) no empty vibe-only slides
 - (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
+- (h) seam slice (Excalibur white gutters), no sticker halo
 - caption: one trigger word, no raw URLs, one product, no Academy on EN
 """
     report.write_text(body, encoding="utf-8")

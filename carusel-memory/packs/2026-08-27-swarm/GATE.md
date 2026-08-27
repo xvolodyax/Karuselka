@@ -9,4 +9,5 @@ Verdict: PASS
 - (e) no platinum
 - (f) no empty vibe-only slides
 - (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
+- (h) seam slice (Excalibur white gutters), no sticker halo
 - caption: one trigger word, no raw URLs, one product, no Academy on EN

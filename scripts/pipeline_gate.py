@@ -321,6 +321,7 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     "publish_requested: false",
                     "visual_family: animals_viktoria_collage",
                     "face_lock: victoria-sheet.png",
+                    "slice_method: seam",
                     "cta_style: comment_trigger",
                     "bot_vs_app: @todaytaro_bot is a Telegram bot, not an app; pick ONE product",
                     "slides: 9",
@@ -644,8 +645,13 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
         prompt = load_json(workspace / spec["required_artifacts"][0])
         if prompt.get("generation_mode") != "grid_3x3":
             errors.append("CAROUSEL_IMAGE_PROMPT.json generation_mode must be grid_3x3")
+        if prompt.get("slice_method") != "seam":
+            errors.append("CAROUSEL_IMAGE_PROMPT.json slice_method must be seam")
+        urls = prompt.get("input_urls") or []
+        if urls and "victoria-sheet.png" not in str(urls[0]):
+            errors.append("CAROUSEL_IMAGE_PROMPT.json input_urls[0] must be victoria-sheet.png")
         if "PLACEHOLDER" in json.dumps(prompt):
-            errors.append("CAROUSEL_IMAGE_PROMPT.json still contains PLACEHOLDER")
+            errors.append("CAROUSEL_IMAGE_PROMPT.json still has PLACEHOLDER")
         briefs = prompt.get("panel_visual_brief") or []
         if len(briefs) != 9:
             errors.append("CAROUSEL_IMAGE_PROMPT.json needs 9 panel_visual_brief")
@@ -786,6 +792,19 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
         extra_hard.append(
             "- Write a research brief (topic, client pain, one meaning, why this hook). "
             "Not a caption. Stamp written_by: gemini on the dossier and fragment."
+        )
+    if step_id == "image-prompter":
+        extra_hard.append(
+            "- slice_method: seam. Prompt thin white gutters at 1/3 and 2/3 (Excalibur). "
+            "input_urls[0] must be victoria-sheet.png (i2i face lock). Short identity line, "
+            "no face essay. Do not ask for sticker/cutout/white halo on people or animals."
+        )
+        extra_hard.append("- Read shared/carousel-seam-slice-contract.md and shared/victoria-identity-lock.md.")
+    if step_id == "slice":
+        extra_hard.append(
+            "- Cut with scripts/seam_slice_grid.py --split-mode gutter. "
+            "CROOKED CANVAS (exit 2) = rebuild the whole master. Never patch one cell. "
+            "Do not use remove_grid_gutters.py as the primary path."
         )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (
@@ -975,8 +994,13 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
             "generation_mode": "grid_3x3",
             "carousel_family": family,
             "face_lock": "victoria-sheet.png",
+            "slice_method": "seam",
             "dry_run": True,
             "reference_contract": {"face_lock": "victoria-sheet.png"},
+            "input_urls": [
+                "https://example.invalid/victoria-sheet.png",
+                "https://example.invalid/animals-viktoria-style-lock.png",
+            ],
             "typography_rules": {"dry_run": True},
             "panel_visual_brief": [
                 {"slide": i, "prompt": f"dry-run text brief {i:02d} — no image generation"}

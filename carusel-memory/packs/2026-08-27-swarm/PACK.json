@@ -16,6 +16,7 @@
   },
   "visual_family": "animals_viktoria_collage",
   "face_lock": "victoria-sheet.png",
+  "slice_method": "seam",
   "hair_lock": "warm honey/wheat blonde with darker medium-brown roots as on victoria-sheet.png; platinum = FAIL",
   "product": "bot_three_spreads",
   "cta_style": "comment_trigger",

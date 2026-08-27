@@ -24,7 +24,7 @@ from kie_file_upload import KieFileUploadClient  # noqa: E402
 SHEET = REPO / "carusel-memory" / "references" / "victoria-sheet.png"
 STYLE = REPO / "carusel-memory" / "references" / "animals-viktoria-style-lock.png"
 ALENA = Path("/workspace/cover-refs/victoria.png")
-DEFAULT_PACK = REPO / "carusel-memory" / "packs" / "2026-08-27-v2"
+DEFAULT_PACK = REPO / "carusel-memory" / "packs" / "2026-08-27-swarm"
 
 
 def load_json(path: Path) -> dict:
@@ -62,6 +62,7 @@ def render_lang(
     prompt = load_json(pack / lang / "CAROUSEL_IMAGE_PROMPT.json")
     if prompt.get("face_lock") != "victoria-sheet.png":
         raise SystemExit(f"{lang}: face_lock must be victoria-sheet.png")
+    prompt["slice_method"] = "seam"
     prompt["input_urls"] = [sheet_url, style_url]
     copy_src = pack / lang / "CAROUSEL_SLIDE_COPY.json"
     design = workspace / "carusel-memory" / "design"

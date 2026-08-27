@@ -18,7 +18,7 @@ No pastel rainbow. No beige lifestyle wash. No horror red/black candle table.
 
 - **Heavy sans, white** — primary keywords, scene, numbers
 - **Thin script / handwritten, magenta** — secondary word («или конец?», Pause)
-- Layer type behind and in front of cutouts
+- Layer type behind and in front of subjects in the scene
 - Magenta torn-tape / pill blocks for short labels
 - Hook readable in 2 seconds at thumbnail size
 - Verbatim copy from `CAROUSEL_SLIDE_COPY.json`. No extra labels, no watermarks, no Victoria signature
@@ -27,7 +27,7 @@ No pastel rainbow. No beige lifestyle wash. No horror red/black candle table.
 
 ### Victoria (hero, only woman's face)
 
-- Slides **1 (hook)** and **9 (CTA)** as clean cutout
+- Slides **1 (hook)** and **9 (CTA)** in-scene (no sticker halo)
 - Face lock: **`carusel-memory/references/victoria-sheet.png`** only
   (box: `/workspace/cover-refs/victoria-sheet.png`)
 - Eyes: green with a slight hazel / light-brown mix
@@ -61,7 +61,7 @@ Cute random pets without a job = FAIL.
 
 - Instagram portrait 3:4 each. Not 4:5 mixed, not 1:1 publish assets
 - Hook: large scene line + Victoria + one animal
-- Internal: 50–60% type, smaller cutout at bottom or side
+- Internal: 50–60% type, smaller subject at bottom or side
 - CTA: Victoria + huge magenta script trigger word
 - Safe area ≥10–12% from edges if generated as a 3×3 master
 
@@ -75,6 +75,6 @@ Cute random pets without a job = FAIL.
 | `cover-old.png` / studio-blazer | RETIRED |
 | `slide-04.png` | meaning depth only, not the visual family |
 
-`preserve`: dark field, magenta + white type mix, cutouts, pills, animals-as-metaphor, Victoria on 1+9.
+`preserve`: dark field, magenta + white type mix, torn-paper pills, animals-as-metaphor, Victoria on 1+9, seam slice.
 `change`: topic objects, exact copy, which animal on which slide.
 `do_not_borrow`: Portuguese text, foreign faces, other brands, horror table.

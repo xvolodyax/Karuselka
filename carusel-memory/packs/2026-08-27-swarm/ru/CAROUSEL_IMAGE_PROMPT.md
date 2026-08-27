@@ -8,9 +8,10 @@ model: `gpt-image-2-image-to-image`
 aspect_ratio: `3:4`  
 resolution: `4K`  
 face_lock: `victoria-sheet.png`  
+slice_method: `seam`  
 prompt_compacted: true  
-prompt_char_count: 4179  
-Kie: not run (slice next)
+prompt_char_count: 4030  
+Kie: rebuild with Excalibur i2i + seam slice
 
 Machine JSON: `carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json`  
 Copy source: `carusel-memory/design/CAROUSEL_SLIDE_COPY.json` — verbatim only. No invented slogans.
@@ -26,7 +27,7 @@ Night-fashion collage, not occult horror and not beige lifestyle.
 | accent | `#ff006e` |
 | metal | `#c4a35a` |
 
-Heavy white grotesque headlines. Thin magenta script / torn-tape pills only for words already in the slide copy. Type layers behind and in front of cutouts. Safe margin ≥10–12% from every imaginary 1/3 and 2/3 cut and from every cell edge.
+Heavy white grotesque headlines. Thin magenta script / torn-tape pills only for words already in the slide copy. Type layers behind and in front of subjects in the scene. Safe margin ≥10–12% from every white seam and from every cell edge.
 
 ## Reference contract
 
@@ -35,7 +36,7 @@ Heavy white grotesque headlines. Thin magenta script / torn-tape pills only for 
 | `carusel-memory/references/animals-viktoria-style-lock.png` | style + layout + palette |
 | `carusel-memory/references/victoria-sheet.png` | ONLY face + hair lock |
 
-**Preserve:** charcoal field, magenta + white type, cutouts, pills, animals-as-metaphor, Victoria on 1+9, 3×3 zero-gutter grid.
+**Preserve:** charcoal field, magenta + white type, torn-paper pills, animals-as-metaphor, Victoria on 1+9, 3×3 seamed canvas (thin white gutters).
 
 **Change:** topic objects and exact copy (night ping at 23:42, leash/hook, ПИНГ vs ШАГ table, three-layer decode, three-question checklist), this-pack wardrobe, animal seats cat/dog/owl.
 
@@ -76,7 +77,7 @@ Quoted from `CAROUSEL_SLIDE_COPY.json`. Do not substitute.
 
 ## Grid
 
-Master one image, 3:4 @ 4K, `generation_mode: grid_3x3`. Row-major 01 02 03 / 04 05 06 / 07 08 09. Zero visible gutters. Each cell is a standalone 3:4 panel. Slide 1 is motion-friendly (phone glow, cat micro-move; type stays still).
+Master one image, 3:4 @ 4K, `generation_mode: grid_3x3`, `slice_method: seam`. Row-major 01 02 03 / 04 05 06 / 07 08 09. Thin white gutters at 1/3 and 2/3; code cuts on those seams. Each cell is a standalone 3:4 panel. Slide 1 is motion-friendly (phone glow, cat micro-move; type stays still).
 
 ## Negative (Kie)
 
