@@ -1,5 +1,19 @@
 # Hall — secretary handoff
 
+## Swarm (plain language)
+
+The pack is not one agent wearing 11 hats.
+
+1. Director only starts the run and calls the next Task.
+2. Cloud cannot see `Task(carusel-*)`. Use `Task(generalPurpose)` **once per step** (`pipeline_gate.py dispatch-prompt`).
+3. Researcher + copywriter (slides **and** caption) must run on **Gemini**. Artifacts must say `written_by: gemini`. Other models = gate FAIL.
+4. Designer locks layout. Image-prompter writes Kie prompts from that copy + `victoria-sheet.png`. Do not invent new slogans.
+5. Publish is **skip** unless Vladimir asked Hall. Never Instagram/Make/Composio from the swarm.
+
+Today’s empty pretty posts happened because Director skipped researcher+copywriter and jumped to vibe pixels. Do not do that.
+
+See `shared/swarm-spawn-contract.md`.
+
 ## Do not auto-publish
 
 This pack is for **human review**, then you publish via Composio.

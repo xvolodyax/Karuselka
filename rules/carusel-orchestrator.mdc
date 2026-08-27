@@ -39,8 +39,8 @@ alwaysApply: true
 ### Цепочка
 
 1. **Write** — сброс `.cursor/carusel-handoff.md` + `carusel-memory/00-brief.md`.
-2. **Task**(`carusel-researcher`, model=`gemini-3.7-flash-high`) — research по теме и конкурентам.
-3. **Task**(`carusel-copywriter`, model=`gemini-3.7-flash-high`) — 9 слайдов grid 3×3 **и** caption (отдельного caption-агента нет).
+2. **Task**(`carusel-researcher`, model=`gemini-3.7-flash-high`) — brief (тема, боль, один смысл, почему хук). `written_by: gemini`. Не caption.
+3. **Task**(`carusel-copywriter`, model=`gemini-3.7-flash-high`) — 9 слайдов **и** caption. `written_by: gemini`. Director не пишет слайды.
 4. **Task**(`carusel-designer`) — CAROUSELDESIGN + артефакты AURA-style.
 5. **Task**(`carusel-image-prompter`) — русский промпт для Kie **3:4 @ 4K master 3×3** (`CAROUSEL_IMAGE_PROMPT.json`).
 6. **Task**(`carusel-slice`) — Kie generate + grid slice → **9 PNG**.

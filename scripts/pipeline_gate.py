@@ -55,8 +55,22 @@ LEGAL_SKIP = {
 }
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
 GEMINI_MODEL = "gemini-3.7-flash-high"
+GEMINI_WRITERS = frozenset({"gemini", "gemini-3.7-flash-high"})
 PIXEL_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".mp4", ".mov"}
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
+WRITTEN_BY_RE = re.compile(r"^written_by:\s*(\S+)\s*$", re.M | re.I)
+RESEARCH_MARKERS = (
+    "pain",
+    "боль",
+    "meaning",
+    "смысл",
+    "hook",
+    "хук",
+    "topic",
+    "тема",
+    "audience",
+    "аудитор",
+)
 INCIDENT_RE = re.compile(r"^incident_report:\s+\S+", re.M)
 DISPATCH_VIA_RE = re.compile(r"^dispatched_via:\s+(\S+)", re.M)
 DISPATCH_ID_RE = re.compile(r"^dispatch_id:\s+(\S+)", re.M)
@@ -126,6 +140,18 @@ def write_text_file(path: Path, text: str) -> None:
 
 def is_pixel_rel(rel: str) -> bool:
     return Path(rel).suffix.lower() in PIXEL_SUFFIXES
+
+
+def is_gemini_writer(value: Any) -> bool:
+    return str(value or "").strip().lower() in GEMINI_WRITERS
+
+
+def written_by_error(rel: str, value: Any) -> str:
+    return (
+        f"{rel} written_by must be gemini (got {value!r}). "
+        "Hall/Director: spawn researcher+copywriter on gemini-3.7-flash-high. "
+        "Director must not author slides/captions."
+    )
 
 
 def empty_step_state(step_id: str) -> dict[str, Any]:
@@ -488,6 +514,55 @@ def verify_fragment(workspace: Path, spec: dict[str, Any], state: dict[str, Any]
         role_token = spec["role"].split("-", 1)[-1].upper()
         if f"CARUSEL-{role_token}" not in text.upper() and spec["role"].upper() not in text.upper():
             errors.append(f"{rel} must name role {spec['role']}")
+        if spec["id"] in GEMINI_STEPS:
+            by_m = WRITTEN_BY_RE.search(text)
+            if not by_m or not is_gemini_writer(by_m.group(1)):
+                errors.append(written_by_error(rel, by_m.group(1) if by_m else None))
+    return errors
+
+
+def verify_gemini_artifacts(workspace: Path, step_id: str, state: dict[str, Any]) -> list[str]:
+    """Human-readable text (research brief, slides, caption) must be Gemini-stamped."""
+    errors: list[str] = []
+    if step_id not in GEMINI_STEPS:
+        return errors
+    if state.get("model") and state.get("model") != GEMINI_MODEL:
+        errors.append(
+            f"{step_id} ledger model must be {GEMINI_MODEL}, got {state.get('model')!r}"
+        )
+    if step_id == "researcher":
+        rel = "carusel-memory/research/carousel-research-dossier.md"
+        if not file_ok(workspace, rel):
+            return errors
+        text = read_text(workspace, rel)
+        by_m = WRITTEN_BY_RE.search(text)
+        if not by_m or not is_gemini_writer(by_m.group(1)):
+            errors.append(written_by_error(rel, by_m.group(1) if by_m else None))
+        low = text.lower()
+        if not any(marker in low for marker in RESEARCH_MARKERS):
+            errors.append(
+                f"{rel} is not a research brief (need topic/pain/meaning/hook). "
+                "Do not write a caption here."
+            )
+        if re.search(r"^comment (the word )?(пауза|pause)\s*$", text.strip(), re.I):
+            errors.append(f"{rel} looks like a caption, not research")
+    if step_id == "copywriter":
+        copy_rel = "carusel-memory/design/CAROUSEL_SLIDE_COPY.json"
+        if file_ok(workspace, copy_rel):
+            data = load_json(workspace / copy_rel)
+            if not is_gemini_writer(data.get("written_by")):
+                errors.append(written_by_error(copy_rel, data.get("written_by")))
+        cap_rel = "carusel-memory/design/CAROUSEL_CAPTION.json"
+        if file_ok(workspace, cap_rel):
+            caption = load_json(workspace / cap_rel)
+            if not is_gemini_writer(caption.get("written_by")):
+                errors.append(written_by_error(cap_rel, caption.get("written_by")))
+        cap_md = "carusel-memory/design/CAROUSEL_CAPTION.md"
+        if file_ok(workspace, cap_md):
+            text = read_text(workspace, cap_md)
+            by_m = WRITTEN_BY_RE.search(text)
+            if not by_m or not is_gemini_writer(by_m.group(1)):
+                errors.append(written_by_error(cap_md, by_m.group(1) if by_m else None))
     return errors
 
 
@@ -556,6 +631,7 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
         if not file_ok(workspace, rel):
             errors.append(f"missing artifact {rel}")
     errors.extend(verify_fragment(workspace, spec, state))
+    errors.extend(verify_gemini_artifacts(workspace, step_id, state))
     if step_id == "copywriter":
         brief = parse_brief(workspace)
         errors.extend(verify_copy_locale(workspace, brief["lang"]))
@@ -702,6 +778,15 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
         extra_hard.append(
             "- Caption is THIS step. Write Instagram caption here. There is no separate caption worker."
         )
+        extra_hard.append(
+            "- Stamp written_by: gemini on CAROUSEL_SLIDE_COPY.json, CAROUSEL_CAPTION.json, "
+            "CAROUSEL_CAPTION.md, and the fragment. Director must not write these files."
+        )
+    if step_id == "researcher":
+        extra_hard.append(
+            "- Write a research brief (topic, client pain, one meaning, why this hook). "
+            "Not a caption. Stamp written_by: gemini on the dossier and fragment."
+        )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (
         f"Task(generalPurpose, model={GEMINI_MODEL})"
@@ -807,6 +892,19 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
                 f"lang: {lang}",
                 f"visual_family: {family}",
                 "face_lock: victoria-sheet.png",
+                "written_by: gemini",
+                "",
+                "## Topic",
+                "- dry-run topic",
+                "",
+                "## Client pain",
+                "- dry-run pain",
+                "",
+                "## One meaning",
+                "- dry-run meaning",
+                "",
+                "## Why this hook",
+                "- dry-run hook (scene)",
                 "",
                 "## Hook lab",
                 "- dry-run hook (scene)",
@@ -827,6 +925,7 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
         "visual_family": family,
         "trigger_word": trigger,
         "product": "bot_three_spreads",
+        "written_by": "gemini",
         "slide_count": 9,
         "grid": {"cols": 3, "rows": 3},
         "slides": [
@@ -844,11 +943,12 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
             "trigger_word": trigger,
             "product": "bot_three_spreads",
             "has_url": False,
+            "written_by": "gemini",
         },
     )
     write_text_file(
         mem / "design" / "CAROUSEL_CAPTION.md",
-        f"Dry-run caption. Comment {trigger}. No URL. {handle}\n",
+        f"written_by: gemini\nDry-run caption. Comment {trigger}. No URL. {handle}\n",
     )
 
     write_text_file(
@@ -926,6 +1026,11 @@ def write_dry_run_fragment(
                 f"dispatched_via: {state['dispatched_via']}",
                 f"dispatch_id: {state['dispatch_id']}",
                 f"lang: {lang}",
+                *(
+                    ["written_by: gemini"]
+                    if spec["id"] in GEMINI_STEPS
+                    else []
+                ),
                 "incident_report: none",
                 f"HANDOFF_NEXT: {spec.get('handoff_next') or 'done'}",
                 "note: dry-run text stub — no pixels",

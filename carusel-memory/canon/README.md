@@ -8,7 +8,7 @@ Always-on rules live in the committed plugin contracts (so daily 11:10 cannot dr
 - `shared/caption-format-contract.md`
 - `scripts/canon_gate.py`
 - `scripts/pipeline_gate.py`
-- `shared/swarm-spawn-contract.md` — Director orchestrates only; Gemini on researcher+copywriter; publish skip; `dry-run` = 11 records, no PNG
+- `shared/swarm-spawn-contract.md` — Director orchestrates only; all human text = Gemini (`written_by: gemini`); publish skip; `dry-run` = 11 records, no PNG
 
 References: `carusel-memory/references/`.
 Dated packs: `carusel-memory/packs/`.

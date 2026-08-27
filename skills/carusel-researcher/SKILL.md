@@ -7,6 +7,8 @@ description: Research темы Instagram-карусели, конкуренты,
 
 **Model:** `gemini-3.7-flash-high`.
 Spawn: `Task(carusel-researcher)` or cloud `Task(generalPurpose, model=gemini-3.7-flash-high)`.
+Write a **research brief** (topic, client pain, one meaning, why this hook) — not a caption.
+Stamp `written_by: gemini` on the dossier and fragment.
 See `shared/swarm-spawn-contract.md`. Director does not write the dossier.
 
 ## Вход

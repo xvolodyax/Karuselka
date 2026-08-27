@@ -85,7 +85,7 @@ class PipelineGateTest(unittest.TestCase):
         dispatch_id = ledger["steps"]["researcher"]["dispatch_id"]
         write(
             self.tmp / "carusel-memory" / "research" / "carousel-research-dossier.md",
-            "# dossier\nHook lab\n",
+            "# dossier\nwritten_by: gemini\n## Topic\nHook lab\n## Client pain\nwait\n",
         )
         write(
             self.tmp / "carusel-memory" / "fragments" / "researcher.md",
@@ -95,6 +95,7 @@ class PipelineGateTest(unittest.TestCase):
                     "Статус: ✅ OK",
                     "dispatched_via: Task(generalPurpose)",
                     f"dispatch_id: {dispatch_id}",
+                    "written_by: gemini",
                     "incident_report: none",
                     "HANDOFF_NEXT: copywriter",
                     "",
@@ -162,8 +163,9 @@ class PipelineGateTest(unittest.TestCase):
             "slide_count": 9,
             "slides": [{"index": i, "role": "x", "headline": "h"} for i in range(1, 10)],
         }
+        slides["written_by"] = "gemini"
         write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_SLIDE_COPY.json", json.dumps(slides))
-        write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.md", "caption")
+        write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.md", "written_by: gemini\ncaption\n")
         write(
             self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.json",
             json.dumps(
@@ -173,6 +175,7 @@ class PipelineGateTest(unittest.TestCase):
                     "cta": "Comment the word PAUSE",
                     "trigger_word": "PAUSE",
                     "product": "bot_three_spreads",
+                    "written_by": "gemini",
                 }
             ),
         )
@@ -183,6 +186,7 @@ class PipelineGateTest(unittest.TestCase):
                     "=== CARUSEL-COPYWRITER ===",
                     "dispatched_via: Task(generalPurpose)",
                     f"dispatch_id: {dispatch_id}",
+                    "written_by: gemini",
                     "incident_report: none",
                     "",
                 ]
@@ -246,7 +250,10 @@ class PipelineGateTest(unittest.TestCase):
         self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
         ledger = gate.load_ledger(self.tmp)
         dispatch_id = ledger["steps"]["researcher"]["dispatch_id"]
-        write(self.tmp / "carusel-memory" / "research" / "carousel-research-dossier.md", "# d\n")
+        write(
+            self.tmp / "carusel-memory" / "research" / "carousel-research-dossier.md",
+            "# d\nwritten_by: gemini\n## Topic\npain and meaning\n",
+        )
         write(
             self.tmp / "carusel-memory" / "fragments" / "researcher.md",
             "\n".join(
@@ -254,6 +261,7 @@ class PipelineGateTest(unittest.TestCase):
                     "=== CARUSEL-RESEARCHER ===",
                     "dispatched_via: Task(generalPurpose)",
                     f"dispatch_id: {dispatch_id}",
+                    "written_by: gemini",
                     "incident_report: none",
                     "",
                 ]
@@ -365,6 +373,93 @@ class GeminiAndDryRunTest(unittest.TestCase):
         packet = (self.tmp / "carusel-memory" / "dispatches" / "copywriter.md").read_text()
         self.assertIn("Caption is THIS step", packet)
         self.assertIn("required_model: gemini-3.7-flash-high", packet)
+        self.assertIn("written_by: gemini", packet)
+
+    def _complete_researcher(self) -> None:
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["researcher"]["dispatch_id"]
+        write(
+            self.tmp / "carusel-memory" / "research" / "carousel-research-dossier.md",
+            "# d\nwritten_by: gemini\n## Topic\npain and meaning\n",
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "researcher.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-RESEARCHER ===",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "written_by: gemini",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        self.assertEqual(self.run_cmd("verify", "--step", "researcher"), 0)
+
+    def test_copy_rejected_without_written_by_gemini(self) -> None:
+        self.run_cmd("init", "--lang", "en")
+        self._complete_researcher()
+        self.run_cmd("record-dispatch", "--step", "copywriter", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["copywriter"]["dispatch_id"]
+        slides = {
+            "written_by": "opus",
+            "hook_options": [{"framework": "pain", "headline": "x", "why_it_swipes": "y"}],
+            "hook_rationale": "gap",
+            "slide_count": 9,
+            "slides": [{"index": i, "role": "x", "headline": "h"} for i in range(1, 10)],
+        }
+        write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_SLIDE_COPY.json", json.dumps(slides))
+        write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.md", "written_by: sonnet\n")
+        write(
+            self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.json",
+            json.dumps(
+                {
+                    "full_caption": "Comment PAUSE @todaytaro_bot",
+                    "mentions": ["@todaytaro_bot"],
+                    "trigger_word": "PAUSE",
+                    "product": "bot_three_spreads",
+                    "written_by": "composer",
+                }
+            ),
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "copywriter.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-COPYWRITER ===",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "written_by: opus",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        rc = self.run_cmd("verify", "--step", "copywriter")
+        self.assertEqual(rc, 2)
+
+    def test_researcher_rejected_without_written_by(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["researcher"]["dispatch_id"]
+        write(self.tmp / "carusel-memory" / "research" / "carousel-research-dossier.md", "# only caption\n")
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "researcher.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-RESEARCHER ===",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        self.assertEqual(self.run_cmd("verify", "--step", "researcher"), 2)
 
 
 if __name__ == "__main__":

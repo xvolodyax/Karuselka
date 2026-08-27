@@ -7,6 +7,8 @@ description: Копирайт 9 слайдов Instagram-карусели (grid 
 
 **Model:** `gemini-3.7-flash-high`. Caption is THIS step — there is no separate caption worker.
 Spawn: `Task(carusel-copywriter)` or cloud `Task(generalPurpose, model=gemini-3.7-flash-high)`.
+Stamp `written_by: gemini` on `CAROUSEL_SLIDE_COPY.json`, `CAROUSEL_CAPTION.json`, `CAROUSEL_CAPTION.md`, and the fragment.
+Director / Opus / Sonnet / Composer must not write these files. Do not restyle Gemini’s voice.
 See `shared/swarm-spawn-contract.md`.
 
 ## Вход

@@ -63,8 +63,8 @@ Publish / Composio / Instagram — не вызывать, пока brief `publis
 
 Каждый worker — отдельный **Task**. Cloud: `Task(generalPurpose)` на один шаг (`pipeline_gate.py dispatch-prompt`). Не писать артефакты в родительском чате.
 
-1. carusel-researcher — **`gemini-3.7-flash-high`**
-2. carusel-copywriter — **`gemini-3.7-flash-high`** (slides **и** caption; отдельного caption-агента нет)
+1. carusel-researcher — **`gemini-3.7-flash-high`**. Артефакт без `written_by: gemini` = FAIL.
+2. carusel-copywriter — **`gemini-3.7-flash-high`** (slides **и** caption). Без `written_by: gemini` = FAIL. Не писать слайды самому.
 3. carusel-designer
 4. **carusel-image-prompter** — промпт для Kie
 5. carusel-slice
