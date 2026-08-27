@@ -1,0 +1,32 @@
+{
+  "mode": "grid",
+  "source": "/tmp/carusel-run-en/carusel-memory/output/master/source-zero-gutter-clean.png",
+  "source_size": {
+    "width": 2448,
+    "height": 3264
+  },
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major"
+  },
+  "cell_size": {
+    "width": 816,
+    "height": 1088
+  },
+  "cell_aspect_ratio": 0.75,
+  "slide_count": 9,
+  "master_out": "/tmp/carusel-run-en/carusel-memory/output/master/master.png",
+  "bleed_crop_top": null,
+  "files": [
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-01.png",
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-02.png",
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-03.png",
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-04.png",
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-05.png",
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-06.png",
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-07.png",
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-08.png",
+    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-09.png"
+  ]
+}

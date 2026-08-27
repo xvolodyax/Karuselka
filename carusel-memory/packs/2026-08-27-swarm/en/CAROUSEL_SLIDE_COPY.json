@@ -1,0 +1,142 @@
+{
+  "written_by": "gemini",
+  "slide_count": 9,
+  "hook_is_scene": true,
+  "visual_family": "animals_viktoria_collage",
+  "trigger_word": "STEP",
+  "product": "bot_three_spreads",
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "hook_options": [
+    {
+      "framework": "scene",
+      "headline": "Silent for 24 days. At 11:42 PM: 'Hey, you up?'",
+      "why_it_swipes": "Instant immersion into a cinematic late-night scene universally felt by the target audience. The sharp tension between hard-won peace and an unexpected midnight trigger creates an irresistible information gap."
+    },
+    {
+      "framework": "pain",
+      "headline": "Spent a month moving on. One text reset it all",
+      "why_it_swipes": "Directly targets the visceral pain of emotional relapse after weeks of personal healing."
+    },
+    {
+      "framework": "contrarian",
+      "headline": "He didn't text because he realized your value",
+      "why_it_swipes": "Shatters romantic rationalizations and compels the reader to swipe for the actual psychological reality."
+    },
+    {
+      "framework": "mistake",
+      "headline": "The mistake that will cost you another 3 months",
+      "why_it_swipes": "Highlights a recurring behavioral trap and the threat of wasting emotional time on breadcrumbs."
+    },
+    {
+      "framework": "mechanism",
+      "headline": "Why he reappears the second you detach",
+      "why_it_swipes": "Exposes the covert psychological mechanics of availability testing and loss of control."
+    }
+  ],
+  "hook_rationale": "Option 1 (Scene) was selected in strict accordance with the brand canon: the opening line is a vivid, tangible physical scene with precise time anchors (24 days of silence, 11:42 PM on the clock, incoming popup 'Hey, you up?'), rather than an abstract theory. This triggers instant visceral identification within 2 seconds of seeing the cover.",
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "headline": "Silent for 24 days. At 11:42 PM: 'Hey, you up?'",
+      "body": "The exact night you finally stopped checking his page.",
+      "has_victoria": true,
+      "animal": "cat",
+      "has_framework": false,
+      "notes": "Victoria cutout (victoria-sheet.png) holding a glowing phone; cat (metaphor for sharp feminine intuition detecting false moves) staring at the notification; readable under 2 sec"
+    },
+    {
+      "index": 2,
+      "role": "problem",
+      "headline": "Your heart races like a month ago",
+      "body": "Another sleepless night sending screenshots: 'Does he miss me? Did he finally realize?'",
+      "has_victoria": false,
+      "animal": "dog",
+      "has_framework": false,
+      "notes": "Dog cutout (metaphor for faithful, lingering devotion waiting endlessly by the glowing screen)"
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "headline": "The trap: mistaking impulse for love",
+      "body": "Looking for signs of destiny where someone is simply testing the length of their leash.",
+      "has_victoria": false,
+      "animal": null,
+      "has_framework": false,
+      "notes": "Bold hot magenta #ff006e typography, crossed-out romantic illusions of cosmic connection"
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "headline": "This is not a step. It's a ping",
+      "body": "Zero effort. He sensed losing control and tossed a hook: 'Are you still waiting?'",
+      "has_victoria": false,
+      "animal": "owl",
+      "has_framework": false,
+      "notes": "Owl cutout (metaphor for nocturnal clarity, sharp observation, and seeing through darkness)"
+    },
+    {
+      "index": 5,
+      "role": "save_framework_a",
+      "headline": "Ping vs Real Step: The difference",
+      "body": "PING: Midnight texts, story views, zero actions.\nSTEP: Daytime call, specific time and place to meet.",
+      "has_victoria": false,
+      "animal": null,
+      "has_framework": true,
+      "framework_type": "contrast_table",
+      "notes": "High-value save card: high-contrast 2-column comparative table with hot magenta #ff006e pill tags"
+    },
+    {
+      "index": 6,
+      "role": "save_framework_b",
+      "headline": "What he texts vs what you hear",
+      "body": "Texts: 'Thinking of us.'\nYou hear: 'He wants me back.'\nReality: 'I need free validation tonight.'",
+      "has_victoria": false,
+      "animal": null,
+      "has_framework": true,
+      "framework_type": "says_vs_hears",
+      "notes": "High-value save card: 3 layers of perception (canon depth standard modeled after slide-04)"
+    },
+    {
+      "index": 7,
+      "role": "save_framework_c",
+      "headline": "3 questions before you hit send",
+      "body": "1. Is there concrete action?\n2. Has his behavior actually changed?\n3. Ready for another 3 weeks of silence?",
+      "has_victoria": false,
+      "animal": null,
+      "has_framework": true,
+      "framework_type": "checklist",
+      "notes": "High-value save card: clarity checklist with 3 diagnostic filters in numbered badges 01-03"
+    },
+    {
+      "index": 8,
+      "role": "recap",
+      "headline": "The rule that protects your peace",
+      "body": "Whoever wants to be near takes a step. Whoever is bored sends a ping. Never settle for an availability check.",
+      "has_victoria": false,
+      "animal": null,
+      "has_framework": false,
+      "notes": "Final clarity rule, clean modern bold typography, subtle soft gold Today Tarot brand medallion"
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "headline": "What is truly behind his text?",
+      "body": "Comment STEP below. We'll DM you 3 free spreads in our bot to reveal his true motives.",
+      "cta": "Comment STEP below",
+      "has_victoria": true,
+      "animal": null,
+      "has_framework": false,
+      "notes": "Victoria cutout (victoria-sheet.png), prominent trigger word STEP in hot magenta #ff006e, CTA for 3 free spreads in @todaytaro_bot"
+    }
+  ],
+  "save_value": [
+    "slide-05 contrast table (ping vs real step)",
+    "slide-06 says vs hears vs reality (3 perception layers)",
+    "slide-07 checklist (3 questions before replying)",
+    "slide-08 recap rule (step vs ping decision filter)"
+  ]
+}
