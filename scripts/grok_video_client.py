@@ -37,7 +37,7 @@ class GrokVideoClient(KieTaskClient):
         self,
         image_urls: list[str],
         prompt: str | None = None,
-        aspect_ratio: str = "3:4",
+        aspect_ratio: str = "auto",
         resolution: str = "720p",
         duration: int = 5,
         nsfw_checker: bool = True,

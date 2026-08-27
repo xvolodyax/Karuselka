@@ -77,6 +77,14 @@
 - **Решение:** `grok_video_gen.py` делает auto-retry (`--max-retries 2`) без смены prompt
 - **Кто:** animate
 
+## 8.3 Grok video — `aspect_ratio: 3:4` rejected
+
+- **Симптом:** `createTask` для `grok-imagine-video-1-5-preview` → `aspect_ratio is not within the range of allowed options`
+- **Root cause:** Kie video enum = `auto` \| `1:1` \| `16:9` \| `9:16` \| `3:2` \| `2:3`. Слайды карусели остаются **3:4**; это не значение API. Для одного image Kie игнорирует aspect и следует source PNG.
+- **Решение:** в Motion JSON и `createTask` слать **`auto`**. Не менять геометрию слайдов на 9:16/1:1. Клиентский alias: `normalize_grok_aspect_ratio` в `grok_video_client.py` мапит stale `3:4`/`4:5` → `auto`.
+- **Не делать:** считать 3:4-rejection сюрпризом; переписывать RU motion prompt; менять slide aspect.
+- **Кто:** motion-director, animate
+
 ## 9. Vertical slice bleed (grid 3×3)
 
 - **Симптом:** orphan-текст в верхней полосе slides 04–09 («хвост» ячейки сверху)
