@@ -27,6 +27,7 @@ Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: design-guardian`.
 - `prompt` не пустой, на **русском**
 - `image_urls[0]` — HTTPS
 - `duration` = 5
+- `aspect_ratio` для createTask = **`auto`** (слайды остаются 3:4). Kie video enum не содержит `3:4`/`4:5`; клиентский alias в `grok_video_client.py` мапит stale JSON. Не менять геометрию слайдов и не переписывать RU prompt из-за aspect rejection.
 
 Если файлов motion-director нет → `❌ BLOCKER`, верни Директору на `carusel-motion-director`.
 

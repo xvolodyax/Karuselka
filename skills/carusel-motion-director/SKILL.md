@@ -60,7 +60,7 @@ Fragment: `carusel-memory/fragments/motion-director.md`
   "model": "grok-imagine-video-1-5-preview",
   "prompt": "Полный промпт на русском...",
   "image_urls": ["https://..."],
-  "aspect_ratio": "3:4",
+  "aspect_ratio": "auto",
   "resolution": "720p",
   "duration": 5,
   "nsfw_checker": true,
@@ -75,6 +75,13 @@ Fragment: `carusel-memory/fragments/motion-director.md`
   "analysis_summary_ru": "Краткое решение в 2-3 предложения"
 }
 ```
+
+`aspect_ratio` в JSON — **значение Grok createTask**, не геометрия слайда.
+
+- Слайды остаются **3:4** (PNG / Instagram).
+- В JSON пиши **`auto`**. Kie enum: `auto` \| `1:1` \| `16:9` \| `9:16` \| `3:2` \| `2:3`. `3:4` / `4:5` createTask отклоняет.
+- Для одного image Kie следует source PNG. Не ставь `3:4` как API-значение «чтобы совпасть со слайдом».
+- Устаревший JSON с `3:4` не править руками на animate: `grok_video_client.normalize_grok_aspect_ratio` мапит `3:4`/`4:5` → `auto`.
 
 ### Промпт на русском — обязательные блоки
 
