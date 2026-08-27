@@ -11,7 +11,8 @@
     "en": "https://www.instagram.com/p/Dci-ozwAH4l/"
   },
   "visual_family": "animals_viktoria_collage",
-  "hair_lock": "warm honey/wheat blonde with darker medium-brown roots; platinum = FAIL",
+  "face_lock": "victoria-sheet.png",
+  "hair_lock": "warm honey/wheat blonde with darker medium-brown roots as on victoria-sheet.png; platinum = FAIL",
   "product": "bot_three_spreads",
   "cta_style": "comment_trigger",
   "trigger_words": {

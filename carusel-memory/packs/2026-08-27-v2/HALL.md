@@ -23,10 +23,11 @@ No raw URLs in captions. No app mix. No Academy on EN.
 
 See `carusel-memory/references/BOX-PATHS.md`:
 
-- `/workspace/karusel-old/image-851e.png`
-- `/workspace/cover-refs/victoria.png`
-- `/workspace/karusel-old/cover-old.png`
-- `/workspace/karusel-old/slide-04.png`
+- `/workspace/cover-refs/victoria-sheet.png` — ONLY Victoria face lock (commit as `carusel-memory/references/victoria-sheet.png`)
+- `/workspace/cover-refs/victoria.png` — **ALENA, forbidden**
+- `/workspace/karusel-old/image-851e.png` — style only
+- `/workspace/karusel-old/cover-old.png` — RETIRED studio-blazer
+- `/workspace/karusel-old/slide-04.png` — depth example only
 
 ## Pack path
 

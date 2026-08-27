@@ -2,12 +2,13 @@
 """ТАРО СЕЙЧАС pack gate — meaning + visual family lock.
 
 PASS only if:
-  (a) Victoria hair lock noted / no platinum claim
+  (a) face lock is victoria-sheet.png (not Alena, not studio-blazer)
   (b) >=3 slides use animals as metaphor
   (c) >=2 save slides have a real framework or questions
   (d) hook is a scene
   (e) no platinum
   (f) no empty vibe-only slides
+  (g) prompts do not copy sheet clothes (white cami + jeans) or ivory blazer
 """
 
 from __future__ import annotations
@@ -38,6 +39,20 @@ FRAMEWORK_RE = re.compile(
 ALLOWED_PRODUCTS = {"bot_three_spreads", "app_audio"}
 TRIGGERS = {"ru": "ПАУЗА", "en": "PAUSE"}
 HANDLES = {"ru": "@todaytaro_ru", "en": "@todaytaro_bot"}
+FACE_LOCK = "victoria-sheet.png"
+ALENA_RE = re.compile(
+    r"alena|cover-refs/victoria\.png|виктория\.png|victoria-hair-lock",
+    re.I,
+)
+SHEET_CLOTHES_RE = re.compile(
+    r"white cami|white camisole|spaghetti-strap|ivory blazer|white blazer|"
+    r"light-wash jeans|white cami \+ jeans",
+    re.I,
+)
+FORBIDDEN_INPUT_RE = re.compile(
+    r"cover-refs/victoria\.png|victoria-hair-lock|cover-old\.png|karusel-old/cover-old",
+    re.I,
+)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -67,6 +82,18 @@ def check_pack(pack: Path) -> list[str]:
     family = manifest.get("visual_family")
     if family != "animals_viktoria_collage":
         errors.append(f"PACK.json visual_family must be animals_viktoria_collage, got {family!r}")
+    face = str(manifest.get("face_lock") or "")
+    if FACE_LOCK not in face:
+        errors.append(f"PACK.json face_lock must be {FACE_LOCK}")
+    if ALENA_RE.search(json.dumps(manifest, ensure_ascii=False)):
+        errors.append("PACK.json points at Alena / retired hair-lock")
+
+    repo_sheet = Path(__file__).resolve().parent.parent / "carusel-memory" / "references" / FACE_LOCK
+    if not repo_sheet.is_file() or repo_sheet.stat().st_size < 10_000:
+        errors.append(
+            f"missing face lock binary carusel-memory/references/{FACE_LOCK} "
+            "(do not invent a stand-in; Alena file is forbidden)"
+        )
 
     for lang in langs:
         errors.extend(check_lang(pack / lang, lang, manifest))
@@ -166,13 +193,40 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
 
     if prompt_path.is_file():
         prompt = load_json(prompt_path)
-        if "PLACEHOLDER" in json.dumps(prompt):
+        blob = json.dumps(prompt, ensure_ascii=False)
+        if "PLACEHOLDER" in blob:
             errors.append(f"{lang}: image prompt still has PLACEHOLDER")
         if prompt.get("visual_family") not in {None, "animals_viktoria_collage"}:
             errors.append(f"{lang}: prompt visual_family wrong")
-        if PLATINUM_RE.search(json.dumps(prompt, ensure_ascii=False)):
-            # negative prompts may mention platinum as a ban — OK if in negative_*
-            pass
+        lock = str(prompt.get("face_lock") or "")
+        if FACE_LOCK not in lock:
+            errors.append(f"{lang}: prompt face_lock must be {FACE_LOCK}")
+        inputs = " ".join(
+            str(x)
+            for x in (
+                prompt.get("input_files_in_repo")
+                or prompt.get("input_files_on_box")
+                or prompt.get("input_urls")
+                or []
+            )
+        )
+        if FORBIDDEN_INPUT_RE.search(inputs) or ALENA_RE.search(inputs):
+            errors.append(f"{lang}: Alena / victoria.png / hair-lock / cover-old used as i2i input")
+        if FACE_LOCK not in inputs and FACE_LOCK not in blob:
+            errors.append(f"{lang}: i2i must use {FACE_LOCK}")
+        visual_positive = " ".join(
+            [str(prompt.get("prompt") or "")]
+            + [str(b.get("visual_only") or "") for b in (prompt.get("panel_visual_brief") or [])]
+        )
+        if SHEET_CLOTHES_RE.search(visual_positive):
+            errors.append(
+                f"{lang}: prompt copies sheet clothes/pose (white cami+jeans or ivory blazer). "
+                "Clothes must change. Ban those looks in negative_prompt only."
+            )
+        if PLATINUM_RE.search(visual_positive) and not re.search(
+            r"fail|forbidden|not |не |ban|avoid|запрет|избегать", visual_positive, re.I
+        ):
+            errors.append(f"{lang}: platinum / white-blonde in positive prompt")
     else:
         errors.append(f"{lang}: missing CAROUSEL_IMAGE_PROMPT.json")
 
@@ -202,12 +256,13 @@ def main(argv: list[str] | None = None) -> int:
 
 Verdict: PASS
 
-- (a) Victoria face / hair lock: honey-wheat + darker roots; platinum forbidden
+- (a) face lock = victoria-sheet.png; Alena / platinum / studio-blazer forbidden
 - (b) >=3 slides use animals as metaphor
 - (c) >=2 save slides have a real framework or questions
 - (d) hook is a scene
 - (e) no platinum
 - (f) no empty vibe-only slides
+- (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
 - caption: one trigger word, no raw URLs, one product, no Academy on EN
 """
     report.write_text(body, encoding="utf-8")
