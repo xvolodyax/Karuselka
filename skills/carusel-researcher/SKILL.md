@@ -5,6 +5,10 @@ description: Research темы Instagram-карусели, конкуренты,
 
 # Carusel Researcher
 
+**Model:** `gemini-3.7-flash-high`.
+Spawn: `Task(carusel-researcher)` or cloud `Task(generalPurpose, model=gemini-3.7-flash-high)`.
+See `shared/swarm-spawn-contract.md`. Director does not write the dossier.
+
 ## Вход
 
 - shared/carousel-prompt-library.md

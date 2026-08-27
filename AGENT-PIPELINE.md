@@ -39,3 +39,9 @@ flowchart TD
 | 11 | carusel-fixic | incidents |
 
 Документация: `shared/carousel-grid-design.md`
+
+Оркестрация: `shared/swarm-spawn-contract.md`. Director только оркестрирует.
+researcher + copywriter (включая caption) = `gemini-3.7-flash-high`.
+publish по умолчанию skip. Сухой прогон без PNG:
+
+`python scripts/pipeline_gate.py --workspace /tmp/carusel-dry-run dry-run --lang ru`

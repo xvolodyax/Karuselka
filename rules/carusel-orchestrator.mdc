@@ -39,8 +39,8 @@ alwaysApply: true
 ### Цепочка
 
 1. **Write** — сброс `.cursor/carusel-handoff.md` + `carusel-memory/00-brief.md`.
-2. **Task**(`carusel-researcher`) — research по теме и конкурентам.
-3. **Task**(`carusel-copywriter`) — 9 слайдов grid 3×3 + caption.
+2. **Task**(`carusel-researcher`, model=`gemini-3.7-flash-high`) — research по теме и конкурентам.
+3. **Task**(`carusel-copywriter`, model=`gemini-3.7-flash-high`) — 9 слайдов grid 3×3 **и** caption (отдельного caption-агента нет).
 4. **Task**(`carusel-designer`) — CAROUSELDESIGN + артефакты AURA-style.
 5. **Task**(`carusel-image-prompter`) — русский промпт для Kie **3:4 @ 4K master 3×3** (`CAROUSEL_IMAGE_PROMPT.json`).
 6. **Task**(`carusel-slice`) — Kie generate + grid slice → **9 PNG**.
@@ -48,10 +48,13 @@ alwaysApply: true
 8. **Task**(`carusel-animate`) — запуск Grok → slide-01.mp4 (5s loop).
 9. **Task**(`carusel-design-guardian`) — QA серии.
 10. При OK → **Task**(`carusel-upload`) — HTTPS URL для MCP.
-11. **Task**(`carusel-publish`) — MCP `t4528_carrusel_instagram`.
-12. Если в `carusel-memory/pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`) — durable fix в plugin.
+11. **Task**(`carusel-publish`) — только если `publish_requested: true`. Иначе `skip --reason publish-not-requested`.
+12. Если в `carusel-memory/pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`). Иначе `skip --reason no-open-incidents`.
 
-**carusel-publish** не вызывать до **OK** от design-guardian.
+Cloud без `carusel-*` types: отдельный `Task(generalPurpose)` на шаг (`scripts/pipeline_gate.py dispatch-prompt` + `shared/swarm-spawn-contract.md`).
+**Не** делать worker-шаг в родительском чате.
+
+**carusel-publish** не вызывать до **OK** от design-guardian и не вызывать по умолчанию.
 
 Перед следующим шагом — fragment предыдущего с **`incident_report:`** (см. `shared/subagent-end-of-task-contract.md`).
 

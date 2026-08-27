@@ -28,11 +28,14 @@ No pastel rainbow. No beige lifestyle wash. No horror red/black candle table.
 ### Victoria (hero, only woman's face)
 
 - Slides **1 (hook)** and **9 (CTA)** as clean cutout
-- Face lock: `carusel-memory/references/victoria-hair-lock.png` and, when present on the box, `/workspace/cover-refs/victoria.png`
-- Hair: warm honey / wheat blonde, multi-tone, darker medium-brown shadow roots
-- Platinum, white-blonde, icy, or much lighter than the lock = FAIL
-- Ivory / off-white blazer, gold buttons, optional gold medallion
-- No other women's faces. Style-ref faces and Portuguese models are `do_not_borrow`
+- Face lock: **`carusel-memory/references/victoria-sheet.png`** only
+  (box: `/workspace/cover-refs/victoria-sheet.png`)
+- Eyes: green with a slight hazel / light-brown mix
+- Hair: warm honey / wheat blonde with darker roots **as on the sheet**. Never lighten.
+- Platinum / white-blonde / Alena (`cover-refs/victoria.png`) / studio-blazer = FAIL
+- **Clothes and pose MUST change** every carousel. Do not copy the sheet outfit
+  (white cami + jeans) or a frozen sheet pose. Slide 1 vs 9 may differ; same woman.
+- No other women's faces. No doubles. Portuguese models are `do_not_borrow`
 
 ### Animals (metaphor, not meme)
 
@@ -67,8 +70,9 @@ Cute random pets without a job = FAIL.
 | File | Role |
 |------|------|
 | `image-851e.png` / `animals-viktoria-style-lock.png` | style + layout + palette |
-| `victoria.png` / `victoria-hair-lock.png` | face + hair lock |
-| `cover-old.png` | face structure / blazer only — do not copy platinum hair |
+| `victoria-sheet.png` | ONLY face + hair lock |
+| `cover-refs/victoria.png` (Alena) | FORBIDDEN |
+| `cover-old.png` / studio-blazer | RETIRED |
 | `slide-04.png` | meaning depth only, not the visual family |
 
 `preserve`: dark field, magenta + white type mix, cutouts, pills, animals-as-metaphor, Victoria on 1+9.

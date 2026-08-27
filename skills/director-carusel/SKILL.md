@@ -46,7 +46,7 @@ description: Директор Carusel — intake, orchestration, handoff. Use wh
 | `carusel-memory/fragments/` | отчёты субагентов + `incident_report` |
 | `shared/agent-pipeline-pitfalls.md` | устойчивые уроки |
 
-Контракты: `shared/pipeline-incident-fix-contract.md`, `shared/subagent-end-of-task-contract.md`
+Контракты: `shared/pipeline-incident-fix-contract.md`, `shared/subagent-end-of-task-contract.md`, `shared/director-dispatch-contract.md`, `shared/swarm-spawn-contract.md`
 
 Professional quality:
 
@@ -61,8 +61,10 @@ Publish / Composio / Instagram — не вызывать, пока brief `publis
 
 ## Цепочка Task
 
-1. carusel-researcher
-2. carusel-copywriter
+Каждый worker — отдельный **Task**. Cloud: `Task(generalPurpose)` на один шаг (`pipeline_gate.py dispatch-prompt`). Не писать артефакты в родительском чате.
+
+1. carusel-researcher — **`gemini-3.7-flash-high`**
+2. carusel-copywriter — **`gemini-3.7-flash-high`** (slides **и** caption; отдельного caption-агента нет)
 3. carusel-designer
 4. **carusel-image-prompter** — промпт для Kie
 5. carusel-slice
@@ -70,8 +72,8 @@ Publish / Composio / Instagram — не вызывать, пока brief `publis
 7. carusel-animate — Grok
 8. carusel-design-guardian
 9. **carusel-upload** — HTTPS
-10. carusel-publish
-11. **carusel-fixic** — если в `pipeline-fix-queue.md` есть `status: open` (после publish или терминального blocker)
+10. carusel-publish — **SKIP** пока `publish_requested: false`
+11. **carusel-fixic** — SKIP если нет `status: open` в `pipeline-fix-queue.md`
 
 Перед **Task** на шаг N+1 проверь fragment шага N: должна быть строка `incident_report`.
 

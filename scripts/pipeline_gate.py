@@ -53,6 +53,9 @@ LEGAL_SKIP = {
     "publish": "publish-not-requested",
     "fixic": "no-open-incidents",
 }
+GEMINI_STEPS = frozenset({"researcher", "copywriter"})
+GEMINI_MODEL = "gemini-3.7-flash-high"
+PIXEL_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".mp4", ".mov"}
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 INCIDENT_RE = re.compile(r"^incident_report:\s+\S+", re.M)
 DISPATCH_VIA_RE = re.compile(r"^dispatched_via:\s+(\S+)", re.M)
@@ -114,6 +117,17 @@ def write_json(path: Path, data: dict[str, Any]) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def write_text_file(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if not text.endswith("\n"):
+        text += "\n"
+    path.write_text(text, encoding="utf-8")
+
+
+def is_pixel_rel(rel: str) -> bool:
+    return Path(rel).suffix.lower() in PIXEL_SUFFIXES
+
+
 def empty_step_state(step_id: str) -> dict[str, Any]:
     return {
         "id": step_id,
@@ -126,6 +140,7 @@ def empty_step_state(step_id: str) -> dict[str, Any]:
         "artifacts": [],
         "fragment": None,
         "incident_report": None,
+        "model": None,
     }
 
 
@@ -142,6 +157,8 @@ def new_ledger(lang: str, topic: str, run_id: str | None = None) -> dict[str, An
         "created_at": utc_now(),
         "dispatch_mode": "unknown",
         "publish_requested": False,
+        "mode": "live",
+        "pixels": "allowed",
         "steps": {step_id: empty_step_state(step_id) for step_id in STEP_IDS},
     }
 
@@ -276,8 +293,10 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     f"topic: {topic}",
                     f"handle: {HANDLES[lang]}",
                     "publish_requested: false",
-                    "cta_style: header_link",
-                    "bot_vs_app: @todaytaro_bot is a Telegram bot, not an app",
+                    "visual_family: animals_viktoria_collage",
+                    "face_lock: victoria-sheet.png",
+                    "cta_style: comment_trigger",
+                    "bot_vs_app: @todaytaro_bot is a Telegram bot, not an app; pick ONE product",
                     "slides: 9",
                     "grid: 3x3",
                     "slide_01: mp4_allowed",
@@ -347,12 +366,17 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
 def cmd_status(workspace: Path, repo_root: Path) -> int:
     ledger = load_ledger(workspace)
     print(f"run_id={ledger.get('run_id')} lang={ledger.get('lang')} handle={ledger.get('handle')}")
-    print(f"dispatch_mode={ledger.get('dispatch_mode')} publish_requested={ledger.get('publish_requested')}")
+    print(
+        f"mode={ledger.get('mode', 'live')} dispatch_mode={ledger.get('dispatch_mode')} "
+        f"publish_requested={ledger.get('publish_requested')}"
+    )
     for spec in load_steps(repo_root):
         state = ledger["steps"][spec["id"]]
         status = state.get("status") or "pending"
         via = state.get("dispatched_via") or "-"
-        print(f"- {spec['id']:18} {status:10} via={via}")
+        model = state.get("model")
+        extra = f" model={model}" if model else ""
+        print(f"- {spec['id']:18} {status:10} via={via}{extra}")
     nxt = first_pending(ledger)
     print(f"next={nxt or 'done'}")
     return 0
@@ -376,6 +400,9 @@ def cmd_next(workspace: Path, repo_root: Path) -> int:
     print(f"role={spec['role']}")
     print(f"plugin_task=Task({spec['task_name']})")
     print("cloud_fallback=Task(generalPurpose)")
+    if nxt in GEMINI_STEPS:
+        print(f"required_model={GEMINI_MODEL}")
+        print("caption_is_copywriter_job=true" if nxt == "copywriter" else "research_only=true")
     print(f"skill={spec['skill']}")
     print(f"agent={spec['agent']}")
     print("STOP if you were about to write these artifacts in the parent chat:")
@@ -384,7 +411,9 @@ def cmd_next(workspace: Path, repo_root: Path) -> int:
     return 0
 
 
-def cmd_record_dispatch(workspace: Path, repo_root: Path, step_id: str, via: str) -> int:
+def cmd_record_dispatch(
+    workspace: Path, repo_root: Path, step_id: str, via: str, model: str | None = None
+) -> int:
     if step_id not in STEP_IDS:
         raise SystemExit(f"unknown step {step_id}")
     if step_id == "director":
@@ -401,6 +430,13 @@ def cmd_record_dispatch(workspace: Path, repo_root: Path, step_id: str, via: str
     if state.get("status") == "ok":
         raise SystemExit(f"step {step_id} already ok")
     dispatch_id = uuid.uuid4().hex
+    resolved_model = model
+    if step_id in GEMINI_STEPS:
+        resolved_model = (model or GEMINI_MODEL).strip()
+        if resolved_model != GEMINI_MODEL:
+            raise SystemExit(
+                f"{step_id} must spawn with model {GEMINI_MODEL}, got {resolved_model!r}"
+            )
     state.update(
         {
             "status": "dispatched",
@@ -409,12 +445,15 @@ def cmd_record_dispatch(workspace: Path, repo_root: Path, step_id: str, via: str
             "started_at": utc_now(),
             "finished_at": None,
             "skip_reason": None,
+            "model": resolved_model,
         }
     )
     ledger["dispatch_mode"] = infer_dispatch_mode(via)
     save_ledger(workspace, ledger)
     print(f"recorded {step_id} via={via}")
     print(f"dispatch_id={dispatch_id}")
+    if resolved_model:
+        print(f"model={resolved_model}")
     print("now call Task, then: pipeline_gate.py verify --step", step_id)
     return 0
 
@@ -510,7 +549,10 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
         )
 
     errors: list[str] = []
+    dry = ledger.get("mode") == "dry-run"
     for rel in spec["required_artifacts"]:
+        if dry and is_pixel_rel(rel):
+            continue
         if not file_ok(workspace, rel):
             errors.append(f"missing artifact {rel}")
     errors.extend(verify_fragment(workspace, spec, state))
@@ -647,13 +689,39 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
         if item["id"] == step_id:
             break
         prev_artifacts.extend(item.get("required_artifacts") or [])
+    extra_hard: list[str] = [
+        "- Read shared/swarm-spawn-contract.md and shared/director-dispatch-contract.md.",
+    ]
+    if step_id in GEMINI_STEPS:
+        extra_hard.append(
+            f"- required_model: {GEMINI_MODEL}. Spawn Task(generalPurpose, model={GEMINI_MODEL}) "
+            f"or Task({PLUGIN_TASK[step_id]}) with that model. Do not inherit Director model."
+        )
+        extra_hard.append(f"- Refuse if spawned on any model other than {GEMINI_MODEL}.")
+    if step_id == "copywriter":
+        extra_hard.append(
+            "- Caption is THIS step. Write Instagram caption here. There is no separate caption worker."
+        )
+    extra_hard_block = "\n".join(extra_hard)
+    spawn_line = (
+        f"Task(generalPurpose, model={GEMINI_MODEL})"
+        if step_id in GEMINI_STEPS
+        else "Task(generalPurpose) — real Task, not Director inline"
+    )
     packet = f"""You are {spec['role']} for the Carusel plugin.
+
+SPAWN
+step: {step_id}
+via: {state['dispatched_via']}
+cloud_fallback: {spawn_line}
+required_model: {state.get('model') or (GEMINI_MODEL if step_id in GEMINI_STEPS else 'inherit')}
 
 HARD RULES
 - Do only this step ({step_id}). Do not start the next role.
 - Read and follow {spec['skill']} and {spec['agent']} verbatim.
 - Read shared/taro-seichas-canon.md, shared/animals-viktoria-collage.md,
   shared/agent-pipeline-pitfalls.md and shared/locale-brand-contract.md.
+{extra_hard_block}
 - lang={brief['lang']}. Brand handle={brief['handle']}.
 - Write artifacts only to the paths listed below.
 - End with fragment {spec['fragment']}.
@@ -709,6 +777,243 @@ def cmd_assert_complete(workspace: Path) -> int:
     return 0
 
 
+DRY_RUN_WORKERS = (
+    "researcher",
+    "copywriter",
+    "designer",
+    "image-prompter",
+    "slice",
+    "motion-director",
+    "animate",
+    "design-guardian",
+    "upload",
+)
+
+
+def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
+    """Text stubs only. No PNG/MP4. Satisfies verify in mode=dry-run."""
+    trigger = "ПАУЗА" if lang == "ru" else "PAUSE"
+    handle = HANDLES[lang]
+    mem = memory_dir(workspace)
+    family = "animals_viktoria_collage"
+
+    write_text_file(
+        mem / "research" / "carousel-research-dossier.md",
+        "\n".join(
+            [
+                "# Dry-run research",
+                "",
+                "No pixels. Teaching-arc notes only.",
+                f"lang: {lang}",
+                f"visual_family: {family}",
+                "face_lock: victoria-sheet.png",
+                "",
+                "## Hook lab",
+                "- dry-run hook (scene)",
+                "",
+                "## 9-panel arc",
+                "- 01-09 text-only stubs",
+                "",
+            ]
+        ),
+    )
+
+    copy = {
+        "hook_options": [
+            {"framework": "pain", "headline": "dry-run scene", "why_it_swipes": "gap"}
+        ],
+        "hook_rationale": "dry-run: no live copy",
+        "hook_is_scene": True,
+        "visual_family": family,
+        "trigger_word": trigger,
+        "product": "bot_three_spreads",
+        "slide_count": 9,
+        "grid": {"cols": 3, "rows": 3},
+        "slides": [
+            {"index": i, "role": "stub", "headline": f"dry-run slide {i:02d}"}
+            for i in range(1, 10)
+        ],
+    }
+    write_json(mem / "design" / "CAROUSEL_SLIDE_COPY.json", copy)
+    write_json(
+        mem / "design" / "CAROUSEL_CAPTION.json",
+        {
+            "full_caption": f"Dry-run caption. Comment {trigger}. Talk to {handle}",
+            "mentions": [handle],
+            "cta": f"Comment the word {trigger}",
+            "trigger_word": trigger,
+            "product": "bot_three_spreads",
+            "has_url": False,
+        },
+    )
+    write_text_file(
+        mem / "design" / "CAROUSEL_CAPTION.md",
+        f"Dry-run caption. Comment {trigger}. No URL. {handle}\n",
+    )
+
+    write_text_file(
+        mem / "design" / "CAROUSELDESIGN.md",
+        f"# Dry-run design\n\ncarousel_family: {family}\nface_lock: victoria-sheet.png\n"
+        "Do not render. New clothes/pose each real carousel.\n",
+    )
+    write_json(
+        mem / "design" / "CAROUSEL_SERIES_CONCEPT.json",
+        {"carousel_family": family, "face_lock": "victoria-sheet.png", "dry_run": True},
+    )
+    write_json(
+        mem / "design" / "CAROUSEL_SOURCE_DECOMPOSITION.json",
+        {"dry_run": True, "preserve": ["family"], "change": ["topic"], "do_not_borrow": ["Alena"]},
+    )
+    write_json(
+        mem / "design" / "CAROUSEL_SLIDE_BLUEPRINTS.json",
+        {"dry_run": True, "slides": [{"index": i} for i in range(1, 10)]},
+    )
+
+    write_json(
+        mem / "design" / "CAROUSEL_IMAGE_PROMPT.json",
+        {
+            "generation_mode": "grid_3x3",
+            "carousel_family": family,
+            "face_lock": "victoria-sheet.png",
+            "dry_run": True,
+            "reference_contract": {"face_lock": "victoria-sheet.png"},
+            "typography_rules": {"dry_run": True},
+            "panel_visual_brief": [
+                {"slide": i, "prompt": f"dry-run text brief {i:02d} — no image generation"}
+                for i in range(1, 10)
+            ],
+        },
+    )
+    write_text_file(
+        mem / "design" / "CAROUSEL_IMAGE_PROMPT.md",
+        "# Dry-run prompts\n\nNo Kie. No GenerateImage. Text only.\n",
+    )
+
+    write_json(
+        mem / "output" / "slice-manifest.json",
+        {
+            "dry_run": True,
+            "pixels": "forbidden",
+            "slides": [{"id": n, "file": None} for n in range(1, 10)],
+        },
+    )
+    write_text_file(
+        mem / "design" / "CAROUSEL_MOTION_ANALYSIS.md",
+        "# Dry-run motion brief\n\nNo MP4.\n",
+    )
+    write_json(mem / "design" / "CAROUSEL_VIDEO_PROMPT.json", {"dry_run": True, "clips": []})
+    write_text_file(
+        mem / "design" / "CAROUSEL_DESIGN_GUARDIAN_REPORT.md",
+        "✅ DESIGN OK\n\nDry-run: no pixels to review.\n",
+    )
+    write_json(
+        mem / "output" / "publish-urls.json",
+        {"dry_run": True, "published": False},
+    )
+
+
+def write_dry_run_fragment(
+    workspace: Path, spec: dict[str, Any], state: dict[str, Any], lang: str
+) -> None:
+    role = spec["role"]
+    rel = spec["fragment"]
+    write_text_file(
+        workspace / rel,
+        "\n".join(
+            [
+                f"=== {role.upper()} ===",
+                "Статус: ✅ OK",
+                f"dispatched_via: {state['dispatched_via']}",
+                f"dispatch_id: {state['dispatch_id']}",
+                f"lang: {lang}",
+                "incident_report: none",
+                f"HANDOFF_NEXT: {spec.get('handoff_next') or 'done'}",
+                "note: dry-run text stub — no pixels",
+                "",
+            ]
+        ),
+    )
+
+
+def leaked_output_pixels(workspace: Path) -> list[Path]:
+    output = memory_dir(workspace) / "output"
+    if not output.is_dir():
+        return []
+    return [p for p in output.rglob("*") if p.is_file() and p.suffix.lower() in PIXEL_SUFFIXES]
+
+
+def cmd_dry_run(
+    workspace: Path, repo_root: Path, lang: str, topic: str | None, force: bool
+) -> int:
+    """Record 11 worker steps with text stubs only. No PNG/MP4. Skip publish+fixic."""
+    if ledger_path(workspace).is_file():
+        existing = load_json(ledger_path(workspace))
+        started = existing.get("steps", {}).get("researcher", {}).get("status") not in {
+            None,
+            "pending",
+        }
+        if started and not force:
+            print(
+                f"dry-run refused: {workspace} already has a started run (pass --force)",
+                file=sys.stderr,
+            )
+            return 1
+        if force:
+            ledger_path(workspace).unlink(missing_ok=True)
+            if brief_path(workspace).is_file():
+                brief_path(workspace).unlink()
+
+    rc = cmd_init(workspace, repo_root, lang, topic, run_id=f"dry-run-{lang}")
+    if rc != 0:
+        return rc
+
+    ledger = load_ledger(workspace)
+    ledger["mode"] = "dry-run"
+    ledger["pixels"] = "forbidden"
+    ledger["publish_requested"] = False
+    save_ledger(workspace, ledger)
+
+    write_dry_run_artifacts(workspace, lang)
+    specs = step_map(repo_root)
+
+    for step_id in DRY_RUN_WORKERS:
+        via = "Task(generalPurpose)"
+        model = GEMINI_MODEL if step_id in GEMINI_STEPS else None
+        rc = cmd_record_dispatch(workspace, repo_root, step_id, via, model=model)
+        if rc != 0:
+            return rc
+        ledger = load_ledger(workspace)
+        write_dry_run_fragment(workspace, specs[step_id], ledger["steps"][step_id], lang)
+        rc = cmd_verify(workspace, repo_root, step_id)
+        if rc != 0:
+            return rc
+
+    rc = cmd_skip(workspace, repo_root, "publish", "publish-not-requested")
+    if rc != 0:
+        return rc
+    rc = cmd_skip(workspace, repo_root, "fixic", "no-open-incidents")
+    if rc != 0:
+        return rc
+
+    leaked = leaked_output_pixels(workspace)
+    if leaked:
+        print("dry-run leaked pixels:", *[str(p) for p in leaked], sep="\n", file=sys.stderr)
+        return 1
+
+    print("=== DRY-RUN 11 WORKER RECORDS ===")
+    print(f"workspace: {workspace}")
+    print("pixels: none")
+    print("publish: skipped (publish-not-requested)")
+    print("fixic: skipped (no-open-incidents)")
+    print(f"researcher+copywriter+caption model: {GEMINI_MODEL}")
+    print(
+        "steps recorded: researcher copywriter designer image-prompter slice "
+        "motion-director animate design-guardian upload publish(skip) fixic(skip)"
+    )
+    cmd_status(workspace, repo_root)
+    return cmd_assert_complete(workspace)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Carusel pipeline gate")
     parser.add_argument("--workspace", default=".", help="carousel workspace root")
@@ -727,6 +1032,11 @@ def build_parser() -> argparse.ArgumentParser:
     rec = sub.add_parser("record-dispatch")
     rec.add_argument("--step", required=True, choices=STEP_IDS)
     rec.add_argument("--via", required=True)
+    rec.add_argument(
+        "--model",
+        default=None,
+        help="Required for researcher/copywriter: gemini-3.7-flash-high",
+    )
     ver = sub.add_parser("verify")
     ver.add_argument("--step", required=True, choices=STEP_IDS)
     sk = sub.add_parser("skip")
@@ -737,6 +1047,13 @@ def build_parser() -> argparse.ArgumentParser:
     prompt = sub.add_parser("dispatch-prompt")
     prompt.add_argument("--step", required=True, choices=STEP_IDS)
     sub.add_parser("assert-complete")
+    dry = sub.add_parser(
+        "dry-run",
+        help="11 worker records, text stubs only, no PNG, skip publish",
+    )
+    dry.add_argument("--lang", required=True, choices=ALLOWED_LANG)
+    dry.add_argument("--topic", default=None)
+    dry.add_argument("--force", action="store_true")
     return parser
 
 
@@ -751,7 +1068,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "next":
         return cmd_next(workspace, repo_root)
     if args.cmd == "record-dispatch":
-        return cmd_record_dispatch(workspace, repo_root, args.step, args.via)
+        return cmd_record_dispatch(
+            workspace, repo_root, args.step, args.via, model=args.model
+        )
     if args.cmd == "verify":
         return cmd_verify(workspace, repo_root, args.step)
     if args.cmd == "skip":
@@ -762,6 +1081,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_dispatch_prompt(workspace, repo_root, args.step)
     if args.cmd == "assert-complete":
         return cmd_assert_complete(workspace)
+    if args.cmd == "dry-run":
+        return cmd_dry_run(workspace, repo_root, args.lang, args.topic, args.force)
     raise SystemExit(f"unknown cmd {args.cmd}")
 
 

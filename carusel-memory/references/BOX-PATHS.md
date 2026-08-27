@@ -1,15 +1,16 @@
-# Hall: original refs on the box
+# Hall: refs on the box (canon TEXT — do not render to prove this)
 
-Cloud checkout often does **not** contain the owner-attached binaries.
-They live on the Hall / daily box at:
+| Role | Path | Status |
+|------|------|--------|
+| **Victoria face lock** | `carusel-memory/references/victoria-sheet.png` and `/workspace/cover-refs/victoria-sheet.png` | ONLY lock. Appearance card. |
+| Alena (wrong filename victoria.png) | `/workspace/cover-refs/victoria.png` | **FORBIDDEN**. Not Victoria. |
+| Old studio-blazer cutout | `/workspace/karusel-old/cover-old.png` | **RETIRED**. |
+| Generated stand-in `victoria-hair-lock.png` | — | **RETIRED**. Do not pick. |
+| Style lock | `/workspace/karusel-old/image-851e.png` | style only; no foreign faces/Portuguese |
+| Depth example | `/workspace/karusel-old/slide-04.png` | copy meaning only |
 
-| Role | Path on box | In this repo |
-|------|-------------|--------------|
-| STYLE LOCK (owner chose) | `/workspace/karusel-old/image-851e.png` | description + `animals-viktoria-style-lock.png` (generated family sheet; no Portuguese, no foreign faces) |
-| CURRENT hair / face lock | `/workspace/cover-refs/victoria.png` | description + `victoria-hair-lock.png` (honey/wheat + darker roots; platinum = FAIL) |
-| OLD face lock | `/workspace/karusel-old/cover-old.png` | `cover-old.md` — face structure / blazer only |
-| DEPTH example (copy, not style) | `/workspace/karusel-old/slide-04.png` | `slide-04-depth.md` |
+Hair: warm honey/wheat + darker roots from the SHEET. Eyes: green + slight hazel.
+Clothes/pose: new every carousel. Never copy sheet outfit (white cami + jeans).
+Platinum / Alena face / same clothes two carousels in a row = FAIL.
 
-When rendering via Kie i2i, **prefer the box originals** if they exist.
-Do not borrow Portuguese text or foreign faces from `image-851e.png`.
-Hair must match `victoria.png` (warm honey/wheat), never the platinum of `cover-old.png`.
+No proof-pack render. Swarm must be fixed first.

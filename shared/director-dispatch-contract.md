@@ -12,7 +12,7 @@ director → researcher → copywriter → designer → image-prompter
   → upload → publish → fixic
 ```
 
-Машина: `shared/pipeline-steps.json`.  
+Машина: `shared/pipeline-steps.json` + `shared/swarm-spawn-contract.md`.  
 Проверка: `python scripts/pipeline_gate.py --workspace . status`
 
 ## Почему cloud ломал цепочку
@@ -37,8 +37,9 @@ Local plugin agents (`Task(carusel-researcher)` и остальные `carusel-*
 Порядок выбора способа вызова:
 
 1. **Desktop plugin:** `Task(<task_name>)` из `pipeline-steps.json` (`carusel-researcher`, …).
-2. **Cloud / нет plugin types:** отдельный `Task(generalPurpose)` на **один** шаг. В промпт целиком входят `agents/carusel-*.md` + `skills/carusel-*/SKILL.md` + этот контракт + brief. Промпт печатает `pipeline_gate.py dispatch-prompt`.
-3. **Task недоступен вообще:** стоп.
+2. **Cloud / нет plugin types:** отдельный `Task(generalPurpose)` на **один** шаг. В промпт целиком входят `agents/carusel-*.md` + `skills/carusel-*/SKILL.md` + этот контракт + `shared/swarm-spawn-contract.md` + brief. Промпт печатает `pipeline_gate.py dispatch-prompt`.
+3. **researcher + copywriter (caption = тот же шаг):** модель **`gemini-3.7-flash-high`**. Не inherit модели Director.
+4. **Task недоступен вообще:** стоп. Не делать шаг в родительском чате.
 
 ```text
 ❌ БЛОКЕР: среда не поддерживает subagents.
@@ -61,6 +62,8 @@ python scripts/pipeline_gate.py --workspace . next
 python scripts/pipeline_gate.py --workspace . record-dispatch --step <id> --via 'Task(carusel-<role>)'
 # или на cloud:
 python scripts/pipeline_gate.py --workspace . record-dispatch --step <id> --via 'Task(generalPurpose)'
+# researcher / copywriter:
+python scripts/pipeline_gate.py --workspace . record-dispatch --step copywriter --via 'Task(generalPurpose)' --model gemini-3.7-flash-high
 python scripts/pipeline_gate.py --workspace . dispatch-prompt --step <id>
 ```
 
@@ -93,6 +96,13 @@ Worker-шаг без `dispatched_via` вида `Task(...)` не может ст�
 
 ## Publish и Fixic
 
-- `publish` вызывается отдельным Task **только** если в brief `publish_requested: true` и пользователь явно просил live-пост. Иначе `skip --step publish --reason publish-not-requested`.
+- `publish` вызывается отдельным Task **только** если в brief `publish_requested: true` и пользователь явно просил live-пост. Иначе `skip --step publish --reason publish-not-requested`. По умолчанию publish **не** запускать.
 - `fixic` вызывается отдельным Task если в `pipeline-fix-queue.md` есть `status: open`. Иначе `skip --step fixic --reason no-open-incidents`.
 - Пропуск других шагов **нельзя**.
+- Не рендерить proof-pack / 18 слайдов, чтобы «доказать» face-lock. Канон = текст в `shared/taro-seichas-canon.md`.
+
+Сухой прогон без PNG:
+
+```bash
+python scripts/pipeline_gate.py --workspace /tmp/carusel-dry-run dry-run --lang ru
+```

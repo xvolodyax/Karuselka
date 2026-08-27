@@ -233,6 +233,9 @@ class PipelineGateTest(unittest.TestCase):
         self.assertIn("skills/carusel-researcher/SKILL.md", packet)
         self.assertIn("dispatch_id:", packet)
         self.assertIn("Do only this step", packet)
+        self.assertIn("shared/swarm-spawn-contract.md", packet)
+        self.assertIn("required_model: gemini-3.7-flash-high", packet)
+        self.assertIn("Task(generalPurpose, model=gemini-3.7-flash-high)", packet)
 
     def test_wrong_plugin_task_name_rejected(self) -> None:
         self.run_cmd("init", "--lang", "ru")
@@ -269,6 +272,99 @@ class PipelineGateTest(unittest.TestCase):
             if step_id == last:
                 break
         gate.save_ledger(self.tmp, ledger)
+
+
+class GeminiAndDryRunTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="carusel-gate-"))
+        self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
+        self.repo = ROOT
+
+    def run_cmd(self, *argv: str) -> int:
+        return gate.main(["--workspace", str(self.tmp), "--repo-root", str(self.repo), *argv])
+
+    def test_researcher_defaults_to_gemini(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.assertEqual(
+            self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)"),
+            0,
+        )
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(ledger["steps"]["researcher"]["model"], gate.GEMINI_MODEL)
+
+    def test_wrong_gemini_model_rejected(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd(
+                "record-dispatch",
+                "--step",
+                "researcher",
+                "--via",
+                "Task(generalPurpose)",
+                "--model",
+                "inherit",
+            )
+        self.assertIn("gemini-3.7-flash-high", str(ctx.exception))
+
+    def test_copywriter_wrong_model_rejected(self) -> None:
+        self.run_cmd("init", "--lang", "en")
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        ledger["steps"]["researcher"]["status"] = "ok"
+        gate.save_ledger(self.tmp, ledger)
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd(
+                "record-dispatch",
+                "--step",
+                "copywriter",
+                "--via",
+                "Task(generalPurpose)",
+                "--model",
+                "composer-2.5",
+            )
+        self.assertIn("gemini-3.7-flash-high", str(ctx.exception))
+
+    def test_dry_run_records_eleven_workers_without_pixels(self) -> None:
+        rc = self.run_cmd("dry-run", "--lang", "ru", "--topic", "ТАРО СЕЙЧАС")
+        self.assertEqual(rc, 0)
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(ledger["mode"], "dry-run")
+        self.assertEqual(ledger["pixels"], "forbidden")
+        self.assertEqual(ledger["steps"]["director"]["status"], "ok")
+        for step_id in gate.DRY_RUN_WORKERS:
+            state = ledger["steps"][step_id]
+            self.assertEqual(state["status"], "ok", step_id)
+            self.assertEqual(state["dispatched_via"], "Task(generalPurpose)", step_id)
+            self.assertTrue(state.get("dispatch_id"), step_id)
+        self.assertEqual(ledger["steps"]["publish"]["status"], "skipped")
+        self.assertEqual(ledger["steps"]["publish"]["skip_reason"], "publish-not-requested")
+        self.assertEqual(ledger["steps"]["fixic"]["status"], "skipped")
+        self.assertEqual(ledger["steps"]["fixic"]["skip_reason"], "no-open-incidents")
+        self.assertEqual(ledger["steps"]["researcher"]["model"], gate.GEMINI_MODEL)
+        self.assertEqual(ledger["steps"]["copywriter"]["model"], gate.GEMINI_MODEL)
+        pixels = [
+            p
+            for p in self.tmp.rglob("*")
+            if p.is_file() and p.suffix.lower() in gate.PIXEL_SUFFIXES
+        ]
+        self.assertEqual(pixels, [])
+        caption = json.loads(
+            (self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.json").read_text()
+        )
+        self.assertEqual(caption["trigger_word"], "ПАУЗА")
+        self.assertEqual(self.run_cmd("assert-complete"), 0)
+
+    def test_copywriter_dispatch_prompt_owns_caption(self) -> None:
+        self.run_cmd("init", "--lang", "en")
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        ledger["steps"]["researcher"]["status"] = "ok"
+        gate.save_ledger(self.tmp, ledger)
+        self.run_cmd("record-dispatch", "--step", "copywriter", "--via", "Task(generalPurpose)")
+        self.assertEqual(self.run_cmd("dispatch-prompt", "--step", "copywriter"), 0)
+        packet = (self.tmp / "carusel-memory" / "dispatches" / "copywriter.md").read_text()
+        self.assertIn("Caption is THIS step", packet)
+        self.assertIn("required_model: gemini-3.7-flash-high", packet)
 
 
 if __name__ == "__main__":

@@ -5,6 +5,10 @@ description: Копирайт 9 слайдов Instagram-карусели (grid 
 
 # Carusel Copywriter
 
+**Model:** `gemini-3.7-flash-high`. Caption is THIS step — there is no separate caption worker.
+Spawn: `Task(carusel-copywriter)` or cloud `Task(generalPurpose, model=gemini-3.7-flash-high)`.
+See `shared/swarm-spawn-contract.md`.
+
 ## Вход
 
 - `carusel-memory/00-brief.md`

@@ -1,7 +1,7 @@
 ---
 name: carusel-researcher
 description: Research по теме карусели, конкуренты, хуки. Director MUST delegate via Task.
-model: inherit
+model: gemini-3.7-flash-high
 readonly: false
 is_background: false
 ---

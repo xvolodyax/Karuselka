@@ -1,7 +1,8 @@
-# cover-old.png — old face lock
+# RETIRED — old studio-blazer cutout
 
 Box: `/workspace/karusel-old/cover-old.png`
 
-Use for facial structure and ivory-blazer pose only.
-Hair in this file leans platinum / cool blonde — **do not copy that hair**.
-Current lock is `victoria.png` / `victoria-hair-lock.png`.
+Ivory-blazer studio portrait, often platinum / cool blonde, sometimes holding tarot.
+**Not Victoria.** Do not use for face lock, pose, or clothes.
+
+Victoria lock = `carusel-memory/references/victoria-sheet.png` only.
