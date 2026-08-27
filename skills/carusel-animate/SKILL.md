@@ -27,6 +27,10 @@ Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: design-guardian`.
 - `prompt` не пустой, на **русском**
 - `image_urls[0]` — HTTPS
 - `duration` = 5
+- `aspect_ratio` в JSON может оставаться `3:4` (контракт слайдов). Kie enum
+  `grok-imagine-video-1-5-preview` — только `1:1`, `16:9`, `9:16`, `3:2`, `2:3`, `auto`.
+  `grok_video_client.py` мапит `3:4` → `auto` до createTask. Не переписывать промпт
+  только из-за aspect.
 
 Если файлов motion-director нет → `❌ BLOCKER`, верни Директору на `carusel-motion-director`.
 

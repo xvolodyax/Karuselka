@@ -77,6 +77,14 @@
 - **Решение:** `grok_video_gen.py` делает auto-retry (`--max-retries 2`) без смены prompt
 - **Кто:** animate
 
+## 8.3 Grok aspect_ratio enum — нет 3:4
+
+- **Симптом:** createTask `aspect_ratio is not within the range of allowed options` при `3:4`
+- **Root cause:** Kie `grok-imagine-video-1-5-preview` принимает только `1:1`, `16:9`, `9:16`, `3:2`, `2:3`, `auto`
+- **Решение:** контракт карусели остаётся `3:4`; `grok_video_client.py` мапит `3:4` → `auto` до createTask (aspect следует source PNG)
+- **Не делать:** переписывать motion prompt или `CAROUSEL_VIDEO_PROMPT.json` только ради aspect
+- **Кто:** animate
+
 ## 9. Vertical slice bleed (grid 3×3)
 
 - **Симптом:** orphan-текст в верхней полосе slides 04–09 («хвост» ячейки сверху)
@@ -122,6 +130,14 @@
 - **Важно:** не crop отдельных slides и не менять размеры; cleanup заменяет только near-white pixels на exact cut-lines/edge strips
 - **BLOCKER:** `grid-gutter-qa-clean.json` не `status: ok`
 - **Кто:** image-prompter, slice, design-guardian
+
+## 11.4 Kie 4K remainder after integer slice
+
+- **Симптом:** 9 equal cells OK (`826x1104`), но `grid_gutter_qa.py` FAIL: `master dimensions are not divisible by 3x3: {'width': 2, 'height': 0}`
+- **Root cause:** Kie `3:4` @ `4K` может вернуть `2480x3312`; `2480%3=2` leftover px не входят в ячейки
+- **Решение:** `slice_grid.py` сбрасывает unused remainder с копии master до QA; QA считает leftover aligned, если slides = equal cells
+- **Важно:** не crop отдельных slides и не resize ячеек; `source.png` оставить как пришёл от Kie
+- **Кто:** slice, design-guardian
 
 ## 12. Incident memory
 

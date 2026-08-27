@@ -92,11 +92,14 @@ Recovery is automatic and geometry-safe:
 
 1. `remove_grid_gutters.py` чистит near-white pixels только на точных cut-lines
    1/3 и 2/3 master. No crop, no resize.
-2. `slice_grid.py` режет строго равные ячейки.
+2. `slice_grid.py` режет строго равные ячейки и сбрасывает unused integer-division
+   remainder с копии master (Kie 4K `3:4` может дать `2480%3=2` leftover px).
+   `source.png` не трогать. Ячейки не resize.
 3. `clean_slide_edges.py` копирует внутренний фон на внешний edge strip 3px.
    No crop, no resize; все PNG остаются одного размера.
-4. `grid_gutter_qa.py` проверяет internal cut-lines и edge strips. FAIL = BLOCKER,
-   не publish.
+4. `grid_gutter_qa.py` проверяет internal cut-lines и edge strips. Leftover
+   remainder, который не вошёл в ячейку, считается aligned — не FAIL.
+   FAIL по белым gutter/frame = BLOCKER, не publish.
 
 ## Kie 400 / prompt complexity
 

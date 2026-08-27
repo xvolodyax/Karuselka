@@ -20,9 +20,18 @@ Slide-01 (hook) → **5 секунд** зацикленного видео → I
 |-------|-------|
 | model | `grok-imagine-video-1-5-preview` |
 | duration | **5** |
-| aspect_ratio | `3:4` (должен совпадать с PNG slide-01 и всеми слайдами) |
+| aspect_ratio | contract `3:4` (PNG slides); Kie createTask sends **`auto`** |
 | resolution | `720p` |
 | image_urls | HTTPS URL **slide-01.png** |
+
+### Kie `aspect_ratio` enum (grok-imagine-video-1-5-preview)
+
+Allowed: `1:1`, `16:9`, `9:16`, `3:2`, `2:3`, `auto`. **No `3:4`.**
+
+Carousel contract stays `3:4` (same as PNG slide-01). Before `createTask`,
+`grok_video_client.py` maps `3:4` → `auto` so Kie follows the source PNG.
+Docs note aspect is ignored for a single image; `auto` is the durable send value.
+Do not rewrite `CAROUSEL_VIDEO_PROMPT.json` just to change this field.
 
 ## Скрипты
 

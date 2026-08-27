@@ -24,27 +24,64 @@ def white_ratio(img: Image.Image, box: tuple[int, int, int, int], threshold: int
     }
 
 
+def used_grid_size(width: int, height: int, cols: int, rows: int) -> tuple[int, int, int, int]:
+    """Return used_w, used_h, rem_w, rem_h for an integer-division grid."""
+    rem_w = width % cols
+    rem_h = height % rows
+    return width - rem_w, height - rem_h, rem_w, rem_h
+
+
+def remainder_is_aligned(
+    master: dict[str, object],
+    slides: list[dict[str, object]],
+    cols: int,
+    rows: int,
+) -> bool:
+    """Leftover px from integer division are unused, not a gutter fail.
+
+    Equal cells are width//cols by height//rows. Right/bottom remainder never
+    enters a slide, so leftover alone is aligned.
+    """
+    rem = master.get("remainders") or {}
+    rem_w = int(rem.get("width") or 0)
+    rem_h = int(rem.get("height") or 0)
+    if rem_w == 0 and rem_h == 0:
+        return True
+    size = master.get("size") or {}
+    used_w = int(size.get("width") or 0) - rem_w
+    used_h = int(size.get("height") or 0) - rem_h
+    if used_w < cols or used_h < rows:
+        return False
+    expected = {"width": used_w // cols, "height": used_h // rows}
+    if not slides:
+        return True
+    return all(slide.get("size") == expected for slide in slides)
+
+
 def analyze_master(path: Path, cols: int, rows: int, strip: int, threshold: int) -> dict[str, object]:
     with Image.open(path) as raw:
         img = raw.convert("RGB")
         width, height = img.size
+        used_w, used_h, rem_w, rem_h = used_grid_size(width, height, cols, rows)
         result: dict[str, object] = {
             "path": str(path),
             "size": {"width": width, "height": height},
+            "used_size": {"width": used_w, "height": used_h},
             "grid": {"cols": cols, "rows": rows},
-            "remainders": {"width": width % cols, "height": height % rows},
+            "remainders": {"width": rem_w, "height": rem_h},
             "internal_lines": {},
         }
 
         lines: dict[str, object] = {}
         half = max(1, strip // 2)
+        # Cut lines follow equal-cell integer division, not the leftover strip.
         for i in range(1, cols):
-            x = round(width * i / cols)
-            box = (max(0, x - half), 0, min(width, x + half + 1), height)
+            x = used_w * i // cols
+            box = (max(0, x - half), 0, min(used_w, x + half + 1), used_h)
             lines[f"v{i}"] = white_ratio(img, box, threshold)
         for i in range(1, rows):
-            y = round(height * i / rows)
-            box = (0, max(0, y - half), width, min(height, y + half + 1))
+            y = used_h * i // rows
+            box = (0, max(0, y - half), used_w, min(used_h, y + half + 1))
             lines[f"h{i}"] = white_ratio(img, box, threshold)
         result["internal_lines"] = lines
         return result
@@ -89,8 +126,13 @@ def main() -> int:
     slides = analyze_slides(Path(args.slides_dir), args.strip, args.white_threshold)
     failures: list[str] = []
 
-    if master["remainders"] != {"width": 0, "height": 0}:
-        failures.append(f"master dimensions are not divisible by {args.cols}x{args.rows}: {master['remainders']}")
+    remainder_aligned = remainder_is_aligned(master, slides, args.cols, args.rows)
+    master["remainder_aligned"] = remainder_aligned
+    if not remainder_aligned:
+        failures.append(
+            f"master leftover remainder is not aligned to unused integer-division "
+            f"cells {args.cols}x{args.rows}: {master['remainders']}"
+        )
 
     for name, data in (master["internal_lines"] or {}).items():
         ratio = float(data["white_ratio"])
