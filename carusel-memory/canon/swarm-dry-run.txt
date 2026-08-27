@@ -1,42 +1,8 @@
-# Swarm dry-run — 11 worker records, zero pixels
+# Swarm dry-run — 11 worker records, zero pixels, written_by: gemini
 # Command:
-#   python3 scripts/pipeline_gate.py --workspace /tmp/carusel-dry-run dry-run --lang ru --topic "ТАРО СЕЙЧАС"
+#   python3 scripts/pipeline_gate.py --workspace /tmp/carusel-dry-run dry-run --lang ru --topic "ТАРО СЕЙЧАС" --force
 # Date: 2026-08-27
-# Result: EXIT 0, 0 PNG/JPG/WEBP/MP4 under the dry-run workspace (json+md stubs only)
-
-initialized lang=ru handle=@todaytaro_ru run_id=dry-run-ru
-next: researcher
-recorded researcher via=Task(generalPurpose)
-dispatch_id=d1c110cc75d24a0ea93eaed633bceb9e
-model=gemini-3.7-flash-high
-✅ VERIFY OK researcher
-recorded copywriter via=Task(generalPurpose)
-dispatch_id=2232ba55afae43f0afc27fd9c8786577
-model=gemini-3.7-flash-high
-✅ VERIFY OK copywriter
-recorded designer via=Task(generalPurpose)
-dispatch_id=87db064e4cec42338932e9bd086c30e2
-✅ VERIFY OK designer
-recorded image-prompter via=Task(generalPurpose)
-dispatch_id=9bbc3e26030e40448a59aab6f76bd770
-✅ VERIFY OK image-prompter
-recorded slice via=Task(generalPurpose)
-dispatch_id=3490ddc13a7d4cfaa126f5a6c1b97379
-✅ VERIFY OK slice
-recorded motion-director via=Task(generalPurpose)
-dispatch_id=44a36f5c10774d828f499d31d2709fc7
-✅ VERIFY OK motion-director
-recorded animate via=Task(generalPurpose)
-dispatch_id=a727fdd6d20949b7b46bf08711017640
-✅ VERIFY OK animate
-recorded design-guardian via=Task(generalPurpose)
-dispatch_id=68b640a64c864e018bc0d487501bfff0
-✅ VERIFY OK design-guardian
-recorded upload via=Task(generalPurpose)
-dispatch_id=e6ee03feb63943f08630198a44e66c66
-✅ VERIFY OK upload
-skipped publish reason=publish-not-requested
-skipped fixic reason=no-open-incidents
+# Result: EXIT 0, 0 PNG. Researcher/copywriter/caption stamped written_by: gemini.
 
 === DRY-RUN 11 WORKER RECORDS ===
 workspace: /tmp/carusel-dry-run
@@ -44,9 +10,7 @@ pixels: none
 publish: skipped (publish-not-requested)
 fixic: skipped (no-open-incidents)
 researcher+copywriter+caption model: gemini-3.7-flash-high
-steps recorded: researcher copywriter designer image-prompter slice motion-director animate design-guardian upload publish(skip) fixic(skip)
-run_id=dry-run-ru lang=ru handle=@todaytaro_ru
-mode=dry-run dispatch_mode=generalPurpose-fallback publish_requested=False
+written_by: gemini on dossier + CAROUSEL_SLIDE_COPY.json + CAROUSEL_CAPTION.json + CAROUSEL_CAPTION.md + fragments
 - director           ok         via=parent
 - researcher         ok         via=Task(generalPurpose) model=gemini-3.7-flash-high
 - copywriter         ok         via=Task(generalPurpose) model=gemini-3.7-flash-high
@@ -62,6 +26,5 @@ mode=dry-run dispatch_mode=generalPurpose-fallback publish_requested=False
 next=done
 ✅ PIPELINE COMPLETE (all 12 steps ok or legally skipped)
 
-find /tmp/carusel-dry-run -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.mp4' \) | wc -l
-0
-# files: 10 json + 22 md
+# No victoria-sheet.png on this VM — no Kie proof pack this run.
+# Face lock stays: victoria-sheet.png only. Alena forbidden.
