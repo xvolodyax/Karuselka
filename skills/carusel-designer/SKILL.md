@@ -17,6 +17,8 @@ AURA-equivalent для Instagram carousel. **Только дизайн-конт�
 - `shared/carousel-grid-design.md`
 - `shared/carousel-professional-playbook.md`
 - `shared/carousel-family-registry.json`
+- `shared/taro-seichas-canon.md`
+- `shared/animals-viktoria-collage.md`
 - `shared/visual-assets-mcp-policy.md`
 - `shared/reference-visual-fidelity-gate.md`
 
@@ -80,6 +82,10 @@ CAROUSEL_IMAGE_GEN_STATUS.md
 ## Генерация изображений
 
 **Не запускай Kie.** После тебя работает `carusel-image-prompter` → `carusel-slice`.
+
+Daily ТАРО СЕЙЧАС: `carousel_family` **обязан** быть `animals_viktoria_collage`.
+Victoria на слайдах 1 и 9 (hair lock). ≥3 слайда с животным-метафорой.
+Platinum hair = P0. Чужие женские лица = P0. Horror table = P0.
 
 В `CAROUSEL_SERIES_CONCEPT.json` положи `prompt_hints` для prompter (style lock, palette, family).
 

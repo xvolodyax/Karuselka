@@ -50,8 +50,14 @@ description: Директор Carusel — intake, orchestration, handoff. Use wh
 
 Professional quality:
 
+- `shared/taro-seichas-canon.md` — always-on brand lock (daily 11:10)
+- `shared/animals-viktoria-collage.md`
+- `shared/locale-brand-contract.md`
 - `shared/carousel-professional-playbook.md`
 - `shared/carousel-prompt-library.md`
+
+Daily run не может сменить visual family и уйти в empty pretty slides.
+Publish / Composio / Instagram — не вызывать, пока brief `publish_requested: false` (Hall после review).
 
 ## Цепочка Task
 

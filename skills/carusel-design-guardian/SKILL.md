@@ -34,6 +34,10 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 | Style score ≥ 70 | yes |
 | Kie 400 recovery used aspect/resolution fallback before compact prompt retry | yes |
 | Copy matches CAROUSEL_SLIDE_COPY.json zones | warn |
+| Canon `animals_viktoria_collage` (Victoria 1+9, ≥3 animal metaphors) | yes |
+| Hook is a scene; ≥2 save slides have a real framework/questions | yes |
+| Hair lock: honey/wheat + darker roots; platinum = FAIL | yes |
+| No empty vibe-only slides | yes |
 
 ## Professional QA protocol
 

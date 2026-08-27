@@ -1,8 +1,8 @@
-# Carusel — Caption Format Contract
+# Carusel — Caption Format Contract (ТАРО СЕЙЧАС)
 
-> **Статус:** placeholder — пользователь пришлёт финальный формат подписи.
+Канон: `shared/taro-seichas-canon.md`. Locale: `shared/locale-brand-contract.md`.
 
-## Instagram limits (MCP)
+## Instagram limits
 
 | Параметр | Лимит |
 |----------|-------|
@@ -10,27 +10,35 @@
 | hashtags | 30 |
 | @mentions | 20 |
 
-## Текущий draft-формат (до спецификации пользователя)
+## Обязательные правила
+
+1. **Нет сырых URL.** Они не кликабельны и ломают gate.
+2. **Одно слово-триггер** в комментарии. Команда отвечает в Direct.
+3. **Один продукт** на карусель: `bot_three_spreads` или `app_audio`. Не мешать.
+4. Не писать «личный аудиоразбор».
+5. EN: без Academy.
+6. Первая строка caption = та же сцена, что на слайде 1.
+
+## Структура
 
 ```markdown
-## CAROUSEL_CAPTION.md structure
+## Hook (первая строка)
+Сцена. Без хештегов. Без URL.
 
-### Hook (первая строка)
-- 1 предложение, интрига, без хештегов
+## Body
+2–4 коротких абзаца. Что пауза есть на самом деле + зачем свайпить было.
+Эмодзи 0–3.
 
-### Body
-- 2–4 коротких абзаца
-- эмодзи умеренно (0–3)
+## CTA
+Напиши в комментарии слово {TRIGGER}.
+Пришлём в Direct {один продукт}.
 
-### CTA
-- одно действие: подписка / сохрани / ссылка в bio
+## Handle + slogan
+@todaytaro_ru / Ясность сейчас
+@todaytaro_bot / Clarity now
 
-### Hashtags
-- блок в конце, 5–15 релевантных
-- mix: broad + niche
-
-### Mentions
-- @аккаунты по необходимости
+## Hashtags
+5–12, в конце. Без спама.
 ```
 
 ## Выход copywriter
@@ -39,21 +47,17 @@
 
 ```json
 {
-  "hook": "...",
+  "hook": "Он смотрит твои истории. Третью неделю. Сообщения нет.",
   "body": "...",
-  "cta": "...",
-  "hashtags": ["#..."],
-  "mentions": ["@..."],
+  "cta": "Напиши в комментарии слово ПАУЗА — пришлём в Direct 3 бесплатных расклада в боте.",
+  "trigger_word": "ПАУЗА",
+  "product": "bot_three_spreads",
+  "hashtags": ["#таросейчас"],
+  "mentions": ["@todaytaro_ru"],
   "full_caption": "...",
   "char_count": 0,
   "hashtag_count": 0
 }
 ```
 
-## Phase 2 — пользовательский формат
-
-Когда пользователь пришлёт шаблон:
-
-1. Обновить этот файл.
-2. Обновить `skills/carusel-copywriter/SKILL.md`.
-3. Не менять MCP publish — только `caption` string.
+`trigger_word` обязателен. `full_caption` не содержит `http`, `instagram.com`, `t.me`.

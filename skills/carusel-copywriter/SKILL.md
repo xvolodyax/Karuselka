@@ -10,6 +10,9 @@ description: Копирайт 9 слайдов Instagram-карусели (grid 
 - `carusel-memory/00-brief.md`
 - `carusel-memory/research/carousel-research-dossier.md`
 - `shared/carousel-professional-playbook.md`
+- `shared/taro-seichas-canon.md` **обязательно**
+- `shared/locale-brand-contract.md`
+- `shared/caption-format-contract.md`
 
 ## Выход
 
@@ -36,19 +39,18 @@ Fragment: `carusel-memory/fragments/copywriter.md`
    - mechanism
    - specific result / number
 2. Выбери один hook и объясни в JSON `hook_rationale`: почему он создаёт information gap.
-3. Построй 9-panel arc:
-   - 01 hook
-   - 02 problem
-   - 03 hidden cost / mistake
-   - 04 mechanism
-   - 05 proof / number
-   - 06 flow / steps
-   - 07 save checklist
+3. Построй 9-panel **teaching** arc (не vibe-список):
+   - 01 hook **SCENE** — первая строка = сцена («Он смотрит сторис. Третью неделю.»), не название механики
+   - 02 pain
+   - 03 mistake — как клиентка слышит приговор
+   - 04 mechanism — чем пауза является
+   - 05–07 save — минимум **два** с реальной рамкой / вопросами / «говорит vs слышишь»
    - 08 recap / decision rule
-   - 09 CTA
-4. Каждая value-панель = **одна идея**.
-5. Панели 7-8 должны быть save-worthy: чеклист, decision tree, короткий framework.
-6. CTA на slide 9 = один action: сохранить / подписаться / отправить команде. Не просить 5 действий сразу.
+   - 09 CTA — одно слово-триггер, один продукт
+4. Каждая value-панель = **одна идея**. Пустой вайб без урока = FAIL.
+5. Панели save: чеклист, 3 вопроса, «говорит/слышишь», 3 состояния — не цитаты настроения.
+6. CTA = comment trigger (`ПАУЗА` / `PAUSE`) + один продукт (бот **или** приложение). Не мешать. Не «личный аудиоразбор». EN: без Academy.
+7. Простой разговорный язык. Не целиться в 13–17. Не пугать одиночеством.
 
 ## CAROUSEL_SLIDE_COPY.json — 9 slides
 
@@ -58,6 +60,10 @@ Fragment: `carusel-memory/fragments/copywriter.md`
     { "framework": "pain", "headline": "...", "why_it_swipes": "..." }
   ],
   "hook_rationale": "...",
+  "hook_is_scene": true,
+  "visual_family": "animals_viktoria_collage",
+  "trigger_word": "ПАУЗА",
+  "product": "bot_three_spreads",
   "slide_count": 9,
   "grid": { "cols": 3, "rows": 3 },
   "slides": [

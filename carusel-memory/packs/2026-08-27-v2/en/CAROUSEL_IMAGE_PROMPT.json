@@ -1,0 +1,47 @@
+{
+  "version": "2",
+  "lang": "en",
+  "visual_family": "animals_viktoria_collage",
+  "generation_mode": "grid_3x3",
+  "model": "gpt-image-2-image-to-image",
+  "aspect_ratio": "3:4",
+  "resolution": "4K",
+  "grid": { "cols": 3, "rows": 3, "order": "row-major" },
+  "animate_slide": 1,
+  "input_files_on_box": [
+    "/workspace/karusel-old/image-851e.png",
+    "/workspace/cover-refs/victoria.png"
+  ],
+  "input_files_in_repo": [
+    "carusel-memory/references/animals-viktoria-style-lock.png",
+    "carusel-memory/references/victoria-hair-lock.png"
+  ],
+  "prompt": "One Instagram 3x3 master, each panel 3:4. Family animals_viktoria_collage: charcoal black, magenta #ff006e, white, soft gold. Collage cutouts, thin white stroke. Victoria ONLY on panels 1 and 9: warm honey-wheat blonde, darker roots, NOT platinum. No other women's faces. Animals as metaphors: 1 cat (you sense it), 3 dog (loyalty to the question), 6 owl (night thoughts). Verbatim English text only. No Victoria signature. No Academy. Safe-area 12%. No horror. Panel1: \"He watches your stories.\" \"Third week. No message.\" script \"Pause or over?\" Victoria+cat. Panel2: \"You already decided for him\" \"If he wanted to, he would text.\" Panel3: \"The cards don't judge. You do.\" \"Says: pause. You hear: it's over.\" dog. Panel4: \"A pause is not an answer\" fork. Panel5: \"Three questions instead of guessing\". Panel6: \"What the card actually says\" + owl. Panel7: \"Three states of a pause\". Panel8: \"How to tell pause from over\". Panel9: \"Comment PAUSE\" \"3 free spreads in the bot. We reply in Direct.\" \"Clarity now\" Victoria.",
+  "negative_prompt": "platinum hair, white-blonde, other women's faces, Portuguese, horror, blood, skulls, candle table, Victoria signature, Academy, extra labels, raw URLs, visible gutters",
+  "reference_contract": {
+    "reference_role": "style + face lock",
+    "preserve": ["charcoal field", "magenta+white type", "cutouts", "Victoria hair lock", "animal metaphors"],
+    "change": ["English copy"],
+    "do_not_borrow": ["Portuguese", "foreign faces", "platinum hair"]
+  },
+  "style_lock": {
+    "palette": ["#111111", "#ff006e", "#ffffff", "soft gold"],
+    "family": "animals_viktoria_collage"
+  },
+  "typography_rules": {
+    "exact_text": true,
+    "no_extra_text": true,
+    "hierarchy": "headline > short body > magenta script > pill"
+  },
+  "panel_visual_brief": [
+    { "slide": 1, "role": "hook", "visual_only": "Victoria honey-wheat hair + grey cat." },
+    { "slide": 2, "role": "pain", "visual_only": "Phone, viewed stories, empty chat." },
+    { "slide": 3, "role": "mistake", "visual_only": "Beagle turtleneck sunglasses." },
+    { "slide": 4, "role": "mechanism", "visual_only": "Three-way magenta fork pills." },
+    { "slide": 5, "role": "save", "visual_only": "Numbered questions." },
+    { "slide": 6, "role": "save", "visual_only": "Owl + says/hears." },
+    { "slide": 7, "role": "save", "visual_only": "Three state pills." },
+    { "slide": 8, "role": "recap", "visual_only": "Pause vs over split." },
+    { "slide": 9, "role": "cta", "visual_only": "Victoria + huge PAUSE script." }
+  ]
+}

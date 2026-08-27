@@ -1,0 +1,51 @@
+{
+  "version": "2",
+  "lang": "ru",
+  "visual_family": "animals_viktoria_collage",
+  "generation_mode": "grid_3x3",
+  "model": "gpt-image-2-image-to-image",
+  "aspect_ratio": "3:4",
+  "resolution": "4K",
+  "grid": { "cols": 3, "rows": 3, "order": "row-major" },
+  "animate_slide": 1,
+  "input_files_on_box": [
+    "/workspace/karusel-old/image-851e.png",
+    "/workspace/cover-refs/victoria.png"
+  ],
+  "input_files_in_repo": [
+    "carusel-memory/references/animals-viktoria-style-lock.png",
+    "carusel-memory/references/victoria-hair-lock.png"
+  ],
+  "prompt": "Одно master-изображение Instagram 3×3, каждая панель 3:4. Семья animals_viktoria_collage: чёрный уголь, маджента #ff006e, белый, мягкое золото. Коллаж-вырезки, тонкая белая обводка. Виктория только на панелях 1 и 9: тёплый медово-пшеничный блонд, тёмные корни, НЕ платина. Чужих женских лиц нет. Животные как метафоры: 1 кот «чуешь», 3 пёс верность вопросу, 6 сова ночные мысли. Текст дословно, без лишних слов, без подписи Victoria. Safe-area 12%. Без horror, крови, черепов, свечей. Без португальского. Панель1: «Он смотрит сторис.» «Третью неделю. Сообщения нет.» скрипт «Пауза или конец?» Виктория+кот. Панель2: «Ты уже решила за него» «Если бы хотел — написал.» Панель3: «Карты не судят. Ты судишь.» «Говорит: пауза. Слышишь: всё, конец.» пёс. Панель4: «Пауза — не ответ» развилка. Панель5: «Три вопроса вместо гадания» три вопроса. Панель6: «Что карта говорит» говорит/слышишь + сова. Панель7: «Три состояния паузы». Панель8: «Как отличить паузу от конца». Панель9: «Напиши ПАУЗА» «3 бесплатных расклада в боте. Ответим в Direct.» «Ясность сейчас» Виктория.",
+  "negative_prompt": "platinum hair, white-blonde, other women's faces, Portuguese, horror, blood, skulls, candle table, Victoria signature, extra labels, raw URLs, Academy, visible gutters, white frame",
+  "reference_contract": {
+    "reference_role": "style + face lock",
+    "preserve": ["charcoal field", "magenta+white type", "cutouts", "pills", "Victoria hair lock", "animals as metaphor"],
+    "change": ["topic copy", "which animal on which slide"],
+    "do_not_borrow": ["Portuguese text", "foreign faces", "platinum hair from cover-old"]
+  },
+  "style_lock": {
+    "palette": ["#111111", "#ff006e", "#ffffff", "soft gold"],
+    "family": "animals_viktoria_collage"
+  },
+  "typography_rules": {
+    "exact_text": true,
+    "no_extra_text": true,
+    "hierarchy": "headline > short body > magenta script > pill"
+  },
+  "prompt_compaction": {
+    "active_prompt_max_chars": 4500,
+    "details_in_structured_fields": true
+  },
+  "panel_visual_brief": [
+    { "slide": 1, "role": "hook", "visual_only": "Victoria cutout honey-wheat hair + grey cat (чуешь). Phone/stories hint small." },
+    { "slide": 2, "role": "pain", "visual_only": "Phone with viewed stories, empty chat. No woman face." },
+    { "slide": 3, "role": "mistake", "visual_only": "Beagle in black turtleneck + sunglasses: loyalty to the unanswered question." },
+    { "slide": 4, "role": "mechanism", "visual_only": "Three magenta pills as a fork. Light tarot edge, not covering type." },
+    { "slide": 5, "role": "save", "visual_only": "Numbered 1-2-3 magenta pills. No extra people." },
+    { "slide": 6, "role": "save", "visual_only": "Owl cutout = night thoughts. Says/hears blocks." },
+    { "slide": 7, "role": "save", "visual_only": "Three stacked state pills." },
+    { "slide": 8, "role": "recap", "visual_only": "Split pause vs over. Optional small gold medallion." },
+    { "slide": 9, "role": "cta", "visual_only": "Victoria ivory blazer, huge magenta script ПАУЗА. No signature." }
+  ]
+}

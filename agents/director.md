@@ -16,6 +16,8 @@ is_background: false
 - `rules/carusel-orchestrator.mdc`
 - `skills/director-carusel/SKILL.md`
 - `AGENT-PIPELINE.md`
+- `shared/taro-seichas-canon.md` — always-on ТАРО СЕЙЧАС
+- `shared/director-dispatch-contract.md` + `scripts/pipeline_gate.py`
 
 ## Handoff
 

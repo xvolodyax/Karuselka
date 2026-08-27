@@ -1,0 +1,138 @@
+{
+  "lang": "ru",
+  "topic": "Пауза или конец?",
+  "visual_family": "animals_viktoria_collage",
+  "hook_is_scene": true,
+  "trigger_word": "ПАУЗА",
+  "product": "bot_three_spreads",
+  "hair_lock": "warm honey/wheat blonde with darker roots",
+  "hook_options": [
+    {
+      "framework": "scene",
+      "headline": "Он смотрит сторис. Третью неделю.",
+      "why_it_swipes": "Узнаваемая сцена, не название механики."
+    },
+    {
+      "framework": "pain",
+      "headline": "Ты уже решила за него",
+      "why_it_swipes": "Боль есть, но это не сцена."
+    },
+    {
+      "framework": "contrarian",
+      "headline": "Пауза — не конец. Это развилка.",
+      "why_it_swipes": "Механика слишком рано."
+    },
+    {
+      "framework": "mistake",
+      "headline": "Карты не судят. Ты судишь.",
+      "why_it_swipes": "Сильно, но не открывает ленту."
+    },
+    {
+      "framework": "mechanism",
+      "headline": "Что пауза делает на самом деле",
+      "why_it_swipes": "Заголовок-механика. Запрещено на slide 1."
+    }
+  ],
+  "hook_rationale": "Сцена «смотрит сторис / третью неделю / сообщения нет» создаёт information gap: это пауза или тихий выход. Тема live-постов 27.08 сохранена, глубина добавлена дальше.",
+  "slide_count": 9,
+  "grid": { "cols": 3, "rows": 3 },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "hook_type": "scene",
+      "headline": "Он смотрит сторис.",
+      "body": "Третью неделю. Сообщения нет.",
+      "script": "Пауза или конец?",
+      "victoria": true,
+      "animal": "cat",
+      "animal_job": "чуешь: что-то не так, хотя «ничего не произошло»",
+      "notes": "animate; readable under 2 sec"
+    },
+    {
+      "index": 2,
+      "role": "pain",
+      "headline": "Ты уже решила за него",
+      "body": "«Если бы хотел — написал.»",
+      "notes": "Боль сцены, не вайб."
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "headline": "Карты не судят. Ты судишь.",
+      "body": "Говорит: пауза. Слышишь: всё, конец.",
+      "has_framework": true,
+      "animal": "dog",
+      "animal_job": "верность неотвеченному вопросу: сидишь в ожидании как на посту",
+      "notes": "says vs hears"
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "headline": "Пауза — не ответ",
+      "body": "Это развилка: он застрял / ты ждёшь без срока / связь тёплая, шага нет.",
+      "has_framework": true,
+      "notes": "что пауза есть на самом деле"
+    },
+    {
+      "index": 5,
+      "role": "save_questions",
+      "has_framework": true,
+      "headline": "Три вопроса вместо гадания",
+      "lines": [
+        "Он отвечает, если ты пишешь?",
+        "У ожидания есть дата?",
+        "Тебе спокойно или пусто?"
+      ],
+      "body": "1) Он отвечает, если пишешь? 2) У ожидания есть дата? 3) Тебе спокойно или пусто?",
+      "notes": "save framework"
+    },
+    {
+      "index": 6,
+      "role": "save_says_hears",
+      "has_framework": true,
+      "headline": "Что карта говорит",
+      "body": "Говорит: решение не принято. Слышишь: он разлюбил. Не приговор. Процесс.",
+      "animal": "owl",
+      "animal_job": "ночные мысли крутят худшую версию",
+      "notes": "depth like old slide-04"
+    },
+    {
+      "index": 7,
+      "role": "save_states",
+      "has_framework": true,
+      "headline": "Три состояния паузы",
+      "lines": [
+        "Ждёт слов",
+        "Боится шага",
+        "Уже вышел — не сказал"
+      ],
+      "body": "Ждёт слов / боится шага / уже вышел, но не сказал.",
+      "notes": "save framework"
+    },
+    {
+      "index": 8,
+      "role": "recap_rule",
+      "has_framework": true,
+      "headline": "Как отличить паузу от конца",
+      "body": "Микро-контакт и страх шага — пауза. Просмотры и ноль на прямой вопрос — выход без слов.",
+      "notes": "decision rule"
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "headline": "Напиши ПАУЗА",
+      "body": "3 бесплатных расклада в боте. Ответим в Direct.",
+      "cta": "ПАУЗА",
+      "slogan": "Ясность сейчас",
+      "victoria": true,
+      "notes": "one trigger, one product, no URL, no signature"
+    }
+  ],
+  "save_value": [
+    "slide-05 three questions",
+    "slide-06 says vs hears",
+    "slide-07 three states",
+    "slide-08 decision rule"
+  ]
+}
