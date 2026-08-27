@@ -5,6 +5,11 @@ description: Kie.ai one grid master -> 3x3 slice -> 9 slides. slide-01 later ani
 
 # Carusel Slice
 
+## Вызов
+
+Только отдельный Task. Director не запускает Kie/slice сам «заодно».  
+9 PNG, 3×3. Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: motion-director`.
+
 ## Роль
 
 Одна генерация Kie -> **сетка 3×3** -> **9 PNG**. Слайд 1 потом оживляет `carusel-animate`.
@@ -127,9 +132,12 @@ python scripts/kie_run_prompt.py --workspace . --prompt-json carusel-memory/desi
 ```text
 === CARUSEL-SLICE ===
 Статус: ✅ OK | ⚠️ WARN | ❌ FAIL
+dispatched_via: Task(carusel-slice) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
 Mode: grid_3x3
 Slides: slide-01.png … slide-09.png
 incident_report: none
+HANDOFF_NEXT: motion-director
 ```
 
 ## Конец задачи

@@ -5,6 +5,14 @@ description: Публикация 9-slide carousel (grid 3×3) в Instagram че
 
 # Carusel Publish
 
+## Вызов
+
+Только отдельный Task. Director не вызывает Instagram MCP сам.  
+Если `publish_requested: false` в brief — **не публикуй**, fragment ❌ BLOCKER.
+
+Caption без сырых URL. Handle по `lang`. `@todaytaro_bot` — бот, не приложение.  
+Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: fixic`.
+
 ## Preconditions
 
 - Guardian: `✅ DESIGN OK` or score ≥ 90
@@ -127,9 +135,12 @@ For `verify_mcp_connection.py` or first run:
 
 ```text
 === CARUSEL-PUBLISH ===
-Статус: ✅ OK | ❌ FAIL
+Статус: ✅ OK | ❌ FAIL | ⏳ PENDING
+dispatched_via: Task(carusel-publish) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
 Log: carusel-memory/output/publish-log.md
 incident_report: none
+HANDOFF_NEXT: fixic
 ```
 
 ## Конец задачи

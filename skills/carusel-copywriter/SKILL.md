@@ -5,6 +5,16 @@ description: Копирайт 9 слайдов Instagram-карусели (grid 
 
 # Carusel Copywriter
 
+## Вызов
+
+Только отдельный Task. Director не пишет слайды сам.  
+`lang=ru|en`. Handle: `@todaytaro_ru` / `@todaytaro_bot`.  
+`@todaytaro_bot` — Telegram bot, не приложение.  
+Без сырых URL. CTA: «ссылка в шапке» / «link in bio».  
+9 слайдов, grid 3×3. Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: designer`.
+
+Читай `shared/locale-brand-contract.md`.
+
 ## Вход
 
 - `carusel-memory/00-brief.md`
@@ -72,20 +82,27 @@ Fragment: `carusel-memory/fragments/copywriter.md`
 
 ## Caption
 
-Следуй `shared/caption-format-contract.md`:
+Следуй `shared/caption-format-contract.md` и `shared/locale-brand-contract.md`:
 
 - `full_caption` ≤ 2200 chars
 - hashtags ≤ 30
-- mentions ≤ 20
+- mentions ≤ 20, обязательно `@todaytaro_ru` или `@todaytaro_bot` по `lang`
+- никаких `https://`, `t.me/`, `instagram.com/` в caption и на слайдах
+- EN: пиши bot / Telegram bot, не app
 
 ## Handoff
 
 ```text
 === CARUSEL-COPYWRITER ===
 Статус: ✅ OK
+dispatched_via: Task(carusel-copywriter) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
+lang: ru|en
+handle: @todaytaro_ru | @todaytaro_bot
 Slides: carusel-memory/design/CAROUSEL_SLIDE_COPY.json
 Caption chars: N
 incident_report: none
+HANDOFF_NEXT: designer
 ```
 
 ## Конец задачи

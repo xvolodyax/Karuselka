@@ -22,19 +22,30 @@
 
 Шаблон: `shared/subagent-fragment-template.md`
 
-**Обязательная строка:**
+**Обязательные строки:**
 
 ```text
+dispatched_via: Task(carusel-<role>)
+dispatch_id: <uuid from pipeline_gate>
 incident_report: none
+HANDOFF_NEXT: <next>
 ```
 
-или:
+или cloud fallback:
+
+```text
+dispatched_via: Task(generalPurpose)
+```
+
+или incident:
 
 ```text
 incident_report: carusel-memory/pipeline-fix-queue.md#INC-YYYYMMDD-HHMM-<role>-<slug>
 ```
 
-Fragment **без** `incident_report` — невалиден; Директор не переходит к следующему шагу.
+Fragment **без** `incident_report` или без `dispatched_via: Task(...)` — невалиден.  
+Директор проверяет `python scripts/pipeline_gate.py --workspace . verify --step <id>` и не переходит дальше.  
+Директор не пишет worker-артефакты и не подделывает `dispatch_id`.
 
 ## 4. Fixic (не твоя роль)
 

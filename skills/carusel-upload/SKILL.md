@@ -5,6 +5,11 @@ description: Kie.ai File Upload API — HTTPS URL для Instagram (stream + url
 
 # Carusel Upload
 
+## Вызов
+
+Только отдельный Task. Director не заливает файлы «заодно».  
+Не вызывай Instagram MCP. Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: publish`.
+
 ## Роль
 
 Заливает медиа на **Kie.ai File Upload API** (тот же `KIE_API_KEY`) и собирает `publish-urls.json`.
@@ -61,9 +66,12 @@ python scripts/upload_carousel_assets.py \
 ```text
 === CARUSEL-UPLOAD ===
 Статус: ✅ OK | ❌ FAIL
+dispatched_via: Task(carusel-upload) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
 provider: kie_file_upload_api
 publish-urls.json: carusel-memory/output/publish-urls.json
 incident_report: none
+HANDOFF_NEXT: publish
 ```
 
 ## Конец задачи

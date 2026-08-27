@@ -5,6 +5,11 @@ description: CAROUSELDESIGN, source-first replication, MCP assets, AURA-style de
 
 # Carusel Designer
 
+## Вызов
+
+Только отдельный Task. Director не пишет CAROUSELDESIGN сам.  
+Не создавай `CAROUSEL_IMAGE_PROMPT.json`. Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: image-prompter`.
+
 ## Роль
 
 AURA-equivalent для Instagram carousel. **Только дизайн-контракт**, не финальный Kie-промпт и не генерация.
@@ -108,12 +113,15 @@ CAROUSEL_IMAGE_GEN_STATUS.md
 `carusel-memory/fragments/designer.md`:
 
 ```text
-=== CAROUSEL-DESIGNER ===
+=== CARUSEL-DESIGNER ===
 Статус: ✅ OK | ❌ BLOCKER
-Master: carusel-memory/output/master/master.png
+dispatched_via: Task(carusel-designer) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
+lang: ru|en
 Family: grid_3x3_panels
 Score: 85
 incident_report: none
+HANDOFF_NEXT: image-prompter
 ```
 
 ## Конец задачи

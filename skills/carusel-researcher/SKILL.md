@@ -5,6 +5,12 @@ description: Research темы Instagram-карусели, конкуренты,
 
 # Carusel Researcher
 
+## Вызов
+
+Только отдельный Task. Director не пишет dossier сам.  
+`lang` из `00-brief.md`. RU `@todaytaro_ru`, EN `@todaytaro_bot`.  
+Fragment обязан содержать `dispatched_via`, `dispatch_id`, `incident_report`, `HANDOFF_NEXT: copywriter`.
+
 ## Вход
 
 - shared/carousel-prompt-library.md
@@ -43,9 +49,13 @@ Fragment: `carusel-memory/fragments/researcher.md`
 ```text
 === CARUSEL-RESEARCHER ===
 Статус: ✅ OK
+dispatched_via: Task(carusel-researcher) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
+lang: ru|en
 Файл: carusel-memory/research/carousel-research-dossier.md
 Top hook: ...
 incident_report: none
+HANDOFF_NEXT: copywriter
 ```
 
 ## Конец задачи

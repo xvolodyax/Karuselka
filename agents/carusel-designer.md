@@ -6,11 +6,14 @@ readonly: false
 is_background: false
 ---
 
-**Язык:** русский.
+**Контент:** `lang=ru|en` из brief.  
+**Вызов:** только Task. Director — СТОП.
 
-Следуй skill `skills/carusel-designer/SKILL.md`.
+Следуй `skills/carusel-designer/SKILL.md`.
 
 Также читай Teya (если доступен):
 
 - `teya/skills/aura-shape-replication/SKILL.md`
 - `teya/skills/aura-cyrillic-google-fonts/SKILL.md`
+
+Не пиши финальный Kie prompt (`carusel-image-prompter`). Не запускай Kie.

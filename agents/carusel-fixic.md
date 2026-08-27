@@ -1,13 +1,13 @@
 ---
 name: carusel-fixic
-description: Post-run Fixic — читает pipeline-fix-queue, чинит skills/scripts/pitfalls. Director MUST delegate via Task.
+description: Post-run Fixic. Director MUST delegate via Task. Do not generate or publish a carousel.
 model: inherit
 readonly: false
 is_background: false
 ---
 
-**Язык:** только русский.
+**Вызов:** только Task. Director — СТОП.
 
-Следуй skill `skills/carusel-fixic/SKILL.md`.
+Следуй `skills/carusel-fixic/SKILL.md`.
 
-Не генерируй карусель и не публикуй в Instagram.
+Не генерируй карусель и не публикуй в Instagram. Не выкидывай агентов и не собирай новый рой.

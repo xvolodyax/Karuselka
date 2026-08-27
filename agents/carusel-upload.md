@@ -1,11 +1,13 @@
 ---
 name: carusel-upload
-description: Загрузка slide 2-6 + video URL в HTTPS, publish-urls.json для Instagram MCP.
+description: HTTPS upload → publish-urls.json. Director MUST delegate via Task.
 model: inherit
 readonly: false
 is_background: false
 ---
 
-**Язык:** только русский.
+**Вызов:** только Task. Director — СТОП.
 
-Следуй skill `skills/carusel-upload/SKILL.md`.
+Следуй `skills/carusel-upload/SKILL.md`.
+
+Не вызывай Instagram MCP — это `carusel-publish`.

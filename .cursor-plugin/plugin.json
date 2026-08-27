@@ -2,7 +2,7 @@
   "name": "carusel",
   "displayName": "Каруселька",
   "description": "Агентская система Cursor для создания 9-слайдовых Instagram-каруселей: research, copy, design, image/video generation, QA, upload and MCP publish.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "keywords": [
     "instagram",
     "carousel",
