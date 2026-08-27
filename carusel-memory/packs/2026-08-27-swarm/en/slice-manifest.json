@@ -1,6 +1,6 @@
 {
-  "mode": "grid",
-  "source": "/tmp/carusel-run-en/carusel-memory/output/master/source-zero-gutter-clean.png",
+  "mode": "seam",
+  "source": "/tmp/kie-pack-en/carusel-memory/output/master/source.png",
   "source_size": {
     "width": 2448,
     "height": 3264
@@ -10,23 +10,49 @@
     "rows": 3,
     "order": "row-major"
   },
+  "slice_method": "excalibur_white_seams",
+  "split_meta": {
+    "requested_mode": "gutter",
+    "split_mode": "gutter_detect",
+    "v_gutters_px": [
+      {
+        "start": 809,
+        "end": 818
+      },
+      {
+        "start": 1625,
+        "end": 1635
+      }
+    ],
+    "h_gutters_px": [
+      {
+        "start": 1122,
+        "end": 1133
+      },
+      {
+        "start": 2163,
+        "end": 2174
+      }
+    ],
+    "max_center_offset_px": 39.5,
+    "max_center_offset_limit_px": 73.44
+  },
   "cell_size": {
-    "width": 816,
-    "height": 1088
+    "width": 1080,
+    "height": 1440
   },
   "cell_aspect_ratio": 0.75,
   "slide_count": 9,
-  "master_out": "/tmp/carusel-run-en/carusel-memory/output/master/master.png",
-  "bleed_crop_top": null,
+  "master_out": "/workspace/carusel-memory/packs/2026-08-27-swarm/en/master.png",
   "files": [
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-01.png",
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-02.png",
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-03.png",
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-04.png",
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-05.png",
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-06.png",
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-07.png",
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-08.png",
-    "/tmp/carusel-run-en/carusel-memory/output/slides/slide-09.png"
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-01.png",
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-02.png",
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-03.png",
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-04.png",
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-05.png",
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-06.png",
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-07.png",
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-08.png",
+    "/tmp/kie-pack-en/carusel-memory/output/slides/slide-09.png"
   ]
 }

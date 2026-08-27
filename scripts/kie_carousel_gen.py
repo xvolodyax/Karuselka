@@ -31,6 +31,8 @@ GRID_ROWS = 3
 DEFAULT_ASPECT = "3:4"
 SEAM_PREFIX = (
     "Canvas 3:4 @ 4K exact 3x3; nine 3:4 panels; thin white gutters; no bleed. "
+    "Draw two vertical and two horizontal #ffffff seams at exactly 1/3 and 2/3, "
+    "edge to edge, 6–12px, like a window pane. No white border on the outer canvas. "
     "People and animals live inside each night scene."
 )
 
@@ -64,8 +66,18 @@ def build_grid_master_prompt(prompt_data: dict[str, Any], workspace: Path) -> st
     """Full Russian prompt for single grid master."""
     base = (prompt_data.get("prompt") or "").strip()
     slice_method = str(prompt_data.get("slice_method") or "seam")
+    negative = (prompt_data.get("negative_prompt") or "").strip()
+
+    def with_negative(text: str) -> str:
+        # Kie 4K i2i 422s on ~4900-char prompts. Keep assembled prompt ≤4500.
+        if negative and negative not in text and "NEGATIVE:" not in text:
+            combined = f"{text}\n\nИзбегать: {negative}"
+            if len(combined) <= 4500:
+                text = combined
+        return _ensure_seam_language(text, slice_method)
+
     if base and ("3×3" in base or "3x3" in base.lower()):
-        return _ensure_seam_language(base, slice_method)
+        return with_negative(base)
 
     copy_by = slide_copy_map(workspace)
     brief_by = panel_brief_map(prompt_data)
@@ -94,14 +106,13 @@ def build_grid_master_prompt(prompt_data: dict[str, Any], workspace: Path) -> st
             f"Панель {i} ({role}): «{headline}». {body} Визуал: {visual}".strip()
         )
 
-    negative = (prompt_data.get("negative_prompt") or "").strip()
     if negative:
         lines.extend(["", f"Избегать: {negative}"])
 
     if base:
         lines.extend(["", "Доп. контекст:", base])
 
-    return "\n".join(line for line in lines if line)
+    return with_negative("\n".join(line for line in lines if line))
 
 
 def adapt_prompt_for_aspect(prompt: str, aspect_ratio: str) -> str:
@@ -244,6 +255,10 @@ def run_grid_3x3(
                 str(master_out.resolve()),
                 "--manifest",
                 str(manifest.resolve()),
+                "--target-width",
+                "1080",
+                "--target-height",
+                "1440",
             ],
         )
         if rc != 0:

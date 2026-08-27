@@ -63,7 +63,8 @@ def render_lang(
     if prompt.get("face_lock") != "victoria-sheet.png":
         raise SystemExit(f"{lang}: face_lock must be victoria-sheet.png")
     prompt["slice_method"] = "seam"
-    prompt["input_urls"] = [sheet_url, style_url]
+    # Excalibur host_reference: face sheet first and only. Style plate teaches stickers.
+    prompt["input_urls"] = [sheet_url]
     copy_src = pack / lang / "CAROUSEL_SLIDE_COPY.json"
     design = workspace / "carusel-memory" / "design"
     design.mkdir(parents=True, exist_ok=True)
@@ -78,7 +79,7 @@ def render_lang(
         workspace,
         task_log,
         prompt.get("resolution") or "4K",
-        [sheet_url, style_url],
+        [sheet_url],
         None,
     )
     if rc != 0:
@@ -112,9 +113,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Uploading face lock {SHEET} ...")
     sheet_url = uploader.upload_local(SHEET, upload_path="carusel-face-lock")
     print(f"sheet_url={sheet_url}")
-    print(f"Uploading style lock {STYLE} ...")
-    style_url = uploader.upload_local(STYLE, upload_path="carusel-style-lock")
-    print(f"style_url={style_url}")
+    print("Style lock not uploaded for i2i (sticker plate). Palette is in the prompt.")
 
     for lang in [x.strip() for x in args.langs.split(",") if x.strip()]:
         workspace = Path(f"/tmp/kie-pack-{lang}")
@@ -122,7 +121,7 @@ def main(argv: list[str] | None = None) -> int:
             shutil.rmtree(workspace)
         workspace.mkdir(parents=True)
         print(f"=== Kie i2i {lang} ===")
-        rc = render_lang(pack, lang, sheet_url, style_url, workspace)
+        rc = render_lang(pack, lang, sheet_url, "", workspace)
         if rc != 0:
             return rc
     print("18 slides written. Do not publish.")

@@ -18,5 +18,6 @@ A long MUST/face essay starves the model. Wrong face or platinum hair →
 
 `cover-refs/victoria.png` is **Alena**. Never upload it.
 
-Style lock (`animals-viktoria-style-lock.png`) is **palette / type only**.
-Do not copy its sticker outlines onto Victoria or animals.
+Style lock (`animals-viktoria-style-lock.png`) is **palette / type described in text**.
+Do **not** send it as an i2i input — the plate is a sticker collage and the model
+copies those outlines. Face lock is the only `input_url`.

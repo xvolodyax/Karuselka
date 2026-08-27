@@ -40,17 +40,31 @@ class SeamSliceTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             seam.detect_grid_boxes(img, split_mode="gutter")
 
+    def test_cells_exclude_white_seams(self) -> None:
+        img = _seamed_canvas()
+        boxes, meta = seam.detect_grid_boxes(img, split_mode="gutter")
+        self.assertEqual(meta["split_mode"], "gutter_detect")
+        px = img.load()
+        for box in boxes:
+            x0, y0, x1, y1 = box
+            # interior of each cell must not be the white gutter
+            cx, cy = (x0 + x1) // 2, (y0 + y1) // 2
+            self.assertLess(min(px[cx, cy][:3]), 40, msg=box)
+            # right/bottom edges of a mid cell should not sit on a white seam
+            if x1 < img.size[0]:
+                self.assertLess(min(px[x1 - 1, cy][:3]), 40, msg=box)
+
     def test_writes_nine_equal_pngs(self) -> None:
         tmp = Path(tempfile.mkdtemp(prefix="seam-"))
         src = tmp / "master.png"
         _seamed_canvas().save(src)
         out = tmp / "slides"
-        written = seam.slice_seamed(src, out, split_mode="gutter", manifest_path=tmp / "m.json")
+        written = seam.slice_seamed(
+            src, out, split_mode="gutter", manifest_path=tmp / "m.json", target_size=(108, 144)
+        )
         self.assertEqual(len(written), 9)
         sizes = {Image.open(p).size for p in written}
-        self.assertEqual(len(sizes), 1)
-        w, h = next(iter(sizes))
-        self.assertAlmostEqual(w / h, 0.75, places=2)
+        self.assertEqual(sizes, {(108, 144)})
 
 
 if __name__ == "__main__":

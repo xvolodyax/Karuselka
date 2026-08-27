@@ -23,7 +23,10 @@ WHITE_THRESHOLD = 235
 MIN_GUTTER_RUN = 2
 GUTTER_SEARCH_RADIUS = 48
 GUTTER_WHITE_FRACTION = 0.85
+# Excalibur uses 36px on a ~1152-tall 2×2 (~3%). Scale with canvas so a 4K 3×3
+# is not rejected for a 40px seam that is still on the 1/3–2/3 line.
 GUTTER_MAX_CENTER_OFFSET_PX = 36
+GUTTER_MAX_CENTER_OFFSET_FRAC = 0.03
 PANEL_ASPECT = 3 / 4
 SPLIT_MODES = ("auto", "mechanical", "gutter")
 
@@ -95,10 +98,11 @@ def _gutter_boxes(
     cols: int,
     rows: int,
 ) -> list[tuple[int, int, int, int]]:
-    xs = [0] + [b[0] for b in v_bands]
-    xe = [b[1] for b in v_bands] + [width]
-    ys = [0] + [b[0] for b in h_bands]
-    ye = [b[1] for b in h_bands] + [height]
+    # Excalibur: panel ends at gutter start, next panel starts at gutter end.
+    xs = [0] + [b[1] for b in v_bands]
+    xe = [b[0] for b in v_bands] + [width]
+    ys = [0] + [b[1] for b in h_bands]
+    ye = [b[0] for b in h_bands] + [height]
     boxes: list[tuple[int, int, int, int]] = []
     for row in range(rows):
         for col in range(cols):
@@ -156,11 +160,13 @@ def detect_grid_boxes(
             "max_center_offset_px": round(max_offset, 2),
         }
     )
-    if max_offset > GUTTER_MAX_CENTER_OFFSET_PX:
+    limit = max(GUTTER_MAX_CENTER_OFFSET_PX, min(width, height) * GUTTER_MAX_CENTER_OFFSET_FRAC)
+    meta["max_center_offset_limit_px"] = round(limit, 2)
+    if max_offset > limit:
         meta["fallback_reason"] = "gutter_too_far_from_expected"
         if mode == "gutter":
             raise SystemExit(
-                f"CROOKED CANVAS: seam offset {max_offset:.1f}px > {GUTTER_MAX_CENTER_OFFSET_PX}. "
+                f"CROOKED CANVAS: seam offset {max_offset:.1f}px > {limit:.1f}. "
                 "Rebuild the whole canvas."
             )
         return mechanical, meta
@@ -253,11 +259,16 @@ def main() -> int:
     p.add_argument("--split-mode", choices=SPLIT_MODES, default="gutter")
     p.add_argument("--master-out", "-m")
     p.add_argument("--manifest")
+    p.add_argument("--target-width", type=int, default=1080)
+    p.add_argument("--target-height", type=int, default=1440)
     args = p.parse_args()
     input_path = Path(args.input)
     if not input_path.is_file():
         print(f"ERROR: not found: {input_path}", file=sys.stderr)
         return 1
+    target = None
+    if args.target_width and args.target_height:
+        target = (args.target_width, args.target_height)
     try:
         slice_seamed(
             input_path,
@@ -267,6 +278,7 @@ def main() -> int:
             split_mode=args.split_mode,
             master_out=Path(args.master_out) if args.master_out else None,
             manifest_path=Path(args.manifest) if args.manifest else None,
+            target_size=target,
         )
     except SystemExit as exc:
         print(exc, file=sys.stderr)

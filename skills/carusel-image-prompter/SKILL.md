@@ -41,8 +41,7 @@ Fragment: `carusel-memory/fragments/image-prompter.md`
   "prompt": "Одно изображение: 9 равных панелей 3×3, каждая 3:4, стиль как референс...",
   "negative_prompt": "...",
   "input_urls": [
-    "https://HTTPS_VICTORIA_SHEET",
-    "https://HTTPS_STYLE_LOCK_PALETTE_ONLY"
+    "https://HTTPS_VICTORIA_SHEET"
   ],
   "slice_method": "seam",
   "face_lock": "victoria-sheet.png",
