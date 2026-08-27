@@ -8,6 +8,20 @@ from kie_common import KieTaskClient
 
 MODEL = "grok-imagine-video-1-5-preview"
 
+# Kie grok-imagine-video-1-5-preview rejects 3:4 / 4:5.
+# Allowed: auto, 1:1, 16:9, 9:16, 3:2, 2:3. Default auto.
+# For a single image, aspect_ratio is ignored and the video follows the source PNG.
+_GROK_ASPECT_ALLOWED = {"auto", "1:1", "16:9", "9:16", "3:2", "2:3"}
+_GROK_ASPECT_ALIASES = {"3:4": "auto", "4:5": "auto"}
+
+
+def normalize_grok_aspect_ratio(aspect_ratio: str) -> str:
+    value = (aspect_ratio or "auto").strip()
+    if value in _GROK_ASPECT_ALLOWED:
+        return value
+    return _GROK_ASPECT_ALIASES.get(value, "auto")
+
+
 DEFAULT_LOOP_PROMPT_RU = (
     "Сохрани референс-кадр один в один. "
     "Создай тонкое бесшовное зацикленное видео 5 секунд. "
@@ -36,7 +50,7 @@ class GrokVideoClient(KieTaskClient):
             "model": MODEL,
             "input": {
                 "image_urls": image_urls,
-                "aspect_ratio": aspect_ratio,
+                "aspect_ratio": normalize_grok_aspect_ratio(aspect_ratio),
                 "resolution": resolution,
                 "duration": duration,
                 "nsfw_checker": nsfw_checker,
