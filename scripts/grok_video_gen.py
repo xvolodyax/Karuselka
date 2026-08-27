@@ -106,7 +106,11 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument("--prompt", help="Override motion prompt (English)")
     p.add_argument("--duration", type=int, default=5, help="Seconds (1-15, default 5)")
-    p.add_argument("--aspect-ratio", default="3:4", help="Closest to 4:5 Instagram slide")
+    p.add_argument(
+        "--aspect-ratio",
+        default="auto",
+        help="Grok createTask enum: auto|1:1|16:9|9:16|3:2|2:3. Slides stay 3:4; client aliases 3:4/4:5 to auto",
+    )
     p.add_argument("--resolution", default="720p", choices=["480p", "720p"])
     p.add_argument(
         "--output",
