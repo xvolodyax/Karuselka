@@ -2,6 +2,14 @@
 
 Читать **Директору и всем субагентам** перед run. Fixic дополняет после инцидентов.
 
+## 0. Director сделал карусель сам (cloud)
+
+- **Симптом:** в логах часто director/copywriter/publish; researcher, designer, image-prompter редко; slice/motion/animate/guardian/upload/fixic почти нет. Слайды при этом появляются.
+- **Root cause:** cloud Task **не видит** local plugin types `carusel-*`. Старый fallback был мягким, Директор писал артефакты в родительском чате.
+- **Решение:** `shared/director-dispatch-contract.md` + `scripts/pipeline_gate.py`. Каждый worker — отдельный `Task(carusel-*)` или `Task(generalPurpose)` с `dispatch-prompt`. Нет `verify` → стоп. Не делать шаг самому.
+- **Кто:** Director
+- **Не делать:** новый рой, удаление 12 агентов, «я просто почитаю skill и напишу dossier».
+
 ## 1. Instagram MCP — только HTTPS URL
 
 - **Симптом:** `BundleValidationError` на Windows paths; `OAuthException 9004` на `file://`

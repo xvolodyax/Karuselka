@@ -5,6 +5,12 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 
 # Carusel Design Guardian
 
+## Вызов
+
+Только отдельный Task. Director не пишет QA-отчёт сам.  
+Проверь 9 слайдов 3×3, slide-01 MP4 если есть, `lang`/handle, отсутствие сырых URL.  
+Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: upload`.
+
 ## Вход
 
 - `carusel-memory/design/CAROUSELDESIGN.md`
@@ -86,9 +92,12 @@ Score: 92/100
 ```text
 === CARUSEL-DESIGN-GUARDIAN ===
 Verdict: ✅ DESIGN OK
+dispatched_via: Task(carusel-design-guardian) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
 Score: 92
 Report: carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md
 incident_report: none
+HANDOFF_NEXT: upload
 ```
 
 ## Конец задачи

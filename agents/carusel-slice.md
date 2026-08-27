@@ -6,6 +6,8 @@ readonly: false
 is_background: false
 ---
 
-**Язык:** русский.
+**Вызов:** только Task. Director — СТОП.
 
-Следуй skill `skills/carusel-slice/SKILL.md`.
+Следуй `skills/carusel-slice/SKILL.md`.
+
+9 PNG, grid 3×3. Не пиши motion prompt и не запускай Grok.

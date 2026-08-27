@@ -1,0 +1,273 @@
+#!/usr/bin/env python3
+"""Unit tests for scripts/pipeline_gate.py — no extra deps."""
+
+from __future__ import annotations
+
+import json
+import shutil
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import pipeline_gate as gate  # noqa: E402
+
+
+def write(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
+class PipelineGateTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="carusel-gate-"))
+        self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
+        self.repo = ROOT
+
+    def run_cmd(self, *argv: str) -> int:
+        return gate.main(["--workspace", str(self.tmp), "--repo-root", str(self.repo), *argv])
+
+    def test_init_requires_lang_and_writes_brief(self) -> None:
+        rc = self.run_cmd("init", "--lang", "ru", "--topic", "ТАРО СЕЙЧАС", "--run-id", "test-ru")
+        self.assertEqual(rc, 0)
+        brief = (self.tmp / "carusel-memory" / "00-brief.md").read_text(encoding="utf-8")
+        self.assertIn("lang: ru", brief)
+        self.assertIn("handle: @todaytaro_ru", brief)
+        ledger = json.loads((self.tmp / "carusel-memory" / "pipeline-ledger.json").read_text())
+        self.assertEqual(ledger["steps"]["director"]["status"], "ok")
+        self.assertEqual(ledger["handle"], "@todaytaro_ru")
+
+    def test_init_en_uses_bot_handle(self) -> None:
+        self.run_cmd("init", "--lang", "en", "--topic", "Today Tarot", "--run-id", "test-en")
+        brief = (self.tmp / "carusel-memory" / "00-brief.md").read_text(encoding="utf-8")
+        self.assertIn("lang: en", brief)
+        self.assertIn("handle: @todaytaro_bot", brief)
+        self.assertIn("Telegram bot, not an app", brief)
+
+    def test_next_after_init_is_researcher(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        # capture via ledger
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(gate.first_pending(ledger), "researcher")
+
+    def test_cannot_verify_without_dispatch(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        write(
+            self.tmp / "carusel-memory" / "research" / "carousel-research-dossier.md",
+            "# dossier\n",
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "researcher.md",
+            "=== CARUSEL-RESEARCHER ===\nincident_report: none\n",
+        )
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd("verify", "--step", "researcher")
+        self.assertIn("not dispatched", str(ctx.exception))
+
+    def test_inline_via_rejected(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd("record-dispatch", "--step", "researcher", "--via", "inline")
+        self.assertIn("illegal", str(ctx.exception))
+
+    def test_cannot_skip_researcher(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        with self.assertRaises(SystemExit):
+            self.run_cmd("skip", "--step", "researcher", "--reason", "fast")
+
+    def test_happy_researcher_then_blocks_copywriter_skip(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["researcher"]["dispatch_id"]
+        write(
+            self.tmp / "carusel-memory" / "research" / "carousel-research-dossier.md",
+            "# dossier\nHook lab\n",
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "researcher.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-RESEARCHER ===",
+                    "Статус: ✅ OK",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "incident_report: none",
+                    "HANDOFF_NEXT: copywriter",
+                    "",
+                ]
+            ),
+        )
+        self.assertEqual(self.run_cmd("verify", "--step", "researcher"), 0)
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd("verify", "--step", "copywriter")
+        self.assertIn("not dispatched", str(ctx.exception))
+
+    def test_copywriter_rejects_raw_url_and_wrong_handle(self) -> None:
+        self.run_cmd("init", "--lang", "en", "--topic", "Today Tarot")
+        self._complete_researcher()
+        self.run_cmd("record-dispatch", "--step", "copywriter", "--via", "Task(carusel-copywriter)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["copywriter"]["dispatch_id"]
+        slides = {
+            "hook_options": [{"framework": "pain", "headline": "x", "why_it_swipes": "y"}],
+            "hook_rationale": "gap",
+            "slide_count": 9,
+            "slides": [{"index": i, "role": "x", "headline": "h"} for i in range(1, 10)],
+        }
+        write(
+            self.tmp / "carusel-memory" / "design" / "CAROUSEL_SLIDE_COPY.json",
+            json.dumps(slides),
+        )
+        write(
+            self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.md",
+            "caption",
+        )
+        write(
+            self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.json",
+            json.dumps(
+                {
+                    "full_caption": "Read more https://t.me/todaytaro_bot",
+                    "mentions": ["@todaytaro_ru"],
+                }
+            ),
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "copywriter.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-COPYWRITER ===",
+                    "dispatched_via: Task(carusel-copywriter)",
+                    f"dispatch_id: {dispatch_id}",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        rc = self.run_cmd("verify", "--step", "copywriter")
+        self.assertEqual(rc, 2)
+
+    def test_copywriter_en_ok(self) -> None:
+        self.run_cmd("init", "--lang", "en", "--topic", "Today Tarot")
+        self._complete_researcher()
+        self.run_cmd("record-dispatch", "--step", "copywriter", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["copywriter"]["dispatch_id"]
+        slides = {
+            "hook_options": [{"framework": "pain", "headline": "x", "why_it_swipes": "y"}],
+            "hook_rationale": "gap",
+            "slide_count": 9,
+            "slides": [{"index": i, "role": "x", "headline": "h"} for i in range(1, 10)],
+        }
+        write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_SLIDE_COPY.json", json.dumps(slides))
+        write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.md", "caption")
+        write(
+            self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.json",
+            json.dumps(
+                {
+                    "full_caption": "Today Tarot. Link in bio. Talk to @todaytaro_bot",
+                    "mentions": ["@todaytaro_bot"],
+                    "cta": "link in bio",
+                }
+            ),
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "copywriter.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-COPYWRITER ===",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        self.assertEqual(self.run_cmd("verify", "--step", "copywriter"), 0)
+
+    def test_cannot_skip_ahead_to_publish(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd("skip", "--step", "publish", "--reason", "publish-not-requested")
+        self.assertIn("previous step", str(ctx.exception))
+
+    def test_legal_skip_publish_and_fixic_after_full_prefix(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self._force_done_until("upload")
+        self.assertEqual(
+            self.run_cmd("skip", "--step", "publish", "--reason", "publish-not-requested"),
+            0,
+        )
+        self.assertEqual(
+            self.run_cmd("skip", "--step", "fixic", "--reason", "no-open-incidents"),
+            0,
+        )
+        self.assertEqual(self.run_cmd("assert-complete"), 0)
+
+    def test_open_incident_blocks_fixic_skip(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self._force_done_until("upload")
+        self.run_cmd("skip", "--step", "publish", "--reason", "publish-not-requested")
+        write(
+            self.tmp / "carusel-memory" / "pipeline-fix-queue.md",
+            "## INC-1\nstatus: open\n",
+        )
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd("skip", "--step", "fixic", "--reason", "no-open-incidents")
+        self.assertIn("open incidents", str(ctx.exception))
+
+    def test_dispatch_prompt_contains_skill_and_nonce(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        rc = self.run_cmd("dispatch-prompt", "--step", "researcher")
+        self.assertEqual(rc, 0)
+        packet = (self.tmp / "carusel-memory" / "dispatches" / "researcher.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("You are carusel-researcher", packet)
+        self.assertIn("skills/carusel-researcher/SKILL.md", packet)
+        self.assertIn("dispatch_id:", packet)
+        self.assertIn("Do only this step", packet)
+
+    def test_wrong_plugin_task_name_rejected(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        with self.assertRaises(SystemExit):
+            self.run_cmd("record-dispatch", "--step", "slice", "--via", "Task(carusel-publish)")
+
+    def _complete_researcher(self) -> None:
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["researcher"]["dispatch_id"]
+        write(self.tmp / "carusel-memory" / "research" / "carousel-research-dossier.md", "# d\n")
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "researcher.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-RESEARCHER ===",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        self.assertEqual(self.run_cmd("verify", "--step", "researcher"), 0)
+
+    def _force_done_until(self, last: str) -> None:
+        """Mark prefix steps ok in ledger only — used to test legal skip order."""
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in gate.STEP_IDS:
+            if step_id == "director":
+                continue
+            ledger["steps"][step_id]["status"] = "ok"
+            ledger["steps"][step_id]["dispatched_via"] = f"Task({gate.PLUGIN_TASK[step_id]})"
+            if step_id == last:
+                break
+        gate.save_ledger(self.tmp, ledger)
+
+
+if __name__ == "__main__":
+    unittest.main()

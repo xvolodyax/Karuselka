@@ -5,6 +5,12 @@ description: Сборка русского промпта для Kie.ai — од
 
 # Carusel Image Prompter
 
+## Вызов
+
+Только отдельный Task. Director не пишет Kie-промпт сам.  
+Текст **на** панелях = `lang`. Инструкции модели — по-русски, цитаты copy — на языке `lang`.  
+Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: slice`.
+
 ## Роль
 
 **Единственный агент**, который пишет **финальный промпт** для **одного** изображения Kie: master **3:4 @ 4K** с **9 панелями** (сетка 3×3).
@@ -143,10 +149,13 @@ Adapt scene for: {topic from brief}
 ```text
 === CARUSEL-IMAGE-PROMPTER ===
 Статус: ✅ OK | ❌ BLOCKER
+dispatched_via: Task(carusel-image-prompter) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
 Prompt: carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
 aspect_ratio: 3:4 | resolution: 4K
 input_urls: 1 URL | BLOCKER: need HTTPS reference
 incident_report: none
+HANDOFF_NEXT: slice
 ```
 
 ## Blocker

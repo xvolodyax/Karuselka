@@ -5,6 +5,12 @@ description: Fixic — после run читает incidents, правит па�
 
 # Carusel Fixic
 
+## Вызов
+
+Только отдельный Task после run. Director не правит skills «заодно».  
+Не выкидывай агентов и не собирай новый рой. Не публикуй.  
+Fragment: `dispatched_via`, `dispatch_id`.
+
 ## Когда запускаться
 
 После успешного `carusel-publish` **или** терминального blocker, если в  
@@ -67,6 +73,8 @@ Fragment: `carusel-memory/fragments/fixic.md`
 ```text
 === CARUSEL-FIXIC ===
 Статус: fixed | needs-human | no-open-incidents
+dispatched_via: Task(carusel-fixic) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
 incidents_handled:
 - INC-...
 files_changed:

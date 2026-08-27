@@ -1,5 +1,9 @@
 # Carusel — Instagram Publish Contract (MCP)
 
+Live MCP только если `publish_requested: true` в brief и шаг вызван через Task `carusel-publish`. Директор MCP не вызывает.
+
+Caption: без сырых URL; `lang=ru` → `@todaytaro_ru`; `lang=en` → `@todaytaro_bot` (бот, не приложение). См. `shared/locale-brand-contract.md`.
+
 ## Server
 
 ```text

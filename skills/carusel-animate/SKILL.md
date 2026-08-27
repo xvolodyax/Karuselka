@@ -5,6 +5,11 @@ description: Исполнитель — Grok Video по CAROUSEL_VIDEO_PROMPT.js
 
 # Carusel Animate (исполнитель)
 
+## Вызов
+
+Только отдельный Task. Director не запускает Grok сам.  
+Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: design-guardian`.
+
 ## Роль
 
 Запускаешь **Grok Imagine Video 1.5** по готовому промпту от **carusel-motion-director**.
@@ -72,10 +77,13 @@ Default: `--max-retries 2` (итого до 3 попыток) с коротки�
 ```text
 === CARUSEL-ANIMATE ===
 Статус: ✅ OK | ❌ FAIL
+dispatched_via: Task(carusel-animate) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
 Video: carusel-memory/output/video/slide-01.mp4
 taskId: ...
 Основано на: CAROUSEL_MOTION_ANALYSIS.md
 incident_report: none
+HANDOFF_NEXT: design-guardian
 ```
 
 ## Конец задачи

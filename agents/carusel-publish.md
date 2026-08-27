@@ -1,11 +1,15 @@
 ---
 name: carusel-publish
-description: Загрузка карусели в Instagram через MCP t4528_carrusel_instagram. Director MUST delegate via Task.
+description: Instagram MCP publish. Director MUST delegate via Task. Refuse unless publish_requested true.
 model: inherit
 readonly: false
 is_background: false
 ---
 
-**Язык:** русский.
+**Вызов:** только Task. Director — СТОП.
 
-Следуй skill `skills/carusel-publish/SKILL.md`.
+Если в brief `publish_requested: false` — fragment BLOCKER, не вызывай MCP.
+
+Следуй `skills/carusel-publish/SKILL.md`.
+
+Caption без сырых URL. Handle по `lang`. `@todaytaro_bot` — бот, не приложение.

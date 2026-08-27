@@ -25,7 +25,7 @@
 
 | Зона | Компоненты | Назначение |
 | --- | --- | --- |
-| Оркестрация | `rules/`, `agents/director.md`, `skills/director-carusel/` | Управляет пайплайном и handoff между агентами |
+| Оркестрация | `rules/`, `agents/director.md`, `skills/director-carusel/`, `scripts/pipeline_gate.py` | Task-диспатч, ledger, стоп если шаг пропущен |
 | Ресерч | `agents/carusel-researcher.md`, `skills/carusel-researcher/` | Анализ темы, аудитории, конкурентов и углов подачи |
 | Текст | `agents/carusel-copywriter.md`, `skills/carusel-copywriter/` | 9 слайдов, caption, CTA и структура сторителлинга |
 | Дизайн | `agents/carusel-designer.md`, `skills/carusel-designer/`, `shared/CAROUSELDESIGN_SPEC.md` | Визуальная система, композиция, style lock |
@@ -44,10 +44,10 @@
 .
 ├── .cursor-plugin/          # metadata плагина Cursor
 ├── agents/                  # описания subagents
-├── commands/                # команды Cursor
+├── commands/                # carusel-new, carusel-publish, carusel-status
 ├── rules/                   # workspace rules
-├── skills/                  # skill-контракты агентов
-├── scripts/                 # Python utilities для Kie/Grok/slice/upload/QA
+├── skills/                  # skill-контракты 12 агентов
+├── scripts/                 # Kie/Grok/slice/upload/QA + pipeline_gate.py
 ├── shared/                  # playbooks, contracts, pitfalls
 ├── assets/cover.png         # обложка репозитория
 └── .env.example             # шаблон переменных окружения без ключей
@@ -94,6 +94,26 @@ director
   -> fixic
 ```
 
+Каждый шаг после Director — отдельный `Task`. Проверка:
+
+```bash
+python scripts/pipeline_gate.py --workspace . init --lang ru --topic "ТАРО СЕЙЧАС"
+python scripts/pipeline_gate.py --workspace . init --lang en --topic "Today Tarot"
+python scripts/pipeline_gate.py --workspace . status
+python scripts/test_pipeline_gate.py
+```
+
+| lang | Тема | Handle | Важно |
+|------|------|--------|--------|
+| ru | ТАРО СЕЙЧАС | `@todaytaro_ru` | не EN-бот |
+| en | Today Tarot | `@todaytaro_bot` | Telegram **bot**, не приложение |
+
+Instagram: без сырых URL в слайдах и caption, ссылки в шапке. 9 слайдов 3×3, первый может быть MP4.  
+`publish_requested: false` по умолчанию.
+
+Desktop: `Task(carusel-researcher)` и остальные plugin types.  
+Cloud: этих types нет — 11 отдельных `Task(generalPurpose)` с `dispatch-prompt`. Если Task нет — стоп, не писать карусель в одном чате.
+
 Рабочие артефакты по умолчанию создаются в `carusel-memory/` внутри проекта пользователя. Эта папка считается runtime-memory и не должна попадать в публичные коммиты.
 
 ## Безопасность
@@ -113,4 +133,4 @@ director
 
 ## Статус
 
-Версия `0.1.0`: рабочий public scaffold плагина с контрактами, агентами и утилитами. Репозиторий очищен от приватной памяти прогонов и поставляется как база для установки, доработки и командной работы.
+Версия `0.2.0`: те же 12 агентов. Director обязан звать их через Task; `pipeline_gate.py` останавливает прогон, если шаг пропущен или сделан в родительском чате. Cloud не видит local plugin types — fallback только `Task(generalPurpose)` на один шаг, не «сделаю сам».

@@ -82,8 +82,10 @@ incident_report: carusel-memory/pipeline-fix-queue.md#INC-YYYYMMDD-HHMM-role-slu
 После `carusel-publish` (успех) **или** терминального blocker:
 
 1. Прочитать `carusel-memory/pipeline-fix-queue.md`
-2. Если есть `status: open` за текущий run → **Task(`carusel-fixic`)**
-3. Не начинать новую карусель с open blocker-incidents без явного OK пользователя
+2. Если есть `status: open` за текущий run → **отдельный Task(`carusel-fixic`)** (cloud: `Task(generalPurpose)` + `dispatch-prompt --step fixic`)
+3. Если open incidents нет → `pipeline_gate.py skip --step fixic --reason no-open-incidents`
+4. Не начинать новую карусель с open blocker-incidents без явного OK пользователя
+5. Не чинить skills/scripts сам вместо Fixic
 
 ## Fixic
 

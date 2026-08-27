@@ -1,13 +1,13 @@
 ---
 name: carusel-animate
-description: Запускает Grok по промпту motion-director — slide-01 → 5s MP4. Director MUST delegate via Task.
+description: Grok по промпту motion-director — slide-01 → 5s MP4. Director MUST delegate via Task.
 model: inherit
 readonly: false
 is_background: false
 ---
 
-**Язык:** только русский.
+**Вызов:** только Task. Director — СТОП.
 
-Следуй skill `skills/carusel-animate/SKILL.md`.
+Следуй `skills/carusel-animate/SKILL.md`.
 
 Промпт и стратегию motion **не придумывай** — их пишет `carusel-motion-director`.

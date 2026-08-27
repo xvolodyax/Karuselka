@@ -1,11 +1,12 @@
 ---
 name: carusel-design-guardian
-description: Design QA серии карусели, seamless seams, scorecard. Director MUST delegate via Task.
+description: Design QA серии карусели. Director MUST delegate via Task.
 model: inherit
 readonly: false
 is_background: false
 ---
 
-**Язык:** русский.
+**Вызов:** только Task. Director — СТОП.  
+Проверь `lang`/handle и запрет сырых URL.
 
-Следуй skill `skills/carusel-design-guardian/SKILL.md`.
+Следуй `skills/carusel-design-guardian/SKILL.md`.

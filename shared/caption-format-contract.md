@@ -1,6 +1,6 @@
 # Carusel — Caption Format Contract
 
-> **Статус:** placeholder — пользователь пришлёт финальный формат подписи.
+> Locale: `shared/locale-brand-contract.md`. `lang=ru|en` обязателен.
 
 ## Instagram limits (MCP)
 
@@ -23,14 +23,18 @@
 - эмодзи умеренно (0–3)
 
 ### CTA
-- одно действие: подписка / сохрани / ссылка в bio
+- одно действие
+- RU: «ссылка в шапке» / сохрани / подпишись
+- EN: «link in bio» / save / follow
+- **без сырых URL** (`https://`, `t.me/`, `instagram.com/`)
 
 ### Hashtags
 - блок в конце, 5–15 релевантных
 - mix: broad + niche
 
 ### Mentions
-- @аккаунты по необходимости
+- `lang=ru` → `@todaytaro_ru`
+- `lang=en` → `@todaytaro_bot` (Telegram **bot**, не app)
 ```
 
 ## Выход copywriter
@@ -39,16 +43,19 @@
 
 ```json
 {
+  "lang": "ru",
   "hook": "...",
   "body": "...",
-  "cta": "...",
+  "cta": "ссылка в шапке",
   "hashtags": ["#..."],
-  "mentions": ["@..."],
+  "mentions": ["@todaytaro_ru"],
   "full_caption": "...",
   "char_count": 0,
   "hashtag_count": 0
 }
 ```
+
+`pipeline_gate.py verify --step copywriter` падает, если в caption есть сырой URL или нет handle для `lang`.
 
 ## Phase 2 — пользовательский формат
 

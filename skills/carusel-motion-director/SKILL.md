@@ -5,6 +5,11 @@ description: Режиссёр motion для slide-01 — визуальный а
 
 # Carusel Motion Director
 
+## Вызов
+
+Только отдельный Task. Director не пишет video prompt сам.  
+Не запускай Grok. Fragment: `dispatched_via`, `dispatch_id`, `HANDOFF_NEXT: animate`.
+
 ## Роль
 
 Ты — **режиссёр оживления** первого слайда карусели.
@@ -109,11 +114,14 @@ Fragment: `carusel-memory/fragments/motion-director.md`
 ```text
 === CARUSEL-MOTION-DIRECTOR ===
 Статус: ✅ OK | ❌ BLOCKER
+dispatched_via: Task(carusel-motion-director) | Task(generalPurpose)
+dispatch_id: <from pipeline_gate>
 Анализ: carusel-memory/design/CAROUSEL_MOTION_ANALYSIS.md
 Промпт: carusel-memory/design/CAROUSEL_VIDEO_PROMPT.json
 Тип: person|product|...
 Речь: да/нет
 incident_report: none
+HANDOFF_NEXT: animate
 ```
 
 ## Конец задачи
