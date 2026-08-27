@@ -58,7 +58,7 @@ GEMINI_MODEL = "gemini-3.7-flash-high"
 GEMINI_WRITERS = frozenset({"gemini", "gemini-3.7-flash-high"})
 PIXEL_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".mp4", ".mov"}
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
-WRITTEN_BY_RE = re.compile(r"^written_by:\s*(\S+)\s*$", re.M | re.I)
+WRITTEN_BY_RE = re.compile(r"written_by[\s:*]*([A-Za-z0-9][A-Za-z0-9._-]*)", re.I)
 RESEARCH_MARKERS = (
     "pain",
     "боль",
