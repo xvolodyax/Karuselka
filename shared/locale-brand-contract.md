@@ -11,27 +11,27 @@
 | lang | Handle | Что это | Чем это не является |
 |------|--------|---------|---------------------|
 | `ru` | `@todaytaro_ru` | Публичный бренд-аккаунт русской линии **ТАРО СЕЙЧАС** | Не EN-бот, не приложение |
-| `en` | `@todaytaro_bot` | Telegram-бот английской линии **Today Tarot** | Не мобильное приложение, не Instagram app, не `@todaytaro_ru` |
+| `en` | `@todaytaro_bot` | Имя EN Instagram-аккаунта **Today Tarot** | Не приз за комментарий, не `@todaytaro_ru` |
 
-Не путать **бот** и **приложение**:
+Не путать **handle** и **продукт**:
 
-- `@todaytaro_bot` — Telegram bot. В EN-копирайте: bot / Telegram bot.
-- Запрещено мешать bot и app в одном CTA.
-- Запрещено: «личный аудиоразбор». Если продукт — приложение, писать только «аудиоразбор».
-- Instagram — канал публикации. Продукт в CTA — один на карусель.
+- `@todaytaro_bot` — имя EN Instagram-аккаунта. Это **не** приз за комментарий.
+- Продукт CTA = **аудиоразбор в приложении** (`app_audio`). Не 3 бесплатных расклада в боте.
+- Запрещено: «личный аудиоразбор». Писать «аудиоразбор» / «audio reading».
+- Instagram — канал. Ссылки — в профиле / шапке. Сырых URL нет.
+- Контракт: `shared/cta-app-audio-contract.md`.
 
 ## Продукт и триггер (один пост = один продукт)
 
 В caption **одно** слово-триггер. Команда отвечает в Direct.
 
-| lang | Пример триггера | Продукт (выбрать один) |
-|------|-----------------|------------------------|
-| ru | `ПАУЗА` | 3 бесплатных расклада в боте **или** аудиоразбор в приложении |
-| en | `PAUSE` | то же; **NO Academy** на EN |
+| lang | Триггер | Продукт | Рамка темы |
+|------|---------|---------|------------|
+| ru | новое слово каждый день, по теме | `app_audio` — аудиоразбор в приложении | Суть – Тень – Вектор |
+| en | своё слово, не копия RU | то же; **NO Academy** | Essence–Shadow–Vector |
 
 Не писать сырые ссылки. Не делать CTA «подпишись + сохрани + перейди по ссылке».
-
-Вторично можно «ссылка в шапке» / «link in bio», если триггер уже есть.
+Обязательно «ссылка в шапке» / «links are in the profile».
 Сырые URL запрещены всегда:
 
 - `https://`, `http://`
@@ -71,8 +71,8 @@ publish_requested: false
 visual_family: animals_viktoria_collage
 cta_style: comment_trigger
 trigger_word: ПАУЗА
-product: bot_three_spreads
-bot_vs_app: pick ONE product; do not mix bot and app
+product: app_audio
+cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор)
 ```
 
 EN-пример:
@@ -85,8 +85,8 @@ publish_requested: false
 visual_family: animals_viktoria_collage
 cta_style: comment_trigger
 trigger_word: PAUSE
-product: bot_three_spreads
-bot_vs_app: pick ONE product; do not mix bot and app
+product: app_audio
+cta_offer: comment trigger → Direct audio reading in the APP (Essence–Shadow–Vector)
 ```
 
 `publish_requested: true` только после явной просьбы опубликовать live-пост.

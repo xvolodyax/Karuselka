@@ -16,6 +16,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import cta_canon
+
 STEP_IDS = (
     "director",
     "researcher",
@@ -323,7 +325,9 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     "face_lock: victoria-sheet.png",
                     "slice_method: seam",
                     "cta_style: comment_trigger",
-                    "bot_vs_app: @todaytaro_bot is a Telegram bot, not an app; pick ONE product",
+                    "product: app_audio",
+                    "cta_offer: comment trigger → Direct audio reading in the APP",
+                    "bot_vs_app: sell the APP audio reading, not 3 free bot spreads",
                     "slides: 9",
                     "grid: 3x3",
                     "slide_01: mp4_allowed",
@@ -598,14 +602,23 @@ def verify_copy_locale(workspace: Path, lang: str) -> list[str]:
         mentions = caption.get("mentions") or []
         if handle not in mentions and handle not in blob:
             errors.append(f"{caption_rel} must mention {handle}")
-        if lang == "en" and re.search(r"\bapp\b", blob, re.I) and "bot" not in blob.lower():
-            errors.append(f"{caption_rel} looks like it confuses the Telegram bot with an app")
         if lang == "en" and re.search(r"academy", blob, re.I):
             errors.append(f"{caption_rel} Academy is forbidden on EN")
-        if "личный аудиоразбор" in blob:
-            errors.append(f"{caption_rel} forbidden phrase личный аудиоразбор")
         if caption.get("trigger_word") in {None, ""} and data.get("trigger_word") in {None, ""}:
             errors.append(f"{caption_rel} missing trigger_word (comment CTA)")
+        slide9 = next((s for s in slides if int(s.get("index") or 0) == 9), {})
+        slide9_blob = " ".join(
+            str(slide9.get(k) or "") for k in ("headline", "body", "cta", "notes")
+        )
+        errors.extend(
+            cta_canon.check_cta_offer(
+                lang=lang,
+                product=caption.get("product") or data.get("product"),
+                caption_blob=blob,
+                slide9_blob=slide9_blob,
+                prefix=caption_rel,
+            )
+        )
     return errors
 
 
@@ -788,10 +801,20 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "- Stamp written_by: gemini on CAROUSEL_SLIDE_COPY.json, CAROUSEL_CAPTION.json, "
             "CAROUSEL_CAPTION.md, and the fragment. Director must not write these files."
         )
+        extra_hard.append(
+            "- CTA canon: product=app_audio. Comment a topic-tied trigger (new each day, "
+            "RU ≠ EN). Direct = audio reading in the APP (RU Суть–Тень–Вектор / "
+            "EN Essence–Shadow–Vector). FAIL if you sell 3 free bot spreads. "
+            "No raw URLs; links in the profile. Read shared/cta-app-audio-contract.md."
+        )
     if step_id == "researcher":
         extra_hard.append(
             "- Write a research brief (topic, client pain, one meaning, why this hook). "
             "Not a caption. Stamp written_by: gemini on the dossier and fragment."
+        )
+        extra_hard.append(
+            "- Product is app audio reading, not 3 free bot spreads. Recommend a "
+            "topic-tied comment trigger (different RU vs EN)."
         )
     if step_id == "image-prompter":
         extra_hard.append(
@@ -800,6 +823,17 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "no face essay. Do not ask for sticker/cutout/white halo on people or animals."
         )
         extra_hard.append("- Read shared/carousel-seam-slice-contract.md and shared/victoria-identity-lock.md.")
+        extra_hard.append(
+            "- Panel 9 verbatim text = app audio CTA from copy (аудиоразбор / audio reading). "
+            "Never paint 3 free bot spreads as the comment prize."
+        )
+    if step_id == "design-guardian":
+        extra_hard.append(
+            "- CTA test: slide 9 + caption sell the app audio reading "
+            "(Суть–Тень–Вектор / Essence–Shadow–Vector). FAIL if they sell "
+            "3 free bot readings / три бесплатных расклада. "
+            "Read shared/cta-app-audio-contract.md."
+        )
     if step_id == "slice":
         extra_hard.append(
             "- Cut with scripts/seam_slice_grid.py --split-mode gutter. "
@@ -834,8 +868,10 @@ HARD RULES
   dispatch_id: {state['dispatch_id']}
   incident_report: none
   HANDOFF_NEXT: {spec.get('handoff_next')}
-- Instagram: no raw URLs; CTA is one comment trigger word; team answers in Direct.
-- @todaytaro_bot is a Telegram bot, not an app.
+- Instagram: no raw URLs; say links are in the profile. CTA is one comment trigger word.
+- Product is app_audio: Direct = audio reading in the APP (not 3 free bot spreads).
+- @todaytaro_bot is the EN Instagram handle name, not the comment prize.
+- Read shared/cta-app-audio-contract.md.
 - Do not publish to Instagram unless this role is carusel-publish AND brief.publish_requested is true.
 - If previous artifacts are missing: fragment ❌ BLOCKER and stop.
 
@@ -943,24 +979,41 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
         "hook_is_scene": True,
         "visual_family": family,
         "trigger_word": trigger,
-        "product": "bot_three_spreads",
+        "product": "app_audio",
         "written_by": "gemini",
         "slide_count": 9,
         "grid": {"cols": 3, "rows": 3},
         "slides": [
             {"index": i, "role": "stub", "headline": f"dry-run slide {i:02d}"}
-            for i in range(1, 10)
+            for i in range(1, 9)
+        ]
+        + [
+            {
+                "index": 9,
+                "role": "cta",
+                "headline": f"Напиши {trigger}" if lang == "ru" else f"Comment {trigger}",
+                "body": (
+                    "Аудиоразбор в приложении. Суть – Тень – Вектор."
+                    if lang == "ru"
+                    else "Audio reading in the app. Essence–Shadow–Vector."
+                ),
+            }
         ],
     }
     write_json(mem / "design" / "CAROUSEL_SLIDE_COPY.json", copy)
+    offer = (
+        "В Direct пришлём аудиоразбор в приложении: Суть – Тень – Вектор. Ссылки в профиле."
+        if lang == "ru"
+        else "We'll DM an audio reading in the app: Essence–Shadow–Vector. Links are in the profile."
+    )
     write_json(
         mem / "design" / "CAROUSEL_CAPTION.json",
         {
-            "full_caption": f"Dry-run caption. Comment {trigger}. Talk to {handle}",
+            "full_caption": f"Dry-run caption. Comment {trigger}. {offer} {handle}",
             "mentions": [handle],
-            "cta": f"Comment the word {trigger}",
+            "cta": f"Comment the word {trigger}. {offer}",
             "trigger_word": trigger,
-            "product": "bot_three_spreads",
+            "product": "app_audio",
             "has_url": False,
             "written_by": "gemini",
         },

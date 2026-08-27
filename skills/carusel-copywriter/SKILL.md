@@ -19,6 +19,7 @@ See `shared/swarm-spawn-contract.md`.
 - `shared/taro-seichas-canon.md` **обязательно**
 - `shared/locale-brand-contract.md`
 - `shared/caption-format-contract.md`
+- `shared/cta-app-audio-contract.md` **обязательно**
 
 ## Выход
 
@@ -52,10 +53,14 @@ Fragment: `carusel-memory/fragments/copywriter.md`
    - 04 mechanism — чем пауза является
    - 05–07 save — минимум **два** с реальной рамкой / вопросами / «говорит vs слышишь»
    - 08 recap / decision rule
-   - 09 CTA — одно слово-триггер, один продукт
+   - 09 CTA — слово-триггер + аудиоразбор в приложении (Суть–Тень–Вектор / Essence–Shadow–Vector)
 4. Каждая value-панель = **одна идея**. Пустой вайб без урока = FAIL.
 5. Панели save: чеклист, 3 вопроса, «говорит/слышишь», 3 состояния — не цитаты настроения.
-6. CTA = comment trigger (`ПАУЗА` / `PAUSE`) + один продукт (бот **или** приложение). Не мешать. Не «личный аудиоразбор». EN: без Academy.
+6. CTA = comment trigger (новое слово дня, своё RU/EN) + **`app_audio`**.
+   В Direct — аудиоразбор / audio reading **в приложении** по этой теме.
+   RU: Суть – Тень – Вектор. EN: Essence–Shadow–Vector. Ссылки в профиле.
+   **FAIL**, если продаёшь бот (`три бесплатных расклада` / `3 free readings`).
+   Не «личный аудиоразбор». EN: без Academy. `shared/cta-app-audio-contract.md`.
 7. Простой разговорный язык. Не целиться в 13–17. Не пугать одиночеством.
 
 ## CAROUSEL_SLIDE_COPY.json — 9 slides
@@ -69,7 +74,7 @@ Fragment: `carusel-memory/fragments/copywriter.md`
   "hook_is_scene": true,
   "visual_family": "animals_viktoria_collage",
   "trigger_word": "ПАУЗА",
-  "product": "bot_three_spreads",
+  "product": "app_audio",
   "slide_count": 9,
   "grid": { "cols": 3, "rows": 3 },
   "slides": [

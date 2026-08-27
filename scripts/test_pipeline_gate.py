@@ -45,7 +45,8 @@ class PipelineGateTest(unittest.TestCase):
         brief = (self.tmp / "carusel-memory" / "00-brief.md").read_text(encoding="utf-8")
         self.assertIn("lang: en", brief)
         self.assertIn("handle: @todaytaro_bot", brief)
-        self.assertIn("Telegram bot, not an app", brief)
+        self.assertIn("product: app_audio", brief)
+        self.assertIn("APP audio reading", brief)
 
     def test_next_after_init_is_researcher(self) -> None:
         self.run_cmd("init", "--lang", "ru")
@@ -151,6 +152,61 @@ class PipelineGateTest(unittest.TestCase):
         rc = self.run_cmd("verify", "--step", "copywriter")
         self.assertEqual(rc, 2)
 
+    def test_copywriter_rejects_bot_prize(self) -> None:
+        self.run_cmd("init", "--lang", "en", "--topic", "Today Tarot")
+        self._complete_researcher()
+        self.run_cmd("record-dispatch", "--step", "copywriter", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["copywriter"]["dispatch_id"]
+        slides = {
+            "hook_options": [{"framework": "pain", "headline": "x", "why_it_swipes": "y"}],
+            "hook_rationale": "gap",
+            "slide_count": 9,
+            "written_by": "gemini",
+            "product": "bot_three_spreads",
+            "slides": [{"index": i, "role": "x", "headline": "h"} for i in range(1, 9)]
+            + [
+                {
+                    "index": 9,
+                    "role": "cta",
+                    "headline": "Comment PAUSE",
+                    "body": "We'll DM you 3 free spreads in our bot.",
+                }
+            ],
+        }
+        write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_SLIDE_COPY.json", json.dumps(slides))
+        write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.md", "written_by: gemini\n")
+        write(
+            self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.json",
+            json.dumps(
+                {
+                    "full_caption": (
+                        "Comment PAUSE @todaytaro_bot. We'll DM you 3 free readings "
+                        "in the bot. Links are in the profile."
+                    ),
+                    "mentions": ["@todaytaro_bot"],
+                    "cta": "Comment PAUSE for 3 free spreads in our bot",
+                    "trigger_word": "PAUSE",
+                    "product": "bot_three_spreads",
+                    "written_by": "gemini",
+                }
+            ),
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "copywriter.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-COPYWRITER ===",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "written_by: gemini",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        self.assertEqual(self.run_cmd("verify", "--step", "copywriter"), 2)
+
     def test_copywriter_en_ok(self) -> None:
         self.run_cmd("init", "--lang", "en", "--topic", "Today Tarot")
         self._complete_researcher()
@@ -161,7 +217,16 @@ class PipelineGateTest(unittest.TestCase):
             "hook_options": [{"framework": "pain", "headline": "x", "why_it_swipes": "y"}],
             "hook_rationale": "gap",
             "slide_count": 9,
-            "slides": [{"index": i, "role": "x", "headline": "h"} for i in range(1, 10)],
+            "product": "app_audio",
+            "slides": [{"index": i, "role": "x", "headline": "h"} for i in range(1, 9)]
+            + [
+                {
+                    "index": 9,
+                    "role": "cta",
+                    "headline": "Comment PAUSE",
+                    "body": "Audio reading in the app. Essence–Shadow–Vector.",
+                }
+            ],
         }
         slides["written_by"] = "gemini"
         write(self.tmp / "carusel-memory" / "design" / "CAROUSEL_SLIDE_COPY.json", json.dumps(slides))
@@ -170,11 +235,18 @@ class PipelineGateTest(unittest.TestCase):
             self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.json",
             json.dumps(
                 {
-                    "full_caption": "Today Tarot. Comment PAUSE. Talk to @todaytaro_bot",
+                    "full_caption": (
+                        "Today Tarot. Comment PAUSE @todaytaro_bot. "
+                        "We'll DM an audio reading in the app: Essence–Shadow–Vector. "
+                        "Links are in the profile."
+                    ),
                     "mentions": ["@todaytaro_bot"],
-                    "cta": "Comment the word PAUSE",
+                    "cta": (
+                        "Comment PAUSE. We'll DM an audio reading in the app: "
+                        "Essence–Shadow–Vector. Links are in the profile."
+                    ),
                     "trigger_word": "PAUSE",
-                    "product": "bot_three_spreads",
+                    "product": "app_audio",
                     "written_by": "gemini",
                 }
             ),
@@ -360,6 +432,9 @@ class GeminiAndDryRunTest(unittest.TestCase):
             (self.tmp / "carusel-memory" / "design" / "CAROUSEL_CAPTION.json").read_text()
         )
         self.assertEqual(caption["trigger_word"], "ПАУЗА")
+        self.assertEqual(caption["product"], "app_audio")
+        self.assertIn("аудиоразбор", caption["full_caption"])
+        self.assertNotIn("3 free", caption["full_caption"].lower())
         self.assertEqual(self.run_cmd("assert-complete"), 0)
 
     def test_copywriter_dispatch_prompt_owns_caption(self) -> None:
@@ -374,6 +449,9 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertIn("Caption is THIS step", packet)
         self.assertIn("required_model: gemini-3.7-flash-high", packet)
         self.assertIn("written_by: gemini", packet)
+        self.assertIn("cta-app-audio-contract.md", packet)
+        self.assertIn("app_audio", packet)
+        self.assertNotIn("Telegram bot, not an app", packet)
 
     def _complete_researcher(self) -> None:
         self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")

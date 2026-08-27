@@ -300,6 +300,127 @@ class CanonGateTest(unittest.TestCase):
         self.assertIn("animals_viktoria_collage", errors)
         self.assertIn("hook_is_scene", errors)
 
+    def test_bot_prize_fails(self) -> None:
+        pack = self.tmp / "pack"
+        write(
+            pack / "PACK.json",
+            {
+                "pack_id": "2026-08-28-cta",
+                "visual_family": "animals_viktoria_collage",
+                "face_lock": "victoria-sheet.png",
+                "langs": ["en"],
+                "trigger_words": {"en": "PAUSE"},
+            },
+        )
+        slides = {
+            "slide_count": 9,
+            "visual_family": "animals_viktoria_collage",
+            "hook_is_scene": True,
+            "trigger_word": "PAUSE",
+            "product": "bot_three_spreads",
+            "slides": [
+                {
+                    "index": 1,
+                    "role": "hook",
+                    "hook_type": "scene",
+                    "headline": "He watched your stories.",
+                    "body": "Third week. No text.",
+                    "victoria": True,
+                    "animal": "cat",
+                    "animal_job": "sense",
+                },
+                {
+                    "index": 2,
+                    "role": "pain",
+                    "headline": "You already decided",
+                    "body": "If he wanted to, he would text.",
+                    "animal": "dog",
+                    "animal_job": "wait",
+                },
+                {
+                    "index": 3,
+                    "role": "mistake",
+                    "headline": "The cards don't judge.",
+                    "body": "You hear a verdict.",
+                    "has_framework": True,
+                },
+                {
+                    "index": 4,
+                    "role": "mechanism",
+                    "headline": "A pause is a fork",
+                    "body": "Three paths, not one answer.",
+                    "has_framework": True,
+                },
+                {
+                    "index": 5,
+                    "role": "save",
+                    "headline": "Three questions",
+                    "body": "Does he answer?",
+                    "has_framework": True,
+                },
+                {
+                    "index": 6,
+                    "role": "save",
+                    "headline": "What you hear",
+                    "body": "You hear the worst.",
+                    "animal": "owl",
+                    "animal_job": "night",
+                    "has_framework": True,
+                },
+                {
+                    "index": 7,
+                    "role": "save",
+                    "headline": "Three states",
+                    "body": "Stuck / afraid / gone",
+                    "has_framework": True,
+                },
+                {
+                    "index": 8,
+                    "role": "recap",
+                    "headline": "Decision rule",
+                    "body": "Pause is not over.",
+                    "has_framework": True,
+                },
+                {
+                    "index": 9,
+                    "role": "cta",
+                    "headline": "Comment PAUSE",
+                    "body": "We'll DM you 3 free spreads in our bot.",
+                    "victoria": True,
+                },
+            ],
+        }
+        write(pack / "en" / "CAROUSEL_SLIDE_COPY.json", slides)
+        write(
+            pack / "en" / "CAROUSEL_CAPTION.json",
+            {
+                "full_caption": (
+                    "Comment PAUSE @todaytaro_bot. We'll DM you 3 free readings "
+                    "in the bot."
+                ),
+                "trigger_word": "PAUSE",
+                "product": "bot_three_spreads",
+                "mentions": ["@todaytaro_bot"],
+            },
+        )
+        write(
+            pack / "en" / "CAROUSEL_IMAGE_PROMPT.json",
+            {
+                "visual_family": "animals_viktoria_collage",
+                "face_lock": "victoria-sheet.png",
+                "slice_method": "seam",
+                "input_urls": ["https://example.com/victoria-sheet.png"],
+                "input_files_in_repo": ["carusel-memory/references/victoria-sheet.png"],
+                "prompt": "Thin white gutters at 1/3 and 2/3. Face lock victoria-sheet.png.",
+                "panel_visual_brief": [{"slide": i, "visual_only": "scene"} for i in range(1, 10)],
+            },
+        )
+        for i in range(1, 10):
+            write(pack / "en" / "slides" / f"slide-{i:02d}.png", "x")
+        errors = " ".join(gate.check_pack(pack))
+        self.assertIn("comment prize cannot be the bot", errors)
+        self.assertIn("3 free readings", errors)
+
 
 if __name__ == "__main__":
     unittest.main()

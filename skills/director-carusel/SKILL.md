@@ -55,6 +55,7 @@ Professional quality:
 - `shared/locale-brand-contract.md`
 - `shared/carousel-professional-playbook.md`
 - `shared/carousel-prompt-library.md`
+- `shared/cta-app-audio-contract.md` — caption + slide 9 = app audio reading, not the bot
 
 Daily run не может сменить visual family и уйти в empty pretty slides.
 Publish / Composio / Instagram — не вызывать, пока brief `publish_requested: false` (Hall после review).
@@ -79,7 +80,7 @@ Publish / Composio / Instagram — не вызывать, пока brief `publis
 
 Перед переходом:
 
-- после copywriter: `CAROUSEL_SLIDE_COPY.json` содержит `hook_options`, `hook_rationale`, `slide_count: 9`;
+- после copywriter: `CAROUSEL_SLIDE_COPY.json` содержит `hook_options`, `hook_rationale`, `slide_count: 9`, `product: app_audio`; caption не продаёт бот;
 - после designer: есть `preserve`, `change`, `do_not_borrow` в design artifacts / prompt_hints;
 - после image-prompter: `CAROUSEL_IMAGE_PROMPT.json` не содержит `PLACEHOLDER`, содержит 9 `panel_visual_brief`, `reference_contract`, `typography_rules`;
 - после guardian: проверены slide-01 hook, slide-09 CTA, slides 7-8 save cards.

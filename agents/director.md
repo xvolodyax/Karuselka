@@ -17,6 +17,7 @@ is_background: false
 - `skills/director-carusel/SKILL.md`
 - `AGENT-PIPELINE.md`
 - `shared/taro-seichas-canon.md` — always-on ТАРО СЕЙЧАС
+- `shared/cta-app-audio-contract.md` — last slide + caption sell app audio, not the bot
 - `shared/director-dispatch-contract.md` + `shared/swarm-spawn-contract.md` + `scripts/pipeline_gate.py`
 
 ## Handoff

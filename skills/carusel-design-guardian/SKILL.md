@@ -46,7 +46,7 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 3. **Grid test:** 3×3, row-major, all cells self-contained.
 4. **Typography test:** exact intended key text, no random labels, no duplicate text.
 5. **Save test:** slides 7-8 should work as standalone checklist/recap.
-6. **CTA test:** slide 9 has one clear action.
+6. **CTA test:** slide 9 sells the **app audio reading** (Суть–Тень–Вектор / Essence–Shadow–Vector), one comment trigger, no bot prize. See `shared/cta-app-audio-contract.md`.
 7. **Motion test:** if video exists, text remains stable and loop has no hard cut.
 8. **Bleed test:** inspect top 40px of slides 04–09 for orphan text from row above. If P0, request master regeneration with stronger safe-area; do not approve per-slide crop as publish asset.
 9. **Video source test:** frame 0 of `slide-01.mp4` must match `slide-01.png` (MAE ≤35):

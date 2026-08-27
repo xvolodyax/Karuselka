@@ -9,6 +9,7 @@ PASS only if:
   (e) no platinum
   (f) no empty vibe-only slides
   (g) prompts do not copy sheet clothes (white cami + jeans) or ivory blazer
+  (i) CTA = app_audio (not 3 free bot readings as the comment prize)
 """
 
 from __future__ import annotations
@@ -19,6 +20,8 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
+
+import cta_canon
 
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 PLATINUM_RE = re.compile(r"platinum|white-?blonde|платин|белокуры", re.I)
@@ -36,7 +39,7 @@ FRAMEWORK_RE = re.compile(
     re.I,
 )
 
-ALLOWED_PRODUCTS = {"bot_three_spreads", "app_audio"}
+ALLOWED_PRODUCTS = {cta_canon.REQUIRED_PRODUCT}
 TRIGGERS = {"ru": "ПАУЗА", "en": "PAUSE"}
 HANDLES = {"ru": "@todaytaro_ru", "en": "@todaytaro_bot"}
 FACE_LOCK = "victoria-sheet.png"
@@ -186,17 +189,23 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
         elif expected and trigger != expected:
             errors.append(f"{lang}: trigger_word {trigger!r} != {expected!r}")
         product = caption.get("product") or data.get("product")
-        if product not in ALLOWED_PRODUCTS:
-            errors.append(f"{lang}: product must be one of {sorted(ALLOWED_PRODUCTS)}")
         if lang == "en" and re.search(r"academy", blob, re.I):
             errors.append("en: Academy is forbidden")
-        if "личный аудиоразбор" in blob:
-            errors.append(f"{lang}: forbidden phrase личный аудиоразбор")
         handle = HANDLES[lang]
         if handle not in blob:
             errors.append(f"{lang}: caption must mention {handle}")
-        if product == "bot_three_spreads" and re.search(r"\bapp\b|приложен", blob, re.I):
-            errors.append(f"{lang}: mixed bot vs app in caption")
+        slide9 = next((s for s in slides if s.get("index") == 9), {})
+        if not cta_canon.is_legacy_bot_pack(manifest):
+            errors.extend(
+                cta_canon.check_cta_offer(
+                    lang=lang,
+                    product=product,
+                    caption_blob=blob,
+                    slide9_blob=slide_text(slide9),
+                )
+            )
+        elif product not in {cta_canon.REQUIRED_PRODUCT, "bot_three_spreads"}:
+            errors.append(f"{lang}: product must be app_audio or legacy bot_three_spreads")
     else:
         errors.append(f"{lang}: missing CAROUSEL_CAPTION.json")
 
@@ -285,7 +294,8 @@ Verdict: PASS
 - (f) no empty vibe-only slides
 - (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
 - (h) seam slice (Excalibur white gutters), no sticker halo
-- caption: one trigger word, no raw URLs, one product, no Academy on EN
+- (i) CTA = app_audio (аудиоразбор in the APP); bot as comment prize = FAIL
+- caption: one trigger word, no raw URLs, links in profile, no Academy on EN
 """
     report.write_text(body, encoding="utf-8")
     print("✅ CANON GATE PASS")
