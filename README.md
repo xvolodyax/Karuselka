@@ -94,7 +94,16 @@ director
   -> fixic
 ```
 
-Рабочие артефакты по умолчанию создаются в `carusel-memory/` внутри проекта пользователя. Эта папка считается runtime-memory и не должна попадать в публичные коммиты.
+Рабочие артефакты по умолчанию создаются в `carusel-memory/` внутри проекта пользователя.
+
+Always-on бренд ТАРО СЕЙЧАС / Today Tarot **коммитится**:
+
+- `shared/taro-seichas-canon.md` — meaning + visual lock (daily 11:10)
+- `shared/animals-viktoria-collage.md` — family
+- `carusel-memory/canon/`, `carusel-memory/references/`, `carusel-memory/packs/`
+- Gate: `python scripts/canon_gate.py --pack carusel-memory/packs/<date>`
+
+Остальной runtime (`output/`, fragments прогона) в git не кладём.
 
 ## Безопасность
 

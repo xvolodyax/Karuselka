@@ -8,7 +8,13 @@
 *.pfx
 
 # Runtime memory and generated carousel assets
-carusel-memory/
+carusel-memory/*
+!carusel-memory/canon/
+!carusel-memory/canon/**
+!carusel-memory/references/
+!carusel-memory/references/**
+!carusel-memory/packs/
+!carusel-memory/packs/**
 output/
 fragments/
 research/
@@ -21,6 +27,19 @@ design/
 *.jpeg
 *.webp
 !assets/cover.png
+
+# Always-on brand lock + dated packs that Hall reviews
+!carusel-memory/canon/
+!carusel-memory/canon/**
+!carusel-memory/references/
+!carusel-memory/references/**
+!carusel-memory/packs/
+!carusel-memory/packs/**
+!carusel-memory/packs/**/*.png
+!carusel-memory/packs/**/*.md
+!carusel-memory/packs/**/*.json
+!carusel-memory/references/**/*.png
+!carusel-memory/references/**/*.md
 
 # Python
 __pycache__/

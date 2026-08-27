@@ -15,16 +15,19 @@ Use this before writing research, copy, design, image prompts, motion prompts, o
 
 ## 9-Panel Story Arc
 
+For ТАРО СЕЙЧАС daily carousels use the teaching arc in `shared/taro-seichas-canon.md`.
+Hook is a SCENE, not a mechanic title. Visual family is `animals_viktoria_collage`.
+
 ```text
-01 hook / pattern interrupt / motion-friendly
-02 problem / why it matters
-03 hidden cost / common mistake
-04 mechanism / framework
-05 proof / numbers / credibility
-06 flow / step-by-step
-07 save card A / checklist
-08 save card B / decision rule / recap
-09 CTA / save + follow + one-liner payoff
+01 hook SCENE / pattern interrupt / motion-friendly
+02 pain / why this scene hurts
+03 mistake / how the client hears a verdict
+04 mechanism / what the pause actually is
+05 save framework A / questions
+06 save framework B / says vs hears
+07 save framework C / states or checklist
+08 recap / decision rule
+09 CTA / one comment trigger + one product
 ```
 
 Row-major reading order:

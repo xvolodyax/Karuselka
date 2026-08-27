@@ -1,6 +1,6 @@
 {
-  "registry_version": "1",
-  "total_families": 36,
+  "registry_version": "2",
+  "total_families": 37,
   "description": "Allowed carousel_family slugs for CAROUSEL_SERIES_CONCEPT.json. Forked from AURA blog-cover registry + carousel-specific families.",
   "carousel_specific_note": "Families seamless_panorama, slide_numbered_series, swipe_reveal_text are optimized for 6-slide Instagram feed carousels.",
   "categories": [
@@ -17,6 +17,7 @@
       "id": "collage_stickers",
       "label_ru": "Коллаж и стикеры",
       "families": [
+        { "slug": "animals_viktoria_collage", "label_ru": "Виктория + животные (канон ТАРО СЕЙЧАС)", "best_for": ["tarot", "relationships", "daily_carousel", "brand_lock"] },
         { "slug": "brand_collage", "label_ru": "Фирменный коллаж", "best_for": ["edtech", "playful_brand", "mascot"] },
         { "slug": "sticker_scrapbook", "label_ru": "Стикер-скрапбук", "best_for": ["youth", "diy", "creative"] },
         { "slug": "geometric_blocks", "label_ru": "Геометрические блоки", "best_for": ["tech", "structured"] },
@@ -99,6 +100,7 @@
     "seamless_panorama",
     "slide_numbered_series",
     "swipe_reveal_text",
+    "animals_viktoria_collage",
     "brand_collage",
     "sticker_scrapbook",
     "geometric_blocks",

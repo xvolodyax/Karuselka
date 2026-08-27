@@ -46,17 +46,26 @@ description: Директор Carusel — intake, orchestration, handoff. Use wh
 | `carusel-memory/fragments/` | отчёты субагентов + `incident_report` |
 | `shared/agent-pipeline-pitfalls.md` | устойчивые уроки |
 
-Контракты: `shared/pipeline-incident-fix-contract.md`, `shared/subagent-end-of-task-contract.md`
+Контракты: `shared/pipeline-incident-fix-contract.md`, `shared/subagent-end-of-task-contract.md`, `shared/director-dispatch-contract.md`, `shared/swarm-spawn-contract.md`
 
 Professional quality:
 
+- `shared/taro-seichas-canon.md` — always-on brand lock (daily 11:10)
+- `shared/animals-viktoria-collage.md`
+- `shared/locale-brand-contract.md`
 - `shared/carousel-professional-playbook.md`
 - `shared/carousel-prompt-library.md`
+- `shared/cta-app-audio-contract.md` — caption + slide 9 = app audio reading, not the bot
+
+Daily run не может сменить visual family и уйти в empty pretty slides.
+Publish / Composio / Instagram — не вызывать, пока brief `publish_requested: false` (Hall после review).
 
 ## Цепочка Task
 
-1. carusel-researcher
-2. carusel-copywriter
+Каждый worker — отдельный **Task**. Cloud: `Task(generalPurpose)` на один шаг (`pipeline_gate.py dispatch-prompt`). Не писать артефакты в родительском чате.
+
+1. carusel-researcher — **`gemini-3.7-flash-high`**. Артефакт без `written_by: gemini` = FAIL.
+2. carusel-copywriter — **`gemini-3.7-flash-high`** (slides **и** caption). Без `written_by: gemini` = FAIL. Не писать слайды самому.
 3. carusel-designer
 4. **carusel-image-prompter** — промпт для Kie
 5. carusel-slice
@@ -64,14 +73,14 @@ Professional quality:
 7. carusel-animate — Grok
 8. carusel-design-guardian
 9. **carusel-upload** — HTTPS
-10. carusel-publish
-11. **carusel-fixic** — если в `pipeline-fix-queue.md` есть `status: open` (после publish или терминального blocker)
+10. carusel-publish — **SKIP** пока `publish_requested: false`
+11. **carusel-fixic** — SKIP если нет `status: open` в `pipeline-fix-queue.md`
 
 Перед **Task** на шаг N+1 проверь fragment шага N: должна быть строка `incident_report`.
 
 Перед переходом:
 
-- после copywriter: `CAROUSEL_SLIDE_COPY.json` содержит `hook_options`, `hook_rationale`, `slide_count: 9`;
+- после copywriter: `CAROUSEL_SLIDE_COPY.json` содержит `hook_options`, `hook_rationale`, `slide_count: 9`, `product: app_audio`; caption не продаёт бот;
 - после designer: есть `preserve`, `change`, `do_not_borrow` в design artifacts / prompt_hints;
 - после image-prompter: `CAROUSEL_IMAGE_PROMPT.json` не содержит `PLACEHOLDER`, содержит 9 `panel_visual_brief`, `reference_contract`, `typography_rules`;
 - после guardian: проверены slide-01 hook, slide-09 CTA, slides 7-8 save cards.

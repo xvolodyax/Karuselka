@@ -1,0 +1,30 @@
+# Swarm dry-run — 11 worker records, zero pixels, written_by: gemini
+# Command:
+#   python3 scripts/pipeline_gate.py --workspace /tmp/carusel-dry-run dry-run --lang ru --topic "ТАРО СЕЙЧАС" --force
+# Date: 2026-08-27
+# Result: EXIT 0, 0 PNG. Researcher/copywriter/caption stamped written_by: gemini.
+
+=== DRY-RUN 11 WORKER RECORDS ===
+workspace: /tmp/carusel-dry-run
+pixels: none
+publish: skipped (publish-not-requested)
+fixic: skipped (no-open-incidents)
+researcher+copywriter+caption model: gemini-3.7-flash-high
+written_by: gemini on dossier + CAROUSEL_SLIDE_COPY.json + CAROUSEL_CAPTION.json + CAROUSEL_CAPTION.md + fragments
+- director           ok         via=parent
+- researcher         ok         via=Task(generalPurpose) model=gemini-3.7-flash-high
+- copywriter         ok         via=Task(generalPurpose) model=gemini-3.7-flash-high
+- designer           ok         via=Task(generalPurpose)
+- image-prompter     ok         via=Task(generalPurpose)
+- slice              ok         via=Task(generalPurpose)
+- motion-director    ok         via=Task(generalPurpose)
+- animate            ok         via=Task(generalPurpose)
+- design-guardian    ok         via=Task(generalPurpose)
+- upload             ok         via=Task(generalPurpose)
+- publish            skipped    via=skip:publish-not-requested
+- fixic              skipped    via=skip:no-open-incidents
+next=done
+✅ PIPELINE COMPLETE (all 12 steps ok or legally skipped)
+
+# No victoria-sheet.png on this VM — no Kie proof pack this run.
+# Face lock stays: victoria-sheet.png only. Alena forbidden.

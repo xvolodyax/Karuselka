@@ -32,11 +32,12 @@ python scripts/kie_run_prompt.py \
   --prompt-json carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
 ```
 
-Внутри: `kie_carousel_gen.py` -> Kie `3:4` @ `4K` -> `remove_grid_gutters.py`
--> `slice_grid.py --cols 3 --rows 3` -> `clean_slide_edges.py` -> `grid_gutter_qa.py`.
+Внутри: `kie_carousel_gen.py` -> Kie `3:4` @ `4K` (thin white gutters) ->
+`seam_slice_grid.py --split-mode gutter`.
 
-Это canonical no-frame pipeline для всех новых прогонов. Не обходить его ручным `slice_grid.py`,
-если цель — publish-ready slides без белых рамок.
+Это canonical Excalibur seam-slice pipeline. Если швы кривые или отсутствуют —
+exit 2 `CROOKED CANVAS`: пересобрать **весь** master, не патчить одну ячейку.
+Не использовать `remove_grid_gutters.py` как основной путь.
 
 `3:4` — основной формат, не fallback. Grid 3×3 даёт 9 одинаковых панелей `3:4`.
 Если Kie возвращает повторный `400 Internal Error` на валидный `3:4 @ 4K` i2i payload,
@@ -49,9 +50,7 @@ python scripts/kie_run_prompt.py \
   "aspect_ratio_requested": "3:4",
   "aspect_ratio": "3:4",
   "resolution": "4K",
-  "gutter_cleanup": { "enabled": true, "status": "ok" },
-  "edge_cleanup": { "enabled": true, "status": "ok" },
-  "gutter_qa": { "enabled": true, "status": "ok" },
+  "slice_method": "seam",
   "slice_status": "ok"
 }
 ```
@@ -73,25 +72,18 @@ slide-01 = верхний левый → motion + video.
 - manifest: `grid.cols=3`, `grid.rows=3`
 - все 9 PNG имеют одинаковый размер и одинаковый aspect ratio
 - не делать post-slice crop отдельных файлов
-- `remove-grid-gutters-report.json` есть и `total_changed` зафиксирован
-- `clean-slide-edges-report.json` есть, размер всех slide остаётся неизменным
-- `grid-gutter-qa-clean.json` со `status: ok`
+- `slice-manifest.json` с `slice_method: excalibur_white_seams` и `split_meta.split_mode: gutter_detect`
+- все 9 PNG одинакового размера
+- если `seam_slice_grid.py` exit 2 — BLOCKER, regen master
 - если был Kie 400 на длинном prompt: fragment должен указать `prompt_compacted`, `prompt_char_count`, taskId retry
 
-## White gutters / edge artifacts (automatic)
+## White seams (Excalibur method)
 
-Known pitfall: даже при zero-gutter prompt Kie может нарисовать 1-3px светлые
-hairline artifacts на будущих линиях реза или внешних краях отдельных PNG.
+Prompt asks for **thin white gutters** on the 1/3 and 2/3 lines. Code cuts ON
+those seams (`seam_slice_grid.py --split-mode gutter`). Subjects must not have
+a sticker / die-cut halo — that was the old zero-gutter bug.
 
-Recovery is automatic and geometry-safe:
-
-1. `remove_grid_gutters.py` чистит near-white pixels только на точных cut-lines
-   1/3 и 2/3 master. No crop, no resize.
-2. `slice_grid.py` режет строго равные ячейки.
-3. `clean_slide_edges.py` копирует внутренний фон на внешний edge strip 3px.
-   No crop, no resize; все PNG остаются одного размера.
-4. `grid_gutter_qa.py` проверяет internal cut-lines и edge strips. FAIL = BLOCKER,
-   не publish.
+If a seam is missing or crooked → rebuild the whole canvas. Never patch one cell.
 
 ## Kie 400 / prompt complexity
 
@@ -136,4 +128,4 @@ incident_report: none
 
 `shared/subagent-end-of-task-contract.md`
 
-Контракт: `shared/carousel-grid-design.md`
+Контракт: `shared/carousel-grid-design.md`, `shared/carousel-seam-slice-contract.md`.

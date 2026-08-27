@@ -5,6 +5,12 @@ description: Research темы Instagram-карусели, конкуренты,
 
 # Carusel Researcher
 
+**Model:** `gemini-3.7-flash-high`.
+Spawn: `Task(carusel-researcher)` or cloud `Task(generalPurpose, model=gemini-3.7-flash-high)`.
+Write a **research brief** (topic, client pain, one meaning, why this hook) — not a caption.
+Stamp `written_by: gemini` on the dossier and fragment.
+See `shared/swarm-spawn-contract.md`. Director does not write the dossier.
+
 ## Вход
 
 - shared/carousel-prompt-library.md
@@ -12,6 +18,7 @@ description: Research темы Instagram-карусели, конкуренты,
 - `carusel-memory/00-brief.md`
 - `.cursor/carusel-handoff.md`
 - `shared/carousel-professional-playbook.md`
+- `shared/cta-app-audio-contract.md` — продукт = аудиоразбор в приложении, не бот
 
 ## Выход
 
@@ -34,7 +41,8 @@ Fragment: `carusel-memory/fragments/researcher.md`
 
 - `Hook lab`: 5-7 hooks с framework (`pain`, `contrarian`, `mistake`, `mechanism`, `specific result`) и оценкой information gap.
 - `Save value`: почему эту карусель будут сохранять; какие панели должны быть screenshot-worthy.
-- `9-panel arc`: тезис для каждой панели 01-09.
+- `9-panel arc`: тезис для каждой панели 01-09. Панель 09 = comment trigger + app audio reading.
+- `CTA`: одно слово-триггер по теме (разное RU/EN). Продукт `app_audio`. Не 3 бесплатных расклада в боте.
 - `Design translation notes`: что из референса preserve/change/do-not-borrow.
 - `Prompt risks`: что модель может исказить (текст, logos, grid count, style drift).
 

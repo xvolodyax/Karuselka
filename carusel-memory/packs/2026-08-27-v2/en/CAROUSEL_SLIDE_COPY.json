@@ -1,0 +1,138 @@
+{
+  "lang": "en",
+  "topic": "Pause or over?",
+  "visual_family": "animals_viktoria_collage",
+  "hook_is_scene": true,
+  "trigger_word": "PAUSE",
+  "product": "bot_three_spreads",
+  "hair_lock": "warm honey/wheat blonde with darker roots",
+  "hook_options": [
+    {
+      "framework": "scene",
+      "headline": "He watches your stories. Third week.",
+      "why_it_swipes": "A scene, not a mechanic title."
+    },
+    {
+      "framework": "pain",
+      "headline": "You already decided for him",
+      "why_it_swipes": "Pain, but not the opening scene."
+    },
+    {
+      "framework": "contrarian",
+      "headline": "A pause is not the end. It is a fork.",
+      "why_it_swipes": "Mechanism too early."
+    },
+    {
+      "framework": "mistake",
+      "headline": "The cards don't judge. You do.",
+      "why_it_swipes": "Strong, not a 2-second scene."
+    },
+    {
+      "framework": "mechanism",
+      "headline": "What a pause actually does",
+      "why_it_swipes": "Mechanic title. Banned on slide 1."
+    }
+  ],
+  "hook_rationale": "Same live topic as 27.08 EN post, rewritten as a scene plus a teaching arc.",
+  "slide_count": 9,
+  "grid": { "cols": 3, "rows": 3 },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "hook_type": "scene",
+      "headline": "He watches your stories.",
+      "body": "Third week. No message.",
+      "script": "Pause or over?",
+      "victoria": true,
+      "animal": "cat",
+      "animal_job": "you sense it: something is off even though 'nothing happened'",
+      "notes": "animate; readable under 2 sec"
+    },
+    {
+      "index": 2,
+      "role": "pain",
+      "headline": "You already decided for him",
+      "body": "\"If he wanted to, he would text.\"",
+      "notes": "Pain of the scene, not vibe."
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "headline": "The cards don't judge. You do.",
+      "body": "Says: pause. You hear: it's over.",
+      "has_framework": true,
+      "animal": "dog",
+      "animal_job": "loyalty to the unanswered question: waiting on post",
+      "notes": "says vs hears"
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "headline": "A pause is not an answer",
+      "body": "It is a fork: he is stuck / you wait with no date / it is warm, but no step.",
+      "has_framework": true,
+      "notes": "what the pause actually is"
+    },
+    {
+      "index": 5,
+      "role": "save_questions",
+      "has_framework": true,
+      "headline": "Three questions instead of guessing",
+      "lines": [
+        "Does he reply if you write?",
+        "Does the wait have a date?",
+        "Do you feel calm or empty?"
+      ],
+      "body": "1) Does he reply if you write? 2) Does the wait have a date? 3) Do you feel calm or empty?",
+      "notes": "save framework"
+    },
+    {
+      "index": 6,
+      "role": "save_says_hears",
+      "has_framework": true,
+      "headline": "What the card actually says",
+      "body": "Says: no decision yet. You hear: he fell out of love. Not a verdict. A process.",
+      "animal": "owl",
+      "animal_job": "night thoughts spin the worst version",
+      "notes": "depth like old slide-04"
+    },
+    {
+      "index": 7,
+      "role": "save_states",
+      "has_framework": true,
+      "headline": "Three states of a pause",
+      "lines": [
+        "Waiting for words",
+        "Afraid to move",
+        "Already gone — didn't say"
+      ],
+      "body": "Waiting for words / afraid to move / already gone, didn't say.",
+      "notes": "save framework"
+    },
+    {
+      "index": 8,
+      "role": "recap_rule",
+      "has_framework": true,
+      "headline": "How to tell pause from over",
+      "body": "Micro-contact plus fear of a step = pause. Views and zero on a direct question = exit without words.",
+      "notes": "decision rule"
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "headline": "Comment PAUSE",
+      "body": "3 free spreads in the bot. We reply in Direct.",
+      "cta": "PAUSE",
+      "slogan": "Clarity now",
+      "victoria": true,
+      "notes": "one trigger, one product, no URL, no Academy, no signature"
+    }
+  ],
+  "save_value": [
+    "slide-05 three questions",
+    "slide-06 says vs hears",
+    "slide-07 three states",
+    "slide-08 decision rule"
+  ]
+}

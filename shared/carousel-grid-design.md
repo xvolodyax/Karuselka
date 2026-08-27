@@ -27,23 +27,22 @@ slide-07  slide-08  slide-09
 
 В отличие от `seamless_panorama` (6480×1350), каждая панель — **отдельная композиция** в сетке. Общий только style lock (палитра, типографика, бренд).
 
-## Zero-gutter slicing
+## Seam slice (Excalibur)
 
-Master **не должен** содержать видимые белые разделители, whitespace, borders или outer frame.
-Границы 3×3 — только воображаемые линии реза на 1/3 и 2/3 ширины/высоты.
-Фон каждой ячейки должен доходить до края full-bleed, а панели должны соприкасаться
-пиксель-в-пиксель.
+Master **asks for** thin white gutters on the 1/3 and 2/3 lines. Code cuts ON
+those seams. Copied from taro-excalibur `excalibur_blog_cover_quad_split.py`.
 
 Canonical pipeline для новых прогонов:
 
 ```text
-Kie master -> remove_grid_gutters.py -> strict slice_grid.py -> clean_slide_edges.py -> grid_gutter_qa.py
+Kie master (thin white gutters; no bleed) -> seam_slice_grid.py --split-mode gutter
 ```
 
-`remove_grid_gutters.py` и `clean_slide_edges.py` не делают crop/resize. Они заменяют
-только near-white pixels на точных cut-lines или outer edge strips, чтобы сохранить
-строгую геометрию. Если `grid_gutter_qa.py` после этого не `status: ok`, это BLOCKER
-на regenerate, не publish.
+If a seam is missing or crooked (`CROOKED CANVAS`, exit 2) → rebuild the whole
+canvas. Never patch one cell. Do not prompt zero-gutter / sticker cutouts —
+that draws a white halo around people and animals.
+
+Контракт: `shared/carousel-seam-slice-contract.md`.
 
 ## Kie generation
 
@@ -52,7 +51,9 @@ Kie master -> remove_grid_gutters.py -> strict slice_grid.py -> clean_slide_edge
   "generation_mode": "grid_3x3",
   "aspect_ratio": "3:4",
   "resolution": "4K",
-  "grid": { "cols": 3, "rows": 3 }
+  "grid": { "cols": 3, "rows": 3 },
+  "slice_method": "seam",
+  "face_lock": "victoria-sheet.png"
 }
 ```
 

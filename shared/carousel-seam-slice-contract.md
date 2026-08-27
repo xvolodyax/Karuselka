@@ -1,0 +1,30 @@
+# Carusel seam slice — copied from taro-excalibur
+
+Excalibur BLOG generates **one** canvas with **thin white gutters**, then
+`excalibur_blog_cover_quad_split.py` cuts **on those seams**.
+
+Karuselka uses the same method for a **3×3** Instagram grid.
+
+## Do
+
+1. One Kie i2i job → one master `3:4 @ 4K`.
+2. Prompt the model: exact 3×3, **thin white gutters** on the 1/3 and 2/3 lines, no bleed across cells.
+3. Face lock is the **first** `input_url`: `victoria-sheet.png`. Short identity line. No face essay.
+4. Code-cut with `scripts/seam_slice_grid.py` (`--split-mode gutter`).
+5. If a seam is missing or crooked → **rebuild the whole canvas**. Never patch one cell.
+
+## Do not
+
+- Zero-gutter “cells touch pixel-to-pixel” prompts (the model then draws **sticker outlines** on people/animals).
+- `remove_grid_gutters.py` as the primary path (that scrubs cut-lines; it does not invent seams).
+- White halo / die-cut / “вырезка” around Victoria or animals.
+- Alena (`cover-refs/victoria.png`). Platinum / white-blonde hair.
+- Copy the sheet tank+jeans onto slides.
+
+## Pipeline
+
+```text
+Kie master (white seams) → seam_slice_grid.py → 9 sharp rectangles
+```
+
+If `seam_slice_grid.py` exits 2 (`CROOKED CANVAS`), regenerate the master.

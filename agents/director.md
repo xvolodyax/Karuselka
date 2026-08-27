@@ -16,6 +16,9 @@ is_background: false
 - `rules/carusel-orchestrator.mdc`
 - `skills/director-carusel/SKILL.md`
 - `AGENT-PIPELINE.md`
+- `shared/taro-seichas-canon.md` — always-on ТАРО СЕЙЧАС
+- `shared/cta-app-audio-contract.md` — last slide + caption sell app audio, not the bot
+- `shared/director-dispatch-contract.md` + `shared/swarm-spawn-contract.md` + `scripts/pipeline_gate.py`
 
 ## Handoff
 
@@ -33,8 +36,8 @@ Memory: `{PROJECT_ROOT}/carusel-memory/` (включая `pipeline-fix-queue.md`
 
 ## Цепочка
 
-1. **Task**(`carusel-researcher`)
-2. **Task**(`carusel-copywriter`)
+1. **Task**(`carusel-researcher`, model=`gemini-3.7-flash-high`)
+2. **Task**(`carusel-copywriter`, model=`gemini-3.7-flash-high`) — slides + caption
 3. **Task**(`carusel-designer`)
 4. **Task**(`carusel-image-prompter`)
 5. **Task**(`carusel-slice`)
@@ -42,14 +45,14 @@ Memory: `{PROJECT_ROOT}/carusel-memory/` (включая `pipeline-fix-queue.md`
 7. **Task**(`carusel-animate`)
 8. **Task**(`carusel-design-guardian`)
 9. При OK → **Task**(`carusel-upload`)
-10. **Task**(`carusel-publish`)
-11. Если в `pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`)
+10. **Task**(`carusel-publish`) только если `publish_requested: true`. Иначе skip.
+11. Если в `pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`). Иначе skip.
 
-Не пиши сам research, copy, design, prompts, slice, motion, animate, QA, upload, publish, fixic.
+Не пиши сам research, copy, caption, design, prompts, slice, motion, animate, QA, upload, publish, fixic.
 
 ## Cloud Task fallback
 
-Если `Task(carusel-*)` недоступен — **Task**(`generalPurpose`) с полным промптом из `agents/carusel-*.md` + skill.
+Если `Task(carusel-*)` недоступен — **Task**(`generalPurpose`) **на один шаг** с полным промптом из `pipeline_gate.py dispatch-prompt`. researcher/copywriter: `model=gemini-3.7-flash-high`.
 
 Если Task вообще недоступен:
 

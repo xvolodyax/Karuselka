@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "description": "Canonical 12-agent Carusel chain. Director orchestrates only. Workers must be separate Task calls.",
+  "chain": [
+    {
+      "id": "director",
+      "role": "director",
+      "task_name": "director",
+      "skill": "skills/director-carusel/SKILL.md",
+      "agent": "agents/director.md",
+      "required_artifacts": [
+        "carusel-memory/00-brief.md",
+        "carusel-memory/pipeline-ledger.json"
+      ],
+      "fragment": "carusel-memory/fragments/director.md",
+      "may_run_in_parent": true,
+      "handoff_next": "researcher",
+      "skip_allowed": false
+    },
+    {
+      "id": "researcher",
+      "role": "carusel-researcher",
+      "task_name": "carusel-researcher",
+      "model": "gemini-3.7-flash-high",
+      "skill": "skills/carusel-researcher/SKILL.md",
+      "agent": "agents/carusel-researcher.md",
+      "required_artifacts": [
+        "carusel-memory/research/carousel-research-dossier.md"
+      ],
+      "fragment": "carusel-memory/fragments/researcher.md",
+      "may_run_in_parent": false,
+      "handoff_next": "copywriter",
+      "skip_allowed": false
+    },
+    {
+      "id": "copywriter",
+      "role": "carusel-copywriter",
+      "task_name": "carusel-copywriter",
+      "model": "gemini-3.7-flash-high",
+      "skill": "skills/carusel-copywriter/SKILL.md",
+      "agent": "agents/carusel-copywriter.md",
+      "required_artifacts": [
+        "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+        "carusel-memory/design/CAROUSEL_CAPTION.json",
+        "carusel-memory/design/CAROUSEL_CAPTION.md"
+      ],
+      "fragment": "carusel-memory/fragments/copywriter.md",
+      "may_run_in_parent": false,
+      "handoff_next": "designer",
+      "skip_allowed": false
+    },
+    {
+      "id": "designer",
+      "role": "carusel-designer",
+      "task_name": "carusel-designer",
+      "skill": "skills/carusel-designer/SKILL.md",
+      "agent": "agents/carusel-designer.md",
+      "required_artifacts": [
+        "carusel-memory/design/CAROUSELDESIGN.md",
+        "carusel-memory/design/CAROUSEL_SERIES_CONCEPT.json",
+        "carusel-memory/design/CAROUSEL_SOURCE_DECOMPOSITION.json",
+        "carusel-memory/design/CAROUSEL_SLIDE_BLUEPRINTS.json"
+      ],
+      "fragment": "carusel-memory/fragments/designer.md",
+      "may_run_in_parent": false,
+      "handoff_next": "image-prompter",
+      "skip_allowed": false
+    },
+    {
+      "id": "image-prompter",
+      "role": "carusel-image-prompter",
+      "task_name": "carusel-image-prompter",
+      "skill": "skills/carusel-image-prompter/SKILL.md",
+      "agent": "agents/carusel-image-prompter.md",
+      "required_artifacts": [
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json",
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md"
+      ],
+      "fragment": "carusel-memory/fragments/image-prompter.md",
+      "may_run_in_parent": false,
+      "handoff_next": "slice",
+      "skip_allowed": false
+    },
+    {
+      "id": "slice",
+      "role": "carusel-slice",
+      "task_name": "carusel-slice",
+      "skill": "skills/carusel-slice/SKILL.md",
+      "agent": "agents/carusel-slice.md",
+      "required_artifacts": [
+        "carusel-memory/output/slides/slide-01.png",
+        "carusel-memory/output/slides/slide-02.png",
+        "carusel-memory/output/slides/slide-03.png",
+        "carusel-memory/output/slides/slide-04.png",
+        "carusel-memory/output/slides/slide-05.png",
+        "carusel-memory/output/slides/slide-06.png",
+        "carusel-memory/output/slides/slide-07.png",
+        "carusel-memory/output/slides/slide-08.png",
+        "carusel-memory/output/slides/slide-09.png",
+        "carusel-memory/output/slice-manifest.json"
+      ],
+      "fragment": "carusel-memory/fragments/slice.md",
+      "may_run_in_parent": false,
+      "handoff_next": "motion-director",
+      "skip_allowed": false
+    },
+    {
+      "id": "motion-director",
+      "role": "carusel-motion-director",
+      "task_name": "carusel-motion-director",
+      "skill": "skills/carusel-motion-director/SKILL.md",
+      "agent": "agents/carusel-motion-director.md",
+      "required_artifacts": [
+        "carusel-memory/design/CAROUSEL_MOTION_ANALYSIS.md",
+        "carusel-memory/design/CAROUSEL_VIDEO_PROMPT.json"
+      ],
+      "fragment": "carusel-memory/fragments/motion-director.md",
+      "may_run_in_parent": false,
+      "handoff_next": "animate",
+      "skip_allowed": false
+    },
+    {
+      "id": "animate",
+      "role": "carusel-animate",
+      "task_name": "carusel-animate",
+      "skill": "skills/carusel-animate/SKILL.md",
+      "agent": "agents/carusel-animate.md",
+      "required_artifacts": [
+        "carusel-memory/output/video/slide-01.mp4"
+      ],
+      "fragment": "carusel-memory/fragments/animate.md",
+      "may_run_in_parent": false,
+      "handoff_next": "design-guardian",
+      "skip_allowed": false
+    },
+    {
+      "id": "design-guardian",
+      "role": "carusel-design-guardian",
+      "task_name": "carusel-design-guardian",
+      "skill": "skills/carusel-design-guardian/SKILL.md",
+      "agent": "agents/carusel-design-guardian.md",
+      "required_artifacts": [
+        "carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md"
+      ],
+      "fragment": "carusel-memory/fragments/design-guardian.md",
+      "may_run_in_parent": false,
+      "handoff_next": "upload",
+      "skip_allowed": false
+    },
+    {
+      "id": "upload",
+      "role": "carusel-upload",
+      "task_name": "carusel-upload",
+      "skill": "skills/carusel-upload/SKILL.md",
+      "agent": "agents/carusel-upload.md",
+      "required_artifacts": [
+        "carusel-memory/output/publish-urls.json"
+      ],
+      "fragment": "carusel-memory/fragments/upload.md",
+      "may_run_in_parent": false,
+      "handoff_next": "publish",
+      "skip_allowed": false
+    },
+    {
+      "id": "publish",
+      "role": "carusel-publish",
+      "task_name": "carusel-publish",
+      "skill": "skills/carusel-publish/SKILL.md",
+      "agent": "agents/carusel-publish.md",
+      "required_artifacts": [
+        "carusel-memory/output/publish-log.md"
+      ],
+      "fragment": "carusel-memory/fragments/publish.md",
+      "may_run_in_parent": false,
+      "handoff_next": "fixic",
+      "skip_allowed": true,
+      "skip_reason_required": "publish-not-requested"
+    },
+    {
+      "id": "fixic",
+      "role": "carusel-fixic",
+      "task_name": "carusel-fixic",
+      "skill": "skills/carusel-fixic/SKILL.md",
+      "agent": "agents/carusel-fixic.md",
+      "required_artifacts": [],
+      "fragment": "carusel-memory/fragments/fixic.md",
+      "may_run_in_parent": false,
+      "handoff_next": null,
+      "skip_allowed": true,
+      "skip_reason_required": "no-open-incidents"
+    }
+  ]
+}

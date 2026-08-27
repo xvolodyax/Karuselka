@@ -11,8 +11,8 @@ flowchart TD
     Motion --> Anim[animate Grok 5s]
     Anim --> QA[design-guardian]
     QA -->|OK| Upload[upload 9 URLs]
-    Upload --> Pub[publish MCP]
-    Pub --> Fixic[fixic]
+    Upload --> SkipPub[publish SKIP default]
+    SkipPub --> Fixic[fixic skip unless incidents]
     Fixic --> Done([Готово])
 ```
 
@@ -38,4 +38,16 @@ flowchart TD
 | 10 | carusel-publish | video + 8 images |
 | 11 | carusel-fixic | incidents |
 
-Документация: `shared/carousel-grid-design.md`
+Документация: `shared/carousel-grid-design.md`, `shared/carousel-seam-slice-contract.md`, `shared/victoria-identity-lock.md`, `shared/cta-app-audio-contract.md`.
+Нарезка: **seam slice** (thin white gutters → code-cut). Face lock: `victoria-sheet.png` as `input_urls[0]`.
+CTA: last slide + caption sell **app audio reading** (`app_audio`), not 3 free bot spreads.
+
+Оркестрация: `shared/swarm-spawn-contract.md`. Director только оркестрирует.
+**Весь человеческий текст = Gemini** (`written_by: gemini` на dossier, 9 слайдах, caption).
+researcher + copywriter spawn: `Task(generalPurpose, model=gemini-3.7-flash-high)` на cloud.
+Opus/Sonnet/Composer как автор текста = gate FAIL.
+publish по умолчанию skip. Сухой прогон без PNG:
+
+`python scripts/pipeline_gate.py --workspace /tmp/carusel-dry-run dry-run --lang ru --force`
+
+Пустые красивые посты 27.08: Director пропустил researcher+copywriter. Не повторять.

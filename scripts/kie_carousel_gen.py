@@ -20,6 +20,7 @@ from kie_common import find_env_file
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 SLICE_GRID = SCRIPT_DIR / "slice_grid.py"
+SEAM_SLICE = SCRIPT_DIR / "seam_slice_grid.py"
 REMOVE_GRID_GUTTERS = SCRIPT_DIR / "remove_grid_gutters.py"
 CLEAN_SLIDE_EDGES = SCRIPT_DIR / "clean_slide_edges.py"
 GRID_GUTTER_QA = SCRIPT_DIR / "grid_gutter_qa.py"
@@ -28,6 +29,12 @@ SLIDE_COUNT = 9
 GRID_COLS = 3
 GRID_ROWS = 3
 DEFAULT_ASPECT = "3:4"
+SEAM_PREFIX = (
+    "Canvas 3:4 @ 4K exact 3x3; nine 3:4 panels; thin white gutters; no bleed. "
+    "Draw two vertical and two horizontal #ffffff seams at exactly 1/3 and 2/3, "
+    "edge to edge, 6–12px, like a window pane. No white border on the outer canvas. "
+    "People and animals live inside each night scene."
+)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -46,11 +53,31 @@ def panel_brief_map(prompt_data: dict[str, Any]) -> dict[int, dict[str, Any]]:
     return {int(b["slide"]): b for b in (prompt_data.get("panel_visual_brief") or []) if "slide" in b}
 
 
+def _ensure_seam_language(text: str, slice_method: str) -> str:
+    if slice_method != "seam":
+        return text
+    lowered = text.lower()
+    if "thin white gutter" in lowered:
+        return text
+    return f"{SEAM_PREFIX}\n{text}"
+
+
 def build_grid_master_prompt(prompt_data: dict[str, Any], workspace: Path) -> str:
     """Full Russian prompt for single grid master."""
     base = (prompt_data.get("prompt") or "").strip()
-    if base and "3×3" in base or "3x3" in base.lower():
-        return base
+    slice_method = str(prompt_data.get("slice_method") or "seam")
+    negative = (prompt_data.get("negative_prompt") or "").strip()
+
+    def with_negative(text: str) -> str:
+        # Kie 4K i2i 422s on ~4900-char prompts. Keep assembled prompt ≤4500.
+        if negative and negative not in text and "NEGATIVE:" not in text:
+            combined = f"{text}\n\nИзбегать: {negative}"
+            if len(combined) <= 4500:
+                text = combined
+        return _ensure_seam_language(text, slice_method)
+
+    if base and ("3×3" in base or "3x3" in base.lower()):
+        return with_negative(base)
 
     copy_by = slide_copy_map(workspace)
     brief_by = panel_brief_map(prompt_data)
@@ -60,9 +87,9 @@ def build_grid_master_prompt(prompt_data: dict[str, Any], workspace: Path) -> st
     lines = [
         "Одно изображение — превью-сетка Instagram-карусели: ровно 9 равных панелей в сетке 3 колонки x 3 ряда.",
         "Каждая панель — вертикальный формат 3:4 (как отдельный слайд). НЕ горизонтальная полоса. НЕ 2×3.",
-        "Весь текст держать внутри safe-area: минимум 10–12% от воображаемых линий реза и краёв ячейки.",
-        "Zero-gutter grid: не рисовать видимые разделители, белые рамки, whitespace или outer frame; ячейки соприкасаются пиксель-в-пиксель.",
-        "Фон и цветовые поля должны доходить до краёв каждой ячейки full-bleed; линии реза только воображаемые.",
+        "Весь текст держать внутри safe-area: минимум 10–12% от швов и краёв ячейки.",
+        "Canvas exact 3x3; thin white gutters on the 1/3 and 2/3 lines; no bleed. Code cuts on those seams.",
+        "People and animals live inside each scene. No outer white frame around the whole canvas.",
         f"Палитра: {palette}." if palette else "",
         "",
         "Порядок панелей (слева направо, сверху вниз):",
@@ -79,14 +106,13 @@ def build_grid_master_prompt(prompt_data: dict[str, Any], workspace: Path) -> st
             f"Панель {i} ({role}): «{headline}». {body} Визуал: {visual}".strip()
         )
 
-    negative = (prompt_data.get("negative_prompt") or "").strip()
     if negative:
         lines.extend(["", f"Избегать: {negative}"])
 
     if base:
         lines.extend(["", "Доп. контекст:", base])
 
-    return "\n".join(line for line in lines if line)
+    return with_negative("\n".join(line for line in lines if line))
 
 
 def adapt_prompt_for_aspect(prompt: str, aspect_ratio: str) -> str:
@@ -127,9 +153,11 @@ def run_grid_3x3(
     gutter_cleanup: bool = True,
     edge_cleanup: bool = True,
     gutter_qa: bool = True,
+    slice_method: str | None = None,
 ) -> int:
     requested_aspect = prompt_data.get("aspect_ratio") or DEFAULT_ASPECT
     aspect_ratio = requested_aspect
+    method = (slice_method or prompt_data.get("slice_method") or "seam").strip().lower()
     prompt = adapt_prompt_for_aspect(build_grid_master_prompt(prompt_data, workspace), aspect_ratio)
     if aspect_ratio != DEFAULT_ASPECT:
         print(
@@ -183,12 +211,13 @@ def run_grid_3x3(
         "grid": {"cols": GRID_COLS, "rows": GRID_ROWS},
         "slide_count": SLIDE_COUNT,
         "source_path": str(source_out.resolve()),
-        "source_clean_path": str(source_clean_out.resolve()) if gutter_cleanup else None,
+        "source_clean_path": str(source_clean_out.resolve()) if method != "seam" and gutter_cleanup else None,
         "slides_dir": str(slides_dir.resolve()),
         "animate_slide": 1,
+        "slice_method": method,
         "slice_status": "pending",
         "gutter_cleanup": {
-            "enabled": gutter_cleanup,
+            "enabled": method != "seam" and gutter_cleanup,
             "method": "near-white pixels on exact cut-lines; no crop, no resize",
             "strip": 5,
             "report": str((debug_dir / "remove-grid-gutters-report.json").resolve()),
@@ -205,6 +234,49 @@ def run_grid_3x3(
         },
     }
     write_task_log(task_log_path, log)
+
+    if method == "seam":
+        rc = run_subprocess_step(
+            "Seam slice (Excalibur white gutters)",
+            [
+                sys.executable,
+                str(SEAM_SLICE),
+                "--input",
+                str(source_out.resolve()),
+                "--output-dir",
+                str(slides_dir.resolve()),
+                "--cols",
+                str(GRID_COLS),
+                "--rows",
+                str(GRID_ROWS),
+                "--split-mode",
+                "gutter",
+                "--master-out",
+                str(master_out.resolve()),
+                "--manifest",
+                str(manifest.resolve()),
+                "--target-width",
+                "1080",
+                "--target-height",
+                "1440",
+            ],
+        )
+        if rc != 0:
+            log["slice_status"] = "failed"
+            log["slice_exit_code"] = rc
+            log["crooked_canvas"] = rc == 2
+            write_task_log(task_log_path, log)
+            if rc == 2:
+                print(
+                    "CROOKED CANVAS: white seams missing or offset. Rebuild the whole master.",
+                    file=sys.stderr,
+                )
+            return rc
+        log["slice_status"] = "ok"
+        log["edge_cleanup"]["enabled"] = False
+        log["gutter_qa"]["enabled"] = False
+        write_task_log(task_log_path, log)
+        return 0
 
     source_for_slice = source_out
     if gutter_cleanup:
@@ -348,6 +420,11 @@ def main() -> int:
         action="store_true",
         help="Disable gutter/frame QA after slicing",
     )
+    p.add_argument(
+        "--legacy-zero-gutter",
+        action="store_true",
+        help="Retired path: scrub cut-lines instead of Excalibur seam slice",
+    )
     args = p.parse_args()
 
     workspace = Path(args.workspace).resolve()
@@ -372,12 +449,15 @@ def main() -> int:
     task_log = workspace / "carusel-memory/output/kie-task-log.json"
 
     if mode == "grid_3x3":
+        if args.legacy_zero_gutter:
+            data["slice_method"] = "zero-gutter"
         return run_grid_3x3(
             client, data, workspace, task_log, resolution, input_urls, callback_url,
             bleed_crop_top=max(0, args.bleed_crop_top),
             gutter_cleanup=not args.no_gutter_cleanup,
             edge_cleanup=not args.no_edge_cleanup,
             gutter_qa=not args.no_gutter_qa,
+            slice_method=data.get("slice_method") or "seam",
         )
 
     print(f"ERROR: unsupported generation_mode: {mode}", file=sys.stderr)
