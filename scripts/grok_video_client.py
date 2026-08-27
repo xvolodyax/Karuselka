@@ -8,6 +8,12 @@ from kie_common import KieTaskClient
 
 MODEL = "grok-imagine-video-1-5-preview"
 
+# Kie grok-imagine-video-1-5-preview createTask enum. No 3:4.
+KIE_GROK_ASPECT_RATIOS = ("1:1", "16:9", "9:16", "3:2", "2:3", "auto")
+CONTRACT_ASPECT_TO_KIE = {
+    "3:4": "auto",  # carousel contract; auto follows the source PNG
+}
+
 DEFAULT_LOOP_PROMPT_RU = (
     "Сохрани референс-кадр один в один. "
     "Создай тонкое бесшовное зацикленное видео 5 секунд. "
@@ -16,6 +22,13 @@ DEFAULT_LOOP_PROMPT_RU = (
     "Без новых объектов, без искажения лиц, без hard cuts. "
     "Hook-слайд Instagram-карусели."
 )
+
+
+def map_aspect_ratio_for_kie(aspect_ratio: str) -> str:
+    """Map carousel contract aspect to a Kie grok-imagine-video enum value."""
+    if aspect_ratio in KIE_GROK_ASPECT_RATIOS:
+        return aspect_ratio
+    return CONTRACT_ASPECT_TO_KIE.get(aspect_ratio, "auto")
 
 
 class GrokVideoClient(KieTaskClient):
@@ -32,11 +45,12 @@ class GrokVideoClient(KieTaskClient):
         if not image_urls:
             raise ValueError("image_urls required (HTTPS URL of slide-01)")
 
+        kie_aspect = map_aspect_ratio_for_kie(aspect_ratio)
         payload: dict[str, Any] = {
             "model": MODEL,
             "input": {
                 "image_urls": image_urls,
-                "aspect_ratio": aspect_ratio,
+                "aspect_ratio": kie_aspect,
                 "resolution": resolution,
                 "duration": duration,
                 "nsfw_checker": nsfw_checker,

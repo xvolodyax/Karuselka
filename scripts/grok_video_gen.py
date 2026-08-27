@@ -14,7 +14,11 @@ import sys
 import time
 from pathlib import Path
 
-from grok_video_client import DEFAULT_LOOP_PROMPT_RU, GrokVideoClient
+from grok_video_client import (
+    DEFAULT_LOOP_PROMPT_RU,
+    GrokVideoClient,
+    map_aspect_ratio_for_kie,
+)
 from kie_common import find_env_file
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -106,7 +110,11 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument("--prompt", help="Override motion prompt (English)")
     p.add_argument("--duration", type=int, default=5, help="Seconds (1-15, default 5)")
-    p.add_argument("--aspect-ratio", default="3:4", help="Closest to 4:5 Instagram slide")
+    p.add_argument(
+        "--aspect-ratio",
+        default="3:4",
+        help="Carousel contract aspect (3:4 maps to Kie auto before createTask)",
+    )
     p.add_argument("--resolution", default="720p", choices=["480p", "720p"])
     p.add_argument(
         "--output",
@@ -170,7 +178,12 @@ def main() -> int:
         return 1
 
     client = GrokVideoClient(api_key=args.api_key)
-    print(f"Grok video: duration={duration}s, aspect={aspect_ratio}, res={resolution}")
+    requested_aspect = aspect_ratio
+    kie_aspect = map_aspect_ratio_for_kie(aspect_ratio)
+    print(
+        f"Grok video: duration={duration}s, aspect={requested_aspect} "
+        f"(Kie {kie_aspect}), res={resolution}"
+    )
     print(f"Image URL: {image_url[:80]}...")
 
     attempts: list[dict[str, str | int]] = []
@@ -182,7 +195,7 @@ def main() -> int:
             task_id = client.create_task(
                 image_urls=[image_url],
                 prompt=prompt,
-                aspect_ratio=aspect_ratio,
+                aspect_ratio=kie_aspect,
                 resolution=resolution,
                 duration=duration,
                 nsfw_checker=not args.no_nsfw_checker,
@@ -260,6 +273,8 @@ def main() -> int:
                 "resultUrls": urls,
                 "image_url": image_url,
                 "duration": duration,
+                "aspect_ratio_requested": requested_aspect,
+                "aspect_ratio": kie_aspect,
                 "local_raw": str(raw_path.resolve()),
                 "local_output": str(output.resolve()),
                 "prompt": prompt,
