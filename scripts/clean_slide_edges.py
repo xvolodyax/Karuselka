@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Clean 1-3px edge artifacts from sliced slides without cropping or resizing."""
+"""Clean leftover edge artifacts from sliced slides without cropping or resizing.
+
+After Excalibur seam slice, kie_carousel_gen.py calls this with strip >= leftover
+gutter (default 10) so row-2 bottoms cannot ship a leftover white bar.
+"""
 
 from __future__ import annotations
 
@@ -73,7 +77,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Clean edge artifacts on sliced carousel PNGs")
     parser.add_argument("--slides-dir", required=True)
     parser.add_argument("--slides", default="1-9", help="Comma/range list, e.g. 4-9 or 4,5,6,8")
-    parser.add_argument("--strip", type=int, default=2, help="Pixels to replace from each outer edge")
+    parser.add_argument(
+        "--strip",
+        type=int,
+        default=10,
+        help="Pixels to replace from each outer edge (>= leftover gutter; default 10 after seam)",
+    )
     parser.add_argument("--edges", default="top,right,bottom,left", help="Comma list of top,right,bottom,left")
     parser.add_argument("--backup-dir", help="Optional backup directory before overwrite")
     parser.add_argument("--report", help="Optional JSON report")

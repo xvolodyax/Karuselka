@@ -1,10 +1,15 @@
 ## INC-20260828-0948-slice-seam-edge-bar
-status: open
+status: fixed
 run_date: 2026-08-28
 role: carusel-slice
 topic: Тепло – холодно / Hot & Cold
 severity: medium
 category: qa
+fixed_at: 2026-08-28
+fix_summary:
+- Seam path no longer turns `edge_cleanup` off after `seam_slice_grid.py`.
+- `kie_carousel_gen.py` runs `clean_slide_edges.py` with strip ≥ leftover gutter (default 10).
+- `grid_gutter_qa.py --mode seam`: 2480×3312 remainder width=2 is WARN; internals checked on a cropped+scrubbed copy.
 
 ### What went wrong
 - First seam slice left `edge_cleanup` off. RU slides 04–06 kept a ~9px solid white bottom bar (rows 1431–1439). Guardian P0.
@@ -30,4 +35,4 @@ category: qa
 - none recorded
 
 ### Fixic resolution
-- pending
+- Implemented in `cursor/seam-edge-bar-4bf4`. Next seam run ships edge-cleaned 1080×1440 slides.

@@ -24,7 +24,11 @@ Karuselka uses the same method for a **3×3** Instagram grid.
 ## Pipeline
 
 ```text
-Kie master (white seams) → seam_slice_grid.py → 9 sharp rectangles
+Kie master (white seams) → seam_slice_grid.py → clean_slide_edges.py (strip ≥ leftover, default 10) → 9 slides
 ```
 
 If `seam_slice_grid.py` exits 2 (`CROOKED CANVAS`), regenerate the master.
+After a successful cut, strip leftover gutter on every slide (`clean_slide_edges.py`,
+default 10). Do not disable `edge_cleanup` on the seam path — row-2 bottoms keep
+a white bar. `grid_gutter_qa.py --mode seam` treats Kie 4K 2480×3312 remainder
+`width=2` as WARN and checks internals on a scrubbed copy.
