@@ -1,0 +1,204 @@
+{
+  "pack_id": "2026-08-28",
+  "run_id": "2026-08-28-1110",
+  "carousel_family": "animals_viktoria_collage",
+  "minimum_meaningful_image_assets": 1,
+  "hook_thumbnail_readable": true,
+  "continuity_element": "charcoal field + magenta type + thin white gutters across the 3×3 master",
+  "pixels_status": "not_generated",
+  "zones": [
+    {
+      "id": "slide-01-headline",
+      "slide": 1,
+      "type": "type",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-type-verbatim",
+      "asset_registry_id": "type-01-headline",
+      "status": "ready"
+    },
+    {
+      "id": "slide-01-hero-victoria",
+      "slide": 1,
+      "type": "photo",
+      "source_has_image": true,
+      "required_for_fidelity": true,
+      "implementation": "kie-i2i-face-lock",
+      "asset_registry_id": "victoria-sheet",
+      "status": "ready",
+      "notes": "face/hair only from sheet; NEW burgundy turtleneck + seated pose"
+    },
+    {
+      "id": "slide-01-hero-cat",
+      "slide": 1,
+      "type": "photo",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-in-scene",
+      "asset_registry_id": "animal-cat",
+      "status": "ready"
+    },
+    {
+      "id": "slide-01-phone",
+      "slide": 1,
+      "type": "photo",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-in-scene",
+      "asset_registry_id": "prop-phone-saturday-tuesday",
+      "status": "ready"
+    },
+    {
+      "id": "slide-02-headline",
+      "slide": 2,
+      "type": "type",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-type-verbatim",
+      "asset_registry_id": "type-02-headline",
+      "status": "ready"
+    },
+    {
+      "id": "slide-02-hero-dog",
+      "slide": 2,
+      "type": "photo",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-in-scene",
+      "asset_registry_id": "animal-dog",
+      "status": "ready"
+    },
+    {
+      "id": "slide-03-headline",
+      "slide": 3,
+      "type": "type",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-type-verbatim",
+      "asset_registry_id": "type-03-headline",
+      "status": "ready"
+    },
+    {
+      "id": "slide-03-pills",
+      "slide": 3,
+      "type": "sticker",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-torn-tape",
+      "asset_registry_id": "motif-magenta-tape",
+      "status": "ready"
+    },
+    {
+      "id": "slide-04-headline",
+      "slide": 4,
+      "type": "type",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-type-verbatim",
+      "asset_registry_id": "type-04-headline",
+      "status": "ready"
+    },
+    {
+      "id": "slide-04-hero-owl",
+      "slide": 4,
+      "type": "photo",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-in-scene",
+      "asset_registry_id": "animal-owl",
+      "status": "ready"
+    },
+    {
+      "id": "slide-05-framed-card",
+      "slide": 5,
+      "type": "shape",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-framed-card",
+      "asset_registry_id": "frame-05-warm-cold",
+      "status": "ready"
+    },
+    {
+      "id": "slide-06-framed-card",
+      "slide": 6,
+      "type": "shape",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-framed-card",
+      "asset_registry_id": "frame-06-says-hears",
+      "status": "ready"
+    },
+    {
+      "id": "slide-07-framed-checklist",
+      "slide": 7,
+      "type": "shape",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-framed-card",
+      "asset_registry_id": "frame-07-rules",
+      "status": "ready"
+    },
+    {
+      "id": "slide-08-headline",
+      "slide": 8,
+      "type": "type",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-type-verbatim",
+      "asset_registry_id": "type-08-headline",
+      "status": "ready"
+    },
+    {
+      "id": "slide-08-medallion",
+      "slide": 8,
+      "type": "sticker",
+      "source_has_image": false,
+      "required_for_fidelity": false,
+      "implementation": "generated-soft-gold",
+      "asset_registry_id": "mark-gold-medallion",
+      "status": "ready"
+    },
+    {
+      "id": "slide-09-hero-victoria",
+      "slide": 9,
+      "type": "photo",
+      "source_has_image": true,
+      "required_for_fidelity": true,
+      "implementation": "kie-i2i-face-lock",
+      "asset_registry_id": "victoria-sheet",
+      "status": "ready",
+      "notes": "same woman as 01; NEW black satin wrap + standing pose"
+    },
+    {
+      "id": "slide-09-trigger",
+      "slide": 9,
+      "type": "type",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-type-verbatim",
+      "asset_registry_id": "type-09-trigger",
+      "status": "ready"
+    },
+    {
+      "id": "slide-09-framework-pills",
+      "slide": 9,
+      "type": "sticker",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "generated-pills",
+      "asset_registry_id": "pills-app-audio-framework",
+      "status": "ready",
+      "notes": "Суть–Тень–Вектор / Essence–Shadow–Vector — app audio, not bot"
+    },
+    {
+      "id": "master-gutters",
+      "slide": 0,
+      "type": "shape",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "prompted-thin-white-seams",
+      "asset_registry_id": "grid-white-gutters",
+      "status": "ready"
+    }
+  ]
+}

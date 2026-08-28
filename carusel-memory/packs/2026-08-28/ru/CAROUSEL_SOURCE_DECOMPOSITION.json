@@ -1,0 +1,132 @@
+{
+  "pack_id": "2026-08-28",
+  "run_id": "2026-08-28-1110",
+  "lang": "ru",
+  "bilingual_pair": true,
+  "carousel_family": "animals_viktoria_collage",
+  "source_first": true,
+  "references": [
+    {
+      "id": "image-851e",
+      "path": "/workspace/karusel-old/image-851e.png",
+      "canon_note": "carusel-memory/references/image-851e.md",
+      "role": "style + layout + palette lock"
+    },
+    {
+      "id": "victoria-sheet",
+      "path": "carusel-memory/references/victoria-sheet.png",
+      "box_path": "/workspace/cover-refs/victoria-sheet.png",
+      "role": "face + hair lock ONLY"
+    },
+    {
+      "id": "slide-04-depth",
+      "path": "/workspace/karusel-old/slide-04.png",
+      "canon_note": "carusel-memory/references/slide-04-depth.md",
+      "role": "content inspiration — says/hears depth, not visual family"
+    }
+  ],
+  "forbidden_references": [
+    {
+      "id": "alena",
+      "path": "/workspace/cover-refs/victoria.png",
+      "reason": "Alena, not Victoria"
+    },
+    {
+      "id": "cover-old",
+      "path": "/workspace/karusel-old/cover-old.png",
+      "reason": "retired ivory studio-blazer cutout"
+    }
+  ],
+  "reference_role": {
+    "style": "Dark charcoal collage plate: matte black field, hot magenta #ff006e accents, fashion-lifestyle cutouts, animals used as emotion, soft gold metal. Not beige cards. Not horror occult table.",
+    "layout": "Dense magazine-collage rhythm that we translate into a strict 3×3 of self-contained 3:4 panels with thin white gutters. Hook cell is scene-first (large type in the picture). Internal cells are 50–60% type with a smaller subject. CTA cell is hero + huge script trigger.",
+    "typography": "Heavy white grotesque for the scene/keywords. Thin magenta handwritten script for the secondary emotional word. Torn-tape / pill blocks for short labels. Type sits in front of and behind subjects. No tiny gray paragraphs.",
+    "mood": "Night-smart, high contrast, slightly dangerous intimacy — a woman who already feels the temperature drop. Fashion, not therapy-office. Magenta heat on cold charcoal.",
+    "content_inspiration": "slide-04 teaches a framed psychological card (Говорит / Слышишь / урок). We keep that DEPTH on save slides 05–07. We do not copy slide-04's old visual family or its original headline."
+  },
+  "preserve": [
+    "grid 3×3, row-major reading, nine 3:4 panels from one 3:4 @ 4K master",
+    "thin white gutters for Excalibur seam slice",
+    "palette: #111111–#1a1a1a + #ff006e + #ffffff + soft gold",
+    "type hierarchy: heavy white sans > magenta script > pills",
+    "spacing: generous safe 10–12% from seams; self-contained cells",
+    "panel archetypes: hero scene (1,9), type+animal (2,4), pill-typography (3), framed save cards (5–7), recap medallion (8)",
+    "motifs: torn magenta tape, animal-as-metaphor, Victoria on hook+CTA, optional gold medallion",
+    "contrast: thumbnail-readable hook in ~2 seconds"
+  ],
+  "change": [
+    "topic metaphors: Saturday eyes / autumn plans vs Tuesday «занят» and silence",
+    "copy: locked Gemini RU + EN pair (ТЕПЛО / WARMTH)",
+    "domain objects: phone thread, two-phase card, says/hears/reality stack, 3 grounding rules",
+    "Victoria wardrobe and pose for THIS pack only",
+    "CTA product visual: app audio Суть–Тень–Вектор / Essence–Shadow–Vector, not a bot"
+  ],
+  "do_not_borrow": [
+    "Portuguese or any accidental text from the style plate",
+    "foreign women's faces and collage models",
+    "Alena / victoria.png",
+    "platinum or white-blonde hair",
+    "white cami + jeans from the appearance sheet",
+    "ivory blazer / cover-old studio cutout",
+    "original logos, mascots, institution names",
+    "horror table, skulls, blood, dripping candles",
+    "word «Сцена» as a label",
+    "bot prize / 3 free readings / Academy"
+  ],
+  "panel_archetype_map": {
+    "01": {
+      "from_reference": "hero collage cell — woman in-scene + one animal + giant scene type",
+      "adapted_to": "Saturday/Tuesday temperature-drop scene; Victoria burgundy turtleneck + cat"
+    },
+    "02": {
+      "from_reference": "type-forward cell with a loyal animal at the bottom/side",
+      "adapted_to": "pain of rereading the chat; dog waiting by the glowing screen"
+    },
+    "03": {
+      "from_reference": "magenta tape / pill typography interrupting a false story",
+      "adapted_to": "mistake: warming the draft; crossed-out «он испугался чувств»"
+    },
+    "04": {
+      "from_reference": "night-smart animal + mechanism type",
+      "adapted_to": "owl + intermittent reinforcement"
+    },
+    "05": {
+      "from_reference": "saveable framed insert (not empty vibe)",
+      "adapted_to": "two-column Тепло vs Холод card"
+    },
+    "06": {
+      "from_reference": "slide-04 depth card (says vs hears), restyled to family",
+      "adapted_to": "Говорит / Слышишь / Реальность framed stack"
+    },
+    "07": {
+      "from_reference": "numbered scrapbook checklist",
+      "adapted_to": "3 grounding rules in a framed card"
+    },
+    "08": {
+      "from_reference": "large closing type + metal mark",
+      "adapted_to": "clarity-over-waiting rule + optional gold medallion"
+    },
+    "09": {
+      "from_reference": "hero CTA cell — woman + huge magenta script word",
+      "adapted_to": "Victoria new pose + ТЕПЛО/WARMTH + app-audio framework pills"
+    }
+  },
+  "thumbnail_test": {
+    "slide": 1,
+    "reads_in_2s_because": "One face (Victoria), one cat, one huge white scene line about Saturday eyes, magenta script «Тепло – холодно» / «Hot & Cold», cold phone glow. No mechanic title. No word Сцена. Contrast is charcoal vs white vs #ff006e — readable at ~200px.",
+    "fail_if": "headline is a list title, platinum hair, missing cat, beige wash, or unreadable Cyrillic"
+  },
+  "save_test": {
+    "screenshot_panels": [5, 6, 7],
+    "why": "05 is a two-phase card, 06 is a three-layer perception card, 07 is a 3-rule checklist. All are framed. 08 is a keepable rule but secondary to 05–07.",
+    "min_framed_saves": 2
+  },
+  "fidelity_notes": {
+    "style_lock_is_text": true,
+    "style_lock_as_i2i": false,
+    "reason": "animals-viktoria-style-lock / image-851e is a sticker collage; sending it as input_url copies die-cut outlines. Face lock is the only i2i input.",
+    "input_urls_hint_for_prompter": [
+      "victoria-sheet.png FIRST — face/hair only"
+    ]
+  }
+}

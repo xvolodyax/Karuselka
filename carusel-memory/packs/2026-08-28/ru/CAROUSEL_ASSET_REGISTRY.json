@@ -1,0 +1,57 @@
+{
+  "pack_id": "2026-08-28",
+  "run_id": "2026-08-28-1110",
+  "carousel_family": "animals_viktoria_collage",
+  "generation_status": "not_started",
+  "note": "Designer does not call Kie. Registry is path lock + pending pixel slots for slice.",
+  "assets": [
+    {
+      "id": "victoria-sheet",
+      "role": "face_hair_lock",
+      "local_path": "carusel-memory/references/victoria-sheet.png",
+      "box_path": "/workspace/cover-refs/victoria-sheet.png",
+      "kie_task_id": null,
+      "https_url": null,
+      "input_url_index": 0,
+      "status": "local_ref"
+    },
+    {
+      "id": "style-lock-text-only",
+      "role": "style_layout_palette_described_in_prompt_hints",
+      "local_path": "/workspace/karusel-old/image-851e.png",
+      "canon_note": "carusel-memory/references/image-851e.md",
+      "use_as_i2i": false,
+      "reason": "sticker collage plate copies die-cut outlines if sent as input_url",
+      "kie_task_id": null,
+      "https_url": null,
+      "status": "text_described"
+    },
+    {
+      "id": "alena-forbidden",
+      "role": "do_not_use",
+      "local_path": "/workspace/cover-refs/victoria.png",
+      "status": "forbidden"
+    },
+    {
+      "id": "cover-old-retired",
+      "role": "do_not_use",
+      "local_path": "/workspace/karusel-old/cover-old.png",
+      "status": "retired"
+    },
+    {
+      "id": "master-grid",
+      "role": "output_master",
+      "local_path": "carusel-memory/output/master/master.png",
+      "kie_task_id": null,
+      "https_url": null,
+      "status": "pending_image_prompter_then_slice"
+    },
+    {
+      "id": "slides-01-09",
+      "role": "output_slides",
+      "local_path": "carusel-memory/output/slides/slide-01.png … slide-09.png",
+      "kie_task_id": null,
+      "status": "pending_slice"
+    }
+  ]
+}
