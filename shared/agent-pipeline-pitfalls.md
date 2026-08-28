@@ -115,6 +115,14 @@
 - **BLOCKER:** `seam_slice_grid.py` exit 2 (`CROOKED CANVAS`)
 - **Кто:** image-prompter, slice, design-guardian
 
+## 11.4 Seam leftover white bar on row-2 bottoms
+
+- **Симптом:** после `seam_slice_grid.py` slides 04–06 имеют сплошную белую полосу снизу (~9px). Guardian P0. `grid_gutter_qa` падает на remainder `{width: 2}` (2480×3312) и на белых v1/v2 швах master.
+- **Root cause:** seam-path в `kie_carousel_gen.py` выключал `edge_cleanup` / `gutter_qa`. Gutter-cut не гарантирует 0 leftover; Kie 4K 3:4 = 2480×3312, `2480 % 3 = 2`.
+- **Решение:** после seam slice всегда `clean_slide_edges.py --strip` ≥ leftover gutter (default 10), без crop. QA: `grid_gutter_qa.py --mode seam` — remainder width=2 это WARN; internal lines на scrubbed-копии.
+- **Важно:** `remove_grid_gutters.py` только на копии master для QA, не как slice input.
+- **Кто:** slice, design-guardian
+
 ## 12. Incident memory
 
 - Проблема не в списке → **incident** в `carusel-memory/pipeline-fix-queue.md`
