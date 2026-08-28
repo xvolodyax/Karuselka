@@ -27,10 +27,11 @@
       "status": "text_described"
     },
     {
-      "id": "alena-forbidden",
+      "id": "alena-deleted",
       "role": "do_not_use",
-      "local_path": "/workspace/cover-refs/victoria.png",
-      "status": "forbidden"
+      "local_path": null,
+      "note": "victoria.png / victoria_ref.jpg / alena.png / alena_ref.jpg deleted. Never i2i. Vika = victoria-sheet.png only.",
+      "status": "deleted"
     },
     {
       "id": "cover-old-retired",

@@ -9,7 +9,7 @@
 | `image-851e.png` | style + layout + mood | антрацит, `#ff006e`, коллаж, sans+script, животные | PT текст, чужие лица, логотипы плиты |
 | `victoria-sheet.png` | face + hair only | овал лица, honey/wheat + darker roots, green-hazel | одежда (white cami+jeans), поза листа |
 | `slide-04.png` | content inspiration | глубина «говорит / слышишь / урок» | визуальная семья, старый headline |
-| `victoria.png` | FORBIDDEN | — | Alena |
+| `victoria.png` / `alena.png` | DELETED | — | Never i2i. Vika = `victoria-sheet.png` only |
 | `cover-old.png` | RETIRED | — | ivory blazer cutout |
 
 Style lock описывается текстом. Не класть `image-851e` в `input_urls`: плита — стикер-коллаж, модель скопирует ореолы. Единственный i2i вход — `victoria-sheet.png`.

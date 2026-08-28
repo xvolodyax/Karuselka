@@ -4,7 +4,7 @@
 |------|------|--------|
 | **Victoria face lock** | `carusel-memory/references/victoria-sheet.png` and `/workspace/cover-refs/victoria-sheet.png` | Official 12-up sheet. FACE_CHECK source. |
 | **Victoria i2i crop** | `carusel-memory/references/victoria-sheet-front.png` (upload as `victoria-sheet.png`) | ONLY i2i input. Left frontal close-up. Do not send the grid. |
-| Alena (wrong filename victoria.png) | `/workspace/cover-refs/victoria.png` | **FORBIDDEN**. Not Victoria. |
+| Alena (was misnamed victoria.png) | deleted from cover-refs / assets | **GONE**. Never restore. Never i2i. |
 | Old studio-blazer cutout | `/workspace/karusel-old/cover-old.png` | **RETIRED**. |
 | Generated stand-in `victoria-hair-lock.png` | — | **RETIRED**. Do not pick. |
 | Style lock | `/workspace/karusel-old/image-851e.png` | style only; no foreign faces/Portuguese |

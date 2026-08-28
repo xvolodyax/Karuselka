@@ -35,7 +35,7 @@ pack_id: 2026-08-28
 - reference_carousel: family `animals_viktoria_collage`; live 27.08 Pause posts stay; pack `2026-08-27-swarm` (Ping vs step) and `2026-08-27-v2` (Pause) are FORBIDDEN repeats
 - slide_copy_notes: auto — Gemini copywriter пишет 9 RU + 9 EN. Director не пишет слайды.
 - cta_target: header_link — «ссылки в шапке профиля» / «links in the profile». No raw URLs.
-- brand: ТАРО СЕЙЧАС / Today Tarot. Dark + magenta. Victoria face lock = `carusel-memory/references/victoria-sheet.png` only. `cover-refs/victoria.png` = Alena, forbidden. Hair: warm honey/wheat + darker roots; platinum = reject, rebuild canvas. New pose and clothes every time; do not copy sheet white cami + jeans.
+- brand: ТАРО СЕЙЧАС / Today Tarot. Dark + magenta. Victoria face lock = `carusel-memory/references/victoria-sheet.png` only. Alena files (`victoria.png`, `alena.png`) are deleted. Hair: warm honey/wheat + darker roots; platinum = reject, rebuild canvas. New pose and clothes every time; do not copy sheet white cami + jeans.
 - caption_preferences: Gemini writes RU caption AND EN caption in the same copywriter step. Product `app_audio`. No Glavred this run.
 
 ## One swarm, one chain (this run)
@@ -73,7 +73,7 @@ Do not write «личный аудиоразбор». EN: no Academy.
 ## Face + cut
 
 - i2i only `victoria-sheet.png` (warm blonde, darker roots, green eyes with a hint of hazel)
-- File `victoria.png` is Alena — do not put her face on Vika
+- Alena files are deleted. Never i2i `victoria.png` or `alena.png`. Vika = `victoria-sheet.png` only.
 - Platinum or much lighter than the ref = reject, rebuild the whole canvas
 - New pose and clothes every time; do not copy outfit from the sheet
 - Slice by white seams (Excalibur, slice_method=seam). Crooked seam = rebuild canvas

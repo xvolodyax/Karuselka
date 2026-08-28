@@ -17,7 +17,8 @@ A long MUST/face essay starves the model. Wrong face or platinum hair →
 | Fail | platinum, white-blonde, Alena, brown/grey eyes, any other woman |
 | Clothes | **new every carousel** — never the sheet white cami + jeans |
 
-`cover-refs/victoria.png` is **Alena**. Never upload it. There is no second face file.
+Alena files (`victoria.png`, `victoria_ref.jpg`, `alena.png`, `alena_ref.jpg`) are **deleted**.
+Never restore. Never i2i. There is no second face file.
 
 Style lock (`animals-viktoria-style-lock.png`) is **palette / type described in text**.
 Do **not** send it as an i2i input — the plate is a sticker collage and the model

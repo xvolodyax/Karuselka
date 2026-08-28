@@ -28,7 +28,7 @@ Slide 1 and 9 may differ as long as it is the same woman.
 
 ## Banned
 
-- Alena (`cover-refs/victoria.png`)
+- Alena (files deleted: victoria.png, victoria_ref.jpg, alena.png, alena_ref.jpg)
 - Old studio ivory-blazer cutout
 - Any other woman
 - Doubles / two different faces in one pack

@@ -18,7 +18,7 @@ Karuselka uses the same method for a **3×3** Instagram grid.
 - Zero-gutter “cells touch pixel-to-pixel” prompts (the model then draws **sticker outlines** on people/animals).
 - `remove_grid_gutters.py` as the primary path (that scrubs cut-lines; it does not invent seams).
 - White halo / die-cut / “вырезка” around Victoria or animals.
-- Alena (`cover-refs/victoria.png`). Platinum / white-blonde hair.
+- Alena (deleted). Platinum / white-blonde hair. Vika = `victoria-sheet.png` only.
 - Copy the sheet tank+jeans onto slides.
 
 ## Pipeline

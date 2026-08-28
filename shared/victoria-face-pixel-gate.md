@@ -8,7 +8,7 @@ Gate PASS / Guardian DESIGN OK **cannot** override a human who says the woman is
 - Only face: `carusel-memory/references/victoria-sheet.png`
 - i2i: crop the **left frontal close-up** (`victoria-sheet-front.png`), upload as `victoria-sheet.png`
 - Box copy: `/workspace/cover-refs/victoria-sheet.png` (same official sheet)
-- `cover-refs/victoria.png` = **Alena**. Never i2i that file.
+- Alena files deleted (`victoria.png`, `alena.png`, refs). Never restore. Never i2i.
 
 ## Why the 28.08 pack drifted
 

@@ -55,7 +55,7 @@ Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus
 
 ## Face lock (не открывать заново)
 
-`victoria-sheet.png` only. `cover-refs/victoria.png` = Alena. Новая одежда/поза каждый раз.
+`victoria-sheet.png` only. Alena files deleted. Never i2i `victoria.png`. Новая одежда/поза каждый раз.
 
 ## Dry-run (без пикселей)
 

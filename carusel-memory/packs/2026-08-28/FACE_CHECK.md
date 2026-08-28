@@ -2,7 +2,7 @@
 
 compared: carusel-memory/references/victoria-sheet.png
 i2i_crop: carusel-memory/references/victoria-sheet-front.png (left frontal close-up only)
-alena_file: cover-refs/victoria.png — forbidden, not used
+alena_file: deleted — victoria.png / alena.png never used. Vika lock is victoria-sheet.png only.
 crops: packs/2026-08-28/face-check/
 guardian_dispatch: b4a17d3a3e1e48bfa1686cfa2deec807
 crops_rerun: python3 scripts/make_face_check_crops.py --pack carusel-memory/packs/2026-08-28

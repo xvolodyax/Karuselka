@@ -44,6 +44,16 @@ ALLOWED_PRODUCTS = {cta_canon.REQUIRED_PRODUCT}
 TRIGGERS = {"ru": "ПАУЗА", "en": "PAUSE"}
 HANDLES = {"ru": "@todaytaro_ru", "en": "@todaytaro_bot"}
 FACE_LOCK = "victoria-sheet.png"
+ALENA_BINARIES = (
+    Path("/workspace/cover-refs/victoria.png"),
+    Path("/workspace/cover-refs/victoria_ref.jpg"),
+    Path("/workspace/cover-refs/alena.png"),
+    Path("/workspace/cover-refs/alena_ref.jpg"),
+    Path("/workspace/assets/victoria.png"),
+    Path("/workspace/assets/alena.png"),
+    Path("/workspace/assets/victoria_ref.jpg"),
+    Path("/workspace/assets/alena_ref.jpg"),
+)
 PROMPT_MAX_CHARS = 2200
 STYLE_LOCK_RE = re.compile(r"animals-viktoria-style-lock|style-lock", re.I)
 ALENA_RE = re.compile(
@@ -107,8 +117,14 @@ def check_pack(pack: Path) -> list[str]:
     if not repo_sheet.is_file() or repo_sheet.stat().st_size < 10_000:
         errors.append(
             f"missing face lock binary carusel-memory/references/{FACE_LOCK} "
-            "(do not invent a stand-in; Alena file is forbidden)"
+            "(do not invent a stand-in; Alena files are deleted)"
         )
+    for banned in ALENA_BINARIES:
+        if banned.is_file() and banned.stat().st_size > 1000:
+            errors.append(
+                f"Alena binary still present: {banned}. Delete it. "
+                "Vika lock is victoria-sheet.png only."
+            )
 
     for lang in langs:
         errors.extend(check_lang(pack / lang, lang, manifest))

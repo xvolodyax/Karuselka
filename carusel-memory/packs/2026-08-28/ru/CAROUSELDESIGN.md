@@ -76,7 +76,7 @@ hair_lock: "warm honey/wheat blonde with darker roots as on victoria-sheet.png"
 
 **Change:** сюжет (суббота → вторник), одежда и поза Виктории, объекты (телефон, фазы, чек-лист), copy, CTA `ТЕПЛО` / `WARMTH`, продукт `app_audio`.
 
-**Do not borrow:** португальский текст, чужие женские лица, Alena (`victoria.png`), platinum, white cami+jeans с листа, ivory blazer, horror-стол, логотипы чужих брендов, слово «Сцена», бот как приз.
+**Do not borrow:** португальский текст, чужие женские лица, Alena (файлы удалены; лок Вики = `victoria-sheet.png`), platinum, white cami+jeans с листа, ivory blazer, horror-стол, логотипы чужих брендов, слово «Сцена», бот как приз.
 
 ## Composition Lock
 
@@ -152,7 +152,7 @@ hair_lock: "warm honey/wheat blonde with darker roots as on victoria-sheet.png"
 
 **Don't**
 
-- Platinum / Alena / `cover-refs/victoria.png` / studio-blazer / doubles.
+- Platinum / Alena (deleted) / studio-blazer / doubles. Vika = `victoria-sheet.png` only.
 - Horror, кровь, черепа, свечи, ouija.
 - Стикер-ореол, die-cut, zero-gutter.
 - Бот, «3 бесплатных расклада», «личный аудиоразбор», Academy (EN), сырые URL.

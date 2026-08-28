@@ -28,8 +28,8 @@
   "forbidden_references": [
     {
       "id": "alena",
-      "path": "/workspace/cover-refs/victoria.png",
-      "reason": "Alena, not Victoria"
+      "path": null,
+      "reason": "Deleted. Never i2i victoria.png or alena.png. Vika lock is victoria-sheet.png only."
     },
     {
       "id": "cover-old",
@@ -64,7 +64,7 @@
   "do_not_borrow": [
     "Portuguese or any accidental text from the style plate",
     "foreign women's faces and collage models",
-    "Alena / victoria.png",
+    "Alena (deleted; Vika lock is victoria-sheet.png only)",
     "platinum or white-blonde hair",
     "white cami + jeans from the appearance sheet",
     "ivory blazer / cover-old studio cutout",
