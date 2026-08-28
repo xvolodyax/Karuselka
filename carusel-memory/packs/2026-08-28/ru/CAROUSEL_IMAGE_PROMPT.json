@@ -1,0 +1,264 @@
+{
+  "version": "2",
+  "written_by": "carusel-image-prompter",
+  "lang": "ru",
+  "pack_id": "2026-08-28",
+  "run_id": "2026-08-28-1110",
+  "topic": "Тепло – холодно: почему он то держит за руку, то отдаляется на неделю?",
+  "trigger_word": "ТЕПЛО",
+  "product": "app_audio",
+  "handle": "@todaytaro_ru",
+  "visual_family": "animals_viktoria_collage",
+  "carousel_family": "animals_viktoria_collage",
+  "generation_mode": "grid_3x3",
+  "model": "gpt-image-2-image-to-image",
+  "prompt": "Одно master-изображение Instagram-карусели: canvas 3:4 @ 4K, точная сетка 3×3, девять самостоятельных панелей 3:4. Тонкие белые gutters на 1/3 и 2/3 (вертикаль и горизонталь, 6–12px, от края до края), без bleed, без внешней белой рамки. Код режет по швам (Excalibur). Семья animals_viktoria_collage. Фон уголь #111111–#1a1a1a. Палитра: белый #ffffff тяжёлый гротеск, маджента #ff006e тонкий скрипт и рваные плашки, мягкое золото #c9a86a. Герои и тип живут внутри каждой сцены. Тип спереди и сзади объектов. Тема: тепло – холодно.\n\nPRESERVE: тёмный холст, маджента+белый тип, рваные плашки, животные-метафоры с работой, Виктория только на 1 и 9, 3×3, тонкие белые швы.\nCHANGE: сюжет суббота тепло / вторник холод; дословный текст; телефон, фазы Тепло/Холод, Говорит/Слышишь/Реальность, 3 правила; кот 01, пёс 02, сова 04; новая одежда этого пака; CTA ТЕПЛО + аудиоразбор в приложении.\nDO NOT BORROW: португальский, чужие женские лица, Алёна, platinum, horror-стол, слово «Сцена», бот, 3 бесплатных расклада, URL, подпись Victoria.\n\ninput[0] victoria-sheet.png = лицо и волосы. Глаза зелёные с hazel. Тёплый медово-пшеничный блонд, тёмные корни. Та же женщина на 1 и 9.\n\nПанель01 hook motion-safe: Виктория в бордовой водолазке, золотые хупы, сидит 3/4 к светящемуся телефону. Кот чует перепад температуры. Заголовок «В субботу он смотрел в глаза» тело «и строил планы на осень. Во вторник — сухое «занят» и три дня тишины.» скрипт «Тепло – холодно». Без слова «Сцена». Тип статичен.\nПанель02 pain: без Виктории. Пёс у светящегося экрана — верность неотвеченному вопросу. «Ты ищешь, где ошиблась» «Перечитываешь переписку. Пугает не пауза, а перепад: от полного тепла до ледяной стены.»\nПанель03 mistake: без Виктории и животных. Крупный тип + сквозняк как графика. «Ловушка — греть сквозняк» «Думаешь: «он испугался чувств». Начинаешь проявлять заботу в ответ на холод, закрепляя качели.»\nПанель04 mechanism: без Виктории. Сова — ночные мысли, ясное видение механизма. «Прерывистое подкрепление» «Непредсказуемость держит нервную систему в напряжении. Мозг путает тревогу с сильной любовью.»\nПанель05 save: рамка-карточка, две колонки. «Тепло vs Холод: две фазы» «Тепло: ему нужен твой ресурс и внимание» «Холод: маячит близость и ответственность»\nПанель06 save: рамка три слоя. «Говорит vs Слышишь» «Говорит: «Сейчас завал, не хочу усложнять»» «Слышишь: «Я должна согреть его и подождать»» «Реальность: «Беру тепло без обязательств»»\nПанель07 save: рамка чек-лист. «3 правила возвращения опоры» «1. Суди по средней температуре, не по пикам» «2. Сделал шаг назад — оставайся на месте» «3. Не грей человека, выбравшего холод»\nПанель08 recap: без Виктории и животных. «Ясность вместо дежурства» «Отношения строятся на стабильности, а не на качелях. Твой человек не заставит гадать о своих чувствах.» «Ясность сейчас» опционально золотой медальон ТАРО/СЕЙЧАС.\nПанель09 cta: та же Виктория, чёрная атласная запашная блузка, тёмные брюки, стоит hip-lean, телефон как будто пишет комментарий. Крупный маджента-скрипт ТЕПЛО. «Напиши ТЕПЛО» «Аудиоразбор в приложении. Суть – Тень – Вектор.» «Слово ТЕПЛО в комментариях». Не бот, не 3 расклада, без URL.\n\nTYPOGRAPHY: verbatim text, no substitutions, no extra labels, no duplicate text. Заголовок доминирует, тело меньше, плашки мелкие но читаемые. Правильная кириллица. Safe-area ≥10–12% от швов и краёв; текст не у нижнего края.\nGRID: master 3:4 @ 4K. 3 колонки × 3 ряда, thin white gutters at 1/3 and 2/3, code-cut on those seams, no bleed, no outer canvas frame, не 2×3, не горизонтальная полоса.\nNEGATIVE: неверное число панелей, горизонтальный стрип, 2×3, watermark, blur, разные стили.",
+  "negative_prompt": "platinum, Alena, white cami, jeans from sheet, ivory blazer, other women's faces, Portuguese, horror, white-blonde, white camisole, spaghetti-strap, light-wash jeans, white blazer, studio-blazer, skulls, blood, dripping candles, ouija, demon faces, Victoria signature, extra labels, raw URLs, Academy, cutout, die-cut, sticker outline, white outline, white halo, crooked halo, вырезка, стикер-контур, белый контур, белый ореол, 2x3 grid, horizontal strip, outer canvas frame, watermark, word Сцена, Scene, 3 free readings, три бесплатных расклада, бот как приз, личный аудиоразбор, Victoria on slides 2-8, animals on slides other than 1 2 4, cute pets with no job",
+  "input_urls": [
+    "https://tempfile.redpandaai.co/kieai/378019/carusel-face-lock/victoria-sheet.png"
+  ],
+  "reference_upload_method": "upload_stream",
+  "slice_method": "seam",
+  "face_lock": "victoria-sheet.png",
+  "hair_lock": "warm honey/wheat blonde with darker roots as on victoria-sheet.png",
+  "eyes_lock": "green with a slight hazel",
+  "aspect_ratio": "3:4",
+  "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major",
+    "gutters": "thin_white_seams",
+    "slice_method": "seam",
+    "cell_is_self_contained": true
+  },
+  "animate_slide": 1,
+  "this_run_slide_01": "static_png",
+  "input_files_in_repo": [
+    "carusel-memory/references/victoria-sheet.png"
+  ],
+  "prompt_compacted": true,
+  "prompt_char_count": 3631,
+  "prompt_compaction": {
+    "active_prompt_max_chars": 4500,
+    "details_in_structured_fields": true,
+    "prompt_compacted": true,
+    "prompt_char_count": 3631
+  },
+  "reference_contract": {
+    "reference_role": "style + layout reference; face lock is input_urls[0] only",
+    "style_layout_palette": "image-851e / animals_viktoria_collage described in text — not sent as i2i",
+    "face_hair_only": "victoria-sheet.png",
+    "preserve": [
+      "charcoal / matte black full-bleed field",
+      "hot magenta #ff006e + white type mix",
+      "soft gold metal accents",
+      "torn-paper / pill blocks on dark field",
+      "type layered behind and in front of subjects",
+      "animals as emotion metaphors with a job",
+      "Victoria on slides 1 and 9 only",
+      "3x3 row-major grid, each cell 3:4, thin white gutters, seam slice",
+      "hook readable in 2 seconds at thumbnail",
+      "safe margin 10–12% from seams and edges"
+    ],
+    "change": [
+      "topic: weekend warmth vs Tuesday cold / тепло – холодно",
+      "verbatim copy from locked CAROUSEL_SLIDE_COPY.json",
+      "domain objects: glowing phone, dry busy text, two-phase card, says/hears card, 3-rule checklist",
+      "animal seats: cat 01, dog 02, owl 04",
+      "this-pack wardrobe: burgundy turtleneck on 01; black satin wrap on 09",
+      "CTA trigger ТЕПЛО / WARMTH and app_audio Суть–Тень–Вектор / Essence–Shadow–Vector"
+    ],
+    "do_not_borrow": [
+      "Portuguese text",
+      "foreign women's faces",
+      "Alena / cover-refs/victoria.png",
+      "platinum / white-blonde hair",
+      "white cami + jeans from victoria-sheet.png",
+      "ivory studio blazer / cover-old.png",
+      "original logos, mascots, institution names from the style plate",
+      "horror table, skulls, blood, dripping candles, ouija, demon faces",
+      "word Сцена or Scene as a slide label",
+      "bot prize, 3 free readings, три бесплатных расклада, Academy",
+      "raw URLs, Victoria signature, watermarks, extra labels"
+    ]
+  },
+  "style_lock": {
+    "family": "animals_viktoria_collage",
+    "palette": [
+      "#111111",
+      "#1a1a1a",
+      "#ff006e",
+      "#ffffff",
+      "#c9a86a"
+    ],
+    "typography": {
+      "headline": "heavy grotesque sans, white #ffffff, dominant",
+      "body": "medium grotesque sans, white, 1–2 short lines",
+      "script": "thin handwritten italic, magenta #ff006e",
+      "pills": "magenta torn-tape / pill blocks for words already in copy"
+    },
+    "lighting": "cinematic temperature drop: Saturday gold-warm rim vs Tuesday cool phone glow; not horror blue",
+    "treatment": "fashion-collage on charcoal; subjects live inside each scene; type layered in the picture"
+  },
+  "wardrobe_this_pack": {
+    "rule": "NEW clothes and pose this pack. Slide 1 and 9 differ. Same woman. Banned sheet looks live in negative_prompt only.",
+    "slide_01": {
+      "clothes": "deep burgundy merino turtleneck, small gold hoop earrings",
+      "pose": "seated three-quarter toward a glowing phone"
+    },
+    "slide_09": {
+      "clothes": "black satin wrap blouse, dark trousers, soft gold pendant different from sheet, magenta lips",
+      "pose": "standing hip-lean, phone as if typing a comment"
+    }
+  },
+  "animals": {
+    "assignment": [
+      {
+        "slide": 1,
+        "animal": "cat",
+        "job": "чуешь: резкая смена температуры контакта"
+      },
+      {
+        "slide": 2,
+        "animal": "dog",
+        "job": "верность неотвеченному вопросу: ждёшь у светящегося экрана"
+      },
+      {
+        "slide": 4,
+        "animal": "owl",
+        "job": "ночные мысли и ясное видение скрытого механизма"
+      }
+    ],
+    "none_on": [
+      3,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "typography_rules": {
+    "exact_text": true,
+    "no_extra_text": true,
+    "verbatim": "quoted strings from locked copy only; no substitutions; no extra labels; no duplicate text",
+    "source": "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+    "hierarchy": "headline > short body > pill",
+    "headline_color": "#ffffff",
+    "body_color": "#ffffff",
+    "script_color": "#ff006e",
+    "contrast": "white or magenta on charcoal only",
+    "cyrillic": "correct Russian glyphs, no quasi-Cyrillic",
+    "forbidden_on_slides": [
+      "Сцена",
+      "Scene",
+      "Victoria",
+      "watermark",
+      "URL",
+      "личный аудиоразбор"
+    ],
+    "placement": "all type and pills ≥10–12% from every seam and cell edge; no text on the bottom strip"
+  },
+  "panel_visual_brief": [
+    {
+      "slide": 1,
+      "role": "hook",
+      "visual_only": "Charcoal field. Victoria face/hair from victoria-sheet.png in NEW deep burgundy merino turtleneck + gold hoops, seated 3/4 toward a glowing phone (Saturday warmth vs Tuesday busy). Cat in-scene senses the temperature drop. Magenta script Тепло – холодно. Motion-safe: glow/cat may drift; type locked. No other woman.",
+      "has_victoria": true,
+      "animal": "cat",
+      "exact_headline": "В субботу он смотрел в глаза",
+      "exact_body": "и строил планы на осень. Во вторник — сухое «занят» и три дня тишины.",
+      "exact_script": "Тепло – холодно"
+    },
+    {
+      "slide": 2,
+      "role": "pain",
+      "visual_only": "Type-led pain panel. Loyal dog waits by a glowing phone / chat — loyalty to the unanswered question. Temperature drop as the pain. No Victoria.",
+      "has_victoria": false,
+      "animal": "dog",
+      "exact_headline": "Ты ищешь, где ошиблась",
+      "exact_body": "Перечитываешь переписку. Пугает не пауза, а перепад: от полного тепла до ледяной стены."
+    },
+    {
+      "slide": 3,
+      "role": "mistake",
+      "visual_only": "Typography-first. Magenta torn-tape cancels the excuse он испугался чувств. Draft / cold-air graphic, not a weather meme. No animal. No Victoria.",
+      "has_victoria": false,
+      "animal": null,
+      "exact_headline": "Ловушка — греть сквозняк",
+      "exact_body": "Думаешь: «он испугался чувств». Начинаешь проявлять заботу в ответ на холод, закрепляя качели."
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "visual_only": "Owl as night thoughts piercing the hidden loop. Type 50–60%, owl at side/bottom inside the scene. No horror. No Victoria.",
+      "has_victoria": false,
+      "animal": "owl",
+      "exact_headline": "Прерывистое подкрепление",
+      "exact_body": "Непредсказуемость держит нервную систему в напряжении. Мозг путает тревогу с сильной любовью."
+    },
+    {
+      "slide": 5,
+      "role": "save_phases",
+      "visual_only": "SAVE CARD. Full framed two-column table inside the panel: Тепло vs Холод. Magenta rules and pills. Screenshot-worthy. No Victoria. No animal.",
+      "has_victoria": false,
+      "animal": null,
+      "framed_card": true,
+      "exact_headline": "Тепло vs Холод: две фазы",
+      "exact_lines": [
+        "Тепло: ему нужен твой ресурс и внимание",
+        "Холод: маячит близость и ответственность"
+      ]
+    },
+    {
+      "slide": 6,
+      "role": "save_says_hears",
+      "visual_only": "SAVE CARD. Layered framed card: Говорит / Слышишь / Реальность. Three stacked bands. Meaning depth like slide-04, family look. No Victoria.",
+      "has_victoria": false,
+      "animal": null,
+      "framed_card": true,
+      "exact_headline": "Говорит vs Слышишь",
+      "exact_lines": [
+        "Говорит: «Сейчас завал, не хочу усложнять»",
+        "Слышишь: «Я должна согреть его и подождать»",
+        "Реальность: «Беру тепло без обязательств»"
+      ]
+    },
+    {
+      "slide": 7,
+      "role": "save_checklist",
+      "visual_only": "SAVE CARD. Framed numbered checklist 1–3 in magenta/white pills. Bookmarkable. No Victoria. No extra pets.",
+      "has_victoria": false,
+      "animal": null,
+      "framed_card": true,
+      "exact_headline": "3 правила возвращения опоры",
+      "exact_lines": [
+        "1. Суди по средней температуре, не по пикам",
+        "2. Сделал шаг назад — оставайся на месте",
+        "3. Не грей человека, выбравшего холод"
+      ]
+    },
+    {
+      "slide": 8,
+      "role": "recap_rule",
+      "visual_only": "Large white decision-rule headline. Optional soft-gold ТАРО/СЕЙЧАС medallion if native and not covering type. No Victoria. No animal.",
+      "has_victoria": false,
+      "animal": null,
+      "exact_headline": "Ясность вместо дежурства",
+      "exact_body": "Отношения строятся на стабильности, а не на качелях. Твой человек не заставит гадать о своих чувствах.",
+      "exact_slogan": "Ясность сейчас"
+    },
+    {
+      "slide": 9,
+      "role": "cta",
+      "visual_only": "Same Victoria face/hair lock, NEW black satin wrap blouse, dark trousers, magenta lips, standing hip-lean, phone as if commenting. Huge magenta script ТЕПЛО. App-audio pills Суть – Тень – Вектор. Sells APP audio reading, not a bot, not 3 free spreads. No URL. No signature.",
+      "has_victoria": true,
+      "animal": null,
+      "exact_headline": "Напиши ТЕПЛО",
+      "exact_body": "Аудиоразбор в приложении. Суть – Тень – Вектор.",
+      "exact_cta": "Слово ТЕПЛО в комментариях",
+      "exact_slogan": "Ясность сейчас"
+    }
+  ]
+}

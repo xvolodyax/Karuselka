@@ -1,11 +1,11 @@
 # CAROUSEL_IMAGE_GEN_STATUS
 
-status: pending
-owner_next: image-prompter → slice
+status: prompt_ready
+owner_next: slice
 kie_task_id: none
 pixels: none
 master: carusel-memory/output/master/master.png (not created)
-reason: carusel-designer writes the design contract only. No Kie. No CAROUSEL_IMAGE_PROMPT.json.
+reason: image-prompter wrote bilingual CAROUSEL_IMAGE_PROMPT. No Kie generate. No slice.
 
 generation_mode: grid_3x3
 aspect_ratio: 3:4
