@@ -1,34 +1,32 @@
-# victoria-sheet.png — ONLY Victoria face lock
+# viktoriaref.png — ONLY Victoria face lock
 
-Repo path: `carusel-memory/references/victoria-sheet.png`  
-Box (if present): `/workspace/cover-refs/victoria-sheet.png`  
-i2i crop: `carusel-memory/references/victoria-sheet-front.png` (left frontal close-up only)
+Repo path: `carusel-memory/references/viktoriaref.png`  
+Box (if present): `/workspace/cover-refs/viktoriaref.png`
 
-This is the appearance card (карта внешности) confirmed by Vladimir 27.08.2026.
-Same lock the articles use. Never i2i the full 12-up grid.
+This is the appearance card confirmed by Vladimir 28.08.2026.
+Same sha as the Excalibur host lock. Never i2i a 12-up sheet or a crop of one.
 
 ## Face
 
 - Oval-to-heart, high cheekbones, slightly pointed chin
-- Eyes: **green with a slight hazel / light-brown mix**
+- Eyes: **green with a slight hazel / light-brown tint around the pupil** (зелёные с лёгким карим)
 - Warm tanned olive complexion
 - Full dusty-rose lips
 
 ## Hair (strict)
 
-Warm honey / wheat blonde with darker roots, as on the SHEET.
+Warm honey / wheat blonde with darker roots, as on `viktoriaref.png`.
 Never lighten. Platinum / white-blonde / much lighter = FAIL, regenerate the whole canvas.
 
 ## Clothes and pose (must change)
 
-The sheet shows a white cami + jeans + gold pendant for **identification only**.
-Do **not** copy that outfit or a frozen sheet pose onto slides.
+The photo shows a white cami + gold pendant for **identification only**.
+Do **not** copy that outfit onto slides.
 Every carousel: new clothes, new emotion, same face.
-Slide 1 and 9 may differ as long as it is the same woman.
 
 ## Banned
 
-- Alena (files deleted: victoria.png, victoria_ref.jpg, alena.png, alena_ref.jpg)
-- Old studio ivory-blazer cutout
+- `victoria-sheet.png` / `victoria-sheet-front.png` / `victoria-face.png` (deleted)
+- Alena (`victoria.png`, `victoria_ref.jpg`, `alena.png`, `alena_ref.jpg`)
+- `animals-viktoria-style-lock.png` as a face / i2i input
 - Any other woman
-- Doubles / two different faces in one pack

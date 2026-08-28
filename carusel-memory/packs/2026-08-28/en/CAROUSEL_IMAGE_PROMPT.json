@@ -12,15 +12,15 @@
   "carousel_family": "animals_viktoria_collage",
   "generation_mode": "grid_3x3",
   "model": "gpt-image-2-image-to-image",
-  "prompt": "Та же женщина, что на приложенном листе: зелёные глаза с лёгким hazel/светло-коричневым, тёплый медово-пшеничный блонд с тёмными корнями. Не Алёна. Не platinum.\n\nОдин master Instagram 3:4 @ 4K, точная сетка 3×3, тонкие белые gutters на 1/3 и 2/3 (Excalibur). Уголь #111–#1a, белый тип, маджента #ff006e, золото #c9a86a. Fashion collage. Виктория только на 1 и 9. Новая одежда, не майка+джинсы с листа. Safe ≥10–12% от швов. Текст на панелях только EN.\n\n1: бордовая водолазка, золотые хупы, сидит 3/4 к телефону, кот. «On Saturday he looked into your eyes» «and talked about trips together. By Tuesday — a dry \"busy\" and 3 days of cold silence.» «Hot & Cold»\n2: без Виктории, пёс у экрана. «Searching for what you did wrong» «You scroll through messages. The silence hurts, but the brutal temperature drop hurts worse.»\n3: без Виктории. «The trap of warming his draft» «You think: \"he's scared of his feelings.\" You respond to distance with double the warmth, fueling the cycle.»\n4: сова. «Intermittent reinforcement» «Unpredictability spikes your nervous system. Your brain confuses chronic anxiety with genuine passion.»\n5: рамка. «Warm vs Cold: two phases» «Warm: craving your energy, validation, and attention» «Cold: retreating the moment consistency is required»\n6: рамка. «Says vs You Hear» «Says: \"Work is crazy, don't want complications\"» «You hear: \"I need to be patient and warm him up\"» «Reality: \"I want intimacy without accountability\"»\n7: чек-лист. «3 rules of self-grounding» «1. Measure the baseline, not weekend peaks» «2. When he steps back, stay where you are» «3. Never warm up someone choosing the cold»\n8: «Clarity over constant waiting» «Real connection brings stability, not an emotional roller coaster. The right person never leaves you guessing.»\n9: чёрный атлас wrap, тёмные брюки, hip-lean. «Comment WARMTH» «Audio reading in the app. Essence–Shadow–Vector.» «Write WARMTH in the comments». Не бот. No Academy.\n\nVerbatim text, no substitutions, no extra labels, no duplicate text.",
+  "prompt": "Same woman as viktoriaref.png. Eyes green with a slight hazel / light-brown tint around the pupil (зелёные с лёгким карим). Warm honey-wheat blonde, darker roots, not platinum. New clothes, not the reference camisole.\n\nOne master Instagram 3:4 @ 4K, exact 3×3 grid, thin white gutters at 1/3 and 2/3 (Excalibur). Charcoal #111–#1a, white type, magenta #ff006e, gold #c9a86a. Fashion collage. Victoria on 1 and 9 only. New clothes. Safe ≥10–12% from seams. Panel text EN only.\n\n1: бордовая водолазка, золотые хупы, сидит 3/4 к телефону, кот. «On Saturday he looked into your eyes» «and talked about trips together. By Tuesday — a dry \"busy\" and 3 days of cold silence.» «Hot & Cold»\n2: без Виктории, пёс у экрана. «Searching for what you did wrong» «You scroll through messages. The silence hurts, but the brutal temperature drop hurts worse.»\n3: без Виктории. «The trap of warming his draft» «You think: \"he's scared of his feelings.\" You respond to distance with double the warmth, fueling the cycle.»\n4: сова. «Intermittent reinforcement» «Unpredictability spikes your nervous system. Your brain confuses chronic anxiety with genuine passion.»\n5: рамка. «Warm vs Cold: two phases» «Warm: craving your energy, validation, and attention» «Cold: retreating the moment consistency is required»\n6: рамка. «Says vs You Hear» «Says: \"Work is crazy, don't want complications\"» «You hear: \"I need to be patient and warm him up\"» «Reality: \"I want intimacy without accountability\"»\n7: чек-лист. «3 rules of self-grounding» «1. Measure the baseline, not weekend peaks» «2. When he steps back, stay where you are» «3. Never warm up someone choosing the cold»\n8: «Clarity over constant waiting» «Real connection brings stability, not an emotional roller coaster. The right person never leaves you guessing.»\n9: чёрный атлас wrap, тёмные брюки, hip-lean. «Comment WARMTH» «Audio reading in the app. Essence–Shadow–Vector.» «Write WARMTH in the comments». Не бот. No Academy.\n\nVerbatim text, no substitutions, no extra labels, no duplicate text.",
   "negative_prompt": "platinum, Alena, white cami, jeans from sheet, ivory blazer, other women's faces, Portuguese, horror, white-blonde, white camisole, spaghetti-strap, light-wash jeans, white blazer, studio-blazer, skulls, blood, dripping candles, ouija, demon faces, Victoria signature, extra labels, raw URLs, Academy, cutout, die-cut, sticker outline, white outline, white halo, crooked halo, вырезка, стикер-контур, белый контур, белый ореол, 2x3 grid, horizontal strip, outer canvas frame, watermark, word Сцена, Scene, 3 free readings, три бесплатных расклада, бот как приз, личный аудиоразбор, Victoria on slides 2-8, animals on slides other than 1 2 4, cute pets with no job, Russian headlines, Cyrillic on panels",
   "input_urls": [
-    "https://tempfile.redpandaai.co/kieai/378019/carusel-face-lock/victoria-sheet.png"
+    "https://tempfile.redpandaai.co/kieai/378019/carusel-face-lock/viktoriaref.png"
   ],
   "reference_upload_method": "upload_stream",
   "slice_method": "seam",
-  "face_lock": "victoria-sheet.png",
-  "hair_lock": "warm honey/wheat blonde with darker roots as on victoria-sheet.png",
+  "face_lock": "viktoriaref.png",
+  "hair_lock": "warm honey/wheat blonde with darker roots as on viktoriaref.png",
   "eyes_lock": "green with a slight hazel/light-brown mix",
   "aspect_ratio": "3:4",
   "resolution": "4K",
@@ -35,21 +35,21 @@
   "animate_slide": 1,
   "this_run_slide_01": "static_png",
   "input_files_in_repo": [
-    "carusel-memory/references/victoria-sheet-front.png"
+    "carusel-memory/references/viktoriaref.png"
   ],
   "prompt_compacted": true,
-  "prompt_char_count": 2008,
+  "prompt_char_count": 2032,
   "prompt_compaction": {
     "active_prompt_max_chars": 2200,
     "details_in_structured_fields": true,
     "prompt_compacted": true,
-    "prompt_char_count": 2008,
-    "rebuild": "2026-08-28 face-drift: previous 3631/3843-char collage novel + full 12-up i2i. Now face-first short prompt + 304x224 frontal crop only."
+    "prompt_char_count": 2032,
+    "rebuild": "2026-08-28: i2i ONLY viktoriaref.png; eyes green+hazel / зелёные с лёгким карим first; no 12-up sheet."
   },
   "reference_contract": {
     "reference_role": "style + layout reference; face lock is input_urls[0] only",
     "style_layout_palette": "image-851e / animals_viktoria_collage described in text — not sent as i2i",
-    "face_hair_only": "victoria-sheet.png",
+    "face_hair_only": "viktoriaref.png",
     "preserve": [
       "charcoal / matte black full-bleed field",
       "hot magenta #ff006e + white type mix",
@@ -262,6 +262,6 @@
       "exact_slogan": "Clarity now"
     }
   ],
-  "i2i_source": "carusel-memory/references/victoria-sheet-front.png",
-  "i2i_file_name": "victoria-sheet.png"
+  "i2i_source": "carusel-memory/references/viktoriaref.png",
+  "i2i_file_name": "viktoriaref.png"
 }

@@ -2,16 +2,13 @@
 
 | Role | Path | Status |
 |------|------|--------|
-| **Victoria face lock** | `carusel-memory/references/victoria-sheet.png` and `/workspace/cover-refs/victoria-sheet.png` | Official 12-up sheet. FACE_CHECK source. |
-| **Victoria i2i crop** | `carusel-memory/references/victoria-sheet-front.png` (upload as `victoria-sheet.png`) | ONLY i2i input. Left frontal close-up. Do not send the grid. |
-| Alena (was misnamed victoria.png) | deleted from cover-refs / assets | **GONE**. Never restore. Never i2i. |
+| **Victoria face lock** | `carusel-memory/references/viktoriaref.png` and `/workspace/cover-refs/viktoriaref.png` | ONLY identity file. ~1.5MB frontal. Same sha as Excalibur. |
+| Style collage | `carusel-memory/references/animals-viktoria-style-lock.png` | Palette / type only. **Never i2i as a face.** |
+| 12-up sheet / sheet crop / victoria-face.png | deleted | **GONE**. Do not restore. Do not i2i. |
+| Alena (was misnamed victoria.png) | deleted | **GONE**. Never restore. Never i2i. |
 | Old studio-blazer cutout | `/workspace/karusel-old/cover-old.png` | **RETIRED**. |
-| Generated stand-in `victoria-hair-lock.png` | — | **RETIRED**. Do not pick. |
-| Style lock | `/workspace/karusel-old/image-851e.png` | style only; no foreign faces/Portuguese |
-| Depth example | `/workspace/karusel-old/slide-04.png` | copy meaning only |
 
-Hair: warm honey/wheat + darker roots from the SHEET. Eyes: green + slight hazel.
-Clothes/pose: new every carousel. Never copy sheet outfit (white cami + jeans).
-Platinum / Alena face / same clothes two carousels in a row = FAIL.
-
-No proof-pack render. Swarm must be fixed first.
+Hair: warm honey/wheat + darker roots from `viktoriaref.png`.
+Eyes: green + slight hazel / зелёные с лёгким карим. Brown-only / grey / blue = FAIL.
+Clothes/pose: new every carousel. Never copy the reference white cami.
+Platinum / Alena / 12-up sheet as i2i = FAIL.

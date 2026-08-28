@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Cut face-check crops from the official sheet + pack slides 01/09.
+"""Copy viktoriaref.png + crop pack slides 01/09 for FACE_CHECK.
 
-Does not invent a face. Does not publish. Guardian still writes FACE_CHECK.md.
+Does not invent a face. Does not crop a 12-up sheet. Does not publish.
 """
 
 from __future__ import annotations
@@ -13,16 +13,7 @@ from pathlib import Path
 from PIL import Image
 
 REPO = Path(__file__).resolve().parent.parent
-SHEET = REPO / "carusel-memory" / "references" / "victoria-sheet.png"
-FRONT = REPO / "carusel-memory" / "references" / "victoria-sheet-front.png"
-
-
-def _ensure_front() -> Path:
-    if FRONT.is_file() and FRONT.stat().st_size > 1000:
-        return FRONT
-    from crop_victoria_sheet_tight import crop_front_closeup
-
-    return crop_front_closeup(SHEET, FRONT)
+FACE = REPO / "carusel-memory" / "references" / "viktoriaref.png"
 
 
 def _slide_face(src: Path, dest: Path) -> None:
@@ -34,12 +25,13 @@ def _slide_face(src: Path, dest: Path) -> None:
 
 
 def make_crops(pack: Path) -> list[Path]:
+    if not FACE.is_file() or FACE.stat().st_size < 100_000:
+        raise SystemExit("missing carusel-memory/references/viktoriaref.png")
     out = pack / "face-check"
     out.mkdir(parents=True, exist_ok=True)
-    front = _ensure_front()
-    sheet_front = out / "sheet-front.png"
-    shutil.copy2(front, sheet_front)
-    written = [sheet_front]
+    dest_face = out / "viktoriaref.png"
+    shutil.copy2(FACE, dest_face)
+    written = [dest_face]
     mapping = {
         "ru-slide-01-face.png": pack / "ru" / "slides" / "slide-01.png",
         "ru-slide-09-face.png": pack / "ru" / "slides" / "slide-09.png",
