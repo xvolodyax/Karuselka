@@ -1,10 +1,11 @@
 # victoria-sheet.png — ONLY Victoria face lock
 
 Repo path: `carusel-memory/references/victoria-sheet.png`  
-Box (if present): `/workspace/cover-refs/victoria-sheet.png`
+Box (if present): `/workspace/cover-refs/victoria-sheet.png`  
+i2i crop: `carusel-memory/references/victoria-sheet-front.png` (left frontal close-up only)
 
 This is the appearance card (карта внешности) confirmed by Vladimir 27.08.2026.
-Same lock the articles use.
+Same lock the articles use. Never i2i the full 12-up grid.
 
 ## Face
 

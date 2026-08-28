@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Upload victoria-sheet.png + style lock, Kie i2i both langs, copy 18 slides.
+"""Upload cropped victoria-sheet close-up, Kie i2i both langs, copy 18 slides.
 
-Refuses to run without the real sheet. Will not invent a face.
+Refuses the full 12-up grid and Alena. Will not invent a face.
 Does not publish Instagram.
 """
 
@@ -13,18 +13,21 @@ import shutil
 import sys
 from pathlib import Path
 
+from PIL import Image
+
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO = SCRIPT_DIR.parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
+from crop_victoria_sheet_tight import crop_front_closeup  # noqa: E402
 from kie_carousel_gen import run_grid_3x3  # noqa: E402
 from kie_client import KieImageClient  # noqa: E402
 from kie_file_upload import KieFileUploadClient  # noqa: E402
 
 SHEET = REPO / "carusel-memory" / "references" / "victoria-sheet.png"
-STYLE = REPO / "carusel-memory" / "references" / "animals-viktoria-style-lock.png"
+FRONT = REPO / "carusel-memory" / "references" / "victoria-sheet-front.png"
 ALENA = Path("/workspace/cover-refs/victoria.png")
-DEFAULT_PACK = REPO / "carusel-memory" / "packs" / "2026-08-27-swarm"
+DEFAULT_PACK = REPO / "carusel-memory" / "packs" / "2026-08-28"
 
 
 def load_json(path: Path) -> dict:
@@ -36,7 +39,7 @@ def write_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def require_sheet() -> None:
+def require_front_crop() -> Path:
     if ALENA.is_file():
         print(
             "NOTE: /workspace/cover-refs/victoria.png is Alena — will not upload it.",
@@ -48,22 +51,32 @@ def require_sheet() -> None:
             "That file is the ONLY Victoria face lock. "
             "Do not invent a stand-in. Do not use cover-refs/victoria.png (Alena)."
         )
-    if not STYLE.is_file():
-        raise SystemExit(f"STOP: style lock missing: {STYLE}")
+    if not FRONT.is_file() or FRONT.stat().st_size < 1000:
+        crop_front_closeup(SHEET, FRONT)
+    im = Image.open(FRONT)
+    if im.size[0] > 500 or im.size[1] > 400:
+        raise SystemExit(f"i2i crop is still a grid: {im.size}. Crop the left frontal close-up only.")
+    return FRONT
 
 
 def render_lang(
     pack: Path,
     lang: str,
     sheet_url: str,
-    style_url: str,
     workspace: Path,
 ) -> int:
     prompt = load_json(pack / lang / "CAROUSEL_IMAGE_PROMPT.json")
     if prompt.get("face_lock") != "victoria-sheet.png":
         raise SystemExit(f"{lang}: face_lock must be victoria-sheet.png")
+    active = str(prompt.get("prompt") or "")
+    count = int(prompt.get("prompt_char_count") or len(active))
+    if len(active) > 2200 or count > 2200:
+        raise SystemExit(
+            f"{lang}: prompt too long ({max(count, len(active))} chars). "
+            "Rewrite short, face first. Do not generate."
+        )
     prompt["slice_method"] = "seam"
-    # Excalibur host_reference: face sheet first and only. Style plate teaches stickers.
+    # Excalibur: cropped close-up first and only. Style plate teaches stickers.
     prompt["input_urls"] = [sheet_url]
     copy_src = pack / lang / "CAROUSEL_SLIDE_COPY.json"
     design = workspace / "carusel-memory" / "design"
@@ -103,15 +116,17 @@ def render_lang(
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Kie i2i pack render from victoria-sheet.png")
+    parser = argparse.ArgumentParser(description="Kie i2i pack render from victoria-sheet close-up")
     parser.add_argument("--pack", default=str(DEFAULT_PACK))
     parser.add_argument("--langs", default="ru,en")
     args = parser.parse_args(argv)
-    require_sheet()
+    front = require_front_crop()
     pack = Path(args.pack).expanduser().resolve()
     uploader = KieFileUploadClient()
-    print(f"Uploading face lock {SHEET} ...")
-    sheet_url = uploader.upload_local(SHEET, upload_path="carusel-face-lock")
+    print(f"Uploading face close-up {front} as victoria-sheet.png ...")
+    sheet_url = uploader.upload_local(
+        front, upload_path="carusel-face-lock", file_name="victoria-sheet.png"
+    )
     print(f"sheet_url={sheet_url}")
     print("Style lock not uploaded for i2i (sticker plate). Palette is in the prompt.")
 
@@ -121,7 +136,7 @@ def main(argv: list[str] | None = None) -> int:
             shutil.rmtree(workspace)
         workspace.mkdir(parents=True)
         print(f"=== Kie i2i {lang} ===")
-        rc = render_lang(pack, lang, sheet_url, "", workspace)
+        rc = render_lang(pack, lang, sheet_url, workspace)
         if rc != 0:
             return rc
     print("18 slides written. Do not publish.")

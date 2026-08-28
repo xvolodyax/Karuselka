@@ -41,7 +41,7 @@ Fragment: `carusel-memory/fragments/image-prompter.md`
   "prompt": "Одно изображение: 9 равных панелей 3×3, каждая 3:4, стиль как референс...",
   "negative_prompt": "...",
   "input_urls": [
-    "https://HTTPS_VICTORIA_SHEET"
+    "https://HTTPS_VICTORIA_SHEET_CLOSEUP"
   ],
   "slice_method": "seam",
   "face_lock": "victoria-sheet.png",
@@ -84,60 +84,38 @@ Fragment: `carusel-memory/fragments/image-prompter.md`
 5. Обязательно добавить: `verbatim text, no substitutions, no extra labels, no duplicate text`.
 6. Промпт должен явно разделять **preserve / change / do_not_borrow**.
 7. Не генерировать generic prompt. Если в `prompt` нет 9 панелей 01-09 — fragment `❌ BLOCKER`.
-8. **Compact Kie prompt:** активное поле `prompt` держать ≤4500 символов (target 2800–4200). Детальные данные хранить в `style_lock`, `reference_contract`, `typography_rules`, `panel_visual_brief`, а не раздувать `prompt`.
-9. Если Kie i2i возвращает повторный `400 Internal Error` на 3:4 @ 4K при валидном reference URL — сначала сделать compact prompt retry, не менять aspect/resolution без явного разрешения.
+8. **SHORT Kie prompt:** активное поле `prompt` ≤2200 символов (target 900–1800). **Face lock first.** Длинный MUST/collage/type/wardrobe essay (3000+) морит лицо. Детали — в `style_lock`, `reference_contract`, `panel_visual_brief`.
+9. **Один i2i файл:** обрезать крупный фронтальный портрет слева с `victoria-sheet.png` (`scripts/crop_victoria_sheet_tight.py`). Залить **только этот кроп** как `file_name=victoria-sheet.png`. Не слать всю 12-up сетку. Не слать `animals-viktoria-style-lock.png`.
+10. Если Kie i2i возвращает повторный `400 Internal Error` на 3:4 @ 4K при валидном reference URL — сначала сделать compact prompt retry, не менять aspect/resolution без явного разрешения.
 
 ## Сборка промпта (шаблон)
 
 ```
-[STYLE LOCK from reference]
-One Instagram carousel master image, grid 3×3, exactly 9 equal cells,
-each cell is a standalone vertical panel, brand-consistent but NOT a horizontal seamless strip,
-[style: carousel_family], palette [colors], [typography], [lighting direction].
+[FACE FIRST]
+Same woman as the attached sheet: green eyes with a slight hazel/light-brown mix,
+warm honey-wheat blonde with darker roots. Not Alena. Not platinum.
 
-[REFERENCE CONTRACT]
-Reference role: style + layout reference.
-Preserve: [palette], [grid], [typography hierarchy], [spacing], [panel archetypes].
-Change: [topic], [objects], [copy], [CTA], [domain metaphors].
-Do not borrow: [original logos], [people], [mascot], [brand name], [accidental text].
+[GRID + STYLE — one short block]
+One Instagram carousel master, 3:4 @ 4K, exact 3×3, thin white gutters at 1/3
+and 2/3 (Excalibur seam cut). Charcoal #111–#1a, white type, magenta #ff006e,
+gold #c9a86a. Fashion collage. Victoria on 1 and 9 only. New clothes, not
+sheet tank+jeans. Safe margin ≥10–12% from seams.
 
-[PANEL FLOW — row-major 1..9]
-Panel 1 (hook, motion-safe): exact headline "..."; visual zones ...
-Panel 2-8 (value/save): exact headline "..."; short body "..."; visual zones ...
-Panel 9 (cta): exact headline "..."; exact CTA from copy (app audio reading,
-not 3 free bot spreads); visual zones ...
+[PANEL FLOW — row-major 1..9, short]
+Panel 1: new wardrobe + pose; exact headline "..."; exact body "..."
+...
+Panel 9: different new wardrobe; exact CTA from copy (app audio, not bot).
 
 [TYPOGRAPHY]
-Verbatim text only; no substitutions; no extra labels; no duplicate text.
-Headline dominant, body smaller, pills tiny but legible. High contrast.
-
-[GRID RULES]
-Master aspect ratio 3:4, resolution 4K. Canvas exact 3×3; nine 3:4 panels;
-thin white gutters on the 1/3 and 2/3 lines; no bleed. Code cuts ON those seams
-(Excalibur method). No outer white frame around the whole canvas.
-People and animals live inside each scene — do not describe sticker/cutout/halo
-in the positive prompt (ban those words in negative_prompt only).
-input_urls[0] = victoria-sheet.png (i2i face lock). Short identity line.
-input_urls[1] = style lock for palette/type only — do not copy sticker outlines
-from that plate.
-**Safe margin:** all headline/body/pills must stay **≥10–12% away from every
-seam and cell edge**. Do not place text near the bottom edge.
-
-[NEGATIVE]
-wrong number of panels, horizontal strip, 2x3 grid, outer canvas frame, watermark,
-blurry, inconsistent styles, cutout, die-cut, sticker outline, white halo,
-platinum, Alena, sheet cami+jeans.
-
-[TOPIC]
-Adapt scene for: {topic from brief}
+Verbatim text only; no extra labels; no sticker/cutout/halo in the positive.
 ```
 
 ## Compact prompt contract
 
-- `prompt` — только активная инструкция для Kie: стиль, reference contract, grid, 9 коротких panel lines, typography, negative.
-- Подробный разбор референса, decomposition, rationale, длинные списки объектов и альтернативы — в структурные поля JSON и `CAROUSEL_IMAGE_PROMPT.md`.
-- Перед handoff записать `prompt_compacted: true|false`, `prompt_char_count`, `prompt_compacted_reason` если был retry после Kie 400.
-- `prompt_char_count > 4500` для активного Kie `prompt` = `❌ BLOCKER`, пока не compacted.
+- `prompt` — короткая активная инструкция: **лицо первым**, сетка, 9 коротких panel lines с verbatim copy.
+- Подробный разбор референса, decomposition, rationale — в структурные поля JSON и `CAROUSEL_IMAGE_PROMPT.md`.
+- Перед handoff записать `prompt_compacted: true|false`, `prompt_char_count`.
+- `prompt_char_count > 2200` для активного Kie `prompt` = `❌ BLOCKER`. 3631-char collage novel = FAIL.
 
 ## Разделение с designer
 

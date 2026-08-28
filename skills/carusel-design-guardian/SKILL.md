@@ -37,6 +37,8 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 | Canon `animals_viktoria_collage` (Victoria 1+9, ≥3 animal metaphors) | yes |
 | Hook is a scene; ≥2 save slides have a real framework/questions | yes |
 | Hair lock: honey/wheat + darker roots; platinum = FAIL | yes |
+| Face + eyes vs `victoria-sheet.png` close-up (`FACE_CHECK.md` MATCH) | yes |
+| Eyes green + slight hazel; brown/grey = FAIL whole canvas | yes |
 | No empty vibe-only slides | yes |
 
 ## Professional QA protocol
@@ -47,6 +49,7 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 4. **Typography test:** exact intended key text, no random labels, no duplicate text.
 5. **Save test:** slides 7-8 should work as standalone checklist/recap.
 6. **CTA test:** slide 9 sells the **app audio reading** (Суть–Тень–Вектор / Essence–Shadow–Vector), one comment trigger, no bot prize. See `shared/cta-app-audio-contract.md`.
+6b. **Face + eyes test:** crop sheet close-up + slides 01/09 (`scripts/make_face_check_crops.py`). Write `FACE_CHECK.md`. Compare pixels (eyes green+hazel, bone/age, hair pattern) — not honey/wheat prose. Brown/grey eyes or generic blonde = P0, regen whole canvas. See `shared/victoria-face-pixel-gate.md`.
 7. **Motion test:** if video exists, text remains stable and loop has no hard cut.
 8. **Bleed test:** inspect top 40px of slides 04–09 for orphan text from row above. If P0, request master regeneration with stronger safe-area; do not approve per-slide crop as publish asset.
 9. **Video source test:** frame 0 of `slide-01.mp4` must match `slide-01.png` (MAE ≤35):

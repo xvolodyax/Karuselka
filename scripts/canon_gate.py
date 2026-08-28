@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Any
 
 import cta_canon
+from face_gate import LEGACY_PACKS, check_face, pack_has_real_pixels
 
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 PLATINUM_RE = re.compile(r"platinum|white-?blonde|платин|белокуры", re.I)
@@ -43,6 +44,8 @@ ALLOWED_PRODUCTS = {cta_canon.REQUIRED_PRODUCT}
 TRIGGERS = {"ru": "ПАУЗА", "en": "PAUSE"}
 HANDLES = {"ru": "@todaytaro_ru", "en": "@todaytaro_bot"}
 FACE_LOCK = "victoria-sheet.png"
+PROMPT_MAX_CHARS = 2200
+STYLE_LOCK_RE = re.compile(r"animals-viktoria-style-lock|style-lock", re.I)
 ALENA_RE = re.compile(
     r"alena|cover-refs/victoria\.png|виктория\.png|victoria-hair-lock",
     re.I,
@@ -109,6 +112,8 @@ def check_pack(pack: Path) -> list[str]:
 
     for lang in langs:
         errors.extend(check_lang(pack / lang, lang, manifest))
+    if pack_has_real_pixels(pack):
+        errors.extend(check_face(pack))
     return errors
 
 
@@ -235,6 +240,19 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
         urls = prompt.get("input_urls") or []
         if urls and FACE_LOCK not in str(urls[0]):
             errors.append(f"{lang}: input_urls[0] must be {FACE_LOCK} (Excalibur i2i order)")
+        pack_id = str(manifest.get("pack_id") or "")
+        if pack_id not in LEGACY_PACKS:
+            active = str(prompt.get("prompt") or "")
+            count = int(prompt.get("prompt_char_count") or len(active))
+            if len(active) > PROMPT_MAX_CHARS or count > PROMPT_MAX_CHARS:
+                errors.append(
+                    f"{lang}: prompt_char_count {max(count, len(active))} > {PROMPT_MAX_CHARS} "
+                    "(long collage essay starves face lock)"
+                )
+            if urls and len(urls) != 1:
+                errors.append(f"{lang}: exactly one input_url — cropped victoria-sheet close-up")
+            if any(STYLE_LOCK_RE.search(str(u)) for u in urls):
+                errors.append(f"{lang}: do not send animals-viktoria-style-lock as i2i")
         if str(prompt.get("slice_method") or "") != "seam":
             errors.append(f"{lang}: slice_method must be seam (Excalibur white-gutter cut)")
         visual_positive = " ".join(
@@ -295,6 +313,7 @@ Verdict: PASS
 - (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
 - (h) seam slice (Excalibur white gutters), no sticker halo
 - (i) CTA = app_audio (аудиоразбор in the APP); bot as comment prize = FAIL
+- (j) FACE_CHECK.md MATCH vs victoria-sheet.png close-up; eyes green+hazel (brown/grey = FAIL)
 - caption: one trigger word, no raw URLs, links in profile, no Academy on EN
 """
     report.write_text(body, encoding="utf-8")

@@ -421,6 +421,73 @@ class CanonGateTest(unittest.TestCase):
         self.assertIn("comment prize cannot be the bot", errors)
         self.assertIn("3 free readings", errors)
 
+    def test_long_prompt_fails_on_new_pack(self) -> None:
+        pack = self.tmp / "pack"
+        write(
+            pack / "PACK.json",
+            {
+                "pack_id": "2026-08-28",
+                "visual_family": "animals_viktoria_collage",
+                "face_lock": "victoria-sheet.png",
+                "langs": ["ru"],
+                "trigger_words": {"ru": "ТЕПЛО"},
+                "product": "app_audio",
+            },
+        )
+        write(
+            pack / "ru" / "CAROUSEL_SLIDE_COPY.json",
+            {
+                "slide_count": 9,
+                "visual_family": "animals_viktoria_collage",
+                "hook_is_scene": True,
+                "trigger_word": "ТЕПЛО",
+                "product": "app_audio",
+                "slides": [
+                    {
+                        "index": 1,
+                        "role": "hook",
+                        "hook_type": "scene",
+                        "headline": "В субботу он смотрел в глаза",
+                        "body": "и строил планы.",
+                        "victoria": True,
+                        "animal": "cat",
+                        "animal_job": "чуешь",
+                    },
+                    *[{"index": i, "role": "save", "headline": "Правило", "body": "Шаг.", "has_framework": True} for i in range(2, 9)],
+                    {
+                        "index": 9,
+                        "role": "cta",
+                        "headline": "Напиши ТЕПЛО",
+                        "body": "Аудиоразбор в приложении. Суть – Тень – Вектор.",
+                    },
+                ],
+            },
+        )
+        write(
+            pack / "ru" / "CAROUSEL_CAPTION.json",
+            {
+                "full_caption": "Напиши ТЕПЛО @todaytaro_ru. Аудиоразбор в приложении. Ссылки в шапке профиля.",
+                "trigger_word": "ТЕПЛО",
+                "product": "app_audio",
+                "mentions": ["@todaytaro_ru"],
+            },
+        )
+        write(
+            pack / "ru" / "CAROUSEL_IMAGE_PROMPT.json",
+            {
+                "visual_family": "animals_viktoria_collage",
+                "face_lock": "victoria-sheet.png",
+                "slice_method": "seam",
+                "input_urls": ["https://example.com/victoria-sheet.png"],
+                "prompt": "Thin white gutters at 1/3 and 2/3. " + ("collage cats type wardrobe " * 200),
+                "prompt_char_count": 3631,
+                "panel_visual_brief": [{"slide": i, "visual_only": "scene"} for i in range(1, 10)],
+            },
+        )
+        errors = " ".join(gate.check_pack(pack))
+        self.assertIn("prompt_char_count", errors)
+
 
 if __name__ == "__main__":
     unittest.main()
+

@@ -46,8 +46,12 @@ exit 2 `CROOKED CANVAS`: пересобрать **весь** master, не пат
 Не использовать `remove_grid_gutters.py` как основной путь (только QA-копия).
 
 `3:4` — основной формат, не fallback. Grid 3×3 даёт 9 одинаковых панелей `3:4`.
+i2i `input_urls[0]` = **cropped left frontal close-up** uploaded as `victoria-sheet.png`.
+Do not send the full 12-up sheet. Do not send `animals-viktoria-style-lock.png`.
+Wrong face, brown/grey eyes, or platinum → rebuild the **whole** canvas.
+
 Если Kie возвращает повторный `400 Internal Error` на валидный `3:4 @ 4K` i2i payload,
-сначала запросить у image-prompter compact retry (`prompt` ≤4500 chars, детали в structured fields).
+сначала запросить у image-prompter compact retry (`prompt` ≤2200 chars, детали в structured fields).
 Не менять `aspect_ratio` или `resolution` до compact retry и явного разрешения.
 `kie-task-log.json` должен содержать:
 

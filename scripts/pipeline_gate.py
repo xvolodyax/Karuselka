@@ -663,6 +663,14 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
         urls = prompt.get("input_urls") or []
         if urls and "victoria-sheet.png" not in str(urls[0]):
             errors.append("CAROUSEL_IMAGE_PROMPT.json input_urls[0] must be victoria-sheet.png")
+        if len(urls) != 1:
+            errors.append("CAROUSEL_IMAGE_PROMPT.json must have exactly one input_url")
+        prompt_text = str(prompt.get("prompt") or "")
+        count = int(prompt.get("prompt_char_count") or len(prompt_text))
+        if len(prompt_text) > 2200 or count > 2200:
+            errors.append(
+                "CAROUSEL_IMAGE_PROMPT.json prompt too long (>2200) — starves face lock"
+            )
         if "PLACEHOLDER" in json.dumps(prompt):
             errors.append("CAROUSEL_IMAGE_PROMPT.json still has PLACEHOLDER")
         briefs = prompt.get("panel_visual_brief") or []
@@ -819,10 +827,19 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
     if step_id == "image-prompter":
         extra_hard.append(
             "- slice_method: seam. Prompt thin white gutters at 1/3 and 2/3 (Excalibur). "
-            "input_urls[0] must be victoria-sheet.png (i2i face lock). Short identity line, "
-            "no face essay. Do not ask for sticker/cutout/white halo on people or animals."
+            "Prompt SHORT. Face lock FIRST. prompt_char_count <= 2200. "
+            "No 3000-char collage/type/wardrobe novel. No face essay."
         )
-        extra_hard.append("- Read shared/carousel-seam-slice-contract.md and shared/victoria-identity-lock.md.")
+        extra_hard.append(
+            "- Crop ONE left frontal close-up from victoria-sheet.png and upload THAT "
+            "as the only input_url, file_name=victoria-sheet.png. Do not i2i the full "
+            "12-up grid. Do not send animals-viktoria-style-lock.png."
+        )
+        extra_hard.append(
+            "- Eyes: green + slight hazel/light-brown (Excalibur). Keep passed copy/CTA. "
+            "New clothes/poses — not sheet tank+jeans. Read shared/victoria-identity-lock.md "
+            "and shared/carousel-seam-slice-contract.md."
+        )
         extra_hard.append(
             "- Panel 9 verbatim text = app audio CTA from copy (аудиоразбор / audio reading). "
             "Never paint 3 free bot spreads as the comment prize."
@@ -833,6 +850,12 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "(Суть–Тень–Вектор / Essence–Shadow–Vector). FAIL if they sell "
             "3 free bot readings / три бесплатных расклада. "
             "Read shared/cta-app-audio-contract.md."
+        )
+        extra_hard.append(
+            "- Pixel FACE_CHECK.md vs victoria-sheet.png close-up (slides 01+09, both langs). "
+            "Run scripts/make_face_check_crops.py. Eyes must be green+hazel. "
+            "Brown/grey eyes or generic blonde = FAIL, rebuild whole canvas. "
+            "Hair-prose only is not a pass. Read shared/victoria-face-pixel-gate.md."
         )
     if step_id == "slice":
         extra_hard.append(
