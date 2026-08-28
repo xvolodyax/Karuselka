@@ -148,28 +148,32 @@
     },
     "design-guardian": {
       "id": "design-guardian",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": "2026-08-28T09:36:13Z",
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "1fc70296377341528f5a3de0442fc5e1",
+      "started_at": "2026-08-28T09:52:02Z",
+      "finished_at": "2026-08-28T09:54:39Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md"
+      ],
+      "fragment": "carusel-memory/fragments/design-guardian.md",
+      "incident_report": "none",
       "model": null
     },
     "upload": {
       "id": "upload",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "a270d656731948c98dd14c18cd88f764",
+      "started_at": "2026-08-28T09:55:17Z",
+      "finished_at": "2026-08-28T09:58:13Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/output/publish-urls.json"
+      ],
+      "fragment": "carusel-memory/fragments/upload.md",
+      "incident_report": "none",
       "model": null
     },
     "publish": {
