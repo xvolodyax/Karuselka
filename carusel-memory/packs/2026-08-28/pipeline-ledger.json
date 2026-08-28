@@ -165,12 +165,14 @@
       "id": "upload",
       "status": "ok",
       "dispatched_via": "Task(generalPurpose)",
-      "dispatch_id": "a270d656731948c98dd14c18cd88f764",
-      "started_at": "2026-08-28T09:55:17Z",
-      "finished_at": "2026-08-28T09:58:13Z",
+      "dispatch_id": "58b69de6b3984ec39d23e119270c5f95",
+      "started_at": "2026-08-28T10:56:09Z",
+      "finished_at": "2026-08-28T10:57:40Z",
       "skip_reason": null,
       "artifacts": [
-        "carusel-memory/output/publish-urls.json"
+        "carusel-memory/output/publish-urls.json",
+        "carusel-memory/packs/2026-08-28/ru/publish-urls.json",
+        "carusel-memory/packs/2026-08-28/en/publish-urls.json"
       ],
       "fragment": "carusel-memory/fragments/upload.md",
       "incident_report": "none",
