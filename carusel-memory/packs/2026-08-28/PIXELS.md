@@ -9,21 +9,23 @@ edge_cleanup: strip=10 (no crop)
 gutter_qa: ok
 this_run_slide_01: static_png
 publish_requested: false
-re_slice: existing source.png, no Kie regen
+regen: owner rebuild — i2i cropped left frontal close-up only (not 12-up)
 
 ## RU
 
-taskId: 95de87c31ebeab2c5f8e38231337e49d
+taskId: 2fb845fee323055e349ff5fc5671c456
+failed_then_retry: 9f10767b98fa44443003d62dc9fb046b (Kie 500, same payload)
 slides: carusel-memory/packs/2026-08-28/ru/slides/slide-01.png … slide-09.png
-master: carusel-memory/packs/2026-08-28/ru/master.png (QA-cleaned)
-source: carusel-memory/packs/2026-08-28/ru/source.png (original seams)
+master: carusel-memory/packs/2026-08-28/ru/master.png
+source: carusel-memory/packs/2026-08-28/ru/source.png
 qa: carusel-memory/packs/2026-08-28/ru/grid-gutter-qa-clean.json status=ok
-P0 fixed: slides 04–06 bottom rows 1431–1439 no longer white
+face: MATCH vs victoria-sheet-front.png (green + hazel)
 
 ## EN
 
-taskId: 0a3ed1e55028231a69e1161be631ed16
+taskId: 2afff1c92eebecb78650e2b45a77b2a8
 slides: carusel-memory/packs/2026-08-28/en/slides/slide-01.png … slide-09.png
-master: carusel-memory/packs/2026-08-28/en/master.png (QA-cleaned)
+master: carusel-memory/packs/2026-08-28/en/master.png
 source: carusel-memory/packs/2026-08-28/en/source.png
 qa: carusel-memory/packs/2026-08-28/en/grid-gutter-qa-clean.json status=ok
+face: MATCH vs victoria-sheet-front.png (green + hazel)

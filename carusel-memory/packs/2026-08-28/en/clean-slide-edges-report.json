@@ -1,6 +1,6 @@
 {
   "method": "copy interior pixels over outer edge strips; no crop, no resize",
-  "slides_dir": "/tmp/en-slice/slides",
+  "slides_dir": "/tmp/kie-pack-en/carusel-memory/output/slides",
   "slides": [
     1,
     2,
@@ -26,7 +26,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 38225
+      "changed_pixels": 42521
     },
     {
       "file": "slide-02.png",
@@ -34,7 +34,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 42876
+      "changed_pixels": 41161
     },
     {
       "file": "slide-03.png",
@@ -42,7 +42,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 38052
+      "changed_pixels": 42534
     },
     {
       "file": "slide-04.png",
@@ -50,7 +50,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 45965
+      "changed_pixels": 40685
     },
     {
       "file": "slide-05.png",
@@ -58,7 +58,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 45910
+      "changed_pixels": 44838
     },
     {
       "file": "slide-06.png",
@@ -66,7 +66,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 37830
+      "changed_pixels": 44755
     },
     {
       "file": "slide-07.png",
@@ -74,7 +74,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 29440
+      "changed_pixels": 46223
     },
     {
       "file": "slide-08.png",
@@ -82,7 +82,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 41880
+      "changed_pixels": 47250
     },
     {
       "file": "slide-09.png",
@@ -90,7 +90,7 @@
         "width": 1080,
         "height": 1440
       },
-      "changed_pixels": 34208
+      "changed_pixels": 40822
     }
   ]
 }

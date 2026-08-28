@@ -11,7 +11,7 @@ This pack is for **human review**. Publish stays skipped.
 
 ## Slot
 
-2026-08-28, 11:10 MSK (late). Static 9+9 slides. No Grok video.
+2026-08-28, 11:10 MSK (late). **Static 9+9 PNG only.** Slide 01 is PNG. No Grok / motion / animate.
 
 ## Topic
 
@@ -26,8 +26,8 @@ Forbidden repeats were not reused: Pause, Ping vs step, «Спишь?» after 24
 
 ## Face
 
-`carusel-memory/references/victoria-sheet.png` only. `victoria.png` is Alena.
-Hair: warm honey/wheat + darker roots. Not platinum.
+i2i = cropped left frontal close-up of `victoria-sheet.png` only. Alena files deleted / forbidden.
+Eyes: green + slight hazel. Hair: warm honey/wheat + darker roots. Not platinum.
 Clothes this pack: burgundy turtleneck (01), black satin wrap (09).
 
 ## Pack path

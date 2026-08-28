@@ -50,18 +50,10 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 5. **Save test:** slides 7-8 should work as standalone checklist/recap.
 6. **CTA test:** slide 9 sells the **app audio reading** (Суть–Тень–Вектор / Essence–Shadow–Vector), one comment trigger, no bot prize. See `shared/cta-app-audio-contract.md`.
 6b. **Face + eyes test:** crop sheet close-up + slides 01/09 (`scripts/make_face_check_crops.py`). Write `FACE_CHECK.md`. Compare pixels (eyes green+hazel, bone/age, hair pattern) — not honey/wheat prose. Brown/grey eyes or generic blonde = P0, regen whole canvas. See `shared/victoria-face-pixel-gate.md`.
-7. **Motion test:** if video exists, text remains stable and loop has no hard cut.
+7. **Motion / video:** **skipped.** Instagram carousels are static PNGs. Slide 01 is PNG. Do not require `slide-01.mp4`. Do not run `video_frame_qa.py`. Missing video is not a blocker. See `shared/static-carousel-lock.md`.
 8. **Bleed test:** inspect top 40px of slides 04–09 for orphan text from row above. If P0, request master regeneration with stronger safe-area; do not approve per-slide crop as publish asset.
-9. **Video source test:** frame 0 of `slide-01.mp4` must match `slide-01.png` (MAE ≤35):
-10. **No-frame QA:** verify `carusel-memory/output/debug/grid-gutter-qa-clean.json` exists and has `status: ok`. White edge artifacts after canonical cleanup = P0.
-11. **Kie recovery provenance:** if slice recovered from Kie `400 Internal Error`, verify the successful run stayed `3:4 @ 4K` and used compact prompt retry before any aspect/resolution change. `prompt_char_count > 4500` after recovery is P0.
-
-```bash
-python scripts/video_frame_qa.py \
-  --video carusel-memory/output/video/slide-01.mp4 \
-  --png carusel-memory/output/slides/slide-01.png \
-  --loop-check
-```
+9. **No-frame QA:** verify `carusel-memory/output/debug/grid-gutter-qa-clean.json` exists and has `status: ok`. White edge artifacts after canonical cleanup = P0.
+10. **Kie recovery provenance:** if slice recovered from Kie `400 Internal Error`, verify the successful run stayed `3:4 @ 4K` and used compact prompt retry before any aspect/resolution change. `prompt_char_count > 2200` after recovery is P0.
 
 ## Scoring
 

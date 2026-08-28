@@ -101,7 +101,7 @@
       ],
       "fragment": "carusel-memory/fragments/slice.md",
       "may_run_in_parent": false,
-      "handoff_next": "motion-director",
+      "handoff_next": "design-guardian",
       "skip_allowed": false
     },
     {
@@ -117,7 +117,8 @@
       "fragment": "carusel-memory/fragments/motion-director.md",
       "may_run_in_parent": false,
       "handoff_next": "animate",
-      "skip_allowed": false
+      "skip_allowed": true,
+      "skip_reason_required": "static-png-only"
     },
     {
       "id": "animate",
@@ -131,7 +132,8 @@
       "fragment": "carusel-memory/fragments/animate.md",
       "may_run_in_parent": false,
       "handoff_next": "design-guardian",
-      "skip_allowed": false
+      "skip_allowed": true,
+      "skip_reason_required": "static-png-only"
     },
     {
       "id": "design-guardian",

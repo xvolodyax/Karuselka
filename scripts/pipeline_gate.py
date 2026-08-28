@@ -54,7 +54,10 @@ PLUGIN_TASK = {
 LEGAL_SKIP = {
     "publish": "publish-not-requested",
     "fixic": "no-open-incidents",
+    "motion-director": "static-png-only",
+    "animate": "static-png-only",
 }
+SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | re.I)
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
 GEMINI_MODEL = "gemini-3.7-flash-high"
 GEMINI_WRITERS = frozenset({"gemini", "gemini-3.7-flash-high"})
@@ -226,10 +229,17 @@ def parse_brief(workspace: Path) -> dict[str, Any]:
         raise SystemExit(f"handle for lang={lang} must be {expected}, got {handle}")
     pub_m = PUBLISH_RE.search(text)
     publish_requested = bool(pub_m and pub_m.group(1).lower() == "true")
+    skip_flags = {m.group(1).lower(): m.group(2).lower() == "true" for m in SKIP_FLAG_RE.finditer(text)}
+    # Owner lock: Instagram carousels are static PNGs unless Hall asks for video.
+    skip_motion = skip_flags.get("motion", True)
+    skip_animate = skip_flags.get("animate", True)
     return {
         "lang": lang,
         "handle": handle,
         "publish_requested": publish_requested,
+        "skip_motion": skip_motion,
+        "skip_animate": skip_animate,
+        "static_png_only": skip_motion and skip_animate,
         "text": text,
     }
 
@@ -330,7 +340,9 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     "bot_vs_app: sell the APP audio reading, not 3 free bot spreads",
                     "slides: 9",
                     "grid: 3x3",
-                    "slide_01: mp4_allowed",
+                    "slide_01: static_png",
+                    "skip_motion: true",
+                    "skip_animate: true",
                     "",
                     "## Intake",
                     "- audience:",
@@ -455,6 +467,13 @@ def cmd_record_dispatch(
             f"Use Task({PLUGIN_TASK[step_id]}) or Task(generalPurpose). "
             "inline/parent/self is forbidden."
         )
+    if step_id in {"motion-director", "animate"}:
+        brief = parse_brief(workspace)
+        if brief.get("static_png_only", True):
+            raise SystemExit(
+                "static PNG lock: skip motion/animate (static-png-only). "
+                "Do not dispatch Grok video. Read shared/static-carousel-lock.md."
+            )
     ledger = load_ledger(workspace)
     require_previous_done(ledger, step_id)
     state = ledger["steps"][step_id]
@@ -702,11 +721,25 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
     )
     save_ledger(workspace, ledger)
     print(f"✅ VERIFY OK {step_id}")
+    if step_id == "slice":
+        maybe_auto_skip_video_steps(workspace, repo_root)
     nxt = spec.get("handoff_next")
     if nxt:
         print(f"HANDOFF_NEXT: {nxt}")
         print("Director: record-dispatch the next step. Do not do it yourself.")
     return 0
+
+
+def maybe_auto_skip_video_steps(workspace: Path, repo_root: Path) -> None:
+    """Owner lock: static PNG carousels. Skip motion/animate unless Hall asks."""
+    brief = parse_brief(workspace)
+    if not brief.get("static_png_only", True):
+        return
+    for step_id in ("motion-director", "animate"):
+        state = load_ledger(workspace)["steps"][step_id]
+        if state.get("status") == "skipped" and state.get("skip_reason") == "static-png-only":
+            continue
+        cmd_skip(workspace, repo_root, step_id, "static-png-only")
 
 
 def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int:
@@ -722,6 +755,8 @@ def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int
         raise SystemExit("publish_requested is true; cannot skip publish")
     if step_id == "fixic" and has_open_incidents(workspace):
         raise SystemExit("open incidents exist; Task(carusel-fixic) is required")
+    if step_id in {"motion-director", "animate"} and not brief.get("static_png_only", True):
+        raise SystemExit("Hall asked for video; cannot skip motion/animate")
 
     spec = step_map(repo_root)[step_id]
     fragment_rel = spec["fragment"]
@@ -857,11 +892,25 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "Brown/grey eyes or generic blonde = FAIL, rebuild whole canvas. "
             "Hair-prose only is not a pass. Read shared/victoria-face-pixel-gate.md."
         )
+        extra_hard.append(
+            "- STATIC PNG ONLY. Do not require slide-01.mp4 or video_frame_qa. "
+            "Missing video is not a blocker. Read shared/static-carousel-lock.md."
+        )
     if step_id == "slice":
         extra_hard.append(
             "- Cut with scripts/seam_slice_grid.py --split-mode gutter. "
             "CROOKED CANVAS (exit 2) = rebuild the whole master. Never patch one cell. "
             "Do not use remove_grid_gutters.py as the primary path."
+        )
+        extra_hard.append(
+            "- STATIC PNG ONLY. Slide 01 is a still PNG. Do not generate mp4, "
+            "do not run grok_video_*, do not write ANIMATE.md. "
+            "Read shared/static-carousel-lock.md."
+        )
+    if step_id == "upload":
+        extra_hard.append(
+            "- Upload with --static-all-pngs. file1 is slide-01.png. "
+            "Do not upload or require slide-01.mp4. Read shared/static-carousel-lock.md."
         )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (

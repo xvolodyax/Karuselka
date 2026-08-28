@@ -21,8 +21,8 @@ director (parent intake)
   → designer            Task              layout/style only
   → image-prompter      Task              prompts from locked copy + victoria-sheet
   → slice               Task
-  → motion-director     Task
-  → animate             Task
+  → motion-director     SKIP static-png-only (unless Hall asks for video)
+  → animate             SKIP static-png-only
   → design-guardian     Task
   → upload              Task
   → publish             SKIP unless brief.publish_requested true

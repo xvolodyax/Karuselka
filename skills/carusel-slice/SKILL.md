@@ -7,7 +7,9 @@ description: Kie.ai one grid master -> 3x3 slice -> 9 slides. slide-01 later ani
 
 ## Роль
 
-Одна генерация Kie -> **сетка 3×3** -> **9 PNG**. Слайд 1 потом оживляет `carusel-animate`.
+Одна генерация Kie -> **сетка 3×3** -> **9 PNG**. Слайд 1 тоже статичный PNG.
+Не генерировать mp4. Не запускать `grok_video_*`. Не писать ANIMATE.md.
+См. `shared/static-carousel-lock.md`.
 
 ## Вход
 

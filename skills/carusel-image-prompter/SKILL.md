@@ -79,7 +79,7 @@ Fragment: `carusel-memory/fragments/image-prompter.md`
 
 1. **Одно** изображение — **9 панелей** в сетке **3×3**, каждая **3:4**. НЕ horizontal strip. НЕ 2×3 если brief требует 3×3.
 2. **Стиль = референс** (UNILIBRE-style grid или brief).
-3. Панель 1 — **motion-friendly** (оживляется Grok).
+3. Панель 1 — статичный PNG, как остальные. Не помечать slide-01 как motion-safe video.
 4. Каждый текст, который должен быть на изображении, брать из `CAROUSEL_SLIDE_COPY.json` и писать в кавычках.
 5. Обязательно добавить: `verbatim text, no substitutions, no extra labels, no duplicate text`.
 6. Промпт должен явно разделять **preserve / change / do_not_borrow**.

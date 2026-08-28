@@ -8,8 +8,10 @@ Director **оркестрирует**. Director **не** пишет research, co
 
 ```text
 director → researcher → copywriter → designer → image-prompter
-  → slice → motion-director → animate → design-guardian
+  → slice → [skip motion-director] → [skip animate] → design-guardian
   → upload → publish → fixic
+
+Instagram carousels are static PNGs. Slide 01 is PNG. See `shared/static-carousel-lock.md`.
 ```
 
 Машина: `shared/pipeline-steps.json` + `shared/swarm-spawn-contract.md`.  
@@ -50,7 +52,8 @@ Local plugin agents (`Task(carusel-researcher)` и остальные `carusel-*
 
 - сделать два шага в одном Task;
 - «для скорости» написать dossier / caption / prompt самому;
-- пропустить researcher, designer, image-prompter, slice, motion, animate, guardian, upload, fixic;
+- пропустить researcher, designer, image-prompter, slice, guardian, upload, fixic;
+- запускать motion/animate/Grok video без явной просьбы Hall;
 - считать, что Read skill-файла = вызов субагента.
 
 Read skill в родительском чате **не** засчитывается как шаг.
