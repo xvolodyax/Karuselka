@@ -11,11 +11,11 @@ This pack is for **human review**. Publish stays skipped.
 
 ## Slot
 
-2026-08-28, 11:10 MSK (late — deliver as soon as gate PASS). Static 9 slides. No video.
+2026-08-28, 11:10 MSK (late). Static 9+9 slides. No Grok video.
 
 ## Topic
 
-**Тепло – холодно / Hot & Cold** — weekend warmth, Tuesday «занят» / "busy", then silence.
+**Тепло – холодно / Hot & Cold** — Saturday plans, Tuesday «занят» / "busy", then silence.
 
 | lang | Handle | Trigger | Product |
 |------|--------|---------|---------|
@@ -24,10 +24,17 @@ This pack is for **human review**. Publish stays skipped.
 
 Forbidden repeats were not reused: Pause, Ping vs step, «Спишь?» after 24 days, B18, triggers ШАГ/STEP/PAUSE/ПАУЗА.
 
-## Product
-
-`app_audio` — comment code word → Direct audio reading in the app (Суть – Тень – Вектор / Essence–Shadow–Vector). Not 3 free bot spreads.
-
 ## Face
 
 `carusel-memory/references/victoria-sheet.png` only. `victoria.png` is Alena.
+Hair: warm honey/wheat + darker roots. Not platinum.
+Clothes this pack: burgundy turtleneck (01), black satin wrap (09).
+
+## Pack path
+
+`carusel-memory/packs/2026-08-28/{ru,en}/slides/slide-01.png` … `slide-09.png`
+
+Captions: `CAROUSEL_CAPTION.md` next to slides.
+Gate: `GATE.md` — PASS.
+Guardian: DESIGN OK 92.
+Kie HTTPS URLs (~24h): `publish-urls.json` per lang.
