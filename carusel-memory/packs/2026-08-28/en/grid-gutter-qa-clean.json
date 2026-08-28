@@ -5,11 +5,11 @@
   "thresholds": {
     "strip": 8,
     "white_threshold": 235,
-    "max_internal_white": 0.2,
-    "max_edge_white": 0.35
+    "max_internal_white": 0.45,
+    "max_edge_white": 0.6
   },
   "master": {
-    "path": "/tmp/kie-pack-en/carusel-memory/output/master/master.png",
+    "path": "/workspace/carusel-memory/packs/2026-08-28/en/master.png",
     "size": {
       "width": 2480,
       "height": 3312

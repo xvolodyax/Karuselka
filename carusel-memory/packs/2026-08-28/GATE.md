@@ -11,4 +11,5 @@ Verdict: PASS
 - (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
 - (h) seam slice (Excalibur white gutters), no sticker halo
 - (i) CTA = app_audio (аудиоразбор in the APP); bot as comment prize = FAIL
+- (j) FACE_CHECK.md MATCH vs victoria-sheet.png close-up; eyes green+hazel (brown/grey = FAIL)
 - caption: one trigger word, no raw URLs, links in profile, no Academy on EN
