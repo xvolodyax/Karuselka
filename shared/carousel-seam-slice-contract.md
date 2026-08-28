@@ -9,7 +9,7 @@ Karuselka uses the same method for a **3×3** Instagram grid.
 
 1. One Kie i2i job → one master `3:4 @ 4K`.
 2. Prompt the model: exact 3×3, **thin white gutters** on the 1/3 and 2/3 lines, no bleed across cells.
-3. Face lock is the **first** `input_url`: `victoria-sheet.png`. Short identity line. No face essay.
+3. Face lock is the **first** `input_url`: `viktoriaref.png`. Eyes green+hazel / зелёные с лёгким карим first. No face essay.
 4. Code-cut with `scripts/seam_slice_grid.py` (`--split-mode gutter`).
 5. If a seam is missing or crooked → **rebuild the whole canvas**. Never patch one cell.
 
@@ -18,8 +18,9 @@ Karuselka uses the same method for a **3×3** Instagram grid.
 - Zero-gutter “cells touch pixel-to-pixel” prompts (the model then draws **sticker outlines** on people/animals).
 - `remove_grid_gutters.py` as the primary path (that scrubs cut-lines; it does not invent seams).
 - White halo / die-cut / “вырезка” around Victoria or animals.
-- Alena (deleted). Platinum / white-blonde hair. Vika = `victoria-sheet.png` only.
-- Copy the sheet tank+jeans onto slides.
+- Alena (deleted). Platinum / white-blonde hair. Vika = `viktoriaref.png` only.
+- i2i of `victoria-sheet.png` or `animals-viktoria-style-lock.png`.
+- Copy the reference white cami onto slides.
 
 ## Pipeline
 
