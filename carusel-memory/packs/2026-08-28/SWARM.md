@@ -23,7 +23,8 @@ SKIP: motion-director, animate/Grok video (static 9 slides).
 | copywriter | bc-4d276c25-3a8e-575f-abb5-435c777acb7c | a6505d1073c7417797de025d3f7ab592 | OK |
 | designer | bc-4df856fe-b7d9-56b1-92f7-3f5b55b88094 | cba77bb99cb04271b6c98b1868d3dfdf | OK |
 | image-prompter | bc-56c9c09f-ac5a-5852-844a-b9589420eafa | b38b7b90ec2f42519f9ee5c14ec00a4e | OK |
-| slice | bc-f995539b-02a1-5cae-a03a-3a24ab06b099 | c06457419a3c45c49a4c6bb6e0e92095 | OK |
+| slice | bc-f995539b-02a1-5cae-a03a-3a24ab06b099 | c06457419a3c45c49a4c6bb6e0e92095 | OK then guardian P0 |
+| slice (re-do) | | df76333be1e04ad5bcfff340c5803bae | OK — edge clean, QA ok |
 | motion-director | (skip schema) | e223d66a12b34eb7bab1c868c277ec30 | OK skip |
 | animate | bc-15c132fa-64c9-56d1-b196-8c952a9f8bd2 | 8a06ae6b4bfb47a1ae11c615d98173c2 | OK skip (still-mp4 stub, not file1) |
 | design-guardian | | | pending |

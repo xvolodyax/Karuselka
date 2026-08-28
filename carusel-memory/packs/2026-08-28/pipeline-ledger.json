@@ -95,9 +95,9 @@
       "id": "slice",
       "status": "ok",
       "dispatched_via": "Task(generalPurpose)",
-      "dispatch_id": "c06457419a3c45c49a4c6bb6e0e92095",
-      "started_at": "2026-08-28T09:19:42Z",
-      "finished_at": "2026-08-28T09:28:52Z",
+      "dispatch_id": "df76333be1e04ad5bcfff340c5803bae",
+      "started_at": "2026-08-28T09:43:29Z",
+      "finished_at": "2026-08-28T09:51:18Z",
       "skip_reason": null,
       "artifacts": [
         "carusel-memory/output/slides/slide-01.png",
@@ -112,33 +112,38 @@
         "carusel-memory/output/slice-manifest.json"
       ],
       "fragment": "carusel-memory/fragments/slice.md",
-      "incident_report": "none",
+      "incident_report": "carusel-memory/pipeline-fix-queue.md#INC-20260828-0948-slice-seam-edge-bar",
       "model": null
     },
     "motion-director": {
       "id": "motion-director",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "e223d66a12b34eb7bab1c868c277ec30",
+      "started_at": "2026-08-28T09:31:30Z",
+      "finished_at": "2026-08-28T09:33:36Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_MOTION_ANALYSIS.md",
+        "carusel-memory/design/CAROUSEL_VIDEO_PROMPT.json"
+      ],
+      "fragment": "carusel-memory/fragments/motion-director.md",
+      "incident_report": "none",
       "model": null
     },
     "animate": {
       "id": "animate",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "8a06ae6b4bfb47a1ae11c615d98173c2",
+      "started_at": "2026-08-28T09:33:58Z",
+      "finished_at": "2026-08-28T09:35:58Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/output/video/slide-01.mp4"
+      ],
+      "fragment": "carusel-memory/fragments/animate.md",
+      "incident_report": "none",
       "model": null
     },
     "design-guardian": {
@@ -146,7 +151,7 @@
       "status": "pending",
       "dispatched_via": null,
       "dispatch_id": null,
-      "started_at": null,
+      "started_at": "2026-08-28T09:36:13Z",
       "finished_at": null,
       "skip_reason": null,
       "artifacts": [],
