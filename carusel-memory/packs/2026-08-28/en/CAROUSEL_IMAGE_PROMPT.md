@@ -10,8 +10,11 @@ resolution: `4K`
 face_lock: `victoria-sheet.png`
 slice_method: `seam`
 prompt_compacted: true
-prompt_char_count: 3843
+prompt_char_count: 2008
+prompt_compaction.active_prompt_max_chars: 2200
 reference_upload_method: `upload_stream`
+i2i_source: `carusel-memory/references/victoria-sheet-front.png` (304×224 left frontal close-up)
+i2i_file_name: `victoria-sheet.png`
 input_urls[0]: `https://tempfile.redpandaai.co/kieai/378019/carusel-face-lock/victoria-sheet.png`
 product: `app_audio`
 trigger: WARMTH
@@ -20,13 +23,15 @@ this_run_slide_01: static_png
 no_academy: true
 
 Machine JSON: `carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json`
-Copy source: `carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json` — verbatim only.
+Copy source: `carusel-memory/packs/2026-08-28/en/CAROUSEL_SLIDE_COPY.json` — verbatim only. Copy not rewritten.
 
 Kie/Grok instructions stay in Russian. Quoted on-image text is English.
 
+Rebuild 28.08: rejected pack had `prompt_char_count` 3843 (collage/type/wardrobe novel) and i2i of the full 12-up `victoria-sheet.png`. Face lock is now FIRST in `prompt`. Only the cropped close-up is uploaded.
+
 ## Style lock
 
-Fashion-collage on charcoal. Not horror. Not beige lifestyle.
+Fashion-collage on charcoal. Not horror. Not beige lifestyle. Style details live in JSON `style_lock` / `reference_contract`, not in the active `prompt`.
 
 | Role | Hex |
 |------|-----|
@@ -42,7 +47,8 @@ Heavy white grotesque. Thin magenta script / torn-tape pills only for words alre
 | File | Role |
 |------|------|
 | `image-851e.png` / animals_viktoria_collage | style + layout + palette — described in text, not i2i |
-| `carusel-memory/references/victoria-sheet.png` | ONLY face + hair lock → `input_urls[0]` |
+| `carusel-memory/references/victoria-sheet-front.png` | ONLY i2i input (crop), uploaded as `victoria-sheet.png` |
+| `carusel-memory/references/victoria-sheet.png` | official 12-up FACE_CHECK; do not send to Kie |
 
 **Preserve:** dark field, magenta + white type, torn-paper pills, animals-as-metaphor, Victoria on 1+9, 3×3 with thin white gutters.
 
@@ -54,12 +60,12 @@ Banned looks (white cami+jeans, ivory blazer, sticker/cutout/halo) live in `nega
 
 ## Face + wardrobe (this pack)
 
-Victoria only on slides 1 and 9. Same woman. Green eyes with a hint of hazel. Warm honey/wheat blonde with darker roots as on `victoria-sheet.png`. Never lighten.
+Victoria only on slides 1 and 9. Same woman. Green eyes with a slight hazel / light-brown mix. Warm honey/wheat blonde with darker roots as on `victoria-sheet.png`. Never lighten.
+
+Short identity line **first** in the Kie `prompt`. No face essay.
 
 - **Slide 1 (NEW):** burgundy turtleneck, gold hoops. Seated 3/4 toward a glowing phone.
 - **Slide 9 (NEW, different pose):** black satin wrap blouse, dark trousers, standing hip-lean, phone as if typing a comment.
-
-Short identity line in the Kie prompt. No face essay.
 
 ## Animals
 
@@ -73,7 +79,7 @@ No animals on 3, 5–9. No Victoria on 2–8.
 
 ## Verbatim panel copy
 
-From `design/en/CAROUSEL_SLIDE_COPY.json`. Do not substitute.
+From locked EN copy. Do not substitute.
 
 1. hook — "On Saturday he looked into your eyes" / "and talked about trips together. By Tuesday — a dry \"busy\" and 3 days of cold silence." / script "Hot & Cold"
 2. pain — "Searching for what you did wrong" / "You scroll through messages. The silence hurts, but the brutal temperature drop hurts worse."
@@ -83,7 +89,7 @@ From `design/en/CAROUSEL_SLIDE_COPY.json`. Do not substitute.
 6. save B — "Says vs You Hear" / "Says: \"Work is crazy, don't want complications\"" / "You hear: \"I need to be patient and warm him up\"" / "Reality: \"I want intimacy without accountability\""
 7. save C — "3 rules of self-grounding" / "1. Measure the baseline, not weekend peaks" / "2. When he steps back, stay where you are" / "3. Never warm up someone choosing the cold"
 8. recap — "Clarity over constant waiting" / "Real connection brings stability, not an emotional roller coaster. The right person never leaves you guessing." / "Clarity now"
-9. cta — "Comment WARMTH" / "Audio reading in the app. Essence–Shadow–Vector." / "Write WARMTH in the comments". Huge magenta script **WARMTH**. Not a bot. No Academy.
+9. cta — "Comment WARMTH" / "Audio reading in the app. Essence–Shadow–Vector." / "Write WARMTH in the comments". Huge magenta script **WARMTH**. Not a bot. No Academy. `@todaytaro_bot` is the Instagram handle, not the prize.
 
 ## Grid
 

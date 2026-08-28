@@ -10,19 +10,25 @@ resolution: `4K`
 face_lock: `victoria-sheet.png`
 slice_method: `seam`
 prompt_compacted: true
-prompt_char_count: 3631
+prompt_char_count: 1842
+prompt_compaction.active_prompt_max_chars: 2200
 reference_upload_method: `upload_stream`
+i2i_source: `carusel-memory/references/victoria-sheet-front.png` (304×224 left frontal close-up)
+i2i_file_name: `victoria-sheet.png`
 input_urls[0]: `https://tempfile.redpandaai.co/kieai/378019/carusel-face-lock/victoria-sheet.png`
 product: `app_audio`
 trigger: ТЕПЛО
+handle: @todaytaro_ru
 this_run_slide_01: static_png
 
 Machine JSON: `carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json`
-Copy source: `carusel-memory/design/CAROUSEL_SLIDE_COPY.json` — verbatim only.
+Copy source: `carusel-memory/packs/2026-08-28/ru/CAROUSEL_SLIDE_COPY.json` — verbatim only. Copy not rewritten.
+
+Rebuild 28.08: rejected pack had `prompt_char_count` 3631 (collage/type/wardrobe novel) and i2i of the full 12-up `victoria-sheet.png`. Face lock is now FIRST in `prompt`. Only the cropped close-up is uploaded.
 
 ## Style lock
 
-Fashion-collage на антраците, не horror и не бежевый lifestyle.
+Fashion-collage на антраците, не horror и не бежевый lifestyle. Детали стиля — в `style_lock` / `reference_contract` JSON, не в активном `prompt`.
 
 | Role | Hex |
 |------|-----|
@@ -38,7 +44,8 @@ Fashion-collage на антраците, не horror и не бежевый life
 | File | Role |
 |------|------|
 | `image-851e.png` / animals_viktoria_collage | style + layout + palette — описаны текстом, не i2i |
-| `carusel-memory/references/victoria-sheet.png` | ONLY face + hair lock → `input_urls[0]` |
+| `carusel-memory/references/victoria-sheet-front.png` | ONLY i2i input (crop), uploaded as `victoria-sheet.png` |
+| `carusel-memory/references/victoria-sheet.png` | official 12-up FACE_CHECK; do not send to Kie |
 
 **Preserve:** тёмный холст, маджента + белый тип, рваные плашки, животные-метафоры, Виктория на 1+9, 3×3 с тонкими белыми gutters.
 
@@ -50,12 +57,12 @@ Fashion-collage на антраците, не horror и не бежевый life
 
 ## Face + wardrobe (this pack)
 
-Виктория только на слайдах 1 и 9. Та же женщина. Глаза зелёные с лёгким hazel. Тёплый медово-пшеничный блонд, тёмные корни как на `victoria-sheet.png`. Не осветлять.
+Виктория только на слайдах 1 и 9. Та же женщина. Глаза зелёные с лёгким hazel / светло-коричневым. Тёплый медово-пшеничный блонд, тёмные корни как на `victoria-sheet.png`. Не осветлять.
+
+Короткая identity-строка **первой** в Kie `prompt`. Без face essay.
 
 - **Slide 1 (NEW):** бордовая водолазка, золотые хупы. Сидит 3/4 к светящемуся телефону.
 - **Slide 9 (NEW, другая поза):** чёрная атласная запашная блузка, тёмные брюки, стоит hip-lean, телефон как будто пишет комментарий.
-
-Короткая identity-строка в Kie prompt. Без face essay.
 
 ## Animals
 
@@ -69,7 +76,7 @@ Fashion-collage на антраците, не horror и не бежевый life
 
 ## Verbatim panel copy
 
-Из `CAROUSEL_SLIDE_COPY.json`. Не подменять.
+Из locked copy. Не подменять.
 
 1. hook — «В субботу он смотрел в глаза» / «и строил планы на осень. Во вторник — сухое «занят» и три дня тишины.» / скрипт «Тепло – холодно»
 2. pain — «Ты ищешь, где ошиблась» / «Перечитываешь переписку. Пугает не пауза, а перепад: от полного тепла до ледяной стены.»
@@ -79,7 +86,7 @@ Fashion-collage на антраците, не horror и не бежевый life
 6. save B — «Говорит vs Слышишь» / «Говорит: «Сейчас завал, не хочу усложнять»» / «Слышишь: «Я должна согреть его и подождать»» / «Реальность: «Беру тепло без обязательств»»
 7. save C — «3 правила возвращения опоры» / «1. Суди по средней температуре, не по пикам» / «2. Сделал шаг назад — оставайся на месте» / «3. Не грей человека, выбравшего холод»
 8. recap — «Ясность вместо дежурства» / «Отношения строятся на стабильности, а не на качелях. Твой человек не заставит гадать о своих чувствах.» / «Ясность сейчас»
-9. cta — «Напиши ТЕПЛО» / «Аудиоразбор в приложении. Суть – Тень – Вектор.» / «Слово ТЕПЛО в комментариях». Крупный маджента-скрипт **ТЕПЛО**. Не бот.
+9. cta — «Напиши ТЕПЛО» / «Аудиоразбор в приложении. Суть – Тень – Вектор.» / «Слово ТЕПЛО в комментариях». Крупный маджента-скрипт **ТЕПЛО**. Не бот. Не 3 расклада.
 
 ## Grid
 
