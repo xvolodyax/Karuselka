@@ -8,8 +8,8 @@ Instagram MCP требует **HTTPS URL**. Используем **тот же K
 
 | Файл | Метод Kie | Почему |
 |------|-----------|--------|
-| **file1** (видео Grok) | **URL File Upload** | Grok уже отдал HTTPS → Kie копирует на свой CDN |
-| **file2–file9** (PNG) | **File Stream Upload** | Локальные слайды, эффективно |
+| **file1–file9** (PNG) | **File Stream Upload** `--static-all-pngs` | Instagram carousel is static. file1 = slide-01.png |
+| file1 видео Grok | запрещено, пока Hall не попросит video | `shared/static-carousel-lock.md` |
 | reference image | Stream, fallback Base64 | Если локальный референс нужен как HTTPS `input_urls` |
 | fallback | Base64 | Только если stream не проходит и файл ≤10 MB |
 

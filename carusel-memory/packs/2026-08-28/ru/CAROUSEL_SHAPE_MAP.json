@@ -1,0 +1,64 @@
+{
+  "pack_id": "2026-08-28",
+  "run_id": "2026-08-28-1110",
+  "carousel_family": "animals_viktoria_collage",
+  "canvas": {
+    "master": "3:4 @ 4K",
+    "grid": "3x3",
+    "gutters": "thin white seams on 1/3 and 2/3",
+    "outer_frame": "none"
+  },
+  "shared_motifs": [
+    {"id": "torn_magenta_tape", "hex": "#ff006e", "use": "short labels, crossed excuses, phase tags"},
+    {"id": "pill_block", "hex": "#ff006e", "use": "numbers 01–09, framework words, CTA chip"},
+    {"id": "gold_medallion", "hex": "#c9a86a", "use": "optional slide 08 brand metal"},
+    {"id": "phone_glow", "use": "slides 01–02 cold Tuesday light vs Saturday warmth"}
+  ],
+  "panels": [
+    {
+      "slide": 1,
+      "shapes": ["full-bleed charcoal field", "large type block upper-left", "magenta script overlay", "in-scene Victoria (not die-cut)", "in-scene cat", "phone rectangle with glow", "tiny 01 pill"],
+      "subject_treatment": "live in scene, no white halo"
+    },
+    {
+      "slide": 2,
+      "shapes": ["type stack upper 55%", "dog + phone lower third", "tiny 02 pill"],
+      "subject_treatment": "in-scene, no sticker outline"
+    },
+    {
+      "slide": 3,
+      "shapes": ["type stack", "2–3 torn-tape strips crossing the excuse", "tiny 03 pill"],
+      "subject_treatment": "graphic only"
+    },
+    {
+      "slide": 4,
+      "shapes": ["type stack", "owl perched / in-scene lower side", "tiny 04 pill"],
+      "subject_treatment": "in-scene owl, no halo"
+    },
+    {
+      "slide": 5,
+      "shapes": ["inset rectangular frame", "vertical split two columns", "magenta rule", "tiny 05 pill"],
+      "subject_treatment": "framed save card"
+    },
+    {
+      "slide": 6,
+      "shapes": ["inset rectangular frame", "three stacked bands", "tiny 06 pill"],
+      "subject_treatment": "framed save card"
+    },
+    {
+      "slide": 7,
+      "shapes": ["inset rectangular frame", "three numbered pills", "tiny 07 pill"],
+      "subject_treatment": "framed checklist card"
+    },
+    {
+      "slide": 8,
+      "shapes": ["large type block", "optional circular gold medallion", "tiny 08 pill"],
+      "subject_treatment": "type-led recap"
+    },
+    {
+      "slide": 9,
+      "shapes": ["huge magenta script word", "three small framework pills", "in-scene Victoria", "tiny 09 pill"],
+      "subject_treatment": "live in scene, no die-cut"
+    }
+  ]
+}

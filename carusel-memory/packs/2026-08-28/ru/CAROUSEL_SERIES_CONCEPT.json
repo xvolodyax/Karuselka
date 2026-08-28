@@ -1,0 +1,346 @@
+{
+  "name": "ТАРО СЕЙЧАС — Тепло – холодно / Today Tarot — Hot & Cold",
+  "pack_id": "2026-08-28",
+  "run_id": "2026-08-28-1110",
+  "lang": "ru",
+  "bilingual_pair": true,
+  "carousel_family": "animals_viktoria_collage",
+  "family_in_registry": true,
+  "product": "app_audio",
+  "publish_requested": false,
+  "cta_style": "comment_trigger",
+  "trigger_word": "ТЕПЛО",
+  "trigger_word_en": "WARMTH",
+  "cta_offer_ru": "comment ТЕПЛО → Direct аудиоразбор в приложении: Суть – Тень – Вектор",
+  "cta_offer_en": "comment WARMTH → Direct audio reading in the app: Essence–Shadow–Vector",
+  "face_lock": "victoria-sheet.png",
+  "face_lock_paths": [
+    "carusel-memory/references/victoria-sheet.png",
+    "/workspace/cover-refs/victoria-sheet.png"
+  ],
+  "hair_lock": "warm honey/wheat blonde with darker roots as on victoria-sheet.png",
+  "eyes_lock": "green with a slight hazel / light-brown mix",
+  "slice_method": "seam",
+  "generation_mode": "grid_3x3",
+  "master_aspect": "3:4",
+  "panel_aspect": "3:4",
+  "resolution": "4K",
+  "slide_count": 9,
+  "this_run": {
+    "slide_01": "static_png",
+    "skip_motion": true,
+    "skip_animate": true,
+    "skip_publish": true
+  },
+  "copy_sources": {
+    "ru": "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+    "en": "carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json"
+  },
+  "palette": {
+    "background": "#111111",
+    "background_alt": "#1a1a1a",
+    "accent": "#ff006e",
+    "type": "#ffffff",
+    "metal": "#c9a86a",
+    "cold_glow": "cool phone-screen light, not horror blue"
+  },
+  "typography": {
+    "headline": "heavy grotesque sans, white #ffffff",
+    "body": "medium grotesque sans, white, 1–2 short lines",
+    "script": "thin handwritten italic, magenta #ff006e",
+    "pills": "torn-paper / tape blocks, magenta #ff006e on white or white on magenta",
+    "cta_trigger": "huge magenta script: ТЕПЛО / WARMTH",
+    "slide_number": "tiny magenta pill 01–09, bottom-right, inside safe area",
+    "verbatim": true,
+    "no_extra_labels": true,
+    "forbidden_on_slides": ["Сцена", "Scene", "Victoria", "watermark", "URL"]
+  },
+  "subjects": {
+    "victoria_slides": [1, 9],
+    "victoria_source": "face and hair only from victoria-sheet.png",
+    "clothes_slide_01": "deep burgundy merino turtleneck, small gold hoop earrings; seated three-quarter toward phone; NOT white cami+jeans; NOT ivory blazer; NOT sheet pose",
+    "clothes_slide_09": "black satin wrap blouse, dark trousers, soft gold pendant different from sheet, standing hip-lean, phone as if typing a comment, magenta lips; NOT white cami+jeans; NOT ivory blazer",
+    "animals": [
+      {"slide": 1, "animal": "cat", "job": "чуешь: резкая смена температуры контакта"},
+      {"slide": 2, "animal": "dog", "job": "верность неотвеченному вопросу: ждёшь у светящегося экрана"},
+      {"slide": 4, "animal": "owl", "job": "ночные мысли и ясное видение скрытого механизма"}
+    ],
+    "animal_count": 3,
+    "min_animals": 3
+  },
+  "save_slides": {
+    "framed_cards": [5, 6, 7],
+    "min_required": 2,
+    "05": "two-column framed card Тепло vs Холод / Warm vs Cold",
+    "06": "layered framed card Говорит / Слышишь / Реальность — Says / You Hear / Reality",
+    "07": "numbered framed checklist 3 rules"
+  },
+  "prompt_hints": {
+    "reference_role": {
+      "style": "image-851e.png / animals_viktoria_collage — dark charcoal field, hot magenta #ff006e, collage fashion-lifestyle, animals as emotion, bold white sans + magenta script, torn-tape pills",
+      "layout": "one 3×3 master, nine self-contained 3:4 panels, row-major, thin white gutters, type layered in the scene not on a beige card",
+      "typography": "heavy white grotesque headlines; thin magenta handwritten secondary; short pill labels; hook readable at thumbnail",
+      "mood": "cinematic temperature drop: Saturday gold-warm intimacy vs Tuesday cold phone glow — not pastel, not horror candle table",
+      "content_inspiration": "teaching arc from locked Gemini copy; save-card depth from slide-04 (says vs hears), not its visual family"
+    },
+    "preserve": [
+      "carousel_family animals_viktoria_collage",
+      "3×3 grid, 9 panels, each 3:4, master 3:4 @ 4K",
+      "thin white gutters on the 1/3 and 2/3 lines for Excalibur seam slice",
+      "charcoal/black #111111–#1a1a1a + magenta #ff006e + white #ffffff + soft gold",
+      "heavy sans white headlines + thin magenta script secondary",
+      "torn-paper / tape pills for short labels",
+      "Victoria in-scene on slides 1 and 9, face+hair from victoria-sheet.png",
+      "hair: warm honey/wheat blonde with darker roots; green-hazel eyes",
+      "minimum 3 animal metaphors with jobs (cat / dog / owl)",
+      "high contrast, thumbnail-readable hook, 10–12% safe margin",
+      "self-contained cells, no text crossing gutters",
+      "people and animals live inside the scene — no sticker halo"
+    ],
+    "change": [
+      "topic: weekend warmth vs Tuesday cold / тепло – холодно",
+      "verbatim RU copy from CAROUSEL_SLIDE_COPY.json; EN pair from design/en/CAROUSEL_SLIDE_COPY.json",
+      "Victoria clothes and pose: new this pack (burgundy turtleneck on 01; black satin wrap on 09)",
+      "domain objects: glowing phone, dry «занят»/\"busy\", two-phase card, says/hears card, 3-rule checklist",
+      "CTA trigger ТЕПЛО / WARMTH and app-audio offer Суть–Тень–Вектор / Essence–Shadow–Vector",
+      "which animal on which slide: cat 01, dog 02, owl 04"
+    ],
+    "do_not_borrow": [
+      "Portuguese text or any text not in locked copy",
+      "foreign women's faces, Portuguese models, doubles",
+      "Alena (deleted; Vika lock is victoria-sheet.png only)",
+      "platinum / white-blonde / ashy hair",
+      "white cami + jeans from victoria-sheet.png",
+      "ivory studio blazer / cover-old.png frozen pose",
+      "original logos, mascots, institution names from the style plate",
+      "horror table, skulls, blood, dripping candles, ouija, demon faces",
+      "word «Сцена» or 'Scene' as a slide label",
+      "bot prize, 3 free readings, три бесплатных расклада, Academy",
+      "raw URLs, Victoria signature, watermarks, extra labels",
+      "sticker cutout / die-cut / white halo around subjects"
+    ],
+    "typography_rules": {
+      "exact_text": true,
+      "verbatim": "quoted strings from locked copy only; no substitutions; no extra labels; no duplicate text",
+      "hierarchy": "headline > short body > pill",
+      "hook_script_ru": "Тепло – холодно",
+      "hook_script_en": "Hot & Cold",
+      "cta_trigger_ru": "ТЕПЛО",
+      "cta_trigger_en": "WARMTH",
+      "cta_framework_ru": "Суть – Тень – Вектор",
+      "cta_framework_en": "Essence–Shadow–Vector",
+      "forbidden_words_on_slides": ["Сцена", "Scene", "личный аудиоразбор"],
+      "contrast": "white or magenta on charcoal only; no gray-on-gray",
+      "safe_area": "all type and pills ≥10–12% from every gutter and cell edge; no text on the bottom strip"
+    },
+    "grid_rules": {
+      "generation_mode": "grid_3x3",
+      "cols": 3,
+      "rows": 3,
+      "order": "row-major",
+      "master_aspect": "3:4",
+      "panel_aspect": "3:4",
+      "resolution": "4K",
+      "gutters": "thin white seams on 1/3 and 2/3; no bleed",
+      "slice_method": "seam",
+      "slice_tool": "seam_slice_grid.py --split-mode gutter",
+      "cell_is_self_contained": true,
+      "no_outer_canvas_frame": true,
+      "crooked_seam": "rebuild entire canvas, never patch one cell",
+      "safe_margin_pct": 12
+    },
+    "negative_constraints": [
+      "wrong panel count, 2×3, horizontal strip, 4:5 mixed publish",
+      "missing or crooked gutters, zero-gutter, sticker halo, die-cut outlines",
+      "platinum hair, Alena face, sheet white cami+jeans, ivory blazer",
+      "other women's faces, doubles, Portuguese text",
+      "horror / blood / skulls / candle table",
+      "word Сцена / Scene on slides",
+      "bot CTA, 3 free readings, Academy, raw URLs",
+      "extra labels, watermarks, Victoria signature",
+      "cute pets with no job",
+      "empty vibe-only panels",
+      "text crossing seams or sitting on the bottom 10%"
+    ],
+    "per_panel_scene_hints": [
+      {
+        "slide": 1,
+        "role": "hook",
+        "archetype": "hero_scene_victoria_plus_animal",
+        "ru": {
+          "headline": "В субботу он смотрел в глаза",
+          "body": "и строил планы на осень. Во вторник — сухое «занят» и три дня тишины.",
+          "script": "Тепло – холодно"
+        },
+        "en": {
+          "headline": "On Saturday he looked into your eyes",
+          "body": "and talked about trips together. By Tuesday — a dry \"busy\" and 3 days of cold silence.",
+          "script": "Hot & Cold"
+        },
+        "scene": "Victoria in-scene (face+hair from victoria-sheet only) in a NEW deep burgundy merino turtleneck and gold hoops, seated three-quarter, looking at a glowing phone that holds Saturday warmth vs a dry Tuesday «занят». A cat sits in the scene as intuition — sensing the temperature drop. Magenta handwritten script «Тепло – холодно» / «Hot & Cold» secondary. Huge white scene headline. Warm gold rim vs cold screen glow. No word Сцена. Motion-safe: static type, one hero, one animal.",
+        "victoria": true,
+        "animal": "cat"
+      },
+      {
+        "slide": 2,
+        "role": "pain",
+        "archetype": "type_heavy_plus_animal_bottom",
+        "ru": {
+          "headline": "Ты ищешь, где ошиблась",
+          "body": "Перечитываешь переписку. Пугает не пауза, а перепад: от полного тепла до ледяной стены."
+        },
+        "en": {
+          "headline": "Searching for what you did wrong",
+          "body": "You scroll through messages. The silence hurts, but the brutal temperature drop hurts worse."
+        },
+        "scene": "Type-dominant panel. A loyal dog waits beside a glowing phone / chat thread — loyalty to the unanswered question. No Victoria. Temperature drop as the pain, not a generic pause vibe.",
+        "victoria": false,
+        "animal": "dog"
+      },
+      {
+        "slide": 3,
+        "role": "mistake",
+        "archetype": "typography_pills_crossed_illusion",
+        "ru": {
+          "headline": "Ловушка — греть сквозняк",
+          "body": "Думаешь: «он испугался чувств». Начинаешь проявлять заботу в ответ на холод, закрепляя качели."
+        },
+        "en": {
+          "headline": "The trap of warming his draft",
+          "body": "You think: \"he's scared of his feelings.\" You respond to distance with double the warmth, fueling the cycle."
+        },
+        "scene": "No animal. Bold white headline. Magenta torn-tape pills that cancel the excuse «он испугался чувств» / \"he's scared of his feelings\". Draft / cold-air motif as graphic, not a weather meme.",
+        "victoria": false,
+        "animal": null
+      },
+      {
+        "slide": 4,
+        "role": "mechanism",
+        "archetype": "owl_night_thoughts_framework",
+        "ru": {
+          "headline": "Прерывистое подкрепление",
+          "body": "Непредсказуемость держит нервную систему в напряжении. Мозг путает тревогу с сильной любовью."
+        },
+        "en": {
+          "headline": "Intermittent reinforcement",
+          "body": "Unpredictability spikes your nervous system. Your brain confuses chronic anxiety with genuine passion."
+        },
+        "scene": "Owl as night thoughts piercing the hidden loop. Small mechanism diagram or magenta pills for 'unpredictable reward'. No horror. Type 50–60%, owl at side/bottom inside the scene.",
+        "victoria": false,
+        "animal": "owl"
+      },
+      {
+        "slide": 5,
+        "role": "save_phases",
+        "archetype": "framed_two_column_card",
+        "ru": {
+          "headline": "Тепло vs Холод: две фазы",
+          "lines": [
+            "Тепло: ему нужен твой ресурс и внимание",
+            "Холод: маячит близость и ответственность"
+          ]
+        },
+        "en": {
+          "headline": "Warm vs Cold: two phases",
+          "lines": [
+            "Warm: craving your energy, validation, and attention",
+            "Cold: retreating the moment consistency is required"
+          ]
+        },
+        "scene": "SAVE CARD. Full framed card / table inside the panel. Two columns: Тепло / Warm vs Холод / Cold. Magenta rules and pills. Screenshot-worthy. No Victoria. No animal required.",
+        "victoria": false,
+        "animal": null,
+        "framed_card": true
+      },
+      {
+        "slide": 6,
+        "role": "save_says_hears",
+        "archetype": "framed_depth_card_says_hears",
+        "ru": {
+          "headline": "Говорит vs Слышишь",
+          "lines": [
+            "Говорит: «Сейчас завал, не хочу усложнять»",
+            "Слышишь: «Я должна согреть его и подождать»",
+            "Реальность: «Беру тепло без обязательств»"
+          ]
+        },
+        "en": {
+          "headline": "Says vs You Hear",
+          "lines": [
+            "Says: \"Work is crazy, don't want complications\"",
+            "You hear: \"I need to be patient and warm him up\"",
+            "Reality: \"I want intimacy without accountability\""
+          ]
+        },
+        "scene": "SAVE CARD. Layered framed card like slide-04 meaning-depth: Говорит / Слышишь / Реальность. Three stacked bands or pills. Screenshot-worthy. No Victoria.",
+        "victoria": false,
+        "animal": null,
+        "framed_card": true
+      },
+      {
+        "slide": 7,
+        "role": "save_checklist",
+        "archetype": "framed_numbered_checklist",
+        "ru": {
+          "headline": "3 правила возвращения опоры",
+          "lines": [
+            "1. Суди по средней температуре, не по пикам",
+            "2. Сделал шаг назад — оставайся на месте",
+            "3. Не грей человека, выбравшего холод"
+          ]
+        },
+        "en": {
+          "headline": "3 rules of self-grounding",
+          "lines": [
+            "1. Measure the baseline, not weekend peaks",
+            "2. When he steps back, stay where you are",
+            "3. Never warm up someone choosing the cold"
+          ]
+        },
+        "scene": "SAVE CARD. Framed numbered checklist 1–3 in magenta/white pills. Clean, bookmarkable. No Victoria. No cute extra pets.",
+        "victoria": false,
+        "animal": null,
+        "framed_card": true
+      },
+      {
+        "slide": 8,
+        "role": "recap_rule",
+        "archetype": "large_type_plus_gold_medallion",
+        "ru": {
+          "headline": "Ясность вместо дежурства",
+          "body": "Отношения строятся на стабильности, а не на качелях. Твой человек не заставит гадать о своих чувствах.",
+          "slogan": "Ясность сейчас"
+        },
+        "en": {
+          "headline": "Clarity over constant waiting",
+          "body": "Real connection brings stability, not an emotional roller coaster. The right person never leaves you guessing.",
+          "slogan": "Clarity now"
+        },
+        "scene": "Large white decision-rule headline. Optional soft-gold medallion ТАРО / СЕЙЧАС (RU) or quiet Today Tarot metal mark (EN) if it sits natively and does not cover type. No Victoria. No animal required.",
+        "victoria": false,
+        "animal": null
+      },
+      {
+        "slide": 9,
+        "role": "cta",
+        "archetype": "hero_cta_victoria_plus_trigger",
+        "ru": {
+          "headline": "Напиши ТЕПЛО",
+          "body": "Аудиоразбор в приложении. Суть – Тень – Вектор.",
+          "cta": "Слово ТЕПЛО в комментариях",
+          "slogan": "Ясность сейчас"
+        },
+        "en": {
+          "headline": "Comment WARMTH",
+          "body": "Audio reading in the app. Essence–Shadow–Vector.",
+          "cta": "Write WARMTH in the comments",
+          "slogan": "Clarity now"
+        },
+        "scene": "Victoria in-scene, SAME woman as 01, NEW clothes/pose: black satin wrap blouse, dark trousers, magenta lips, standing hip-lean, phone as if typing the comment. Huge magenta script ТЕПЛО / WARMTH. Three small pills or a quiet app card: Суть – Тень – Вектор / Essence–Shadow–Vector. Sells APP audio reading, not a bot, not 3 free spreads. No URL. No Academy. No Victoria signature.",
+        "victoria": true,
+        "animal": null,
+        "product_visual": "app_audio framework pills, not chatbot UI"
+      }
+    ]
+  }
+}

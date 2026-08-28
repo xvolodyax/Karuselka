@@ -1,0 +1,15 @@
+{
+  "skipped": true,
+  "skip_reason": "static-slides-requested",
+  "do_not_publish_video": true,
+  "kind": "still-mp4-stub",
+  "source_png": "carusel-memory/output/slides/slide-01.png",
+  "gate_file": "carusel-memory/output/video/slide-01.mp4",
+  "note": "Technical stub for pipeline_gate verify --step animate. NOT a Grok video. MUST NOT be used as Instagram file1.",
+  "grok_called": false,
+  "kie_video_api_called": false,
+  "duration_s": 1,
+  "encoder": "ffmpeg libx264 stillimage",
+  "dispatch_id": "8a06ae6b4bfb47a1ae11c615d98173c2",
+  "dispatched_via": "Task(generalPurpose)"
+}

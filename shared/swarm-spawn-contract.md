@@ -21,8 +21,8 @@ director (parent intake)
   → designer            Task              layout/style only
   → image-prompter      Task              prompts from locked copy + victoria-sheet
   → slice               Task
-  → motion-director     Task
-  → animate             Task
+  → motion-director     SKIP static-png-only (unless Hall asks for video)
+  → animate             SKIP static-png-only
   → design-guardian     Task
   → upload              Task
   → publish             SKIP unless brief.publish_requested true
@@ -55,7 +55,7 @@ Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus
 
 ## Face lock (не открывать заново)
 
-`victoria-sheet.png` only. `cover-refs/victoria.png` = Alena. Новая одежда/поза каждый раз.
+`victoria-sheet.png` only. Alena files deleted. Never i2i `victoria.png`. Новая одежда/поза каждый раз.
 
 ## Dry-run (без пикселей)
 

@@ -54,7 +54,10 @@ PLUGIN_TASK = {
 LEGAL_SKIP = {
     "publish": "publish-not-requested",
     "fixic": "no-open-incidents",
+    "motion-director": "static-png-only",
+    "animate": "static-png-only",
 }
+SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | re.I)
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
 GEMINI_MODEL = "gemini-3.7-flash-high"
 GEMINI_WRITERS = frozenset({"gemini", "gemini-3.7-flash-high"})
@@ -226,10 +229,17 @@ def parse_brief(workspace: Path) -> dict[str, Any]:
         raise SystemExit(f"handle for lang={lang} must be {expected}, got {handle}")
     pub_m = PUBLISH_RE.search(text)
     publish_requested = bool(pub_m and pub_m.group(1).lower() == "true")
+    skip_flags = {m.group(1).lower(): m.group(2).lower() == "true" for m in SKIP_FLAG_RE.finditer(text)}
+    # Owner lock: Instagram carousels are static PNGs unless Hall asks for video.
+    skip_motion = skip_flags.get("motion", True)
+    skip_animate = skip_flags.get("animate", True)
     return {
         "lang": lang,
         "handle": handle,
         "publish_requested": publish_requested,
+        "skip_motion": skip_motion,
+        "skip_animate": skip_animate,
+        "static_png_only": skip_motion and skip_animate,
         "text": text,
     }
 
@@ -322,7 +332,7 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     f"handle: {HANDLES[lang]}",
                     "publish_requested: false",
                     "visual_family: animals_viktoria_collage",
-                    "face_lock: victoria-sheet.png",
+                    "face_lock: виктория.png",
                     "slice_method: seam",
                     "cta_style: comment_trigger",
                     "product: app_audio",
@@ -330,7 +340,9 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     "bot_vs_app: sell the APP audio reading, not 3 free bot spreads",
                     "slides: 9",
                     "grid: 3x3",
-                    "slide_01: mp4_allowed",
+                    "slide_01: static_png",
+                    "skip_motion: true",
+                    "skip_animate: true",
                     "",
                     "## Intake",
                     "- audience:",
@@ -455,6 +467,13 @@ def cmd_record_dispatch(
             f"Use Task({PLUGIN_TASK[step_id]}) or Task(generalPurpose). "
             "inline/parent/self is forbidden."
         )
+    if step_id in {"motion-director", "animate"}:
+        brief = parse_brief(workspace)
+        if brief.get("static_png_only", True):
+            raise SystemExit(
+                "static PNG lock: skip motion/animate (static-png-only). "
+                "Do not dispatch Grok video. Read shared/static-carousel-lock.md."
+            )
     ledger = load_ledger(workspace)
     require_previous_done(ledger, step_id)
     state = ledger["steps"][step_id]
@@ -661,8 +680,16 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
         if prompt.get("slice_method") != "seam":
             errors.append("CAROUSEL_IMAGE_PROMPT.json slice_method must be seam")
         urls = prompt.get("input_urls") or []
-        if urls and "victoria-sheet.png" not in str(urls[0]):
-            errors.append("CAROUSEL_IMAGE_PROMPT.json input_urls[0] must be victoria-sheet.png")
+        if urls and "виктория.png" not in str(urls[0]) and "viktoria.png" not in str(urls[0]):
+            errors.append("CAROUSEL_IMAGE_PROMPT.json input_urls[0] must be виктория.png")
+        if len(urls) != 1:
+            errors.append("CAROUSEL_IMAGE_PROMPT.json must have exactly one input_url")
+        prompt_text = str(prompt.get("prompt") or "")
+        count = int(prompt.get("prompt_char_count") or len(prompt_text))
+        if len(prompt_text) > 2200 or count > 2200:
+            errors.append(
+                "CAROUSEL_IMAGE_PROMPT.json prompt too long (>2200) — starves face lock"
+            )
         if "PLACEHOLDER" in json.dumps(prompt):
             errors.append("CAROUSEL_IMAGE_PROMPT.json still has PLACEHOLDER")
         briefs = prompt.get("panel_visual_brief") or []
@@ -694,11 +721,25 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
     )
     save_ledger(workspace, ledger)
     print(f"✅ VERIFY OK {step_id}")
+    if step_id == "slice":
+        maybe_auto_skip_video_steps(workspace, repo_root)
     nxt = spec.get("handoff_next")
     if nxt:
         print(f"HANDOFF_NEXT: {nxt}")
         print("Director: record-dispatch the next step. Do not do it yourself.")
     return 0
+
+
+def maybe_auto_skip_video_steps(workspace: Path, repo_root: Path) -> None:
+    """Owner lock: static PNG carousels. Skip motion/animate unless Hall asks."""
+    brief = parse_brief(workspace)
+    if not brief.get("static_png_only", True):
+        return
+    for step_id in ("motion-director", "animate"):
+        state = load_ledger(workspace)["steps"][step_id]
+        if state.get("status") == "skipped" and state.get("skip_reason") == "static-png-only":
+            continue
+        cmd_skip(workspace, repo_root, step_id, "static-png-only")
 
 
 def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int:
@@ -714,6 +755,8 @@ def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int
         raise SystemExit("publish_requested is true; cannot skip publish")
     if step_id == "fixic" and has_open_incidents(workspace):
         raise SystemExit("open incidents exist; Task(carusel-fixic) is required")
+    if step_id in {"motion-director", "animate"} and not brief.get("static_png_only", True):
+        raise SystemExit("Hall asked for video; cannot skip motion/animate")
 
     spec = step_map(repo_root)[step_id]
     fragment_rel = spec["fragment"]
@@ -819,10 +862,19 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
     if step_id == "image-prompter":
         extra_hard.append(
             "- slice_method: seam. Prompt thin white gutters at 1/3 and 2/3 (Excalibur). "
-            "input_urls[0] must be victoria-sheet.png (i2i face lock). Short identity line, "
-            "no face essay. Do not ask for sticker/cutout/white halo on people or animals."
+            "Prompt SHORT. Face lock FIRST. prompt_char_count <= 2200. "
+            "No 3000-char collage/type/wardrobe novel. No face essay."
         )
-        extra_hard.append("- Read shared/carousel-seam-slice-contract.md and shared/victoria-identity-lock.md.")
+        extra_hard.append(
+            "- Upload ONLY carusel-memory/references/виктория.png (one woman, "
+            "twelve angles of ONE person). Never i2i viktoriaref.png, Alena, "
+            "or animals-viktoria-style-lock.png as a face."
+        )
+        extra_hard.append(
+            "- Prompt FIRST: one woman, same face, twelve angles of ONE person; "
+            "eyes green with a slight hazel-brown tint (зелёные с лёгким карим); "
+            "soft tender expression. Do not copy sheet clothes/pose. Keep copy/CTA."
+        )
         extra_hard.append(
             "- Panel 9 verbatim text = app audio CTA from copy (аудиоразбор / audio reading). "
             "Never paint 3 free bot spreads as the comment prize."
@@ -834,11 +886,31 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "3 free bot readings / три бесплатных расклада. "
             "Read shared/cta-app-audio-contract.md."
         )
+        extra_hard.append(
+            "- Pixel FACE_CHECK.md vs виктория.png (slides 01+09, both langs). "
+            "Run scripts/make_face_check_crops.py. Eyes must be green+hazel. "
+            "Brown/grey eyes or generic blonde = FAIL, rebuild whole canvas. "
+            "Hair-prose only is not a pass. Read shared/victoria-face-pixel-gate.md."
+        )
+        extra_hard.append(
+            "- STATIC PNG ONLY. Do not require slide-01.mp4 or video_frame_qa. "
+            "Missing video is not a blocker. Read shared/static-carousel-lock.md."
+        )
     if step_id == "slice":
         extra_hard.append(
             "- Cut with scripts/seam_slice_grid.py --split-mode gutter. "
             "CROOKED CANVAS (exit 2) = rebuild the whole master. Never patch one cell. "
             "Do not use remove_grid_gutters.py as the primary path."
+        )
+        extra_hard.append(
+            "- STATIC PNG ONLY. Slide 01 is a still PNG. Do not generate mp4, "
+            "do not run grok_video_*, do not write ANIMATE.md. "
+            "Read shared/static-carousel-lock.md."
+        )
+    if step_id == "upload":
+        extra_hard.append(
+            "- Upload with --static-all-pngs. file1 is slide-01.png. "
+            "Do not upload or require slide-01.mp4. Read shared/static-carousel-lock.md."
         )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (
@@ -946,7 +1018,7 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
                 "No pixels. Teaching-arc notes only.",
                 f"lang: {lang}",
                 f"visual_family: {family}",
-                "face_lock: victoria-sheet.png",
+                "face_lock: виктория.png",
                 "written_by: gemini",
                 "",
                 "## Topic",
@@ -1025,12 +1097,12 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
 
     write_text_file(
         mem / "design" / "CAROUSELDESIGN.md",
-        f"# Dry-run design\n\ncarousel_family: {family}\nface_lock: victoria-sheet.png\n"
+        f"# Dry-run design\n\ncarousel_family: {family}\nface_lock: виктория.png\n"
         "Do not render. New clothes/pose each real carousel.\n",
     )
     write_json(
         mem / "design" / "CAROUSEL_SERIES_CONCEPT.json",
-        {"carousel_family": family, "face_lock": "victoria-sheet.png", "dry_run": True},
+        {"carousel_family": family, "face_lock": "виктория.png", "dry_run": True},
     )
     write_json(
         mem / "design" / "CAROUSEL_SOURCE_DECOMPOSITION.json",
@@ -1046,12 +1118,12 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
         {
             "generation_mode": "grid_3x3",
             "carousel_family": family,
-            "face_lock": "victoria-sheet.png",
+            "face_lock": "виктория.png",
             "slice_method": "seam",
             "dry_run": True,
-            "reference_contract": {"face_lock": "victoria-sheet.png"},
+            "reference_contract": {"face_lock": "виктория.png"},
             "input_urls": [
-                "https://example.invalid/victoria-sheet.png",
+                "https://example.invalid/виктория.png",
                 "https://example.invalid/animals-viktoria-style-lock.png",
             ],
             "typography_rules": {"dry_run": True},

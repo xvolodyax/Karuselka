@@ -1,33 +1,19 @@
-# victoria-sheet.png — ONLY Victoria face lock
+# виктория.png — ONLY Victoria face lock
 
-Repo path: `carusel-memory/references/victoria-sheet.png`  
-Box (if present): `/workspace/cover-refs/victoria-sheet.png`
+Repo path: `carusel-memory/references/виктория.png`  
+Box: `/workspace/cover-refs/виктория.png`
 
-This is the appearance card (карта внешности) confirmed by Vladimir 27.08.2026.
-Same lock the articles use.
+One woman. Twelve angles of ONE face. Not 12 people.
+Same sheet Vladimir uses in GPT Image.
 
 ## Face
 
-- Oval-to-heart, high cheekbones, slightly pointed chin
-- Eyes: **green with a slight hazel / light-brown mix**
-- Warm tanned olive complexion
-- Full dusty-rose lips
+- Eyes: **green with a slight hazel-brown tint** (зелёные с лёгким карим)
+- Soft, tender expression
+- Warm honey / wheat blonde, darker roots, not platinum
 
-## Hair (strict)
+## Clothes and pose
 
-Warm honey / wheat blonde with darker roots, as on the SHEET.
-Never lighten. Platinum / white-blonde / much lighter = FAIL, regenerate the whole canvas.
-
-## Clothes and pose (must change)
-
-The sheet shows a white cami + jeans + gold pendant for **identification only**.
-Do **not** copy that outfit or a frozen sheet pose onto slides.
-Every carousel: new clothes, new emotion, same face.
-Slide 1 and 9 may differ as long as it is the same woman.
-
-## Banned
-
-- Alena (`cover-refs/victoria.png`)
-- Old studio ivory-blazer cutout
-- Any other woman
-- Doubles / two different faces in one pack
+The sheet shows a white tank + jeans + gold pendant, one frame with hand near the chin.
+**Identification only.** New clothes and pose every carousel.
+Do not copy the sheet outfit or the hand-on-chin pose.

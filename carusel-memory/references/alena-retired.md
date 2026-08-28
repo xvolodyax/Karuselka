@@ -1,11 +1,9 @@
-# RETIRED — Alena is not Victoria
+# Alena files — deleted
 
-`/workspace/cover-refs/victoria.png` (also called виктория.png in some boxes)
-is **ALENA**. Vladimir confirmed 27.08.2026.
+`victoria.png`, `victoria_ref.jpg`, `alena.png`, `alena_ref.jpg` are gone.
+Never restore. Never i2i.
 
-- Do **not** use as face lock
-- Do **not** generate her face
-- Do **not** commit that file as Victoria
-- Do **not** use `victoria-hair-lock.png` or the old ivory-blazer studio cutout
+Only remaining Vika face file: `viktoriaref.png`
+(repo: `carusel-memory/references/viktoriaref.png`, box: `/workspace/cover-refs/viktoriaref.png`).
 
-Victoria lock = `victoria-sheet.png` only (карта внешности).
+If a prompt still says `victoria-sheet.png` or `victoria.png`, rewrite the lock to `viktoriaref.png` only.

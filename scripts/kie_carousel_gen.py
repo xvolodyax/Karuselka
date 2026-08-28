@@ -29,6 +29,9 @@ SLIDE_COUNT = 9
 GRID_COLS = 3
 GRID_ROWS = 3
 DEFAULT_ASPECT = "3:4"
+# After seam cut, leftover white can sit on cell edges (row-2 bottoms).
+# Strip at least that leftover; 10 covers the typical ~9px Kie 4K sliver.
+SEAM_EDGE_STRIP_DEFAULT = 10
 SEAM_PREFIX = (
     "Canvas 3:4 @ 4K exact 3x3; nine 3:4 panels; thin white gutters; no bleed. "
     "Draw two vertical and two horizontal #ffffff seams at exactly 1/3 and 2/3, "
@@ -136,9 +139,103 @@ def write_task_log(path: Path | None, data: dict[str, Any]) -> None:
     print(f"Task log: {path}")
 
 
+def leftover_gutter_px(width: int, height: int, cols: int = GRID_COLS, rows: int = GRID_ROWS) -> int:
+    """Pixels left after integer 3x3 split. Kie 4K 2480x3312 -> width remainder 2."""
+    if width <= 0 or height <= 0:
+        return 0
+    return max(width % cols, height % rows)
+
+
+def seam_edge_strip_px(
+    width: int,
+    height: int,
+    cols: int = GRID_COLS,
+    rows: int = GRID_ROWS,
+    default: int = SEAM_EDGE_STRIP_DEFAULT,
+) -> int:
+    """clean_slide_edges strip: at least leftover gutter, default 10."""
+    return max(default, leftover_gutter_px(width, height, cols, rows))
+
+
+def source_size_from_manifest(manifest: Path) -> tuple[int, int]:
+    if not manifest.is_file():
+        return (0, 0)
+    data = load_json(manifest)
+    size = data.get("source_size") or {}
+    return (int(size.get("width") or 0), int(size.get("height") or 0))
+
+
 def run_subprocess_step(name: str, cmd: list[str]) -> int:
     print(f"{name}:", " ".join(cmd))
     return subprocess.run(cmd, check=False).returncode
+
+
+def run_slide_edge_cleanup(
+    slides_dir: Path,
+    debug_dir: Path,
+    strip: int,
+    log: dict[str, Any],
+) -> int:
+    log["edge_cleanup"]["enabled"] = True
+    log["edge_cleanup"]["strip"] = strip
+    rc = run_subprocess_step(
+        "Slide edge cleanup",
+        [
+            sys.executable,
+            str(CLEAN_SLIDE_EDGES),
+            "--slides-dir",
+            str(slides_dir.resolve()),
+            "--slides",
+            "1-9",
+            "--strip",
+            str(strip),
+            "--edges",
+            "top,right,bottom,left",
+            "--report",
+            str((debug_dir / "clean-slide-edges-report.json").resolve()),
+        ],
+    )
+    if rc != 0:
+        log["edge_cleanup"]["status"] = "failed"
+        log["edge_cleanup"]["exit_code"] = rc
+        return rc
+    log["edge_cleanup"]["status"] = "ok"
+    return 0
+
+
+def run_gutter_qa(
+    master_out: Path,
+    slides_dir: Path,
+    debug_dir: Path,
+    log: dict[str, Any],
+    *,
+    mode: str = "equal",
+) -> int:
+    log["gutter_qa"]["enabled"] = True
+    log["gutter_qa"]["mode"] = mode
+    cmd = [
+        sys.executable,
+        str(GRID_GUTTER_QA),
+        "--master",
+        str(master_out.resolve()),
+        "--slides-dir",
+        str(slides_dir.resolve()),
+        "--mode",
+        mode,
+        "--max-internal-white",
+        "0.20",
+        "--max-edge-white",
+        "0.35",
+        "--output",
+        str((debug_dir / "grid-gutter-qa-clean.json").resolve()),
+    ]
+    rc = run_subprocess_step("Gutter QA", cmd)
+    if rc != 0:
+        log["gutter_qa"]["status"] = "failed"
+        log["gutter_qa"]["exit_code"] = rc
+        return rc
+    log["gutter_qa"]["status"] = "ok"
+    return 0
 
 
 def run_grid_3x3(
@@ -224,8 +321,8 @@ def run_grid_3x3(
         },
         "edge_cleanup": {
             "enabled": edge_cleanup,
-            "method": "copy interior pixels over outer edge strips after equal slice; no crop, no resize",
-            "strip": 3,
+            "method": "copy interior pixels over outer edge strips after slice; no crop, no resize",
+            "strip": SEAM_EDGE_STRIP_DEFAULT if method == "seam" else 3,
             "report": str((debug_dir / "clean-slide-edges-report.json").resolve()),
         },
         "gutter_qa": {
@@ -273,8 +370,27 @@ def run_grid_3x3(
                 )
             return rc
         log["slice_status"] = "ok"
-        log["edge_cleanup"]["enabled"] = False
-        log["gutter_qa"]["enabled"] = False
+        src_w, src_h = source_size_from_manifest(manifest)
+        leftover = leftover_gutter_px(src_w, src_h)
+        strip = seam_edge_strip_px(src_w, src_h)
+        log["edge_cleanup"]["leftover_gutter_px"] = leftover
+        log["edge_cleanup"]["strip"] = strip
+        if edge_cleanup:
+            rc = run_slide_edge_cleanup(slides_dir, debug_dir, strip, log)
+            if rc != 0:
+                log["slice_status"] = "failed"
+                write_task_log(task_log_path, log)
+                return rc
+        else:
+            log["edge_cleanup"]["enabled"] = False
+        if gutter_qa:
+            rc = run_gutter_qa(master_out, slides_dir, debug_dir, log, mode="seam")
+            if rc != 0:
+                log["slice_status"] = "failed"
+                write_task_log(task_log_path, log)
+                return rc
+        else:
+            log["gutter_qa"]["enabled"] = False
         write_task_log(task_log_path, log)
         return 0
 
@@ -337,56 +453,18 @@ def run_grid_3x3(
         return rc
 
     if edge_cleanup:
-        rc = run_subprocess_step(
-            "Slide edge cleanup",
-            [
-                sys.executable,
-                str(CLEAN_SLIDE_EDGES),
-                "--slides-dir",
-                str(slides_dir.resolve()),
-                "--slides",
-                "1-9",
-                "--strip",
-                "3",
-                "--edges",
-                "top,right,bottom,left",
-                "--report",
-                str((debug_dir / "clean-slide-edges-report.json").resolve()),
-            ],
-        )
+        rc = run_slide_edge_cleanup(slides_dir, debug_dir, 3, log)
         if rc != 0:
             log["slice_status"] = "failed"
-            log["edge_cleanup"]["status"] = "failed"
-            log["edge_cleanup"]["exit_code"] = rc
             write_task_log(task_log_path, log)
             return rc
-        log["edge_cleanup"]["status"] = "ok"
 
     if gutter_qa:
-        rc = run_subprocess_step(
-            "Gutter QA",
-            [
-                sys.executable,
-                str(GRID_GUTTER_QA),
-                "--master",
-                str(master_out.resolve()),
-                "--slides-dir",
-                str(slides_dir.resolve()),
-                "--max-internal-white",
-                "0.20",
-                "--max-edge-white",
-                "0.35",
-                "--output",
-                str((debug_dir / "grid-gutter-qa-clean.json").resolve()),
-            ],
-        )
+        rc = run_gutter_qa(master_out, slides_dir, debug_dir, log, mode="equal")
         if rc != 0:
             log["slice_status"] = "failed"
-            log["gutter_qa"]["status"] = "failed"
-            log["gutter_qa"]["exit_code"] = rc
             write_task_log(task_log_path, log)
             return rc
-        log["gutter_qa"]["status"] = "ok"
 
     log["slice_status"] = "ok"
     write_task_log(task_log_path, log)

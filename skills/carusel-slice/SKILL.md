@@ -7,7 +7,9 @@ description: Kie.ai one grid master -> 3x3 slice -> 9 slides. slide-01 later ani
 
 ## Роль
 
-Одна генерация Kie -> **сетка 3×3** -> **9 PNG**. Слайд 1 потом оживляет `carusel-animate`.
+Одна генерация Kie -> **сетка 3×3** -> **9 PNG**. Слайд 1 тоже статичный PNG.
+Не генерировать mp4. Не запускать `grok_video_*`. Не писать ANIMATE.md.
+См. `shared/static-carousel-lock.md`.
 
 ## Вход
 
@@ -33,15 +35,25 @@ python scripts/kie_run_prompt.py \
 ```
 
 Внутри: `kie_carousel_gen.py` -> Kie `3:4` @ `4K` (thin white gutters) ->
-`seam_slice_grid.py --split-mode gutter`.
+`seam_slice_grid.py --split-mode gutter` -> `clean_slide_edges.py`
+(strip ≥ leftover gutter, default 10).
+
+После seam-нарезки **нельзя** оставлять `edge_cleanup` выключенным: leftover
+белый шов (~9px) остаётся на низе ряда 2 (slides 04–06) и уходит в publish.
+`grid_gutter_qa.py --mode seam`: remainder `{width: 2}` на 2480×3312 — WARN;
+internal lines проверяются на scrubbed-копии, не на сыром seam-master.
 
 Это canonical Excalibur seam-slice pipeline. Если швы кривые или отсутствуют —
 exit 2 `CROOKED CANVAS`: пересобрать **весь** master, не патчить одну ячейку.
-Не использовать `remove_grid_gutters.py` как основной путь.
+Не использовать `remove_grid_gutters.py` как основной путь (только QA-копия).
 
 `3:4` — основной формат, не fallback. Grid 3×3 даёт 9 одинаковых панелей `3:4`.
+i2i `input_urls[0]` = **cropped left frontal close-up** uploaded as `victoria-sheet.png`.
+Do not send the full 12-up sheet. Do not send `animals-viktoria-style-lock.png`.
+Wrong face, brown/grey eyes, or platinum → rebuild the **whole** canvas.
+
 Если Kie возвращает повторный `400 Internal Error` на валидный `3:4 @ 4K` i2i payload,
-сначала запросить у image-prompter compact retry (`prompt` ≤4500 chars, детали в structured fields).
+сначала запросить у image-prompter compact retry (`prompt` ≤2200 chars, детали в structured fields).
 Не менять `aspect_ratio` или `resolution` до compact retry и явного разрешения.
 `kie-task-log.json` должен содержать:
 
@@ -84,6 +96,10 @@ those seams (`seam_slice_grid.py --split-mode gutter`). Subjects must not have
 a sticker / die-cut halo — that was the old zero-gutter bug.
 
 If a seam is missing or crooked → rebuild the whole canvas. Never patch one cell.
+
+After the cut, `kie_carousel_gen.py` must run `clean_slide_edges.py` with
+`--strip` ≥ leftover gutter (default **10**, no crop). Do not ship the seam
+path with `edge_cleanup: false`.
 
 ## Kie 400 / prompt complexity
 

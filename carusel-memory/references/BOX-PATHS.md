@@ -1,16 +1,11 @@
-# Hall: refs on the box (canon TEXT — do not render to prove this)
+# Hall: refs on the box
 
 | Role | Path | Status |
 |------|------|--------|
-| **Victoria face lock** | `carusel-memory/references/victoria-sheet.png` and `/workspace/cover-refs/victoria-sheet.png` | ONLY lock. Appearance card. |
-| Alena (wrong filename victoria.png) | `/workspace/cover-refs/victoria.png` | **FORBIDDEN**. Not Victoria. |
-| Old studio-blazer cutout | `/workspace/karusel-old/cover-old.png` | **RETIRED**. |
-| Generated stand-in `victoria-hair-lock.png` | — | **RETIRED**. Do not pick. |
-| Style lock | `/workspace/karusel-old/image-851e.png` | style only; no foreign faces/Portuguese |
-| Depth example | `/workspace/karusel-old/slide-04.png` | copy meaning only |
+| **Victoria face lock** | `carusel-memory/references/виктория.png` | ONLY identity. One woman, 12 angles of ONE face. |
+| Style collage | `animals-viktoria-style-lock.png` | Palette only. Never i2i as a face. |
+| `viktoriaref.png` | leftover frontal | Do not i2i while `виктория.png` is the lock. |
+| Alena / old sheet files | deleted | Never restore. |
 
-Hair: warm honey/wheat + darker roots from the SHEET. Eyes: green + slight hazel.
-Clothes/pose: new every carousel. Never copy sheet outfit (white cami + jeans).
-Platinum / Alena face / same clothes two carousels in a row = FAIL.
-
-No proof-pack render. Swarm must be fixed first.
+Eyes: green + slight hazel-brown / зелёные с лёгким карим.
+Clothes/pose: new. Not white tank, not jeans, not hand-on-chin.

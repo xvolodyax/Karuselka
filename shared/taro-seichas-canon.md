@@ -45,9 +45,9 @@ Locale-контракт фиксировал handle и «без URL», но не
 Коротко:
 
 - charcoal/black + magenta `#ff006e` + white + soft gold
-- Victoria in-scene на hook (1) и CTA (9). Face lock = **`victoria-sheet.png`**
-  (карта внешности). Глаза: зелёные с лёгким hazel. Волосы: honey/wheat + darker roots
-  **как на листе**. Platinum / Alena / `cover-refs/victoria.png` = FAIL.
+- Victoria in-scene на hook (1) и CTA (9). Face lock = **`виктория.png`**
+  (одна женщина, 12 ракурсов одного лица). Глаза: зелёные с лёгким карим / green+hazel. Волосы: honey/wheat + darker roots
+  **как на виктория.png**. Platinum / Alena = FAIL. Vika = `виктория.png` only.
 - Одежда и поза **новые в каждой карусели**. Не копировать white cami + jeans с листа.
   Не копировать ivory-blazer studio. Slide 1 и 9 могут отличаться — лицо то же.
 - Других женских лиц нет. Doubles запрещены.
@@ -109,7 +109,7 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 когда он есть на боксе. **Не рендерить pack, чтобы «доказать» lock.**
 
 - `/workspace/cover-refs/victoria-sheet.png` — ONLY Victoria
-- `/workspace/cover-refs/victoria.png` — **ALENA, запрещено**
+- Alena files (`victoria.png`, `alena.png`, `*_ref.jpg`) — **DELETED**. Never restore. Never i2i.
 - `/workspace/karusel-old/cover-old.png` — RETIRED studio-blazer
 - `/workspace/karusel-old/image-851e.png` — STYLE LOCK
 - `/workspace/karusel-old/slide-04.png` — DEPTH example

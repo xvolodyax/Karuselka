@@ -1,0 +1,21 @@
+{
+  "version": "2",
+  "model": "grok-imagine-video-1-5-preview",
+  "skipped": true,
+  "skip_reason": "static-slides-requested",
+  "prompt": "SKIP: static 9 slides, no Grok this run.",
+  "image_urls": [],
+  "aspect_ratio": "3:4",
+  "resolution": "720p",
+  "duration": 5,
+  "nsfw_checker": true,
+  "motion_decision": {
+    "content_type": "mixed",
+    "speech_recommended": false,
+    "speech_line": null,
+    "audio_mood": null,
+    "effects": [],
+    "loop_style": "none"
+  },
+  "analysis_summary_ru": "Этот run статичный: brief skip_motion/skip_animate, slide-01 остаётся PNG. Пятисекундный loop не снимаем, Grok не вызываем. Кадр hook «Тепло — холодно» уже нарезан; дальше animate тоже skip, затем guardian."
+}

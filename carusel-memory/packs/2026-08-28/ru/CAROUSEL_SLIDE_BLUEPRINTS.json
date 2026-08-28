@@ -1,0 +1,301 @@
+{
+  "pack_id": "2026-08-28",
+  "run_id": "2026-08-28-1110",
+  "lang": "ru",
+  "bilingual_pair": true,
+  "carousel_family": "animals_viktoria_collage",
+  "generation_mode": "grid_3x3",
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major",
+    "gutters": "thin_white_seams",
+    "safe_margin_pct": 12
+  },
+  "master_aspect": "3:4",
+  "panel_aspect": "3:4",
+  "resolution": "4K",
+  "copy_sources": {
+    "ru": "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+    "en": "carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json"
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "archetype": "hero_scene_victoria_plus_animal",
+      "grid_cell": {"row": 1, "col": 1},
+      "aspect": "3:4",
+      "victoria": true,
+      "animal": "cat",
+      "framed_card": false,
+      "motion_safe": true,
+      "this_run_asset": "static_png",
+      "zones": {
+        "headline": {"area": "upper 35%", "align": "left", "color": "#ffffff", "weight": "heavy_sans"},
+        "body": {"area": "mid-upper under headline", "align": "left", "color": "#ffffff", "weight": "medium_sans"},
+        "script": {"area": "mid, layered in scene", "color": "#ff006e", "weight": "thin_script"},
+        "hero": {"area": "lower-right 40%", "subject": "Victoria burgundy turtleneck, new seated pose"},
+        "animal": {"area": "lower-left / beside phone", "subject": "cat sensing the drop"},
+        "object": {"area": "hands / lap", "subject": "glowing phone, Saturday warmth vs Tuesday «занят»"},
+        "number": {"area": "bottom-right pill", "text": "01"}
+      },
+      "copy_ru": {
+        "headline": "В субботу он смотрел в глаза",
+        "body": "и строил планы на осень. Во вторник — сухое «занят» и три дня тишины.",
+        "script": "Тепло – холодно"
+      },
+      "copy_en": {
+        "headline": "On Saturday he looked into your eyes",
+        "body": "and talked about trips together. By Tuesday — a dry \"busy\" and 3 days of cold silence.",
+        "script": "Hot & Cold"
+      },
+      "scene": "Cinematic temperature drop. No label «Сцена». Face+hair from victoria-sheet only.",
+      "do_not": ["white cami+jeans", "ivory blazer", "platinum", "Alena", "sticker halo"]
+    },
+    {
+      "index": 2,
+      "role": "pain",
+      "archetype": "type_heavy_plus_animal_bottom",
+      "grid_cell": {"row": 1, "col": 2},
+      "aspect": "3:4",
+      "victoria": false,
+      "animal": "dog",
+      "framed_card": false,
+      "zones": {
+        "headline": {"area": "upper 30%", "color": "#ffffff", "weight": "heavy_sans"},
+        "body": {"area": "mid 25%", "color": "#ffffff"},
+        "hero": {"area": "bottom 35%", "subject": "dog waiting by glowing phone / chat"},
+        "number": {"area": "bottom-right pill", "text": "02"}
+      },
+      "copy_ru": {
+        "headline": "Ты ищешь, где ошиблась",
+        "body": "Перечитываешь переписку. Пугает не пауза, а перепад: от полного тепла до ледяной стены."
+      },
+      "copy_en": {
+        "headline": "Searching for what you did wrong",
+        "body": "You scroll through messages. The silence hurts, but the brutal temperature drop hurts worse."
+      },
+      "scene": "Pain of the drop, not a vibe pause. Dog has a job: loyalty to the unanswered question."
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "archetype": "typography_pills_crossed_illusion",
+      "grid_cell": {"row": 1, "col": 3},
+      "aspect": "3:4",
+      "victoria": false,
+      "animal": null,
+      "framed_card": false,
+      "zones": {
+        "headline": {"area": "upper 28%", "color": "#ffffff", "weight": "heavy_sans"},
+        "body": {"area": "mid 22%", "color": "#ffffff"},
+        "pills": {"area": "mid-lower", "color": "#ff006e", "content": "crossed-out excuse tape"},
+        "number": {"area": "bottom-right pill", "text": "03"}
+      },
+      "copy_ru": {
+        "headline": "Ловушка — греть сквозняк",
+        "body": "Думаешь: «он испугался чувств». Начинаешь проявлять заботу в ответ на холод, закрепляя качели."
+      },
+      "copy_en": {
+        "headline": "The trap of warming his draft",
+        "body": "You think: \"he's scared of his feelings.\" You respond to distance with double the warmth, fueling the cycle."
+      },
+      "scene": "Typography panel. Magenta torn tape cancels the excuse. No animal. No Victoria."
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "archetype": "owl_night_thoughts_framework",
+      "grid_cell": {"row": 2, "col": 1},
+      "aspect": "3:4",
+      "victoria": false,
+      "animal": "owl",
+      "framed_card": false,
+      "zones": {
+        "headline": {"area": "upper 28%", "color": "#ffffff", "weight": "heavy_sans"},
+        "body": {"area": "mid 24%", "color": "#ffffff"},
+        "hero": {"area": "lower-right 32%", "subject": "owl, night thoughts, clear sight"},
+        "number": {"area": "bottom-right pill", "text": "04"}
+      },
+      "copy_ru": {
+        "headline": "Прерывистое подкрепление",
+        "body": "Непредсказуемость держит нервную систему в напряжении. Мозг путает тревогу с сильной любовью."
+      },
+      "copy_en": {
+        "headline": "Intermittent reinforcement",
+        "body": "Unpredictability spikes your nervous system. Your brain confuses chronic anxiety with genuine passion."
+      },
+      "scene": "Mechanism, not occult. Owl is the night mind seeing the loop."
+    },
+    {
+      "index": 5,
+      "role": "save_phases",
+      "archetype": "framed_two_column_card",
+      "grid_cell": {"row": 2, "col": 2},
+      "aspect": "3:4",
+      "victoria": false,
+      "animal": null,
+      "framed_card": true,
+      "save": true,
+      "zones": {
+        "headline": {"area": "top of card, 18%", "color": "#ffffff", "weight": "heavy_sans"},
+        "frame": {"area": "inset 10–12% all sides", "style": "thin magenta/white card frame on charcoal"},
+        "col_warm": {"area": "left half of card", "accent": "#ff006e"},
+        "col_cold": {"area": "right half of card", "accent": "#ffffff"},
+        "number": {"area": "bottom-right pill", "text": "05"}
+      },
+      "copy_ru": {
+        "headline": "Тепло vs Холод: две фазы",
+        "lines": [
+          "Тепло: ему нужен твой ресурс и внимание",
+          "Холод: маячит близость и ответственность"
+        ]
+      },
+      "copy_en": {
+        "headline": "Warm vs Cold: two phases",
+        "lines": [
+          "Warm: craving your energy, validation, and attention",
+          "Cold: retreating the moment consistency is required"
+        ]
+      },
+      "scene": "Screenshot card. Two phases. Real frame."
+    },
+    {
+      "index": 6,
+      "role": "save_says_hears",
+      "archetype": "framed_depth_card_says_hears",
+      "grid_cell": {"row": 2, "col": 3},
+      "aspect": "3:4",
+      "victoria": false,
+      "animal": null,
+      "framed_card": true,
+      "save": true,
+      "zones": {
+        "headline": {"area": "top of card, 16%", "color": "#ffffff", "weight": "heavy_sans"},
+        "frame": {"area": "inset 10–12%", "style": "layered card, slide-04 depth not slide-04 look"},
+        "band_says": {"area": "upper third of card body", "label_color": "#ff006e"},
+        "band_hears": {"area": "middle third", "label_color": "#ff006e"},
+        "band_reality": {"area": "lower third", "label_color": "#c9a86a"},
+        "number": {"area": "bottom-right pill", "text": "06"}
+      },
+      "copy_ru": {
+        "headline": "Говорит vs Слышишь",
+        "lines": [
+          "Говорит: «Сейчас завал, не хочу усложнять»",
+          "Слышишь: «Я должна согреть его и подождать»",
+          "Реальность: «Беру тепло без обязательств»"
+        ]
+      },
+      "copy_en": {
+        "headline": "Says vs You Hear",
+        "lines": [
+          "Says: \"Work is crazy, don't want complications\"",
+          "You hear: \"I need to be patient and warm him up\"",
+          "Reality: \"I want intimacy without accountability\""
+        ]
+      },
+      "scene": "Screenshot card. Three perception layers."
+    },
+    {
+      "index": 7,
+      "role": "save_checklist",
+      "archetype": "framed_numbered_checklist",
+      "grid_cell": {"row": 3, "col": 1},
+      "aspect": "3:4",
+      "victoria": false,
+      "animal": null,
+      "framed_card": true,
+      "save": true,
+      "zones": {
+        "headline": {"area": "top of card, 18%", "color": "#ffffff", "weight": "heavy_sans"},
+        "frame": {"area": "inset 10–12%", "style": "framed checklist card"},
+        "items": {"area": "stacked 1–3 pills", "accent": "#ff006e"},
+        "number": {"area": "bottom-right pill", "text": "07"}
+      },
+      "copy_ru": {
+        "headline": "3 правила возвращения опоры",
+        "lines": [
+          "1. Суди по средней температуре, не по пикам",
+          "2. Сделал шаг назад — оставайся на месте",
+          "3. Не грей человека, выбравшего холод"
+        ]
+      },
+      "copy_en": {
+        "headline": "3 rules of self-grounding",
+        "lines": [
+          "1. Measure the baseline, not weekend peaks",
+          "2. When he steps back, stay where you are",
+          "3. Never warm up someone choosing the cold"
+        ]
+      },
+      "scene": "Screenshot checklist. Three rules only."
+    },
+    {
+      "index": 8,
+      "role": "recap_rule",
+      "archetype": "large_type_plus_gold_medallion",
+      "grid_cell": {"row": 3, "col": 2},
+      "aspect": "3:4",
+      "victoria": false,
+      "animal": null,
+      "framed_card": false,
+      "zones": {
+        "headline": {"area": "upper 35%", "color": "#ffffff", "weight": "heavy_sans"},
+        "body": {"area": "mid 30%", "color": "#ffffff"},
+        "mark": {"area": "lower 20%", "subject": "optional soft-gold ТАРО/СЕЙЧАС medallion (RU) or quiet metal mark (EN)"},
+        "number": {"area": "bottom-right pill", "text": "08"}
+      },
+      "copy_ru": {
+        "headline": "Ясность вместо дежурства",
+        "body": "Отношения строятся на стабильности, а не на качелях. Твой человек не заставит гадать о своих чувствах.",
+        "slogan": "Ясность сейчас"
+      },
+      "copy_en": {
+        "headline": "Clarity over constant waiting",
+        "body": "Real connection brings stability, not an emotional roller coaster. The right person never leaves you guessing.",
+        "slogan": "Clarity now"
+      },
+      "scene": "Decision rule. Medallion only if it does not cover type."
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "archetype": "hero_cta_victoria_plus_trigger",
+      "grid_cell": {"row": 3, "col": 3},
+      "aspect": "3:4",
+      "victoria": true,
+      "animal": null,
+      "framed_card": false,
+      "product": "app_audio",
+      "zones": {
+        "headline": {"area": "upper 22%", "color": "#ffffff", "weight": "heavy_sans"},
+        "trigger": {"area": "mid, dominant", "color": "#ff006e", "weight": "huge_script", "text_ru": "ТЕПЛО", "text_en": "WARMTH"},
+        "body": {"area": "under trigger", "color": "#ffffff"},
+        "framework_pills": {
+          "area": "lower-mid",
+          "ru": ["Суть", "Тень", "Вектор"],
+          "en": ["Essence", "Shadow", "Vector"],
+          "meaning": "app audio reading structure, not a bot"
+        },
+        "hero": {"area": "lower-right 38%", "subject": "Victoria black satin wrap, new standing pose, magenta lips, phone as if commenting"},
+        "cta": {"area": "lower-left pill", "color": "#ff006e"},
+        "number": {"area": "bottom-right pill", "text": "09"}
+      },
+      "copy_ru": {
+        "headline": "Напиши ТЕПЛО",
+        "body": "Аудиоразбор в приложении. Суть – Тень – Вектор.",
+        "cta": "Слово ТЕПЛО в комментариях",
+        "slogan": "Ясность сейчас"
+      },
+      "copy_en": {
+        "headline": "Comment WARMTH",
+        "body": "Audio reading in the app. Essence–Shadow–Vector.",
+        "cta": "Write WARMTH in the comments",
+        "slogan": "Clarity now"
+      },
+      "scene": "Same Victoria as 01, new clothes/pose. Sells app audio. No bot. No URL. No Academy. No signature.",
+      "do_not": ["white cami+jeans", "ivory blazer", "platinum", "Alena", "bot UI", "3 free readings"]
+    }
+  ]
+}

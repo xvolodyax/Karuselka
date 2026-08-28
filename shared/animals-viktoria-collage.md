@@ -28,13 +28,14 @@ No pastel rainbow. No beige lifestyle wash. No horror red/black candle table.
 ### Victoria (hero, only woman's face)
 
 - Slides **1 (hook)** and **9 (CTA)** in-scene (no sticker halo)
-- Face lock: **`carusel-memory/references/victoria-sheet.png`** only
-  (box: `/workspace/cover-refs/victoria-sheet.png`)
-- Eyes: green with a slight hazel / light-brown mix
-- Hair: warm honey / wheat blonde with darker roots **as on the sheet**. Never lighten.
-- Platinum / white-blonde / Alena (`cover-refs/victoria.png`) / studio-blazer = FAIL
-- **Clothes and pose MUST change** every carousel. Do not copy the sheet outfit
-  (white cami + jeans) or a frozen sheet pose. Slide 1 vs 9 may differ; same woman.
+- Face lock: **`carusel-memory/references/виктория.png`** only
+  (box: `/workspace/cover-refs/виктория.png`)
+- One woman, twelve angles of ONE person. Not 12 people.
+- Eyes: green with a slight hazel-brown tint (зелёные с лёгким карим)
+- Hair: warm honey / wheat blonde with darker roots **as on виктория.png**. Never lighten.
+- Platinum / white-blonde / Alena / studio-blazer = FAIL. Vika = `виктория.png` only.
+- **Clothes and pose MUST change** every carousel. Do not copy the reference outfit
+  (white cami) or a frozen reference pose. Slide 1 vs 9 may differ; same woman.
 - No other women's faces. No doubles. Portuguese models are `do_not_borrow`
 
 ### Animals (metaphor, not meme)
@@ -69,9 +70,9 @@ Cute random pets without a job = FAIL.
 
 | File | Role |
 |------|------|
-| `image-851e.png` / `animals-viktoria-style-lock.png` | style + layout + palette |
-| `victoria-sheet.png` | ONLY face + hair lock |
-| `cover-refs/victoria.png` (Alena) | FORBIDDEN |
+| `image-851e.png` / `animals-viktoria-style-lock.png` | style + layout + palette — never i2i as a face |
+| `виктория.png` | ONLY face + hair lock (one woman, 12 angles) |
+| Alena (`victoria.png` / `alena.png`) | DELETED. Never i2i. |
 | `cover-old.png` / studio-blazer | RETIRED |
 | `slide-04.png` | meaning depth only, not the visual family |
 

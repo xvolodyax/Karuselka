@@ -61,6 +61,7 @@ Thumbs.db
 *.tmp
 *.bak
 publish-urls.json
+!carusel-memory/packs/**/publish-urls.json
 publish-log.md
 kie-task-log.json
 grok-video-task-log.json

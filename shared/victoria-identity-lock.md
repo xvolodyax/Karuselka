@@ -1,23 +1,26 @@
-# Victoria identity lock — copied from taro-excalibur i2i
+# Victoria identity lock — виктория.png only
 
-Excalibur locks a host face by putting the **appearance reference first** in
-`input_urls` and keeping the prompt short (`cover_mode=host_reference`).
-A long MUST/face essay starves the model. Wrong face or platinum hair →
-**new canvas**, not a patched cell.
+Vladimir’s GPT Image method: i2i the **full sheet**, short prompt.
+
+The file is **one woman, twelve angles of ONE person**. Not 12 people.
 
 ## Karuselka lock
 
 | Rule | Value |
 |------|--------|
-| File | `carusel-memory/references/victoria-sheet.png` (box: `/workspace/cover-refs/victoria-sheet.png`) |
-| `input_urls[0]` | hosted URL of that sheet |
-| Eyes | green with a slight hazel |
-| Hair | warm honey / wheat blonde with darker roots |
-| Fail | platinum, white-blonde, Alena, any other woman |
-| Clothes | **new every carousel** — never the sheet white cami + jeans |
+| Official face | `carusel-memory/references/виктория.png` (~2.2MB, 12 angles) |
+| Box copy | `/workspace/cover-refs/виктория.png` |
+| `input_urls` | exactly one URL; upload that file only |
+| Eyes | green with a slight hazel-brown tint / **зелёные с лёгким карим** |
+| Expression | soft, tender |
+| Hair | warm honey / wheat, darker roots, not platinum |
+| Clothes / pose | **new every carousel** — not the sheet white tank, not jeans, not hand-on-chin |
+| Fail | other women, Alena, brown-only / grey / blue eyes, platinum, copied sheet outfit |
 
-`cover-refs/victoria.png` is **Alena**. Never upload it.
+`animals-viktoria-style-lock.png` is palette only. Do not i2i it as a face.
+`viktoriaref.png` is a leftover frontal. Do not i2i it when `виктория.png` is present.
 
-Style lock (`animals-viktoria-style-lock.png`) is **palette / type described in text**.
-Do **not** send it as an i2i input — the plate is a sticker collage and the model
-copies those outlines. Face lock is the only `input_url`.
+## Prompt
+
+First lines: one woman, same face, twelve angles of ONE person, eyes lock, soft tender.
+Then grid + **verbatim** copy. `prompt_char_count` ≤ 2200.

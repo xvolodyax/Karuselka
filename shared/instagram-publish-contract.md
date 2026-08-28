@@ -53,16 +53,16 @@ Instagram publish is not idempotent.
 ## Pre-publish validation
 
 1. `carusel-memory/output/slides/slide-01.png` … `slide-09.png` (9 PNG после slice).
-2. `carusel-memory/output/video/slide-01.mp4` после animate.
-3. **HTTPS** URLs в `publish-urls.json` (Kie File Upload, scoped by `run_id`).
+2. **No video.** Slide 01 is PNG. Do not require `slide-01.mp4`. See `shared/static-carousel-lock.md`.
+3. **HTTPS** URLs в `publish-urls.json` (Kie File Upload, scoped by `run_id`, `--static-all-pngs`).
 4. `caption` из `CAROUSEL_CAPTION.json`.
 5. `python scripts/publish_preflight.py` — no URL overlap with prior runs in `publish-log.md`.
 
-## Video slide 1
+## Slide 1
 
-- `file1` = HTTPS `slide-01.mp4` — Grok, 5s loop
+- `file1` = HTTPS `slide-01.png` — still image
 - `file2`–`file9` = PNG slides 2–9
-- Still `slide-01.png` используется motion-director + Grok input
+- Motion / Grok / ANIMATE.md only if Hall explicitly asks
 
 ## Log
 

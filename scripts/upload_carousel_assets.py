@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Upload carousel assets via Kie.ai File Upload API → publish-urls.json.
 
-- file1 (video): URL Upload from Grok result URL, or Stream Upload local mp4
+- file1 (video, default): URL Upload from Grok result URL, or Stream Upload local mp4
 - file2–file9: Stream Upload local PNG slides 2–9 (slide-01 = video)
+- --static-all-pngs: stream-upload ALL 9 PNGs; slide-01.png is file1 (no video)
 
 Docs: https://docs.kie.ai/file-upload-api/quickstart
 """
@@ -203,6 +204,19 @@ def main() -> int:
         "--upload-path-suffix",
         help="Append suffix to run-scoped Kie path, e.g. final-YYYYMMDD-HHMMSS",
     )
+    p.add_argument(
+        "--static-all-pngs",
+        action="store_true",
+        help="Stream-upload all 9 PNGs; slide-01.png is file1 (no video). Video path stays default.",
+    )
+    p.add_argument(
+        "--slides-dir",
+        help="Directory with slide-01.png ... slide-09.png (default: carusel-memory/output/slides)",
+    )
+    p.add_argument(
+        "--lang",
+        help="Optional language tag written into publish-urls.json (ru/en)",
+    )
     args = p.parse_args()
 
     workspace = Path(args.workspace).resolve()
@@ -213,12 +227,14 @@ def main() -> int:
         upload_path = f"{upload_base}/{run_id}"
     if args.upload_path_suffix:
         upload_path = f"{upload_path}-{args.upload_path_suffix.strip('/')}"
-    slides_dir = workspace / "carusel-memory/output/slides"
+    slides_dir = resolve_workspace_path(workspace, args.slides_dir) or (
+        workspace / "carusel-memory/output/slides"
+    )
     client = KieFileUploadClient()
     video_path_arg = args.normalized_video_path or args.video_path
     explicit_video_path = resolve_workspace_path(workspace, video_path_arg)
     video_normalization: dict | None = None
-    if args.normalize_video_to_slides:
+    if args.normalize_video_to_slides and not args.static_all_pngs:
         source_video = explicit_video_path or (workspace / "carusel-memory/output/video/slide-01.mp4")
         explicit_video_path, video_normalization = normalize_video_to_slide_size(
             workspace,
@@ -235,64 +251,101 @@ def main() -> int:
         "note": "Файлы на Kie временные (~24ч). Публикуй в Instagram сразу после upload.",
         "files": {},
     }
-
-    try:
-        video_url, video_source, video_meta = resolve_video(
-            workspace,
-            client,
-            upload_path,
-            force_stream=args.reupload_video_stream or bool(explicit_video_path),
-            video_path=explicit_video_path,
-        )
-    except FileNotFoundError as e:
-        print(f"ERROR: {e}", file=sys.stderr)
-        return 1
-    except subprocess.CalledProcessError as e:
-        print(f"ERROR: ffmpeg normalization failed: {e}", file=sys.stderr)
-        return 1
-
-    result["file1"] = video_url
-    result["slide_01"] = video_url
-    result["video_source"] = video_source
-    if video_normalization:
-        result["video_normalization"] = video_normalization
-    if video_meta:
-        result["files"]["file1"] = {
-            "kie_file_id": video_meta.get("data", {}).get("fileId"),
-            "expires_at": video_meta.get("data", {}).get("expiresAt"),
-            "url": video_url,
-            "local": str(explicit_video_path) if explicit_video_path else None,
-        }
-    print(f"file1: {video_url}")
+    if args.lang:
+        result["lang"] = args.lang
+    if args.static_all_pngs:
+        result["file1_kind"] = "png"
+        result["this_run"] = "static_all_pngs"
 
     slide_count = 9
-    for i in range(2, slide_count + 1):
-        slide_path = slides_dir / f"slide-{i:02d}.png"
-        if not slide_path.exists():
-            print(f"ERROR: missing {slide_path}", file=sys.stderr)
+
+    if args.static_all_pngs:
+        for i in range(1, slide_count + 1):
+            slide_path = slides_dir / f"slide-{i:02d}.png"
+            if not slide_path.exists():
+                print(f"ERROR: missing {slide_path}", file=sys.stderr)
+                return 1
+            if args.method == "base64":
+                meta = client.upload_base64(slide_path, upload_path=upload_path)
+            else:
+                meta = client.upload_stream(
+                    slide_path,
+                    upload_path=upload_path,
+                    file_name=slide_path.name,
+                )
+            url = meta["publicUrl"]
+            if not url.startswith("https://"):
+                print(f"ERROR: non-https URL for slide-{i:02d}: {url}", file=sys.stderr)
+                return 1
+            key = "File3" if i == 3 else f"file{i}"
+            result[key] = url
+            result[f"slide_{i:02d}"] = url
+            result["files"][key] = {
+                "local": str(slide_path),
+                "url": url,
+                "kind": "png",
+                "kie_file_id": meta.get("data", {}).get("fileId"),
+                "expires_at": meta.get("data", {}).get("expiresAt"),
+            }
+            print(f"{key}: {url}")
+        result["video_source"] = "kie_stream_upload_static_png"
+    else:
+        try:
+            video_url, video_source, video_meta = resolve_video(
+                workspace,
+                client,
+                upload_path,
+                force_stream=args.reupload_video_stream or bool(explicit_video_path),
+                video_path=explicit_video_path,
+            )
+        except FileNotFoundError as e:
+            print(f"ERROR: {e}", file=sys.stderr)
+            return 1
+        except subprocess.CalledProcessError as e:
+            print(f"ERROR: ffmpeg normalization failed: {e}", file=sys.stderr)
             return 1
 
-        if args.method == "base64":
-            meta = client.upload_base64(slide_path, upload_path=upload_path)
-        else:
-            meta = client.upload_stream(
-                slide_path,
-                upload_path=upload_path,
-                file_name=slide_path.name,
-            )
+        result["file1"] = video_url
+        result["slide_01"] = video_url
+        result["video_source"] = video_source
+        if video_normalization:
+            result["video_normalization"] = video_normalization
+        if video_meta:
+            result["files"]["file1"] = {
+                "kie_file_id": video_meta.get("data", {}).get("fileId"),
+                "expires_at": video_meta.get("data", {}).get("expiresAt"),
+                "url": video_url,
+                "local": str(explicit_video_path) if explicit_video_path else None,
+            }
+        print(f"file1: {video_url}")
 
-        url = meta["publicUrl"]
-        key = "File3" if i == 3 else f"file{i}"
-        # file7-file9 are required by the Make scenario; see instagram-publish-contract.md.
-        result[key] = url
-        result[f"slide_{i:02d}"] = url
-        result["files"][key] = {
-            "local": str(slide_path),
-            "url": url,
-            "kie_file_id": meta.get("data", {}).get("fileId"),
-            "expires_at": meta.get("data", {}).get("expiresAt"),
-        }
-        print(f"{key}: {url}")
+        for i in range(2, slide_count + 1):
+            slide_path = slides_dir / f"slide-{i:02d}.png"
+            if not slide_path.exists():
+                print(f"ERROR: missing {slide_path}", file=sys.stderr)
+                return 1
+
+            if args.method == "base64":
+                meta = client.upload_base64(slide_path, upload_path=upload_path)
+            else:
+                meta = client.upload_stream(
+                    slide_path,
+                    upload_path=upload_path,
+                    file_name=slide_path.name,
+                )
+
+            url = meta["publicUrl"]
+            key = "File3" if i == 3 else f"file{i}"
+            # file7-file9 are required by the Make scenario; see instagram-publish-contract.md.
+            result[key] = url
+            result[f"slide_{i:02d}"] = url
+            result["files"][key] = {
+                "local": str(slide_path),
+                "url": url,
+                "kie_file_id": meta.get("data", {}).get("fileId"),
+                "expires_at": meta.get("data", {}).get("expiresAt"),
+            }
+            print(f"{key}: {url}")
 
     out = Path(args.output)
     if not out.is_absolute():

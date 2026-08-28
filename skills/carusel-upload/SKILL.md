@@ -15,8 +15,8 @@ description: Kie.ai File Upload API — HTTPS URL для Instagram (stream + url
 
 | Слайд | Kie метод |
 |-------|-----------|
-| file1 видео | **URL upload** — берём `resultUrls[0]` из `grok-video-task-log.json` |
-| file2–file9 PNG | **Stream upload** — `slide-02.png` … `slide-09.png` |
+| file1–file9 PNG | **Stream upload** — `slide-01.png` … `slide-09.png` (`--static-all-pngs`) |
+| file1 видео | только если Hall явно просит video — иначе запрещено |
 
 Документация: https://docs.kie.ai/file-upload-api/quickstart  
 Контракт: `shared/carousel-asset-upload-contract.md`
@@ -26,7 +26,8 @@ description: Kie.ai File Upload API — HTTPS URL для Instagram (stream + url
 ```bash
 python scripts/upload_carousel_assets.py \
   --workspace <WORKSPACE> \
-  --run-id <run_id>
+  --run-id <run_id> \
+  --static-all-pngs
 ```
 
 `--run-id` auto из brief/caption если не указан → Kie path `carusel/instagram/{run_id}` — уникальные URL на run.
@@ -50,7 +51,7 @@ python scripts/upload_carousel_assets.py \
 ## Важно
 
 - Файлы на Kie **временные (~24ч)** — сразу после upload → `carusel-publish`
-- Если нет grok log и нет `slide-01.mp4` → BLOCKER
+- Нет `slide-01.mp4` — норма. file1 = `slide-01.png`. See `shared/static-carousel-lock.md`.
 - `kie_file_upload.py` stream upload уже снимает inherited `Content-Type: application/json`, чтобы requests поставил multipart boundary.
 - Скрипты находятся в plugin: `<CURSOR_PLUGIN_DIR>/carusel\scripts\...`; не предполагай `Carusel/scripts`.
 - В логах/print не использовать Unicode arrows на Windows; только ASCII.

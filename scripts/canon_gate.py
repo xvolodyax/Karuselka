@@ -2,7 +2,7 @@
 """ТАРО СЕЙЧАС pack gate — meaning + visual family lock.
 
 PASS only if:
-  (a) face lock is victoria-sheet.png (not Alena, not studio-blazer)
+  (a) face lock is виктория.png (one woman, twelve angles; not Alena)
   (b) >=3 slides use animals as metaphor
   (c) >=2 save slides have a real framework or questions
   (d) hook is a scene
@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Any
 
 import cta_canon
+from face_gate import LEGACY_PACKS, check_face, pack_has_real_pixels
 
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 PLATINUM_RE = re.compile(r"platinum|white-?blonde|платин|белокуры", re.I)
@@ -42,9 +43,27 @@ FRAMEWORK_RE = re.compile(
 ALLOWED_PRODUCTS = {cta_canon.REQUIRED_PRODUCT}
 TRIGGERS = {"ru": "ПАУЗА", "en": "PAUSE"}
 HANDLES = {"ru": "@todaytaro_ru", "en": "@todaytaro_bot"}
-FACE_LOCK = "victoria-sheet.png"
+FACE_LOCK = "виктория.png"
+FACE_LOCK_UPLOAD = "viktoria.png"
+LEGACY_FACE = "victoria-sheet.png"
+RETIRED_FACE_RE = re.compile(
+    r"victoria-sheet\.png|victoria-sheet-front\.png|victoria-face\.png",
+    re.I,
+)
+ALENA_BINARIES = (
+    Path("/workspace/cover-refs/victoria.png"),
+    Path("/workspace/cover-refs/victoria_ref.jpg"),
+    Path("/workspace/cover-refs/alena.png"),
+    Path("/workspace/cover-refs/alena_ref.jpg"),
+    Path("/workspace/assets/victoria.png"),
+    Path("/workspace/assets/alena.png"),
+    Path("/workspace/assets/victoria_ref.jpg"),
+    Path("/workspace/assets/alena_ref.jpg"),
+)
+PROMPT_MAX_CHARS = 2200
+STYLE_LOCK_RE = re.compile(r"animals-viktoria-style-lock|style-lock", re.I)
 ALENA_RE = re.compile(
-    r"alena|cover-refs/victoria\.png|виктория\.png|victoria-hair-lock",
+    r"alena|cover-refs/victoria\.png|assets/victoria\.png|victoria-hair-lock",
     re.I,
 )
 SHEET_CLOTHES_RE = re.compile(
@@ -94,21 +113,39 @@ def check_pack(pack: Path) -> list[str]:
     family = manifest.get("visual_family")
     if family != "animals_viktoria_collage":
         errors.append(f"PACK.json visual_family must be animals_viktoria_collage, got {family!r}")
+    pack_id = str(manifest.get("pack_id") or pack.name)
+    want_face = LEGACY_FACE if pack_id in LEGACY_PACKS else FACE_LOCK
     face = str(manifest.get("face_lock") or "")
-    if FACE_LOCK not in face:
-        errors.append(f"PACK.json face_lock must be {FACE_LOCK}")
+    if want_face not in face:
+        errors.append(f"PACK.json face_lock must be {want_face}")
     if ALENA_RE.search(json.dumps(manifest, ensure_ascii=False)):
         errors.append("PACK.json points at Alena / retired hair-lock")
 
-    repo_sheet = Path(__file__).resolve().parent.parent / "carusel-memory" / "references" / FACE_LOCK
-    if not repo_sheet.is_file() or repo_sheet.stat().st_size < 10_000:
+    repo_face = Path(__file__).resolve().parent.parent / "carusel-memory" / "references" / FACE_LOCK
+    if not repo_face.is_file() or repo_face.stat().st_size < 100_000:
         errors.append(
             f"missing face lock binary carusel-memory/references/{FACE_LOCK} "
-            "(do not invent a stand-in; Alena file is forbidden)"
+            "(pull the branch; do not crop a sheet; Alena files are deleted)"
         )
+    refs = Path(__file__).resolve().parent.parent / "carusel-memory" / "references"
+    for retired in (
+        refs / "victoria-sheet.png",
+        refs / "victoria-sheet-front.png",
+        refs / "victoria-face.png",
+    ):
+        if retired.is_file() and retired.stat().st_size > 1000:
+            errors.append(f"retired face file still present: {retired.name}. Delete it.")
+    for banned in ALENA_BINARIES:
+        if banned.is_file() and banned.stat().st_size > 1000:
+            errors.append(
+                f"Alena binary still present: {banned}. Delete it. "
+                "Vika lock is viktoriaref.png only."
+            )
 
     for lang in langs:
         errors.extend(check_lang(pack / lang, lang, manifest))
+    if pack_has_real_pixels(pack):
+        errors.extend(check_face(pack))
     return errors
 
 
@@ -216,9 +253,11 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
             errors.append(f"{lang}: image prompt still has PLACEHOLDER")
         if prompt.get("visual_family") not in {None, "animals_viktoria_collage"}:
             errors.append(f"{lang}: prompt visual_family wrong")
+        pack_id = str(manifest.get("pack_id") or "")
+        want_face = LEGACY_FACE if pack_id in LEGACY_PACKS else FACE_LOCK
         lock = str(prompt.get("face_lock") or "")
-        if FACE_LOCK not in lock:
-            errors.append(f"{lang}: prompt face_lock must be {FACE_LOCK}")
+        if want_face not in lock:
+            errors.append(f"{lang}: prompt face_lock must be {want_face}")
         inputs = " ".join(
             str(x)
             for x in (
@@ -230,11 +269,44 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
         )
         if FORBIDDEN_INPUT_RE.search(inputs) or ALENA_RE.search(inputs):
             errors.append(f"{lang}: Alena / victoria.png / hair-lock / cover-old used as i2i input")
-        if FACE_LOCK not in inputs and FACE_LOCK not in blob:
-            errors.append(f"{lang}: i2i must use {FACE_LOCK}")
+        if want_face not in inputs and want_face not in blob:
+            errors.append(f"{lang}: i2i must use {want_face}")
         urls = prompt.get("input_urls") or []
-        if urls and FACE_LOCK not in str(urls[0]):
-            errors.append(f"{lang}: input_urls[0] must be {FACE_LOCK} (Excalibur i2i order)")
+        url0 = str(urls[0]) if urls else ""
+        if urls and want_face not in url0 and not (
+            want_face == FACE_LOCK and FACE_LOCK_UPLOAD in url0
+        ):
+            errors.append(f"{lang}: input_urls[0] must be {want_face} (Excalibur i2i order)")
+        if pack_id not in LEGACY_PACKS:
+            active = str(prompt.get("prompt") or "")
+            count = int(prompt.get("prompt_char_count") or len(active))
+            if len(active) > PROMPT_MAX_CHARS or count > PROMPT_MAX_CHARS:
+                errors.append(
+                    f"{lang}: prompt_char_count {max(count, len(active))} > {PROMPT_MAX_CHARS} "
+                    "(long collage essay starves face lock)"
+                )
+            if urls and len(urls) != 1:
+                errors.append(f"{lang}: exactly one input_url — {FACE_LOCK} only")
+            if any(STYLE_LOCK_RE.search(str(u)) for u in urls):
+                errors.append(f"{lang}: do not send animals-viktoria-style-lock as i2i")
+            if any(RETIRED_FACE_RE.search(str(u)) for u in urls) or RETIRED_FACE_RE.search(
+                str(prompt.get("i2i_source") or "")
+            ):
+                errors.append(f"{lang}: i2i of victoria-sheet / sheet crop / victoria-face is forbidden")
+            head = active[:500]
+            if FACE_LOCK not in head or not re.search(
+                r"зелён.*карим|green.*hazel|green.*light-brown|green.*hazel-brown",
+                head,
+                re.I,
+            ):
+                errors.append(
+                    f"{lang}: prompt must start with {FACE_LOCK} + "
+                    "green/hazel / зелёные с лёгким карим"
+                )
+            if not re.search(r"one woman|одна женщин|same face", head, re.I):
+                errors.append(f"{lang}: prompt must lock one woman / same face")
+            if not re.search(r"twelve angles|12 (angles|ракурс)|двенадцать ракурс", head, re.I):
+                errors.append(f"{lang}: prompt must say twelve angles of ONE person")
         if str(prompt.get("slice_method") or "") != "seam":
             errors.append(f"{lang}: slice_method must be seam (Excalibur white-gutter cut)")
         visual_positive = " ".join(
@@ -286,7 +358,7 @@ def main(argv: list[str] | None = None) -> int:
 
 Verdict: PASS
 
-- (a) face lock = victoria-sheet.png; Alena / platinum / studio-blazer forbidden
+- (a) face lock = виктория.png (one woman, 12 angles); Alena / platinum forbidden
 - (b) >=3 slides use animals as metaphor
 - (c) >=2 save slides have a real framework or questions
 - (d) hook is a scene
@@ -295,6 +367,7 @@ Verdict: PASS
 - (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
 - (h) seam slice (Excalibur white gutters), no sticker halo
 - (i) CTA = app_audio (аудиоразбор in the APP); bot as comment prize = FAIL
+- (j) FACE_CHECK.md MATCH vs виктория.png; eyes green+hazel / зелёные с лёгким карим (brown/grey/blue = FAIL)
 - caption: one trigger word, no raw URLs, links in profile, no Academy on EN
 """
     report.write_text(body, encoding="utf-8")
