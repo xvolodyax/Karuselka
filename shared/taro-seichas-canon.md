@@ -45,9 +45,9 @@ Locale-контракт фиксировал handle и «без URL», но не
 Коротко:
 
 - charcoal/black + magenta `#ff006e` + white + soft gold
-- Victoria in-scene на hook (1) и CTA (9). Face lock = **`viktoriaref.png`**
-  (фронтальный портрет). Глаза: зелёные с лёгким карим / green+hazel. Волосы: honey/wheat + darker roots
-  **как на viktoriaref.png**. Platinum / Alena / 12-up sheet = FAIL. Vika = `viktoriaref.png` only.
+- Victoria in-scene на hook (1) и CTA (9). Face lock = **`виктория.png`**
+  (одна женщина, 12 ракурсов одного лица). Глаза: зелёные с лёгким карим / green+hazel. Волосы: honey/wheat + darker roots
+  **как на виктория.png**. Platinum / Alena = FAIL. Vika = `виктория.png` only.
 - Одежда и поза **новые в каждой карусели**. Не копировать white cami + jeans с листа.
   Не копировать ivory-blazer studio. Slide 1 и 9 могут отличаться — лицо то же.
 - Других женских лиц нет. Doubles запрещены.

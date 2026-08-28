@@ -2,7 +2,7 @@
 """ТАРО СЕЙЧАС pack gate — meaning + visual family lock.
 
 PASS only if:
-  (a) face lock is viktoriaref.png (not the 12-up sheet, not Alena)
+  (a) face lock is виктория.png (one woman, twelve angles; not Alena)
   (b) >=3 slides use animals as metaphor
   (c) >=2 save slides have a real framework or questions
   (d) hook is a scene
@@ -43,7 +43,8 @@ FRAMEWORK_RE = re.compile(
 ALLOWED_PRODUCTS = {cta_canon.REQUIRED_PRODUCT}
 TRIGGERS = {"ru": "ПАУЗА", "en": "PAUSE"}
 HANDLES = {"ru": "@todaytaro_ru", "en": "@todaytaro_bot"}
-FACE_LOCK = "viktoriaref.png"
+FACE_LOCK = "виктория.png"
+FACE_LOCK_UPLOAD = "viktoria.png"
 LEGACY_FACE = "victoria-sheet.png"
 RETIRED_FACE_RE = re.compile(
     r"victoria-sheet\.png|victoria-sheet-front\.png|victoria-face\.png",
@@ -62,7 +63,7 @@ ALENA_BINARIES = (
 PROMPT_MAX_CHARS = 2200
 STYLE_LOCK_RE = re.compile(r"animals-viktoria-style-lock|style-lock", re.I)
 ALENA_RE = re.compile(
-    r"alena|cover-refs/victoria\.png|виктория\.png|victoria-hair-lock",
+    r"alena|cover-refs/victoria\.png|assets/victoria\.png|victoria-hair-lock",
     re.I,
 )
 SHEET_CLOTHES_RE = re.compile(
@@ -271,7 +272,10 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
         if want_face not in inputs and want_face not in blob:
             errors.append(f"{lang}: i2i must use {want_face}")
         urls = prompt.get("input_urls") or []
-        if urls and want_face not in str(urls[0]):
+        url0 = str(urls[0]) if urls else ""
+        if urls and want_face not in url0 and not (
+            want_face == FACE_LOCK and FACE_LOCK_UPLOAD in url0
+        ):
             errors.append(f"{lang}: input_urls[0] must be {want_face} (Excalibur i2i order)")
         if pack_id not in LEGACY_PACKS:
             active = str(prompt.get("prompt") or "")
@@ -282,21 +286,27 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
                     "(long collage essay starves face lock)"
                 )
             if urls and len(urls) != 1:
-                errors.append(f"{lang}: exactly one input_url — viktoriaref.png only")
+                errors.append(f"{lang}: exactly one input_url — {FACE_LOCK} only")
             if any(STYLE_LOCK_RE.search(str(u)) for u in urls):
                 errors.append(f"{lang}: do not send animals-viktoria-style-lock as i2i")
             if any(RETIRED_FACE_RE.search(str(u)) for u in urls) or RETIRED_FACE_RE.search(
                 str(prompt.get("i2i_source") or "")
             ):
                 errors.append(f"{lang}: i2i of victoria-sheet / sheet crop / victoria-face is forbidden")
-            head = active[:400]
-            if "viktoriaref.png" not in head or not re.search(
-                r"зелён.*карим|green.*hazel|green.*light-brown", head, re.I
+            head = active[:500]
+            if FACE_LOCK not in head or not re.search(
+                r"зелён.*карим|green.*hazel|green.*light-brown|green.*hazel-brown",
+                head,
+                re.I,
             ):
                 errors.append(
-                    f"{lang}: prompt must start with viktoriaref.png + "
+                    f"{lang}: prompt must start with {FACE_LOCK} + "
                     "green/hazel / зелёные с лёгким карим"
                 )
+            if not re.search(r"one woman|одна женщин|same face", head, re.I):
+                errors.append(f"{lang}: prompt must lock one woman / same face")
+            if not re.search(r"twelve angles|12 (angles|ракурс)|двенадцать ракурс", head, re.I):
+                errors.append(f"{lang}: prompt must say twelve angles of ONE person")
         if str(prompt.get("slice_method") or "") != "seam":
             errors.append(f"{lang}: slice_method must be seam (Excalibur white-gutter cut)")
         visual_positive = " ".join(
@@ -348,7 +358,7 @@ def main(argv: list[str] | None = None) -> int:
 
 Verdict: PASS
 
-- (a) face lock = viktoriaref.png; Alena / 12-up sheet / platinum forbidden
+- (a) face lock = виктория.png (one woman, 12 angles); Alena / platinum forbidden
 - (b) >=3 slides use animals as metaphor
 - (c) >=2 save slides have a real framework or questions
 - (d) hook is a scene
@@ -357,7 +367,7 @@ Verdict: PASS
 - (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
 - (h) seam slice (Excalibur white gutters), no sticker halo
 - (i) CTA = app_audio (аудиоразбор in the APP); bot as comment prize = FAIL
-- (j) FACE_CHECK.md MATCH vs viktoriaref.png; eyes green+hazel / зелёные с лёгким карим (brown/grey/blue = FAIL)
+- (j) FACE_CHECK.md MATCH vs виктория.png; eyes green+hazel / зелёные с лёгким карим (brown/grey/blue = FAIL)
 - caption: one trigger word, no raw URLs, links in profile, no Academy on EN
 """
     report.write_text(body, encoding="utf-8")

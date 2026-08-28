@@ -332,7 +332,7 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     f"handle: {HANDLES[lang]}",
                     "publish_requested: false",
                     "visual_family: animals_viktoria_collage",
-                    "face_lock: viktoriaref.png",
+                    "face_lock: виктория.png",
                     "slice_method: seam",
                     "cta_style: comment_trigger",
                     "product: app_audio",
@@ -680,8 +680,8 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
         if prompt.get("slice_method") != "seam":
             errors.append("CAROUSEL_IMAGE_PROMPT.json slice_method must be seam")
         urls = prompt.get("input_urls") or []
-        if urls and "viktoriaref.png" not in str(urls[0]):
-            errors.append("CAROUSEL_IMAGE_PROMPT.json input_urls[0] must be viktoriaref.png")
+        if urls and "виктория.png" not in str(urls[0]) and "viktoria.png" not in str(urls[0]):
+            errors.append("CAROUSEL_IMAGE_PROMPT.json input_urls[0] must be виктория.png")
         if len(urls) != 1:
             errors.append("CAROUSEL_IMAGE_PROMPT.json must have exactly one input_url")
         prompt_text = str(prompt.get("prompt") or "")
@@ -866,14 +866,14 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "No 3000-char collage/type/wardrobe novel. No face essay."
         )
         extra_hard.append(
-            "- Upload ONLY carusel-memory/references/viktoriaref.png as the only "
-            "input_url, file_name=viktoriaref.png. Never i2i victoria-sheet.png, "
-            "a sheet crop, victoria-face.png, or animals-viktoria-style-lock.png."
+            "- Upload ONLY carusel-memory/references/виктория.png (one woman, "
+            "twelve angles of ONE person). Never i2i viktoriaref.png, Alena, "
+            "or animals-viktoria-style-lock.png as a face."
         )
         extra_hard.append(
-            "- Prompt FIRST lines: same woman as viktoriaref.png; eyes green with a "
-            "slight hazel / light-brown tint (зелёные с лёгким карим). Keep passed "
-            "copy/CTA. New clothes. Read shared/victoria-identity-lock.md."
+            "- Prompt FIRST: one woman, same face, twelve angles of ONE person; "
+            "eyes green with a slight hazel-brown tint (зелёные с лёгким карим); "
+            "soft tender expression. Do not copy sheet clothes/pose. Keep copy/CTA."
         )
         extra_hard.append(
             "- Panel 9 verbatim text = app audio CTA from copy (аудиоразбор / audio reading). "
@@ -887,7 +887,7 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "Read shared/cta-app-audio-contract.md."
         )
         extra_hard.append(
-            "- Pixel FACE_CHECK.md vs viktoriaref.png close-up (slides 01+09, both langs). "
+            "- Pixel FACE_CHECK.md vs виктория.png (slides 01+09, both langs). "
             "Run scripts/make_face_check_crops.py. Eyes must be green+hazel. "
             "Brown/grey eyes or generic blonde = FAIL, rebuild whole canvas. "
             "Hair-prose only is not a pass. Read shared/victoria-face-pixel-gate.md."
@@ -1018,7 +1018,7 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
                 "No pixels. Teaching-arc notes only.",
                 f"lang: {lang}",
                 f"visual_family: {family}",
-                "face_lock: viktoriaref.png",
+                "face_lock: виктория.png",
                 "written_by: gemini",
                 "",
                 "## Topic",
@@ -1097,12 +1097,12 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
 
     write_text_file(
         mem / "design" / "CAROUSELDESIGN.md",
-        f"# Dry-run design\n\ncarousel_family: {family}\nface_lock: viktoriaref.png\n"
+        f"# Dry-run design\n\ncarousel_family: {family}\nface_lock: виктория.png\n"
         "Do not render. New clothes/pose each real carousel.\n",
     )
     write_json(
         mem / "design" / "CAROUSEL_SERIES_CONCEPT.json",
-        {"carousel_family": family, "face_lock": "viktoriaref.png", "dry_run": True},
+        {"carousel_family": family, "face_lock": "виктория.png", "dry_run": True},
     )
     write_json(
         mem / "design" / "CAROUSEL_SOURCE_DECOMPOSITION.json",
@@ -1118,12 +1118,12 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
         {
             "generation_mode": "grid_3x3",
             "carousel_family": family,
-            "face_lock": "viktoriaref.png",
+            "face_lock": "виктория.png",
             "slice_method": "seam",
             "dry_run": True,
-            "reference_contract": {"face_lock": "viktoriaref.png"},
+            "reference_contract": {"face_lock": "виктория.png"},
             "input_urls": [
-                "https://example.invalid/viktoriaref.png",
+                "https://example.invalid/виктория.png",
                 "https://example.invalid/animals-viktoria-style-lock.png",
             ],
             "typography_rules": {"dry_run": True},

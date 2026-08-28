@@ -30,13 +30,13 @@ class CanonGateTest(unittest.TestCase):
         if not pack.is_dir():
             self.skipTest("pack not in workspace")
         errors = gate.check_pack(pack)
-        sheet = Path(__file__).resolve().parent.parent / "carusel-memory/references/viktoriaref.png"
+        sheet = Path(__file__).resolve().parent.parent / "carusel-memory/references/виктория.png"
         if not sheet.is_file():
             self.assertTrue(
-                any("viktoriaref.png" in e for e in errors),
+                any("виктория.png" in e for e in errors),
                 errors,
             )
-            errors = [e for e in errors if "viktoriaref.png" not in e]
+            errors = [e for e in errors if "виктория.png" not in e]
         self.assertEqual(errors, [])
 
     def test_alena_and_sheet_clothes_fail(self) -> None:
@@ -45,7 +45,7 @@ class CanonGateTest(unittest.TestCase):
             pack / "PACK.json",
             {
                 "visual_family": "animals_viktoria_collage",
-                "face_lock": "viktoriaref.png",
+                "face_lock": "виктория.png",
                 "langs": ["ru"],
                 "trigger_words": {"ru": "ПАУЗА"},
             },
@@ -167,7 +167,7 @@ class CanonGateTest(unittest.TestCase):
             pack / "PACK.json",
             {
                 "visual_family": "animals_viktoria_collage",
-                "face_lock": "viktoriaref.png",
+                "face_lock": "виктория.png",
                 "langs": ["ru"],
                 "trigger_words": {"ru": "ШАГ"},
             },
@@ -262,10 +262,10 @@ class CanonGateTest(unittest.TestCase):
             pack / "ru" / "CAROUSEL_IMAGE_PROMPT.json",
             {
                 "visual_family": "animals_viktoria_collage",
-                "face_lock": "viktoriaref.png",
+                "face_lock": "виктория.png",
                 "slice_method": "zero-gutter",
                 "input_urls": ["https://example.com/other.png"],
-                "input_files_in_repo": ["carusel-memory/references/viktoriaref.png"],
+                "input_files_in_repo": ["carusel-memory/references/виктория.png"],
                 "prompt": "Zero-gutter cutout collage, white outline sticker around Victoria.",
                 "panel_visual_brief": [{"slide": 1, "visual_only": "sticker cutout"}],
             },
@@ -307,7 +307,7 @@ class CanonGateTest(unittest.TestCase):
             {
                 "pack_id": "2026-08-28-cta",
                 "visual_family": "animals_viktoria_collage",
-                "face_lock": "viktoriaref.png",
+                "face_lock": "виктория.png",
                 "langs": ["en"],
                 "trigger_words": {"en": "PAUSE"},
             },
@@ -407,11 +407,11 @@ class CanonGateTest(unittest.TestCase):
             pack / "en" / "CAROUSEL_IMAGE_PROMPT.json",
             {
                 "visual_family": "animals_viktoria_collage",
-                "face_lock": "viktoriaref.png",
+                "face_lock": "виктория.png",
                 "slice_method": "seam",
-                "input_urls": ["https://example.com/viktoriaref.png"],
-                "input_files_in_repo": ["carusel-memory/references/viktoriaref.png"],
-                "prompt": "Thin white gutters at 1/3 and 2/3. Face lock viktoriaref.png.",
+                "input_urls": ["https://example.com/виктория.png"],
+                "input_files_in_repo": ["carusel-memory/references/виктория.png"],
+                "prompt": "Thin white gutters at 1/3 and 2/3. Face lock виктория.png.",
                 "panel_visual_brief": [{"slide": i, "visual_only": "scene"} for i in range(1, 10)],
             },
         )
@@ -428,7 +428,7 @@ class CanonGateTest(unittest.TestCase):
             {
                 "pack_id": "2026-08-28",
                 "visual_family": "animals_viktoria_collage",
-                "face_lock": "viktoriaref.png",
+                "face_lock": "виктория.png",
                 "langs": ["ru"],
                 "trigger_words": {"ru": "ТЕПЛО"},
                 "product": "app_audio",
@@ -476,9 +476,9 @@ class CanonGateTest(unittest.TestCase):
             pack / "ru" / "CAROUSEL_IMAGE_PROMPT.json",
             {
                 "visual_family": "animals_viktoria_collage",
-                "face_lock": "viktoriaref.png",
+                "face_lock": "виктория.png",
                 "slice_method": "seam",
-                "input_urls": ["https://example.com/viktoriaref.png"],
+                "input_urls": ["https://example.com/виктория.png"],
                 "prompt": "Thin white gutters at 1/3 and 2/3. " + ("collage cats type wardrobe " * 200),
                 "prompt_char_count": 3631,
                 "panel_visual_brief": [{"slide": i, "visual_only": "scene"} for i in range(1, 10)],

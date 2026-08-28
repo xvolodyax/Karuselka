@@ -1,33 +1,26 @@
-# Victoria identity lock — viktoriaref.png only
+# Victoria identity lock — виктория.png only
 
-Excalibur locks a host face by putting the **appearance reference first** in
-`input_urls` and keeping the prompt short (`cover_mode=host_reference`).
-A long MUST/face essay starves the model. Wrong face or platinum hair →
-**new canvas**, not a patched cell.
+Vladimir’s GPT Image method: i2i the **full sheet**, short prompt.
+
+The file is **one woman, twelve angles of ONE person**. Not 12 people.
 
 ## Karuselka lock
 
 | Rule | Value |
 |------|--------|
-| Official face | `carusel-memory/references/viktoriaref.png` (~1.5MB frontal) |
-| Box copy | `/workspace/cover-refs/viktoriaref.png` (same bytes) |
-| `input_urls` | exactly one URL; upload `file_name=viktoriaref.png` |
-| Eyes (first line after identity) | green with a slight hazel / light-brown tint around the pupil; **зелёные с лёгким карим** |
-| Hair | warm honey / wheat blonde with darker roots, not platinum |
-| Fail | 12-up sheet, sheet crop, Alena, brown-only / grey / blue eyes, platinum, any other woman |
-| Clothes | **new every carousel** — never the reference white cami |
+| Official face | `carusel-memory/references/виктория.png` (~2.2MB, 12 angles) |
+| Box copy | `/workspace/cover-refs/виктория.png` |
+| `input_urls` | exactly one URL; upload that file only |
+| Eyes | green with a slight hazel-brown tint / **зелёные с лёгким карим** |
+| Expression | soft, tender |
+| Hair | warm honey / wheat, darker roots, not platinum |
+| Clothes / pose | **new every carousel** — not the sheet white tank, not jeans, not hand-on-chin |
+| Fail | other women, Alena, brown-only / grey / blue eyes, platinum, copied sheet outfit |
 
-Deleted (do not restore, do not i2i):
-
-- `victoria-sheet.png` (12-up contact sheet)
-- `victoria-sheet-front.png` (crop of that sheet)
-- `victoria-face.png`
-- `victoria.png` / `alena.png` / `*_ref.jpg`
-
-Style lock (`animals-viktoria-style-lock.png`) is **palette / type described in text**.
-Do **not** send it as an i2i input — the plate is a sticker collage.
+`animals-viktoria-style-lock.png` is palette only. Do not i2i it as a face.
+`viktoriaref.png` is a leftover frontal. Do not i2i it when `виктория.png` is present.
 
 ## Prompt
 
-First lines must name `viktoriaref.png` and the eyes lock. Then grid + verbatim copy.
-`prompt_char_count` ≤ 2200. No 3000-char collage / type / wardrobe novel.
+First lines: one woman, same face, twelve angles of ONE person, eyes lock, soft tender.
+Then grid + **verbatim** copy. `prompt_char_count` ≤ 2200.

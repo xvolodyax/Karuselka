@@ -28,11 +28,12 @@ No pastel rainbow. No beige lifestyle wash. No horror red/black candle table.
 ### Victoria (hero, only woman's face)
 
 - Slides **1 (hook)** and **9 (CTA)** in-scene (no sticker halo)
-- Face lock: **`carusel-memory/references/viktoriaref.png`** only
-  (box: `/workspace/cover-refs/viktoriaref.png`)
-- Eyes: green with a slight hazel / light-brown tint (зелёные с лёгким карим)
-- Hair: warm honey / wheat blonde with darker roots **as on viktoriaref.png**. Never lighten.
-- Platinum / white-blonde / Alena / 12-up sheet / studio-blazer = FAIL. Vika = `viktoriaref.png` only.
+- Face lock: **`carusel-memory/references/виктория.png`** only
+  (box: `/workspace/cover-refs/виктория.png`)
+- One woman, twelve angles of ONE person. Not 12 people.
+- Eyes: green with a slight hazel-brown tint (зелёные с лёгким карим)
+- Hair: warm honey / wheat blonde with darker roots **as on виктория.png**. Never lighten.
+- Platinum / white-blonde / Alena / studio-blazer = FAIL. Vika = `виктория.png` only.
 - **Clothes and pose MUST change** every carousel. Do not copy the reference outfit
   (white cami) or a frozen reference pose. Slide 1 vs 9 may differ; same woman.
 - No other women's faces. No doubles. Portuguese models are `do_not_borrow`
@@ -70,7 +71,7 @@ Cute random pets without a job = FAIL.
 | File | Role |
 |------|------|
 | `image-851e.png` / `animals-viktoria-style-lock.png` | style + layout + palette — never i2i as a face |
-| `viktoriaref.png` | ONLY face + hair lock |
+| `виктория.png` | ONLY face + hair lock (one woman, 12 angles) |
 | Alena (`victoria.png` / `alena.png`) | DELETED. Never i2i. |
 | `cover-old.png` / studio-blazer | RETIRED |
 | `slide-04.png` | meaning depth only, not the visual family |

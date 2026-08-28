@@ -45,10 +45,10 @@ class FaceGateTest(unittest.TestCase):
         write(pack / "ru" / "slides" / "slide-01.png", b"\x00" * 12_000)
         write(
             pack / "FACE_CHECK.md",
-            "verdict: MATCH\ncompared viktoriaref.png\nhoney/wheat blonde\neyes are brown\n",
+            "verdict: MATCH\ncompared виктория.png\nhoney/wheat blonde\neyes are brown\n",
         )
         for name in (
-            "viktoriaref.png",
+            "виктория.png",
             "ru-slide-01-face.png",
             "ru-slide-09-face.png",
             "en-slide-01-face.png",
