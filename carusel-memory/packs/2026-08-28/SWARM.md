@@ -20,7 +20,7 @@ SKIP: motion-director, animate/Grok video (static 9 slides).
 | step | Task id | dispatch_id | status |
 |------|---------|-------------|--------|
 | researcher | bc-f978d8f5-da5d-53b1-a1e8-9cd9f343e7fc | 5100636f1ed94196aed7c4773a80b08b | OK |
-| copywriter | | | pending |
+| copywriter | bc-4d276c25-3a8e-575f-abb5-435c777acb7c | a6505d1073c7417797de025d3f7ab592 | OK |
 | designer | | | pending |
 | image-prompter | | | pending |
 | slice | | | pending |

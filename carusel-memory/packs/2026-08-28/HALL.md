@@ -15,7 +15,14 @@ This pack is for **human review**. Publish stays skipped.
 
 ## Topic
 
-TBD by researcher. Forbidden repeats: Pause, Ping vs step, «Спишь?» after 24 days, B18 disappeared-after-intimacy. Triggers must not be ШАГ / STEP / PAUSE / ПАУЗА.
+**Тепло – холодно / Hot & Cold** — weekend warmth, Tuesday «занят» / "busy", then silence.
+
+| lang | Handle | Trigger | Product |
+|------|--------|---------|---------|
+| ru | @todaytaro_ru | **ТЕПЛО** | аудиоразбор в приложении: Суть – Тень – Вектор |
+| en | @todaytaro_bot | **WARMTH** | audio reading in the app: Essence–Shadow–Vector |
+
+Forbidden repeats were not reused: Pause, Ping vs step, «Спишь?» after 24 days, B18, triggers ШАГ/STEP/PAUSE/ПАУЗА.
 
 ## Product
 
