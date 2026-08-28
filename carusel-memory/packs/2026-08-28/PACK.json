@@ -4,8 +4,8 @@
   "slot": "11:10 MSK",
   "late": true,
   "topic": {
-    "ru": "TBD-by-researcher",
-    "en": "TBD-by-researcher"
+    "ru": "Тепло – холодно: почему он то держит за руку, то отдаляется на неделю?",
+    "en": "Hot & Cold: Why he holds your hand all weekend and goes cold on Monday"
   },
   "note": "New relationship-pain pair. Forbidden repeats: Pause, Ping vs step, Спишь? after 24 days, B18 disappeared-after-intimacy. Static 9 slides. Publish skipped.",
   "live_posts_do_not_touch": {
@@ -19,8 +19,8 @@
   "product": "app_audio",
   "cta_style": "comment_trigger",
   "trigger_words": {
-    "ru": "TBD",
-    "en": "TBD"
+    "ru": "ТЕПЛО",
+    "en": "WARMTH"
   },
   "langs": ["ru", "en"],
   "publish_requested": false,
