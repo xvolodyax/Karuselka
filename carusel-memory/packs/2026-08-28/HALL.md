@@ -35,6 +35,16 @@ Clothes this pack: burgundy turtleneck (01), black satin wrap (09).
 `carusel-memory/packs/2026-08-28/{ru,en}/slides/slide-01.png` … `slide-09.png`
 
 Captions: `CAROUSEL_CAPTION.md` next to slides.
-Gate: `GATE.md` — PASS.
-Guardian: DESIGN OK 92.
-Kie HTTPS URLs (~24h): `publish-urls.json` per lang.
+Gate: `GATE.md` — PASS (includes FACE_CHECK, eyes green+hazel).
+Guardian: DESIGN OK 93. No video required.
+Kie HTTPS URLs (~24h), file1 = PNG:
+
+RU `2026-08-28-1110-static-ru`:
+https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-28-1110-static-ru/slide-01.png
+… `slide-09.png`
+
+EN `2026-08-28-1110-static-en`:
+https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-28-1110-static-en/slide-01.png
+… `slide-09.png`
+
+Do not publish. Do not merge.
