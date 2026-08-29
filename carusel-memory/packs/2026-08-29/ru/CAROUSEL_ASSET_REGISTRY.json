@@ -1,0 +1,62 @@
+{
+  "version": "1",
+  "pack_id": "2026-08-29",
+  "policy": "No MCP KV for images. Kie scripts after image-prompter. input_urls must be exactly one: uploaded viktoriaref.png.",
+  "assets": [
+    {
+      "id": "face-lock-viktoriaref",
+      "role": "face_lock",
+      "local_path": "carusel-memory/references/viktoriaref.png",
+      "box_path": "/workspace/cover-refs/viktoriaref.png",
+      "i2i": true,
+      "input_url_index": 0,
+      "https_url": null,
+      "status": "local-ready",
+      "notes": "ONLY face + hair + eyes. New clothes/pose. Do not copy white cami + gold pendant."
+    },
+    {
+      "id": "style-lock-animals-viktoria",
+      "role": "style_palette_layout",
+      "local_path": "carusel-memory/references/animals-viktoria-style-lock.png",
+      "i2i": false,
+      "status": "local-ready",
+      "notes": "Never i2i as a face. Prompt_hints only."
+    },
+    {
+      "id": "style-lock-image-851e",
+      "role": "style_palette_layout",
+      "local_path": "carusel-memory/references/image-851e.md",
+      "i2i": false,
+      "status": "doc-only"
+    }
+  ],
+  "forbidden": [
+    {
+      "id": "alena-viktoria-png",
+      "local_path": "carusel-memory/references/виктория.png",
+      "i2i": false,
+      "status": "forbidden",
+      "notes": "Alena. Never i2i."
+    },
+    {
+      "id": "retired-faces",
+      "paths": [
+        "victoria-sheet.png",
+        "victoria.png",
+        "victoria_ref.jpg",
+        "alena*.png",
+        "character-sheet-2k",
+        "cover-old.png"
+      ],
+      "status": "forbidden"
+    }
+  ],
+  "generated": {
+    "master": {
+      "local_path": "carusel-memory/output/master/master.png",
+      "kie_task_id": null,
+      "status": "pending-image-prompter"
+    },
+    "slides": []
+  }
+}
