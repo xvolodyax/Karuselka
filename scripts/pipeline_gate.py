@@ -58,9 +58,10 @@ LEGAL_SKIP = {
     "animate": "static-png-only",
 }
 SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | re.I)
-GEMINI_STEPS = frozenset({"researcher", "copywriter"})
+GEMINI_STEPS = frozenset({"researcher", "copywriter", "image-prompter"})
 GEMINI_MODEL = "gemini-3.7-flash-high"
-GEMINI_WRITERS = frozenset({"gemini", "gemini-3.7-flash-high"})
+GEMINI_MODEL_ALIASES = frozenset({"gemini-3.7-flash-high", "gemini-3.7-flash"})
+GEMINI_WRITERS = frozenset({"gemini", "gemini-3.7-flash-high", "gemini-3.7-flash"})
 PIXEL_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".mp4", ".mov"}
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 WRITTEN_BY_RE = re.compile(r"written_by[\s:*]*([A-Za-z0-9][A-Za-z0-9._-]*)", re.I)
@@ -151,11 +152,16 @@ def is_gemini_writer(value: Any) -> bool:
     return str(value or "").strip().lower() in GEMINI_WRITERS
 
 
+def is_gemini_model(value: Any) -> bool:
+    return str(value or "").strip().lower() in GEMINI_MODEL_ALIASES
+
+
 def written_by_error(rel: str, value: Any) -> str:
     return (
         f"{rel} written_by must be gemini (got {value!r}). "
-        "Hall/Director: spawn researcher+copywriter on gemini-3.7-flash-high. "
-        "Director must not author slides/captions."
+        "Hall/Director: spawn researcher+copywriter+image-prompter on "
+        "gemini-3.7-flash-high (role: gemini-3.7-flash). "
+        "Director must not author slides/captions/image prompts."
     )
 
 
@@ -445,7 +451,12 @@ def cmd_next(workspace: Path, repo_root: Path) -> int:
     print("cloud_fallback=Task(generalPurpose)")
     if nxt in GEMINI_STEPS:
         print(f"required_model={GEMINI_MODEL}")
-        print("caption_is_copywriter_job=true" if nxt == "copywriter" else "research_only=true")
+        if nxt == "copywriter":
+            print("caption_is_copywriter_job=true")
+        elif nxt == "image-prompter":
+            print("image_prompts_are_gemini=true")
+        else:
+            print("research_only=true")
     print(f"skill={spec['skill']}")
     print(f"agent={spec['agent']}")
     print("STOP if you were about to write these artifacts in the parent chat:")
@@ -483,9 +494,10 @@ def cmd_record_dispatch(
     resolved_model = model
     if step_id in GEMINI_STEPS:
         resolved_model = (model or GEMINI_MODEL).strip()
-        if resolved_model != GEMINI_MODEL:
+        if not is_gemini_model(resolved_model):
             raise SystemExit(
-                f"{step_id} must spawn with model {GEMINI_MODEL}, got {resolved_model!r}"
+                f"{step_id} must spawn with model {GEMINI_MODEL} "
+                f"(gemini-3.7-flash also ok), got {resolved_model!r}"
             )
     state.update(
         {
@@ -550,9 +562,10 @@ def verify_gemini_artifacts(workspace: Path, step_id: str, state: dict[str, Any]
     errors: list[str] = []
     if step_id not in GEMINI_STEPS:
         return errors
-    if state.get("model") and state.get("model") != GEMINI_MODEL:
+    if state.get("model") and not is_gemini_model(state.get("model")):
         errors.append(
-            f"{step_id} ledger model must be {GEMINI_MODEL}, got {state.get('model')!r}"
+            f"{step_id} ledger model must be {GEMINI_MODEL} "
+            f"(gemini-3.7-flash also ok), got {state.get('model')!r}"
         )
     if step_id == "researcher":
         rel = "carusel-memory/research/carousel-research-dossier.md"
@@ -587,6 +600,18 @@ def verify_gemini_artifacts(workspace: Path, step_id: str, state: dict[str, Any]
             by_m = WRITTEN_BY_RE.search(text)
             if not by_m or not is_gemini_writer(by_m.group(1)):
                 errors.append(written_by_error(cap_md, by_m.group(1) if by_m else None))
+    if step_id == "image-prompter":
+        prompt_rel = "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json"
+        if file_ok(workspace, prompt_rel):
+            prompt = load_json(workspace / prompt_rel)
+            if not is_gemini_writer(prompt.get("written_by")):
+                errors.append(written_by_error(prompt_rel, prompt.get("written_by")))
+        prompt_md = "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md"
+        if file_ok(workspace, prompt_md):
+            text = read_text(workspace, prompt_md)
+            by_m = WRITTEN_BY_RE.search(text)
+            if not by_m or not is_gemini_writer(by_m.group(1)):
+                errors.append(written_by_error(prompt_md, by_m.group(1) if by_m else None))
     return errors
 
 
@@ -835,7 +860,10 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             f"- required_model: {GEMINI_MODEL}. Spawn Task(generalPurpose, model={GEMINI_MODEL}) "
             f"or Task({PLUGIN_TASK[step_id]}) with that model. Do not inherit Director model."
         )
-        extra_hard.append(f"- Refuse if spawned on any model other than {GEMINI_MODEL}.")
+        extra_hard.append(
+            f"- Refuse if spawned on any model other than {GEMINI_MODEL} "
+            "(gemini-3.7-flash also ok)."
+        )
     if step_id == "copywriter":
         extra_hard.append(
             "- Caption is THIS step. Write Instagram caption here. There is no separate caption worker."
@@ -860,6 +888,10 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "topic-tied comment trigger (different RU vs EN)."
         )
     if step_id == "image-prompter":
+        extra_hard.append(
+            "- Stamp written_by: gemini on CAROUSEL_IMAGE_PROMPT.json, "
+            "CAROUSEL_IMAGE_PROMPT.md, and the fragment. Do not generate pixels."
+        )
         extra_hard.append(
             "- slice_method: seam. Prompt thin white gutters at 1/3 and 2/3 (Excalibur). "
             "Prompt SHORT. Face lock FIRST. prompt_char_count <= 2200. "
@@ -1122,10 +1154,10 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
             "face_lock": "viktoriaref.png",
             "slice_method": "seam",
             "dry_run": True,
+            "written_by": "gemini",
             "reference_contract": {"face_lock": "viktoriaref.png"},
             "input_urls": [
                 "https://example.invalid/viktoriaref.png",
-                "https://example.invalid/animals-viktoria-style-lock.png",
             ],
             "typography_rules": {"dry_run": True},
             "panel_visual_brief": [
@@ -1136,7 +1168,7 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
     )
     write_text_file(
         mem / "design" / "CAROUSEL_IMAGE_PROMPT.md",
-        "# Dry-run prompts\n\nNo Kie. No GenerateImage. Text only.\n",
+        "written_by: gemini\n# Dry-run prompts\n\nNo Kie. No GenerateImage. Text only.\n",
     )
 
     write_json(
@@ -1232,6 +1264,14 @@ def cmd_dry_run(
     specs = step_map(repo_root)
 
     for step_id in DRY_RUN_WORKERS:
+        ledger = load_ledger(workspace)
+        if ledger["steps"][step_id].get("status") == "skipped":
+            continue
+        if step_id in {"motion-director", "animate"}:
+            rc = cmd_skip(workspace, repo_root, step_id, "static-png-only")
+            if rc != 0:
+                return rc
+            continue
         via = "Task(generalPurpose)"
         model = GEMINI_MODEL if step_id in GEMINI_STEPS else None
         rc = cmd_record_dispatch(workspace, repo_root, step_id, via, model=model)
@@ -1260,7 +1300,7 @@ def cmd_dry_run(
     print("pixels: none")
     print("publish: skipped (publish-not-requested)")
     print("fixic: skipped (no-open-incidents)")
-    print(f"researcher+copywriter+caption model: {GEMINI_MODEL}")
+    print(f"researcher+copywriter+caption+image-prompter model: {GEMINI_MODEL}")
     print(
         "steps recorded: researcher copywriter designer image-prompter slice "
         "motion-director animate design-guardian upload publish(skip) fixic(skip)"
@@ -1290,7 +1330,7 @@ def build_parser() -> argparse.ArgumentParser:
     rec.add_argument(
         "--model",
         default=None,
-        help="Required for researcher/copywriter: gemini-3.7-flash-high",
+        help="Required for researcher/copywriter/image-prompter: gemini-3.7-flash-high",
     )
     ver = sub.add_parser("verify")
     ver.add_argument("--step", required=True, choices=STEP_IDS)

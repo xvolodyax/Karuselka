@@ -135,7 +135,9 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 
 `Task(carusel-*)` если plugin types есть. Иначе отдельный `Task(generalPurpose)` на шаг
 (`shared/director-dispatch-contract.md` + `shared/swarm-spawn-contract.md` +
-`scripts/pipeline_gate.py`). researcher + copywriter (caption) = `gemini-3.7-flash-high`.
+`scripts/pipeline_gate.py`). researcher + copywriter (slides, caption RU+EN, hooks, CTA)
++ image-prompter (промпты картинок слайдов) = `gemini-3.7-flash-high`
+(роль: `gemini-3.7-flash`). Не Kie/пиксели, не Composio, не сверка лица.
 
 Director **не** делает worker-шаг сам. Нет parent remake. Нет proof-pack / 18-slide
 rerender «чтобы проверить канон». Face-lock = текст (`victoria-sheet.png`); не рендерить
