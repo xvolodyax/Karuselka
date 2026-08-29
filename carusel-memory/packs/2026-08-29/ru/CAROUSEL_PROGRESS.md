@@ -35,4 +35,4 @@ Written: `CAROUSEL_IMAGE_PROMPT.json` + `.md` (RU 2029 / EN 2109). Kie not calle
 
 ## Next
 
-slice: upload `viktoriaref.png`, Kie i2i both langs, seam cut. Do not rewrite prompts.
+slice: upload `Виктория.png`, Kie i2i both langs, seam cut. Do not rewrite prompts.

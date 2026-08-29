@@ -11,7 +11,7 @@
 
 Subjects sit **in the room**. Tape and type carry the collage. Seam gutters replace the lock’s separate-square look.
 
-## vs face ref (`viktoriaref.png`)
+## vs face ref (`Виктория.png`)
 
 | Keep | Change |
 |------|--------|

@@ -26,7 +26,7 @@ Forbidden repeats were not reused: Pause, Ping vs step, «Спишь?» after 24
 
 ## Face
 
-i2i = cropped left frontal close-up of `victoria-sheet.png` only. Alena files deleted / forbidden.
+i2i = cropped left frontal close-up of `Виктория.png` only. Alena files deleted / forbidden.
 Eyes: green + slight hazel. Hair: warm honey/wheat + darker roots. Not platinum.
 Clothes this pack: burgundy turtleneck (01), black satin wrap (09).
 

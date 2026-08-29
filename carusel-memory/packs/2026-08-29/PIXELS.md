@@ -10,7 +10,7 @@ edge_cleanup: strip=10 (no crop)
 gutter_qa: ok (mode=seam)
 this_run_slide_01: static_png
 publish_requested: false
-face_i2i: carusel-memory/references/viktoriaref.png only
+face_i2i: carusel-memory/references/Виктория.png only
 regen: 1 whole-master rebuild per lang after CROOKED CANVAS exit 2 (never patched a cell)
 
 ## RU

@@ -2,7 +2,7 @@
 """ТАРО СЕЙЧАС pack gate — meaning + visual family lock.
 
 PASS only if:
-  (a) face lock is viktoriaref.png (frontal photo; not Alena / not виктория.png)
+  (a) face lock is Виктория.png (Cyrillic file; not Alena / not viktoriaref.png)
   (b) >=3 slides use animals as metaphor
   (c) >=2 save slides have a real framework or questions
   (d) hook is a scene
@@ -43,11 +43,11 @@ FRAMEWORK_RE = re.compile(
 ALLOWED_PRODUCTS = {cta_canon.REQUIRED_PRODUCT}
 TRIGGERS = {"ru": "ПАУЗА", "en": "PAUSE"}
 HANDLES = {"ru": "@todaytaro_ru", "en": "@todaytaro_bot"}
-FACE_LOCK = "viktoriaref.png"
-FACE_LOCK_UPLOAD = "viktoriaref.png"
-LEGACY_FACE = "victoria-sheet.png"
+FACE_LOCK = "Виктория.png"
+FACE_LOCK_UPLOAD = "Виктория.png"
+LEGACY_FACE = "Виктория.png"
 RETIRED_FACE_RE = re.compile(
-    r"victoria-sheet\.png|victoria-sheet-front\.png|victoria-face\.png",
+    r"viktoriaref\.png|victoria-sheet\.png|victoria-sheet-front\.png|victoria-face\.png",
     re.I,
 )
 ALENA_BINARIES = (
@@ -129,9 +129,12 @@ def check_pack(pack: Path) -> list[str]:
         )
     refs = Path(__file__).resolve().parent.parent / "carusel-memory" / "references"
     for retired in (
+        refs / "viktoriaref.png",
         refs / "victoria-sheet.png",
         refs / "victoria-sheet-front.png",
         refs / "victoria-face.png",
+        refs / "виктория.png",
+        refs / "victoria.png",
     ):
         if retired.is_file() and retired.stat().st_size > 1000:
             errors.append(f"retired face file still present: {retired.name}. Delete it.")
@@ -139,7 +142,7 @@ def check_pack(pack: Path) -> list[str]:
         if banned.is_file() and banned.stat().st_size > 1000:
             errors.append(
                 f"Alena binary still present: {banned}. Delete it. "
-                "Vika lock is viktoriaref.png only."
+                "Vika lock is Виктория.png only."
             )
 
     for lang in langs:
@@ -292,7 +295,7 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
             if any(RETIRED_FACE_RE.search(str(u)) for u in urls) or RETIRED_FACE_RE.search(
                 str(prompt.get("i2i_source") or "")
             ):
-                errors.append(f"{lang}: i2i of victoria-sheet / sheet crop / victoria-face is forbidden")
+                errors.append(f"{lang}: i2i of viktoriaref / victoria-sheet / victoria.png is forbidden")
             head = active[:500]
             if FACE_LOCK not in head or not re.search(
                 r"зелён.*карим|green.*hazel|green.*light-brown|green.*hazel-brown",
@@ -303,8 +306,8 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
                     f"{lang}: prompt must start with {FACE_LOCK} + "
                     "green/hazel / зелёные с лёгким карим"
                 )
-            if not re.search(r"one woman|одна женщин|same face|viktoriaref", head, re.I):
-                errors.append(f"{lang}: prompt must lock one woman / same face as viktoriaref.png")
+            if not re.search(r"one woman|одна женщин|same face|Виктория", head, re.I):
+                errors.append(f"{lang}: prompt must lock one woman / same face as Виктория.png")
         if str(prompt.get("slice_method") or "") != "seam":
             errors.append(f"{lang}: slice_method must be seam (Excalibur white-gutter cut)")
         visual_positive = " ".join(
@@ -356,7 +359,7 @@ def main(argv: list[str] | None = None) -> int:
 
 Verdict: PASS
 
-- (a) face lock = viktoriaref.png (frontal photo); Alena / виктория.png / platinum forbidden
+- (a) face lock = Виктория.png; Alena / viktoriaref.png / victoria-sheet.png / platinum forbidden
 - (b) >=3 slides use animals as metaphor
 - (c) >=2 save slides have a real framework or questions
 - (d) hook is a scene
@@ -365,7 +368,7 @@ Verdict: PASS
 - (g) clothes/pose are new — not sheet cami+jeans, not ivory blazer
 - (h) seam slice (Excalibur white gutters), no sticker halo
 - (i) CTA = app_audio (аудиоразбор in the APP); bot as comment prize = FAIL
-- (j) FACE_CHECK.md MATCH vs viktoriaref.png; eyes green+hazel / зелёные с лёгким карим (brown/grey/blue = FAIL)
+- (j) FACE_CHECK.md MATCH vs Виктория.png; eyes green+hazel / зелёные с лёгким карим (brown/grey/blue = FAIL)
 - caption: one trigger word, no raw URLs, links in profile, no Academy on EN
 """
     report.write_text(body, encoding="utf-8")

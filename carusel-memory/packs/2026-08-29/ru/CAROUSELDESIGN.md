@@ -55,8 +55,8 @@ grid:
   slide_01: "static_png"
 carousel_system:
   carousel_family: "animals_viktoria_collage"
-  face_lock: "viktoriaref.png"
-  face_lock_path: "carusel-memory/references/viktoriaref.png"
+  face_lock: "Виктория.png"
+  face_lock_path: "carusel-memory/references/Виктория.png"
   slice_method: "seam"
   static_png_only: true
   narrative: "hook-value-cta"
@@ -77,7 +77,7 @@ wardrobe:
   slide_01: "graphite silk pajama shirt, open collar, no necklace, high-waist black wide-leg trousers"
   slide_09: "petrol-teal silk blouse with soft high neck, cropped espresso suede jacket open, slim black trousers"
   forbidden:
-    - "white cami + gold pendant from viktoriaref.png"
+    - "white cami + gold pendant from Виктория.png"
     - "burgundy turtleneck (pack 2026-08-28 slide 01)"
     - "black satin wrap (pack 2026-08-28 slide 09)"
 identity:
@@ -92,7 +92,7 @@ identity:
 
 Референс семьи — `animals-viktoria-style-lock.png` / `image-851e.png`: **style + layout + palette**. Не лицо. Не i2i как face.
 
-Face lock — **только** `carusel-memory/references/viktoriaref.png`. Одна женщина. Фронтальное фото для идентификации. `виктория.png` — Алёна. Никогда i2i `виктория.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`.
+Face lock — **только** `carusel-memory/references/Виктория.png`. Одна женщина, 12 ракурсов одного лица. Никогда i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`.
 
 Сначала decomposition, потом адаптация под тему ярлыков / статуса. Не «в этом стиле». Копируем систему: тёмное поле, маджента + белый тип, рваные плашки, животные-как-метафора, Виктория на 1 и 9, seam-нарезка. Меняем тему, копирайт, объекты, гардероб, позу.
 
@@ -165,7 +165,7 @@ Face lock — **только** `carusel-memory/references/viktoriaref.png`. Од
 
 **Do**
 
-- Face lock `viktoriaref.png` as first and only i2i input.
+- Face lock `Виктория.png` as first and only i2i input.
 - Eyes green + slight hazel. Hair warm honey + darker roots.
 - Animals as metaphor, in-scene, no die-cut halo.
 - Seam gutters. Static PNG. Verbatim copy.
@@ -173,7 +173,7 @@ Face lock — **только** `carusel-memory/references/viktoriaref.png`. Од
 
 **Don't**
 
-- i2i Alena / `виктория.png` / sheet files / style-lock as a face.
+- i2i Alena / `viktoriaref.png` / `victoria-sheet.png` / `victoria.png` / style-lock as a face.
 - Sticker white halo. Zero-gutter «cells touch».
 - Extra labels, Portuguese text, foreign faces, horror table.
 - Video on slide 01. Raw URLs. Bot spreads. Word «Сцена».

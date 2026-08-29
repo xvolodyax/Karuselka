@@ -1,11 +1,12 @@
-# viktoriaref.png — ONLY Victoria face lock
+# Виктория.png — ONLY Victoria face lock
 
-Repo path: `carusel-memory/references/viktoriaref.png`  
-Box: `/workspace/cover-refs/viktoriaref.png`
+Repo path: `carusel-memory/references/Виктория.png`  
+Box: `/workspace/cover-refs/Виктория.png`
 
-One woman. Frontal studio portrait. Identification only.
+One woman. Twelve angles of ONE face. Not 12 people.
+Same sheet Vladimir uses in GPT Image.
 
-`виктория.png` in this folder is **Alena**. Never i2i.
+`viktoriaref.png`, `victoria-sheet.png`, and `victoria.png` are deleted. Never restore. Never i2i.
 
 ## Face
 
@@ -15,6 +16,6 @@ One woman. Frontal studio portrait. Identification only.
 
 ## Clothes and pose
 
-The photo shows a white tank + gold pendant.
+The sheet shows a white tank + jeans + gold pendant, one frame with hand near the chin.
 **Identification only.** New clothes and pose every carousel.
-Do not copy the reference outfit or the static frontal pose.
+Do not copy the sheet outfit or the hand-on-chin pose.

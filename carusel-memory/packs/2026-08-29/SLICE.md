@@ -6,9 +6,9 @@ slice_method: seam
 split_mode: gutter
 static_png_only: true
 slide_01: static_png (not MP4, no Grok, no ANIMATE.md)
-face_lock: viktoriaref.png
-i2i: carusel-memory/references/viktoriaref.png uploaded as viktoriaref.png
-do_not_i2i: виктория.png, victoria-sheet, victoria.png, alena*, style-lock collage
+face_lock: Виктория.png
+i2i: carusel-memory/references/Виктория.png uploaded as Виктория.png
+do_not_i2i: viktoriaref.png, victoria-sheet.png, victoria.png, alena*, style-lock collage
 
 ## Cut path
 

@@ -14,11 +14,11 @@ import re
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-SHEET = REPO / "carusel-memory" / "references" / "viktoriaref.png"
+SHEET = REPO / "carusel-memory" / "references" / "Виктория.png"
 LEGACY_PACKS = frozenset({"2026-08-27-swarm", "2026-08-27-v2"})
 
 VERDICT_RE = re.compile(r"^verdict:\s*(MATCH|FAIL)\s*$", re.I | re.M)
-COMPARED_RE = re.compile(r"viktoriaref\.png", re.I)
+COMPARED_RE = re.compile(r"Виктория\.png", re.I)
 HAIR_ONLY = re.compile(r"honey|wheat|пшенич|медов", re.I)
 GREEN_RE = re.compile(r"green|зелён|зелен", re.I)
 HAZEL_RE = re.compile(r"hazel|орех|карим|light-?brown|светло-?корич", re.I)
@@ -65,7 +65,7 @@ def check_face(pack: Path) -> list[str]:
     if not note.is_file():
         return [
             "missing FACE_CHECK.md — compare slide 01/09 faces to "
-            "viktoriaref.png pixel-side before DESIGN OK"
+            "Виктория.png pixel-side before DESIGN OK"
         ]
     text = note.read_text(encoding="utf-8")
     verd = VERDICT_RE.search(text)
@@ -74,7 +74,7 @@ def check_face(pack: Path) -> list[str]:
     elif verd.group(1).upper() != "MATCH":
         errors.append("FACE_CHECK.md verdict is not MATCH")
     if not COMPARED_RE.search(text):
-        errors.append("FACE_CHECK.md must name viktoriaref.png as the compared face")
+        errors.append("FACE_CHECK.md must name Виктория.png as the compared face")
     if ALENA_RE.search(text) and "forbidden" not in text.lower() and "alena" in text.lower():
         if "not alena" not in text.lower() and "не ален" not in text.lower():
             errors.append("FACE_CHECK.md must not treat Alena / victoria.png as Vika")
@@ -98,7 +98,7 @@ def check_face(pack: Path) -> list[str]:
 
     crop_dir = pack / "face-check"
     required = [
-        crop_dir / "viktoriaref.png",
+        crop_dir / "Виктория.png",
         crop_dir / "ru-slide-01-face.png",
         crop_dir / "ru-slide-09-face.png",
         crop_dir / "en-slide-01-face.png",
@@ -108,7 +108,7 @@ def check_face(pack: Path) -> list[str]:
         if not path.is_file() or path.stat().st_size < 1000:
             errors.append(f"missing pixel crop {path.relative_to(pack)}")
     if not SHEET.is_file() or SHEET.stat().st_size < 10_000:
-        errors.append("missing official face carusel-memory/references/viktoriaref.png")
+        errors.append("missing official face carusel-memory/references/Виктория.png")
     return errors
 
 

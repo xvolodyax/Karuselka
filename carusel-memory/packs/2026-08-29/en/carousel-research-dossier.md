@@ -6,7 +6,7 @@
 **lang:** `en`  
 **model:** `gemini-3.7-flash-high`  
 **visual_family:** `animals_viktoria_collage`  
-**face_lock:** `viktoriaref.png` (warm honey/wheat blonde with darker roots, green-hazel eyes; CRITICAL: `виктория.png` is Alena and must never be used)  
+**face_lock:** `Виктория.png` (warm honey/wheat blonde with darker roots, green-hazel eyes; CRITICAL: latin `victoria.png` is Alena and must never be used)  
 **product:** `app_audio` (Essence–Shadow–Vector)  
 **trigger_words:** `LABELS` (EN)  
 **date:** 2026-08-29  
@@ -113,7 +113,7 @@ he smiles: "Why ruin things with labels?"
 [ 07: Save C     ] [ 08: Decision ]  [ 09: CTA     ]
 ```
 
-- **Panel 01 (Hook SCENE):** You spend nights together and share deep conversations, but when the future comes up, he brushes it off: "Why put labels on it?" (Visual: Victoria `viktoriaref.png` + Cat sensing unspoken boundaries).
+- **Panel 01 (Hook SCENE):** You spend nights together and share deep conversations, but when the future comes up, he brushes it off: "Why put labels on it?" (Visual: Victoria `Виктория.png` + Cat sensing unspoken boundaries).
 - **Panel 02 (Pain):** Giving exclusive loyalty while remaining an uncommitted footnote. The exhausting weight of having no solid ground. (Visual: Dog representing patient waiting).
 - **Panel 03 (Mistake):** Playing the "chill girl" who asks for nothing, hoping he will reward your silence with commitment. (Visual: Bold magenta torn-tape pills).
 - **Panel 04 (Mechanism):** The 100/0 Situationship dynamic: 100% girlfriend privileges at 0% accountability cost. (Visual: Owl piercing through ambiguity).
@@ -139,7 +139,7 @@ he smiles: "Why ruin things with labels?"
 
 - **Visual Family:** `animals_viktoria_collage`.
 - **Palette:** Matte Charcoal `#111111`–`#1a1a1a` + Hot Magenta `#ff006e` + Crisp White text + Soft Gold medallion.
-- **Victoria Face Lock:** `viktoriaref.png` only (warm honey/wheat blonde, natural darker roots, green-hazel eyes). New outfit and pose.
+- **Victoria Face Lock:** `Виктория.png` only (warm honey/wheat blonde, natural darker roots, green-hazel eyes). New outfit and pose.
 - **Animals (≥3):** Cat (Slide 1), Dog (Slide 2), Owl (Slide 4).
 - **Preserve:** High-contrast collage aesthetic, torn-paper pills, 2-second hook read, 3:4 aspect ratio.
 

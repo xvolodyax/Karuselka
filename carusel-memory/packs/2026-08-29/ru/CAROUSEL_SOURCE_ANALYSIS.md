@@ -3,7 +3,7 @@
 ## What is law
 
 1. **Style lock** `animals-viktoria-style-lock.png` / `image-851e.png` — palette, type mix, collage rhythm, animal jobs. Never a face input.
-2. **Face lock** `viktoriaref.png` — one woman, green+hazel eyes, warm honey blonde + darker roots. Identification only. Clothes and pose on the photo are **not** reusable.
+2. **Face lock** `Виктория.png` — one woman, green+hazel eyes, warm honey blonde + darker roots. Identification only. Clothes and pose on the photo are **not** reusable.
 3. **Meaning depth** `slide-04-depth` — how a save card teaches (Говорит / Слышишь / Реальность). Not the visual family.
 4. **Locked copy** — RU + EN JSON. Verbatim. No «Сцена».
 
@@ -24,7 +24,7 @@ Dark field. Magenta + white hierarchy. Tape as a graphic. One animal = one emoti
 
 ## What we refuse from the face photo
 
-White cami, gold filigree pendant, frozen frontal tank pose, platinum drift, Alena files sitting next to it (`виктория.png`).
+White cami, gold filigree pendant, frozen frontal tank pose, platinum drift, Alena files (`victoria.png`).
 
 ## What we refuse from yesterday (2026-08-28)
 

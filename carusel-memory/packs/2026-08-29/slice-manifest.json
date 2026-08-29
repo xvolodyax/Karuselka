@@ -15,8 +15,8 @@
   },
   "static_png_only": true,
   "slide_01": "static_png",
-  "face_lock": "viktoriaref.png",
-  "i2i_source": "carusel-memory/references/viktoriaref.png",
+  "face_lock": "Виктория.png",
+  "i2i_source": "carusel-memory/references/Виктория.png",
   "pipeline_lang": "ru",
   "langs": [
     "ru",
