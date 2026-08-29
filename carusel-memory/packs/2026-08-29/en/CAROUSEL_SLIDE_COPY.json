@@ -1,0 +1,146 @@
+{
+  "lang": "en",
+  "topic": "Why Put Labels On It: When he acts like your man but avoids commitment",
+  "visual_family": "animals_viktoria_collage",
+  "hook_is_scene": true,
+  "trigger_word": "LABELS",
+  "product": "app_audio",
+  "written_by": "gemini",
+  "hair_lock": "warm honey/wheat blonde with darker roots",
+  "hook_options": [
+    {
+      "framework": "pain",
+      "headline": "Giving wifey loyalty with zero commitment back",
+      "why_it_swipes": "High emotional resonance, but lacks the opening visual dynamic of a lived scene."
+    },
+    {
+      "framework": "contrarian",
+      "headline": "\"No labels\" isn't freedom, it's convenience",
+      "why_it_swipes": "Strong cognitive dissonance, but gives away the core insight too early."
+    },
+    {
+      "framework": "mistake",
+      "headline": "The trap of expecting patience to earn status",
+      "why_it_swipes": "Pinpoints the behavioral trap, but less cinematic than the opening scene."
+    },
+    {
+      "framework": "mechanism",
+      "headline": "The 100/0 contract: full access, zero duty",
+      "why_it_swipes": "Analytical framework, not optimal for the first 2-second thumbnail read."
+    },
+    {
+      "framework": "scene",
+      "headline": "You spend your nights together",
+      "why_it_swipes": "Instantly relatable cinematic contrast of nighttime intimacy and morning evasion."
+    }
+  ],
+  "hook_rationale": "Selected the cinematic scene contrasting nighttime emotional and physical intimacy with casual daytime evasion of commitment. It establishes an immediate information gap (\"why does he act like a partner yet avoid defining the relationship?\") and compels the reader to swipe to discover the underlying psychological dynamic.",
+  "slide_count": 9,
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "hook_type": "scene",
+      "headline": "You spend your nights together",
+      "body": "and talk until sunrise. Yet when you ask where this is going, he smiles: \"Why ruin it with labels?\"",
+      "script": "Why Put Labels On It",
+      "victoria": true,
+      "animal": "cat",
+      "animal_job": "intuition: cat detects hidden avoidance beneath sweet and tender words",
+      "notes": "animate; readable under 2 sec"
+    },
+    {
+      "index": 2,
+      "role": "pain",
+      "headline": "Wifey loyalty on zero terms",
+      "body": "You give devotion and emotional care, yet feel terrified to ask \"what are we?\" without seeming needy.",
+      "animal": "dog",
+      "animal_job": "loyalty to unanswered questions: waiting by the door for a choice",
+      "notes": "pain of the grey zone"
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "headline": "The cool girl trap",
+      "body": "You hold back your needs. You hope that if you ask for nothing, he will appreciate your patience and commit.",
+      "has_framework": true,
+      "notes": "mistake of auditioning through silence"
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "headline": "The 100/0 Situationship contract",
+      "body": "He gets 100% of relationship perks with 0% accountability. \"No labels\" is simply an easy exit clause.",
+      "animal": "owl",
+      "animal_job": "clarity: owl pierces through romantic fog into underlying motives",
+      "has_framework": true,
+      "notes": "psychological mechanism"
+    },
+    {
+      "index": 5,
+      "role": "save_phases",
+      "has_framework": true,
+      "headline": "Committed vs The Grey Zone",
+      "lines": [
+        "Committed: clear status, shared future, emotional safety",
+        "Grey Zone: terms on his schedule, plans for tonight, anxiety"
+      ],
+      "body": "Committed: clear status, plans for months ahead, safety. Grey Zone: terms on his schedule and constant anxiety.",
+      "notes": "save framework: 4 clear contrasts"
+    },
+    {
+      "index": 6,
+      "role": "save_says_hears",
+      "has_framework": true,
+      "headline": "Says vs Hears vs Reality",
+      "lines": [
+        "Says: \"Why ruin a great vibe with heavy labels?\"",
+        "You hear: \"He values pure, organic connection\"",
+        "Reality: \"I want full access without being accountable\""
+      ],
+      "body": "Says: \"Why ruin the vibe.\" You hear: \"He loves spontaneity.\" Reality: desires full intimacy without responsibility.",
+      "notes": "depth like old slide-04"
+    },
+    {
+      "index": 7,
+      "role": "save_checklist",
+      "has_framework": true,
+      "headline": "3 clarity tests to know where you stand",
+      "lines": [
+        "1. Public test: does his inner circle know you are a couple?",
+        "2. Support test: is he present on a messy Tuesday afternoon?",
+        "3. Direct test: does asking about status trigger defensive anger?"
+      ],
+      "body": "1. Public test: does his circle know you? 2. Support test: is he there on messy weekdays? 3. Direct test: does asking trigger anger?",
+      "notes": "save checklist: 3 tests"
+    },
+    {
+      "index": 8,
+      "role": "recap_rule",
+      "has_framework": true,
+      "headline": "Clarity is the bare minimum",
+      "body": "A man who avoids calling you his is keeping the exit door unlocked. Your heart is not an audition room.",
+      "notes": "decision rule"
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "headline": "Comment LABELS",
+      "body": "Audio reading in my app. Essence–Shadow–Vector.",
+      "cta": "Write LABELS in the comments",
+      "slogan": "Clarity now",
+      "victoria": true,
+      "notes": "one trigger LABELS, one product app_audio, no URL, no Academy, no bot"
+    }
+  ],
+  "save_value": [
+    "slide-05 comparison table committed vs grey zone",
+    "slide-06 says vs hears vs reality depth breakdown",
+    "slide-07 3 clarity tests checklist",
+    "slide-08 clarity decision rule"
+  ]
+}
