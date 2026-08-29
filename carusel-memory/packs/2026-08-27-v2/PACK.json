@@ -1,0 +1,38 @@
+{
+  "pack_id": "2026-08-27-v2",
+  "date": "2026-08-27",
+  "topic": {
+    "ru": "Пауза или конец?",
+    "en": "Pause or over?"
+  },
+  "note": "Remake of the live 27.08 posts. Those posts stay. This pack is the deep pair for Hall to publish after review.",
+  "live_posts_do_not_touch": {
+    "ru": "https://www.instagram.com/p/Dci-EP1ErI-/",
+    "en": "https://www.instagram.com/p/Dci-ozwAH4l/"
+  },
+  "visual_family": "animals_viktoria_collage",
+  "face_lock": "victoria-sheet.png",
+  "hair_lock": "warm honey/wheat blonde with darker medium-brown roots as on victoria-sheet.png; platinum = FAIL",
+  "product": "bot_three_spreads",
+  "cta_style": "comment_trigger",
+  "trigger_words": {
+    "ru": "ПАУЗА",
+    "en": "PAUSE"
+  },
+  "langs": ["ru", "en"],
+  "publish_requested": false,
+  "publish_actor": "Hall via Composio after human review",
+  "profiles": {
+    "ru": {
+      "brand": "ТАРО СЕЙЧАС",
+      "handle": "@todaytaro_ru",
+      "slogan": "Ясность сейчас"
+    },
+    "en": {
+      "brand": "Today Tarot",
+      "handle": "@todaytaro_bot",
+      "slogan": "Clarity now",
+      "no_academy": true
+    }
+  }
+}
