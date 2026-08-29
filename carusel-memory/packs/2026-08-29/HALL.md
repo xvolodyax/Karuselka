@@ -15,8 +15,14 @@ This pack is for **human review**. Publish stays skipped.
 
 ## Topic
 
-TBD by Gemini researcher. Forbidden yesterday: **ТЕПЛО / WARMTH** and Hot & Cold.
-Also forbidden: ШАГ/STEP, ПРОЧИТАНО, ПАУЗА/PAUSE.
+**Зачем вешать ярлыки / Why Put Labels On It** — he acts like your man but refuses status.
+
+| lang | Handle | Trigger | Product |
+|------|--------|---------|---------|
+| ru | @todaytaro_ru | **СТАТУС** | аудиоразбор в моём приложении: Суть – Тень – Вектор |
+| en | @todaytaro_bot | **LABELS** | audio reading in the app: Essence–Shadow–Vector |
+
+Forbidden repeats were not reused: Pause, Ping vs step, Тепло/WARMTH, triggers ШАГ/STEP/ТЕПЛО/WARMTH/ПРОЧИТАНО/ПАУЗА/PAUSE.
 
 ## Face
 

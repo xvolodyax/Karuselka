@@ -19,7 +19,7 @@ SKIP: Grok video. Slide-01 is PNG.
 
 | step | Task id | dispatch_id | status |
 |------|---------|-------------|--------|
-| researcher | pending | 150ab6c2ebc6464587a3baea94060bec | dispatched |
+| researcher | bc-60e06651-feeb-59c1-b464-3edc3a673bb6 | 150ab6c2ebc6464587a3baea94060bec | OK |
 | copywriter | | | |
 | designer | | | |
 | image-prompter | | | |
