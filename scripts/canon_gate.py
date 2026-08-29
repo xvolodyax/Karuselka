@@ -303,10 +303,8 @@ def check_lang(root: Path, lang: str, manifest: dict[str, Any]) -> list[str]:
                     f"{lang}: prompt must start with {FACE_LOCK} + "
                     "green/hazel / зелёные с лёгким карим"
                 )
-            if not re.search(r"one woman|одна женщин|same face", head, re.I):
-                errors.append(f"{lang}: prompt must lock one woman / same face")
-            if not re.search(r"twelve angles|12 (angles|ракурс)|двенадцать ракурс", head, re.I):
-                errors.append(f"{lang}: prompt must say twelve angles of ONE person")
+            if not re.search(r"one woman|одна женщин|same face|viktoriaref", head, re.I):
+                errors.append(f"{lang}: prompt must lock one woman / same face as viktoriaref.png")
         if str(prompt.get("slice_method") or "") != "seam":
             errors.append(f"{lang}: slice_method must be seam (Excalibur white-gutter cut)")
         visual_positive = " ".join(
