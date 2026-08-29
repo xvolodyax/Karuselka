@@ -1,14 +1,15 @@
 # Carusel brief — ТАРО СЕЙЧАС / Today Tarot — 2026-08-29 slot 11:10 MSK
 
 lang: ru
-topic: NEW relationship-pain topic — Gemini researcher picks (forbidden repeats listed below)
+topic: Зачем вешать ярлыки: почему он ведёт себя как твой мужчина, но боится статуса?
 handle: @todaytaro_ru
 publish_requested: false
 visual_family: animals_viktoria_collage
 face_lock: viktoriaref.png
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: TBD-by-gemini-NOT-ШАГ-STEP-ТЕПЛО-WARMTH-ПРОЧИТАНО-ПАУЗА-PAUSE
+trigger_word: СТАТУС
+trigger_word_en: LABELS
 product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор / Essence–Shadow–Vector)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads

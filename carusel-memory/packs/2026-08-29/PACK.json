@@ -4,8 +4,8 @@
   "slot": "11:10 MSK",
   "late": true,
   "topic": {
-    "ru": "TBD-by-gemini-researcher",
-    "en": "TBD-by-gemini-researcher"
+    "ru": "Зачем вешать ярлыки: почему он ведёт себя как твой мужчина, но боится статуса?",
+    "en": "Why Put Labels On It: When he acts like your man but avoids commitment"
   },
   "note": "New relationship-pain pair. Forbidden repeats: Pause, Ping vs step, Спишь? after 24 days, Тепло/WARMTH, B18, triggers ШАГ/STEP/ТЕПЛО/WARMTH/ПРОЧИТАНО/ПАУЗА/PAUSE. Static 9 PNG slides only — no Grok/motion/animate. Publish skipped.",
   "live_posts_do_not_touch": {
@@ -19,8 +19,8 @@
   "product": "app_audio",
   "cta_style": "comment_trigger",
   "trigger_words": {
-    "ru": "TBD",
-    "en": "TBD"
+    "ru": "СТАТУС",
+    "en": "LABELS"
   },
   "langs": ["ru", "en"],
   "publish_requested": false,
