@@ -176,7 +176,7 @@
       "may_run_in_parent": false,
       "handoff_next": "fixic",
       "skip_allowed": true,
-      "skip_reason_required": "publish-not-requested"
+      "skip_reason_required": ["нет COMPOSIO_API_KEY", "already-live", "dry-run"]
     },
     {
       "id": "fixic",

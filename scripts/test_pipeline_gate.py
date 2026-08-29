@@ -266,17 +266,31 @@ class PipelineGateTest(unittest.TestCase):
         )
         self.assertEqual(self.run_cmd("verify", "--step", "copywriter"), 0)
 
+    def test_init_requests_publish(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        brief = (self.tmp / "carusel-memory" / "00-brief.md").read_text(encoding="utf-8")
+        self.assertIn("publish_requested: true", brief)
+        ledger = json.loads((self.tmp / "carusel-memory" / "pipeline-ledger.json").read_text())
+        self.assertTrue(ledger["publish_requested"])
+
     def test_cannot_skip_ahead_to_publish(self) -> None:
         self.run_cmd("init", "--lang", "ru")
         with self.assertRaises(SystemExit) as ctx:
-            self.run_cmd("skip", "--step", "publish", "--reason", "publish-not-requested")
+            self.run_cmd("skip", "--step", "publish", "--reason", "нет COMPOSIO_API_KEY")
         self.assertIn("previous step", str(ctx.exception))
+
+    def test_publish_not_requested_is_illegal(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self._force_done_until("upload")
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd("skip", "--step", "publish", "--reason", "publish-not-requested")
+        self.assertIn("нет COMPOSIO_API_KEY", str(ctx.exception))
 
     def test_legal_skip_publish_and_fixic_after_full_prefix(self) -> None:
         self.run_cmd("init", "--lang", "ru")
         self._force_done_until("upload")
         self.assertEqual(
-            self.run_cmd("skip", "--step", "publish", "--reason", "publish-not-requested"),
+            self.run_cmd("skip", "--step", "publish", "--reason", "нет COMPOSIO_API_KEY"),
             0,
         )
         self.assertEqual(
@@ -288,7 +302,7 @@ class PipelineGateTest(unittest.TestCase):
     def test_open_incident_blocks_fixic_skip(self) -> None:
         self.run_cmd("init", "--lang", "ru")
         self._force_done_until("upload")
-        self.run_cmd("skip", "--step", "publish", "--reason", "publish-not-requested")
+        self.run_cmd("skip", "--step", "publish", "--reason", "нет COMPOSIO_API_KEY")
         write(
             self.tmp / "carusel-memory" / "pipeline-fix-queue.md",
             "## INC-1\nstatus: open\n",
@@ -417,7 +431,7 @@ class GeminiAndDryRunTest(unittest.TestCase):
             self.assertEqual(state["dispatched_via"], "Task(generalPurpose)", step_id)
             self.assertTrue(state.get("dispatch_id"), step_id)
         self.assertEqual(ledger["steps"]["publish"]["status"], "skipped")
-        self.assertEqual(ledger["steps"]["publish"]["skip_reason"], "publish-not-requested")
+        self.assertEqual(ledger["steps"]["publish"]["skip_reason"], "dry-run")
         self.assertEqual(ledger["steps"]["fixic"]["status"], "skipped")
         self.assertEqual(ledger["steps"]["fixic"]["skip_reason"], "no-open-incidents")
         self.assertEqual(ledger["steps"]["researcher"]["model"], gate.GEMINI_MODEL)

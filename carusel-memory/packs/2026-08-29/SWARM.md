@@ -2,14 +2,14 @@
 
 Director orchestrates only. One `Task(generalPurpose)` per worker step.
 Researcher + copywriter: Gemini `gemini-3.7-flash-high`, `written_by: gemini`.
-Motion / animate / Glavred / publish skipped (static 9 slides). No Instagram / Telegram / Composio.
+Motion / animate / Glavred skipped (static 9 slides). Publish = already-live (не перезаливать). Telegram запрещён.
 
 ## Chain (this run)
 
 ```
 researcher → copywriter (9 RU + RU caption AND 9 EN + EN caption)
 → designer → image-prompter → slice → design-guardian → upload
-→ publish (skip: publish-not-requested)
+→ publish (skip: already-live — 29.08 СТАТУС/LABELS already in feed)
 → fixic (skip: no-open-incidents)
 ```
 
@@ -28,7 +28,7 @@ SKIP: Grok video. Slide-01 is PNG.
 | animate | — | skip:static-png-only | skipped |
 | design-guardian | bc-7991c426-f076-56c3-a338-3409827a6d74 | e90ee380f44f4278bc22cd351911b54e | DESIGN OK 93 |
 | upload | bc-7218607f-3d3d-5000-937e-60cbb1d58b1e | 6ca0609728534572a41090c9edcb5652 | OK 18 HTTPS PNGs |
-| publish | — | skip:publish-not-requested | skipped |
+| publish | — | skip:already-live | skipped (Dcnrh0nm7pp / Dcnrht_lVca) |
 | fixic | — | skip:no-open-incidents | skipped |
 
 ## Gate

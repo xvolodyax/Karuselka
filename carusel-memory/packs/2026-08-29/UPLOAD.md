@@ -65,4 +65,4 @@ python3 scripts/upload_carousel_assets.py \
   --output carusel-memory/packs/2026-08-29/en/publish-urls.json
 ```
 
-Do not publish. HANDOFF_NEXT: publish (Director skip: publish-not-requested).
+HANDOFF_NEXT: publish via Composio. This pack is already-live — do not republish.

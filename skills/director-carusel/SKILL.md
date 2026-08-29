@@ -76,9 +76,24 @@ Professional quality:
 - после image-prompter: `CAROUSEL_IMAGE_PROMPT.json` не содержит `PLACEHOLDER`, содержит 9 `panel_visual_brief`, `reference_contract`, `typography_rules`;
 - после guardian: проверены slide-01 hook, slide-09 CTA, slides 7-8 save cards.
 
-## Guardian gate
+## Guardian gate + publish
 
-Публиковать только если guardian report содержит `✅ DESIGN OK` или score ≥ 90 без P0.
+Публиковать только если guardian report содержит `✅ DESIGN OK` или score ≥ 90 без P0,
+**и** FACE_CHECK MATCH vs `viktoriaref.png`, **и** GATE PASS.
+
+После сверки лица Director **обязан** вызвать `Task(carusel-publish)` через Composio — **не SKIP**.
+Холл не публикует и слайды не пересматривает.
+
+```bash
+python scripts/composio_instagram_publish.py --pack carusel-memory/packs/YYYY-MM-DD
+```
+
+Env: `COMPOSIO_API_KEY`. Alias: `instagram-ru` / `instagram-en` (не default). Telegram запрещён.
+Нет ключа → GATE PASS + SKIP «нет COMPOSIO_API_KEY», не падать.
+GATE FAIL / чужое лицо / CTA бота → не публиковать.
+Уже live карусели не перезаливать.
+
+Читай `shared/composio-instagram-publish-contract.md`.
 
 ## User response
 

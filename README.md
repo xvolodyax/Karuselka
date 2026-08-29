@@ -73,9 +73,30 @@ pip install -r scripts/requirements.txt
 
 ```env
 KIE_API_KEY=your_kie_api_key_here
+COMPOSIO_API_KEY=
 ```
 
-Публичный репозиторий содержит только `.env.example`. Реальные ключи, run-логи, изображения, видео и результаты публикаций не входят в поставку.
+Публичный репозиторий содержит только `.env.example`. Реальные ключи, run-логи, изображения, видео и результаты публикаций не входят в поставку. Значение `COMPOSIO_API_KEY` в git, лог и отчёт не писать.
+
+## Публикация Instagram (Composio)
+
+После GATE PASS + сверки лица рой сам кладёт карусели RU+EN. Холл не публикует и слайды не пересматривает.
+
+```bash
+python scripts/composio_instagram_publish.py --pack carusel-memory/packs/YYYY-MM-DD
+```
+
+| Env | Зачем |
+|---|---|
+| `COMPOSIO_API_KEY` | единственный источник ключа |
+| `COMPOSIO_API_BASE` | опционально, дефолт `https://backend.composio.dev/api/v3` |
+
+Alias обязателен, не default: `instagram-ru` = `@todaytaro_ru`, `instagram-en` = `@todaytaro_bot`. Telegram не слать.
+
+Без ключа процесс **не падает**: GATE PASS + `publish: SKIP нет COMPOSIO_API_KEY`.
+GATE FAIL / чужое лицо / CTA бота — не публиковать. Уже live карусели не перезаливать.
+
+Контракт: `shared/composio-instagram-publish-contract.md`.
 
 ## Базовый пайплайн
 
@@ -100,8 +121,8 @@ director
 
 - Не коммитьте `.env`, API keys, OAuth tokens, MCP payloads, временные CDN URL и publish logs.
 - Не публикуйте `carusel-memory/`, `output/`, `fragments/`, `research/`, `design/` с реальными прогонами.
-- Перед публикацией запускайте secret-scan по ключевым словам: `KIE_API_KEY`, `Bearer`, `token`, `secret`, `password`, `tempfile`.
-- Публикация в Instagram должна быть idempotent: если MCP вернул async start, не делайте blind retry без ручной проверки.
+- Перед публикацией запускайте secret-scan по ключевым словам: `KIE_API_KEY`, `COMPOSIO_API_KEY`, `Bearer`, `token`, `secret`, `password`, `tempfile`.
+- Публикация в Instagram идемпотентна по pack: already-live не перезаливать. Ключ Composio только из env.
 
 ## Требования
 
@@ -109,7 +130,7 @@ director
 - Python 3.10+.
 - Kie.ai API key для image/video generation и file upload.
 - `ffmpeg` и `ffprobe` для проверки/нормализации MP4.
-- MCP-интеграция для публикации в Instagram, если нужен автоматический publish.
+- `COMPOSIO_API_KEY` и alias `instagram-ru` / `instagram-en` для автопубликации. Без ключа publish = SKIP, не FAIL.
 
 ## Статус
 

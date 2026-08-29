@@ -7,7 +7,12 @@
     "ru": "Зачем вешать ярлыки: почему он ведёт себя как твой мужчина, но боится статуса?",
     "en": "Why Put Labels On It: When he acts like your man but avoids commitment"
   },
-  "note": "New relationship-pain pair. Forbidden repeats: Pause, Ping vs step, Спишь? after 24 days, Тепло/WARMTH, B18, triggers ШАГ/STEP/ТЕПЛО/WARMTH/ПРОЧИТАНО/ПАУЗА/PAUSE. Static 9 PNG slides only — no Grok/motion/animate. Publish skipped.",
+  "note": "New relationship-pain pair. Forbidden repeats: Pause, Ping vs step, Спишь? after 24 days, Тепло/WARMTH, B18, triggers ШАГ/STEP/ТЕПЛО/WARMTH/ПРОЧИТАНО/ПАУЗА/PAUSE. Static 9 PNG slides only — no Grok/motion/animate. Already live — do not republish.",
+  "already_live": true,
+  "already_live_posts": {
+    "ru": "https://www.instagram.com/p/Dcnrh0nm7pp/",
+    "en": "https://www.instagram.com/p/Dcnrht_lVca/"
+  },
   "live_posts_do_not_touch": {
     "ru": "https://www.instagram.com/p/Dci-EP1ErI-/",
     "en": "https://www.instagram.com/p/Dci-ozwAH4l/"
@@ -23,8 +28,8 @@
     "en": "LABELS"
   },
   "langs": ["ru", "en"],
-  "publish_requested": false,
-  "publish_actor": "Hall via Composio after human review",
+  "publish_requested": true,
+  "publish_actor": "swarm via Composio after GATE PASS; this pack already live",
   "skip_motion": true,
   "skip_animate": true,
   "skip_glavred": true,
@@ -46,7 +51,7 @@
     "dispatch": "Task(generalPurpose) one step each",
     "text_model": "gemini-3.7-flash-high",
     "written_by": "gemini",
-    "publish": "skipped",
+    "publish": "already-live",
     "motion": "skipped",
     "animate": "skipped"
   }

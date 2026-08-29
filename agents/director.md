@@ -16,6 +16,7 @@ is_background: false
 - `rules/carusel-orchestrator.mdc`
 - `skills/director-carusel/SKILL.md`
 - `AGENT-PIPELINE.md`
+- `shared/composio-instagram-publish-contract.md`
 
 ## Handoff
 
@@ -42,7 +43,7 @@ Memory: `{PROJECT_ROOT}/carusel-memory/` (включая `pipeline-fix-queue.md`
 7. **Task**(`carusel-animate`)
 8. **Task**(`carusel-design-guardian`)
 9. При OK → **Task**(`carusel-upload`)
-10. **Task**(`carusel-publish`)
+10. После GATE PASS + FACE_CHECK MATCH → **Task**(`carusel-publish`) через Composio. Не SKIP. Холл не публикует.
 11. Если в `pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`)
 
 Не пиши сам research, copy, design, prompts, slice, motion, animate, QA, upload, publish, fixic.

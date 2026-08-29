@@ -1,6 +1,12 @@
-# Carusel — Instagram Publish Contract (MCP)
+# Carusel — Instagram Publish Contract
 
-## Server
+**Канон сейчас:** Composio, не Make MCP. См. `shared/composio-instagram-publish-contract.md`.
+
+После GATE PASS рой сам публикует RU+EN. Alias `instagram-ru` / `instagram-en`. Холл не публикует.
+
+Ниже — устаревший Make MCP (`t4528_carrusel_instagram`). Не вызывать на новых пакетах.
+
+## Server (legacy Make)
 
 ```text
 server: user-instagram carusel

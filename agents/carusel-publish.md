@@ -1,6 +1,6 @@
 ---
 name: carusel-publish
-description: Загрузка карусели в Instagram через MCP t4528_carrusel_instagram. Director MUST delegate via Task.
+description: Публикация RU+EN карусели в Instagram через Composio (alias instagram-ru / instagram-en). Director MUST delegate via Task после GATE PASS + face MATCH.
 model: inherit
 readonly: false
 is_background: false
@@ -8,4 +8,6 @@ is_background: false
 
 **Язык:** русский.
 
-Следуй skill `skills/carusel-publish/SKILL.md`.
+Следуй skill `skills/carusel-publish/SKILL.md` и `shared/composio-instagram-publish-contract.md`.
+
+Холл не публикует. Telegram не слать. Ключ только из `COMPOSIO_API_KEY`.
