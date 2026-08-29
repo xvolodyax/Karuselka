@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Upload viktoriaref.png only, Kie i2i both langs, copy 18 slides.
+"""Upload Виктория.png only, Kie i2i both langs, copy 18 slides.
 
-The file is one frontal photo of Victoria. Never i2i виктория.png (Alena).
+The file is one woman, twelve angles. Never i2i viktoriaref.png or victoria.png.
 Never upload victoria-sheet, victoria.png, alena*, or the style collage as a face.
 Does not publish Instagram. Does not rewrite slide copy.
 """
@@ -25,13 +25,13 @@ from kie_carousel_gen import run_grid_3x3  # noqa: E402
 from kie_client import KieImageClient  # noqa: E402
 from kie_file_upload import KieFileUploadClient  # noqa: E402
 
-FACE = REPO / "carusel-memory" / "references" / "viktoriaref.png"
-FACE_LOCK = "viktoriaref.png"
-UPLOAD_NAME = "viktoriaref.png"
+FACE = REPO / "carusel-memory" / "references" / "Виктория.png"
+FACE_LOCK = "Виктория.png"
+UPLOAD_NAME = "Виктория.png"
 STYLE_LOCK = REPO / "carusel-memory" / "references" / "animals-viktoria-style-lock.png"
 DEFAULT_PACK = REPO / "carusel-memory" / "packs" / "2026-08-29"
 EYES_RE = re.compile(r"зелён.*карим|green.*hazel|green.*light-brown|green.*hazel-brown", re.I)
-ONE_WOMAN_RE = re.compile(r"one woman|одна женщин|same face|одно(го)? лиц|viktoriaref", re.I)
+ONE_WOMAN_RE = re.compile(r"one woman|одна женщин|same face|одно(го)? лиц|Виктория", re.I)
 
 
 def load_json(path: Path) -> dict:
@@ -46,12 +46,12 @@ def write_json(path: Path, data: dict) -> None:
 def require_face() -> Path:
     if not FACE.is_file() or FACE.stat().st_size < 100_000:
         raise SystemExit(
-            "STOP: carusel-memory/references/viktoriaref.png is missing. "
+            "STOP: carusel-memory/references/Виктория.png is missing. "
             "git pull — Vladimir already committed it."
         )
     im = Image.open(FACE)
     if im.size[0] < 400 or im.size[1] < 400:
-        raise SystemExit(f"viktoriaref.png looks too small for a face lock: {im.size}")
+        raise SystemExit(f"Виктория.png looks too small for a face lock: {im.size}")
     return FACE
 
 
@@ -79,7 +79,7 @@ def render_lang(
         )
     prompt["slice_method"] = "seam"
     prompt["input_urls"] = [face_url]
-    prompt["i2i_source"] = "carusel-memory/references/viktoriaref.png"
+    prompt["i2i_source"] = "carusel-memory/references/Виктория.png"
     prompt["i2i_file_name"] = UPLOAD_NAME
     copy_src = pack / lang / "CAROUSEL_SLIDE_COPY.json"
     design = workspace / "carusel-memory" / "design"
@@ -119,7 +119,7 @@ def render_lang(
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Kie i2i pack render from viktoriaref.png only")
+    parser = argparse.ArgumentParser(description="Kie i2i pack render from Виктория.png only")
     parser.add_argument("--pack", default=str(DEFAULT_PACK))
     parser.add_argument("--langs", default="ru,en")
     args = parser.parse_args(argv)
@@ -142,7 +142,7 @@ def main(argv: list[str] | None = None) -> int:
         rc = render_lang(pack, lang, face_url, workspace)
         if rc != 0:
             return rc
-    print("18 slides written from viktoriaref.png. Do not publish.")
+    print("18 slides written from Виктория.png. Do not publish.")
     return 0
 
 

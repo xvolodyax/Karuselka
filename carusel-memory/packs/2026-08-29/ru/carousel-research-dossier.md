@@ -6,7 +6,7 @@
 **lang:** `ru` (primary) + `en` (bilingual pair)  
 **model:** `gemini-3.7-flash-high`  
 **visual_family:** `animals_viktoria_collage`  
-**face_lock:** `viktoriaref.png` (warm honey/wheat blonde with darker roots, green-hazel eyes; CRITICAL: `виктория.png` is Alena and must never be used)  
+**face_lock:** `Виктория.png` (warm honey/wheat blonde with darker roots, green-hazel eyes; CRITICAL: latin `victoria.png` is Alena and must never be used)  
 **product:** `app_audio` (Суть – Тень – Вектор / Essence–Shadow–Vector)  
 **trigger_words:** `СТАТУС` (RU) / `LABELS` (EN)  
 **date:** 2026-08-29  
@@ -115,7 +115,7 @@ he smiles: "Why ruin things with labels?"
    - *Формат:* Черно-красный дизайн, манипулятивные советы («Как заставить его жениться за 30 дней с помощью ревности»).
    - *Слабость:* Манипуляции разрушают психику и не решают корень проблемы — незрелость контакта.
 3. **ТАРО СЕЙЧАС / Today Tarot (Наше преимущество):**
-   - *Формат:* Фирменный стиль `animals_viktoria_collage` (антрацит `#111111` + неоновая маджента `#ff006e` + Виктория `viktoriaref.png` + животные-метафоры).
+   - *Формат:* Фирменный стиль `animals_viktoria_collage` (антрацит `#111111` + неоновая маджента `#ff006e` + Виктория `Виктория.png` + животные-метафоры).
    - *Смысловая глубина:* 9-слайдовая трансформационная арка с психологической деконструкцией иллюзий, сохраняемыми чек-листами уровня `slide-04-depth` и конверсией в аудиоразбор в приложении (Суть – Тень – Вектор).
 
 ---
@@ -161,7 +161,7 @@ he smiles: "Why ruin things with labels?"
 
 - **Панель 01 — Hook SCENE (Сцена-триггер):**
   - *Тезис:* Вы проводите вместе ночи и делитесь сокровенным. Но когда ты спрашиваешь о будущем — он улыбается: «Зачем вешать ярлыки?»
-  - *Визуал:* Victoria (`viktoriaref.png`) в элегантном современном образе + Кот (метафора чутья, улавливающий фальшь в сладких речах).
+  - *Визуал:* Victoria (`Виктория.png`) в элегантном современном образе + Кот (метафора чутья, улавливающий фальшь в сладких речах).
 - **Панель 02 — Pain (Анатомия боли):**
   - *Тезис:* Ты отдаешь верность, время и эмоциональную заботу, но живешь на птичьих правах. Самое тяжелое — невозможность спросить «кто мы друг другу?» без страха всё разрушить.
   - *Визуал:* Пёс (метафора преданного ожидания у порога / верность человеку, не сделавшему выбор).
@@ -185,7 +185,7 @@ he smiles: "Why ruin things with labels?"
   - *Визуал:* Акцентный крупный заголовок + золотой медальон бренда ТАРО / СЕЙЧАС.
 - **Панель 09 — CTA (Призыв к действию — Аудиоразбор в приложении):**
   - *Тезис:* Напиши в комментариях слово **СТАТУС**. В Direct пришлём аудиоразбор в моём приложении по этой теме: **Суть – Тень – Вектор**. Ссылки в профиле.
-  - *Визуал:* Victoria (`viktoriaref.png`) + крупный неоновый триггер `СТАТУС` в цвете `#ff006e`. Без ссылок.
+  - *Визуал:* Victoria (`Виктория.png`) + крупный неоновый триггер `СТАТУС` в цвете `#ff006e`. Без ссылок.
 
 ---
 
@@ -193,7 +193,7 @@ he smiles: "Why ruin things with labels?"
 
 - **Panel 01 — Hook SCENE:**
   - *Headline:* You spend your nights together and talk until the sunrise. Yet whenever you bring up the future — he smiles: "Why ruin things with labels?"
-  - *Visual:* Victoria (`viktoriaref.png`) + Cat (intuition / sensing the unspoken barrier).
+  - *Visual:* Victoria (`Виктория.png`) + Cat (intuition / sensing the unspoken barrier).
 - **Panel 02 — Pain:**
   - *Headline:* You give wifey-level devotion while remaining an unspoken footnote in his life. The heaviest part is the constant anxiety of having no ground to stand on.
   - *Visual:* Dog (loyalty waiting for a commitment that never comes).
@@ -217,7 +217,7 @@ he smiles: "Why ruin things with labels?"
   - *Visual:* Strong closing statement + soft gold Today Tarot mark.
 - **Panel 09 — CTA (In-App Audio Reading):**
   - *Headline:* Comment the word **LABELS** below. We'll DM an audio reading in my app for this topic: **Essence–Shadow–Vector**. Links are in the profile.
-  - *Visual:* Victoria (`viktoriaref.png`) + massive magenta trigger word **LABELS**.
+  - *Visual:* Victoria (`Виктория.png`) + massive magenta trigger word **LABELS**.
 
 ---
 
@@ -249,8 +249,8 @@ he smiles: "Why ruin things with labels?"
   - Metal: мягкое золото (soft gold) для фирменного знака ТАРО СЕЙЧАС / Today Tarot.
 - **Victoria Face Lock (Hero):**
   - Присутствует на **Slide 01 (Hook)** и **Slide 09 (CTA)**.
-  - Face reference: исключительно `carusel-memory/references/viktoriaref.png` (волосы: тёплый медово-пшеничный блонд с затемнёнными корнями; глаза: зелёные с лёгким карим оттенком).
-  - *Строгие запреты:* `виктория.png` — это Алёна (файлы Алёны удалены; никогда не i2i `виктория.png` / `alena*.png` / `cover-old.png`). Никакой платины, никакого старого серого блейзера. Поза и одежда — новые (стильный современный образ).
+  - Face reference: исключительно `carusel-memory/references/Виктория.png` (волосы: тёплый медово-пшеничный блонд с затемнёнными корнями; глаза: зелёные с лёгким карим оттенком).
+  - *Строгие запреты:* латинский `victoria.png` — это Алёна (файлы Алёны удалены; никогда не i2i `viktoriaref.png` / `victoria-sheet.png` / `victoria.png` / `alena*.png` / `cover-old.png`). Никакой платины, никакого старого серого блейзера. Поза и одежда — новые (стильный современный образ).
 - **Животные-метафоры (≥3 слайда):**
   - *Slide 01:* **Кот** (интуиция, чутье, мгновенное считывание фальши и скрытого дистанцирования).
   - *Slide 02:* **Пёс** (верность безответному вопросу, преданное ожидание человека, который не сделал выбор).
@@ -268,7 +268,7 @@ he smiles: "Why ruin things with labels?"
    - *Митигация:* Промптер должен помещать весь текст в кавычки с правилом "verbatim text, no substitutions"; сохранять лаконичность надписей в карточках.
 2. **Face & Hair Tone Drift:**
    - *Риск:* Смещение цвета волос Виктории в холодную платину или смешивание с чертами других лиц.
-   - *Митигация:* Использовать дескриптор "warm honey/wheat blonde hair with darker natural roots, green eyes with subtle hazel tone" строго по `viktoriaref.png`.
+   - *Митигация:* Использовать дескриптор "warm honey/wheat blonde hair with darker natural roots, green eyes with subtle hazel tone" строго по `Виктория.png`.
 3. **Animal Metaphor Alignment:**
    - *Риск:* Животные могут сгенерироваться как случайные стикеры без смыслового взаимодействия со сценой.
    - *Митигация:* Прописывать конкретные действия: кот сидит рядом с Викторией, глядя на экран телефона; пёс преданно ждет у двери; сова парит над карточкой механизма.

@@ -1,7 +1,7 @@
 # Series Concept — Labels / Status (2026-08-29)
 
 **Family:** `animals_viktoria_collage`  
-**Face lock:** `carusel-memory/references/viktoriaref.png` only  
+**Face lock:** `carusel-memory/references/Виктория.png` only  
 **Slice:** `seam` (thin white gutters at 1/3 and 2/3, Excalibur)  
 **Output:** static PNG × 9. Slide 01 is PNG. No video.
 
@@ -31,7 +31,7 @@ Machine lock: `CAROUSEL_SERIES_CONCEPT.json`. Prompter writes the Kie prompt lat
 ## Do not borrow
 
 - Portuguese + style-lock extra labels (RESET, SPA MINDSET, …)
-- Alena / `виктория.png` / sheet files / foreign faces
+- Alena / `viktoriaref.png` / `victoria-sheet.png` / `victoria.png` / foreign faces
 - White cami + gold pendant from the face ref
 - Burgundy turtleneck and black satin wrap from 2026-08-28
 - Platinum hair, horror table, word «Сцена», URLs, bot, Academy

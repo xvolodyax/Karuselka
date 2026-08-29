@@ -19,7 +19,7 @@ director (parent intake)
   → researcher          Task + Gemini     written_by: gemini
   → copywriter          Task + Gemini     slides AND caption; written_by: gemini
   → designer            Task              layout/style only
-  → image-prompter      Task              prompts from locked copy + victoria-sheet
+  → image-prompter      Task              prompts from locked copy + Виктория.png
   → slice               Task
   → motion-director     SKIP static-png-only (unless Hall asks for video)
   → animate             SKIP static-png-only
@@ -55,7 +55,7 @@ Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus
 
 ## Face lock (не открывать заново)
 
-`victoria-sheet.png` only. Alena files deleted. Never i2i `victoria.png`. Новая одежда/поза каждый раз.
+`Виктория.png` only. Alena files deleted. Never i2i `viktoriaref.png`, `victoria-sheet.png`, or `victoria.png`. Новая одежда/поза каждый раз.
 
 ## Dry-run (без пикселей)
 

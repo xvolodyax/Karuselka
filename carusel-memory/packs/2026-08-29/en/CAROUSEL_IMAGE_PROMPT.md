@@ -10,19 +10,19 @@
 | aspect / res | `3:4` @ `4K` |
 | slice_method | `seam` — thin white gutters at 1/3 and 2/3 (Excalibur) |
 | slide 01 | **static PNG** — no video, no Grok, no motion |
-| face | **only** `carusel-memory/references/viktoriaref.png` |
-| i2i_source | `carusel-memory/references/viktoriaref.png` |
+| face | **only** `carusel-memory/references/Виктория.png` |
+| i2i_source | `carusel-memory/references/Виктория.png` |
 | input_urls | local path to that file (HTTPS set at slice upload) |
 | prompt_char_count | **2109** (≤ 2200) |
 | product | `app_audio` — trigger **LABELS** |
 
 ## Face lock (first lines of `prompt`)
 
-Same woman as `viktoriaref.png`; same face, one woman.  
+Same woman as `Виктория.png`; same face, one woman.  
 Eyes green with a slight hazel-brown tint (зелёные с лёгким карим).  
 Warm honey blonde with darker roots, **not platinum**. Soft tender expression.
 
-Never i2i: `виктория.png` (Alena), `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`, `animals-viktoria-style-lock.png` as a face.
+Never i2i: `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`, `animals-viktoria-style-lock.png` as a face.
 
 ## Style lock
 

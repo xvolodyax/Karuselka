@@ -6,7 +6,7 @@
 **lang:** `ru` (primary) + `en` (bilingual pair)  
 **model:** `gemini-3.7-flash-high`  
 **visual_family:** `animals_viktoria_collage`  
-**face_lock:** `victoria-sheet.png` (warm honey/wheat blonde with darker roots, green-hazel eyes)  
+**face_lock:** `Виктория.png` (warm honey/wheat blonde with darker roots, green-hazel eyes)  
 **product:** `app_audio` (Суть – Тень – Вектор / Essence–Shadow–Vector)  
 **trigger_words:** `ТЕПЛО` (RU) / `WARMTH` (EN)  
 **date:** 2026-08-28  
@@ -160,7 +160,7 @@ and three days of cold silence.
 
 - **Панель 01 — Hook SCENE (Сцена-триггер):**
   - *Тезис:* В субботу он смотрел в глаза и строил планы на осень. Во вторник — сухое «занят» и три дня тишины.
-  - *Визуал:* Victoria (`victoria-sheet.png`) в стильном современном образе + Кот (метафора чутья и интуиции, мгновенно считывающий перемену энергии).
+  - *Визуал:* Victoria (`Виктория.png`) в стильном современном образе + Кот (метафора чутья и интуиции, мгновенно считывающий перемену энергии).
 - **Панель 02 — Pain (Анатомия боли):**
   - *Тезис:* Ты перечитываешь диалог и ищешь свою ошибку. Пугает не столько пауза, сколько резкий перепад: от абсолютного тепла до глухого холода.
   - *Визуал:* Пёс (метафора преданного ожидания у светящегося экрана / верность безответному вопросу).
@@ -184,7 +184,7 @@ and three days of cold silence.
   - *Визуал:* Акцентный крупный заголовок + золотой медальон бренда ТАРО / СЕЙЧАС.
 - **Панель 09 — CTA (Призыв к действию — Аудиоразбор в приложении):**
   - *Тезис:* Напиши в комментариях слово **ТЕПЛО**. В Direct пришлём аудиоразбор в приложении по этой теме: **Суть – Тень – Вектор**. Ссылки в профиле.
-  - *Визуал:* Victoria (`victoria-sheet.png`) + крупный акцентный триггер `ТЕПЛО` в цвете `#ff006e`. Без ссылок.
+  - *Визуал:* Victoria (`Виктория.png`) + крупный акцентный триггер `ТЕПЛО` в цвете `#ff006e`. Без ссылок.
 
 ---
 
@@ -192,7 +192,7 @@ and three days of cold silence.
 
 - **Panel 01 — Hook SCENE:**
   - *Headline:* On Saturday he looked into your eyes and made plans for the fall. By Tuesday — a dry "busy" and 3 days of cold silence.
-  - *Visual:* Victoria (`victoria-sheet.png`) + Cat (intuition / sensing the sudden emotional drop).
+  - *Visual:* Victoria (`Виктория.png`) + Cat (intuition / sensing the sudden emotional drop).
 - **Panel 02 — Pain:**
   - *Headline:* You scroll back through messages searching for where it shifted. The silence hurts, but the brutal temperature drop hurts worse.
   - *Visual:* Dog (loyalty waiting by the unanswered phone).
@@ -216,7 +216,7 @@ and three days of cold silence.
   - *Visual:* Strong closing statement + soft gold Today Tarot mark.
 - **Panel 09 — CTA (In-App Audio Reading):**
   - *Headline:* Comment the word **WARMTH** below. We'll DM an audio reading in the app for this topic: **Essence–Shadow–Vector**. Links are in the profile.
-  - *Visual:* Victoria (`victoria-sheet.png`) + massive magenta trigger word **WARMTH**.
+  - *Visual:* Victoria (`Виктория.png`) + massive magenta trigger word **WARMTH**.
 
 ---
 
@@ -247,8 +247,8 @@ and three days of cold silence.
   - Metal: деликатное мягкое золото (soft gold) для медальона бренда.
 - **Victoria Face Lock (Hero):**
   - Присутствует на **Slide 01 (Hook)** и **Slide 09 (CTA)**.
-  - Face reference: исключительно `carusel-memory/references/victoria-sheet.png` (волосы: тёплый медово-пшеничный блонд с затемнёнными натуральными корнями; глаза: зелёные с лёгким ореховым оттенком).
-  - *Строгие запреты:* Никакой Alena (файлы удалены; лок Вики = `victoria-sheet.png`), никакого платинового/пепельного блонда, никакого старого серого студийного блейзера (`cover-old.png`). Поза и одежда — новые (современный стильный casual/fashion).
+  - Face reference: исключительно `carusel-memory/references/Виктория.png` (волосы: тёплый медово-пшеничный блонд с затемнёнными натуральными корнями; глаза: зелёные с лёгким ореховым оттенком).
+  - *Строгие запреты:* Никакой Alena (файлы удалены; лок Вики = `Виктория.png`), никакого платинового/пепельного блонда, никакого старого серого студийного блейзера (`cover-old.png`). Поза и одежда — новые (современный стильный casual/fashion).
 - **Животные-метафоры (≥3 слайда):**
   1. *Slide 01:* **Кот** (интуиция, чутье, считывание изменения температуры контакта).
   2. *Slide 02:* **Пёс** (верность безответному вопросу, преданное ожидание у экрана).
@@ -266,7 +266,7 @@ and three days of cold silence.
    - *Митигация:* Копирайтер и промптер должны передавать точные цитаты в кавычках с правилом "verbatim text, no substitutions"; мелкий второстепенный текст держать максимально компактным.
 2. **Face & Hair Drift:**
    - *Риск:* Смещение внешности Виктории в сторону холодной платины или чужих лиц из обучающей выборки.
-   - *Митигация:* Использование точного дескриптора "warm honey-wheat blonde hair with natural darker roots, hazel-green eyes" с опорой на `victoria-sheet.png`.
+   - *Митигация:* Использование точного дескриптора "warm honey-wheat blonde hair with natural darker roots, hazel-green eyes" с опорой на `Виктория.png`.
 3. **Animal Job Placement:**
    - *Риск:* Животные генерируются как декоративные наклейки без смыслового взаимодействия со сценой.
    - *Митигация:* Чётко прописывать роль: кот внимательно наблюдает за всплывающим сообщением, пёс сидит рядом у светящегося экрана, сова парит над картой механизма.

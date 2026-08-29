@@ -26,5 +26,5 @@ written_by: gemini on dossier + CAROUSEL_SLIDE_COPY.json + CAROUSEL_CAPTION.json
 next=done
 ✅ PIPELINE COMPLETE (all 12 steps ok or legally skipped)
 
-# No victoria-sheet.png on this VM — no Kie proof pack this run.
-# Face lock stays: victoria-sheet.png only. Alena forbidden.
+# No Виктория.png on this VM — no Kie proof pack this run.
+# Face lock stays: Виктория.png only. Alena forbidden.

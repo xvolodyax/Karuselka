@@ -1,8 +1,8 @@
 # FACE_CHECK — 2026-08-28 Hot & Cold / Тепло–холодно
 
-compared: carusel-memory/references/victoria-sheet.png
-i2i_crop: carusel-memory/references/victoria-sheet-front.png (left frontal close-up only)
-alena_file: deleted — victoria.png / alena.png never used. Vika lock is victoria-sheet.png only.
+compared: carusel-memory/references/Виктория.png
+i2i_crop: carusel-memory/references/Виктория.png (left frontal close-up only)
+alena_file: deleted — victoria.png / alena.png never used. Vika lock is Виктория.png only.
 crops: packs/2026-08-28/face-check/
 guardian_dispatch: b4a17d3a3e1e48bfa1686cfa2deec807
 crops_rerun: python3 scripts/make_face_check_crops.py --pack carusel-memory/packs/2026-08-28
@@ -13,7 +13,7 @@ Pixel compare this dispatch (not hair-prose, not prior FACE_CHECK rubber-stamp).
 Looked at sheet-front.png + ru/en slide-01/09 face crops with Read, plus 2× eye-band zooms
 and sampled iris RGB/HSV on the actual PNGs.
 
-## Sheet lock (victoria-sheet close-up)
+## Lock (Виктория.png)
 
 Sheet front: oval-to-heart, high cheekbones, slightly pointed chin, age ~late-20s/early-30s.
 Eyes on sheet: green with a slight hazel / light-brown mix around the pupil (Excalibur).
@@ -61,4 +61,4 @@ brown/grey = FAIL — not the sheet lock. Not observed as a different eye on the
 brown/grey = FAIL — not observed on these four crops as a different eye from the sheet.
 Platinum / generic older blonde / Alena = FAIL — not observed.
 
-i2i this rebuild: cropped left frontal close-up uploaded as victoria-sheet.png. Not the 12-up grid. Not animals-viktoria-style-lock.png.
+i2i this rebuild: cropped left frontal close-up uploaded as Виктория.png. Not the 12-up grid. Not animals-viktoria-style-lock.png.

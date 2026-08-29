@@ -2,7 +2,7 @@
 
 Verdict: ✅ DESIGN OK
 Score: 93/100
-FACE_CHECK: MATCH vs `viktoriaref.png`
+FACE_CHECK: MATCH vs `Виктория.png`
 lang: ru
 handle: @todaytaro_ru
 product: app_audio
@@ -19,7 +19,7 @@ trigger: СТАТУС
 
 | Slide | Role | Readability | Notes |
 |-------|------|-------------|-------|
-| 01 | hook | high | «Вы проводите вместе ночи» читается <2с. Кот. Лицо = viktoriaref. Глаза зелёные с лёгким карим. Волосы тёплый блонд + тёмные корни. |
+| 01 | hook | high | «Вы проводите вместе ночи» читается <2с. Кот. Лицо = Виктория.png. Глаза зелёные с лёгким карим. Волосы тёплый блонд + тёмные корни. |
 | 02 | pain | high | Пёс у закрытой двери. Без стикер-ореола. |
 | 03 | mistake | high | «Ловушка удобной девушки» + рваная лента. |
 | 04 | mechanism | high | Сова + КОНТРАКТ 100/0. |
@@ -33,8 +33,8 @@ trigger: СТАТУС
 Caption + slide 9 продают аудиоразбор в приложении (Суть – Тень – Вектор). Ссылки в шапке. Без URL.
 
 ## Face
-Crops: `packs/2026-08-29/face-check/ru-slide-01-face.png`, `ru-slide-09-face.png` vs `viktoriaref.png`.
-verdict: MATCH. Не Alena / не `виктория.png`.
+Crops: `packs/2026-08-29/face-check/ru-slide-01-face.png`, `ru-slide-09-face.png` vs `Виктория.png`.
+verdict: MATCH. Не Alena / не `victoria.png`.
 
 ## Static
 Только PNG. `slide-01.mp4` не требуется.

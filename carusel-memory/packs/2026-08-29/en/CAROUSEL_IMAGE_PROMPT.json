@@ -7,14 +7,14 @@
   "model": "gpt-image-2-image-to-image",
   "carousel_family": "animals_viktoria_collage",
   "visual_family": "animals_viktoria_collage",
-  "face_lock": "viktoriaref.png",
-  "i2i_source": "carusel-memory/references/viktoriaref.png",
-  "i2i_file_name": "viktoriaref.png",
+  "face_lock": "Виктория.png",
+  "i2i_source": "carusel-memory/references/Виктория.png",
+  "i2i_file_name": "Виктория.png",
   "input_files_in_repo": [
-    "carusel-memory/references/viktoriaref.png"
+    "carusel-memory/references/Виктория.png"
   ],
   "input_urls": [
-    "carusel-memory/references/viktoriaref.png"
+    "carusel-memory/references/Виктория.png"
   ],
   "slice_method": "seam",
   "aspect_ratio": "3:4",
@@ -29,12 +29,12 @@
   "static_png_only": true,
   "slide_01": "static_png",
   "animate_slide": false,
-  "prompt": "Same woman as viktoriaref.png; same face, one woman. Eyes green with a slight hazel-brown tint (зелёные с лёгким карим). Warm honey blonde with darker roots, not platinum. Soft tender expression.\nOne static PNG 3:4@4K, 3×3 grid. Thin white gutters exactly at 1/3 and 2/3 (Excalibur seam). #111111 + white heavy sans + #ff006e. Type ≥12% from seams. In-scene. No video.\n01 Victoria in graphite silk pajama shirt + black trousers, 3/4 on rumpled dark bed, look over shoulder. Cat senses distance. \"You spend your nights together\" \"and talk until sunrise. Yet when you ask where this is going, he smiles: \"Why ruin it with labels?\"\" \"Why Put Labels On It\"\n02 dog at a closed door. \"Wifey loyalty on zero terms\" \"You give devotion and emotional care, yet feel terrified to ask \"what are we?\" without seeming needy.\"\n03 torn magenta tape. \"The cool girl trap\" \"You hold back your needs. You hope that if you ask for nothing, he will appreciate your patience and commit.\"\n04 owl sees the contract. \"The 100/0 Situationship contract\" \"He gets 100% of relationship perks with 0% accountability. \"No labels\" is simply an easy exit clause.\"\n05 two columns. \"Committed vs The Grey Zone\" \"Committed: clear status, shared future, emotional safety\" \"Grey Zone: terms on his schedule, plans for tonight, anxiety\"\n06 three cards. \"Says vs Hears vs Reality\" \"Says: \"Why ruin a great vibe with heavy labels?\"\" \"You hear: \"He values pure, organic connection\"\" \"Reality: \"I want full access without being accountable\"\"\n07 checklist. \"3 clarity tests to know where you stand\" \"1. Public test: does his inner circle know you are a couple?\" \"2. Support test: is he present on a messy Tuesday afternoon?\" \"3. Direct test: does asking about status trigger defensive anger?\"\n08 \"Clarity is the bare minimum\" \"A man who avoids calling you his is keeping the exit door unlocked. Your heart is not an audition room.\"\n09 Victoria in petrol-teal silk blouse + espresso suede jacket, standing 3/4. \"Comment LABELS\" \"Audio reading in my app. Essence–Shadow–Vector.\" \"Write LABELS in the comments\" \"Clarity now\"\nVerbatim only. No extra labels.",
+  "prompt": "Same woman as Виктория.png; same face, one woman. Eyes green with a slight hazel-brown tint (зелёные с лёгким карим). Warm honey blonde with darker roots, not platinum. Soft tender expression.\nOne static PNG 3:4@4K, 3×3 grid. Thin white gutters exactly at 1/3 and 2/3 (Excalibur seam). #111111 + white heavy sans + #ff006e. Type ≥12% from seams. In-scene. No video.\n01 Victoria in graphite silk pajama shirt + black trousers, 3/4 on rumpled dark bed, look over shoulder. Cat senses distance. \"You spend your nights together\" \"and talk until sunrise. Yet when you ask where this is going, he smiles: \"Why ruin it with labels?\"\" \"Why Put Labels On It\"\n02 dog at a closed door. \"Wifey loyalty on zero terms\" \"You give devotion and emotional care, yet feel terrified to ask \"what are we?\" without seeming needy.\"\n03 torn magenta tape. \"The cool girl trap\" \"You hold back your needs. You hope that if you ask for nothing, he will appreciate your patience and commit.\"\n04 owl sees the contract. \"The 100/0 Situationship contract\" \"He gets 100% of relationship perks with 0% accountability. \"No labels\" is simply an easy exit clause.\"\n05 two columns. \"Committed vs The Grey Zone\" \"Committed: clear status, shared future, emotional safety\" \"Grey Zone: terms on his schedule, plans for tonight, anxiety\"\n06 three cards. \"Says vs Hears vs Reality\" \"Says: \"Why ruin a great vibe with heavy labels?\"\" \"You hear: \"He values pure, organic connection\"\" \"Reality: \"I want full access without being accountable\"\"\n07 checklist. \"3 clarity tests to know where you stand\" \"1. Public test: does his inner circle know you are a couple?\" \"2. Support test: is he present on a messy Tuesday afternoon?\" \"3. Direct test: does asking about status trigger defensive anger?\"\n08 \"Clarity is the bare minimum\" \"A man who avoids calling you his is keeping the exit door unlocked. Your heart is not an audition room.\"\n09 Victoria in petrol-teal silk blouse + espresso suede jacket, standing 3/4. \"Comment LABELS\" \"Audio reading in my app. Essence–Shadow–Vector.\" \"Write LABELS in the comments\" \"Clarity now\"\nVerbatim only. No extra labels.",
   "prompt_char_count": 2109,
   "prompt_compacted": true,
-  "negative_prompt": "wrong panel count, 2x3, horizontal strip, 4:5, 1:1, zero-gutter cells-touch, sticker halo, die-cut, white outline, platinum hair, Alena face, виктория.png, victoria-sheet, victoria.png, victoria_ref.jpg, alena, character-sheet-2k, white cami, gold pendant, burgundy turtleneck, black satin wrap, ivory studio blazer, horror candles, skulls, beige wash, pastel rainbow, video, motion, MP4, Grok, Portuguese labels, RESET, SPA MINDSET, extra labels, watermark, URLs, bot spreads, Academy, second woman, doubles",
+  "negative_prompt": "wrong panel count, 2x3, horizontal strip, 4:5, 1:1, zero-gutter cells-touch, sticker halo, die-cut, white outline, platinum hair, Alena face, viktoriaref.png, victoria-sheet.png, victoria.png, victoria_ref.jpg, alena, character-sheet-2k, white cami, gold pendant, burgundy turtleneck, black satin wrap, ivory studio blazer, horror candles, skulls, beige wash, pastel rainbow, video, motion, MP4, Grok, Portuguese labels, RESET, SPA MINDSET, extra labels, watermark, URLs, bot spreads, Academy, second woman, doubles",
   "reference_contract": {
-    "reference_role": "viktoriaref.png = face + hair + eyes only. Style/layout/palette from animals_viktoria_collage lock, not as i2i face.",
+    "reference_role": "Виктория.png = face + hair + eyes only. Style/layout/palette from animals_viktoria_collage lock, not as i2i face.",
     "preserve": [
       "dark charcoal #111111–#1a1a1a full-bleed",
       "hot magenta #ff006e + white heavy sans + thin magenta script",
@@ -70,7 +70,7 @@
       "metal": "#c9a227"
     },
     "identity": {
-      "face_lock": "viktoriaref.png",
+      "face_lock": "Виктория.png",
       "eyes": "green with a slight hazel-brown tint (зелёные с лёгким карим)",
       "hair": "warm honey blonde with darker roots, not platinum",
       "expression": "soft, tender",
@@ -111,7 +111,7 @@
     {
       "slide": 1,
       "role": "hook",
-      "visual_only": "Lived night-to-morning charcoal bedroom. Same woman as viktoriaref.png seated 3/4 on rumpled dark bed in graphite silk pajama shirt, open collar, no necklace, high-waist black wide-leg trousers, look over shoulder, soft tender. Dark grey cat at hip, ears forward, senses distance. Optional coffee cup. Huge white headline + magenta script from locked copy. In-scene. Static still."
+      "visual_only": "Lived night-to-morning charcoal bedroom. Same woman as Виктория.png seated 3/4 on rumpled dark bed in graphite silk pajama shirt, open collar, no necklace, high-waist black wide-leg trousers, look over shoulder, soft tender. Dark grey cat at hip, ears forward, senses distance. Optional coffee cup. Huge white headline + magenta script from locked copy. In-scene. Static still."
     },
     {
       "slide": 2,

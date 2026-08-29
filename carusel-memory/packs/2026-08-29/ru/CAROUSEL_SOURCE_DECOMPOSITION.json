@@ -3,7 +3,7 @@
   "pack_id": "2026-08-29",
   "carousel_family": "animals_viktoria_collage",
   "slice_method": "seam",
-  "face_lock": "viktoriaref.png",
+  "face_lock": "Виктория.png",
   "sources": [
     {
       "id": "animals-viktoria-style-lock",
@@ -18,8 +18,8 @@
       "do_not_i2i_as": "face"
     },
     {
-      "id": "viktoriaref",
-      "path": "carusel-memory/references/viktoriaref.png",
+      "id": "Виктория",
+      "path": "carusel-memory/references/Виктория.png",
       "reference_role": {
         "style": "none",
         "layout": "none",
@@ -33,7 +33,7 @@
         "static frontal tank pose",
         "plain studio grey backdrop as the carousel world"
       ],
-      "do_not_i2i_as": "style sheet / 12-up / second woman"
+      "do_not_i2i_as": "style collage / second woman"
     },
     {
       "id": "slide-04-depth",
@@ -48,13 +48,9 @@
   ],
   "forbidden_sources": [
     {
-      "id": "alena-viktoria-png",
-      "path": "виктория.png",
-      "reason": "Alena. Never i2i."
-    },
-    {
       "id": "retired-faces",
       "paths": [
+        "viktoriaref.png",
         "victoria-sheet.png",
         "victoria.png",
         "victoria_ref.jpg",

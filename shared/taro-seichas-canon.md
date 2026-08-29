@@ -45,9 +45,9 @@ Locale-контракт фиксировал handle и «без URL», но не
 Коротко:
 
 - charcoal/black + magenta `#ff006e` + white + soft gold
-- Victoria in-scene на hook (1) и CTA (9). Face lock = **`виктория.png`**
+- Victoria in-scene на hook (1) и CTA (9). Face lock = **`Виктория.png`**
   (одна женщина, 12 ракурсов одного лица). Глаза: зелёные с лёгким карим / green+hazel. Волосы: honey/wheat + darker roots
-  **как на виктория.png**. Platinum / Alena = FAIL. Vika = `виктория.png` only.
+  **как на Виктория.png**. Platinum / Alena = FAIL. Vika = `Виктория.png` only.
 - Одежда и поза **новые в каждой карусели**. Не копировать white cami + jeans с листа.
   Не копировать ivory-blazer studio. Slide 1 и 9 могут отличаться — лицо то же.
 - Других женских лиц нет. Doubles запрещены.
@@ -105,10 +105,11 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 
 ## Референсы
 
-В репо: `carusel-memory/references/` (канон-текст). Бинарь листа: `victoria-sheet.png`,
+В репо: `carusel-memory/references/` (канон-текст). Бинарь лица: `Виктория.png`,
 когда он есть на боксе. **Не рендерить pack, чтобы «доказать» lock.**
 
-- `/workspace/cover-refs/victoria-sheet.png` — ONLY Victoria
+- `/workspace/cover-refs/Виктория.png` — ONLY Victoria
+- `viktoriaref.png` / `victoria-sheet.png` — **DELETED**. Never restore. Never i2i.
 - Alena files (`victoria.png`, `alena.png`, `*_ref.jpg`) — **DELETED**. Never restore. Never i2i.
 - `/workspace/karusel-old/cover-old.png` — RETIRED studio-blazer
 - `/workspace/karusel-old/image-851e.png` — STYLE LOCK
@@ -118,7 +119,7 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 
 ## Gate (PASS только если все true)
 
-- (a) лицо = Victoria с `victoria-sheet.png` (не Alena, не studio-blazer)
+- (a) лицо = Victoria с `Виктория.png` (не Alena, не studio-blazer, не `viktoriaref.png`)
 - (b) ≥3 слайда с животным как метафорой
 - (c) ≥2 save-слайда с настоящей рамкой или вопросами
 - (d) hook = сцена
@@ -138,7 +139,7 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 `scripts/pipeline_gate.py`). researcher + copywriter (caption) = `gemini-3.7-flash-high`.
 
 Director **не** делает worker-шаг сам. Нет parent remake. Нет proof-pack / 18-slide
-rerender «чтобы проверить канон». Face-lock = текст (`victoria-sheet.png`); не рендерить
+rerender «чтобы проверить канон». Face-lock = текст (`Виктория.png`); не рендерить
 слайды, чтобы это доказать.
 
 Publish / Composio / Instagram — только Hall после human review.

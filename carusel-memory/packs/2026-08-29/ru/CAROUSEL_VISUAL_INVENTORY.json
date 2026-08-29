@@ -22,7 +22,7 @@
       "source_has_image": true,
       "required_for_fidelity": true,
       "implementation": "i2i-face-lock",
-      "asset_registry_id": "face-lock-viktoriaref",
+      "asset_registry_id": "face-lock-Виктория",
       "status": "ready"
     },
     {
@@ -113,7 +113,7 @@
       "source_has_image": true,
       "required_for_fidelity": true,
       "implementation": "i2i-face-lock",
-      "asset_registry_id": "face-lock-viktoriaref",
+      "asset_registry_id": "face-lock-Виктория",
       "status": "ready"
     },
     {

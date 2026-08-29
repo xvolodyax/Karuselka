@@ -19,7 +19,7 @@ slides: carusel-memory/packs/2026-08-28/ru/slides/slide-01.png … slide-09.png
 master: carusel-memory/packs/2026-08-28/ru/master.png
 source: carusel-memory/packs/2026-08-28/ru/source.png
 qa: carusel-memory/packs/2026-08-28/ru/grid-gutter-qa-clean.json status=ok
-face: MATCH vs victoria-sheet-front.png (green + hazel)
+face: MATCH vs Виктория.png (green + hazel)
 
 ## EN
 
@@ -28,4 +28,4 @@ slides: carusel-memory/packs/2026-08-28/en/slides/slide-01.png … slide-09.png
 master: carusel-memory/packs/2026-08-28/en/master.png
 source: carusel-memory/packs/2026-08-28/en/source.png
 qa: carusel-memory/packs/2026-08-28/en/grid-gutter-qa-clean.json status=ok
-face: MATCH vs victoria-sheet-front.png (green + hazel)
+face: MATCH vs Виктория.png (green + hazel)

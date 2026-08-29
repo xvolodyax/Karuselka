@@ -1,13 +1,13 @@
 {
   "version": "1",
   "pack_id": "2026-08-29",
-  "policy": "No MCP KV for images. Kie scripts after image-prompter. input_urls must be exactly one: uploaded viktoriaref.png.",
+  "policy": "No MCP KV for images. Kie scripts after image-prompter. input_urls must be exactly one: uploaded Виктория.png.",
   "assets": [
     {
-      "id": "face-lock-viktoriaref",
+      "id": "face-lock-Виктория",
       "role": "face_lock",
-      "local_path": "carusel-memory/references/viktoriaref.png",
-      "box_path": "/workspace/cover-refs/viktoriaref.png",
+      "local_path": "carusel-memory/references/Виктория.png",
+      "box_path": "/workspace/cover-refs/Виктория.png",
       "i2i": true,
       "input_url_index": 0,
       "https_url": null,
@@ -32,15 +32,9 @@
   ],
   "forbidden": [
     {
-      "id": "alena-viktoria-png",
-      "local_path": "carusel-memory/references/виктория.png",
-      "i2i": false,
-      "status": "forbidden",
-      "notes": "Alena. Never i2i."
-    },
-    {
       "id": "retired-faces",
       "paths": [
+        "viktoriaref.png",
         "victoria-sheet.png",
         "victoria.png",
         "victoria_ref.jpg",

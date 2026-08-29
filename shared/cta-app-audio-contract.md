@@ -3,7 +3,7 @@
 Locked 27.08.2026. Director / Gemini / copywriter **cannot** sell 3 free bot
 spreads as the Instagram comment prize.
 
-Face lock (`victoria-sheet.png`) and Excalibur seam slice stay unchanged.
+Face lock (`Виктория.png`) and Excalibur seam slice stay unchanged.
 Already-live 27.08 Ping vs Step / Pause posts stay. Do not restyle them.
 
 ## Offer (every new carousel)

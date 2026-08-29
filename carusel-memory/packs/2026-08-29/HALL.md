@@ -26,8 +26,8 @@ Forbidden repeats were not reused: Pause, Ping vs step, Тепло/WARMTH, trigg
 
 ## Face
 
-i2i = `carusel-memory/references/viktoriaref.png` only.
-`виктория.png` is Alena. Never i2i victoria-sheet / victoria.png / alena*.
+i2i = `carusel-memory/references/Виктория.png` only.
+Never i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, or `alena*`.
 Eyes: green + slight hazel. Hair: warm honey/wheat + darker roots. Not platinum.
 Clothes this pack: graphite silk pajama (01), petrol-teal blouse + espresso suede jacket (09).
 

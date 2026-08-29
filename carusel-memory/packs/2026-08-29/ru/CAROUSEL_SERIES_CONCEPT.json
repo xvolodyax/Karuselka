@@ -8,8 +8,8 @@
   "topic_ru": "Зачем вешать ярлыки: почему он ведёт себя как твой мужчина, но боится статуса?",
   "topic_en": "Why Put Labels On It: When he acts like your man but avoids commitment",
   "carousel_family": "animals_viktoria_collage",
-  "face_lock": "viktoriaref.png",
-  "face_lock_path": "carusel-memory/references/viktoriaref.png",
+  "face_lock": "Виктория.png",
+  "face_lock_path": "carusel-memory/references/Виктория.png",
   "style_lock_path": "carusel-memory/references/animals-viktoria-style-lock.png",
   "slice_method": "seam",
   "static_png_only": true,
@@ -50,7 +50,7 @@
     "in_scene": true,
     "sticker_halo": false,
     "forbidden_face_files": [
-      "виктория.png",
+      "viktoriaref.png",
       "victoria-sheet.png",
       "victoria.png",
       "victoria_ref.jpg",
@@ -70,7 +70,7 @@
       "why_new": "CTA authority without studio blazer; not black satin wrap from 2026-08-28"
     },
     "do_not_repeat": [
-      "white cami + gold pendant from viktoriaref.png",
+      "white cami + gold pendant from Виктория.png",
       "burgundy turtleneck (2026-08-28 slide 01)",
       "black satin wrap (2026-08-28 slide 09)",
       "ivory studio-blazer / cover-old"
@@ -117,8 +117,8 @@
   "do_not_borrow": [
     "Portuguese text and English extra labels from style-lock (RESET, SPA MINDSET, INNER SIGNAL, ALL IN, DEEP MODE, DAILY RITUAL, NO FILTER, OWN IT)",
     "foreign women's faces / Portuguese models",
-    "Alena face and files (виктория.png, victoria.png, victoria_ref.jpg, alena*.png, character-sheet-2k, victoria-sheet.png)",
-    "white cami + gold filigree pendant + frozen frontal tank pose from viktoriaref.png",
+    "Alena face and files (victoria.png, victoria_ref.jpg, alena*.png, character-sheet-2k, viktoriaref.png, victoria-sheet.png)",
+    "white cami + gold filigree pendant + frozen frontal tank pose from Виктория.png",
     "burgundy turtleneck and black satin wrap from pack 2026-08-28",
     "platinum / white-blonde hair, brown-only or blue/grey eyes",
     "sticker halo / die-cut white outline around Victoria or animals",
@@ -182,7 +182,7 @@
     "08 decision rule — screenshot the one-liner"
   ],
   "prompt_hints": {
-    "reference_role": "animals-viktoria-style-lock.png / image-851e.png = style + layout + palette only. viktoriaref.png = ONLY face + hair + eyes lock, first and only input_url. Never i2i style-lock as a face. Never i2i Alena files.",
+    "reference_role": "animals-viktoria-style-lock.png / image-851e.png = style + layout + palette only. Виктория.png = ONLY face + hair + eyes lock, first and only input_url. Never i2i style-lock as a face. Never i2i Alena files.",
     "preserve": [
       "charcoal field, magenta + white type, torn-tape rhythm",
       "animals-as-metaphor, Victoria on 1+9 in-scene",
@@ -233,7 +233,7 @@
       "video / motion / MP4 on slide 01",
       "second face, doubles, other brands, URLs"
     ],
-    "input_urls_hint": "exactly one URL after upload of viktoriaref.png",
+    "input_urls_hint": "exactly one URL after upload of Виктория.png",
     "per_panel_scene_hints": [
       {
         "slide": 1,

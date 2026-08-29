@@ -3,7 +3,7 @@
 Same visual contract as RU. Do not invent a second family.
 
 - **Family:** `animals_viktoria_collage`
-- **Face:** `viktoriaref.png` only. Green + slight hazel. Warm honey blonde, darker roots. Not platinum. `виктория.png` is Alena — never i2i.
+- **Face:** `Виктория.png` only. Green + slight hazel. Warm honey blonde, darker roots. Not platinum. Never i2i `viktoriaref.png`, `victoria-sheet.png`, or `victoria.png`.
 - **Slice:** seam (thin white gutters at 1/3 and 2/3). Static PNG. Slide 01 is PNG.
 - **Copy:** verbatim from `carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json`. Trigger **LABELS**. Slogan **Clarity now**. Product: audio reading in my app — Essence–Shadow–Vector. No Academy, no URLs, no bot.
 - **Victoria:** slides 1 and 9, in-scene, no sticker halo.

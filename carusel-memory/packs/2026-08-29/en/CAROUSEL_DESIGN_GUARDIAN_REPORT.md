@@ -2,7 +2,7 @@
 
 Verdict: ✅ DESIGN OK
 Score: 93/100
-FACE_CHECK: MATCH vs `viktoriaref.png`
+FACE_CHECK: MATCH vs `Виктория.png`
 lang: en
 handle: @todaytaro_bot
 product: app_audio
@@ -21,7 +21,7 @@ trigger: LABELS
 
 | Slide | Role | Readability | Notes |
 |-------|------|-------------|-------|
-| 01 | hook | high | «You spend your nights together» thumbnail-readable. Cat. Face = viktoriaref. Eyes green+hazel. Warm blonde + darker roots. |
+| 01 | hook | high | «You spend your nights together» thumbnail-readable. Cat. Face = Виктория.png. Eyes green+hazel. Warm blonde + darker roots. |
 | 02 | pain | high | Dog at closed door. No sticker halo. |
 | 03 | mistake | high | Cool-girl trap + torn tape. |
 | 04 | mechanism | high | Owl + situationship contract. |
@@ -35,8 +35,8 @@ trigger: LABELS
 Caption + slide 9 sell the app audio reading (Essence–Shadow–Vector). Links in the profile. No raw URL. `@todaytaro_bot` is the handle, not the prize.
 
 ## Face
-Crops: `packs/2026-08-29/face-check/en-slide-01-face.png`, `en-slide-09-face.png` vs `viktoriaref.png`.
-verdict: MATCH. Not Alena / not `виктория.png`.
+Crops: `packs/2026-08-29/face-check/en-slide-01-face.png`, `en-slide-09-face.png` vs `Виктория.png`.
+verdict: MATCH. Not Alena / not `victoria.png`.
 
 ## Static
 PNG only. Missing `slide-01.mp4` is not a blocker.

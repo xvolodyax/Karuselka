@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Copy viktoriaref.png + crop pack slides 01/09 for FACE_CHECK.
+"""Copy Виктория.png + crop pack slides 01/09 for FACE_CHECK.
 
-Does not invent a face. Does not crop a 12-up sheet. Does not publish.
+Does not invent a face. Does not publish.
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from pathlib import Path
 from PIL import Image
 
 REPO = Path(__file__).resolve().parent.parent
-FACE = REPO / "carusel-memory" / "references" / "viktoriaref.png"
+FACE = REPO / "carusel-memory" / "references" / "Виктория.png"
 
 
 def _slide_face(src: Path, dest: Path) -> None:
@@ -26,10 +26,10 @@ def _slide_face(src: Path, dest: Path) -> None:
 
 def make_crops(pack: Path) -> list[Path]:
     if not FACE.is_file() or FACE.stat().st_size < 100_000:
-        raise SystemExit("missing carusel-memory/references/viktoriaref.png")
+        raise SystemExit("missing carusel-memory/references/Виктория.png")
     out = pack / "face-check"
     out.mkdir(parents=True, exist_ok=True)
-    dest_face = out / "viktoriaref.png"
+    dest_face = out / "Виктория.png"
     shutil.copy2(FACE, dest_face)
     written = [dest_face]
     mapping = {
