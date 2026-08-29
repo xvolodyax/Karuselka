@@ -363,6 +363,43 @@ class GeminiAndDryRunTest(unittest.TestCase):
     def run_cmd(self, *argv: str) -> int:
         return gate.main(["--workspace", str(self.tmp), "--repo-root", str(self.repo), *argv])
 
+    def test_image_prompter_defaults_to_gemini(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in ("researcher", "copywriter", "designer"):
+            ledger["steps"][step_id]["status"] = "ok"
+            ledger["steps"][step_id]["dispatched_via"] = f"Task({gate.PLUGIN_TASK[step_id]})"
+        gate.save_ledger(self.tmp, ledger)
+        self.assertEqual(
+            self.run_cmd(
+                "record-dispatch",
+                "--step",
+                "image-prompter",
+                "--via",
+                "Task(generalPurpose)",
+            ),
+            0,
+        )
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(ledger["steps"]["image-prompter"]["model"], gate.GEMINI_MODEL)
+
+    def test_gemini_flash_alias_accepted(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.assertEqual(
+            self.run_cmd(
+                "record-dispatch",
+                "--step",
+                "researcher",
+                "--via",
+                "Task(generalPurpose)",
+                "--model",
+                "gemini-3.7-flash",
+            ),
+            0,
+        )
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(ledger["steps"]["researcher"]["model"], "gemini-3.7-flash")
+
     def test_researcher_defaults_to_gemini(self) -> None:
         self.run_cmd("init", "--lang", "ru")
         self.assertEqual(
@@ -413,6 +450,10 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertEqual(ledger["steps"]["director"]["status"], "ok")
         for step_id in gate.DRY_RUN_WORKERS:
             state = ledger["steps"][step_id]
+            if step_id in {"motion-director", "animate"}:
+                self.assertEqual(state["status"], "skipped", step_id)
+                self.assertEqual(state["skip_reason"], "static-png-only", step_id)
+                continue
             self.assertEqual(state["status"], "ok", step_id)
             self.assertEqual(state["dispatched_via"], "Task(generalPurpose)", step_id)
             self.assertTrue(state.get("dispatch_id"), step_id)
@@ -422,6 +463,7 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertEqual(ledger["steps"]["fixic"]["skip_reason"], "no-open-incidents")
         self.assertEqual(ledger["steps"]["researcher"]["model"], gate.GEMINI_MODEL)
         self.assertEqual(ledger["steps"]["copywriter"]["model"], gate.GEMINI_MODEL)
+        self.assertEqual(ledger["steps"]["image-prompter"]["model"], gate.GEMINI_MODEL)
         pixels = [
             p
             for p in self.tmp.rglob("*")

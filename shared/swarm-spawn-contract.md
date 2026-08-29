@@ -19,7 +19,7 @@ director (parent intake)
   → researcher          Task + Gemini     written_by: gemini
   → copywriter          Task + Gemini     slides AND caption; written_by: gemini
   → designer            Task              layout/style only
-  → image-prompter      Task              prompts from locked copy + victoria-sheet
+  → image-prompter      Task + Gemini     slide image prompts; written_by: gemini
   → slice               Task
   → motion-director     SKIP static-png-only (unless Hall asks for video)
   → animate             SKIP static-png-only
@@ -46,11 +46,11 @@ Vladimir: «весь текст пишет gemini».
 | research dossier | researcher | `written_by: gemini` |
 | 9 slides | copywriter | `written_by: gemini` |
 | caption | copywriter (тот же шаг) | `written_by: gemini` |
-| image prompts | image-prompter | своя модель |
+| image prompts | image-prompter | `written_by: gemini` |
 
-Spawn: `model=gemini-3.7-flash-high`. Не inherit модели Director.
-Если runtime не умеет вызвать Gemini по имени — Hall/Director запускает эти два шага на Gemini вручную.
-Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus/sonnet/composer = FAIL).
+Spawn: `model=gemini-3.7-flash-high` (роль: `gemini-3.7-flash`). Не inherit модели Director.
+Если runtime не умеет вызвать Gemini по имени — Hall/Director запускает эти три шага на Gemini вручную.
+Gate **отклоняет** copy/caption/brief/image-prompt без `written_by: gemini` (opus/sonnet/composer = FAIL).
 Не переписывать голос Gemini.
 
 ## Face lock (не открывать заново)
