@@ -23,7 +23,7 @@ SKIP: Grok video. Slide-01 is PNG.
 | copywriter | | | |
 | designer | | | |
 | image-prompter | | | |
-| slice | | | |
+| slice | Task(generalPurpose) | 1423acc10dbc49cb8e09c5beec5d1d85 | OK static 9+9 PNG seam |
 | motion-director | | skip:static-png-only | |
 | animate | | skip:static-png-only | |
 | design-guardian | | | |

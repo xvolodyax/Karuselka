@@ -1,0 +1,758 @@
+{
+  "status": "ok",
+  "mode": "seam",
+  "method": "seam: remainder width=2 on 2480x3312 is WARN; internal lines checked on a remainder-cropped scrubbed copy",
+  "thresholds": {
+    "strip": 8,
+    "white_threshold": 235,
+    "max_internal_white": 0.2,
+    "max_edge_white": 0.35
+  },
+  "master": {
+    "path": "/tmp/kie-pack-en/carusel-memory/output/master/master.png",
+    "size": {
+      "width": 2448,
+      "height": 3264
+    },
+    "grid": {
+      "cols": 3,
+      "rows": 3
+    },
+    "remainders": {
+      "width": 0,
+      "height": 0
+    },
+    "internal_lines": {
+      "v1": {
+        "box": [
+          812,
+          0,
+          821,
+          3264
+        ],
+        "white_ratio": 0.4485,
+        "mean_rgb": [
+          137.1,
+          137.3,
+          136.9
+        ]
+      },
+      "v2": {
+        "box": [
+          1628,
+          0,
+          1637,
+          3264
+        ],
+        "white_ratio": 0.0243,
+        "mean_rgb": [
+          33.3,
+          33.3,
+          32.9
+        ]
+      },
+      "h1": {
+        "box": [
+          0,
+          1084,
+          2448,
+          1093
+        ],
+        "white_ratio": 0.8898,
+        "mean_rgb": [
+          234.6,
+          234.4,
+          234.1
+        ]
+      },
+      "h2": {
+        "box": [
+          0,
+          2172,
+          2448,
+          2181
+        ],
+        "white_ratio": 1.0,
+        "mean_rgb": [
+          251.7,
+          251.6,
+          251.5
+        ]
+      }
+    },
+    "internal_qa": {
+      "path": null,
+      "size": {
+        "width": 2448,
+        "height": 3264
+      },
+      "grid": {
+        "cols": 3,
+        "rows": 3
+      },
+      "remainders": {
+        "width": 0,
+        "height": 0
+      },
+      "internal_lines": {
+        "v1": {
+          "box": [
+            812,
+            0,
+            821,
+            3264
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            32.9,
+            32.7,
+            32.0
+          ]
+        },
+        "v2": {
+          "box": [
+            1628,
+            0,
+            1637,
+            3264
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            30.0,
+            30.0,
+            29.7
+          ]
+        },
+        "h1": {
+          "box": [
+            0,
+            1084,
+            2448,
+            1093
+          ],
+          "white_ratio": 0.002,
+          "mean_rgb": [
+            28.6,
+            22.2,
+            21.9
+          ]
+        },
+        "h2": {
+          "box": [
+            0,
+            2172,
+            2448,
+            2181
+          ],
+          "white_ratio": 0.002,
+          "mean_rgb": [
+            29.5,
+            27.2,
+            23.8
+          ]
+        }
+      }
+    }
+  },
+  "seam_internal_qa": {
+    "used": true,
+    "source_size": {
+      "width": 2448,
+      "height": 3264
+    },
+    "qa_size": {
+      "width": 2448,
+      "height": 3264
+    },
+    "method": "crop remainder + scrub cut-lines on a copy; slice input unchanged"
+  },
+  "slides": [
+    {
+      "file": "slide-01.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            10.2,
+            11.5,
+            11.9
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            8.8,
+            9.5,
+            9.3
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            8.6,
+            9.4,
+            8.7
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            11.2,
+            11.7,
+            12.1
+          ]
+        }
+      }
+    },
+    {
+      "file": "slide-02.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            6.5,
+            6.2,
+            5.8
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            14.8,
+            12.2,
+            8.6
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            6.9,
+            6.6,
+            5.5
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            30.1,
+            20.4,
+            12.7
+          ]
+        }
+      }
+    },
+    {
+      "file": "slide-03.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            5.2,
+            5.5,
+            5.6
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            85.1,
+            26.9,
+            43.6
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            51.9,
+            16.2,
+            24.3
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            46.6,
+            11.5,
+            21.9
+          ]
+        }
+      }
+    },
+    {
+      "file": "slide-04.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            11.1,
+            9.7,
+            6.6
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            32.7,
+            27.4,
+            22.4
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            7.7,
+            7.5,
+            4.7
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            122.8,
+            107.8,
+            91.5
+          ]
+        }
+      }
+    },
+    {
+      "file": "slide-05.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            8.2,
+            7.8,
+            7.7
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            23.0,
+            23.7,
+            22.9
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            18.3,
+            18.3,
+            17.9
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            10.3,
+            11.0,
+            10.1
+          ]
+        }
+      }
+    },
+    {
+      "file": "slide-06.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            8.7,
+            8.4,
+            8.5
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            12.4,
+            12.3,
+            12.1
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            6.8,
+            6.8,
+            6.6
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            8.1,
+            8.0,
+            7.7
+          ]
+        }
+      }
+    },
+    {
+      "file": "slide-07.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            7.0,
+            6.9,
+            6.7
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            12.7,
+            13.1,
+            12.7
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            10.0,
+            10.1,
+            9.9
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            8.1,
+            8.1,
+            7.6
+          ]
+        }
+      }
+    },
+    {
+      "file": "slide-08.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            8.7,
+            8.4,
+            8.3
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            15.9,
+            16.1,
+            15.8
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            15.6,
+            15.5,
+            15.3
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            7.8,
+            7.5,
+            7.2
+          ]
+        }
+      }
+    },
+    {
+      "file": "slide-09.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "edges": {
+        "left": {
+          "box": [
+            0,
+            0,
+            8,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            9.7,
+            10.1,
+            9.2
+          ]
+        },
+        "right": {
+          "box": [
+            1072,
+            0,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            14.3,
+            9.9,
+            6.2
+          ]
+        },
+        "top": {
+          "box": [
+            0,
+            0,
+            1080,
+            8
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            10.9,
+            11.4,
+            9.1
+          ]
+        },
+        "bottom": {
+          "box": [
+            0,
+            1432,
+            1080,
+            1440
+          ],
+          "white_ratio": 0.0,
+          "mean_rgb": [
+            19.0,
+            13.5,
+            9.9
+          ]
+        }
+      }
+    }
+  ],
+  "warnings": [],
+  "failures": []
+}
