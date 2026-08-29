@@ -25,7 +25,7 @@ director (parent intake)
   → animate             SKIP static-png-only
   → design-guardian     Task
   → upload              Task
-  → publish             SKIP unless brief.publish_requested true
+  → publish             Task via Composio after GATE PASS + face MATCH
   → fixic               SKIP unless open incidents
 ```
 
@@ -35,7 +35,11 @@ Cloud не видит `Task(carusel-*)`. Sanctioned spawn:
 
 Desktop plugin: `Task(carusel-<role>)`. Один Task = один шаг. `inline`/`parent`/`self` = FAIL.
 
-Publish по умолчанию `skip: publish-not-requested`. Не Instagram / Composio / Make.
+После сверки лица Director вызывает `Task(carusel-publish)` — не SKIP.
+Скрипт: `python scripts/composio_instagram_publish.py --pack <pack>`.
+Ключ только `COMPOSIO_API_KEY`. Alias: instagram-ru / instagram-en (не default).
+Нет ключа → SKIP «нет COMPOSIO_API_KEY». Уже live → SKIP already-live.
+Холл не публикует. Telegram запрещён. Make MCP устарел.
 
 ## Весь человеческий текст = Gemini
 

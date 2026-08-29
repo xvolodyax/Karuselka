@@ -52,11 +52,14 @@ PLUGIN_TASK = {
     "fixic": "carusel-fixic",
 }
 LEGAL_SKIP = {
-    "publish": "publish-not-requested",
-    "fixic": "no-open-incidents",
-    "motion-director": "static-png-only",
-    "animate": "static-png-only",
+    "publish": frozenset({"нет COMPOSIO_API_KEY", "already-live", "dry-run"}),
+    "fixic": frozenset({"no-open-incidents"}),
+    "motion-director": frozenset({"static-png-only"}),
+    "animate": frozenset({"static-png-only"}),
 }
+SKIP_NO_COMPOSIO_KEY = "нет COMPOSIO_API_KEY"
+SKIP_ALREADY_LIVE = "already-live"
+SKIP_DRY_RUN = "dry-run"
 SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | re.I)
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
 GEMINI_MODEL = "gemini-3.7-flash-high"
@@ -187,7 +190,7 @@ def new_ledger(lang: str, topic: str, run_id: str | None = None) -> dict[str, An
         "handle": HANDLES[lang],
         "created_at": utc_now(),
         "dispatch_mode": "unknown",
-        "publish_requested": False,
+        "publish_requested": True,
         "mode": "live",
         "pixels": "allowed",
         "steps": {step_id: empty_step_state(step_id) for step_id in STEP_IDS},
@@ -330,7 +333,7 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     f"lang: {lang}",
                     f"topic: {topic}",
                     f"handle: {HANDLES[lang]}",
-                    "publish_requested: false",
+                    "publish_requested: true",
                     "visual_family: animals_viktoria_collage",
                     "face_lock: viktoriaref.png",
                     "slice_method: seam",
@@ -469,7 +472,8 @@ def cmd_record_dispatch(
         )
     if step_id in {"motion-director", "animate"}:
         brief = parse_brief(workspace)
-        if brief.get("static_png_only", True):
+        ledger_preview = load_ledger(workspace)
+        if brief.get("static_png_only", True) and ledger_preview.get("mode") != "dry-run":
             raise SystemExit(
                 "static PNG lock: skip motion/animate (static-png-only). "
                 "Do not dispatch Grok video. Read shared/static-carousel-lock.md."
@@ -742,17 +746,27 @@ def maybe_auto_skip_video_steps(workspace: Path, repo_root: Path) -> None:
         cmd_skip(workspace, repo_root, step_id, "static-png-only")
 
 
+def legal_skip_reasons(step_id: str) -> frozenset[str]:
+    raw = LEGAL_SKIP[step_id]
+    if isinstance(raw, frozenset):
+        return raw
+    return frozenset({str(raw)})
+
+
 def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int:
     if step_id not in LEGAL_SKIP:
         raise SystemExit(f"step {step_id} cannot be skipped")
-    expected = LEGAL_SKIP[step_id]
-    if reason != expected:
-        raise SystemExit(f"skip reason for {step_id} must be {expected!r}")
+    allowed = legal_skip_reasons(step_id)
+    if reason not in allowed:
+        raise SystemExit(f"skip reason for {step_id} must be one of {sorted(allowed)}")
     ledger = load_ledger(workspace)
     require_previous_done(ledger, step_id)
     brief = parse_brief(workspace)
-    if step_id == "publish" and brief["publish_requested"]:
-        raise SystemExit("publish_requested is true; cannot skip publish")
+    if step_id == "publish":
+        if reason == SKIP_DRY_RUN and ledger.get("mode") != "dry-run":
+            raise SystemExit("dry-run skip only when ledger mode is dry-run")
+        if reason not in {SKIP_NO_COMPOSIO_KEY, SKIP_ALREADY_LIVE, SKIP_DRY_RUN}:
+            raise SystemExit("publish skip is only нет COMPOSIO_API_KEY / already-live / dry-run")
     if step_id == "fixic" and has_open_incidents(workspace):
         raise SystemExit("open incidents exist; Task(carusel-fixic) is required")
     if step_id in {"motion-director", "animate"} and not brief.get("static_png_only", True):
@@ -913,6 +927,25 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "- Upload with --static-all-pngs. file1 is slide-01.png. "
             "Do not upload or require slide-01.mp4. Read shared/static-carousel-lock.md."
         )
+    if step_id == "publish":
+        extra_hard.append(
+            "- After GATE PASS + FACE_CHECK MATCH vs viktoriaref.png, PUBLISH via Composio. "
+            "Do not SKIP and do not wait for Hall. Hall does not publish and does not review slides."
+        )
+        extra_hard.append(
+            "- Run: python scripts/composio_instagram_publish.py --pack <pack>. "
+            "API key only from env COMPOSIO_API_KEY. Alias required: "
+            "instagram-ru=@todaytaro_ru, instagram-en=@todaytaro_bot. Never default. "
+            "Never Telegram. Never write the key to git/log/report."
+        )
+        extra_hard.append(
+            "- No COMPOSIO_API_KEY → GATE PASS + publish SKIP «нет COMPOSIO_API_KEY», exit 0. "
+            "GATE FAIL / чужое лицо / CTA бота → do not publish. "
+            "Already-live today's carousels → SKIP already-live, do not republish."
+        )
+        extra_hard.append(
+            "- Read shared/composio-instagram-publish-contract.md."
+        )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (
         f"Task(generalPurpose, model={GEMINI_MODEL})"
@@ -945,7 +978,7 @@ HARD RULES
 - Product is app_audio: Direct = audio reading in the APP (not 3 free bot spreads).
 - @todaytaro_bot is the EN Instagram handle name, not the comment prize.
 - Read shared/cta-app-audio-contract.md.
-- Do not publish to Instagram unless this role is carusel-publish AND brief.publish_requested is true.
+- Publish is the carusel-publish step after GATE PASS + face MATCH. Hall does not publish.
 - If previous artifacts are missing: fragment ❌ BLOCKER and stop.
 
 DISPATCH
@@ -1125,7 +1158,6 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
             "reference_contract": {"face_lock": "viktoriaref.png"},
             "input_urls": [
                 "https://example.invalid/viktoriaref.png",
-                "https://example.invalid/animals-viktoria-style-lock.png",
             ],
             "typography_rules": {"dry_run": True},
             "panel_visual_brief": [
@@ -1243,7 +1275,7 @@ def cmd_dry_run(
         if rc != 0:
             return rc
 
-    rc = cmd_skip(workspace, repo_root, "publish", "publish-not-requested")
+    rc = cmd_skip(workspace, repo_root, "publish", SKIP_DRY_RUN)
     if rc != 0:
         return rc
     rc = cmd_skip(workspace, repo_root, "fixic", "no-open-incidents")
@@ -1258,7 +1290,7 @@ def cmd_dry_run(
     print("=== DRY-RUN 11 WORKER RECORDS ===")
     print(f"workspace: {workspace}")
     print("pixels: none")
-    print("publish: skipped (publish-not-requested)")
+    print("publish: skipped (dry-run)")
     print("fixic: skipped (no-open-incidents)")
     print(f"researcher+copywriter+caption model: {GEMINI_MODEL}")
     print(

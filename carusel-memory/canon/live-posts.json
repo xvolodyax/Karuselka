@@ -1,0 +1,63 @@
+{
+  "note": "Already-live Instagram carousels. Swarm must not republish these packs.",
+  "posts": [
+    {
+      "date": "2026-08-27",
+      "pack_id": "2026-08-27-swarm",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "permalink": "https://www.instagram.com/p/Dci-EP1ErI-/",
+      "hook": "Пауза или конец?"
+    },
+    {
+      "date": "2026-08-27",
+      "pack_id": "2026-08-27-swarm",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "permalink": "https://www.instagram.com/p/Dci-ozwAH4l/",
+      "hook": "Pause or over?"
+    },
+    {
+      "date": "2026-08-28",
+      "pack_id": "2026-08-28",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ТЕПЛО",
+      "permalink": "https://www.instagram.com/p/DclVIfUoDqQ/"
+    },
+    {
+      "date": "2026-08-28",
+      "pack_id": "2026-08-28",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "WARMTH",
+      "permalink": "https://www.instagram.com/p/DclVSGMGwAj/"
+    },
+    {
+      "date": "2026-08-29",
+      "pack_id": "2026-08-29",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "СТАТУС",
+      "permalink": "https://www.instagram.com/p/Dcnrh0nm7pp/",
+      "media_id": "17906306955303566",
+      "posted_at": "2026-08-29T10:04:38+0000"
+    },
+    {
+      "date": "2026-08-29",
+      "pack_id": "2026-08-29",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "LABELS",
+      "permalink": "https://www.instagram.com/p/Dcnrht_lVca/",
+      "media_id": "18338508988250568",
+      "posted_at": "2026-08-29T10:04:37+0000"
+    }
+  ]
+}

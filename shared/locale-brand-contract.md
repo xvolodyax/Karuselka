@@ -67,7 +67,7 @@ Handle писать как `@todaytaro_ru` / `@todaytaro_bot`.
 lang: ru
 topic: ТАРО СЕЙЧАС
 handle: @todaytaro_ru
-publish_requested: false
+publish_requested: true
 visual_family: animals_viktoria_collage
 cta_style: comment_trigger
 trigger_word: ПАУЗА
@@ -81,7 +81,7 @@ EN-пример:
 lang: en
 topic: Today Tarot
 handle: @todaytaro_bot
-publish_requested: false
+publish_requested: true
 visual_family: animals_viktoria_collage
 cta_style: comment_trigger
 trigger_word: PAUSE
@@ -89,5 +89,6 @@ product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Essence–Shadow–Vector)
 ```
 
-`publish_requested: true` только после явной просьбы опубликовать live-пост.
-Hall публикует через Composio после human review. Агент карусели сам не публикует.
+`publish_requested: true` по умолчанию: после GATE PASS рой сам кладёт RU+EN в Instagram через Composio.
+Холл не публикует и слайды не пересматривает. Нет `COMPOSIO_API_KEY` → SKIP «нет COMPOSIO_API_KEY».
+Alias обязателен: `instagram-ru` / `instagram-en`. Telegram запрещён.

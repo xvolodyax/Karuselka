@@ -99,7 +99,7 @@ Worker-шаг без `dispatched_via` вида `Task(...)` не может ст�
 
 ## Publish и Fixic
 
-- `publish` вызывается отдельным Task **только** если в brief `publish_requested: true` и пользователь явно просил live-пост. Иначе `skip --step publish --reason publish-not-requested`. По умолчанию publish **не** запускать.
+- `publish` вызывается отдельным Task **после GATE PASS + FACE_CHECK MATCH**. Не SKIP. Холл не публикует и слайды не пересматривает. Worker: `python scripts/composio_instagram_publish.py --pack <pack>`. Alias `instagram-ru` / `instagram-en`. Нет ключа → `skip --step publish --reason 'нет COMPOSIO_API_KEY'`. Уже live → `already-live`. GATE FAIL / чужое лицо / CTA бота → не публиковать.
 - `fixic` вызывается отдельным Task если в `pipeline-fix-queue.md` есть `status: open`. Иначе `skip --step fixic --reason no-open-incidents`.
 - Пропуск других шагов **нельзя**.
 - Не рендерить proof-pack / 18 слайдов, чтобы «доказать» face-lock. Канон = текст в `shared/taro-seichas-canon.md`.

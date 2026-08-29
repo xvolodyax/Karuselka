@@ -48,10 +48,11 @@ alwaysApply: true
 8. **Task**(`carusel-animate`) — запуск Grok → slide-01.mp4 (5s loop).
 9. **Task**(`carusel-design-guardian`) — QA серии.
 10. При OK → **Task**(`carusel-upload`) — HTTPS URL для MCP.
-11. **Task**(`carusel-publish`) — MCP `t4528_carrusel_instagram`.
+11. **Task**(`carusel-publish`) — Composio Instagram после GATE PASS + FACE_CHECK MATCH. Не SKIP. Холл не публикует.
 12. Если в `carusel-memory/pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`) — durable fix в plugin.
 
-**carusel-publish** не вызывать до **OK** от design-guardian.
+**carusel-publish** не вызывать до **OK** от design-guardian и MATCH лица (`viktoriaref.png`).
+Нет `COMPOSIO_API_KEY` → SKIP «нет COMPOSIO_API_KEY», не падать. Уже live не перезаливать.
 
 Перед следующим шагом — fragment предыдущего с **`incident_report:`** (см. `shared/subagent-end-of-task-contract.md`).
 
@@ -76,7 +77,7 @@ Professional gates:
 | `carusel-animate` | Grok video slide-01, 5s loop |
 | `carusel-upload` | HTTPS URL → publish-urls.json |
 | `carusel-design-guardian` | Сверка серии |
-| `carusel-publish` | Загрузка в Instagram MCP |
+| `carusel-publish` | Instagram через Composio (alias instagram-ru / instagram-en) |
 | `carusel-fixic` | Post-run: incidents → правки skills/scripts/pitfalls |
 
 ### Memory root

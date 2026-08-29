@@ -11,7 +11,7 @@ flowchart TD
     Motion --> Anim[animate Grok 5s]
     Anim --> QA[design-guardian]
     QA -->|OK| Upload[upload 9 URLs]
-    Upload --> Pub[publish MCP]
+    Upload --> Pub[publish Composio]
     Pub --> Fixic[fixic]
     Fixic --> Done([Готово])
 ```

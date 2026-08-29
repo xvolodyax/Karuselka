@@ -141,9 +141,16 @@ Director **не** делает worker-шаг сам. Нет parent remake. Не�
 rerender «чтобы проверить канон». Face-lock = текст (`victoria-sheet.png`); не рендерить
 слайды, чтобы это доказать.
 
-Publish / Composio / Instagram — только Hall после human review.
-`publish_requested: false` по умолчанию.
+После GATE PASS + FACE_CHECK MATCH рой **сам** публикует RU+EN через Composio
+(`scripts/composio_instagram_publish.py`). Холл не публикует и слайды не пересматривает.
+`publish_requested: true` по умолчанию. Alias обязателен: instagram-ru / instagram-en.
+Нет `COMPOSIO_API_KEY` → GATE PASS + publish SKIP «нет COMPOSIO_API_KEY», не падать.
+GATE FAIL / чужое лицо / CTA бота → не публиковать.
+Уже live карусели не перезаливать (`carusel-memory/canon/live-posts.json`).
+Telegram не слать. Ключ в git/лог/отчёт не писать.
+Контракт: `shared/composio-instagram-publish-contract.md`.
 
 ## Live posts
 
-Не удалять и не редактировать посты 27.08. Новая пара = новый pack / новый пост.
+Не удалять и не редактировать уже live посты. Новая пара = новый pack / новый пост.
+29.08 СТАТУС/LABELS уже в ленте — не перезаливать.
