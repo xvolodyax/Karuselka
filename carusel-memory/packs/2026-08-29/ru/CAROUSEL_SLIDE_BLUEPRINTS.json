@@ -1,0 +1,299 @@
+{
+  "version": "1",
+  "pack_id": "2026-08-29",
+  "run_id": "2026-08-29-1110",
+  "carousel_family": "animals_viktoria_collage",
+  "face_lock": "viktoriaref.png",
+  "slice_method": "seam",
+  "static_png_only": true,
+  "verbatim_copy": true,
+  "no_extra_labels": true,
+  "never_write": ["Сцена", "Scene label", "Victoria signature"],
+  "copy_source_ru": "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+  "copy_source_en": "carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json",
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major",
+    "panel_aspect": "3:4",
+    "safe_margin_pct": 12,
+    "gutters": "thin white seams at 1/3 and 2/3"
+  },
+  "slides": [
+    {
+      "index": 1,
+      "id": "01",
+      "role": "hook",
+      "archetype": "hero_in_scene_portrait",
+      "victoria": true,
+      "animal": "cat",
+      "animal_job": "чует фальшь: кот улавливает скрытую дистанцию за нежными словами",
+      "copy": {
+        "ru": {
+          "headline": "Вы проводите вместе ночи",
+          "body": "и делитесь сокровенным. Но на вопрос о будущем он улыбается: «Зачем вешать ярлыки?»",
+          "script": "Зачем вешать ярлыки"
+        },
+        "en": {
+          "headline": "You spend your nights together",
+          "body": "and talk until sunrise. Yet when you ask where this is going, he smiles: \"Why ruin it with labels?\"",
+          "script": "Why Put Labels On It"
+        }
+      },
+      "outfit": "graphite silk pajama shirt, long sleeves, collar open two buttons, no necklace; high-waist black wide-leg trousers",
+      "pose": "3/4 seated on rumpled charcoal bed edge, looking over her shoulder toward camera, soft knowing tenderness — not the ref frontal tank pose",
+      "scene": "Night-to-morning bedroom, matte charcoal, rumpled dark sheets. Victoria in-scene. Dark grey cat sits at her hip, ears forward, watching the empty side of the bed. Optional coffee cup on a low table. Type layers in front of and behind the subjects.",
+      "zones": {
+        "headline": "upper 28%, left-weighted, huge white sans",
+        "script": "under headline or crossing mid, thin magenta handwritten — exact script only",
+        "body": "mid band, short white line, ≥12% from seams",
+        "hero": "lower-right / mid: Victoria torso+face in-scene",
+        "animal": "lower-left or at hip: cat",
+        "decor": "optional coffee; no gold pendant"
+      },
+      "thumbnail_test": "headline + Victoria + cat readable at ~200px",
+      "static_png": true
+    },
+    {
+      "index": 2,
+      "id": "02",
+      "role": "pain",
+      "archetype": "type_heavy_pain_with_animal",
+      "victoria": false,
+      "animal": "dog",
+      "animal_job": "верность безответному вопросу: преданное ожидание у закрытой двери",
+      "copy": {
+        "ru": {
+          "headline": "Ты живёшь на птичьих правах",
+          "body": "Отдаёшь верность и заботу, но не имеешь права спросить «кто мы?», боясь прослыть душной."
+        },
+        "en": {
+          "headline": "Wifey loyalty on zero terms",
+          "body": "You give devotion and emotional care, yet feel terrified to ask \"what are we?\" without seeming needy."
+        }
+      },
+      "scene": "Closed dark door in charcoal room. Medium dog sits facing the door, loyal, still. Type occupies 50–60% of the cell. No Victoria. No extra captions on the dog.",
+      "zones": {
+        "headline": "top 35%, white heavy sans",
+        "body": "under headline, white, two short wraps max",
+        "animal": "bottom 35%, dog at closed door"
+      }
+    },
+    {
+      "index": 3,
+      "id": "03",
+      "role": "mistake",
+      "archetype": "torn_tape_mistake",
+      "victoria": false,
+      "animal": null,
+      "has_framework": true,
+      "copy": {
+        "ru": {
+          "headline": "Ловушка удобной девушки",
+          "body": "Ты боишься спугнуть его вопросом. Надеешься, что если ничего не требовать, он сам всё решит."
+        },
+        "en": {
+          "headline": "The cool girl trap",
+          "body": "You hold back your needs. You hope that if you ask for nothing, he will appreciate your patience and commit."
+        }
+      },
+      "scene": "Dark field, torn magenta tape as graphic rhythm around the verbatim headline. No invented crossed-out myth words. No animal. No Victoria.",
+      "zones": {
+        "headline": "center-upper, white, framed by tape",
+        "body": "lower-mid, white short",
+        "tape": "magenta torn strips, empty or repeating a locked fragment only"
+      }
+    },
+    {
+      "index": 4,
+      "id": "04",
+      "role": "mechanism",
+      "archetype": "mechanism_owl",
+      "victoria": false,
+      "animal": "owl",
+      "animal_job": "ночная мудрость: сова видит холодный расчет сквозь романтический туман",
+      "has_framework": true,
+      "copy": {
+        "ru": {
+          "headline": "Контракт 100/0: права без долга",
+          "body": "Он получает 100% плюсов отношений при 0% ответственности. «Без ярлыков» — это его план побега."
+        },
+        "en": {
+          "headline": "The 100/0 Situationship contract",
+          "body": "He gets 100% of relationship perks with 0% accountability. \"No labels\" is simply an easy exit clause."
+        }
+      },
+      "scene": "Owl in-scene on a dark perch or low glide, eyes catching a thin magenta rim light. Soft fog behind type. No Victoria. Owl is a reader of the contract, not a sticker.",
+      "zones": {
+        "headline": "top 32%, white",
+        "body": "mid, white",
+        "animal": "lower-right owl",
+        "framework": "optional 100/0 as part of the locked headline only"
+      }
+    },
+    {
+      "index": 5,
+      "id": "05",
+      "role": "save_phases",
+      "archetype": "comparison_two_column",
+      "victoria": false,
+      "animal": null,
+      "has_framework": true,
+      "copy": {
+        "ru": {
+          "headline": "Отношения vs Серая зона",
+          "lines": [
+            "Пара: открытый статус, планы на будущее, безопасность",
+            "Серая зона: встречи на его условиях, планы на вечер, тревога"
+          ],
+          "body": "Пара: открытый статус, планы на месяцы, безопасность. Серая зона: встречи на его условиях и вечная тревога."
+        },
+        "en": {
+          "headline": "Committed vs The Grey Zone",
+          "lines": [
+            "Committed: clear status, shared future, emotional safety",
+            "Grey Zone: terms on his schedule, plans for tonight, anxiety"
+          ],
+          "body": "Committed: clear status, plans for months ahead, safety. Grey Zone: terms on his schedule and constant anxiety."
+        }
+      },
+      "prefer_on_image": "headline + lines (not a third paraphrase of body)",
+      "scene": "Two vertical columns on charcoal. Magenta tape as column edge. Locked lines only — do not invent a 4-row table beyond the JSON lines. Save-worthy screenshot.",
+      "zones": {
+        "headline": "top 22%",
+        "col_left": "left 40% mid-lower",
+        "col_right": "right 40% mid-lower",
+        "gutter_internal": "thin magenta, not a new word"
+      }
+    },
+    {
+      "index": 6,
+      "id": "06",
+      "role": "save_says_hears",
+      "archetype": "three_layer_depth_cards",
+      "victoria": false,
+      "animal": null,
+      "has_framework": true,
+      "copy": {
+        "ru": {
+          "headline": "Говорит vs Слышишь vs Реальность",
+          "lines": [
+            "Говорит: «Зачем рамки, нам же и так классно»",
+            "Слышишь: «Он ценит искренность без формальностей»",
+            "Реальность: «Хочу твой ресурс без обязательств»"
+          ]
+        },
+        "en": {
+          "headline": "Says vs Hears vs Reality",
+          "lines": [
+            "Says: \"Why ruin a great vibe with heavy labels?\"",
+            "You hear: \"He values pure, organic connection\"",
+            "Reality: \"I want full access without being accountable\""
+          ]
+        }
+      },
+      "prefer_on_image": "headline + three lines",
+      "scene": "Three stacked cards, increasing contrast; Reality card can sit on a magenta tape block with white type. Meaning depth like old slide-04. Family palette. No animal.",
+      "zones": {
+        "headline": "top 18%",
+        "card_1": "upper-mid",
+        "card_2": "mid",
+        "card_3": "lower — strongest contrast"
+      }
+    },
+    {
+      "index": 7,
+      "id": "07",
+      "role": "save_checklist",
+      "archetype": "numbered_checklist",
+      "victoria": false,
+      "animal": null,
+      "has_framework": true,
+      "copy": {
+        "ru": {
+          "headline": "3 теста на ясность в отношениях",
+          "lines": [
+            "1. Тест открытости: знает ли его окружение, кто ты?",
+            "2. Тест опоры: есть ли он рядом в обычный вторник?",
+            "3. Тест прямоты: вызывает ли разговор о статусе злость?"
+          ]
+        },
+        "en": {
+          "headline": "3 clarity tests to know where you stand",
+          "lines": [
+            "1. Public test: does his inner circle know you are a couple?",
+            "2. Support test: is he present on a messy Tuesday afternoon?",
+            "3. Direct test: does asking about status trigger defensive anger?"
+          ]
+        }
+      },
+      "prefer_on_image": "headline + three numbered lines",
+      "scene": "Three stacked checklist rows, numbers in magenta pills (digits only). Screenshot-friendly. No animal. No extra test names.",
+      "zones": {
+        "headline": "top 22%",
+        "item_1": "row A",
+        "item_2": "row B",
+        "item_3": "row C"
+      }
+    },
+    {
+      "index": 8,
+      "id": "08",
+      "role": "recap_rule",
+      "archetype": "rule_statement_medallion",
+      "victoria": false,
+      "animal": null,
+      "has_framework": true,
+      "copy": {
+        "ru": {
+          "headline": "Определённость — это база",
+          "body": "Тот, кто боится назвать тебя своей, держит дверь открытой. Твоя жизнь не поле для вечных кастингов."
+        },
+        "en": {
+          "headline": "Clarity is the bare minimum",
+          "body": "A man who avoids calling you his is keeping the exit door unlocked. Your heart is not an audition room."
+        }
+      },
+      "scene": "Type-forward close. Optional soft-gold ТАРО / СЕЙЧАС medallion native in a corner, not covering the headline. No animal. No extra slogan.",
+      "zones": {
+        "headline": "upper 40%, huge white",
+        "body": "mid-lower white",
+        "medallion": "optional lower corner, small"
+      }
+    },
+    {
+      "index": 9,
+      "id": "09",
+      "role": "cta",
+      "archetype": "cta_in_scene_portrait",
+      "victoria": true,
+      "animal": null,
+      "copy": {
+        "ru": {
+          "headline": "Напиши СТАТУС",
+          "body": "Аудиоразбор в моём приложении. Суть – Тень – Вектор.",
+          "cta": "Слово СТАТУС в комментариях",
+          "slogan": "Ясность сейчас"
+        },
+        "en": {
+          "headline": "Comment LABELS",
+          "body": "Audio reading in my app. Essence–Shadow–Vector.",
+          "cta": "Write LABELS in the comments",
+          "slogan": "Clarity now"
+        }
+      },
+      "outfit": "petrol-teal silk blouse with soft high neck (not turtleneck, not wrap); cropped espresso suede jacket worn open; slim black trousers",
+      "pose": "standing 3/4, weight on back hip, one hand loosely on opposite forearm, tender but firm into camera — not ref tank pose, not yesterday satin wrap",
+      "scene": "Dark in-scene standing portrait. Victoria only woman's face. Huge magenta script trigger СТАТУС / LABELS as the visual punch. White headline + body + slogan from JSON. No URL, no bot, no Academy, no sticker halo.",
+      "zones": {
+        "script_trigger": "upper-mid, huge magenta handwritten СТАТУС / LABELS",
+        "headline": "top, white heavy sans",
+        "body": "under headline, white",
+        "cta": "may merge with headline; do not invent a third CTA line",
+        "slogan": "small magenta or white, locked slogan only",
+        "hero": "lower half Victoria in-scene"
+      },
+      "one_action": "comment trigger → app audio"
+    }
+  ]
+}

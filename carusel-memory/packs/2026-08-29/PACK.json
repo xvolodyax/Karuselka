@@ -1,0 +1,53 @@
+{
+  "pack_id": "2026-08-29",
+  "date": "2026-08-29",
+  "slot": "11:10 MSK",
+  "late": true,
+  "topic": {
+    "ru": "Зачем вешать ярлыки: почему он ведёт себя как твой мужчина, но боится статуса?",
+    "en": "Why Put Labels On It: When he acts like your man but avoids commitment"
+  },
+  "note": "New relationship-pain pair. Forbidden repeats: Pause, Ping vs step, Спишь? after 24 days, Тепло/WARMTH, B18, triggers ШАГ/STEP/ТЕПЛО/WARMTH/ПРОЧИТАНО/ПАУЗА/PAUSE. Static 9 PNG slides only — no Grok/motion/animate. Publish skipped.",
+  "live_posts_do_not_touch": {
+    "ru": "https://www.instagram.com/p/Dci-EP1ErI-/",
+    "en": "https://www.instagram.com/p/Dci-ozwAH4l/"
+  },
+  "visual_family": "animals_viktoria_collage",
+  "face_lock": "viktoriaref.png",
+  "slice_method": "seam",
+  "hair_lock": "warm honey/wheat blonde with darker medium-brown roots as on viktoriaref.png; platinum = FAIL",
+  "product": "app_audio",
+  "cta_style": "comment_trigger",
+  "trigger_words": {
+    "ru": "СТАТУС",
+    "en": "LABELS"
+  },
+  "langs": ["ru", "en"],
+  "publish_requested": false,
+  "publish_actor": "Hall via Composio after human review",
+  "skip_motion": true,
+  "skip_animate": true,
+  "skip_glavred": true,
+  "profiles": {
+    "ru": {
+      "brand": "ТАРО СЕЙЧАС",
+      "handle": "@todaytaro_ru",
+      "slogan": "Ясность сейчас"
+    },
+    "en": {
+      "brand": "Today Tarot",
+      "handle": "@todaytaro_bot",
+      "slogan": "Clarity now",
+      "no_academy": true
+    }
+  },
+  "swarm": {
+    "mode": "live",
+    "dispatch": "Task(generalPurpose) one step each",
+    "text_model": "gemini-3.7-flash-high",
+    "written_by": "gemini",
+    "publish": "skipped",
+    "motion": "skipped",
+    "animate": "skipped"
+  }
+}

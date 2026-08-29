@@ -1,0 +1,130 @@
+{
+  "version": "1",
+  "pack_id": "2026-08-29",
+  "carousel_family": "animals_viktoria_collage",
+  "minimum_meaningful_image_assets": 1,
+  "minimum_animal_slides": 3,
+  "victoria_slides": [1, 9],
+  "zones": [
+    {
+      "id": "slide-01-headline",
+      "slide": 1,
+      "type": "type",
+      "source_has_image": false,
+      "required_for_fidelity": true,
+      "implementation": "prompt-type",
+      "status": "ready"
+    },
+    {
+      "id": "slide-01-hero-victoria",
+      "slide": 1,
+      "type": "photo",
+      "source_has_image": true,
+      "required_for_fidelity": true,
+      "implementation": "i2i-face-lock",
+      "asset_registry_id": "face-lock-viktoriaref",
+      "status": "ready"
+    },
+    {
+      "id": "slide-01-cat",
+      "slide": 1,
+      "type": "photo",
+      "source_has_image": true,
+      "required_for_fidelity": true,
+      "implementation": "prompt-in-scene",
+      "status": "ready"
+    },
+    {
+      "id": "slide-02-headline",
+      "slide": 2,
+      "type": "type",
+      "required_for_fidelity": true,
+      "implementation": "prompt-type",
+      "status": "ready"
+    },
+    {
+      "id": "slide-02-dog",
+      "slide": 2,
+      "type": "photo",
+      "required_for_fidelity": true,
+      "implementation": "prompt-in-scene",
+      "status": "ready"
+    },
+    {
+      "id": "slide-03-tape",
+      "slide": 3,
+      "type": "shape",
+      "required_for_fidelity": true,
+      "implementation": "prompt-graphic",
+      "status": "ready"
+    },
+    {
+      "id": "slide-04-owl",
+      "slide": 4,
+      "type": "photo",
+      "required_for_fidelity": true,
+      "implementation": "prompt-in-scene",
+      "status": "ready"
+    },
+    {
+      "id": "slide-05-comparison",
+      "slide": 5,
+      "type": "shape",
+      "required_for_fidelity": true,
+      "implementation": "prompt-type-table",
+      "status": "ready"
+    },
+    {
+      "id": "slide-06-depth-cards",
+      "slide": 6,
+      "type": "shape",
+      "required_for_fidelity": true,
+      "implementation": "prompt-type-cards",
+      "status": "ready"
+    },
+    {
+      "id": "slide-07-checklist",
+      "slide": 7,
+      "type": "shape",
+      "required_for_fidelity": true,
+      "implementation": "prompt-type-list",
+      "status": "ready"
+    },
+    {
+      "id": "slide-08-rule",
+      "slide": 8,
+      "type": "type",
+      "required_for_fidelity": true,
+      "implementation": "prompt-type",
+      "status": "ready"
+    },
+    {
+      "id": "slide-08-medallion",
+      "slide": 8,
+      "type": "sticker",
+      "required_for_fidelity": false,
+      "implementation": "prompt-graphic",
+      "status": "ready"
+    },
+    {
+      "id": "slide-09-hero-victoria",
+      "slide": 9,
+      "type": "photo",
+      "source_has_image": true,
+      "required_for_fidelity": true,
+      "implementation": "i2i-face-lock",
+      "asset_registry_id": "face-lock-viktoriaref",
+      "status": "ready"
+    },
+    {
+      "id": "slide-09-trigger",
+      "slide": 9,
+      "type": "type",
+      "required_for_fidelity": true,
+      "implementation": "prompt-type",
+      "status": "ready"
+    }
+  ],
+  "p0": [],
+  "notes": "No MCP image KV. Generation happens after image-prompter. All type zones use locked verbatim copy only."
+}

@@ -1,0 +1,96 @@
+{
+  "method": "copy interior pixels over outer edge strips; no crop, no resize",
+  "slides_dir": "/tmp/kie-pack-en/carusel-memory/output/slides",
+  "slides": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "strip": 10,
+  "edges": [
+    "bottom",
+    "left",
+    "right",
+    "top"
+  ],
+  "results": [
+    {
+      "file": "slide-01.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 39841
+    },
+    {
+      "file": "slide-02.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 45466
+    },
+    {
+      "file": "slide-03.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 45879
+    },
+    {
+      "file": "slide-04.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 43899
+    },
+    {
+      "file": "slide-05.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 47929
+    },
+    {
+      "file": "slide-06.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 45573
+    },
+    {
+      "file": "slide-07.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 43295
+    },
+    {
+      "file": "slide-08.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 46971
+    },
+    {
+      "file": "slide-09.png",
+      "size": {
+        "width": 1080,
+        "height": 1440
+      },
+      "changed_pixels": 40461
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "generation_mode": "grid_3x3",
+  "slice_method": "seam",
+  "split_mode": "gutter",
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major"
+  },
+  "aspect_ratio": "3:4",
+  "resolution": "4K",
+  "cell_size": {
+    "width": 1080,
+    "height": 1440
+  },
+  "static_png_only": true,
+  "slide_01": "static_png",
+  "face_lock": "viktoriaref.png",
+  "i2i_source": "carusel-memory/references/viktoriaref.png",
+  "pipeline_lang": "ru",
+  "langs": [
+    "ru",
+    "en"
+  ],
+  "master": {
+    "path": "carusel-memory/output/master/master.png",
+    "source": "carusel-memory/output/master/source.png",
+    "size": {
+      "width": 2448,
+      "height": 3264
+    }
+  },
+  "slides": [
+    "carusel-memory/output/slides/slide-01.png",
+    "carusel-memory/output/slides/slide-02.png",
+    "carusel-memory/output/slides/slide-03.png",
+    "carusel-memory/output/slides/slide-04.png",
+    "carusel-memory/output/slides/slide-05.png",
+    "carusel-memory/output/slides/slide-06.png",
+    "carusel-memory/output/slides/slide-07.png",
+    "carusel-memory/output/slides/slide-08.png",
+    "carusel-memory/output/slides/slide-09.png"
+  ],
+  "ru": {
+    "taskId": "9835d862b26219d8a3449e1970f3505c",
+    "failed_then_retry": "e1f9caf0e407ca0a57cd6aa60596b1ec",
+    "fail_reason": "CROOKED CANVAS exit 2 (white seams missing/offset); whole master regenerated",
+    "slice_status": "ok",
+    "gutter_qa": "ok",
+    "edge_cleanup": "ok",
+    "master_size": {
+      "width": 2448,
+      "height": 3264
+    },
+    "source_size": {
+      "width": 2448,
+      "height": 3264
+    },
+    "split_meta": {
+      "requested_mode": "gutter",
+      "split_mode": "gutter_detect",
+      "v_gutters_px": [
+        {
+          "start": 807,
+          "end": 817
+        },
+        {
+          "start": 1623,
+          "end": 1632
+        }
+      ],
+      "h_gutters_px": [
+        {
+          "start": 1085,
+          "end": 1096
+        },
+        {
+          "start": 2177,
+          "end": 2189
+        }
+      ],
+      "max_center_offset_px": 7.0,
+      "max_center_offset_limit_px": 73.44
+    },
+    "paths": {
+      "master": "carusel-memory/packs/2026-08-29/ru/master.png",
+      "source": "carusel-memory/packs/2026-08-29/ru/source.png",
+      "slides": [
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-01.png",
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-02.png",
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-03.png",
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-04.png",
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-05.png",
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-06.png",
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-07.png",
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-08.png",
+        "carusel-memory/packs/2026-08-29/ru/slides/slide-09.png"
+      ]
+    }
+  },
+  "en": {
+    "taskId": "9e770d1e5945a132f7a5df44b6420c5e",
+    "failed_then_retry": "d29cb7c951146d4001d05dca06fc6b34",
+    "fail_reason": "CROOKED CANVAS exit 2 (white seams missing/offset); whole master regenerated",
+    "slice_status": "ok",
+    "gutter_qa": "ok",
+    "edge_cleanup": "ok",
+    "master_size": {
+      "width": 2448,
+      "height": 3264
+    },
+    "source_size": {
+      "width": 2448,
+      "height": 3264
+    },
+    "split_meta": {
+      "requested_mode": "gutter",
+      "split_mode": "gutter_detect",
+      "v_gutters_px": [
+        {
+          "start": 809,
+          "end": 816
+        },
+        {
+          "start": 1619,
+          "end": 1628
+        }
+      ],
+      "h_gutters_px": [
+        {
+          "start": 1083,
+          "end": 1092
+        },
+        {
+          "start": 2172,
+          "end": 2181
+        }
+      ],
+      "max_center_offset_px": 8.5,
+      "max_center_offset_limit_px": 73.44
+    },
+    "paths": {
+      "master": "carusel-memory/packs/2026-08-29/en/master.png",
+      "source": "carusel-memory/packs/2026-08-29/en/source.png",
+      "slides": [
+        "carusel-memory/packs/2026-08-29/en/slides/slide-01.png",
+        "carusel-memory/packs/2026-08-29/en/slides/slide-02.png",
+        "carusel-memory/packs/2026-08-29/en/slides/slide-03.png",
+        "carusel-memory/packs/2026-08-29/en/slides/slide-04.png",
+        "carusel-memory/packs/2026-08-29/en/slides/slide-05.png",
+        "carusel-memory/packs/2026-08-29/en/slides/slide-06.png",
+        "carusel-memory/packs/2026-08-29/en/slides/slide-07.png",
+        "carusel-memory/packs/2026-08-29/en/slides/slide-08.png",
+        "carusel-memory/packs/2026-08-29/en/slides/slide-09.png"
+      ]
+    }
+  },
+  "edge_cleanup": {
+    "enabled": true,
+    "strip": 10,
+    "status": "ok"
+  },
+  "gutter_qa": {
+    "enabled": true,
+    "mode": "seam",
+    "status": "ok"
+  }
+}

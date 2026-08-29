@@ -1,0 +1,122 @@
+{
+  "version": "1",
+  "pack_id": "2026-08-29",
+  "carousel_family": "animals_viktoria_collage",
+  "slice_method": "seam",
+  "face_lock": "viktoriaref.png",
+  "sources": [
+    {
+      "id": "animals-viktoria-style-lock",
+      "path": "carusel-memory/references/animals-viktoria-style-lock.png",
+      "also": "image-851e.png / karusel-old/image-851e.png",
+      "reference_role": {
+        "style": "dark collage, cutout energy, fashion-lifestyle, grain on charcoal",
+        "layout": "3×3 equal panels, type-forward, animal or object as one job per cell",
+        "typography": "heavy white condensed sans + thin magenta script + short magenta pills",
+        "mood": "night intuition, sharp, not beige, not horror"
+      },
+      "do_not_i2i_as": "face"
+    },
+    {
+      "id": "viktoriaref",
+      "path": "carusel-memory/references/viktoriaref.png",
+      "reference_role": {
+        "style": "none",
+        "layout": "none",
+        "typography": "none",
+        "mood": "identity only",
+        "identity": "one woman; green eyes with slight hazel; warm honey blonde + darker roots; soft tender expression"
+      },
+      "do_not_copy": [
+        "white spaghetti-strap cami",
+        "gold filigree pendant",
+        "static frontal tank pose",
+        "plain studio grey backdrop as the carousel world"
+      ],
+      "do_not_i2i_as": "style sheet / 12-up / second woman"
+    },
+    {
+      "id": "slide-04-depth",
+      "path": "carusel-memory/references/slide-04-depth.md",
+      "reference_role": {
+        "style": "none — not the visual family",
+        "layout": "layered psychological card",
+        "typography": "Говорит / Слышишь / Реальность meaning depth",
+        "mood": "teaching, not vibe"
+      }
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "id": "alena-viktoria-png",
+      "path": "виктория.png",
+      "reason": "Alena. Never i2i."
+    },
+    {
+      "id": "retired-faces",
+      "paths": [
+        "victoria-sheet.png",
+        "victoria.png",
+        "victoria_ref.jpg",
+        "alena*.png",
+        "character-sheet-2k",
+        "cover-old.png"
+      ],
+      "reason": "deleted / retired / wrong woman / platinum-studio drift"
+    }
+  ],
+  "preserve": [
+    "grid 3×3 row-major, self-contained 3:4 cells",
+    "palette charcoal + #ff006e + white + soft gold",
+    "type hierarchy: heavy sans headline, magenta script secondary, tape pills",
+    "animal-as-metaphor motif (cat / dog / owl jobs)",
+    "Victoria hero on hook + CTA",
+    "high contrast thumbnail hook",
+    "seam gutters as the cut system"
+  ],
+  "change": [
+    "topic objects: bed / closed door / 100/0 / comparison / depth cards / 3 tests / trigger СТАТУС",
+    "exact locked copy (RU + EN)",
+    "in-scene integration (style-lock used stickers with white borders — seam contract forbids that halo)",
+    "wardrobe and pose this pack",
+    "CTA to in-app audio, not bot"
+  ],
+  "do_not_borrow": [
+    "Portuguese words and English decorative labels on the style-lock (RESET, self-care, SPA MINDSET, INNER SIGNAL, ALL IN, DEEP MODE, DAILY RITUAL, NO FILTER, OWN IT, СИЯНИЕ standard)",
+    "golden-retriever towel-turban, bubblegum-cat gag, beagle-in-sunglasses meme treatment if it has no job",
+    "foreign faces, Alena, other brands",
+    "ref outfit and pendant",
+    "2026-08-28 burgundy turtleneck / black satin wrap",
+    "horror table, skulls, ouija"
+  ],
+  "panel_archetype_map": {
+    "01": "hero_in_scene_portrait ← style-lock cat/intuition cover, minus sticker halo, plus Victoria",
+    "02": "type_heavy_pain_with_animal ← style-lock loyalty dog",
+    "03": "torn_tape_mistake ← style-lock magenta pill / lips power panels as graphic only",
+    "04": "mechanism_owl ← style-lock owl / night thoughts",
+    "05": "comparison_two_column ← style-lock FOCUS split objects, rebuilt as type table",
+    "06": "three_layer_depth_cards ← slide-04 meaning depth, family palette",
+    "07": "numbered_checklist ← ritual pills without borrowed English labels",
+    "08": "rule_statement_medallion ← gold tarot/mark panel as optional medallion",
+    "09": "cta_in_scene_portrait ← new CTA archetype, huge magenta trigger"
+  },
+  "layout_metrics": {
+    "master": "3:4 @ 4K",
+    "panel": "3:4",
+    "safe_margin_pct": 12,
+    "gutters": "thin white at 1/3 and 2/3",
+    "internal_type_ratio_value_slides": "50–60% type, subject low or side",
+    "hook_type_ratio": "large scene line + Victoria + one animal"
+  },
+  "typography_from_source": {
+    "headline": "heavy condensed white sans, often 1–3 words on the lock — here longer verbatim hooks, still huge",
+    "script": "magenta thin handwritten under or through the headline",
+    "pills": "magenta torn rectangles; on the lock they hold extra English — we keep the shape, drop invented words"
+  },
+  "image_treatment_from_source": {
+    "lock": "photographic stickers with thick white borders and drop shadow",
+    "this_pack": "photographic subjects sit in the charcoal room; no white die-cut; collage energy from tape + type layers only"
+  },
+  "thumbnail_test": "At 200px width, slide 01 still shows Victoria, a cat, and the first white line «Вы проводите вместе ночи».",
+  "save_test": ["05 two columns", "06 three cards", "07 three tests", "08 one rule"]
+}

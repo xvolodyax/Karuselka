@@ -1,0 +1,291 @@
+{
+  "version": "1",
+  "pack_id": "2026-08-29",
+  "run_id": "2026-08-29-1110",
+  "lang": "ru",
+  "en_pair": true,
+  "name": "Labels / Status — situationship",
+  "topic_ru": "Зачем вешать ярлыки: почему он ведёт себя как твой мужчина, но боится статуса?",
+  "topic_en": "Why Put Labels On It: When he acts like your man but avoids commitment",
+  "carousel_family": "animals_viktoria_collage",
+  "face_lock": "viktoriaref.png",
+  "face_lock_path": "carusel-memory/references/viktoriaref.png",
+  "style_lock_path": "carusel-memory/references/animals-viktoria-style-lock.png",
+  "slice_method": "seam",
+  "static_png_only": true,
+  "slide_01": "static_png",
+  "generation_mode": "grid_3x3",
+  "aspect_ratio": "3:4",
+  "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major",
+    "gutters": "thin white seams at 1/3 and 2/3",
+    "cell_is_self_contained": true
+  },
+  "trigger_word_ru": "СТАТУС",
+  "trigger_word_en": "LABELS",
+  "product": "app_audio",
+  "handle_ru": "@todaytaro_ru",
+  "handle_en": "@todaytaro_bot",
+  "palette": {
+    "background": "#111111",
+    "background_alt": "#1a1a1a",
+    "accent": "#ff006e",
+    "type": "#ffffff",
+    "metal": "#c9a227"
+  },
+  "typography": {
+    "headline": "heavy condensed sans, white",
+    "body": "medium sans, white, one short line",
+    "script": "thin handwritten, magenta #ff006e",
+    "cta": "huge magenta script trigger + white sans headline"
+  },
+  "identity": {
+    "eyes": "green with slight hazel",
+    "hair": "warm honey blonde + darker roots, not platinum",
+    "expression": "soft, tender",
+    "victoria_slides": [1, 9],
+    "in_scene": true,
+    "sticker_halo": false,
+    "forbidden_face_files": [
+      "виктория.png",
+      "victoria-sheet.png",
+      "victoria.png",
+      "victoria_ref.jpg",
+      "alena*.png",
+      "character-sheet-2k"
+    ]
+  },
+  "wardrobe": {
+    "slide_01": {
+      "outfit": "graphite silk pajama shirt, long sleeves, collar open two buttons, no necklace; high-waist black wide-leg trousers",
+      "pose": "3/4 seated on the edge of a rumpled charcoal bed, looking over her shoulder toward camera, soft knowing tenderness",
+      "why_new": "morning-after intimacy for nights-together hook; not white cami, not gold pendant, not burgundy turtleneck"
+    },
+    "slide_09": {
+      "outfit": "petrol-teal silk blouse with a soft high neck (not turtleneck, not wrap); cropped espresso suede jacket worn open; slim black trousers",
+      "pose": "standing 3/4, weight on back hip, one hand loosely on opposite forearm, tender but firm look into camera",
+      "why_new": "CTA authority without studio blazer; not black satin wrap from 2026-08-28"
+    },
+    "do_not_repeat": [
+      "white cami + gold pendant from viktoriaref.png",
+      "burgundy turtleneck (2026-08-28 slide 01)",
+      "black satin wrap (2026-08-28 slide 09)",
+      "ivory studio-blazer / cover-old"
+    ]
+  },
+  "animals_map": {
+    "minimum": 3,
+    "01": {
+      "animal": "cat",
+      "job": "чует фальшь: кот улавливает скрытую дистанцию за нежными словами"
+    },
+    "02": {
+      "animal": "dog",
+      "job": "верность безответному вопросу: преданное ожидание у закрытой двери"
+    },
+    "04": {
+      "animal": "owl",
+      "job": "ночная мудрость: сова видит холодный расчет сквозь романтический туман"
+    },
+    "other_slides": "no animal — type/framework only"
+  },
+  "preserve": [
+    "dark charcoal / matte black full-bleed field (#111111–#1a1a1a)",
+    "hot magenta #ff006e + white type mix (heavy sans + thin script)",
+    "torn-paper / torn-tape magenta pills as graphic rhythm",
+    "animals as metaphor (not cute pets without a job)",
+    "Victoria on slides 1 and 9, same woman, in-scene",
+    "3×3 row-major grid, each panel 3:4, master 3:4 @ 4K",
+    "seam slice: thin white gutters at 1/3 and 2/3 (Excalibur)",
+    "high thumbnail contrast; hook readable in 2 seconds",
+    "optional soft-gold ТАРО / СЕЙЧАС medallion if native",
+    "sparing fashion-lifestyle decor (coffee, sunglasses, lips) without new words"
+  ],
+  "change": [
+    "topic: labels / situationship / status fear — not Pause, Ping, Warmth",
+    "verbatim copy from locked RU + EN JSON (new headlines, bodies, trigger СТАТУС / LABELS)",
+    "which animal sits on which slide (cat 01, dog 02, owl 04)",
+    "domain objects: rumpled bed, closed door, two-column contrast, three depth cards, 3-test checklist",
+    "Victoria wardrobe and pose (new this pack)",
+    "in-scene subjects instead of style-lock sticker cutouts with white die-cut borders",
+    "CTA product: app_audio Суть – Тень – Вектор / Essence–Shadow–Vector",
+    "static PNG for all 9 including slide 01 (no motion)"
+  ],
+  "do_not_borrow": [
+    "Portuguese text and English extra labels from style-lock (RESET, SPA MINDSET, INNER SIGNAL, ALL IN, DEEP MODE, DAILY RITUAL, NO FILTER, OWN IT)",
+    "foreign women's faces / Portuguese models",
+    "Alena face and files (виктория.png, victoria.png, victoria_ref.jpg, alena*.png, character-sheet-2k, victoria-sheet.png)",
+    "white cami + gold filigree pendant + frozen frontal tank pose from viktoriaref.png",
+    "burgundy turtleneck and black satin wrap from pack 2026-08-28",
+    "platinum / white-blonde hair, brown-only or blue/grey eyes",
+    "sticker halo / die-cut white outline around Victoria or animals",
+    "horror table, skulls, blood, dripping candles, ouija, demon faces",
+    "beige lifestyle wash, pastel rainbow",
+    "other brands, UNILIBRE / institution marks, Victoria signature watermark",
+    "word «Сцена», extra slide titles, bot spreads, raw URLs, Academy on EN"
+  ],
+  "panel_archetype_map": {
+    "01": {
+      "source_archetype": "hero_animal_type_cover (style-lock ИНТУИЦИЯ / cat panel)",
+      "adapted_to": "hero_in_scene_portrait",
+      "notes": "Victoria + cat in a lived night-to-morning room; huge white hook; magenta script from locked copy only"
+    },
+    "02": {
+      "source_archetype": "loyalty_dog_type (style-lock LOYALTY / dog)",
+      "adapted_to": "type_heavy_pain_with_animal",
+      "notes": "50–60% type; dog waits at a closed door; no Victoria"
+    },
+    "03": {
+      "source_archetype": "magenta_pill_power (style-lock POWER / torn tape)",
+      "adapted_to": "torn_tape_mistake",
+      "notes": "type + torn magenta tape framing verbatim headline; no animal; no extra myth labels"
+    },
+    "04": {
+      "source_archetype": "night_owl_thoughts (style-lock НОЧНЫЕ / owl)",
+      "adapted_to": "mechanism_owl",
+      "notes": "owl as night clarity over 100/0 contract type"
+    },
+    "05": {
+      "source_archetype": "split_focus_collage (style-lock FOCUS two-zone objects)",
+      "adapted_to": "comparison_two_column",
+      "notes": "Отношения vs Серая зона; save framework; no extra column headers beyond locked lines"
+    },
+    "06": {
+      "source_archetype": "meaning_depth_from_slide-04.png (not visual family)",
+      "adapted_to": "three_layer_depth_cards",
+      "notes": "Говорит vs Слышишь vs Реальность; layered cards; type-heavy"
+    },
+    "07": {
+      "source_archetype": "numbered_ritual_pills",
+      "adapted_to": "numbered_checklist",
+      "notes": "3 теста; three stacked items; save card"
+    },
+    "08": {
+      "source_archetype": "gold_mark_closing (style-lock tarot/gold panel)",
+      "adapted_to": "rule_statement_medallion",
+      "notes": "huge rule headline; optional gold ТАРО/СЕЙЧАС medallion; no animal"
+    },
+    "09": {
+      "source_archetype": "cta_portrait_script",
+      "adapted_to": "cta_in_scene_portrait",
+      "notes": "Victoria new outfit + huge magenta trigger СТАТУС / LABELS; slogan from JSON only"
+    }
+  },
+  "thumbnail_test": "Slide 01 at ~200px must read «Вы проводите вместе ночи» as a lived situation plus Victoria and one cat. Information gap: intimacy vs «Зачем вешать ярлыки». No title card, no word Сцена.",
+  "save_test": [
+    "05 comparison table — screenshot the two columns",
+    "06 says / hears / reality — screenshot the three cards",
+    "07 3 clarity tests — screenshot the checklist",
+    "08 decision rule — screenshot the one-liner"
+  ],
+  "prompt_hints": {
+    "reference_role": "animals-viktoria-style-lock.png / image-851e.png = style + layout + palette only. viktoriaref.png = ONLY face + hair + eyes lock, first and only input_url. Never i2i style-lock as a face. Never i2i Alena files.",
+    "preserve": [
+      "charcoal field, magenta + white type, torn-tape rhythm",
+      "animals-as-metaphor, Victoria on 1+9 in-scene",
+      "3×3 seam gutters, 3:4 panels, 4K master"
+    ],
+    "change": [
+      "labels/status topic and locked verbatim copy",
+      "cat/dog/owl placement, new wardrobe and poses",
+      "in-scene (no sticker halo), static PNG"
+    ],
+    "do_not_borrow": [
+      "Portuguese/extra style-lock labels",
+      "foreign faces, Alena, white cami + pendant, yesterday burgundy turtleneck / black satin wrap",
+      "horror table, platinum hair, word Сцена"
+    ],
+    "typography_rules": {
+      "exact_text": true,
+      "verbatim_from": [
+        "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+        "carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json"
+      ],
+      "no_extra_labels": true,
+      "no_word_scena": true,
+      "no_watermark": true,
+      "hierarchy": "headline white heavy sans > short body white > magenta script only if in JSON",
+      "safe_margin_pct": 12,
+      "magenta_script_examples_ru": ["Зачем вешать ярлыки", "СТАТУС", "Ясность сейчас"],
+      "magenta_script_examples_en": ["Why Put Labels On It", "LABELS", "Clarity now"]
+    },
+    "grid_rules": {
+      "generation_mode": "grid_3x3",
+      "aspect_ratio": "3:4",
+      "resolution": "4K",
+      "order": "row-major",
+      "slice_method": "seam",
+      "gutters": "exact thin white lines at 1/3 and 2/3 width and height; no bleed across cells",
+      "crooked_seam": "rebuild whole canvas",
+      "safe_area": "10–12% from every cell edge and every seam"
+    },
+    "negative_constraints": [
+      "wrong panel count, 2×3, horizontal strip, 4:5 or 1:1 publish cells",
+      "zero-gutter cells-touch prompt (causes sticker outlines)",
+      "white halo / die-cut around Victoria or animals",
+      "platinum hair, Alena face, copied white cami + gold pendant",
+      "burgundy turtleneck, black satin wrap",
+      "extra text, Portuguese, RESET/SPA MINDSET-class labels, Сцена",
+      "horror candles/skulls, beige wash, pastel rainbow",
+      "video / motion / MP4 on slide 01",
+      "second face, doubles, other brands, URLs"
+    ],
+    "input_urls_hint": "exactly one URL after upload of viktoriaref.png",
+    "per_panel_scene_hints": [
+      {
+        "slide": 1,
+        "role": "hook",
+        "hint": "Lived night-to-morning room. Victoria in graphite silk pajama shirt + black wide-leg trousers, seated 3/4 on rumpled dark bed, look over shoulder. Dark grey cat at her hip, ears forward, sensing distance. Huge white headline. Magenta script only «Зачем вешать ярлыки» / «Why Put Labels On It». Optional coffee cup. No sticker halo. Thumbnail-readable."
+      },
+      {
+        "slide": 2,
+        "role": "pain",
+        "hint": "Type-heavy 50–60%. White headline + short body. Loyal dog sitting at a closed dark door, waiting. No Victoria. No extra labels."
+      },
+      {
+        "slide": 3,
+        "role": "mistake",
+        "hint": "Torn magenta tape as graphic over dark field. Verbatim headline «Ловушка удобной девушки» / «The cool girl trap». No animal. No crossed-out invented myth words."
+      },
+      {
+        "slide": 4,
+        "role": "mechanism",
+        "hint": "Owl in-scene (perch or low flight) seeing through romantic fog. Type for 100/0 contract. No Victoria."
+      },
+      {
+        "slide": 5,
+        "role": "save_phases",
+        "hint": "Two-column save card. Left/right contrast using locked lines only. Magenta tape as column markers, no new headers. No animal."
+      },
+      {
+        "slide": 6,
+        "role": "save_says_hears",
+        "hint": "Three stacked depth cards: Говорит / Слышишь / Реальность. Meaning depth like old slide-04, visual family still animals_viktoria_collage. No animal."
+      },
+      {
+        "slide": 7,
+        "role": "save_checklist",
+        "hint": "Numbered 1–3 checklist from locked lines. Clean pills, high contrast, screenshot-friendly. No animal."
+      },
+      {
+        "slide": 8,
+        "role": "recap_rule",
+        "hint": "Huge white rule headline. Short body. Optional gold ТАРО/СЕЙЧАС medallion native in corner. No animal. No extra slogan beyond locked copy."
+      },
+      {
+        "slide": 9,
+        "role": "cta",
+        "hint": "Victoria in petrol-teal silk blouse + cropped espresso suede jacket, standing 3/4, tender-firm. Huge magenta script trigger СТАТУС / LABELS. White headline + body + slogan from JSON. No URL, no bot, no Academy. No sticker halo. No animal required."
+      }
+    ]
+  },
+  "copy_sources": {
+    "ru": "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+    "en": "carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json"
+  },
+  "handoff_next": "image-prompter",
+  "do_not_write": ["CAROUSEL_IMAGE_PROMPT.json"]
+}

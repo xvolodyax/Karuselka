@@ -1,0 +1,146 @@
+{
+  "lang": "en",
+  "topic": "Hot & Cold: Why he holds your hand all weekend and goes cold on Monday",
+  "visual_family": "animals_viktoria_collage",
+  "hook_is_scene": true,
+  "trigger_word": "WARMTH",
+  "product": "app_audio",
+  "written_by": "gemini",
+  "hair_lock": "warm honey/wheat blonde with darker roots",
+  "hook_options": [
+    {
+      "framework": "pain",
+      "headline": "Searching for the exact second it shifted",
+      "why_it_swipes": "High resonance, but lacks the opening visual dynamic."
+    },
+    {
+      "framework": "contrarian",
+      "headline": "He didn't pull away because he was scared of love",
+      "why_it_swipes": "Strong cognitive dissonance, but reveals the insight too early."
+    },
+    {
+      "framework": "mistake",
+      "headline": "The mistake of warming someone who chose the cold",
+      "why_it_swipes": "Pinpoints the behavior trap, but less cinematic than the scene."
+    },
+    {
+      "framework": "mechanism",
+      "headline": "Why your brain confuses anxiety with deep passion",
+      "why_it_swipes": "Pure psychological term, forbidden for slide 1."
+    },
+    {
+      "framework": "scene",
+      "headline": "On Saturday he looked into your eyes and made plans. By Tuesday — a dry \"busy\" and cold silence.",
+      "why_it_swipes": "Instantly recognizable 2-second contrast scene without generic labels."
+    }
+  ],
+  "hook_rationale": "Selected the cinematic scene contrasting weekend intimacy with weekday emotional withdrawal. It establishes an immediate information gap: the reader instantly connects with the lived experience (\"what changed between Saturday and Tuesday?\") and swipes to uncover the underlying dynamic.",
+  "slide_count": 9,
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "hook_type": "scene",
+      "headline": "On Saturday he looked into your eyes",
+      "body": "and talked about trips together. By Tuesday — a dry \"busy\" and 3 days of cold silence.",
+      "script": "Hot & Cold",
+      "victoria": true,
+      "animal": "cat",
+      "animal_job": "you sense it: the sudden emotional temperature drop",
+      "notes": "animate; readable under 2 sec"
+    },
+    {
+      "index": 2,
+      "role": "pain",
+      "headline": "Searching for what you did wrong",
+      "body": "You scroll through messages. The silence hurts, but the brutal temperature drop hurts worse.",
+      "animal": "dog",
+      "animal_job": "loyalty to the unanswered question: waiting by the screen",
+      "notes": "pain of the scene, not vibe"
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "headline": "The trap of warming his draft",
+      "body": "You think: \"he's scared of his feelings.\" You respond to distance with double the warmth, fueling the cycle.",
+      "has_framework": true,
+      "notes": "the client mistake"
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "headline": "Intermittent reinforcement",
+      "body": "Unpredictability spikes your nervous system. Your brain confuses chronic anxiety with genuine passion.",
+      "animal": "owl",
+      "animal_job": "night thoughts piercing through emotional confusion",
+      "has_framework": true,
+      "notes": "psychological mechanism"
+    },
+    {
+      "index": 5,
+      "role": "save_phases",
+      "has_framework": true,
+      "headline": "Warm vs Cold: two phases",
+      "lines": [
+        "Warm: craving your energy, validation, and attention",
+        "Cold: retreating the moment consistency is required"
+      ],
+      "body": "Warm: craving your validation and attention. Cold: stepping back the second consistency is required.",
+      "notes": "save framework: phase breakdown"
+    },
+    {
+      "index": 6,
+      "role": "save_says_hears",
+      "has_framework": true,
+      "headline": "Says vs You Hear",
+      "lines": [
+        "Says: \"Work is crazy, don't want complications\"",
+        "You hear: \"I need to be patient and warm him up\"",
+        "Reality: \"I want intimacy without accountability\""
+      ],
+      "body": "Says: \"Work is crazy right now.\" You hear: \"I should warm him up.\" Reality: taking intimacy without accountability.",
+      "notes": "depth like old slide-04"
+    },
+    {
+      "index": 7,
+      "role": "save_checklist",
+      "has_framework": true,
+      "headline": "3 rules of self-grounding",
+      "lines": [
+        "1. Measure the baseline, not weekend peaks",
+        "2. When he steps back, stay where you are",
+        "3. Never warm up someone choosing the cold"
+      ],
+      "body": "1. Measure the baseline, not weekend peaks. 2. When he steps back, stay where you are. 3. Never warm someone choosing the cold.",
+      "notes": "save checklist"
+    },
+    {
+      "index": 8,
+      "role": "recap_rule",
+      "has_framework": true,
+      "headline": "Clarity over constant waiting",
+      "body": "Real connection brings stability, not an emotional roller coaster. The right person never leaves you guessing.",
+      "notes": "decision rule"
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "headline": "Comment WARMTH",
+      "body": "Audio reading in the app. Essence–Shadow–Vector.",
+      "cta": "Write WARMTH in the comments",
+      "slogan": "Clarity now",
+      "victoria": true,
+      "notes": "one trigger, one product app_audio, no URL, no Academy, no signature"
+    }
+  ],
+  "save_value": [
+    "slide-05 two phases breakdown",
+    "slide-06 says vs hears vs reality",
+    "slide-07 3 grounding rules checklist",
+    "slide-08 clarity decision rule"
+  ]
+}
