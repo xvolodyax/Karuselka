@@ -5,7 +5,7 @@
 | researcher | done (Gemini) |
 | copywriter | done (Gemini, RU+EN) |
 | designer | **done** — contract written, no pixels |
-| image-prompter | next |
+| image-prompter | **done** — RU 2029 / EN 2109 chars; no Kie |
 | slice | pending |
 | motion / animate | skip (static-png-only) |
 | design-guardian | pending |
@@ -26,7 +26,7 @@
 - `CAROUSEL_VISUAL_DIFF.md`
 - `CAROUSEL_IMAGE_GEN_STATUS.md`
 
-Not written: `CAROUSEL_IMAGE_PROMPT.json` (image-prompter).
+Written: `CAROUSEL_IMAGE_PROMPT.json` + `.md` (RU 2029 / EN 2109). Kie not called.
 
 ## Pack copies
 
@@ -35,4 +35,4 @@ Not written: `CAROUSEL_IMAGE_PROMPT.json` (image-prompter).
 
 ## Next
 
-image-prompter: one RU master prompt + EN sibling from the same blueprints. Face lock `viktoriaref.png`. `slice_method: seam`. Prompt char count ≤ 2200.
+slice: upload `viktoriaref.png`, Kie i2i both langs, seam cut. Do not rewrite prompts.
