@@ -1,0 +1,139 @@
+{
+  "lang": "en",
+  "topic": "He disappears on weekends: weekdays warm, Saturday empty",
+  "visual_family": "animals_viktoria_collage",
+  "hook_is_scene": true,
+  "trigger_word": "WEEKEND",
+  "product": "app_audio",
+  "written_by": "gemini",
+  "hook_options": [
+    {
+      "framework": "pain",
+      "headline": "Friday 6 PM silence. Monday: «How was it?»",
+      "why_it_swipes": "Instant recognition of the weekend vacuum after weekday intimacy"
+    },
+    {
+      "framework": "contrarian",
+      "headline": "He is not busy: we make time for what matters",
+      "why_it_swipes": "Breaks the rationalization illusion"
+    },
+    {
+      "framework": "mechanism",
+      "headline": "5 warm days vs 48 hours of complete silence",
+      "why_it_swipes": "Exposes relationship compartmentalization"
+    },
+    {
+      "framework": "mistake",
+      "headline": "You make excuses for him while ruining your weekend",
+      "why_it_swipes": "Calls out the waiting mode trap"
+    },
+    {
+      "framework": "specific_result",
+      "headline": "3 signs you are only his weekday routine slot",
+      "why_it_swipes": "High save intent diagnostic framework"
+    }
+  ],
+  "hook_rationale": "Hook 1 captures the specific micro-scene of the Friday communication blackout followed by the casual Monday morning check-in, driving instant curiosity and emotional resonance.",
+  "slide_count": 9,
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "headline": "Friday 6 PM silence. Monday: «How was it?»",
+      "body": "",
+      "animal": "cat",
+      "animal_metaphor": "sensing the hidden truth",
+      "victoria": true,
+      "notes": "Instant recognizable scene of weekend disappearance"
+    },
+    {
+      "index": 2,
+      "role": "problem",
+      "headline": "48 hours of silence after 5 warm days",
+      "body": "All week he texts every hour. But Saturday hits — and suddenly you disappear from his world.",
+      "animal": "dog",
+      "animal_metaphor": "loyalty to the waiting screen",
+      "victoria": false,
+      "notes": "The painful contrast between weekdays and weekends"
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "headline": "You make excuses for his silence",
+      "body": "«He's busy», «He needs rest». But a man who truly cares takes 10 seconds to send a single text.",
+      "animal": "dog",
+      "animal_metaphor": "the faithful waiting trap",
+      "victoria": false,
+      "notes": "The trap of making excuses for lack of effort"
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "headline": "You are just a weekday routine slot",
+      "body": "During work hours you cure his boredom. But when real life happens on weekends, you are kept outside.",
+      "animal": "cat",
+      "animal_metaphor": "intuition spots the boundary",
+      "victoria": false,
+      "notes": "The psychological mechanism of compartmentalization"
+    },
+    {
+      "index": 5,
+      "role": "save_decoder",
+      "headline": "What he says vs what it means",
+      "body": "«Off my phone on weekends» → Just not in your chat.\n«Too busy» → You are not in his rest priority.\n«Not a texter» → Yet texts all week.",
+      "animal": "owl",
+      "animal_metaphor": "night clarity and seeing through fog",
+      "victoria": false,
+      "notes": "High-value decoder framework for bookmarks"
+    },
+    {
+      "index": 6,
+      "role": "save_checklist",
+      "headline": "3 signs you are in the waiting trap",
+      "body": "1. You never know his weekend plans.\n2. He never invites you out spontaneously.\n3. His affection only exists during his office hours.",
+      "animal": "owl",
+      "animal_metaphor": "sober diagnostic check",
+      "victoria": false,
+      "notes": "Checklist for relationship status clarity"
+    },
+    {
+      "index": 7,
+      "role": "save_rule",
+      "headline": "Your weekend belongs to you",
+      "body": "Stop being the backup plan for his workday routine. Put the phone down and take your Saturday back.",
+      "animal": "cat",
+      "animal_metaphor": "reclaiming personal sovereignty",
+      "victoria": false,
+      "notes": "Actionable rule for breaking the waiting loop"
+    },
+    {
+      "index": 8,
+      "role": "recap",
+      "headline": "True interest shows in free time",
+      "body": "A man's true feelings are revealed when he is completely free, not when he is just killing time at work.",
+      "animal": "owl",
+      "animal_metaphor": "core insight",
+      "victoria": false,
+      "notes": "Core takeaway of the carousel"
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "headline": "Comment WEEKEND",
+      "body": "Audio reading in my app.",
+      "cta": "Write WEEKEND in the comments",
+      "animal": null,
+      "victoria": true,
+      "notes": "CTA: trigger WEEKEND leads to Essence–Shadow–Vector audio reading in the app"
+    }
+  ],
+  "save_value": [
+    "slide-05 excuse decoder: What he says vs What it means",
+    "slide-06 checklist: 3 signs you are in the waiting trap",
+    "slide-07 boundary rule: Reclaim your weekend"
+  ]
+}

@@ -28,8 +28,8 @@
   "product": "app_audio",
   "cta_style": "comment_trigger",
   "trigger_words": {
-    "ru": "TBD-gemini",
-    "en": "TBD-gemini"
+    "ru": "СУББОТА",
+    "en": "WEEKEND"
   },
   "langs": ["ru", "en"],
   "publish_requested": true,

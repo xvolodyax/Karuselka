@@ -1,0 +1,204 @@
+{
+  "pipeline_gate": {
+    "step": "designer",
+    "status": "ready_for_verify",
+    "required": true,
+    "handoff_next": "image-prompter",
+    "dispatch_id": "b10a4a88db134fc38e2cc9d5838339c3",
+    "dispatched_via": "Task(generalPurpose)",
+    "pixels": "forbidden_this_step",
+    "kie_prompt": "forbidden_this_step"
+  },
+  "pack_id": "2026-08-30",
+  "run_id": "2026-08-30-1110",
+  "lang": "ru",
+  "bilingual_pair": true,
+  "carousel_family": "animals_viktoria_collage",
+  "product": "app_audio",
+  "trigger_word": "СУББОТА",
+  "trigger_word_en": "WEEKEND",
+  "topic": "Он пропадает на выходных: будни тёплые, суббота пустая",
+  "generation_mode": "grid_3x3",
+  "master_aspect": "3:4",
+  "resolution": "4K",
+  "panel_aspect": "3:4",
+  "slide_count": 9,
+  "output": "static_png",
+  "skip_motion": true,
+  "skip_animate": true,
+  "slice_method": "seam",
+  "face_lock": "Виктория.png",
+  "face_lock_path": "carusel-memory/references/Виктория.png",
+  "face_lock_box": "/workspace/cover-refs/Виктория.png",
+  "eyes": "green with slight hazel, same every slide",
+  "hair": "warm honey/wheat blonde, darker roots, NOT platinum",
+  "victoria_slides": [1, 9],
+  "victoria_treatment": "in-scene, no sticker halo, no die-cut",
+  "palette": {
+    "background": "#111111",
+    "surface": "#1a1a1a",
+    "accent": "#ff006e",
+    "type": "#ffffff",
+    "metal": "soft gold",
+    "metal_hex": "#d4af37"
+  },
+  "typography": {
+    "headline": "heavy sans, white #ffffff",
+    "body": "medium sans, white",
+    "script": "thin handwritten / script, magenta #ff006e",
+    "cta_trigger": "huge magenta script — СУББОТА / WEEKEND",
+    "pills": "magenta torn-tape / pill blocks",
+    "verbatim": true,
+    "no_extra_labels": true,
+    "no_victoria_signature": true
+  },
+  "wardrobe": {
+    "rule": "new clothes + pose this carousel",
+    "slide_1": {
+      "look": "rumpled weekend-at-home oatmeal knit",
+      "color": "heather wheat-oat / oatmeal, NOT white",
+      "cut": "slightly oversized waffle or slouchy crewneck, rumpled",
+      "bottom": "soft charcoal lounge knit pants, NOT jeans",
+      "pose": "sitting 3/4 on dark sofa, phone face-down on thigh, looking slightly off-camera, tender knowing",
+      "forbidden_pose": "hand-on-chin"
+    },
+    "slide_9": {
+      "look": "midnight-blue silk slip + charcoal cardigan",
+      "slip": "midnight-blue silk slip dress, not black, not petrol-teal",
+      "cardigan": "open charcoal merino cardigan, slouchy, NOT structured espresso jacket",
+      "pose": "standing 3/4, weight on back hip, one hand on cardigan edge or cup held low, face toward camera, soft tender",
+      "forbidden_pose": "hand-on-chin"
+    },
+    "do_not_repeat": [
+      "sheet white cami + jeans + hand-on-chin",
+      "29.08 graphite pajama",
+      "29.08 petrol-teal + espresso jacket"
+    ]
+  },
+  "preserve": [
+    "animals_viktoria_collage family: dark charcoal field, magenta + white type mix, torn-paper pills",
+    "3x3 row-major grid, each cell 3:4, master 3:4 @ 4K",
+    "seam slice: thin white gutters at 1/3 and 2/3, no type/face bleed across cells",
+    "Victoria in-scene on slides 1 and 9 only, no sticker halo",
+    "face lock Виктория.png — one woman, twelve angles, green+hazel eyes, honey/wheat hair + darker roots",
+    "animals as emotion metaphors (cat / dog / owl), not cute random pets",
+    "soft gold medallion / foil used sparingly and natively",
+    "verbatim copy, no watermarks, no Victoria signature",
+    "app_audio CTA: comment trigger → audio reading in the app"
+  ],
+  "change": [
+    "topic: weekend disappearance — weekdays warm, Saturday empty",
+    "verbatim RU/EN copy from CAROUSEL_SLIDE_COPY.json",
+    "topic objects: silent Friday 18:00 phone, empty Saturday calendar slot, last-seen-yesterday chat, cold coffee",
+    "animal assignment: cat 1/4/7, dog 2/3, owl 5/6/8, none on 9",
+    "NEW Sunday wardrobe and poses (oatmeal rumpled knit + midnight-blue slip / charcoal cardigan)",
+    "trigger words СУББОТА / WEEKEND — huge magenta on slide 9"
+  ],
+  "do_not_borrow": [
+    "Portuguese text or foreign collage lettering from style lock",
+    "foreign faces, Portuguese models, Alena, studio-blazer ivory",
+    "deleted face files: viktoriaref.png, victoria-sheet.png, victoria.png, victoria_ref.jpg, alena*.png",
+    "sheet white cami + jeans + hand-on-chin pose",
+    "29.08 graphite pajama",
+    "29.08 petrol-teal + espresso jacket",
+    "platinum / white-blonde hair; brown-only, grey, or blue eyes",
+    "sticker halo / die-cut / white outline around Victoria or animals",
+    "horror table, skulls, blood, dripping candles, ouija, demon faces",
+    "bot prize, 3 free spreads, Academy (EN), raw URLs, Victoria signature",
+    "triggers from prior packs: ШАГ, STEP, ПАУЗА, PAUSE, ТЕПЛО, WARMTH, ПРОЧИТАНО, СТАТУС, STATUS, LABELS"
+  ],
+  "panel_archetype_map": {
+    "01": "hero_scene_collage — Victoria in-scene + cat intuition + huge hook type",
+    "02": "type_heavy_pain — dog loyal-waiting metaphor, 50–60% type",
+    "03": "type_heavy_mistake — dog loyalty-trap, excuse pills",
+    "04": "mechanism_boundary — cat sees the weekday-slot wall",
+    "05": "save_decoder_table — owl night-clarity, says vs means",
+    "06": "save_checklist — owl sober facts, numbered 1–3",
+    "07": "save_rule — cat reclaiming Saturday autonomy",
+    "08": "recap_insight — owl wisdom of free-time proof",
+    "09": "cta_hero — Victoria standing 3/4 + huge magenta trigger"
+  },
+  "prompt_hints": {
+    "reference_role": {
+      "style": "animals-viktoria-style-lock.png / image-851e.png — palette, collage rhythm, magenta/white type mix ONLY. Never i2i as a face.",
+      "layout": "3x3 editorial collage, self-contained cells, thin white seams at 1/3 and 2/3",
+      "typography": "heavy white sans headlines + thin magenta script + torn-tape pills",
+      "mood": "dark fashion-lifestyle tarot, adult, tender, not horror, not beige",
+      "face": "Виктория.png ONLY — identity lock, first input_url, one woman twelve angles"
+    },
+    "preserve": [
+      "dark matte charcoal #111111–#1a1a1a full-bleed per cell",
+      "hot magenta #ff006e script, pills, tape, lips",
+      "heavy white #ffffff sans headlines",
+      "soft gold foil sparingly",
+      "Victoria in-scene slides 1 and 9, no halo",
+      "animals as metaphors",
+      "thin white gutters on the master",
+      "safe area 10–12% from edges and seams"
+    ],
+    "change": [
+      "weekend-vacuum objects and verbatim copy",
+      "Sunday 30.08 wardrobe: oatmeal rumpled knit (1) / midnight-blue slip + charcoal cardigan (9)",
+      "new poses: sitting sofa + face-down phone (1); standing 3/4 (9)",
+      "animal placement per panel_archetype_map"
+    ],
+    "do_not_borrow": [
+      "deleted face files and Alena",
+      "sheet outfit and 29.08 outfits",
+      "Portuguese lettering, foreign faces, horror, watermarks",
+      "sticker outlines caused by zero-gutter prompts"
+    ],
+    "typography_rules": {
+      "verbatim": "use exact strings from CAROUSEL_SLIDE_COPY.json; no substitutions, no extra labels",
+      "hook": "largest white sans in cell 01; readable at thumbnail in 2 seconds",
+      "internal": "50–60% type on slides 02–08; body 1–3 short lines or stacked decoder/checklist",
+      "cta": "slide 09: huge magenta handwritten СУББОТА (RU) / WEEKEND (EN) — largest word on canvas",
+      "layering": "type may sit behind and in front of subjects inside a cell; never across a gutter",
+      "language": "RU master uses RU copy; EN master uses EN copy; do not mix"
+    },
+    "grid_rules": {
+      "generation_mode": "grid_3x3",
+      "aspect": "3:4",
+      "resolution": "4K",
+      "order": "row-major 01-09",
+      "slice_method": "seam",
+      "gutters": "thin white lines at 1/3 and 2/3 horizontal and vertical",
+      "cell": "self-contained 3:4 portrait, no bleed",
+      "safe_area_pct": 12,
+      "rebuild_if_crooked": true,
+      "never_patch_one_cell": true
+    },
+    "negative_constraints": [
+      "no Kie prompt written by designer — hints only",
+      "no pixels, no GenerateImage, no i2i this step",
+      "no platinum hair, no Alena, no viktoriaref / victoria-sheet / victoria.png",
+      "no white cami, no jeans, no hand-on-chin",
+      "no graphite pajama, no petrol-teal, no espresso jacket",
+      "no sticker halo, no die-cut, no zero-gutter cells-touching prompt",
+      "no horror, no skulls, no blood, no dripping candles",
+      "no Portuguese text, no foreign faces, no extra logos",
+      "no bot offer, no 3 free spreads, no Academy, no raw URLs",
+      "no word Сцена / Scene as a label",
+      "no video, no motion this run"
+    ],
+    "per_panel_scene_hints": {
+      "01": "Victoria sitting 3/4 on a dark sofa in a rumpled oatmeal weekend knit + charcoal lounge pants. Phone face-down on her thigh. Green+hazel eyes, honey/wheat hair darker roots. Sleek cat alert beside her (чуешь неладное). Huge white hook. In-scene, no halo.",
+      "02": "No Victoria. Type-heavy. Loyal dog waiting by a dark silent phone / empty Saturday window. Metaphor: верность ожиданию у экрана.",
+      "03": "No Victoria. Type-heavy. Same dog family, head on paws near excuse-pills («занят», «устал»). Metaphor: ловушка преданного ожидания.",
+      "04": "No Victoria. Cat at a hard light/dark boundary — weekday warmth vs weekend wall. Metaphor: интуиция видит границу.",
+      "05": "No Victoria. Owl, night-clarity. Decoder stack: говорит → значит. Metaphor: ночная ясность.",
+      "06": "No Victoria. Owl perched above a 1-2-3 checklist. Metaphor: трезвая оценка фактов.",
+      "07": "No Victoria. Cat turning away from the phone toward an open Saturday window / own life. Metaphor: возвращение себе автономии.",
+      "08": "No Victoria. Owl as quiet witness. Recap type. Metaphor: мудрость выбора.",
+      "09": "Victoria standing 3/4 in midnight-blue silk slip + open charcoal cardigan. Soft tender face. Huge magenta СУББОТА (RU) / WEEKEND (EN). Body: аудиоразбор в моём приложении / Audio reading in my app. No animal. No halo. No bot."
+    }
+  },
+  "thumbnail_test": "Slide 01 must read at ~200px: Friday 18:00 silence vs Monday «Как ты?» plus Victoria + cat. If the hook needs zoom, fail.",
+  "save_test": "Slides 05 (says vs means), 06 (3 signs), 07 (weekend is yours) are the bookmark cards.",
+  "cta": {
+    "product": "app_audio",
+    "ru": "Напиши СУББОТА. Аудиоразбор в моём приложении. Суть – Тень – Вектор.",
+    "en": "Comment WEEKEND. Audio reading in my app. Essence–Shadow–Vector.",
+    "forbidden": ["бот", "3 бесплатных расклада", "личный аудиоразбор", "Academy", "raw URL"]
+  }
+}

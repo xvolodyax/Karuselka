@@ -1,0 +1,139 @@
+{
+  "pipeline_gate": {
+    "step": "designer",
+    "required": true,
+    "visual_twin_of": "ru",
+    "dispatch_id": "b10a4a88db134fc38e2cc9d5838339c3"
+  },
+  "lang": "en",
+  "carousel_family": "animals_viktoria_collage",
+  "generation_mode": "grid_3x3",
+  "slice_method": "seam",
+  "face_lock": "Виктория.png",
+  "product": "app_audio",
+  "wardrobe": {
+    "slide_1": "rumpled oatmeal weekend-at-home knit + charcoal lounge pants; sitting 3/4; phone face-down",
+    "slide_9": "standing 3/4 midnight-blue silk slip + open charcoal cardigan"
+  },
+  "preserve": ["same visual as RU"],
+  "change": ["EN copy", "WEEKEND trigger"],
+  "do_not_borrow": ["RU letters", "sheet/29.08 outfits", "Alena", "halo", "Academy"],
+  "panel_archetype_map": {
+    "01": "hero_scene_collage",
+    "02": "type_heavy_pain",
+    "03": "type_heavy_mistake",
+    "04": "mechanism_boundary",
+    "05": "save_decoder_table",
+    "06": "save_checklist",
+    "07": "save_rule",
+    "08": "recap_insight",
+    "09": "cta_hero"
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "archetype": "hero_scene_collage",
+      "headline": "Friday 6 PM silence. Monday: «How was it?»",
+      "body": "",
+      "victoria": true,
+      "animal": "cat",
+      "animal_metaphor": "sensing the hidden truth",
+      "wardrobe": "rumpled oatmeal weekend-at-home knit",
+      "pose": "sitting 3/4, phone face-down, not hand-on-chin",
+      "in_scene": true,
+      "sticker_halo": false
+    },
+    {
+      "index": 2,
+      "role": "problem",
+      "archetype": "type_heavy_pain",
+      "headline": "48 hours of silence after 5 warm days",
+      "body": "All week he texts every hour. But Saturday hits — and suddenly you disappear from his world.",
+      "victoria": false,
+      "animal": "dog",
+      "animal_metaphor": "loyalty to the waiting screen"
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "archetype": "type_heavy_mistake",
+      "headline": "You make excuses for his silence",
+      "body": "«He's busy», «He needs rest». But a man who truly cares takes 10 seconds to send a single text.",
+      "victoria": false,
+      "animal": "dog",
+      "animal_metaphor": "the faithful waiting trap"
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "archetype": "mechanism_boundary",
+      "headline": "You are just a weekday routine slot",
+      "body": "During work hours you cure his boredom. But when real life happens on weekends, you are kept outside.",
+      "victoria": false,
+      "animal": "cat",
+      "animal_metaphor": "intuition spots the boundary"
+    },
+    {
+      "index": 5,
+      "role": "save_decoder",
+      "archetype": "save_decoder_table",
+      "headline": "What he says vs what it means",
+      "body": "«Off my phone on weekends» → Just not in your chat.\n«Too busy» → You are not in his rest priority.\n«Not a texter» → Yet texts all week.",
+      "victoria": false,
+      "animal": "owl",
+      "animal_metaphor": "night clarity and seeing through fog",
+      "save_card": true
+    },
+    {
+      "index": 6,
+      "role": "save_checklist",
+      "archetype": "save_checklist",
+      "headline": "3 signs you are in the waiting trap",
+      "body": "1. You never know his weekend plans.\n2. He never invites you out spontaneously.\n3. His affection only exists during his office hours.",
+      "victoria": false,
+      "animal": "owl",
+      "animal_metaphor": "sober diagnostic check",
+      "save_card": true
+    },
+    {
+      "index": 7,
+      "role": "save_rule",
+      "archetype": "save_rule",
+      "headline": "Your weekend belongs to you",
+      "body": "Stop being the backup plan for his workday routine. Put the phone down and take your Saturday back.",
+      "victoria": false,
+      "animal": "cat",
+      "animal_metaphor": "reclaiming personal sovereignty",
+      "save_card": true
+    },
+    {
+      "index": 8,
+      "role": "recap",
+      "archetype": "recap_insight",
+      "headline": "True interest shows in free time",
+      "body": "A man's true feelings are revealed when he is completely free, not when he is just killing time at work.",
+      "victoria": false,
+      "animal": "owl",
+      "animal_metaphor": "core insight"
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "archetype": "cta_hero",
+      "headline": "Comment WEEKEND",
+      "body": "Audio reading in my app.",
+      "cta": "Write WEEKEND in the comments",
+      "trigger_word": "WEEKEND",
+      "trigger_treatment": "huge magenta handwritten WEEKEND",
+      "product": "app_audio",
+      "offer": "audio reading in my app — Essence–Shadow–Vector",
+      "victoria": true,
+      "animal": null,
+      "wardrobe": "midnight-blue silk slip + open charcoal cardigan",
+      "pose": "standing 3/4, not hand-on-chin",
+      "in_scene": true,
+      "sticker_halo": false
+    }
+  ]
+}

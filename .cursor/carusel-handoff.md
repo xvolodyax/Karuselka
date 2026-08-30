@@ -59,6 +59,23 @@ Trigger: СУББОТА / WEEKEND
 Product: app_audio
 No Kie JSON. No pixels.
 === CARUSEL-IMAGE-PROMPTER ===
+dispatched_via: Task(generalPurpose)
+dispatch_id: 092303bb6b314cac95d5a37b2870d354
+incident_report: none
+HANDOFF_NEXT: slice
+written_by: gemini
+
+Статус: ✅ OK
+Face Lock: Виктория.png (green with slight hazel eyes, honey blonde + darker roots)
+Mode: grid_3x3 3:4 @ 4K (static PNG, seam slice)
+Prompt RU chars: 1960 (target 1900–2100, max 2200)
+Prompt EN chars: 2097 (target 1900–2100, max 2200)
+Trigger RU: СУББОТА | Trigger EN: WEEKEND
+Product: app_audio
+RU JSON: carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
+EN JSON: carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
+Pack RU: carusel-memory/packs/2026-08-30/ru/CAROUSEL_IMAGE_PROMPT.json
+Pack EN: carusel-memory/packs/2026-08-30/en/CAROUSEL_IMAGE_PROMPT.json
 === CARUSEL-SLICE ===
 === CARUSEL-MOTION-DIRECTOR ===
 === CARUSEL-ANIMATE ===

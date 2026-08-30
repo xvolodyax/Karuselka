@@ -8,8 +8,8 @@ visual_family: animals_viktoria_collage
 face_lock: Виктория.png
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: TBD-gemini
-trigger_word_en: TBD-gemini
+trigger_word: СУББОТА
+trigger_word_en: WEEKEND
 product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор / Essence–Shadow–Vector)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads
