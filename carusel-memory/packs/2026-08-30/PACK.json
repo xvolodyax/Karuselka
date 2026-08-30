@@ -12,13 +12,20 @@
     "ru": [
       "https://www.instagram.com/p/Dci-EP1ErI-/",
       "https://www.instagram.com/p/DclVIfUoDqQ/",
-      "https://www.instagram.com/p/Dcnrh0nm7pp/"
+      "https://www.instagram.com/p/Dcnrh0nm7pp/",
+      "https://www.instagram.com/p/DcqJGCblQqv/"
     ],
     "en": [
       "https://www.instagram.com/p/Dci-ozwAH4l/",
       "https://www.instagram.com/p/DclVSGMGwAj/",
-      "https://www.instagram.com/p/Dcnrht_lVca/"
+      "https://www.instagram.com/p/Dcnrht_lVca/",
+      "https://www.instagram.com/p/DcqJS--m0op/"
     ]
+  },
+  "already_live": true,
+  "already_live_posts": {
+    "ru": "https://www.instagram.com/p/DcqJGCblQqv/",
+    "en": "https://www.instagram.com/p/DcqJS--m0op/"
   },
   "visual_family": "animals_viktoria_collage",
   "face_lock": "Виктория.png",

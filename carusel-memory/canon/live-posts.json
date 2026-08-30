@@ -58,6 +58,28 @@
       "permalink": "https://www.instagram.com/p/Dcnrht_lVca/",
       "media_id": "18338508988250568",
       "posted_at": "2026-08-29T10:04:37+0000"
+    },
+    {
+      "date": "2026-08-30",
+      "pack_id": "2026-08-30",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "СУББОТА",
+      "permalink": "https://www.instagram.com/p/DcqJGCblQqv/",
+      "media_id": "18109887448855475",
+      "posted_at": "2026-08-30T09:01:31+0000"
+    },
+    {
+      "date": "2026-08-30",
+      "pack_id": "2026-08-30",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "WEEKEND",
+      "permalink": "https://www.instagram.com/p/DcqJS--m0op/",
+      "media_id": "18113257384788858",
+      "posted_at": "2026-08-30T09:03:12+0000"
     }
   ]
 }

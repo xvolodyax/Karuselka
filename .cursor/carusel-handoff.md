@@ -149,4 +149,12 @@ RU file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-
 EN file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-1110-static-en/slide-01.png
 All 9+9 keys HTTPS PNG. file1 = slide-01.png.
 === CARUSEL-PUBLISH ===
+dispatched_via: Task(generalPurpose)
+dispatch_id: 9cb5285a418f42b78b3aa437cad123b8
+incident_report: none
+HANDOFF_NEXT: fixic
+=== CARUSEL-PUBLISH ===
+Статус: ✅ OK
+RU: https://www.instagram.com/p/DcqJGCblQqv/
+EN: https://www.instagram.com/p/DcqJS--m0op/
 === CARUSEL-FIXIC ===
