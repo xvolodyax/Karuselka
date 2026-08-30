@@ -16,11 +16,11 @@
     "split_mode": "gutter_detect",
     "v_gutters_px": [
       {
-        "start": 804,
-        "end": 818
+        "start": 812,
+        "end": 816
       },
       {
-        "start": 1621,
+        "start": 1624,
         "end": 1634
       }
     ],
@@ -30,11 +30,11 @@
         "end": 1093
       },
       {
-        "start": 2170,
+        "start": 2169,
         "end": 2182
       }
     ],
-    "max_center_offset_px": 5.0,
+    "max_center_offset_px": 3.0,
     "max_center_offset_limit_px": 73.44
   },
   "cell_size": {

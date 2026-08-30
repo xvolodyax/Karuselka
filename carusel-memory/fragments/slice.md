@@ -1,20 +1,21 @@
 === CARUSEL-SLICE ===
 Статус: ✅ OK
 dispatched_via: Task(generalPurpose)
-dispatch_id: abc839debfee47d39a6f2a0aa9fbf5e3
+dispatch_id: 46ad49b4cd704cb699114d0a1e7c0c9b
 incident_report: none
 HANDOFF_NEXT: design-guardian
 Mode: grid_3x3 seam
 face_lock: none
+pack: 2026-08-30-ru-subbota-frames
 
 Кратко: Один Kie i2i 3:4@4K (style lock palette only, no host face). Seam-slice gutter OK с первого master. Regen не было. 9 PNG 1080×1440. Pixel glance: ни на одном слайде нет лица ведущей / человека.
 
-taskId: 903eeaf12c054af07dbb5074c666ddd0
+taskId: c640d4640a31c0d5b868334a9860cdf0
 style_url: https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png
 slice_method: seam
 regen: none
 pixel_glance_human_face: none
-slides: 01 cat+phone | 02 dog+phone | 03 dog+tape | 04 owl | 05 owl+decoder | 06 cat+checklist | 07 owl+framework | 08 cat+window | 09 phone+ОНЛАЙН
+slides: 01 cat+phone | 02 dog+laptop muted | 03 dog+pills | 04 cat+day/night window | 05 owl+decoder | 06 owl+1-2-3 | 07 cat+sunset window | 08 owl recap | 09 phone+СУББОТА
 
 Артефакты:
 - carusel-memory/output/slides/slide-01.png
@@ -30,4 +31,4 @@ slides: 01 cat+phone | 02 dog+phone | 03 dog+tape | 04 owl | 05 owl+decoder | 06
 - carusel-memory/output/master/source.png
 - carusel-memory/output/master/master.png
 - carusel-memory/output/kie-task-log.json
-- carusel-memory/packs/2026-08-30-ru-scout/ru/slides/slide-01.png … slide-09.png
+- carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-01.png … slide-09.png
