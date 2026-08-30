@@ -1,9 +1,9 @@
 {
   "mode": "seam",
-  "source": "/workspace/carusel-memory/output/master/source.png",
+  "source": "/tmp/kie-pack-ru/carusel-memory/output/master/source.png",
   "source_size": {
-    "width": 2480,
-    "height": 3312
+    "width": 2448,
+    "height": 3264
   },
   "grid": {
     "cols": 3,
@@ -15,15 +15,27 @@
     "requested_mode": "gutter",
     "split_mode": "gutter_detect",
     "v_gutters_px": [
-      {"start": 814, "end": 828},
-      {"start": 1640, "end": 1653}
+      {
+        "start": 804,
+        "end": 818
+      },
+      {
+        "start": 1621,
+        "end": 1634
+      }
     ],
     "h_gutters_px": [
-      {"start": 1096, "end": 1110},
-      {"start": 2202, "end": 2216}
+      {
+        "start": 1080,
+        "end": 1093
+      },
+      {
+        "start": 2170,
+        "end": 2182
+      }
     ],
-    "max_center_offset_px": 6.5,
-    "max_center_offset_limit_px": 74.4
+    "max_center_offset_px": 5.0,
+    "max_center_offset_limit_px": 73.44
   },
   "cell_size": {
     "width": 1080,
@@ -31,19 +43,16 @@
   },
   "cell_aspect_ratio": 0.75,
   "slide_count": 9,
-  "master_out": "/workspace/carusel-memory/output/master/master.png",
-  "lang": "ru",
-  "pack_id": "2026-08-30",
-  "taskId": "e1a671f38c9a353d1e5000d9607eceda",
+  "master_out": "/tmp/kie-pack-ru/carusel-memory/output/master/master.png",
   "files": [
-    "/workspace/carusel-memory/output/slides/slide-01.png",
-    "/workspace/carusel-memory/output/slides/slide-02.png",
-    "/workspace/carusel-memory/output/slides/slide-03.png",
-    "/workspace/carusel-memory/output/slides/slide-04.png",
-    "/workspace/carusel-memory/output/slides/slide-05.png",
-    "/workspace/carusel-memory/output/slides/slide-06.png",
-    "/workspace/carusel-memory/output/slides/slide-07.png",
-    "/workspace/carusel-memory/output/slides/slide-08.png",
-    "/workspace/carusel-memory/output/slides/slide-09.png"
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-01.png",
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-02.png",
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-03.png",
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-04.png",
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-05.png",
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-06.png",
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-07.png",
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-08.png",
+    "/tmp/kie-pack-ru/carusel-memory/output/slides/slide-09.png"
   ]
 }

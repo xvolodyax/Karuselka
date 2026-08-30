@@ -1,0 +1,105 @@
+{
+  "version": "2",
+  "lang": "ru",
+  "pack_id": "2026-08-30-ru-scout",
+  "topic": "Смотрит сторис сразу — отвечает часами позже",
+  "trigger_word": "ОНЛАЙН",
+  "product": "app_audio",
+  "generation_mode": "grid_3x3",
+  "model": "gpt-image-2-image-to-image",
+  "aspect_ratio": "3:4",
+  "resolution": "4K",
+  "slice_method": "seam",
+  "face_lock": "none",
+  "host_portrait": false,
+  "i2i_source": "carusel-memory/references/animals-viktoria-style-lock.png",
+  "i2i_file_name": "animals-viktoria-style-lock.png",
+  "input_urls": [
+    "carusel-memory/references/animals-viktoria-style-lock.png"
+  ],
+  "written_by": "gemini",
+  "prompt": "No host portrait. No woman. No Victoria. No Виктория.png. No presenter face. Style lock collage = palette only (#111111 + white heavy sans + #ff006e), not a face.\nОдно статичное PNG 3:4@4K, сетка 3×3. Thin white gutters at 1/3 and 2/3 (Excalibur seam_slice). Текст ≥12% от швов. Animals + objects only. Без видео.\n\n01 glowing phone screen with stories, alert cat: \"Смотрит сторис сразу. Твой диалог висит с обеда\".\n02 dog by dark phone with online dot: \"Телефон у него в руках, но не для тебя\" / \"Ты видишь отметку времени: 2 минуты назад. Он в сети, но твой диалог сдвинут вниз. Внутри растёт тревога и ожидание.\".\n03 dog head on paws, magenta tape: \"Ты принимаешь просмотр за внимание\" / \"«Он помнит обо мне, просто занят». Ты начинаешь вести сторис как персональный эфир для одного зрителя, оправдывая его молчание.\".\n04 perched owl, digital leash motif: \"Орбитальный контроль стоит 0 усилий\" / \"Просмотр сторис — это пассивный свайп между делами. Способ держать тебя в поле зрения и на коротком поводке, не отдавая ничего взамен.\".\n05 owl above decoder stack: \"Иллюзия внимания против реальности\" / \"Смотрит сторис → Тратит 1 секунду на свайп. Не пишет в чат → Экономит силы и фокус. Всегда онлайн → Доступен всем, кроме тебя. Появляется при тишине → Проверяет поводок.\".\n06 alert cat beside checklist: \"3 признака, что ты для него лишь зритель\" / \"1. Моментально смотрит всё, но не начинает разговор. 2. Отвечает через 8 часов односложно. 3. Пишет первым только тогда, когда ты перестаёшь выкладывать жизнь.\".\n07 quiet owl, framework stack: \"Рамка: Суть – Тень – Вектор\" / \"Суть: Наблюдение без шага — это удержание дистанции. Тень: Твой страх закрыть окно и потерять контакт. Вектор: Забрать внимание из экрана в свою реальную жизнь.\".\n08 cat turns away toward dark window: \"Просмотр сторис — это не поступок\" / \"Человек, который хочет быть рядом, пишет и делает шаги. Не будь бесплатным сериалом для того, кто экономит на тебе даже слова.\".\n09 huge magenta ОНЛАЙН, phone/app object, no person: \"Напиши ОНЛАЙН\" / \"Аудиоразбор в моём приложении.\".",
+  "prompt_char_count": 2052,
+  "negative_prompt": "Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png, woman, girl, host portrait, human face, selfie, presenter, Alena, white cami, jeans, platinum hair, horror, skulls, sticker outline around people, die-cut halo, bot, 3 free spreads, Academy, video, animated, raw URL",
+  "reference_contract": {
+    "reference_role": "style + layout reference (animals-viktoria-style-lock.png palette/rhythm only; no face)",
+    "preserve": [
+      "dark matte charcoal #111111–#1a1a1a background",
+      "hot magenta #ff006e accent + script + pill highlights",
+      "white #ffffff heavy sans typography hierarchy",
+      "3x3 master grid 3:4 @ 4K with thin white seams at 1/3 and 2/3",
+      "animals as emotion metaphors (cat 1/6/8, dog 2/3, owl 4/5/7)",
+      "safe text margin >= 12% from edges and seams",
+      "no host portrait"
+    ],
+    "change": [
+      "topic: digital orbital control (stories watched immediately vs chat hanging since lunch)",
+      "verbatim Russian copy from CAROUSEL_SLIDE_COPY.json",
+      "animal assignment: cat 1/6/8, dog 2/3, owl 4/5/7, none on 9",
+      "huge magenta trigger word ОНЛАЙН on slide 9 + phone/app object"
+    ],
+    "do_not_borrow": [
+      "Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png, Alena",
+      "any recognizable host face, presenter, woman, microphone at mouth",
+      "Portuguese text, foreign faces, horror, skulls",
+      "sticker halos, die-cut white outline around animals",
+      "bot offer, 3 free spreads, Academy, raw URLs",
+      "live СУББОТА frames or wardrobe"
+    ]
+  },
+  "typography_rules": {
+    "exact_text": true,
+    "no_extra_text": true,
+    "hierarchy": "headline heavy sans > short body medium sans > magenta pill/script",
+    "verbatim": true,
+    "no_extra_labels": true,
+    "no_victoria_signature": true
+  },
+  "panel_visual_brief": [
+    {
+      "slide": 1,
+      "role": "hook",
+      "visual_only": "Glowing smartphone screen with stories in dark room, alert sleek black cat; no woman; headline top heavy white sans"
+    },
+    {
+      "slide": 2,
+      "role": "problem",
+      "visual_only": "Loyal dog sitting by dark phone showing green online dot, waiting metaphor, 55% type"
+    },
+    {
+      "slide": 3,
+      "role": "mistake",
+      "visual_only": "Faithful dog head on paws near magenta torn-tape excuse pills, hope-trap metaphor"
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "visual_only": "Perched owl in night lighting observing digital orbital leash around dim phone screen"
+    },
+    {
+      "slide": 5,
+      "role": "save_decoder",
+      "visual_only": "Wise owl above 4-line stacked comparison table illusion vs reality, high save card"
+    },
+    {
+      "slide": 6,
+      "role": "save_checklist",
+      "visual_only": "Cat sensing manipulation beside numbered 1-2-3 spectator diagnostic checklist"
+    },
+    {
+      "slide": 7,
+      "role": "save_framework",
+      "visual_only": "Owl witness beside 3 stacked framework blocks Суть – Тень – Вектор"
+    },
+    {
+      "slide": 8,
+      "role": "recap",
+      "visual_only": "Cat turning away from phone toward dark window and autonomous life, manifesto recap"
+    },
+    {
+      "slide": 9,
+      "role": "cta",
+      "visual_only": "Huge handwritten magenta ОНЛАЙН, dark phone with app audio UI object, no person, no animal"
+    }
+  ]
+}
