@@ -48,7 +48,33 @@ victoria_slides: []
 - carusel-memory/design/CAROUSEL_SOURCE_DECOMPOSITION.json
 - carusel-memory/design/CAROUSEL_SLIDE_BLUEPRINTS.json
 === CARUSEL-IMAGE-PROMPTER ===
+Статус: ✅ OK
+Prompt: carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
+aspect_ratio: 3:4 | resolution: 4K
+generation_mode: grid_3x3 | slice_method: seam
+face_lock: none | host_portrait: false
+prompt_char_count: 2052
+input_urls: carusel-memory/references/animals-viktoria-style-lock.png
+Trigger word: ОНЛАЙН
+Product: app_audio
+dispatched_via: Task(generalPurpose)
+dispatch_id: 894653e7e8c84392859c1a76cfa51341
+incident_report: none
+HANDOFF_NEXT: slice
+written_by: gemini
 === CARUSEL-SLICE ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: abc839debfee47d39a6f2a0aa9fbf5e3
+incident_report: none
+HANDOFF_NEXT: design-guardian
+Mode: grid_3x3 seam
+face_lock: none
+taskId: 903eeaf12c054af07dbb5074c666ddd0
+regen: none
+pixel_glance_human_face: none
+Slides: carusel-memory/output/slides/slide-01.png … slide-09.png (1080×1440)
+Pack: carusel-memory/packs/2026-08-30-ru-scout/ru/slides/slide-01.png … slide-09.png
 === CARUSEL-MOTION-DIRECTOR ===
 === CARUSEL-ANIMATE ===
 === CARUSEL-DESIGN-GUARDIAN ===
