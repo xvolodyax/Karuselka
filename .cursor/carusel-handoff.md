@@ -133,5 +133,20 @@ GATE: carusel-memory/packs/2026-08-30/GATE.md
 Статус: ✅ OK
 Кратко: RU+EN 9+9 PNG seam. Face Виктория.png MATCH. Eyes green+hazel. CTA app_audio СУББОТА/WEEKEND. No P0. No publish.
 === CARUSEL-UPLOAD ===
+dispatched_via: Task(generalPurpose)
+dispatch_id: a0bf9cebbfa54c5cb2a783172f8b0fb0
+incident_report: none
+HANDOFF_NEXT: publish
+=== CARUSEL-UPLOAD ===
+Статус: ✅ OK
+provider: kie_file_upload_api
+file1_kind: png
+this_run: static_all_pngs
+No mp4. No Instagram. No Telegram.
+RU: carusel-memory/output/publish-urls.json (ledger) + packs/2026-08-30/ru/publish-urls.json
+EN: carusel-memory/packs/2026-08-30/en/publish-urls.json
+RU file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-1110-static-ru/slide-01.png
+EN file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-1110-static-en/slide-01.png
+All 9+9 keys HTTPS PNG. file1 = slide-01.png.
 === CARUSEL-PUBLISH ===
 === CARUSEL-FIXIC ===
