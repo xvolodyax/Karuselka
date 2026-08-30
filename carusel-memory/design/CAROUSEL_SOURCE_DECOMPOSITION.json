@@ -4,27 +4,30 @@
     "status": "ready_for_verify",
     "required": true,
     "handoff_next": "image-prompter",
-    "dispatch_id": "b10a4a88db134fc38e2cc9d5838339c3"
+    "dispatch_id": "c99f172aca2f45a7ab3b93c00d178499",
+    "dispatched_via": "Task(generalPurpose)"
   },
-  "pack_id": "2026-08-30",
+  "pack_id": "2026-08-30-ru-scout",
   "carousel_family": "animals_viktoria_collage",
   "source_first": true,
   "written_by": "carusel-designer",
+  "face_lock": "none",
+  "host_portrait": false,
+  "victoria_slides": [],
   "reference_role": {
-    "style": "karusel-old/image-851e.png and carusel-memory/references/animals-viktoria-style-lock.png — collage rhythm, grain, magenta/white/gold on charcoal. Palette + layout lock only. NEVER i2i as a face.",
+    "style": "carusel-memory/references/animals-viktoria-style-lock.png and karusel-old/image-851e.png — collage rhythm, grain, magenta/white/gold on charcoal. Palette + layout lock only. NEVER i2i as a face. NEVER treat as a portrait of Victoria or any woman.",
     "layout": "3x3 editorial collage; self-contained 3:4 cells; thin white seams (Excalibur method) at 1/3 and 2/3; hook and CTA are hero cells, internals are type-heavy.",
     "typography": "heavy white sans for scene/keywords; thin magenta script for secondary emotion and the CTA trigger; magenta torn-tape pills for short labels; type layered in the scene.",
     "mood": "dark fashion-lifestyle tarot. Adult, tender, high contrast. Not beige lifestyle. Not horror candle table.",
-    "content_inspiration": "OLD slide-04 depth (says vs hears) informs slide 05 decoder structure only — do not copy that visual family.",
-    "face": "carusel-memory/references/Виктория.png ONLY. Box: /workspace/cover-refs/Виктория.png. One woman, twelve angles. Eyes green with slight hazel. Hair warm honey/wheat, darker roots."
+    "content_inspiration": "OLD slide-04 depth (says vs hears) informs slide 05 decoder structure only — do not copy that visual family. Research dossier supplies topic metaphors (glowing phone, online phantom, orbital leash).",
+    "face": "none. No host. No woman. No presenter. No microphone at mouth. Виктория.png is not an input. FACE_CHECK must be ABSENT."
   },
   "preserve": [
     "carousel_family animals_viktoria_collage",
     "palette #111111 / #ff006e / #ffffff / soft gold",
     "3x3 row-major, master 3:4 @ 4K, each panel 3:4",
     "slice_method seam — thin white gutters at 1/3 and 2/3",
-    "Victoria in-scene on 1 and 9, no sticker halo",
-    "identity: Виктория.png, green+hazel eyes, honey/wheat darker roots",
+    "NO host portrait — face_lock none, host_portrait false, victoria_slides []",
     "animals as metaphors (cat=чуешь, dog=loyalty to the unanswered, owl=night clarity)",
     "torn-paper magenta pills, heavy/script type mix",
     "safe area 10–12%",
@@ -33,102 +36,98 @@
     "product app_audio"
   ],
   "change": [
-    "topic objects: Friday 18:00 silent chat, Monday «Как ты?», empty Saturday slot, last-seen-yesterday, cold coffee, weekday-vs-weekend calendar",
-    "exact RU/EN headlines and bodies from CAROUSEL_SLIDE_COPY.json",
-    "animal map: 01 cat, 02 dog, 03 dog, 04 cat, 05 owl, 06 owl, 07 cat, 08 owl, 09 none",
-    "Sunday 30.08 wardrobe (oatmeal rumpled knit; midnight-blue silk slip + charcoal cardigan)",
-    "new poses (sitting sofa + face-down phone; standing 3/4) — not sheet, not 29.08",
-    "CTA trigger СУББОТА / WEEKEND as huge magenta script"
+    "topic objects: glowing stories viewer, hanging lunch-time chat, green online dot, 8-hour reply delay, night clock, app-audio phone UI",
+    "exact RU headlines and bodies from CAROUSEL_SLIDE_COPY.json",
+    "animal map: 01 cat, 02 dog, 03 dog, 04 owl, 05 owl, 06 cat, 07 owl, 08 cat, 09 none",
+    "zero wardrobe — no woman to dress, no host poses",
+    "CTA trigger ОНЛАЙН as huge magenta script + phone/app object on slide 9"
   ],
   "do_not_borrow": [
-    "Portuguese collage text and foreign faces from the style lock",
+    "Portuguese collage text and foreign faces from the style lock (RESET, self-care, SPA MINDSET, ИНТУИЦИЯ/trust as foreign labels, LOYALTY, FOCUS, POWER, СИЯНИЕ, OWN IT)",
     "Alena / studio-blazer / ivory blazer / cover-old as identity",
-    "viktoriaref.png, victoria-sheet.png, victoria.png, victoria_ref.jpg, alena*.png, character-sheet-2k",
+    "i2i of Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png, victoria_ref.jpg, alena*.png",
     "i2i of animals-viktoria-style-lock.png as a face",
-    "sheet white cami + jeans + hand-on-chin",
-    "29.08 graphite pajama",
-    "29.08 petrol-teal knit + espresso jacket",
-    "platinum / white-blonde hair",
-    "brown-only, grey, or blue eyes",
-    "sticker halo, die-cut, white outline around people or animals",
-    "zero-gutter cells-touch prompts (they spawn sticker outlines)",
+    "any host / presenter / woman / microphone at mouth",
+    "style-lock sticker halo / die-cut white outline around animals",
     "horror, skulls, blood, dripping candles, ouija, demon faces",
     "brand marks of the Portuguese collage, UNILIBRE, other logos",
-    "prior triggers: ШАГ STEP ПАУЗА PAUSE ТЕПЛО WARMTH ПРОЧИТАНО СТАТУС STATUS LABELS",
-    "bot offer, 3 free spreads, Academy, raw URLs, Victoria signature"
+    "prior triggers: ШАГ STEP ПАУЗА PAUSE ТЕПЛО WARMTH ПРОЧИТАНО СТАТУС STATUS LABELS СУББОТА WEEKEND",
+    "live СУББОТА / noface СУББОТА rebuild / EN WEEKEND frames",
+    "bot offer, 3 free spreads, Academy, raw URLs, Victoria signature",
+    "word Сцена as a label"
   ],
   "panel_archetype_map": {
     "01": {
       "source_archetype": "hero_scene_collage",
-      "adapt": "Victoria + cat + Friday/Monday hook scene",
-      "victoria": true,
+      "adapt": "glowing stories phone + alert cat + hook scene — no host",
+      "victoria": false,
       "animal": "cat"
     },
     "02": {
       "source_archetype": "type_heavy_pain",
-      "adapt": "48-hour vacuum; dog waiting at the silent screen",
+      "adapt": "phone in his hands, not for her; dog waiting at the screen",
       "victoria": false,
       "animal": "dog"
     },
     "03": {
       "source_archetype": "type_heavy_mistake",
-      "adapt": "excuse loop; dog loyalty trap",
+      "adapt": "viewing mistaken for attention; dog hope trap + excuse pills",
       "victoria": false,
       "animal": "dog"
     },
     "04": {
-      "source_archetype": "mechanism_boundary",
-      "adapt": "weekday slot wall; cat sees the line",
+      "source_archetype": "mechanism_leash",
+      "adapt": "orbital control costs 0 effort; owl names the leash",
       "victoria": false,
-      "animal": "cat"
+      "animal": "owl"
     },
     "05": {
       "source_archetype": "save_decoder_table",
-      "adapt": "что говорит / что значит; owl night vision (depth from OLD slide-04 meaning only)",
+      "adapt": "illusion of attention vs reality; owl night vision (depth from OLD slide-04 meaning only)",
       "victoria": false,
       "animal": "owl"
     },
     "06": {
       "source_archetype": "save_checklist",
-      "adapt": "3 waiting-zone signs; owl diagnostic",
-      "victoria": false,
-      "animal": "owl"
-    },
-    "07": {
-      "source_archetype": "save_rule",
-      "adapt": "weekend belongs to you; cat reclaiming autonomy",
+      "adapt": "3 signs you are only a spectator; cat intuition",
       "victoria": false,
       "animal": "cat"
     },
-    "08": {
-      "source_archetype": "recap_insight",
-      "adapt": "true interest shows in free time; owl wisdom",
+    "07": {
+      "source_archetype": "save_framework",
+      "adapt": "Суть – Тень – Вектор stack; owl wisdom",
       "victoria": false,
       "animal": "owl"
     },
+    "08": {
+      "source_archetype": "recap_insight",
+      "adapt": "viewing stories is not an act; cat reclaiming autonomy",
+      "victoria": false,
+      "animal": "cat"
+    },
     "09": {
-      "source_archetype": "cta_hero",
-      "adapt": "Victoria standing 3/4 + huge magenta СУББОТА / WEEKEND + app_audio",
-      "victoria": true,
+      "source_archetype": "cta_object",
+      "adapt": "huge magenta ОНЛАЙН + phone/app object + app_audio — no person, no animal",
+      "victoria": false,
       "animal": null
     }
   },
   "thumbnail_test": {
     "slide": 1,
-    "must_read_in_2s": "Пятница 18:00 — тишина. В понедельник: «Как ты?»",
-    "must_read_in_2s_en": "Friday 6 PM silence. Monday: «How was it?»",
-    "visual_anchor": "Victoria in oatmeal rumpled knit + alert cat + silent phone",
-    "fail_if": "hook is a mechanic title, face is unreadable, hair is platinum, outfit is sheet/29.08, or type crosses the gutter"
+    "must_read_in_2s": "Смотрит сторис сразу. Твой диалог висит с обеда",
+    "visual_anchor": "alert black cat + glowing stories phone — no woman",
+    "fail_if": "hook is a mechanic title, a human face appears, type crosses the gutter, or the phone/cat are unreadable at ~200px"
   },
   "save_test": {
     "screenshot_panels": [5, 6, 7],
     "why": [
-      "05 decoder: говорит vs значит — reread next Saturday",
-      "06 checklist: 3 признака зоны ожидания",
-      "07 rule: твои выходные принадлежат только тебе"
+      "05 decoder: иллюзия внимания vs реальность — пересылают подруге",
+      "06 checklist: 3 признака, что ты лишь зритель",
+      "07 framework: Суть – Тень – Вектор"
     ]
   },
   "forbidden_face_files": [
+    "Виктория.png",
     "viktoriaref.png",
     "victoria-sheet.png",
     "victoria-sheet-front.png",
@@ -137,5 +136,13 @@
     "victoria_ref.jpg",
     "alena*.png",
     "character-sheet-2k"
+  ],
+  "forbidden_subjects": [
+    "host portrait",
+    "presenter",
+    "woman",
+    "female face",
+    "microphone at mouth",
+    "speaker at lips"
   ]
 }

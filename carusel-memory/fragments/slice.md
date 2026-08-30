@@ -1,40 +1,34 @@
-dispatched_via: Task(generalPurpose)
-dispatch_id: f841fd31358146d8a885227c407fb868
-incident_report: none
-HANDOFF_NEXT: design-guardian
 === CARUSEL-SLICE ===
 Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: 46ad49b4cd704cb699114d0a1e7c0c9b
+incident_report: none
+HANDOFF_NEXT: design-guardian
 Mode: grid_3x3 seam
-Face lock: Виктория.png only (2191823 bytes, 1341×1173)
-Regen: RU 1 whole-master (crooked canvas). EN 0. No cell patches.
-taskId RU kept: e1a671f38c9a353d1e5000d9607eceda
-taskId RU discarded: 7b36f100723a40e9c61d82e6bff3f473
-taskId EN kept: c24d9b62c05f8cf5cdac1fa829a0d65e
-No mp4. No publish. No animate.
+face_lock: none
+pack: 2026-08-30-ru-subbota-frames
 
-RU slides (1080×1440 PNG) + gate copies:
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-01.png 1468768
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-02.png 1332579
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-03.png 1395049
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-04.png 1129884
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-05.png 1287743
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-06.png 1258456
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-07.png 1389468
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-08.png 1361357
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-09.png 1206251
+Кратко: Один Kie i2i 3:4@4K (style lock palette only, no host face). Seam-slice gutter OK с первого master. Regen не было. 9 PNG 1080×1440. Pixel glance: ни на одном слайде нет лица ведущей / человека.
 
-EN slides (1080×1440 PNG):
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-01.png 1742085
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-02.png 1249355
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-03.png 1555242
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-04.png 1673027
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-05.png 1164019
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-06.png 1195929
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-07.png 1368130
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-08.png 1471010
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-09.png 1250949
+taskId: c640d4640a31c0d5b868334a9860cdf0
+style_url: https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png
+slice_method: seam
+regen: none
+pixel_glance_human_face: none
+slides: 01 cat+phone | 02 dog+laptop muted | 03 dog+pills | 04 cat+day/night window | 05 owl+decoder | 06 owl+1-2-3 | 07 cat+sunset window | 08 owl recap | 09 phone+СУББОТА
 
-Gate: /workspace/carusel-memory/output/slides/slide-01.png … slide-09.png (RU)
-Master: /workspace/carusel-memory/output/master/master.png 2480×3312
-Manifest: /workspace/carusel-memory/output/slice-manifest.json
-PIXELS: /workspace/carusel-memory/packs/2026-08-30/PIXELS.md
+Артефакты:
+- carusel-memory/output/slides/slide-01.png
+- carusel-memory/output/slides/slide-02.png
+- carusel-memory/output/slides/slide-03.png
+- carusel-memory/output/slides/slide-04.png
+- carusel-memory/output/slides/slide-05.png
+- carusel-memory/output/slides/slide-06.png
+- carusel-memory/output/slides/slide-07.png
+- carusel-memory/output/slides/slide-08.png
+- carusel-memory/output/slides/slide-09.png
+- carusel-memory/output/slice-manifest.json
+- carusel-memory/output/master/source.png
+- carusel-memory/output/master/master.png
+- carusel-memory/output/kie-task-log.json
+- carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-01.png … slide-09.png

@@ -8,7 +8,9 @@ Designer wrote `prompt_hints` only. `carusel-image-prompter` writes
 | Item | Status |
 |------|--------|
 | Master 3:4 4K | not generated |
-| input_urls | must be exactly one: Виктория.png (prompter) |
+| input_urls | style lock palette only — **never** Виктория.png |
+| face_lock | none |
+| host_portrait | false |
 | slice_method | seam (contracted) |
 | slide-01..09 PNG | pending slice |
 | motion / video | skipped this run (static PNG) |

@@ -1,23 +1,25 @@
-# Visual diff — vs family lock and vs 29.08
+# Visual diff — vs family lock and vs 30.08 СУББОТА (face pack)
 
 ## Same as family (preserve)
 
-Dark charcoal field. Magenta + white type. Torn pills. Victoria on 1+9
-in-scene. Animals as metaphors. Seam 3×3. Виктория.png face. Soft gold foil.
+Dark charcoal field. Magenta + white type. Torn pills. Animals as metaphors.
+Seam 3×3. Soft gold foil. Style lock = palette / rhythm only.
 
-## Different this Sunday (change)
+## Different this scout pack (change)
 
-| Axis | 29.08 / sheet | 30.08 this pack |
-|------|---------------|-----------------|
-| Topic | Labels / STATUS | Weekend vacuum |
-| Trigger | СТАТУС / LABELS | СУББОТА / WEEKEND |
-| Slide 1 clothes | graphite pajama or sheet white cami | rumpled oatmeal weekend knit |
-| Slide 9 clothes | petrol-teal + espresso jacket | midnight-blue silk slip + charcoal cardigan |
-| Slide 1 pose | hand-on-chin / pajama lounge | sitting 3/4, phone face-down |
-| Slide 9 pose | prior jacket pose | standing 3/4, hand on cardigan |
-| Objects | label tags | silent phone, empty Saturday slot |
+| Axis | 30.08 СУББОТА (old face lock) | 30.08-ru-scout (this pack) |
+|------|-------------------------------|----------------------------|
+| Topic | Weekend vacuum | Stories watched instantly / chat hangs |
+| Trigger | СУББОТА / WEEKEND | **ОНЛАЙН** |
+| Face | Виктория.png on 1 + 9 | **none — no host on any slide** |
+| Wardrobe | oatmeal knit / midnight-blue slip | **none — no woman to dress** |
+| Slide 1 | Victoria + cat + silent Friday phone | cat + glowing stories phone, no woman |
+| Slide 9 | Victoria standing + СУББОТА | huge ОНЛАЙН + phone/app object, no person |
+| Animals | cat 1/4/7, dog 2/3, owl 5/6/8 | cat 1/6/8, dog 2/3, owl 4/5/7 |
+| Lang | ru+en pair | **ru only** |
 
 ## Must not appear
 
-Platinum hair. Alena. Sheet cami/jeans. Graphite pajama. Petrol-teal.
-Espresso jacket. Sticker halo. Portuguese type. Horror table. Bot CTA.
+Any woman's face. Vika. Presenter. Microphone at mouth. Platinum hair.
+Alena. Sheet cami/jeans. Graphite pajama. Petrol-teal. Espresso jacket.
+Sticker halo. Portuguese type. Horror table. Bot CTA. СУББОТА / WEEKEND.
