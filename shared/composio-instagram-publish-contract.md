@@ -1,6 +1,6 @@
 # Composio Instagram publish
 
-После **GATE PASS** + **FACE_CHECK MATCH** vs `viktoriaref.png` рой **сам** кладёт карусели RU+EN в Instagram через Composio.
+После **GATE PASS** + **FACE_CHECK ABSENT** рой кладёт карусель. RU-only pack → только `instagram-ru`. EN / WEEKEND не трогать, если pack `langs: ["ru"]`.
 
 Холл **не** публикует и **слайды не пересматривает**.
 
@@ -57,7 +57,7 @@ exit 0. Пакет остаётся готовым. Холл слайды не �
 ## Когда не публиковать (жёсткий отказ, exit 2)
 
 - GATE FAIL
-- чужое лицо / FACE_CHECK не MATCH / не `viktoriaref.png`
+- лицо Вики / портрет ведущей / FACE_CHECK не ABSENT
 - CTA бота (`3 free readings` / три бесплатных расклада / `product != app_audio`)
 - сырой URL в подписи
 
@@ -73,8 +73,7 @@ exit 0. Пакет остаётся готовым. Холл слайды не �
 
 ## Канон пакета (не ломать)
 
-- лицо только `viktoriaref.png`
-- глаза зелёные с лёгким карим
-- 9+9 статичные PNG, slide-01 тоже PNG
+- нет портрета ведущей (`face_lock: none`)
+- 9 статичные PNG (RU-only pack = 9; bilingual = 9+9), slide-01 тоже PNG
 - CTA = кодовое слово → аудиоразбор в приложении, не бот
 - в подписи нет сырых URL

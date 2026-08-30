@@ -332,7 +332,7 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     f"handle: {HANDLES[lang]}",
                     "publish_requested: false",
                     "visual_family: animals_viktoria_collage",
-                    "face_lock: Виктория.png",
+                    "face_lock: none",
                     "slice_method: seam",
                     "cta_style: comment_trigger",
                     "product: app_audio",
@@ -680,16 +680,16 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
         if prompt.get("slice_method") != "seam":
             errors.append("CAROUSEL_IMAGE_PROMPT.json slice_method must be seam")
         urls = prompt.get("input_urls") or []
-        if urls and "Виктория.png" not in str(urls[0]):
-            errors.append("CAROUSEL_IMAGE_PROMPT.json input_urls[0] must be Виктория.png")
-        if len(urls) != 1:
-            errors.append("CAROUSEL_IMAGE_PROMPT.json must have exactly one input_url")
+        if any(re.search(r"Виктория\.png|viktoriaref|victoria-sheet", str(u), re.I) for u in urls):
+            errors.append("CAROUSEL_IMAGE_PROMPT.json must not put a face ref in input_urls")
+        if str(prompt.get("face_lock") or "none") not in {"none", "no_host", "absent", ""}:
+            errors.append("CAROUSEL_IMAGE_PROMPT.json face_lock must be none")
         prompt_text = str(prompt.get("prompt") or "")
         count = int(prompt.get("prompt_char_count") or len(prompt_text))
         if len(prompt_text) > 2200 or count > 2200:
-            errors.append(
-                "CAROUSEL_IMAGE_PROMPT.json prompt too long (>2200) — starves face lock"
-            )
+            errors.append("CAROUSEL_IMAGE_PROMPT.json prompt too long (>2200)")
+        if not re.search(r"no host|no woman|без (лица|портрет)|без Вик", prompt_text, re.I):
+            errors.append("CAROUSEL_IMAGE_PROMPT.json must forbid host portrait")
         if "PLACEHOLDER" in json.dumps(prompt):
             errors.append("CAROUSEL_IMAGE_PROMPT.json still has PLACEHOLDER")
         briefs = prompt.get("panel_visual_brief") or []
@@ -862,19 +862,16 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
     if step_id == "image-prompter":
         extra_hard.append(
             "- slice_method: seam. Prompt thin white gutters at 1/3 and 2/3 (Excalibur). "
-            "Prompt SHORT. Face lock FIRST. prompt_char_count <= 2200. "
+            "Prompt SHORT. No host portrait. prompt_char_count <= 2200. "
             "No 3000-char collage/type/wardrobe novel. No face essay."
         )
         extra_hard.append(
-            "- Upload ONLY carusel-memory/references/Виктория.png. "
-            "Never i2i viktoriaref.png, victoria-sheet.png, victoria.png, "
-            "victoria_ref.jpg, alena*.png, character-sheet-2k, or the style collage."
+            "- Do NOT upload or i2i Виктория.png / viktoriaref.png / victoria-sheet.png / "
+            "victoria.png. Style collage is palette only. No face ref in generation."
         )
         extra_hard.append(
-            "- Prompt FIRST: same woman as Виктория.png; "
-            "eyes green with a slight hazel-brown tint (зелёные с лёгким карим); "
-            "warm honey blonde with darker roots, not platinum; "
-            "soft tender expression. New clothes and pose. Keep copy/CTA."
+            "- Prompt FIRST: no host, no woman, no Victoria, no presenter portrait. "
+            "Animals + objects + type. Keep copy/CTA verbatim."
         )
         extra_hard.append(
             "- Panel 9 verbatim text = app audio CTA from copy (аудиоразбор / audio reading). "
@@ -888,10 +885,9 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             "Read shared/cta-app-audio-contract.md."
         )
         extra_hard.append(
-            "- Pixel FACE_CHECK.md vs Виктория.png (slides 01+09, both langs). "
-            "Run scripts/make_face_check_crops.py. Eyes must be green+hazel. "
-            "Brown/grey eyes or generic blonde = FAIL, rebuild whole canvas. "
-            "Hair-prose only is not a pass. Read shared/victoria-face-pixel-gate.md."
+            "- FACE_CHECK.md verdict ABSENT. GATE FAIL if Vika or any host portrait "
+            "is on a slide. Do not FACE MATCH Виктория.png. "
+            "Read shared/victoria-face-pixel-gate.md."
         )
         extra_hard.append(
             "- STATIC PNG ONLY. Do not require slide-01.mp4 or video_frame_qa. "
@@ -1019,7 +1015,7 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
                 "No pixels. Teaching-arc notes only.",
                 f"lang: {lang}",
                 f"visual_family: {family}",
-                "face_lock: Виктория.png",
+                "face_lock: none",
                 "written_by: gemini",
                 "",
                 "## Topic",
@@ -1098,12 +1094,12 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
 
     write_text_file(
         mem / "design" / "CAROUSELDESIGN.md",
-        f"# Dry-run design\n\ncarousel_family: {family}\nface_lock: Виктория.png\n"
-        "Do not render. New clothes/pose each real carousel.\n",
+        f"# Dry-run design\n\ncarousel_family: {family}\nface_lock: none\n"
+        "Do not render. No host portrait.\n",
     )
     write_json(
         mem / "design" / "CAROUSEL_SERIES_CONCEPT.json",
-        {"carousel_family": family, "face_lock": "Виктория.png", "dry_run": True},
+        {"carousel_family": family, "face_lock": "none", "dry_run": True},
     )
     write_json(
         mem / "design" / "CAROUSEL_SOURCE_DECOMPOSITION.json",
@@ -1119,12 +1115,13 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
         {
             "generation_mode": "grid_3x3",
             "carousel_family": family,
-            "face_lock": "Виктория.png",
+            "face_lock": "none",
             "slice_method": "seam",
             "dry_run": True,
-            "reference_contract": {"face_lock": "Виктория.png"},
+            "prompt": "No host portrait. No woman. Thin white gutters at 1/3 and 2/3. Dry-run only.",
+            "prompt_char_count": 78,
+            "reference_contract": {"face_lock": "none", "host_portrait": False},
             "input_urls": [
-                "https://example.invalid/Виктория.png",
                 "https://example.invalid/animals-viktoria-style-lock.png",
             ],
             "typography_rules": {"dry_run": True},

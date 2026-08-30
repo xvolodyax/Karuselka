@@ -8,5 +8,6 @@
 | Old studio-blazer cutout (`cover-old.png`) | Wrong brand face | Retired. |
 | `victoria-hair-lock.png` | Generated stand-in | Deleted. |
 
-**Current lock:** `carusel-memory/references/Виктория.png` only.
+**Current lock:** no host portrait in carousel generation.
 `animals-viktoria-style-lock.png` is style/palette, not a face.
+`Виктория.png` is not an i2i input in this repo.

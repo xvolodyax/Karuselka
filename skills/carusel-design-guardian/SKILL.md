@@ -34,6 +34,7 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 | Style score ≥ 70 | yes |
 | Kie 400 recovery used aspect/resolution fallback before compact prompt retry | yes |
 | Copy matches CAROUSEL_SLIDE_COPY.json zones | warn |
+| Host portrait / Vika face on any slide | yes |
 
 ## Professional QA protocol
 
@@ -48,6 +49,7 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 9. **Video source test:** frame 0 of `slide-01.mp4` must match `slide-01.png` (MAE ≤35):
 10. **No-frame QA:** verify `carusel-memory/output/debug/grid-gutter-qa-clean.json` exists and has `status: ok`. White edge artifacts after canonical cleanup = P0.
 11. **Kie recovery provenance:** if slice recovered from Kie `400 Internal Error`, verify the successful run stayed `3:4 @ 4K` and used compact prompt retry before any aspect/resolution change. `prompt_char_count > 4500` after recovery is P0.
+12. **No host portrait:** FACE_CHECK.md `verdict: ABSENT`. P0 if Vika or any recognizable presenter is on a slide. Do not FACE MATCH `Виктория.png`.
 
 ```bash
 python scripts/video_frame_qa.py \

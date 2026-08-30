@@ -25,19 +25,14 @@ No pastel rainbow. No beige lifestyle wash. No horror red/black candle table.
 
 ## Subjects
 
-### Victoria (hero, only woman's face)
+### No host portrait
 
-- Slides **1 (hook)** and **9 (CTA)** in-scene (no sticker halo)
-- Face lock: **`carusel-memory/references/Виктория.png`** only
-  (box: `/workspace/cover-refs/Виктория.png`)
-- One woman. Twelve angles of ONE face. Not 12 people.
-- Eyes: green with a slight hazel-brown tint (зелёные с лёгким карим)
-- Hair: warm honey / wheat blonde with darker roots **as on Виктория.png**. Never lighten.
-- Platinum / white-blonde / Alena / studio-blazer = FAIL. Vika = `Виктория.png` only.
-- `viktoriaref.png`, `victoria-sheet.png`, `victoria.png` are deleted. Never i2i.
-- **Clothes and pose MUST change** every carousel. Do not copy the sheet outfit
-  (white cami + jeans) or the hand-on-chin pose. Slide 1 vs 9 may differ; same woman.
-- No other women's faces. No doubles. Portuguese models are `do_not_borrow`
+- Slides have **no presenter**. Do not draw Vika. Do not i2i `Виктория.png`.
+- Hook (1) and CTA (9) = scene + type + animal / object. Not a woman.
+- GATE FAIL if Vika's face or any recognizable host portrait is on a slide.
+- Do not FACE MATCH «похожа на Виктория.png».
+- `viktoriaref.png`, `victoria-sheet.png`, `victoria.png` stay deleted. Never i2i.
+- No women's faces. No doubles. Portuguese models are `do_not_borrow`.
 
 ### Animals (metaphor, not meme)
 
@@ -62,9 +57,9 @@ Cute random pets without a job = FAIL.
 ## Layout (9 × 3:4)
 
 - Instagram portrait 3:4 each. Not 4:5 mixed, not 1:1 publish assets
-- Hook: large scene line + Victoria + one animal
+- Hook: large scene line + one animal / object (no host)
 - Internal: 50–60% type, smaller subject at bottom or side
-- CTA: Victoria + huge magenta script trigger word
+- CTA: huge magenta script trigger word + object / animal (no host)
 - Safe area ≥10–12% from edges if generated as a 3×3 master
 
 ## Reference roles
@@ -72,12 +67,12 @@ Cute random pets without a job = FAIL.
 | File | Role |
 |------|------|
 | `image-851e.png` / `animals-viktoria-style-lock.png` | style + layout + palette — never i2i as a face |
-| `Виктория.png` | ONLY face + hair lock |
+| `Виктория.png` | NOT used by carousel generation |
 | Alena (`victoria.png` / `alena.png` / `victoria_ref.jpg`) | DELETED / forbidden. Never i2i. |
 | `viktoriaref.png` / `victoria-sheet.png` | DELETED. Never restore. |
 | `cover-old.png` / studio-blazer | RETIRED |
 | `slide-04.png` | meaning depth only, not the visual family |
 
-`preserve`: dark field, magenta + white type mix, torn-paper pills, animals-as-metaphor, Victoria on 1+9, seam slice.
+`preserve`: dark field, magenta + white type mix, torn-paper pills, animals-as-metaphor, seam slice, no host portrait.
 `change`: topic objects, exact copy, which animal on which slide.
 `do_not_borrow`: Portuguese text, foreign faces, other brands, horror table.

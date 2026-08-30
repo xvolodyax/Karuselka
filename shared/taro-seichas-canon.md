@@ -30,7 +30,7 @@ Locale-контракт фиксировал handle и «без URL», но не
 | Бренд | ТАРО СЕЙЧАС | Today Tarot |
 | Handle | @todaytaro_ru | @todaytaro_bot |
 | Слоган | Ясность сейчас | Clarity now |
-| Лицо | Victoria (один face lock) | та же Victoria |
+| Лицо | нет портрета ведущей | то же: без Вики |
 | Academy | можно не трогать | **NO Academy** |
 
 Клиент: женщины 20–50, ~78% отношения. Не целиться в 13–17.
@@ -45,11 +45,11 @@ Locale-контракт фиксировал handle и «без URL», но не
 Коротко:
 
 - charcoal/black + magenta `#ff006e` + white + soft gold
-- Victoria in-scene на hook (1) и CTA (9). Face lock = **`Виктория.png`**
-  (одна женщина, 12 ракурсов одного лица). Глаза: зелёные с лёгким карим / green+hazel. Волосы: honey/wheat + darker roots
-  **как на Виктория.png**. Platinum / Alena = FAIL. Vika = `Виктория.png` only.
-- Одежда и поза **новые в каждой карусели**. Не копировать white cami + jeans с листа.
-  Не копировать ivory-blazer studio. Slide 1 и 9 могут отличаться — лицо то же.
+- Слайды **без портрета ведущей**. Не рисовать Вику. Не класть `Виктория.png` в генерацию.
+  GATE **FAIL** если на слайде лицо Вики / любой узнаваемый портрет ведущей.
+  Не FACE MATCH «похожа на Виктория.png». Старое «не класть если лицо не совпало» снято:
+  лица не должно быть вообще.
+- `Виктория.png` остаётся для статей и историй в других репо. В Karuselka карусель её не ставит.
 - Других женских лиц нет. Doubles запрещены.
 - Животные = метафоры, не мемы: кот = «чуешь», пёс = верность вопросу, сова = ночные мысли.
 - Минимум **3** слайда с животным-метафорой.
@@ -105,10 +105,11 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 
 ## Референсы
 
-В репо: `carusel-memory/references/` (канон-текст). Бинарь лица: `Виктория.png`,
-когда он есть на боксе. **Не рендерить pack, чтобы «доказать» lock.**
+В репо: `carusel-memory/references/` (канон-текст + style lock).
+`Виктория.png` в этом репо **не** кладётся в Kie. **Не рендерить live 30.08**, чтобы «доказать» lock.
 
-- `/workspace/cover-refs/Виктория.png` — ONLY Victoria
+- Style: `animals-viktoria-style-lock.png` — palette / rhythm only, not a face
+- `Виктория.png` — не i2i в карусель
 - `viktoriaref.png` / `victoria-sheet.png` — **DELETED**. Never restore. Never i2i.
 - Alena files (`victoria.png`, `alena.png`, `*_ref.jpg`) — **DELETED**. Never restore. Never i2i.
 - `/workspace/karusel-old/cover-old.png` — RETIRED studio-blazer
@@ -119,7 +120,8 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 
 ## Gate (PASS только если все true)
 
-- (a) лицо = Victoria с `Виктория.png` (не Alena, не studio-blazer, не `viktoriaref.png`)
+- (a) нет портрета ведущей; `face_lock=none`; лицо Вики на слайде = FAIL
+  (live 27–30.08 historical packs не пересобирать)
 - (b) ≥3 слайда с животным как метафорой
 - (c) ≥2 save-слайда с настоящей рамкой или вопросами
 - (d) hook = сцена
@@ -138,9 +140,9 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 (`shared/director-dispatch-contract.md` + `shared/swarm-spawn-contract.md` +
 `scripts/pipeline_gate.py`). researcher + copywriter (caption) = `gemini-3.7-flash-high`.
 
-Director **не** делает worker-шаг сам. Нет parent remake. Нет proof-pack / 18-slide
-rerender «чтобы проверить канон». Face-lock = текст (`Виктория.png`); не рендерить
-слайды, чтобы это доказать.
+Director **не** делает worker-шаг сам. Нет parent remake. Нет proof-pack
+rerender live 30.08 СУББОТА / WEEKEND. Новые кадры без Вики = **новый pack / новый пост**.
+Холл тексты не пишет.
 
 Publish / Composio / Instagram — только Hall после human review.
 `publish_requested: false` по умолчанию.

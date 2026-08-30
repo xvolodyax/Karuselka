@@ -1,21 +1,8 @@
-# Виктория.png — ONLY Victoria face lock
+# Виктория.png — not a carousel input
 
-Repo path: `carusel-memory/references/Виктория.png`  
-Box: `/workspace/cover-refs/Виктория.png`
+The file may stay on disk for articles / stories in other repos.
+**Karuselka carousel does not i2i it. Do not FACE MATCH it.**
 
-One woman. Twelve angles of ONE face. Not 12 people.
-Same sheet Vladimir uses in GPT Image.
+Slides: no host portrait. GATE FAIL if Vika or any presenter is on a slide.
 
-`viktoriaref.png`, `victoria-sheet.png`, and `victoria.png` are deleted. Never restore. Never i2i.
-
-## Face
-
-- Eyes: **green with a slight hazel-brown tint** (зелёные с лёгким карим)
-- Soft, tender expression
-- Warm honey / wheat blonde, darker roots, not platinum
-
-## Clothes and pose
-
-The sheet shows a white tank + jeans + gold pendant, one frame with hand near the chin.
-**Identification only.** New clothes and pose every carousel.
-Do not copy the sheet outfit or the hand-on-chin pose.
+`viktoriaref.png`, `victoria-sheet.png`, and `victoria.png` stay deleted.

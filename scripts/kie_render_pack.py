@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Upload Виктория.png only, Kie i2i both langs, copy 18 slides.
+"""Kie render: style lock only. No host face ref.
 
-The file is one woman, twelve angles. Never i2i viktoriaref.png or victoria.png.
-Never upload victoria-sheet, victoria.png, alena*, or the style collage as a face.
+Do not upload Виктория.png / viktoriaref / victoria-sheet.
+Style collage is palette / rhythm only.
 Does not publish Instagram. Does not rewrite slide copy.
 """
 
@@ -10,28 +10,21 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import shutil
 import sys
 from pathlib import Path
-
-from PIL import Image
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO = SCRIPT_DIR.parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
+from face_gate import FACE_FILE_RE, NO_FACE, is_live_host_face_pack  # noqa: E402
 from kie_carousel_gen import run_grid_3x3  # noqa: E402
 from kie_client import KieImageClient  # noqa: E402
 from kie_file_upload import KieFileUploadClient  # noqa: E402
 
-FACE = REPO / "carusel-memory" / "references" / "Виктория.png"
-FACE_LOCK = "Виктория.png"
-UPLOAD_NAME = "Виктория.png"
 STYLE_LOCK = REPO / "carusel-memory" / "references" / "animals-viktoria-style-lock.png"
-DEFAULT_PACK = REPO / "carusel-memory" / "packs" / "2026-08-29"
-EYES_RE = re.compile(r"зелён.*карим|green.*hazel|green.*light-brown|green.*hazel-brown", re.I)
-ONE_WOMAN_RE = re.compile(r"one woman|одна женщин|same face|одно(го)? лиц|Виктория", re.I)
+DEFAULT_PACK = REPO / "carusel-memory" / "packs" / "2026-08-30-ru-noface"
 
 
 def load_json(path: Path) -> dict:
@@ -43,44 +36,40 @@ def write_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def require_face() -> Path:
-    if not FACE.is_file() or FACE.stat().st_size < 100_000:
+def require_style() -> Path:
+    if not STYLE_LOCK.is_file() or STYLE_LOCK.stat().st_size < 10_000:
         raise SystemExit(
-            "STOP: carusel-memory/references/Виктория.png is missing. "
-            "git pull — Vladimir already committed it."
+            "STOP: carusel-memory/references/animals-viktoria-style-lock.png is missing."
         )
-    im = Image.open(FACE)
-    if im.size[0] < 400 or im.size[1] < 400:
-        raise SystemExit(f"Виктория.png looks too small for a face lock: {im.size}")
-    return FACE
+    return STYLE_LOCK
 
 
 def render_lang(
     pack: Path,
     lang: str,
-    face_url: str,
+    style_url: str,
     workspace: Path,
 ) -> int:
     prompt = load_json(pack / lang / "CAROUSEL_IMAGE_PROMPT.json")
-    if FACE_LOCK not in str(prompt.get("face_lock") or ""):
-        raise SystemExit(f"{lang}: face_lock must be {FACE_LOCK}")
+    lock = str(prompt.get("face_lock") or "")
+    if lock not in {NO_FACE, "no_host", "absent", ""}:
+        raise SystemExit(f"{lang}: face_lock must be {NO_FACE} (no host portrait)")
     active = str(prompt.get("prompt") or "")
     count = int(prompt.get("prompt_char_count") or len(active))
     if len(active) > 2200 or count > 2200:
         raise SystemExit(
             f"{lang}: prompt too long ({max(count, len(active))} chars). "
-            "Rewrite short, face first. Do not generate."
+            "Rewrite short. Do not generate."
         )
-    head = active[:500]
-    if FACE_LOCK not in head or not EYES_RE.search(head) or not ONE_WOMAN_RE.search(head):
-        raise SystemExit(
-            f"{lang}: prompt must start with same woman as {FACE_LOCK} + "
-            "green/hazel / зелёные с лёгким карим"
-        )
+    if FACE_FILE_RE.search(active) and "не " not in active.lower() and "no " not in active.lower():
+        raise SystemExit(f"{lang}: prompt still treats a face file as a lock")
+    if FACE_FILE_RE.search(json.dumps(prompt.get("input_urls") or [])):
+        raise SystemExit(f"{lang}: do not put a face ref in input_urls")
     prompt["slice_method"] = "seam"
-    prompt["input_urls"] = [face_url]
-    prompt["i2i_source"] = "carusel-memory/references/Виктория.png"
-    prompt["i2i_file_name"] = UPLOAD_NAME
+    prompt["face_lock"] = NO_FACE
+    prompt["input_urls"] = [style_url]
+    prompt["i2i_source"] = "carusel-memory/references/animals-viktoria-style-lock.png"
+    prompt["i2i_file_name"] = STYLE_LOCK.name
     copy_src = pack / lang / "CAROUSEL_SLIDE_COPY.json"
     design = workspace / "carusel-memory" / "design"
     design.mkdir(parents=True, exist_ok=True)
@@ -95,7 +84,7 @@ def render_lang(
         workspace,
         task_log,
         prompt.get("resolution") or "4K",
-        [face_url],
+        [style_url],
         None,
     )
     if rc != 0:
@@ -119,30 +108,38 @@ def render_lang(
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Kie i2i pack render from Виктория.png only")
+    parser = argparse.ArgumentParser(description="Kie render without host face ref")
     parser.add_argument("--pack", default=str(DEFAULT_PACK))
-    parser.add_argument("--langs", default="ru,en")
+    parser.add_argument("--langs", default="ru")
     args = parser.parse_args(argv)
-    face = require_face()
     pack = Path(args.pack).expanduser().resolve()
+    manifest = load_json(pack / "PACK.json") if (pack / "PACK.json").is_file() else {}
+    pack_id = str(manifest.get("pack_id") or pack.name)
+    if is_live_host_face_pack(pack_id):
+        raise SystemExit(
+            f"STOP: {pack_id} is a live host-face pack. Do not rebuild it."
+        )
+    style = require_style()
     uploader = KieFileUploadClient()
-    print(f"Uploading identity sheet {face} as {UPLOAD_NAME} ...")
-    print(f"Style collage not uploaded ({STYLE_LOCK.name} is palette only).")
-    face_url = uploader.upload_local(
-        face, upload_path="carusel-face-lock", file_name=UPLOAD_NAME
+    print(f"Uploading style lock {style.name} (palette only, not a face) ...")
+    style_url = uploader.upload_local(
+        style, upload_path="carusel-style-lock", file_name=style.name
     )
-    print(f"face_url={face_url}")
+    print(f"style_url={style_url}")
 
     for lang in [x.strip() for x in args.langs.split(",") if x.strip()]:
+        if lang == "en":
+            print("EN skipped by contract (do not rebuild WEEKEND).", file=sys.stderr)
+            continue
         workspace = Path(f"/tmp/kie-pack-{lang}")
         if workspace.exists():
             shutil.rmtree(workspace)
         workspace.mkdir(parents=True)
-        print(f"=== Kie i2i {lang} from {FACE_LOCK} ===")
-        rc = render_lang(pack, lang, face_url, workspace)
+        print(f"=== Kie i2i {lang} style-only, no host face ===")
+        rc = render_lang(pack, lang, style_url, workspace)
         if rc != 0:
             return rc
-    print("18 slides written from Виктория.png. Do not publish.")
+    print("RU slides written with no host face ref. Do not touch EN. Do not delete old СУББОТА.")
     return 0
 
 

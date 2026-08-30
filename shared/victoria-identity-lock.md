@@ -1,34 +1,29 @@
-# Victoria identity lock — Виктория.png only
+# Host portrait lock — none (from 30.08.2026)
 
-Official face is the **Cyrillic file** `Виктория.png`.
-One woman, twelve angles of ONE person. Not 12 people.
+Carousel slides have **no host portrait**. Do not draw Vika.
+Do not put a face ref into generation.
 
-`viktoriaref.png`, `victoria-sheet.png`, and `victoria.png` are deleted. Do not i2i them.
+`Виктория.png` stays on disk for articles / stories in other repos.
+**This repo's carousel does not use it.** Do not i2i it. Do not FACE MATCH it.
 
-## Karuselka lock
+`viktoriaref.png`, `victoria-sheet.png`, and `victoria.png` stay deleted.
+
+## Karuselka lock (new packs)
 
 | Rule | Value |
 |------|--------|
-| Official face | `carusel-memory/references/Виктория.png` |
-| Box copy | `/workspace/cover-refs/Виктория.png` |
-| `input_urls` | exactly one URL; upload that file only |
-| Eyes | green with a slight hazel-brown tint / **зелёные с лёгким карим** |
-| Expression | soft, tender |
-| Hair | warm honey / wheat, darker roots, not platinum |
-| Clothes / pose | **new every carousel** — not the sheet white tank, not jeans, not hand-on-chin |
-| Fail | other women, Alena, `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, brown-only / grey / blue eyes, platinum, copied sheet outfit |
+| Host portrait | **none** |
+| `face_lock` | `none` |
+| Face ref in Kie `input_urls` | **forbidden** (`Виктория.png`, `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`) |
+| Style ref | `animals-viktoria-style-lock.png` palette / rhythm only — not a face |
+| Slides 1 and 9 | scene + type + animal / object. No woman. No presenter. |
+| Fail | Vika's face, any recognizable host portrait, FACE MATCH vs `Виктория.png` |
 
-`animals-viktoria-style-lock.png` is palette only. Do not i2i it as a face.
-
-Forbidden face files:
-
-- `viktoriaref.png`
-- `victoria-sheet.png`, `victoria-sheet-front.png`, `victoria-face.png`
-- `victoria.png`, `victoria_ref.jpg`
-- `alena*.png`, `character-sheet-2k`
+Live 30.08 RU+EN (СУББОТА / WEEKEND) stay as shipped. Do not rebuild them
+to “prove” this lock. New RU pixels = a **new pack / new post**.
 
 ## Prompt
 
-First lines: one woman, same face, twelve angles of ONE person (`Виктория.png`), eyes lock, soft tender.
+First lines: no host, no woman, no Victoria, no face ref.
 Then grid + **verbatim** copy. `prompt_char_count` ≤ 2200.
-New clothes and pose. Do not copy the sheet tank, jeans, or hand-on-chin pose.
+Animals and objects carry the scene. Huge trigger word on slide 9.

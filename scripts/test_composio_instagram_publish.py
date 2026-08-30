@@ -122,20 +122,31 @@ class ComposioPublishTest(unittest.TestCase):
         self._write_valid_pack(self.pack, pack_id="test-pack")
 
     def _write_valid_pack(self, pack: Path, pack_id: str, already_live: bool = False) -> None:
+        live = pack_id in {
+            "2026-08-27-swarm",
+            "2026-08-27-v2",
+            "2026-08-28",
+            "2026-08-29",
+            "2026-08-30",
+        }
         write(
             pack / "GATE.md",
-            "Verdict: PASS\n- (a) face lock = Виктория.png\n",
+            "Verdict: PASS\n- (a) face_lock = none\n"
+            if not live
+            else "Verdict: PASS\n- (a) face lock = Виктория.png\n",
         )
         write(
             pack / "FACE_CHECK.md",
-            "verdict: MATCH\ncompared: Виктория.png\nnot Alena\n",
+            "verdict: ABSENT\nno host portrait\nбез лица Вики\n"
+            if not live
+            else "verdict: MATCH\ncompared: Виктория.png\nnot Alena\n",
         )
         write_json(
             pack / "PACK.json",
             {
                 "pack_id": pack_id,
                 "date": pack_id,
-                "face_lock": "Виктория.png",
+                "face_lock": "Виктория.png" if live else "none",
                 "product": "app_audio",
                 "already_live": already_live,
                 "already_live_posts": {

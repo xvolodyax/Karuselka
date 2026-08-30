@@ -27,7 +27,7 @@ from urllib.parse import urlparse
 import requests
 
 import cta_canon
-from face_gate import check_face
+from face_gate import NO_FACE, check_face, is_live_host_face_pack
 from publish_preflight import load_publish_urls
 
 API_KEY_ENV = "COMPOSIO_API_KEY"
@@ -40,7 +40,8 @@ FORBIDDEN_TOOLKITS = ("telegram", "TELEGRAM")
 ALIASES = {"ru": "instagram-ru", "en": "instagram-en"}
 HANDLES = {"ru": "@todaytaro_ru", "en": "@todaytaro_bot"}
 EXPECTED_USERNAME = {"ru": "todaytaro_ru", "en": "todaytaro_bot"}
-FACE_LOCK = "Виктория.png"
+FACE_LOCK = NO_FACE
+LEGACY_FACE_LOCK = "Виктория.png"
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 GATE_PASS_RE = re.compile(r"^verdict:\s*PASS\s*$", re.I | re.M)
 DEFAULT_ACCOUNT_RE = re.compile(r"\bdefault\b", re.I)
@@ -279,9 +280,24 @@ def load_live_posts(repo_root: Path) -> list[dict[str, Any]]:
     return []
 
 
+def pack_langs(pack: Path, manifest: dict[str, Any] | None = None) -> list[str]:
+    data = manifest if manifest is not None else load_json_if_exists(pack / "PACK.json")
+    langs = data.get("langs")
+    if isinstance(langs, list) and langs:
+        return [str(x) for x in langs]
+    found = [lang for lang in ("ru", "en") if (pack / lang).is_dir()]
+    return found or ["ru", "en"]
+
+
 def pack_already_live(pack: Path, repo_root: Path, lang: str | None = None) -> dict[str, Any] | None:
     manifest = load_json_if_exists(pack / "PACK.json")
     pack_id = str(manifest.get("pack_id") or pack.name)
+    if manifest.get("publish_as_new_post") is True:
+        for post in load_live_posts(repo_root):
+            if str(post.get("pack_id") or "") == pack_id:
+                if lang is None or post.get("lang") == lang:
+                    return post
+        return None
     if manifest.get("already_live") is True:
         live = manifest.get("already_live_posts") or manifest.get("live_posts") or {}
         if lang and isinstance(live, dict) and live.get(lang):
@@ -373,13 +389,17 @@ def assert_pack_may_publish(pack: Path, repo_root: Path) -> None:
     if face_errors:
         raise PublishBlocked("чужое лицо / FACE_CHECK FAIL — " + "; ".join(face_errors))
     manifest = load_json_if_exists(pack / "PACK.json")
+    pack_id = str(manifest.get("pack_id") or pack.name)
     face_lock = str(manifest.get("face_lock") or FACE_LOCK)
-    if face_lock != FACE_LOCK:
-        raise PublishBlocked(f"face lock must be {FACE_LOCK}, got {face_lock}")
+    if is_live_host_face_pack(pack_id):
+        if face_lock != LEGACY_FACE_LOCK:
+            raise PublishBlocked(f"live pack face lock must be {LEGACY_FACE_LOCK}, got {face_lock}")
+    elif face_lock not in {NO_FACE, "no_host", "absent"}:
+        raise PublishBlocked(f"face lock must be {NO_FACE}, got {face_lock}")
     if str(manifest.get("product") or "") == "bot_three_spreads":
         raise PublishBlocked("CTA бота — do not publish")
 
-    for lang in ("ru", "en"):
+    for lang in pack_langs(pack, manifest):
         lang_dir = pack / lang
         if not lang_dir.is_dir():
             raise PublishBlocked(f"pack missing {lang}/")
@@ -551,6 +571,7 @@ def run_pack(
     env: dict[str, str] | None = None,
     execute: bool = True,
     log_path: Path | None = None,
+    langs: list[str] | None = None,
 ) -> dict[str, Any]:
     pack = pack.resolve()
     repo_root = repo_root.resolve()
@@ -584,7 +605,9 @@ def run_pack(
 
     rows: list[dict[str, Any]] = []
     try:
-        for lang in ("ru", "en"):
+        for lang in langs or pack_langs(pack):
+            if lang == "en" and (load_json_if_exists(pack / "PACK.json").get("langs") == ["ru"]):
+                continue
             lang_live = pack_already_live(pack, repo_root, lang=lang)
             if lang_live:
                 rows.append(
@@ -634,6 +657,12 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="GATE + alias checks only; do not call Instagram publish",
     )
+    p.add_argument(
+        "--lang",
+        action="append",
+        choices=("ru", "en"),
+        help="Publish only these langs (repeatable). Default: PACK.json langs.",
+    )
     return p
 
 
@@ -651,6 +680,7 @@ def main(argv: list[str] | None = None) -> int:
             pack,
             repo_root,
             execute=not args.check_only,
+            langs=args.lang,
         )
     except PublishSkip as skip:
         print(f"GATE PASS")

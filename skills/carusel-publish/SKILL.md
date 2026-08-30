@@ -5,7 +5,7 @@ description: Публикация 9+9 static PNG каруселей RU+EN в Ins
 
 # Carusel Publish
 
-После **GATE PASS** + **FACE_CHECK MATCH** vs `viktoriaref.png` рой **сам** кладёт карусели.
+После **GATE PASS** + **FACE_CHECK ABSENT** (нет лица Вики) рой **сам** кладёт карусель.
 Холл **не** публикует и слайды **не** пересматривает.
 
 Читай `shared/composio-instagram-publish-contract.md`.
@@ -13,13 +13,13 @@ description: Публикация 9+9 static PNG каруселей RU+EN в Ins
 ## Preconditions
 
 - `GATE.md` = PASS
-- `FACE_CHECK.md` = MATCH, лицо только `viktoriaref.png`, глаза зелёные с лёгким карим
+- `FACE_CHECK.md` = ABSENT — на слайдах нет лица Вики / портрета ведущей
 - Guardian: `✅ DESIGN OK` или score ≥ 90 без P0
 - CTA = кодовое слово → аудиоразбор в приложении, не бот
 - В подписи нет сырых URL
 - 9+9 статичные PNG, `publish-urls.json` с HTTPS
 
-GATE FAIL / чужое лицо / CTA бота → **не публиковать**.
+GATE FAIL / лицо Вики на слайде / CTA бота → **не публиковать**.
 
 ## Команда
 

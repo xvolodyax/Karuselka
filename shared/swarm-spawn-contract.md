@@ -19,7 +19,7 @@ director (parent intake)
   → researcher          Task + Gemini     written_by: gemini
   → copywriter          Task + Gemini     slides AND caption; written_by: gemini
   → designer            Task              layout/style only
-  → image-prompter      Task              prompts from locked copy + Виктория.png
+  → image-prompter      Task              prompts from locked copy; no face ref
   → slice               Task
   → motion-director     SKIP static-png-only (unless Hall asks for video)
   → animate             SKIP static-png-only
@@ -53,9 +53,10 @@ Spawn: `model=gemini-3.7-flash-high`. Не inherit модели Director.
 Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus/sonnet/composer = FAIL).
 Не переписывать голос Gemini.
 
-## Face lock (не открывать заново)
+## Host portrait (не открывать заново)
 
-`Виктория.png` only. Alena files deleted. Never i2i `viktoriaref.png`, `victoria-sheet.png`, or `victoria.png`. Новая одежда/поза каждый раз.
+Нет лица Вики. Не класть `Виктория.png` в генерацию. Не FACE MATCH.
+Alena / `viktoriaref.png` / `victoria-sheet.png` deleted. Live 30.08 не пересобирать.
 
 ## Dry-run (без пикселей)
 

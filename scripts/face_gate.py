@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Pixel-side Victoria face + eyes gate.
+"""Host-portrait gate.
 
-FAIL if FACE_CHECK.md is missing, is only hair prose, has no crops,
-verdict is not MATCH, or eyes are brown/grey. Does not invent a face.
-Does not publish.
+New packs (after the live 30.08 pair): FAIL if a host face is required,
+FACE-MATCH'd, or fed into generation. Live weekend/weekday packs keep
+their historical MATCH notes and are not rebuilt.
 """
 
 from __future__ import annotations
@@ -15,9 +15,24 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 SHEET = REPO / "carusel-memory" / "references" / "Виктория.png"
-LEGACY_PACKS = frozenset({"2026-08-27-swarm", "2026-08-27-v2"})
+LIVE_HOST_FACE_PACKS = frozenset(
+    {
+        "2026-08-27-swarm",
+        "2026-08-27-v2",
+        "2026-08-28",
+        "2026-08-29",
+        "2026-08-30",
+    }
+)
+LEGACY_PACKS = LIVE_HOST_FACE_PACKS
+NO_FACE = "none"
+FACE_FILE_RE = re.compile(
+    r"Виктория\.png|viktoriaref\.png|victoria-sheet(?:-front)?\.png|"
+    r"victoria-face\.png|victoria\.png",
+    re.I,
+)
 
-VERDICT_RE = re.compile(r"^verdict:\s*(MATCH|FAIL)\s*$", re.I | re.M)
+VERDICT_RE = re.compile(r"^verdict:\s*(MATCH|FAIL|ABSENT)\s*$", re.I | re.M)
 COMPARED_RE = re.compile(r"Виктория\.png", re.I)
 HAIR_ONLY = re.compile(r"honey|wheat|пшенич|медов", re.I)
 GREEN_RE = re.compile(r"green|зелён|зелен", re.I)
@@ -37,6 +52,15 @@ LANDMARKS = (
     re.compile(r"age|лет|young|30|возраст", re.I),
 )
 ALENA_RE = re.compile(r"cover-refs/victoria\.png|alena", re.I)
+ABSENT_RULE_RE = re.compile(
+    r"no host|без (лица|портрет)|no (face|portrait)|absent|портрет ведущ",
+    re.I,
+)
+MATCH_OLD_RE = re.compile(r"FACE MATCH|похож.*Виктор|same woman as Виктор", re.I)
+
+
+def is_live_host_face_pack(pack_id: str) -> bool:
+    return pack_id in LIVE_HOST_FACE_PACKS
 
 
 def pack_has_real_pixels(pack: Path) -> bool:
@@ -47,27 +71,8 @@ def pack_has_real_pixels(pack: Path) -> bool:
     return any(p.is_file() and p.stat().st_size > 10_000 for p in candidates)
 
 
-def check_face(pack: Path) -> list[str]:
+def check_face_live(pack: Path, text: str) -> list[str]:
     errors: list[str] = []
-    manifest = pack / "PACK.json"
-    if not manifest.is_file():
-        return [f"missing {manifest}"]
-    try:
-        pack_id = str(json.loads(manifest.read_text(encoding="utf-8")).get("pack_id") or "")
-    except json.JSONDecodeError as exc:
-        return [f"PACK.json invalid: {exc}"]
-    if pack_id in LEGACY_PACKS:
-        return []
-    if not pack_has_real_pixels(pack):
-        return []
-
-    note = pack / "FACE_CHECK.md"
-    if not note.is_file():
-        return [
-            "missing FACE_CHECK.md — compare slide 01/09 faces to "
-            "Виктория.png pixel-side before DESIGN OK"
-        ]
-    text = note.read_text(encoding="utf-8")
     verd = VERDICT_RE.search(text)
     if not verd:
         errors.append("FACE_CHECK.md needs a line: verdict: MATCH|FAIL")
@@ -112,8 +117,65 @@ def check_face(pack: Path) -> list[str]:
     return errors
 
 
+def check_face_absent(pack: Path, text: str) -> list[str]:
+    errors: list[str] = []
+    verd = VERDICT_RE.search(text)
+    if not verd:
+        errors.append("FACE_CHECK.md needs a line: verdict: ABSENT")
+    elif verd.group(1).upper() == "MATCH":
+        errors.append(
+            "FACE_CHECK.md verdict MATCH is retired — host portrait must be ABSENT, "
+            "not FACE MATCH vs Виктория.png"
+        )
+    elif verd.group(1).upper() != "ABSENT":
+        errors.append("FACE_CHECK.md verdict is not ABSENT")
+    if MATCH_OLD_RE.search(text) and not ABSENT_RULE_RE.search(text):
+        errors.append("do not FACE MATCH «похожа на Виктория.png» — face must be absent")
+    if not ABSENT_RULE_RE.search(text):
+        errors.append(
+            "FACE_CHECK.md must state no host portrait / no Vika face "
+            "(not a likeness check)"
+        )
+    if FACE_FILE_RE.search(text) and "not" not in text.lower() and "не " not in text.lower():
+        if "forbidden" not in text.lower() and "не класть" not in text.lower():
+            errors.append(
+                "FACE_CHECK.md must not treat Виктория.png as a generation ref"
+            )
+    return errors
+
+
+def check_face(pack: Path) -> list[str]:
+    errors: list[str] = []
+    manifest = pack / "PACK.json"
+    if not manifest.is_file():
+        return [f"missing {manifest}"]
+    try:
+        data = json.loads(manifest.read_text(encoding="utf-8"))
+        pack_id = str(data.get("pack_id") or "")
+    except json.JSONDecodeError as exc:
+        return [f"PACK.json invalid: {exc}"]
+    if not pack_has_real_pixels(pack):
+        return []
+
+    note = pack / "FACE_CHECK.md"
+    if not note.is_file():
+        if is_live_host_face_pack(pack_id):
+            return [
+                "missing FACE_CHECK.md — compare slide 01/09 faces to "
+                "Виктория.png pixel-side before DESIGN OK"
+            ]
+        return [
+            "missing FACE_CHECK.md — confirm every slide has no host portrait "
+            "(verdict: ABSENT). FACE MATCH vs Виктория.png is retired."
+        ]
+    text = note.read_text(encoding="utf-8")
+    if is_live_host_face_pack(pack_id):
+        return check_face_live(pack, text)
+    return check_face_absent(pack, text)
+
+
 def main() -> int:
-    p = argparse.ArgumentParser(description="Pixel-side Victoria face + eyes gate")
+    p = argparse.ArgumentParser(description="Host-portrait pixel gate")
     p.add_argument("--pack", required=True)
     args = p.parse_args()
     pack = Path(args.pack).expanduser().resolve()

@@ -62,6 +62,29 @@ class FaceGateTest(unittest.TestCase):
             errors,
         )
 
+    def test_new_pack_match_fails(self) -> None:
+        pack = self.tmp / "pack"
+        write(pack / "PACK.json", {"pack_id": "2026-08-30-ru-noface"})
+        write(pack / "ru" / "slides" / "slide-01.png", b"\x00" * 12_000)
+        write(
+            pack / "FACE_CHECK.md",
+            "verdict: MATCH\ncompared Виктория.png\nsame woman as Виктория.png\n",
+        )
+        errors = " ".join(face_gate.check_face(pack))
+        self.assertIn("ABSENT", errors + "retired" + errors)
+        self.assertTrue("MATCH" in errors or "retired" in errors.lower(), errors)
+
+    def test_new_pack_absent_passes(self) -> None:
+        pack = self.tmp / "pack"
+        write(pack / "PACK.json", {"pack_id": "2026-08-30-ru-noface"})
+        write(pack / "ru" / "slides" / "slide-01.png", b"\x00" * 12_000)
+        write(
+            pack / "FACE_CHECK.md",
+            "verdict: ABSENT\nno host portrait\nбез лица Вики / без портрета ведущей\n"
+            "do not FACE MATCH Виктория.png\n",
+        )
+        self.assertEqual(face_gate.check_face(pack), [])
+
 
 if __name__ == "__main__":
     unittest.main()
