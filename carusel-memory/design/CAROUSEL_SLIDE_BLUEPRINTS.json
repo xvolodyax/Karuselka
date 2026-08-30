@@ -1,0 +1,241 @@
+{
+  "pipeline_gate": {
+    "step": "designer",
+    "status": "ready_for_verify",
+    "required": true,
+    "handoff_next": "image-prompter",
+    "dispatch_id": "c99f172aca2f45a7ab3b93c00d178499",
+    "dispatched_via": "Task(generalPurpose)"
+  },
+  "pack_id": "2026-08-30-ru-scout",
+  "lang": "ru",
+  "carousel_family": "animals_viktoria_collage",
+  "generation_mode": "grid_3x3",
+  "master_aspect": "3:4",
+  "resolution": "4K",
+  "slice_method": "seam",
+  "gutters": "thin white at 1/3 and 2/3",
+  "safe_area_pct": 12,
+  "face_lock": "none",
+  "host_portrait": false,
+  "victoria_slides": [],
+  "product": "app_audio",
+  "trigger_word": "ОНЛАЙН",
+  "verbatim_copy_source": "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+  "preserve": [
+    "dark field, magenta+white type, torn pills, animals-as-metaphor, NO host, seam gutters"
+  ],
+  "change": [
+    "orbital-stories objects, verbatim RU copy, animal assignment cat 1/6/8 dog 2/3 owl 4/5/7, CTA ОНЛАЙН + phone"
+  ],
+  "do_not_borrow": [
+    "Portuguese text, foreign faces, Виктория.png, any woman, mic at mouth, horror, bot offer, СУББОТА frames"
+  ],
+  "panel_archetype_map": {
+    "01": "hero_scene_collage",
+    "02": "type_heavy_pain",
+    "03": "type_heavy_mistake",
+    "04": "mechanism_leash",
+    "05": "save_decoder_table",
+    "06": "save_checklist",
+    "07": "save_framework",
+    "08": "recap_insight",
+    "09": "cta_object"
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "archetype": "hero_scene_collage",
+      "headline": "Смотрит сторис сразу. Твой диалог висит с обеда",
+      "body": "",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": "cat",
+      "animal_metaphor": "интуиция чует неладное при взгляде на экран",
+      "in_scene": true,
+      "sticker_halo": false,
+      "zones": {
+        "headline": "upper 40%, heavy white sans, 2 lines, safe 12%",
+        "hero": "glowing smartphone stories screen mid-cell, no person holding it as a portrait",
+        "animal": "black cat lower-left or beside the phone, alert, eyes on the screen",
+        "object": "dark phone, stories just-viewed glow, hanging chat implied — no extra words",
+        "number": "pill 01 bottom-right, inside safe area"
+      },
+      "type_share_pct": 42,
+      "notes": "Thumbnail hook. Scene, not mechanic title. No word Сцена. No woman."
+    },
+    {
+      "index": 2,
+      "role": "problem",
+      "archetype": "type_heavy_pain",
+      "headline": "Телефон у него в руках, но не для тебя",
+      "body": "Ты видишь отметку времени: 2 минуты назад. Он в сети, но твой диалог сдвинут вниз. Внутри растёт тревога и ожидание.",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": "dog",
+      "animal_metaphor": "преданность безответному ожиданию у экрана",
+      "sticker_halo": false,
+      "zones": {
+        "headline": "top 28%, heavy white sans",
+        "body": "mid 30%, 2–3 short lines white",
+        "animal": "loyal dog lower third by a dark phone / green online glow",
+        "object": "phone not aimed at her chat; last-seen mark as object, not extra copy",
+        "number": "pill 02 bottom-right"
+      },
+      "type_share_pct": 55,
+      "notes": "Dissonance: he is online, her thread is not. No person."
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "archetype": "type_heavy_mistake",
+      "headline": "Ты принимаешь просмотр за внимание",
+      "body": "«Он помнит обо мне, просто занят». Ты начинаешь вести сторис как персональный эфир для одного зрителя, оправдывая его молчание.",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": "dog",
+      "animal_metaphor": "ловушка надежды и поиска скрытых смыслов",
+      "sticker_halo": false,
+      "zones": {
+        "headline": "top 26%, white sans",
+        "pills": "magenta torn-tape for «просто занят» — short, from copy only",
+        "body": "mid, 2 lines",
+        "animal": "dog head on paws, lower-right",
+        "number": "pill 03 bottom-right"
+      },
+      "type_share_pct": 58,
+      "notes": "Excuse loop. Pills quote existing copy fragments only."
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "archetype": "mechanism_leash",
+      "headline": "Орбитальный контроль стоит 0 усилий",
+      "body": "Просмотр сторис — это пассивный свайп между делами. Способ держать тебя в поле зрения и на коротком поводке, не отдавая ничего взамен.",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": "owl",
+      "animal_metaphor": "ночная ясность и вскрытие скрытого мотива",
+      "sticker_halo": false,
+      "zones": {
+        "headline": "top 28%",
+        "body": "mid",
+        "object": "thin orbital leash / swipe-cost-zero motif around a dim stories screen — stays inside cell",
+        "animal": "owl perched, seeing the leash",
+        "number": "pill 04 bottom-right"
+      },
+      "type_share_pct": 52,
+      "notes": "Mechanism made visible. No Victoria. No woman."
+    },
+    {
+      "index": 5,
+      "role": "save_decoder",
+      "archetype": "save_decoder_table",
+      "headline": "Иллюзия внимания против реальности",
+      "body": "Смотрит сторис → Тратит 1 секунду на свайп.\nНе пишет в чат → Экономит силы и фокус.\nВсегда онлайн → Доступен всем, кроме тебя.\nПоявляется при тишине → Проверяет поводок.",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": "owl",
+      "animal_metaphor": "трезвое различение фактов и фантазий",
+      "sticker_halo": false,
+      "zones": {
+        "headline": "top 20%",
+        "decoder": "four stacked illusion→reality lines, 50–60% of cell, high save value",
+        "animal": "owl upper-right or perched above the stack, small",
+        "number": "pill 05 bottom-right"
+      },
+      "type_share_pct": 62,
+      "save_card": true,
+      "notes": "Bookmark decoder. Meaning depth like OLD slide-04, not that visual."
+    },
+    {
+      "index": 6,
+      "role": "save_checklist",
+      "archetype": "save_checklist",
+      "headline": "3 признака, что ты для него лишь зритель",
+      "body": "1. Моментально смотрит всё, но не начинает разговор.\n2. Отвечает через 8 часов односложно.\n3. Пишет первым только тогда, когда ты перестаёшь выкладывать жизнь.",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": "cat",
+      "animal_metaphor": "чутьё распознает скрытую манипуляцию",
+      "sticker_halo": false,
+      "zones": {
+        "headline": "top 22%",
+        "list": "numbered 1–3, large, screenshot-worthy",
+        "animal": "cat lower-left, small, sensing",
+        "number": "pill 06 bottom-right"
+      },
+      "type_share_pct": 60,
+      "save_card": true,
+      "notes": "Diagnostic checklist. Cat (not owl) per this pack's copy."
+    },
+    {
+      "index": 7,
+      "role": "save_framework",
+      "archetype": "save_framework",
+      "headline": "Рамка: Суть – Тень – Вектор",
+      "body": "Суть: Наблюдение без шага — это удержание дистанции.\nТень: Твой страх закрыть окно и потерять контакт.\nВектор: Забрать внимание из экрана в свою реальную жизнь.",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": "owl",
+      "animal_metaphor": "мудрость глубокой трансформации",
+      "sticker_halo": false,
+      "zones": {
+        "headline": "top 22%",
+        "framework": "three stacked Суть / Тень / Вектор blocks, save-worthy",
+        "animal": "owl as quiet witness, lower third or side",
+        "number": "pill 07 bottom-right"
+      },
+      "type_share_pct": 60,
+      "save_card": true,
+      "notes": "Product framework on a save card. Owl (not cat) per this pack's copy."
+    },
+    {
+      "index": 8,
+      "role": "recap",
+      "archetype": "recap_insight",
+      "headline": "Просмотр сторис — это не поступок",
+      "body": "Человек, который хочет быть рядом, пишет и делает шаги. Не будь бесплатным сериалом для того, кто экономит на тебе даже слова.",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": "cat",
+      "animal_metaphor": "возвращение себе автономии и гордости",
+      "sticker_halo": false,
+      "zones": {
+        "headline": "top 30%",
+        "body": "mid",
+        "animal": "cat turning away from the phone toward own dark window / own life",
+        "number": "pill 08 bottom-right"
+      },
+      "type_share_pct": 55,
+      "notes": "Manifesto recap. Cat leaves the spectator seat."
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "archetype": "cta_object",
+      "headline": "Напиши ОНЛАЙН",
+      "body": "Аудиоразбор в моём приложении.",
+      "cta": "Слово ОНЛАЙН в комментариях",
+      "trigger_word": "ОНЛАЙН",
+      "trigger_treatment": "huge magenta handwritten script — largest word on the canvas",
+      "product": "app_audio",
+      "offer": "аудиоразбор в моём приложении — Суть – Тень – Вектор",
+      "victoria": false,
+      "host_portrait": false,
+      "animal": null,
+      "in_scene": false,
+      "sticker_halo": false,
+      "zones": {
+        "trigger": "upper-mid, huge magenta ОНЛАЙН",
+        "headline": "Напиши + trigger; white + magenta",
+        "body": "small white: Аудиоразбор в моём приложении.",
+        "hero": "dark smartphone / in-app audio UI — no person, no hand portrait, no mic at mouth",
+        "number": "pill 09 bottom-right"
+      },
+      "type_share_pct": 45,
+      "notes": "CTA only. Huge ОНЛАЙН + phone/app object. No woman. No animal. No bot. No 3 free spreads. No raw URL."
+    }
+  ]
+}
