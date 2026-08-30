@@ -76,7 +76,17 @@ pixel_glance_human_face: none
 Slides: carusel-memory/output/slides/slide-01.png … slide-09.png (1080×1440)
 Pack: carusel-memory/packs/2026-08-30-ru-scout/ru/slides/slide-01.png … slide-09.png
 === CARUSEL-MOTION-DIRECTOR ===
+Статус: ⏭️ SKIPPED
+dispatched_via: skip:static-png-only
+skip_reason: static-png-only
+incident_report: none
+HANDOFF_NEXT: animate
 === CARUSEL-ANIMATE ===
+Статус: ⏭️ SKIPPED
+dispatched_via: skip:static-png-only
+skip_reason: static-png-only
+incident_report: none
+HANDOFF_NEXT: design-guardian
 === CARUSEL-DESIGN-GUARDIAN ===
 === CARUSEL-UPLOAD ===
 === CARUSEL-PUBLISH ===
