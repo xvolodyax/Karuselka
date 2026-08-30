@@ -100,5 +100,13 @@ dispatch_id: 8beaed721de943d4b0a222b7a5e4bef9
 incident_report: none
 HANDOFF_NEXT: upload
 === CARUSEL-UPLOAD ===
+Статус: ✅ OK
+provider: kie_file_upload_api
+file1_kind: png
+publish-urls.json: carusel-memory/output/publish-urls.json
+dispatched_via: Task(generalPurpose)
+dispatch_id: b5aa584574044e599fc966f266c59376
+incident_report: none
+HANDOFF_NEXT: publish
 === CARUSEL-PUBLISH ===
 === CARUSEL-FIXIC ===
