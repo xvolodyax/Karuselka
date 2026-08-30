@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "run_id": "2026-08-30-1110",
+  "lang": "ru",
+  "topic": "Он пропадает на выходных — будни тёплые, суббота пустая",
+  "handle": "@todaytaro_ru",
+  "created_at": "2026-08-30T08:21:59Z",
+  "dispatch_mode": "generalPurpose-fallback",
+  "publish_requested": true,
+  "mode": "live",
+  "pixels": "allowed",
+  "steps": {
+    "director": {
+      "id": "director",
+      "status": "ok",
+      "dispatched_via": "parent",
+      "dispatch_id": null,
+      "started_at": "2026-08-30T08:21:59Z",
+      "finished_at": "2026-08-30T08:21:59Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/00-brief.md",
+        "carusel-memory/pipeline-ledger.json"
+      ],
+      "fragment": "carusel-memory/fragments/director.md",
+      "incident_report": "none"
+    },
+    "researcher": {
+      "id": "researcher",
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "d8c1039a17c94a3681dd2836647e8979",
+      "started_at": "2026-08-30T08:22:24Z",
+      "finished_at": "2026-08-30T08:25:53Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/research/carousel-research-dossier.md"
+      ],
+      "fragment": "carusel-memory/fragments/researcher.md",
+      "incident_report": "none",
+      "model": "gemini-3.7-flash-high"
+    },
+    "copywriter": {
+      "id": "copywriter",
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "1e4dbcee0efe44da8353ed1fe17c02a9",
+      "started_at": "2026-08-30T08:25:56Z",
+      "finished_at": "2026-08-30T08:28:36Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+        "carusel-memory/design/CAROUSEL_CAPTION.json",
+        "carusel-memory/design/CAROUSEL_CAPTION.md"
+      ],
+      "fragment": "carusel-memory/fragments/copywriter.md",
+      "incident_report": "none",
+      "model": "gemini-3.7-flash-high"
+    },
+    "designer": {
+      "id": "designer",
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "b10a4a88db134fc38e2cc9d5838339c3",
+      "started_at": "2026-08-30T08:28:45Z",
+      "finished_at": "2026-08-30T08:33:54Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSELDESIGN.md",
+        "carusel-memory/design/CAROUSEL_SERIES_CONCEPT.json",
+        "carusel-memory/design/CAROUSEL_SOURCE_DECOMPOSITION.json",
+        "carusel-memory/design/CAROUSEL_SLIDE_BLUEPRINTS.json"
+      ],
+      "fragment": "carusel-memory/fragments/designer.md",
+      "incident_report": "none",
+      "model": null
+    },
+    "image-prompter": {
+      "id": "image-prompter",
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "092303bb6b314cac95d5a37b2870d354",
+      "started_at": "2026-08-30T08:34:35Z",
+      "finished_at": "2026-08-30T08:38:46Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json",
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md"
+      ],
+      "fragment": "carusel-memory/fragments/image-prompter.md",
+      "incident_report": "none",
+      "model": "gemini-3.7-flash-high"
+    },
+    "slice": {
+      "id": "slice",
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "f841fd31358146d8a885227c407fb868",
+      "started_at": "2026-08-30T08:39:04Z",
+      "finished_at": "2026-08-30T08:48:30Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/output/slides/slide-01.png",
+        "carusel-memory/output/slides/slide-02.png",
+        "carusel-memory/output/slides/slide-03.png",
+        "carusel-memory/output/slides/slide-04.png",
+        "carusel-memory/output/slides/slide-05.png",
+        "carusel-memory/output/slides/slide-06.png",
+        "carusel-memory/output/slides/slide-07.png",
+        "carusel-memory/output/slides/slide-08.png",
+        "carusel-memory/output/slides/slide-09.png",
+        "carusel-memory/output/slice-manifest.json"
+      ],
+      "fragment": "carusel-memory/fragments/slice.md",
+      "incident_report": "none",
+      "model": null
+    },
+    "motion-director": {
+      "id": "motion-director",
+      "status": "skipped",
+      "dispatched_via": "skip:static-png-only",
+      "dispatch_id": null,
+      "started_at": null,
+      "finished_at": "2026-08-30T08:49:29Z",
+      "skip_reason": "static-png-only",
+      "artifacts": [],
+      "fragment": "carusel-memory/fragments/motion-director.md",
+      "incident_report": "none",
+      "model": null
+    },
+    "animate": {
+      "id": "animate",
+      "status": "skipped",
+      "dispatched_via": "skip:static-png-only",
+      "dispatch_id": null,
+      "started_at": null,
+      "finished_at": "2026-08-30T08:49:29Z",
+      "skip_reason": "static-png-only",
+      "artifacts": [],
+      "fragment": "carusel-memory/fragments/animate.md",
+      "incident_report": "none",
+      "model": null
+    },
+    "design-guardian": {
+      "id": "design-guardian",
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "fd3d207afc5d47a587d2d7e81472bcd8",
+      "started_at": "2026-08-30T08:50:09Z",
+      "finished_at": "2026-08-30T08:55:26Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md"
+      ],
+      "fragment": "carusel-memory/fragments/design-guardian.md",
+      "incident_report": "none",
+      "model": null
+    },
+    "upload": {
+      "id": "upload",
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "a0bf9cebbfa54c5cb2a783172f8b0fb0",
+      "started_at": "2026-08-30T08:55:45Z",
+      "finished_at": "2026-08-30T08:58:50Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/output/publish-urls.json"
+      ],
+      "fragment": "carusel-memory/fragments/upload.md",
+      "incident_report": "none",
+      "model": null
+    },
+    "publish": {
+      "id": "publish",
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "9cb5285a418f42b78b3aa437cad123b8",
+      "started_at": "2026-08-30T08:59:26Z",
+      "finished_at": "2026-08-30T09:03:48Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/output/publish-log.md",
+        "carusel-memory/packs/2026-08-30/publish-log.md",
+        "carusel-memory/canon/live-posts.json"
+      ],
+      "fragment": "carusel-memory/fragments/publish.md",
+      "incident_report": "none",
+      "model": null
+    },
+    "fixic": {
+      "id": "fixic",
+      "status": "skipped",
+      "dispatched_via": "skip:no-open-incidents",
+      "dispatch_id": null,
+      "started_at": null,
+      "finished_at": "2026-08-30T09:05:01Z",
+      "skip_reason": "no-open-incidents",
+      "artifacts": [],
+      "fragment": "carusel-memory/fragments/fixic.md",
+      "incident_report": "none",
+      "model": null
+    }
+  }
+}

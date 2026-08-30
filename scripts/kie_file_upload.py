@@ -129,7 +129,14 @@ class KieFileUploadClient(KieTaskClient):
         body["publicUrl"] = url
         return body
 
-    def upload_local(self, local_path: Path, upload_path: str = "carusel") -> str:
+    def upload_local(
+        self,
+        local_path: Path,
+        upload_path: str = "carusel",
+        file_name: str | None = None,
+    ) -> str:
         """Умный выбор: stream для локальных файлов."""
-        result = self.upload_stream(local_path, upload_path=upload_path, file_name=local_path.name)
+        result = self.upload_stream(
+            local_path, upload_path=upload_path, file_name=file_name or local_path.name
+        )
         return result["publicUrl"]

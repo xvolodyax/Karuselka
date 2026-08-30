@@ -1,0 +1,70 @@
+{
+  "pack_id": "2026-08-30",
+  "date": "2026-08-30",
+  "slot": "11:10 MSK",
+  "late": true,
+  "topic": {
+    "ru": "Он пропадает на выходных — будни тёплые, суббота пустая",
+    "en": "He disappears on weekends — weekdays warm, Saturday empty"
+  },
+  "note": "New Sunday relationship-pain pair. Forbidden repeats: Pause, Ping vs step, Спишь?, Тепло/WARMTH, Ярлыки/СТАТУС/LABELS, B18. Static 9 PNG slides only — no Grok/motion/animate. Face lock Виктория.png only. Director publishes via Composio after GATE.",
+  "live_posts_do_not_touch": {
+    "ru": [
+      "https://www.instagram.com/p/Dci-EP1ErI-/",
+      "https://www.instagram.com/p/DclVIfUoDqQ/",
+      "https://www.instagram.com/p/Dcnrh0nm7pp/",
+      "https://www.instagram.com/p/DcqJGCblQqv/"
+    ],
+    "en": [
+      "https://www.instagram.com/p/Dci-ozwAH4l/",
+      "https://www.instagram.com/p/DclVSGMGwAj/",
+      "https://www.instagram.com/p/Dcnrht_lVca/",
+      "https://www.instagram.com/p/DcqJS--m0op/"
+    ]
+  },
+  "already_live": true,
+  "already_live_posts": {
+    "ru": "https://www.instagram.com/p/DcqJGCblQqv/",
+    "en": "https://www.instagram.com/p/DcqJS--m0op/"
+  },
+  "visual_family": "animals_viktoria_collage",
+  "face_lock": "Виктория.png",
+  "slice_method": "seam",
+  "hair_lock": "warm honey/wheat blonde with darker medium-brown roots as on Виктория.png; platinum = FAIL",
+  "eyes_lock": "green with a slight hazel tint / зелёные с лёгким карим",
+  "product": "app_audio",
+  "cta_style": "comment_trigger",
+  "trigger_words": {
+    "ru": "СУББОТА",
+    "en": "WEEKEND"
+  },
+  "langs": ["ru", "en"],
+  "publish_requested": true,
+  "publish_actor": "Director via Composio aliases instagram-ru and instagram-en",
+  "skip_motion": true,
+  "skip_animate": true,
+  "skip_glavred": true,
+  "profiles": {
+    "ru": {
+      "brand": "ТАРО СЕЙЧАС",
+      "handle": "@todaytaro_ru",
+      "slogan": "Ясность сейчас"
+    },
+    "en": {
+      "brand": "Today Tarot",
+      "handle": "@todaytaro_bot",
+      "slogan": "Clarity now",
+      "no_academy": true
+    }
+  },
+  "swarm": {
+    "mode": "live",
+    "dispatch": "Task(generalPurpose) one step each",
+    "text_model": "gemini-3.7-flash-high",
+    "written_by": "gemini",
+    "pixels": "Kie via kie_render_pack.py",
+    "publish": "composio instagram-ru + instagram-en",
+    "motion": "skipped",
+    "animate": "skipped"
+  }
+}

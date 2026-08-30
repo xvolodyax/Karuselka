@@ -1,0 +1,29 @@
+{
+  "pipeline_gate": {"step": "designer", "required": true},
+  "carousel_family": "animals_viktoria_collage",
+  "master": {
+    "aspect": "3:4",
+    "resolution": "4K",
+    "grid": {"cols": 3, "rows": 3, "order": "row-major"},
+    "slice_method": "seam",
+    "gutters": "thin white at 1/3 and 2/3 both axes",
+    "safe_area_pct": 12
+  },
+  "reading_order": [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ],
+  "cell_shapes": {
+    "01": "hero portrait collage, subject mid, type top",
+    "02": "type stack + animal footer",
+    "03": "type stack + pill row + animal footer",
+    "04": "type + internal boundary split + cat",
+    "05": "decoder stack + small owl",
+    "06": "numbered list + small owl",
+    "07": "type + cat turning away",
+    "08": "type + owl witness",
+    "09": "hero standing 3/4 + huge magenta script above/beside"
+  },
+  "no_cross_gutter": ["faces", "trigger word", "headlines", "animals"]
+}

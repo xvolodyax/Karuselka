@@ -1,0 +1,36 @@
+{
+  "pipeline_gate": {"step": "designer", "required": true, "pixels": "none_this_step"},
+  "carousel_family": "animals_viktoria_collage",
+  "note": "Designer registers intended assets. No Kie task ids yet. image-prompter + slice fill generation fields.",
+  "assets": [
+    {
+      "id": "face-lock-victoria",
+      "local_path": "carusel-memory/references/Виктория.png",
+      "box_path": "/workspace/cover-refs/Виктория.png",
+      "role": "face_lock",
+      "input_url_slot": 0,
+      "only_face_file": true,
+      "status": "locked"
+    },
+    {
+      "id": "style-lock-animals",
+      "local_path": "carusel-memory/references/animals-viktoria-style-lock.png",
+      "role": "palette_layout_only",
+      "never_i2i_as_face": true,
+      "status": "reference_only"
+    },
+    {
+      "id": "master-grid",
+      "local_path": "carusel-memory/output/master/master.png",
+      "role": "master_3x3",
+      "status": "pending_slice"
+    }
+  ],
+  "forbidden_restore": [
+    "viktoriaref.png",
+    "victoria-sheet.png",
+    "victoria.png",
+    "victoria_ref.jpg",
+    "alena*.png"
+  ]
+}
