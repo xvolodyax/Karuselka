@@ -21,7 +21,7 @@ HARD RULES
 - End with fragment carusel-memory/fragments/researcher.md.
 - Fragment MUST contain:
   dispatched_via: Task(generalPurpose)
-  dispatch_id: d8c1039a17c94a3681dd2836647e8979
+  dispatch_id: d33894afb280486d9cbf348427323314
   incident_report: none
   HANDOFF_NEXT: copywriter
 - Instagram: no raw URLs; say links are in the profile. CTA is one comment trigger word.
@@ -32,7 +32,7 @@ HARD RULES
 - If previous artifacts are missing: fragment ❌ BLOCKER and stop.
 
 DISPATCH
-dispatch_id: d8c1039a17c94a3681dd2836647e8979
+dispatch_id: d33894afb280486d9cbf348427323314
 step_id: researcher
 via: Task(generalPurpose)
 workspace: /workspace

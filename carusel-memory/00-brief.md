@@ -1,17 +1,17 @@
-# Carusel brief — ТАРО СЕЙЧАС / Today Tarot — 2026-08-30 slot 11:10 MSK
+# Carusel brief — ТАРО СЕЙЧАС — 2026-08-30 RU Scout (no host portrait)
 
 lang: ru
-topic: Он пропадает на выходных — будни тёплые, суббота пустая
+topic: Scout — новая боль в отношениях (НЕ выходные / НЕ СУББОТА)
 handle: @todaytaro_ru
 publish_requested: true
 visual_family: animals_viktoria_collage
-face_lock: Виктория.png
+face_lock: none
+host_portrait: false
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: СУББОТА
-trigger_word_en: WEEKEND
+trigger_word: TBD-researcher
 product: app_audio
-cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор / Essence–Shadow–Vector)
+cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads
 slides: 9
 grid: 3x3
@@ -20,77 +20,93 @@ skip_motion: true
 skip_animate: true
 skip_glavred: true
 skip_publish: false
-bilingual_pair: true
-en_handle: @todaytaro_bot
-en_brand: Today Tarot
-slot: 11:10 MSK
+bilingual_pair: false
+langs: ru
+en_handle: DO_NOT_TOUCH
+slot: scout-same-day
 date: 2026-08-30
-late: true
-pack_id: 2026-08-30
-**run_id:** 2026-08-30-1110
+pack_id: 2026-08-30-ru-scout
+**run_id:** 2026-08-30-ru-scout
 
 ## Intake
 
 - audience: женщины 20–50, отношения (~78%). Не целиться в 13–17. Не пугать одиночеством.
-- goal: лиды в приложение через comment trigger → Direct аудиоразбор (Суть – Тень – Вектор / Essence–Shadow–Vector)
-- reference_carousel: family `animals_viktoria_collage`; live 27.08 Pause posts stay; packs `2026-08-27-swarm` (Ping vs step), `2026-08-27-v2` (Pause), `2026-08-28` (Тепло / WARMTH), `2026-08-29` (Ярлыки / СТАТУС / LABELS) are FORBIDDEN repeats
-- slide_copy_notes: auto — Gemini пишет 9 RU + 9 EN + две подписи. Director не пишет слайды.
-- cta_target: header_link — «ссылки в шапке профиля» / «links in the profile». No raw URLs.
-- brand: ТАРО СЕЙЧАС / Today Tarot. Dark + magenta. Victoria face lock = `carusel-memory/references/Виктория.png` only (2 191 823 bytes, 1341×1173). NEVER i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`. Eyes: green with a slight hazel tint, same on every slide. Hair: warm honey/wheat blonde with darker roots, not platinum. New pose and clothes every time; do not copy sheet white cami / jeans / hand-on-chin.
-- caption_preferences: Gemini writes RU caption AND EN caption in the same copywriter step. Product `app_audio`. No Glavred this run.
+- goal: лиды в приложение через comment trigger → Direct аудиоразбор (Суть – Тень – Вектор)
+- reference_carousel: family `animals_viktoria_collage`; style lock = `animals-viktoria-style-lock.png` (palette only, not a face)
+- slide_copy_notes: auto — Gemini пишет 9 RU слайдов + RU caption. Director не пишет слайды. Холл тексты не пишет.
+- cta_target: header_link — «ссылки в профиле». No raw URLs.
+- brand: ТАРО СЕЙЧАС. Dark + magenta. **Нет портрета ведущей.** Не рисовать Вику. Не класть `Виктория.png` в генерацию. GATE FAIL если на любом слайде лицо Вики / любой портрет ведущей / микрофон у рта.
+- caption_preferences: Gemini writes RU caption only. Product `app_audio`. No Glavred. No EN caption.
 
-## One swarm, one chain (this run)
+## Scope (this run)
 
-researcher (Gemini 3.7) → Gemini copywriter (9 RU + RU caption AND 9 EN + EN caption) → designer → Gemini image-prompter → slice (Kie pixels) → skip motion → skip animate → design-guardian + FACE_CHECK vs Виктория.png → upload → publish via Composio aliases instagram-ru + instagram-en
+RU only. @todaytaro_ru only. Composio alias `instagram-ru` only.
 
-SKIP this run: motion-director, animate/Grok video, Glavred, Telegram.
+DO NOT:
+- copy or rebuild live СУББОТА https://www.instagram.com/p/DcqJGCblQqv/
+- rebuild noface СУББОТА https://www.instagram.com/p/Dcqh0UnG48J/
+- touch EN / @todaytaro_bot / WEEKEND https://www.instagram.com/p/DcqJS--m0op/
+- write EN slides or EN caption
+- publish to instagram-en
+- send Telegram / Макс / VK
+- i2i Виктория.png / viktoriaref.png / victoria-sheet.png / victoria.png
+- draw a host, presenter, woman, microphone-at-mouth
 
-Static 9 slides per language. Slide-01 is PNG, not MP4. No video, no animation.
+Static 9 PNG 1080×1440. Slide-01 is PNG. No video. Skip motion-director + animate.
 
-Hall does not write, draw, review slides, or publish. Director publishes after GATE PASS + FACE MATCH.
+## Topic lock (Gemini researcher SCOUTS and locks)
 
-## Topic lock (Gemini researcher locks the exact hook)
+Scout a NEW relationship-pain topic for Sunday 30.08.2026.
+Researcher locks exact hook + RU trigger word.
 
-Seed for Sunday 30.08 (slot already due): weekend disappearance — weekdays warm, Saturday empty.
-
-Researcher may refine the hook/mechanism but MUST pick a NEW relationship-pain topic.
-
-FORBIDDEN repeats:
-- «Пауза или конец» / Pause or over
+FORBIDDEN repeats (do not use topic, hook, or trigger):
+- «Пауза или конец» / Pause or over — live https://www.instagram.com/p/Dci-EP1ErI-/
 - «Пинг или шаг» / Ping vs step
 - «Спишь?» after 24 days of silence
-- «Тепло – холодно» / Hot & Cold (pack 2026-08-28)
-- «Зачем вешать ярлыки» / Why Put Labels On It (pack 2026-08-29, live RU https://www.instagram.com/p/Dcnrh0nm7pp/ EN https://www.instagram.com/p/Dcnrht_lVca/)
-- triggers ШАГ / STEP / ПАУЗА / PAUSE / ТЕПЛО / WARMTH / ПРОЧИТАНО / СТАТУС / STATUS / LABELS
+- «Тепло – холодно» / Hot & Cold (pack 2026-08-28) — live https://www.instagram.com/p/DclVIfUoDqQ/
+- «Зачем вешать ярлыки» / Why Put Labels On It (pack 2026-08-29) — live https://www.instagram.com/p/Dcnrh0nm7pp/
+- «Он пропадает на выходных» / weekend vacuum / СУББОТА / WEEKEND — live https://www.instagram.com/p/DcqJGCblQqv/ and rebuild https://www.instagram.com/p/Dcqh0UnG48J/
+- triggers: ШАГ / STEP / ПАУЗА / PAUSE / ТЕПЛО / WARMTH / ПРОЧИТАНО / СТАТУС / STATUS / LABELS / СУББОТА / WEEKEND
 - B18 «парень пропал после близости»
 
-Code word must be new. RU ≠ EN. Topic-tied. Never reuse yesterday’s STATUS / LABELS / СТАТУС.
-Never use the word «Сцена» on slides or in caption. First slide is the situation itself, no label.
+Seed angles researcher MAY pick among (or invent a better unused one):
+- он смотрит сторис сразу, а отвечает часами позже
+- «я не готов к отношениям», но ведёт себя как парень
+- знакомит тебя с друзьями как «знакомую»
+- пишет только ночью / только когда скучно
+- ревнует, но не выбирает
+- планирует свидание и отменяет в последний момент
+
+Code word: NEW, topic-tied, one Russian word, ALL CAPS if short. Not a forbidden trigger.
+Never use the word «Сцена» on slides or in caption. First slide is the situation itself.
 Write «в моём приложении», never «в нашем приложении».
 
 ## CTA (hard gate)
 
 Last slide + caption sell the IN-APP audio reading on THIS carousel topic.
 - RU: «Суть – Тень – Вектор»
-- EN: Essence–Shadow–Vector
 Comment a unique code word → Direct gets the app audio.
 Do NOT sell 3 free bot spreads. Do NOT sell the bot. Do NOT write «3 бесплатных расклада».
-No raw URLs in Instagram captions — only «ссылки в шапке профиля» / «links in the profile».
-Do not write «личный аудиоразбор». EN: no Academy.
+No raw URLs in Instagram captions — only «ссылки в профиле».
+Do not write «личный аудиоразбор».
 
 ## Face + cut
 
-- i2i ONLY `carusel-memory/references/Виктория.png` (2 191 823 bytes, 1341×1173; one woman, 12 angles)
-- NEVER i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`, or `animals-viktoria-style-lock.png` as a face
-- Eyes green with a slight hazel tint on every slide
-- Hair: warm honey/wheat blonde, darker roots; platinum = reject, rebuild the whole canvas
-- New clothes and pose; do not copy sheet outfits
+- face_lock: none. host_portrait: false
+- Do NOT i2i `Виктория.png`, `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`
+- Style ref only: `animals-viktoria-style-lock.png` (palette / rhythm, not a face)
+- Slides 1 and 9 = scene + type + animal / object. No woman. No presenter. No mic at mouth.
+- Animals as metaphor on ≥3 slides (cat / dog / owl)
 - Seam slice: Excalibur white gutters at 1/3 and 2/3
 - On CROOKED CANVAS: regen whole master, never patch one cell
+- FACE_CHECK verdict must be ABSENT. GATE FAIL if Vika or any host portrait.
 
 ## Publish
 
-After GATE PASS + FACE_CHECK MATCH vs Виктория.png: publish yourself via Composio aliases `instagram-ru` (@todaytaro_ru) and `instagram-en` (@todaytaro_bot).
-Do not wait for Hall. Do not send to Telegram. Do not log into Instagram in a browser.
+After GATE PASS + FACE_CHECK ABSENT: publish a NEW post via Composio alias `instagram-ru` (@todaytaro_ru).
+Do not wait for Hall. Do not send from Instagram feed. Do not delete old posts.
+Do not touch Telegram / Макс / VK / EN.
 
-GATE FAIL (bot-offer on slide 9, wrong face, video, duplicate code word, missing 9+9): stop, do not publish.
+GATE FAIL (bot-offer, Vika face, host portrait, video, duplicate code word, copied СУББОТА): stop, do not publish.
+
+Canon «без лица Вики» is already on main (PR #11). This pack is a new topic, new texts, new frames.
