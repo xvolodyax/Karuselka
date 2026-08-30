@@ -104,6 +104,18 @@
       "media_id": "18121242701310429",
       "posted_at": "2026-08-30T13:10:30+0000",
       "note": "Scout topic (not СУББОТА). EN not published. Old СУББОТА / WEEKEND / noface posts stay."
+    },
+    {
+      "date": "2026-08-30",
+      "pack_id": "2026-08-30-ru-subbota-frames",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "СУББОТА",
+      "permalink": "https://www.instagram.com/p/DcqnK88IFbj/",
+      "media_id": "18125203894695931",
+      "posted_at": "2026-08-30T13:24:16+0000",
+      "note": "Same texts as live СУББОТА DcqJGCblQqv; new frames without host. ОНЛАЙН stays."
     }
   ]
 }

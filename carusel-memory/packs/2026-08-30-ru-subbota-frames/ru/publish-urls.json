@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-08-30T13:22:58.173139+00:00",
+  "run_id": "2026-08-30-ru-subbota-frames",
+  "provider": "kie_file_upload_api",
+  "upload_path": "carusel/instagram/2026-08-30-ru-subbota-frames",
+  "docs": "https://docs.kie.ai/file-upload-api/quickstart",
+  "note": "Файлы на Kie временные (~24ч). Публикуй в Instagram сразу после upload.",
+  "files": {
+    "file1": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-01.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-01.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    },
+    "file2": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-02.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-02.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    },
+    "File3": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-03.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-03.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    },
+    "file4": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-04.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-04.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    },
+    "file5": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-05.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-05.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    },
+    "file6": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-06.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-06.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    },
+    "file7": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-07.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-07.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    },
+    "file8": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-08.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-08.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    },
+    "file9": {
+      "local": "/workspace/carusel-memory/packs/2026-08-30-ru-subbota-frames/ru/slides/slide-09.png",
+      "url": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-09.png",
+      "kind": "png",
+      "kie_file_id": null,
+      "expires_at": null
+    }
+  },
+  "lang": "ru",
+  "file1_kind": "png",
+  "this_run": "static_all_pngs",
+  "file1": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-01.png",
+  "slide_01": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-01.png",
+  "file2": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-02.png",
+  "slide_02": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-02.png",
+  "File3": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-03.png",
+  "slide_03": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-03.png",
+  "file4": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-04.png",
+  "slide_04": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-04.png",
+  "file5": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-05.png",
+  "slide_05": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-05.png",
+  "file6": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-06.png",
+  "slide_06": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-06.png",
+  "file7": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-07.png",
+  "slide_07": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-07.png",
+  "file8": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-08.png",
+  "slide_08": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-08.png",
+  "file9": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-09.png",
+  "slide_09": "https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-ru-subbota-frames/slide-09.png",
+  "video_source": "kie_stream_upload_static_png"
+}
