@@ -36,7 +36,7 @@ SEAM_PREFIX = (
     "Canvas 3:4 @ 4K exact 3x3; nine 3:4 panels; thin white gutters; no bleed. "
     "Draw two vertical and two horizontal #ffffff seams at exactly 1/3 and 2/3, "
     "edge to edge, 6–12px, like a window pane. No white border on the outer canvas. "
-    "People and animals live inside each night scene."
+    "Animals and objects live inside each night scene. No people. No host face."
 )
 
 
