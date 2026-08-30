@@ -158,15 +158,17 @@
     },
     "upload": {
       "id": "upload",
-      "status": "dispatched",
+      "status": "ok",
       "dispatched_via": "Task(generalPurpose)",
       "dispatch_id": "b5aa584574044e599fc966f266c59376",
       "started_at": "2026-08-30T13:06:50Z",
-      "finished_at": null,
+      "finished_at": "2026-08-30T13:08:48Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/output/publish-urls.json"
+      ],
+      "fragment": "carusel-memory/fragments/upload.md",
+      "incident_report": "none",
       "model": null
     },
     "publish": {
