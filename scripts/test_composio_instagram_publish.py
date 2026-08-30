@@ -124,18 +124,18 @@ class ComposioPublishTest(unittest.TestCase):
     def _write_valid_pack(self, pack: Path, pack_id: str, already_live: bool = False) -> None:
         write(
             pack / "GATE.md",
-            "Verdict: PASS\n- (a) face lock = viktoriaref.png\n",
+            "Verdict: PASS\n- (a) face lock = Виктория.png\n",
         )
         write(
             pack / "FACE_CHECK.md",
-            "verdict: MATCH\ncompared: viktoriaref.png\nnot Alena\n",
+            "verdict: MATCH\ncompared: Виктория.png\nnot Alena\n",
         )
         write_json(
             pack / "PACK.json",
             {
                 "pack_id": pack_id,
                 "date": pack_id,
-                "face_lock": "viktoriaref.png",
+                "face_lock": "Виктория.png",
                 "product": "app_audio",
                 "already_live": already_live,
                 "already_live_posts": {

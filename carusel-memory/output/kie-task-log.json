@@ -1,0 +1,44 @@
+{
+  "generation_mode": "grid_3x3",
+  "taskId": "e1a671f38c9a353d1e5000d9607eceda",
+  "resultUrls": [
+    "https://tempfile.aiquickdraw.com/h/e1a671f38c9a353d1e5000d9607eceda_1788079399.png"
+  ],
+  "prompt": "Canvas 3:4 @ 4K exact 3x3; nine 3:4 panels; thin white gutters; no bleed. Draw two vertical and two horizontal #ffffff seams at exactly 1/3 and 2/3, edge to edge, 6–12px, like a window pane. No white border on the outer canvas. People and animals live inside each night scene.\nSame woman as Виктория.png; same face, one woman. Eyes green with a slight hazel-brown tint (зелёные с лёгким карим). Warm honey blonde with darker roots, not platinum. Soft tender expression.\nОдно статичное PNG 3:4@4K, сетка 3×3. Тонкие белые gutters ровно на 1/3 и 2/3 (Excalibur seam). #111111 + белый heavy sans + #ff006e. Текст ≥12% от швов. In-scene. Без видео.\n\n01 oatmeal knit + charcoal lounge pants, sitting 3/4, phone face-down, cat: \"Пятница 18:00 — тишина. В понедельник: «Как ты?»\".\n02 dog at screen, 55% text: \"48 часов вакуума после пяти тёплых дней\" / \"Всю рабочую неделю он на связи каждые полчаса. Но наступает суббота — и ты словно перестаёшь существовать.\".\n03 dog head on paws, pills: \"Ты оправдываешь его делами и усталостью\" / \"«Он занят с семьёй», «устал от экрана». Но если человек хочет быть рядом, он находит 10 секунд на одно сообщение.\".\n04 cat at day/night line: \"Ты для него лишь удобный будничный слот\" / \"В рабочие часы ты спасаешь его от рутины и скуки. Но в свою настоящую, свободную жизнь он тебя не впускает.\".\n05 owl, decoder stack: \"Что он говорит и что это значит\" / \"«На выходных без телефона» → Не в твоём диалоге. «Много дел» → Ты не в приоритете его отдыха. «Я не любитель чатов» → Но в будни пишет сам.\".\n06 owl, 1-2-3 list: \"3 признака, что ты в зоне ожидания\" / \"1. Ты не знаешь его планов на уикенд. 2. Он никогда не зовёт тебя в субботу спонтанно. 3. Вся его инициатива привязана к его рабочему графику.\".\n07 cat turns to window: \"Твои выходные принадлежат только тебе\" / \"Перестань быть дежурным экраном для чужой скуки. Убери телефон и верни субботу и воскресенье своей собственной жизни.\".\n08 owl witness, recap: \"Кому ты важна — находит место в жизни\" / \"Мужчина проявляется не в рабочее время от скуки, а тогда, когда он абсолютно свободен и сам выбирает, с кем быть.\".\n09 standing 3/4 midnight-blue silk slip + charcoal cardigan, huge magenta СУББОТА: \"Напиши СУББОТА\" / \"Аудиоразбор в моём приложении.\".\n\nИзбегать: viktoriaref.png, victoria-sheet.png, alena, white cami, jeans, hand on chin, graphite pajama, petrol teal, espresso jacket, platinum white hair, blue eyes, brown eyes, horror, skulls, blood, sticker outline, die-cut halo, white border around people, blurry, lowres, bot, 3 free spreads, Academy, video, animated",
+  "aspect_ratio": "3:4",
+  "aspect_ratio_requested": "3:4",
+  "aspect_ratio_fallback": false,
+  "aspect_ratio_fallback_reason": null,
+  "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slide_count": 9,
+  "source_path": "/tmp/kie-pack-ru/carusel-memory/output/master/source.png",
+  "source_clean_path": null,
+  "slides_dir": "/tmp/kie-pack-ru/carusel-memory/output/slides",
+  "animate_slide": 1,
+  "slice_method": "seam",
+  "slice_status": "ok",
+  "gutter_cleanup": {
+    "enabled": false,
+    "method": "near-white pixels on exact cut-lines; no crop, no resize",
+    "strip": 5,
+    "report": "/tmp/kie-pack-ru/carusel-memory/output/debug/remove-grid-gutters-report.json"
+  },
+  "edge_cleanup": {
+    "enabled": true,
+    "method": "copy interior pixels over outer edge strips after slice; no crop, no resize",
+    "strip": 10,
+    "report": "/tmp/kie-pack-ru/carusel-memory/output/debug/clean-slide-edges-report.json",
+    "leftover_gutter_px": 2,
+    "status": "ok"
+  },
+  "gutter_qa": {
+    "enabled": true,
+    "report": "/tmp/kie-pack-ru/carusel-memory/output/debug/grid-gutter-qa-clean.json",
+    "mode": "seam",
+    "status": "ok"
+  }
+}

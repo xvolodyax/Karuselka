@@ -190,15 +190,15 @@
     },
     "fixic": {
       "id": "fixic",
-      "status": "pending",
-      "dispatched_via": null,
+      "status": "skipped",
+      "dispatched_via": "skip:no-open-incidents",
       "dispatch_id": null,
       "started_at": null,
-      "finished_at": null,
-      "skip_reason": null,
+      "finished_at": "2026-08-30T09:05:01Z",
+      "skip_reason": "no-open-incidents",
       "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "fragment": "carusel-memory/fragments/fixic.md",
+      "incident_report": "none",
       "model": null
     }
   }
