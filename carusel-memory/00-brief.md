@@ -1,7 +1,7 @@
 # Carusel brief — ТАРО СЕЙЧАС — 2026-08-30 RU Scout (no host portrait)
 
 lang: ru
-topic: Scout — новая боль в отношениях (НЕ выходные / НЕ СУББОТА)
+topic: Смотрит сторис сразу — отвечает часами позже
 handle: @todaytaro_ru
 publish_requested: true
 visual_family: animals_viktoria_collage
@@ -9,7 +9,7 @@ face_lock: none
 host_portrait: false
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: TBD-researcher
+trigger_word: ОНЛАЙН
 product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads
