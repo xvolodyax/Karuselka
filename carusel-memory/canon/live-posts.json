@@ -92,6 +92,18 @@
       "media_id": "18131243815645836",
       "posted_at": "2026-08-30T12:37:32+0000",
       "note": "Same texts as DcqJGCblQqv; new frames without host portrait. Old post stays."
+    },
+    {
+      "date": "2026-08-30",
+      "pack_id": "2026-08-30-ru-scout",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ОНЛАЙН",
+      "permalink": "https://www.instagram.com/p/DcqlmXDoLLZ/",
+      "media_id": "18121242701310429",
+      "posted_at": "2026-08-30T13:10:30+0000",
+      "note": "Scout topic (not СУББОТА). EN not published. Old СУББОТА / WEEKEND / noface posts stay."
     }
   ]
 }
