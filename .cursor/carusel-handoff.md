@@ -128,4 +128,22 @@ GATE: carusel-memory/packs/2026-08-31/GATE.md
 - Triggers: ПОНЕДЕЛЬНИК / MONDAY. product app_audio. publish_requested false.
 - Seam Excalibur. No mp4. No publish.
 
+=== CARUSEL-UPLOAD ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: 1a75a8d52f124711a847fee92349f56c
+provider: kie_file_upload_api
+file1_kind: png
+this_run: static_all_pngs
+No mp4. No Instagram. No Telegram. No Composio.
+incident_report: none
+HANDOFF_NEXT: publish
+
+- Combined: carusel-memory/output/publish-urls.json (GATE; ru+en + RU keys at top)
+- RU pack: carusel-memory/packs/2026-08-31/ru/publish-urls.json
+- EN pack: carusel-memory/packs/2026-08-31/en/publish-urls.json
+- RU run_id: 2026-08-31-1110-static-ru
+- EN run_id: 2026-08-31-1110-static-en
+- All 9+9 HTTPS PNG. file1 = slide-01.png. Kie URLs expire ~24h.
+
 
