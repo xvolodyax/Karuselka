@@ -1,28 +1,41 @@
+=== CARUSEL-COPYWRITER ===
+Статус: ✅ OK
 dispatched_via: Task(generalPurpose)
-dispatch_id: 1e4dbcee0efe44da8353ed1fe17c02a9
+dispatch_id: fe85b69da0a34ae6a2447a56a4554116
+role: carusel-copywriter
+written_by: gemini
+lang: ru + en (bilingual pair)
 incident_report: none
 HANDOFF_NEXT: designer
-written_by: gemini
 
-=== CARUSEL-COPYWRITER ===
-Status: ✅ OK
-Topic RU: Он пропадает на выходных: будни тёплые, суббота пустая
-Topic EN: He disappears on weekends: weekdays warm, Saturday empty
-Trigger RU: СУББОТА
-Trigger EN: WEEKEND
-Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
-Visual Family: animals_viktoria_collage
-Slide 01 Hook RU: «Пятница 18:00 — тишина. В понедельник: «Как ты?»» (48 chars)
-Slide 01 Hook EN: «Friday 6 PM silence. Monday: «How was it?»» (42 chars)
-Animals present on slides: 1 (cat), 2 (dog), 3 (dog), 4 (cat), 5 (owl), 6 (owl), 7 (cat), 8 (owl)
-Victoria present on slides: 1, 9
-Save frameworks: slide-05 decoder, slide-06 checklist, slide-07 boundary rule
-Slide count: 9 slides RU + 9 slides EN
-RU Slide Copy: /workspace/carusel-memory/design/CAROUSEL_SLIDE_COPY.json
-RU Caption JSON: /workspace/carusel-memory/design/CAROUSEL_CAPTION.json
-RU Caption MD: /workspace/carusel-memory/design/CAROUSEL_CAPTION.md
-EN Slide Copy: /workspace/carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json
-EN Caption JSON: /workspace/carusel-memory/design/en/CAROUSEL_CAPTION.json
-EN Caption MD: /workspace/carusel-memory/design/en/CAROUSEL_CAPTION.md
-Pack RU: /workspace/carusel-memory/packs/2026-08-30/ru/
-Pack EN: /workspace/carusel-memory/packs/2026-08-30/en/
+## 9+9 Slide Status & Triggers
+- RU Trigger: ПОНЕДЕЛЬНИК (Product: app_audio, Суть – Тень – Вектор)
+- EN Trigger: MONDAY (Product: app_audio, Essence–Shadow–Vector)
+- Host Portrait: None (victoria: false on all 9+9 slides, face_lock: none)
+- Visual Family: animals_viktoria_collage (Cat on slide 01, Dog on slide 02, Owl on slide 05)
+
+## Hook Headlines & Char Counts
+- Slide 01 RU: «Вчера до 2 ночи голосовые. Утром: «На совещании»» (48 chars, limit ≤ 50)
+- Slide 01 EN: «Voice notes till 2 AM. Morning: “In a meeting”» (46 chars, limit ≤ 50)
+
+## Slide 09 CTA Text
+- Slide 09 RU: Headline: «Напиши ПОНЕДЕЛЬНИК» (19 chars, limit ≤ 40) | Body: «Аудиоразбор в приложении. Суть – Тень – Вектор.» | CTA: «Слово ПОНЕДЕЛЬНИК в комментариях» (33 chars)
+- Slide 09 EN: Headline: «Comment MONDAY» (14 chars, limit ≤ 40) | Body: «Audio reading in the app. Essence–Shadow–Vector.» | CTA: «Write MONDAY in the comments» (28 chars)
+
+## Instagram Captions
+- RU Caption: 878 chars, 8 hashtags, mentions: @todaytaro_ru, no URLs, CTA: «Напиши в комментариях слово ПОНЕДЕЛЬНИК. В Direct пришлём аудиоразбор в моём приложении по этой теме: Суть – Тень – Вектор. Ссылки в профиле.»
+- EN Caption: 878 chars, 8 hashtags, mentions: @todaytaro_bot, no URLs, CTA: «Comment the word MONDAY below. We'll DM an audio reading in the app for this topic: Essence–Shadow–Vector. Links are in the profile.»
+
+## Artifacts Generated
+- carusel-memory/design/CAROUSEL_SLIDE_COPY.json
+- carusel-memory/design/CAROUSEL_CAPTION.json
+- carusel-memory/design/CAROUSEL_CAPTION.md
+- carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json
+- carusel-memory/design/en/CAROUSEL_CAPTION.json
+- carusel-memory/design/en/CAROUSEL_CAPTION.md
+- carusel-memory/packs/2026-08-31/ru/CAROUSEL_SLIDE_COPY.json
+- carusel-memory/packs/2026-08-31/ru/CAROUSEL_CAPTION.json
+- carusel-memory/packs/2026-08-31/ru/CAROUSEL_CAPTION.md
+- carusel-memory/packs/2026-08-31/en/CAROUSEL_SLIDE_COPY.json
+- carusel-memory/packs/2026-08-31/en/CAROUSEL_CAPTION.json
+- carusel-memory/packs/2026-08-31/en/CAROUSEL_CAPTION.md

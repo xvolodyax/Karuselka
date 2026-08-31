@@ -1,23 +1,26 @@
-# Visual diff — vs family lock and vs 29.08
+# Visual diff — vs family lock and vs 30.08 noface / sofa-vacuum
 
 ## Same as family (preserve)
 
-Dark charcoal field. Magenta + white type. Torn pills. Victoria on 1+9
-in-scene. Animals as metaphors. Seam 3×3. Виктория.png face. Soft gold foil.
+Dark charcoal field. Magenta + white type. Torn pills. Animals as
+metaphors. Seam 3×3. **No host portrait.** Soft gold foil. Noface
+hook/CTA rhythm from `2026-08-30-ru-noface`.
 
-## Different this Sunday (change)
+## Different this Monday (change)
 
-| Axis | 29.08 / sheet | 30.08 this pack |
-|------|---------------|-----------------|
-| Topic | Labels / STATUS | Weekend vacuum |
-| Trigger | СТАТУС / LABELS | СУББОТА / WEEKEND |
-| Slide 1 clothes | graphite pajama or sheet white cami | rumpled oatmeal weekend knit |
-| Slide 9 clothes | petrol-teal + espresso jacket | midnight-blue silk slip + charcoal cardigan |
-| Slide 1 pose | hand-on-chin / pajama lounge | sitting 3/4, phone face-down |
-| Slide 9 pose | prior jacket pose | standing 3/4, hand on cardigan |
-| Objects | label tags | silent phone, empty Saturday slot |
+| Axis | 30.08 weekend / noface | 31.08 this pack |
+|------|------------------------|-----------------|
+| Topic | Weekend vacuum | Monday office-mode after Sunday warmth |
+| Trigger | СУББОТА / WEEKEND | ПОНЕДЕЛЬНИК / MONDAY |
+| Host | none (noface pack) / Victoria on live 30.08 | none — keep noface |
+| Slide 1 objects | sofa + face-down Friday phone + cat | voice-note waveform + 09:11 clock + cat |
+| Slide 9 | phone/app + СУББОТА | coffee/mute-phone + huge ПОНЕДЕЛЬНИК |
+| Other objects | empty Saturday slot, cold weekend coffee | laptop «совещание», mute phone, meeting pills, office coffee |
+| Animals | cat 1/4/7, dog 2/3, owl 5/6/8 | cat 01, dog 02, owl 05 (copy lock) |
+| Wardrobe | N/A on noface; oatmeal/slip on live | N/A |
 
 ## Must not appear
 
-Platinum hair. Alena. Sheet cami/jeans. Graphite pajama. Petrol-teal.
-Espresso jacket. Sticker halo. Portuguese type. Horror table. Bot CTA.
+Any woman. Victoria. Sofa-vacuum Friday phone as hero. СУББОТА / WEEKEND.
+Alena. Sheet cami/jeans. Graphite pajama. Petrol-teal. Espresso jacket.
+Sticker halo. Portuguese type. Horror table. Bot CTA.

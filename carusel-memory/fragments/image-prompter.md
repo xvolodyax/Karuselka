@@ -1,26 +1,30 @@
 dispatched_via: Task(generalPurpose)
-dispatch_id: 092303bb6b314cac95d5a37b2870d354
+dispatch_id: 05b9fc29729d434fb3d996ac70ed3110
 incident_report: none
 HANDOFF_NEXT: slice
-written_by: gemini
 
 === CARUSEL-IMAGE-PROMPTER ===
 Статус: ✅ OK
-Face Lock: Виктория.png (green with slight hazel eyes, honey blonde + darker roots)
-Mode: grid_3x3 3:4 @ 4K (static PNG)
-Slice method: seam (thin white gutters at 1/3 and 2/3)
-Prompt char count RU: 1960 (target 1900–2100, max 2200)
-Prompt char count EN: 2097 (target 1900–2100, max 2200)
-Trigger RU: СУББОТА (slide 09 huge magenta)
-Trigger EN: WEEKEND (slide 09 huge magenta)
-Product: app_audio (Суть – Тень – Вектор)
-Wardrobe 01: oatmeal knit + charcoal lounge pants, sitting 3/4 on dark sofa, phone face-down, cat
-Wardrobe 09: midnight-blue silk slip + open charcoal cardigan, standing 3/4, no animals
+role: carusel-image-prompter
+written_by: gemini
+lang: ru + en (bilingual pair)
 
-Файлы:
-- /workspace/carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md
-- /workspace/carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md
-- /workspace/carusel-memory/packs/2026-08-30/ru/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/packs/2026-08-30/en/CAROUSEL_IMAGE_PROMPT.json
+- Master: grid_3x3 3:4 @ 4K, slice_method: seam (thin white gutters at 1/3 and 2/3)
+- Face lock: none | host_portrait: false | No woman / Victoria on any panel
+- Style lock only: carusel-memory/references/animals-viktoria-style-lock.png (no face ref in input_urls)
+- RU Prompt chars: 1963 (<= 2200 limit)
+- EN Prompt chars: 1965 (<= 2200 limit)
+- Animals: cat 01, dog 02, owl 05
+- Monday objects: voice-note waveform, 09:11 clock, laptop/calendar «совещание», office coffee, muted phone, meeting pills (NOT weekend sofa-vacuum hero)
+- Trigger RU: ПОНЕДЕЛЬНИК (huge magenta script on slide 09)
+- Trigger EN: MONDAY (huge magenta script on slide 09)
+- Offer on 09: app audio reading (Суть – Тень – Вектор / Essence–Shadow–Vector)
+- No pixels generated, no slicing executed. Ready for carusel-slice.
+
+Артефакты:
+- carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md
+- carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md
+- carusel-memory/packs/2026-08-31/ru/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/packs/2026-08-31/en/CAROUSEL_IMAGE_PROMPT.json

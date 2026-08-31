@@ -1,0 +1,44 @@
+{
+  "generation_mode": "grid_3x3",
+  "taskId": "b89d1a0c1d2a57167963d6195c0e3441",
+  "resultUrls": [
+    "https://tempfile.aiquickdraw.com/a2/b89d1a0c1d2a57167963d6195c0e3441_1788168306465.png"
+  ],
+  "prompt": "No host portrait. No woman. No Victoria. No Виктория.png. No presenter face. Style lock collage = palette only (#111111 + white heavy sans + #ff006e), not a face.\nОдно статичное PNG 3:4@4K, сетка 3×3. Thin white gutters at 1/3 and 2/3 (Excalibur seam_slice). Текст ≥12% от швов. Animals + objects only. Без видео. English text in quotes:\n\n01 cat, waveform, 09:11 clock: \"Voice notes till 2 AM. Morning: “In a meeting”\" / \"And radio silence until nightfall. How Sunday intimacy turned into cold office wall in seven hours.\".\n02 dog at closed door, muted phone: \"Whiplash hurts more than silence\" / \"Last night you felt cherished. By noon you feel like an inconvenient disruption in his calendar.\".\n03 muted phone, pause pills: \"The trap: freezing your day on pause\" / \"Checking his status every 15 minutes, making excuses for him, and putting your life on hold while he works undisturbed.\".\n04 laptop, calendar leaf, toggle: \"Monday’s emotional toggle switch\" / \"At 9 AM he locks into task mode. But intense workloads never cancel out basic warmth and respect for the bond.\".\n05 owl, decoder table: \"Decoder: what he says vs what it means\" / \"“Crazy Monday” → you aren't factored into his day even for 5 seconds. “Catch up later” → dialogue relegated to leftover energy.\".\n06 meeting pills 1-2-3: \"3 checks: workload or distance?\" / \"1. Is there warmth in brief replies? 2. Does he reach out after meetings? 3. Or do you exist only when he's bored?\".\n07 office coffee cup: \"How to reclaim your Monday\" / \"1. Step off standby duty at your screen. 2. Realign focus onto your own weekly goals. 3. Reply on your own timeline, not instantly.\".\n08 gold medallion, Mon 31 leaf: \"The adult connection rule\" / \"A man in focus never leaves you in the dark: he offers clarity even in a packed schedule. Your worth is never measured by his meetings.\".\n09 huge magenta MONDAY, coffee, muted phone, no person: \"Comment MONDAY\" / \"Audio reading in the app. Essence–Shadow–Vector.\".\n\nИзбегать: Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png, woman, girl, host portrait, human face, selfie, presenter, Alena, white cami, jeans, platinum hair, weekend sofa, Friday phone, sofa-vacuum, СУББОТА, WEEKEND, sticker outline around people, die-cut halo, white border around people, horror, skulls, blood, dripping candles, bot, 3 free spreads, Academy, video, animated",
+  "aspect_ratio": "3:4",
+  "aspect_ratio_requested": "3:4",
+  "aspect_ratio_fallback": false,
+  "aspect_ratio_fallback_reason": null,
+  "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slide_count": 9,
+  "source_path": "/tmp/kie-en-workspace/carusel-memory/output/master/source.png",
+  "source_clean_path": null,
+  "slides_dir": "/tmp/kie-en-workspace/carusel-memory/output/slides",
+  "animate_slide": 1,
+  "slice_method": "seam",
+  "slice_status": "ok",
+  "gutter_cleanup": {
+    "enabled": false,
+    "method": "near-white pixels on exact cut-lines; no crop, no resize",
+    "strip": 5,
+    "report": "/tmp/kie-en-workspace/carusel-memory/output/debug/remove-grid-gutters-report.json"
+  },
+  "edge_cleanup": {
+    "enabled": true,
+    "method": "copy interior pixels over outer edge strips after slice; no crop, no resize",
+    "strip": 10,
+    "report": "/tmp/kie-en-workspace/carusel-memory/output/debug/clean-slide-edges-report.json",
+    "leftover_gutter_px": 0,
+    "status": "ok"
+  },
+  "gutter_qa": {
+    "enabled": true,
+    "report": "/tmp/kie-en-workspace/carusel-memory/output/debug/grid-gutter-qa-clean.json",
+    "mode": "seam",
+    "status": "ok"
+  }
+}

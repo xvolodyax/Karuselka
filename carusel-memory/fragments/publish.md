@@ -1,18 +1,18 @@
 dispatched_via: Task(generalPurpose)
-dispatch_id: 9cb5285a418f42b78b3aa437cad123b8
+dispatch_id: 2aca33c30e994f319302ad24cfdb6aa3
 incident_report: none
 HANDOFF_NEXT: fixic
 === CARUSEL-PUBLISH ===
 Статус: ✅ OK
 reason: composio
-via: Composio MCP aliases (not REST script, not Telegram, not browser)
-session_id: feet
-RU: https://www.instagram.com/p/DcqJGCblQqv/
-EN: https://www.instagram.com/p/DcqJS--m0op/
 alias: instagram-ru / instagram-en
-RU media_id: 18109887448855475
-EN media_id: 18113257384788858
-RU creation_id: 17921802750416739
-EN creation_id: 18011985128957836
-trigger: СУББОТА / WEEKEND
+skip: none
+duplicate: none
+live RU: https://www.instagram.com/p/DcszHTWIHS5/
+live EN: https://www.instagram.com/p/DcszQubG-bl/
+RU media_id: 18009334409955562
+EN media_id: 18093108425438526
+RU trigger: ПОНЕДЕЛЬНИК
+EN trigger: MONDAY
+telegram: not sent
 incident_report: none
