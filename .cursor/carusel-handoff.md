@@ -46,3 +46,19 @@ HANDOFF_NEXT: designer
 - Slide 09 EN: «Comment MONDAY» | «Audio reading in the app. Essence–Shadow–Vector.» | «Write MONDAY in the comments»
 - Captions: RU (878 chars, @todaytaro_ru, 8 hashtags) & EN (878 chars, @todaytaro_bot, 8 hashtags), no raw URLs
 
+=== CARUSEL-DESIGNER ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: 622094fec396441ebc89b1d8dd5f100e
+role: carusel-designer
+lang: ru + en (bilingual pair)
+incident_report: none
+HANDOFF_NEXT: image-prompter
+
+- Family: animals_viktoria_collage | face_lock: none | host_portrait: false
+- Seam 3x3 3:4 @ 4K static PNG (Excalibur white gutters). Score 90
+- Trigger RU: ПОНЕДЕЛЬНИК | Trigger EN: MONDAY | product: app_audio
+- Animals: cat 01, dog 02, owl 05 | wardrobe N/A
+- Monday objects (new): voice-note waveform, 09:11 clock, laptop/calendar «совещание», office coffee, phone on mute, meeting pills
+- No Kie JSON. No pixels. No woman on any panel.
+

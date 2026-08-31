@@ -59,15 +59,20 @@
     },
     "designer": {
       "id": "designer",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "622094fec396441ebc89b1d8dd5f100e",
+      "started_at": "2026-08-31T08:45:14Z",
+      "finished_at": "2026-08-31T08:50:35Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSELDESIGN.md",
+        "carusel-memory/design/CAROUSEL_SERIES_CONCEPT.json",
+        "carusel-memory/design/CAROUSEL_SOURCE_DECOMPOSITION.json",
+        "carusel-memory/design/CAROUSEL_SLIDE_BLUEPRINTS.json"
+      ],
+      "fragment": "carusel-memory/fragments/designer.md",
+      "incident_report": "none",
       "model": null
     },
     "image-prompter": {
