@@ -3,7 +3,7 @@
 lang: ru
 topic: ТАРО СЕЙЧАС
 handle: @todaytaro_ru
-publish_requested: false
+publish_requested: true
 visual_family: animals_viktoria_collage
 face_lock: none
 host_portrait: false
@@ -20,7 +20,7 @@ slide_01: static_png
 skip_motion: true
 skip_animate: true
 skip_glavred: true
-skip_publish: true
+skip_publish: false
 bilingual_pair: true
 en_handle: @todaytaro_bot
 en_brand: Today Tarot
@@ -99,6 +99,4 @@ EN: Dci-ozwAH4l (Pause), DclVSGMGwAj (WARMTH), Dcnrht_lVca (LABELS), DcqJS--m0op
 
 ## Publish
 
-publish_requested: false. Do not call Composio. Do not post to Instagram / Telegram / Max / VK / YouTube.
-After GATE: leave pack + captions + code words for Hall.
-`face_lock` canon landed on main via PR #11 (`4b1f512`). PR #12 is an OPEN 30.08 RU ОНЛАЙН scout — not this Monday pack.
+publish_requested: true. Hall asked live post after 11:10 MSK miss. Publish both via Composio aliases instagram-ru + instagram-en. Telegram forbidden. Do not duplicate if 2026-08-31 already live.

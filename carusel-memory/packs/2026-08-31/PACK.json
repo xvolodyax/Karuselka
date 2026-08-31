@@ -21,7 +21,12 @@
     "ru",
     "en"
   ],
-  "publish_requested": false,
+  "already_live": true,
+  "already_live_posts": {
+    "ru": "https://www.instagram.com/p/DcszHTWIHS5/",
+    "en": "https://www.instagram.com/p/DcszQubG-bl/"
+  },
+  "publish_requested": true,
   "skip_motion": true,
   "skip_animate": true,
   "skip_glavred": true,

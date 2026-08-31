@@ -102,6 +102,28 @@
       "trigger": "ОНЛАЙН",
       "permalink": "https://www.instagram.com/p/DcqlmXDoLLZ/",
       "note": "PR #12 scout, still OPEN on 2026-08-31. Do not remake. New Monday pack must not reuse ОНЛАЙН."
+    },
+    {
+      "date": "2026-08-31",
+      "pack_id": "2026-08-31",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ПОНЕДЕЛЬНИК",
+      "permalink": "https://www.instagram.com/p/DcszHTWIHS5/",
+      "media_id": "18009334409955562",
+      "posted_at": "2026-08-31T09:47:10+0000"
+    },
+    {
+      "date": "2026-08-31",
+      "pack_id": "2026-08-31",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "MONDAY",
+      "permalink": "https://www.instagram.com/p/DcszQubG-bl/",
+      "media_id": "18093108425438526",
+      "posted_at": "2026-08-31T09:48:21+0000"
     }
   ]
 }

@@ -6,7 +6,7 @@
   "handle": "@todaytaro_ru",
   "created_at": "2026-08-31T08:36:06Z",
   "dispatch_mode": "generalPurpose-fallback",
-  "publish_requested": false,
+  "publish_requested": true,
   "mode": "live",
   "pixels": "allowed",
   "steps": {
@@ -173,13 +173,15 @@
     },
     "publish": {
       "id": "publish",
-      "status": "skipped",
-      "dispatched_via": "skip:publish-not-requested",
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": "2026-08-31T09:40:21Z",
-      "skip_reason": "publish-not-requested",
-      "artifacts": [],
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "2aca33c30e994f319302ad24cfdb6aa3",
+      "started_at": "2026-08-31T09:43:51Z",
+      "finished_at": "2026-08-31T09:49:28Z",
+      "skip_reason": null,
+      "artifacts": [
+        "carusel-memory/output/publish-log.md"
+      ],
       "fragment": "carusel-memory/fragments/publish.md",
       "incident_report": "none",
       "model": null
@@ -190,7 +192,7 @@
       "dispatched_via": "skip:no-open-incidents",
       "dispatch_id": null,
       "started_at": null,
-      "finished_at": "2026-08-31T09:40:21Z",
+      "finished_at": "2026-08-31T09:49:28Z",
       "skip_reason": "no-open-incidents",
       "artifacts": [],
       "fragment": "carusel-memory/fragments/fixic.md",
