@@ -103,4 +103,29 @@ HANDOFF_NEXT: design-guardian
 - PIXELS: carusel-memory/packs/2026-08-31/PIXELS.md
 - Manifest: carusel-memory/output/slice-manifest.json
 
+=== CARUSEL-DESIGN-GUARDIAN ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: e76b56b498cd4fbc94ddb92b0661a9f9
+role: carusel-design-guardian
+lang: ru + en (bilingual pair)
+incident_report: none
+HANDOFF_NEXT: upload
+
+Verdict: ✅ DESIGN OK
+Score: 93
+FACE_CHECK: ABSENT
+GATE: PASS
+Report: carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md
+EN twin: carusel-memory/design/en/CAROUSEL_DESIGN_GUARDIAN_REPORT.md
+FACE_CHECK: carusel-memory/packs/2026-08-31/FACE_CHECK.md
+GATE: carusel-memory/packs/2026-08-31/GATE.md
+
+- 18 static PNG 1080×1440 inspected. No host / no Vika. Do not FACE MATCH Виктория.png.
+- Animals ≥3: cat 01, dog 02, owl 05 both langs.
+- Save 05–08: decoder / 3-check / reclaim / adult rule.
+- CTA slide 9 + captions sell app audio (Суть–Тень–Вектор / Essence–Shadow–Vector). Not 3 free bot readings.
+- Triggers: ПОНЕДЕЛЬНИК / MONDAY. product app_audio. publish_requested false.
+- Seam Excalibur. No mp4. No publish.
+
 
