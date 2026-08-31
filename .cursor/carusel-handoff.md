@@ -26,3 +26,23 @@ Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–
 Face lock: none
 incident_report: none
 HANDOFF_NEXT: copywriter
+
+=== CARUSEL-COPYWRITER ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: fe85b69da0a34ae6a2447a56a4554116
+role: carusel-copywriter
+written_by: gemini
+lang: ru + en (bilingual pair)
+incident_report: none
+HANDOFF_NEXT: designer
+
+- 9+9 slides generated with visual_family: animals_viktoria_collage, face_lock: none (victoria: false on all slides)
+- Trigger RU: ПОНЕДЕЛЬНИК | Trigger EN: MONDAY
+- Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
+- Hook RU (Slide 01, 48 chars): «Вчера до 2 ночи голосовые. Утром: «На совещании»»
+- Hook EN (Slide 01, 46 chars): «Voice notes till 2 AM. Morning: “In a meeting”»
+- Slide 09 RU: «Напиши ПОНЕДЕЛЬНИК» | «Аудиоразбор в приложении. Суть – Тень – Вектор.» | «Слово ПОНЕДЕЛЬНИК в комментариях»
+- Slide 09 EN: «Comment MONDAY» | «Audio reading in the app. Essence–Shadow–Vector.» | «Write MONDAY in the comments»
+- Captions: RU (878 chars, @todaytaro_ru, 8 hashtags) & EN (878 chars, @todaytaro_bot, 8 hashtags), no raw URLs
+
