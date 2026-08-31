@@ -146,4 +146,28 @@ HANDOFF_NEXT: publish
 - EN run_id: 2026-08-31-1110-static-en
 - All 9+9 HTTPS PNG. file1 = slide-01.png. Kie URLs expire ~24h.
 
+=== CARUSEL-PUBLISH ===
+Статус: ⏭️ SKIPPED
+dispatched_via: skip:publish-not-requested
+skip_reason: publish-not-requested
+incident_report: none
+HANDOFF_NEXT: fixic
+
+=== CARUSEL-FIXIC ===
+Статус: ⏭️ SKIPPED
+dispatched_via: skip:no-open-incidents
+skip_reason: no-open-incidents
+incident_report: none
+HANDOFF_NEXT: done
+
+=== CARUSEL-DIRECTOR ===
+Статус: ✅ DONE
+GATE: PASS
+publish: skipped
+pack: carusel-memory/packs/2026-08-31/
+PR: https://github.com/xvolodyax/Karuselka/pull/15
+triggers: ПОНЕДЕЛЬНИК / MONDAY
+incident_report: none
+HANDOFF_NEXT: done
+
 
