@@ -5,7 +5,7 @@
   "topic": "ТАРО СЕЙЧАС",
   "handle": "@todaytaro_ru",
   "created_at": "2026-08-31T08:36:06Z",
-  "dispatch_mode": "unknown",
+  "dispatch_mode": "generalPurpose-fallback",
   "publish_requested": false,
   "mode": "live",
   "pixels": "allowed",
@@ -27,16 +27,18 @@
     },
     "researcher": {
       "id": "researcher",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "2130c98c74344f329617a7196bc1a5e6",
+      "started_at": "2026-08-31T08:36:48Z",
+      "finished_at": "2026-08-31T08:39:16Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
-      "model": null
+      "artifacts": [
+        "carusel-memory/research/carousel-research-dossier.md"
+      ],
+      "fragment": "carusel-memory/fragments/researcher.md",
+      "incident_report": "none",
+      "model": "gemini-3.7-flash-high"
     },
     "copywriter": {
       "id": "copywriter",
