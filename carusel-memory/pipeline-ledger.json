@@ -77,16 +77,19 @@
     },
     "image-prompter": {
       "id": "image-prompter",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "05b9fc29729d434fb3d996ac70ed3110",
+      "started_at": "2026-08-31T08:51:17Z",
+      "finished_at": "2026-08-31T08:55:48Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
-      "model": null
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json",
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md"
+      ],
+      "fragment": "carusel-memory/fragments/image-prompter.md",
+      "incident_report": "none",
+      "model": "gemini-3.7-flash-high"
     },
     "slice": {
       "id": "slice",
