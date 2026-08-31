@@ -1,0 +1,43 @@
+{
+  "pack_id": "2026-08-31",
+  "date": "2026-08-31",
+  "slot": "11:10 MSK",
+  "topic": {
+    "ru": "Понедельничный режим офиса после воскресного тепла",
+    "en": "Monday office-mode after Sunday warmth"
+  },
+  "note": "New Monday pair. Static 9+9 PNG. Slide-01 is PNG. No Grok, no animate, no mp4. Host portrait none. Style lock palette only.",
+  "visual_family": "animals_viktoria_collage",
+  "face_lock": "none",
+  "host_portrait": false,
+  "slice_method": "seam",
+  "product": "app_audio",
+  "cta_style": "comment_trigger",
+  "trigger_words": {
+    "ru": "ПОНЕДЕЛЬНИК",
+    "en": "MONDAY"
+  },
+  "langs": ["ru", "en"],
+  "publish_requested": false,
+  "skip_motion": true,
+  "skip_animate": true,
+  "skip_glavred": true,
+  "profiles": {
+    "ru": {
+      "brand": "ТАРО СЕЙЧАС",
+      "handle": "@todaytaro_ru",
+      "slogan": "Ясность сейчас"
+    },
+    "en": {
+      "brand": "Today Tarot",
+      "handle": "@todaytaro_bot",
+      "slogan": "Clarity now",
+      "no_academy": true
+    }
+  },
+  "kie": {
+    "ru_taskId": "5e5c11cf5608e08e110e9c8d8fa11315",
+    "en_taskId": "b89d1a0c1d2a57167963d6195c0e3441",
+    "style_lock": "animals-viktoria-style-lock.png"
+  }
+}

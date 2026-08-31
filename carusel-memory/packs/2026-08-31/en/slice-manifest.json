@@ -1,0 +1,58 @@
+{
+  "mode": "seam",
+  "source": "/tmp/kie-en-workspace/carusel-memory/output/master/source.png",
+  "source_size": {
+    "width": 2448,
+    "height": 3264
+  },
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major"
+  },
+  "slice_method": "excalibur_white_seams",
+  "split_meta": {
+    "requested_mode": "gutter",
+    "split_mode": "gutter_detect",
+    "v_gutters_px": [
+      {
+        "start": 808,
+        "end": 819
+      },
+      {
+        "start": 1623,
+        "end": 1634
+      }
+    ],
+    "h_gutters_px": [
+      {
+        "start": 1094,
+        "end": 1106
+      },
+      {
+        "start": 2189,
+        "end": 2201
+      }
+    ],
+    "max_center_offset_px": 19.0,
+    "max_center_offset_limit_px": 73.44
+  },
+  "cell_size": {
+    "width": 1080,
+    "height": 1440
+  },
+  "cell_aspect_ratio": 0.75,
+  "slide_count": 9,
+  "master_out": "/tmp/kie-en-workspace/carusel-memory/output/master/master.png",
+  "files": [
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-01.png",
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-02.png",
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-03.png",
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-04.png",
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-05.png",
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-06.png",
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-07.png",
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-08.png",
+    "/tmp/kie-en-workspace/carusel-memory/output/slides/slide-09.png"
+  ]
+}

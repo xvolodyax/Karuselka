@@ -84,4 +84,23 @@ HANDOFF_NEXT: slice
 - Offer on 09: app audio reading (Суть – Тень – Вектор / Essence–Shadow–Vector)
 - No pixels generated, no slicing executed. Ready for carusel-slice.
 
+=== CARUSEL-SLICE ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: c67838d2660b4e458837bd3b69a79ba6
+role: carusel-slice
+Mode: grid_3x3 seam
+Face lock: none
+incident_report: none
+HANDOFF_NEXT: design-guardian
+
+- RU kept taskId: 5e5c11cf5608e08e110e9c8d8fa11315 (crooked 0; 2 API-500 whole-master retries)
+- EN kept taskId: b89d1a0c1d2a57167963d6195c0e3441 (7 crooked-canvas whole-master regens, no cell patches)
+- 18 static PNGs 1080×1440. Slide-01 is PNG. No mp4. No animate. No publish.
+- Style lock only: animals-viktoria-style-lock.png. No host / no Виктория.png upload.
+- Gate slides: carusel-memory/output/slides/slide-01.png … slide-09.png (RU)
+- EN slides: carusel-memory/packs/2026-08-31/en/slides/
+- PIXELS: carusel-memory/packs/2026-08-31/PIXELS.md
+- Manifest: carusel-memory/output/slice-manifest.json
+
 

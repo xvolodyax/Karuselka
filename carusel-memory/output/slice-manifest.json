@@ -1,29 +1,13 @@
 {
+  "pack_id": "2026-08-31",
   "mode": "seam",
-  "source": "/workspace/carusel-memory/output/master/source.png",
-  "source_size": {
-    "width": 2480,
-    "height": 3312
-  },
+  "slice_method": "excalibur_white_seams",
+  "split_mode": "gutter",
+  "generation_mode": "grid_3x3",
   "grid": {
     "cols": 3,
     "rows": 3,
     "order": "row-major"
-  },
-  "slice_method": "excalibur_white_seams",
-  "split_meta": {
-    "requested_mode": "gutter",
-    "split_mode": "gutter_detect",
-    "v_gutters_px": [
-      {"start": 814, "end": 828},
-      {"start": 1640, "end": 1653}
-    ],
-    "h_gutters_px": [
-      {"start": 1096, "end": 1110},
-      {"start": 2202, "end": 2216}
-    ],
-    "max_center_offset_px": 6.5,
-    "max_center_offset_limit_px": 74.4
   },
   "cell_size": {
     "width": 1080,
@@ -31,11 +15,15 @@
   },
   "cell_aspect_ratio": 0.75,
   "slide_count": 9,
-  "master_out": "/workspace/carusel-memory/output/master/master.png",
-  "lang": "ru",
-  "pack_id": "2026-08-30",
-  "taskId": "e1a671f38c9a353d1e5000d9607eceda",
-  "files": [
+  "langs": ["ru", "en"],
+  "face_lock": "none",
+  "host_portrait": false,
+  "no_mp4": true,
+  "static_png_only": true,
+  "style_lock": "carusel-memory/references/animals-viktoria-style-lock.png",
+  "style_url": "https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png",
+  "gate_locale": "ru",
+  "gate_slides": [
     "/workspace/carusel-memory/output/slides/slide-01.png",
     "/workspace/carusel-memory/output/slides/slide-02.png",
     "/workspace/carusel-memory/output/slides/slide-03.png",
@@ -45,5 +33,23 @@
     "/workspace/carusel-memory/output/slides/slide-07.png",
     "/workspace/carusel-memory/output/slides/slide-08.png",
     "/workspace/carusel-memory/output/slides/slide-09.png"
-  ]
+  ],
+  "ru": {
+    "taskId": "5e5c11cf5608e08e110e9c8d8fa11315",
+    "source_size": {"width": 2480, "height": 3312},
+    "master": "/workspace/carusel-memory/packs/2026-08-31/ru/master.png",
+    "slides_dir": "/workspace/carusel-memory/packs/2026-08-31/ru/slides",
+    "max_center_offset_px": 6.0,
+    "crooked_canvas_regen": 0,
+    "api_500_retries": 2
+  },
+  "en": {
+    "taskId": "b89d1a0c1d2a57167963d6195c0e3441",
+    "source_size": {"width": 2448, "height": 3264},
+    "master": "/workspace/carusel-memory/packs/2026-08-31/en/master.png",
+    "slides_dir": "/workspace/carusel-memory/packs/2026-08-31/en/slides",
+    "max_center_offset_px": 19.0,
+    "crooked_canvas_regen": 7,
+    "note": "EN pack paths; gate output/slides remains RU"
+  }
 }
