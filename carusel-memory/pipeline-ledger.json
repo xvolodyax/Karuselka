@@ -143,15 +143,17 @@
     },
     "design-guardian": {
       "id": "design-guardian",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "f9ca0db7bd1a411293c729cf8b74d9cd",
+      "started_at": "2026-09-01T09:04:36Z",
+      "finished_at": "2026-09-01T09:10:27Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md"
+      ],
+      "fragment": "carusel-memory/fragments/design-guardian.md",
+      "incident_report": "none",
       "model": null
     },
     "upload": {
