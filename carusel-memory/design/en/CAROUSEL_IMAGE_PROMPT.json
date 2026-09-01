@@ -1,52 +1,52 @@
 {
   "version": "2",
   "lang": "en",
-  "pack_id": "2026-08-30",
-  "topic": "He disappears on weekends: weekdays warm, Saturday empty",
-  "trigger_word": "WEEKEND",
+  "pack_id": "2026-09-01",
+  "topic": "The Midweek \"Tomorrow\" Loop",
+  "trigger_word": "TOMORROW",
   "product": "app_audio",
   "generation_mode": "grid_3x3",
   "model": "gpt-image-2-image-to-image",
   "aspect_ratio": "3:4",
   "resolution": "4K",
   "slice_method": "seam",
-  "face_lock": "Виктория.png",
-  "i2i_source": "carusel-memory/references/Виктория.png",
-  "i2i_file_name": "Виктория.png",
+  "face_lock": "none",
+  "host_portrait": false,
+  "carousel_family": "animals_viktoria_collage",
+  "i2i_source": "carusel-memory/references/animals-viktoria-style-lock.png",
+  "i2i_file_name": "animals-viktoria-style-lock.png",
   "input_urls": [
-    "carusel-memory/references/Виктория.png"
+    "carusel-memory/references/animals-viktoria-style-lock.png"
   ],
   "written_by": "gemini",
-  "prompt": "Same woman as Виктория.png; same face, one woman. Eyes green with a slight hazel-brown tint (зелёные с лёгким карим). Warm honey blonde with darker roots, not platinum. Soft tender expression.\nОдно статичное PNG 3:4@4K, сетка 3×3. Тонкие белые gutters ровно на 1/3 и 2/3 (Excalibur seam). #111111 + белый heavy sans + #ff006e. Текст ≥12% от швов. In-scene. Без видео.\n\n01 oatmeal knit + charcoal lounge pants, sitting 3/4 on dark sofa, phone face-down, alert cat: \"Friday 6 PM silence. Monday: «How was it?»\".\n02 loyal dog waiting by dark silent smartphone screen, 55% text: \"48 hours of silence after 5 warm days\" / \"All week he texts every hour. But Saturday hits — and suddenly you disappear from his world.\".\n03 faithful dog head on paws, magenta pills for excuses: \"You make excuses for his silence\" / \"«He’s busy», «He needs rest». But a man who truly cares takes 10 seconds to send a single text.\".\n04 sleek cat at light-dark weekday-to-weekend boundary wall: \"You are just a weekday routine slot\" / \"During work hours you cure his boredom. But when real life happens on weekends, you are kept outside.\".\n05 wise owl, says vs means stacked decoder table: \"What he says vs what it means\" / \"«Off my phone on weekends» → Just not in your chat. «Too busy» → You are not in his rest priority. «Not a texter» → Yet texts all week.\".\n06 wise owl above diagnostic 1-2-3 checklist: \"3 signs you are in the waiting trap\" / \"1. You never know his weekend plans. 2. He never invites you out spontaneously. 3. His affection only exists during his office hours.\".\n07 independent cat turning away from phone toward open Saturday morning: \"Your weekend belongs to you\" / \"Stop being the backup plan for his workday routine. Put the phone down and take your Saturday back.\".\n08 wise owl as quiet witness, core takeaway recap: \"True interest shows in free time\" / \"A man’s true feelings are revealed when he is completely free, not when he is just killing time at work.\".\n09 standing 3/4 midnight-blue silk slip + open charcoal cardigan, huge magenta WEEKEND: \"Comment WEEKEND\" / \"Audio reading in my app.\".",
-  "prompt_char_count": 2097,
-  "negative_prompt": "viktoriaref.png, victoria-sheet.png, alena, white cami, jeans, hand on chin, graphite pajama, petrol teal, espresso jacket, platinum white hair, blue eyes, brown eyes, horror, skulls, blood, sticker outline, die-cut halo, white border around people, blurry, lowres, bot, 3 free spreads, Academy, video, animated",
+  "prompt": "No host portrait. No woman. No Victoria. No presenter face. Без портрета ведущей, без лиц, без Вик. Style lock = palette only (#111111 matte charcoal, white heavy sans, #ff006e hot magenta, soft gold foil), not a face.\nОдно статичное PNG 3:4@4K, сетка 3×3. Thin white gutters at 1/3 and 2/3 (Excalibur seam_slice). Текст ≥12% от швов. Animals + objects only. Без видео.\n\n01 cat, cooling tea, phone: \"1:20 PM: \\\"Call tonight\\\". 11:41 PM: \\\"Tomorrow\\\".\".\n02 dog by dark phone: \"You keep your evening open\" / \"You turn down plans and wait for the call. Near midnight, you're left feeling pushed aside once again.\".\n03 dog at closed door, pills: \"Mistake: \\\"No worries, get some rest\\\"\" / \"You hide your frustration behind understanding, teaching him that your time has zero value.\".\n04 cat watching clock loop: \"The 24-Hour Postponement Loop\" / \"A tiny daytime promise buys 12 hours of your patience and loyalty with zero effort on his part.\".\n05 screenshot decoder card: \"Late-Night Reschedule Decoder\" / \"• \\\"Drained today, tomorrow 100%\\\" → No capacity for depth, but wants to keep you on reserve.\\n• \\\"Let's talk soon\\\" → Easing his immediate guilt.\".\n06 owl by neon 11:41 PM clock: \"3 Signs of Chronic Delay\" / \"1. The message arrives past 11 PM.\\n2. No specific replacement time is set.\\n3. The loop repeats for the second time this week.\".\n07 cat leaves empty chair: \"Your schedule is not a waiting room\" / \"When a call drops at the last minute, your evening isn't lost. It belongs right back to you.\".\n08 owl, gold medallion: \"The Golden Midweek Rule\" / \"A man who wants connection makes specific time. A man who doubts feeds you with \\\"tomorrow\\\".\".\n09 huge magenta TOMORROW, phone, no people: \"Comment TOMORROW\" / \"Audio reading in the app. Essence–Shadow–Vector.\" / \"Write TOMORROW in the comments\".",
+  "prompt_char_count": 1827,
+  "negative_prompt": "Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png, woman, girl, host portrait, female face, presenter, human face, Alena, platinum hair, white cami, jeans, ivory blazer, host wardrobe, horror, skulls, dripping candles, blood, sticker outline, white halo around subjects, cutout border, bot, 3 free spreads, Academy, video, animated",
   "reference_contract": {
-    "reference_role": "style + layout reference (animals-viktoria-style-lock.png palette/rhythm only; Виктория.png for face lock)",
+    "reference_role": "style + layout reference (animals-viktoria-style-lock.png palette/rhythm only; no face)",
+    "face_lock": "none",
+    "host_portrait": false,
     "preserve": [
       "dark matte charcoal #111111–#1a1a1a background",
-      "hot magenta #ff006e accent + script + pill highlights",
+      "hot magenta #ff006e accent + handwritten script + torn-tape pills",
       "white #ffffff heavy sans typography hierarchy",
+      "soft gold foil accents used sparingly and natively",
       "3x3 master grid 3:4 @ 4K with thin white seams at 1/3 and 2/3",
-      "Victoria in-scene on slides 1 and 9 without sticker halo",
-      "animals as emotion metaphors (cat 1/4/7, dog 2/3, owl 5/6/8)",
-      "safe text margin >= 12% from edges and seams"
+      "animals as emotion metaphors (cat 1/4/7, dog 2/3, owl 6/8)",
+      "safe text margin >= 12% from edges and seams",
+      "no host portrait"
     ],
     "change": [
-      "topic: weekend disappearance — weekdays warm, Saturday empty",
-      "Sunday 30.08 wardrobe: oatmeal knit + charcoal lounge pants (slide 1), midnight-blue silk slip + charcoal cardigan (slide 9)",
-      "sitting 3/4 with phone face-down (slide 1) and standing 3/4 (slide 9)",
-      "verbatim English copy from CAROUSEL_SLIDE_COPY.json",
-      "huge magenta trigger word WEEKEND on slide 9"
+      "midweek tomorrow-loop objects (cooling tea, clock 11:41 PM, dark phone, torn tape)",
+      "verbatim Tuesday English copy from CAROUSEL_SLIDE_COPY.json",
+      "huge magenta trigger word TOMORROW on slide 9"
     ],
     "do_not_borrow": [
-      "deleted face files: viktoriaref.png, victoria-sheet.png, victoria.png, alena*.png",
-      "sheet cami + jeans + hand-on-chin pose",
-      "29.08 graphite pajama, petrol-teal slip, espresso jacket",
-      "platinum/white-blonde hair, grey/blue/pure-brown eyes",
-      "Portuguese text or foreign collage lettering",
-      "sticker halos, white cutout outlines",
-      "horror elements, blood, skulls, dripping candles",
-      "bot offer, 3 free spreads, Academy, raw URLs"
+      "Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png",
+      "any recognizable host face or woman portrait",
+      "sheet wardrobe (white cami, jeans, ivory blazer)",
+      "Portuguese collage text and foreign logos",
+      "sticker halos, horror candle table, bot offer, Academy, raw URLs"
     ]
   },
   "typography_rules": {
@@ -61,47 +61,47 @@
     {
       "slide": 1,
       "role": "hook",
-      "visual_only": "Victoria in-scene sitting 3/4 on dark sofa in rumpled oatmeal knit and charcoal lounge pants, phone face-down on thigh, sleek alert cat beside her; headline top 38% heavy white sans"
+      "visual_only": "Alert black cat beside cooling tea cup and dark phone screen implying daytime promise vs midnight delay; no woman; heavy white sans headline top."
     },
     {
       "slide": 2,
       "role": "problem",
-      "visual_only": "Loyal dog sitting by silent dark smartphone screen, empty Saturday window, 55% type coverage with contrast message"
+      "visual_only": "Loyal dog sitting beside a silent smartphone on a dark table, 55% type area."
     },
     {
       "slide": 3,
       "role": "mistake",
-      "visual_only": "Faithful dog with head on paws near magenta torn-tape pills quoting excuses, loyal waiting trap visual metaphor"
+      "visual_only": "Dog with head lowered at a closed door, torn magenta tape quoting copy fragment only."
     },
     {
       "slide": 4,
       "role": "mechanism",
-      "visual_only": "Sleek cat seated at stark light-dark boundary dividing warm weekday zone from dark weekend silence wall"
+      "visual_only": "Black cat watching glowing clock hands on a 24-hour postponement loop motif."
     },
     {
       "slide": 5,
-      "role": "save_decoder",
-      "visual_only": "Wise owl perched above 3-line stacked decoder table comparing excuses to reality, high bookmark value layout"
+      "role": "save_framework",
+      "visual_only": "High-contrast screenshot decoder card, torn magenta tape dividers between says and means rows, no animal."
     },
     {
       "slide": 6,
       "role": "save_checklist",
-      "visual_only": "Owl beside clean 1-2-3 numbered diagnostic checklist of waiting trap signs, sober factual arrangement"
+      "visual_only": "Wise owl perched in night shadows near glowing neon 11:41 PM clock, 3-marker checklist card."
     },
     {
       "slide": 7,
-      "role": "save_rule",
-      "visual_only": "Independent cat turning its back on the phone toward bright open Saturday morning window, autonomy reclaimed"
+      "role": "reframe",
+      "visual_only": "Independent cat stepping away from an empty chair toward its own night, leaving cooling tea behind."
     },
     {
       "slide": 8,
-      "role": "recap",
-      "visual_only": "Quiet owl as witness beside core insight recap typography on clean dark surface"
+      "role": "rule",
+      "visual_only": "Owl as quiet witness with a native soft gold Today Tarot medallion beside golden rule type."
     },
     {
       "slide": 9,
       "role": "cta",
-      "visual_only": "Victoria standing 3/4 in midnight-blue silk slip and open charcoal cardigan, soft tender gaze, huge handwritten magenta trigger WEEKEND, direct audio reading offer"
+      "visual_only": "Huge handwritten hot magenta script TOMORROW, phone on dark tabletop, app audio offer type, no people."
     }
   ]
 }

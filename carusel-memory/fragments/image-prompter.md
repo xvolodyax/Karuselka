@@ -1,26 +1,32 @@
-dispatched_via: Task(generalPurpose)
-dispatch_id: 092303bb6b314cac95d5a37b2870d354
-incident_report: none
-HANDOFF_NEXT: slice
-written_by: gemini
-
 === CARUSEL-IMAGE-PROMPTER ===
 Статус: ✅ OK
-Face Lock: Виктория.png (green with slight hazel eyes, honey blonde + darker roots)
-Mode: grid_3x3 3:4 @ 4K (static PNG)
-Slice method: seam (thin white gutters at 1/3 and 2/3)
-Prompt char count RU: 1960 (target 1900–2100, max 2200)
-Prompt char count EN: 2097 (target 1900–2100, max 2200)
-Trigger RU: СУББОТА (slide 09 huge magenta)
-Trigger EN: WEEKEND (slide 09 huge magenta)
-Product: app_audio (Суть – Тень – Вектор)
-Wardrobe 01: oatmeal knit + charcoal lounge pants, sitting 3/4 on dark sofa, phone face-down, cat
-Wardrobe 09: midnight-blue silk slip + open charcoal cardigan, standing 3/4, no animals
+dispatched_via: Task(generalPurpose)
+dispatch_id: ac4dbad654404a0dadba4d2304e8a1a4
+written_by: gemini
+incident_report: none
+HANDOFF_NEXT: slice
 
-Файлы:
-- /workspace/carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md
-- /workspace/carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md
-- /workspace/carusel-memory/packs/2026-08-30/ru/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/packs/2026-08-30/en/CAROUSEL_IMAGE_PROMPT.json
+Кратко: Kie 3×3 master prompts compiled for RU and EN pairs (2026-09-01). Seam slice method (thin white gutters at 1/3 and 2/3). Zero host portrait (face_lock=none, host_portrait=false). Animals + objects only. Verbatim copy locked in quotes.
+
+Family: animals_viktoria_collage
+Generation mode: grid_3x3
+Slice method: seam
+Aspect ratio: 3:4 | Resolution: 4K | Output: static PNG
+face_lock: none
+host_portrait: false
+input_urls: ["carusel-memory/references/animals-viktoria-style-lock.png"]
+Prompt char count RU: 1787 (target 1900–2100, max 2200)
+Prompt char count EN: 1827 (target 1900–2100, max 2200)
+Trigger RU: ЗАВТРА
+Trigger EN: TOMORROW
+Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
+
+Артефакты:
+- carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md
+- carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md
+- carusel-memory/packs/2026-09-01/ru/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/packs/2026-09-01/ru/CAROUSEL_IMAGE_PROMPT.md
+- carusel-memory/packs/2026-09-01/en/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/packs/2026-09-01/en/CAROUSEL_IMAGE_PROMPT.md

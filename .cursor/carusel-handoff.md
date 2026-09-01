@@ -46,6 +46,16 @@ Save cards: 05 decoder, 06 checklist
 incident_report: none
 HANDOFF_NEXT: image-prompter
 === CARUSEL-IMAGE-PROMPTER ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: ac4dbad654404a0dadba4d2304e8a1a4
+Prompt RU: carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json (1787 chars)
+Prompt EN: carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json (1827 chars)
+aspect_ratio: 3:4 | resolution: 4K | grid: 3x3 | slice_method: seam
+face_lock: none | host_portrait: false
+input_urls: ["carusel-memory/references/animals-viktoria-style-lock.png"]
+incident_report: none
+HANDOFF_NEXT: slice
 === CARUSEL-SLICE ===
 === CARUSEL-MOTION-DIRECTOR ===
 === CARUSEL-ANIMATE ===
