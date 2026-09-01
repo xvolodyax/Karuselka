@@ -16,7 +16,7 @@ skip_motion: true
 skip_animate: true
 publish_requested: true
 product: app_audio
-Кратко: intake + ledger init for Tuesday 01.09 pair. No host portrait. Swarm publishes after GATE PASS via Composio. Worker steps not started.
+Кратко: Tuesday 01.09 pair complete. GATE PASS, FACE ABSENT. Live RU+EN via Composio. Triggers ЗАВТРА / TOMORROW.
 Артефакты:
 - carusel-memory/00-brief.md
 - carusel-memory/pipeline-ledger.json

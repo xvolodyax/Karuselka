@@ -114,3 +114,8 @@ telegram: not sent
 incident_report: none
 HANDOFF_NEXT: fixic
 === CARUSEL-FIXIC ===
+Статус: ⏭️ SKIPPED
+dispatched_via: skip:no-open-incidents
+skip_reason: no-open-incidents
+incident_report: none
+HANDOFF_NEXT: done
