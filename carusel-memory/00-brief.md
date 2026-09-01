@@ -1,15 +1,16 @@
-# Carusel brief — ТАРО СЕЙЧАС / Today Tarot — 2026-08-30 slot 11:10 MSK
+# Carusel brief — ТАРО СЕЙЧАС / Today Tarot — 2026-09-01 slot 11:10 MSK (Tuesday)
 
 lang: ru
-topic: Он пропадает на выходных — будни тёплые, суббота пустая
+topic: ТАРО СЕЙЧАС
 handle: @todaytaro_ru
 publish_requested: true
 visual_family: animals_viktoria_collage
-face_lock: Виктория.png
+face_lock: none
+host_portrait: false
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: СУББОТА
-trigger_word_en: WEEKEND
+trigger_word: (Gemini researcher locks — seed ЗАВТРА)
+trigger_word_en: (Gemini researcher locks — seed TOMORROW)
 product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор / Essence–Shadow–Vector)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads
@@ -24,47 +25,52 @@ bilingual_pair: true
 en_handle: @todaytaro_bot
 en_brand: Today Tarot
 slot: 11:10 MSK
-date: 2026-08-30
+date: 2026-09-01
+weekday: Tuesday
 late: true
-pack_id: 2026-08-30
-**run_id:** 2026-08-30-1110
+pack_id: 2026-09-01
+**run_id:** 2026-09-01-1110
 
 ## Intake
 
 - audience: женщины 20–50, отношения (~78%). Не целиться в 13–17. Не пугать одиночеством.
 - goal: лиды в приложение через comment trigger → Direct аудиоразбор (Суть – Тень – Вектор / Essence–Shadow–Vector)
-- reference_carousel: family `animals_viktoria_collage`; live 27.08 Pause posts stay; packs `2026-08-27-swarm` (Ping vs step), `2026-08-27-v2` (Pause), `2026-08-28` (Тепло / WARMTH), `2026-08-29` (Ярлыки / СТАТУС / LABELS) are FORBIDDEN repeats
+- reference_carousel: family `animals_viktoria_collage`; no host portrait. Style lock = `carusel-memory/references/animals-viktoria-style-lock.png` palette/rhythm only. Do NOT i2i `Виктория.png`.
 - slide_copy_notes: auto — Gemini пишет 9 RU + 9 EN + две подписи. Director не пишет слайды.
 - cta_target: header_link — «ссылки в шапке профиля» / «links in the profile». No raw URLs.
-- brand: ТАРО СЕЙЧАС / Today Tarot. Dark + magenta. Victoria face lock = `carusel-memory/references/Виктория.png` only (2 191 823 bytes, 1341×1173). NEVER i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`. Eyes: green with a slight hazel tint, same on every slide. Hair: warm honey/wheat blonde with darker roots, not platinum. New pose and clothes every time; do not copy sheet white cami / jeans / hand-on-chin.
+- brand: ТАРО СЕЙЧАС / Today Tarot. Dark + magenta. Host portrait = none. Animals + objects + type. No woman, no presenter, no Victoria face.
 - caption_preferences: Gemini writes RU caption AND EN caption in the same copywriter step. Product `app_audio`. No Glavred this run.
 
 ## One swarm, one chain (this run)
 
-researcher (Gemini 3.7) → Gemini copywriter (9 RU + RU caption AND 9 EN + EN caption) → designer → Gemini image-prompter → slice (Kie pixels) → skip motion → skip animate → design-guardian + FACE_CHECK vs Виктория.png → upload → publish via Composio aliases instagram-ru + instagram-en
+researcher (Gemini 3.7) → Gemini copywriter (9 RU + RU caption AND 9 EN + EN caption) → designer → Gemini image-prompter → slice (Kie pixels, 9+9 PNG) → skip motion → skip animate → design-guardian + FACE_CHECK verdict ABSENT → upload HTTPS → publish via Composio aliases instagram-ru + instagram-en
 
-SKIP this run: motion-director, animate/Grok video, Glavred, Telegram.
+SKIP this run: motion-director, animate/Grok video, Glavred, Telegram, Max, VK, YouTube, Dzen.
 
 Static 9 slides per language. Slide-01 is PNG, not MP4. No video, no animation.
 
-Hall does not write, draw, review slides, or publish. Director publishes after GATE PASS + FACE MATCH.
+Hall is only the alarm clock. Slot 11:10 MSK already passed (~11:20). After GATE PASS + FACE_CHECK ABSENT the swarm publishes itself. Do not wait for Hall. Do not send to Telegram.
 
 ## Topic lock (Gemini researcher locks the exact hook)
 
-Seed for Sunday 30.08 (slot already due): weekend disappearance — weekdays warm, Saturday empty.
+Seed for Tuesday 01.09 (slot already due): midweek postponement — at 13:20 he writes «сегодня вечером созвонимся»; at 23:41 «сорри, завтра точно». Tomorrow is already Wednesday. Not Monday office-mode. Not weekend vacuum.
 
-Researcher may refine the hook/mechanism but MUST pick a NEW relationship-pain topic.
+Researcher may refine the hook/mechanism but MUST pick a NEW relationship-pain topic that is Tuesday/midweek-specific, not a remake of Monday office-mode or Sunday weekend-vacuum.
 
-FORBIDDEN repeats:
-- «Пауза или конец» / Pause or over
-- «Пинг или шаг» / Ping vs step
+FORBIDDEN repeats (topics AND triggers):
+- «Пауза или конец» / Pause or over — ПАУЗА / PAUSE
+- «Пинг или шаг» / Ping vs step — ШАГ / STEP
 - «Спишь?» after 24 days of silence
-- «Тепло – холодно» / Hot & Cold (pack 2026-08-28)
-- «Зачем вешать ярлыки» / Why Put Labels On It (pack 2026-08-29, live RU https://www.instagram.com/p/Dcnrh0nm7pp/ EN https://www.instagram.com/p/Dcnrht_lVca/)
-- triggers ШАГ / STEP / ПАУЗА / PAUSE / ТЕПЛО / WARMTH / ПРОЧИТАНО / СТАТУС / STATUS / LABELS
+- «Тепло – холодно» / Hot & Cold — ТЕПЛО / WARMTH (pack 2026-08-28)
+- «Зачем вешать ярлыки» / Why Put Labels On It — СТАТУС / STATUS / LABELS (pack 2026-08-29)
+- «Он пропадает на выходных» / weekend vacuum — СУББОТА / WEEKEND (pack 2026-08-30)
+- «Смотрит сторис сразу — отвечает часами позже» / online phantom — ОНЛАЙН (PR #12 scout, live https://www.instagram.com/p/DcqlmXDoLLZ/)
+- «Понедельничный режим офиса» / Monday office-mode — ПОНЕДЕЛЬНИК / MONDAY (pack 2026-08-31, live RU https://www.instagram.com/p/DcszHTWIHS5/ EN https://www.instagram.com/p/DcszQubG-bl/)
 - B18 «парень пропал после близости»
+- ПРОЧИТАНО
+- ВТОРНИК / TUESDAY as a lazy day-name clone of ПОНЕДЕЛЬНИК / MONDAY (allowed only if the mechanism is truly new AND the word is not the headline of slide 1)
 
-Code word must be new. RU ≠ EN. Topic-tied. Never reuse yesterday’s STATUS / LABELS / СТАТУС.
+Code word must be new. RU ≠ EN. Topic-tied. Never reuse yesterday’s ПОНЕДЕЛЬНИК / MONDAY.
 Never use the word «Сцена» on slides or in caption. First slide is the situation itself, no label.
 Write «в моём приложении», never «в нашем приложении».
 
@@ -80,17 +86,20 @@ Do not write «личный аудиоразбор». EN: no Academy.
 
 ## Face + cut
 
-- i2i ONLY `carusel-memory/references/Виктория.png` (2 191 823 bytes, 1341×1173; one woman, 12 angles)
-- NEVER i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`, or `animals-viktoria-style-lock.png` as a face
-- Eyes green with a slight hazel tint on every slide
-- Hair: warm honey/wheat blonde, darker roots; platinum = reject, rebuild the whole canvas
-- New clothes and pose; do not copy sheet outfits
+- Host portrait: **none**. Do NOT i2i `Виктория.png`, `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`.
+- Style collage `animals-viktoria-style-lock.png` is palette only — never a face ref.
+- Prompt FIRST: no host, no woman, no Victoria, no presenter portrait.
+- Animals and objects carry the scene. Huge trigger word on slide 9.
+- FACE_CHECK.md verdict must be ABSENT. FACE MATCH vs Виктория.png is retired.
+- GATE FAIL if Vika / any recognizable host portrait appears.
 - Seam slice: Excalibur white gutters at 1/3 and 2/3
 - On CROOKED CANVAS: regen whole master, never patch one cell
 
+## Live posts — do not touch / do not delete / do not duplicate
+
+RU: Dci-EP1ErI- (Pause), DclVIfUoDqQ (ТЕПЛО), Dcnrh0nm7pp (СТАТУС), DcqJGCblQqv (СУББОТА), Dcqh0UnG48J (СУББОТА noface), DcqlmXDoLLZ (ОНЛАЙН scout), DcszHTWIHS5 (ПОНЕДЕЛЬНИК)
+EN: Dci-ozwAH4l (Pause), DclVSGMGwAj (WARMTH), Dcnrht_lVca (LABELS), DcqJS--m0op (WEEKEND), DcszQubG-bl (MONDAY)
+
 ## Publish
 
-After GATE PASS + FACE_CHECK MATCH vs Виктория.png: publish yourself via Composio aliases `instagram-ru` (@todaytaro_ru) and `instagram-en` (@todaytaro_bot).
-Do not wait for Hall. Do not send to Telegram. Do not log into Instagram in a browser.
-
-GATE FAIL (bot-offer on slide 9, wrong face, video, duplicate code word, missing 9+9): stop, do not publish.
+publish_requested: true. Slot already passed. After GATE PASS + FACE_CHECK ABSENT publish both via Composio aliases instagram-ru + instagram-en. Telegram / Max / VK / YouTube / Dzen forbidden. Do not duplicate if 2026-09-01 already live. Do not wait for Hall.

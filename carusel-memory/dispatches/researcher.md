@@ -21,7 +21,7 @@ HARD RULES
 - End with fragment carusel-memory/fragments/researcher.md.
 - Fragment MUST contain:
   dispatched_via: Task(generalPurpose)
-  dispatch_id: d8c1039a17c94a3681dd2836647e8979
+  dispatch_id: cc574ce77a69454c8a493ac8c9778fa9
   incident_report: none
   HANDOFF_NEXT: copywriter
 - Instagram: no raw URLs; say links are in the profile. CTA is one comment trigger word.
@@ -32,7 +32,7 @@ HARD RULES
 - If previous artifacts are missing: fragment ❌ BLOCKER and stop.
 
 DISPATCH
-dispatch_id: d8c1039a17c94a3681dd2836647e8979
+dispatch_id: cc574ce77a69454c8a493ac8c9778fa9
 step_id: researcher
 via: Task(generalPurpose)
 workspace: /workspace
@@ -122,4 +122,44 @@ incident_report: none
 
 - Не писать финальный текст слайдов (это copywriter)
 - Не генерировать изображения
+
+===== BILINGUAL TUESDAY 2026-09-01 EXTRA (Director) =====
+
+This is a bilingual pair run. Write ONE dossier that locks BOTH langs.
+
+Date: 2026-09-01 (Tuesday). Slot 11:10 MSK already passed. Pack 2026-09-01.
+face_lock: none. Host portrait: false. Do not recommend Victoria / any woman / presenter on slides.
+
+Seed topic (you may refine, must stay NEW):
+midweek postponement — 13:20 «сегодня вечером созвонимся»; 23:41 «сорри, завтра точно». Tomorrow is already Wednesday.
+
+FORBIDDEN topics AND triggers (do not reuse):
+ПАУЗА/PAUSE, ШАГ/STEP, ТЕПЛО/WARMTH, СТАТУС/STATUS/LABELS, СУББОТА/WEEKEND,
+ОНЛАЙН (https://www.instagram.com/p/DcqlmXDoLLZ/),
+ПОНЕДЕЛЬНИК/MONDAY (live RU https://www.instagram.com/p/DcszHTWIHS5/ EN https://www.instagram.com/p/DcszQubG-bl/),
+ПРОЧИТАНО, B18 after-intimacy vanish,
+«Пауза или конец», «Пинг или шаг», «Спишь?», «Тепло – холодно»,
+«Зачем вешать ярлыки», weekend vacuum, Monday office-mode, online phantom.
+
+Do NOT pick ВТОРНИК/TUESDAY as a lazy day-name clone of yesterday’s ПОНЕДЕЛЬНИК/MONDAY.
+Pick a NEW topic-tied code word. RU ≠ EN. Seed suggestion ЗАВТРА / TOMORROW is OK if it fits the mechanism; you may choose a stronger pair.
+
+Never write the word «Сцена» as a label. First hook is the situation itself.
+Write «в моём приложении», never «в нашем приложении».
+EN: no Academy. Product: app_audio. CTA: comment trigger → Direct audio in the APP
+(RU Суть – Тень – Вектор / EN Essence–Shadow–Vector). Not the bot.
+
+Dossier MUST include:
+- written_by: gemini
+- chosen_topic_ru / chosen_topic_en
+- recommended_trigger_ru / recommended_trigger_en (NEW, not yesterday)
+- hook lab 5–7 with RU+EN
+- 9-panel teaching arc (01 scene, 02 pain, 03 mistake, 04 mechanism, 05–07 save, 08 rule, 09 CTA)
+- ≥3 animal-metaphor slide recommendations (cat/dog/owl)
+- ≥2 save-framework slide recommendations
+- Design translation notes: no host, animals+objects+type, magenta/charcoal
+- forbidden_triggers_checked list
+
+Also append the same handoff block to `.cursor/carusel-handoff.md` under === CARUSEL-RESEARCHER ===
+Do not start copywriter. Do not generate images.
 
