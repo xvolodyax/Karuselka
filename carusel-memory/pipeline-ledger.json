@@ -173,15 +173,17 @@
     },
     "publish": {
       "id": "publish",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "f907744288624261b6f8a3ffdede5b3a",
+      "started_at": "2026-09-01T09:15:45Z",
+      "finished_at": "2026-09-01T09:24:49Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/output/publish-log.md"
+      ],
+      "fragment": "carusel-memory/fragments/publish.md",
+      "incident_report": "none",
       "model": null
     },
     "fixic": {

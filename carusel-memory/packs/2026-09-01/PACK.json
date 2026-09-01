@@ -11,6 +11,11 @@
   "cta_style": "comment_trigger",
   "trigger_words": {"ru": "ЗАВТРА", "en": "TOMORROW"},
   "langs": ["ru", "en"],
+  "already_live": true,
+  "already_live_posts": {
+    "ru": "https://www.instagram.com/p/DcvVF5Wm6fM/",
+    "en": "https://www.instagram.com/p/DcvVOcPFe5h/"
+  },
   "publish_requested": true,
   "skip_motion": true,
   "skip_animate": true,
