@@ -1,58 +1,137 @@
 {
-  "mode": "seam",
-  "source": "/workspace/carusel-memory/output/master/source.png",
-  "source_size": {
-    "width": 2480,
-    "height": 3312
-  },
+  "pack_id": "2026-09-01",
+  "date": "2026-09-01",
+  "slot": "11:10 MSK",
+  "generation_mode": "grid_3x3",
   "grid": {
     "cols": 3,
     "rows": 3,
     "order": "row-major"
   },
-  "slice_method": "excalibur_white_seams",
-  "split_meta": {
-    "requested_mode": "gutter",
-    "split_mode": "gutter_detect",
-    "v_gutters_px": [
-      {
-        "start": 820,
-        "end": 829
-      },
-      {
-        "start": 1645,
-        "end": 1653
-      }
-    ],
-    "h_gutters_px": [
-      {
-        "start": 1099,
-        "end": 1106
-      },
-      {
-        "start": 2205,
-        "end": 2213
-      }
-    ],
-    "max_center_offset_px": 4.0,
-    "max_center_offset_limit_px": 74.4
+  "cell": {
+    "width": 1080,
+    "height": 1440
   },
   "cell_size": {
     "width": 1080,
     "height": 1440
   },
   "cell_aspect_ratio": 0.75,
-  "slide_count": 9,
-  "master_out": "/workspace/carusel-memory/output/master/master.png",
-  "files": [
-    "/workspace/carusel-memory/output/slides/slide-01.png",
-    "/workspace/carusel-memory/output/slides/slide-02.png",
-    "/workspace/carusel-memory/output/slides/slide-03.png",
-    "/workspace/carusel-memory/output/slides/slide-04.png",
-    "/workspace/carusel-memory/output/slides/slide-05.png",
-    "/workspace/carusel-memory/output/slides/slide-06.png",
-    "/workspace/carusel-memory/output/slides/slide-07.png",
-    "/workspace/carusel-memory/output/slides/slide-08.png",
-    "/workspace/carusel-memory/output/slides/slide-09.png"
-  ]
+  "source_size": {
+    "width": 2480,
+    "height": 3312
+  },
+  "langs": ["ru", "en"],
+  "face_lock": "none",
+  "host_portrait": false,
+  "no_mp4": true,
+  "skip_motion": true,
+  "skip_animate": true,
+  "slice_method": "seam",
+  "split_mode": "gutter",
+  "style_lock": "carusel-memory/references/animals-viktoria-style-lock.png",
+  "style_lock_url": "https://tempfile.redpandaai.co/kieai/378019/carusel/animals-viktoria-style-lock.png",
+  "ledger_lang": "ru",
+  "ledger_slides": "carusel-memory/output/slides",
+  "taskIds": {
+    "ru": "6a57700c48ff77dfc019d355f3fce282",
+    "en": "4511b5050376b8a5b9b2d199e07a63d9"
+  },
+  "discarded_taskIds": {
+    "ru": [
+      "13791a054de0fe1443a481f4ac4dcbd1",
+      "d10da2252466cf589bb66257cae96f8e"
+    ],
+    "en": [
+      "9997ecd4bc4fa55fac408c49f09fd100",
+      "44088962c775cdcb5929901b2e0d2cd6"
+    ]
+  },
+  "regen": {
+    "ru": 2,
+    "en": 2,
+    "max_attempts_per_lang": 8,
+    "crooked_canvas_ru": 0,
+    "crooked_canvas_en": 0,
+    "kie_500_ru": 2,
+    "kie_500_en": 2,
+    "cell_patches": 0
+  },
+  "resultUrls": {
+    "ru": "https://tempfile.aiquickdraw.com/h/6a57700c48ff77dfc019d355f3fce282_1788252804.png",
+    "en": "https://tempfile.aiquickdraw.com/h/4511b5050376b8a5b9b2d199e07a63d9_1788253100.png"
+  },
+  "split_meta": {
+    "ru": {
+      "requested_mode": "gutter",
+      "split_mode": "gutter_detect",
+      "v_gutters_px": [
+        {"start": 820, "end": 829},
+        {"start": 1645, "end": 1653}
+      ],
+      "h_gutters_px": [
+        {"start": 1099, "end": 1106},
+        {"start": 2205, "end": 2213}
+      ],
+      "max_center_offset_px": 4.0,
+      "max_center_offset_limit_px": 74.4
+    },
+    "en": {
+      "requested_mode": "gutter",
+      "split_mode": "gutter_detect",
+      "v_gutters_px": [
+        {"start": 815, "end": 825},
+        {"start": 1641, "end": 1652}
+      ],
+      "h_gutters_px": [
+        {"start": 1100, "end": 1108},
+        {"start": 2204, "end": 2213}
+      ],
+      "max_center_offset_px": 7.0,
+      "max_center_offset_limit_px": 74.4
+    }
+  },
+  "files": {
+    "ru": {
+      "master": "/workspace/carusel-memory/packs/2026-09-01/ru/master.png",
+      "source": "/workspace/carusel-memory/packs/2026-09-01/ru/source.png",
+      "slides": [
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-01.png",
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-02.png",
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-03.png",
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-04.png",
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-05.png",
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-06.png",
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-07.png",
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-08.png",
+        "/workspace/carusel-memory/packs/2026-09-01/ru/slides/slide-09.png"
+      ]
+    },
+    "en": {
+      "master": "/workspace/carusel-memory/packs/2026-09-01/en/master.png",
+      "source": "/workspace/carusel-memory/packs/2026-09-01/en/source.png",
+      "slides": [
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-01.png",
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-02.png",
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-03.png",
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-04.png",
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-05.png",
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-06.png",
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-07.png",
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-08.png",
+        "/workspace/carusel-memory/packs/2026-09-01/en/slides/slide-09.png"
+      ]
+    },
+    "ledger_ru": [
+      "/workspace/carusel-memory/output/slides/slide-01.png",
+      "/workspace/carusel-memory/output/slides/slide-02.png",
+      "/workspace/carusel-memory/output/slides/slide-03.png",
+      "/workspace/carusel-memory/output/slides/slide-04.png",
+      "/workspace/carusel-memory/output/slides/slide-05.png",
+      "/workspace/carusel-memory/output/slides/slide-06.png",
+      "/workspace/carusel-memory/output/slides/slide-07.png",
+      "/workspace/carusel-memory/output/slides/slide-08.png",
+      "/workspace/carusel-memory/output/slides/slide-09.png"
+    ]
+  }
 }
