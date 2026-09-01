@@ -87,5 +87,17 @@ WARN: CAT, COOLING TEA, PHONE crumbs on RU+EN 01 (hook on phone)
 incident_report: none
 HANDOFF_NEXT: upload
 === CARUSEL-UPLOAD ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: d411d8a34a0e48e29b16824e2aaea948
+provider: kie_file_upload_api
+file1_kind: png
+this_run: static_all_pngs
+No mp4. No Instagram. No Telegram. No Composio.
+RU file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-09-01-1110-static-ru/slide-01.png
+EN file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-09-01-1110-static-en/slide-01.png
+Ledger: carusel-memory/output/publish-urls.json (top-level = RU; ru/en nests)
+incident_report: none
+HANDOFF_NEXT: publish
 === CARUSEL-PUBLISH ===
 === CARUSEL-FIXIC ===
