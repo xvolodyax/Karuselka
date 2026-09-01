@@ -16,6 +16,18 @@ Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–
 Face lock: none (no host portrait)
 incident_report: none
 === CARUSEL-COPYWRITER ===
+Статус: ✅ OK
+written_by: gemini
+Slides RU: carusel-memory/design/CAROUSEL_SLIDE_COPY.json
+Caption RU chars: 894
+Slides EN: carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json
+Caption EN chars: 918
+Trigger RU: ЗАВТРА
+Trigger EN: TOMORROW
+Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
+Face lock: none (no host portrait, no Victoria)
+incident_report: none
+HANDOFF_NEXT: designer
 === CARUSEL-DESIGNER ===
 === CARUSEL-IMAGE-PROMPTER ===
 === CARUSEL-SLICE ===

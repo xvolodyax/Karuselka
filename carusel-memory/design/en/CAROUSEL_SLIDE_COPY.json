@@ -1,39 +1,41 @@
 {
+  "written_by": "gemini",
   "lang": "en",
-  "topic": "He disappears on weekends: weekdays warm, Saturday empty",
+  "topic": "The Midweek \"Tomorrow\" Loop",
+  "trigger_word": "TOMORROW",
+  "product": "app_audio",
+  "face_lock": "none",
+  "host_portrait": false,
   "visual_family": "animals_viktoria_collage",
   "hook_is_scene": true,
-  "trigger_word": "WEEKEND",
-  "product": "app_audio",
-  "written_by": "gemini",
   "hook_options": [
     {
       "framework": "pain",
-      "headline": "Friday 6 PM silence. Monday: «How was it?»",
-      "why_it_swipes": "Instant recognition of the weekend vacuum after weekday intimacy"
+      "headline": "1:20 PM: \"Call tonight\". 11:41 PM: \"Tomorrow\".",
+      "why_it_swipes": "Instant recognition of holding an entire evening open for an empty promise."
     },
     {
       "framework": "contrarian",
-      "headline": "He is not busy: we make time for what matters",
-      "why_it_swipes": "Breaks the rationalization illusion"
-    },
-    {
-      "framework": "mechanism",
-      "headline": "5 warm days vs 48 hours of complete silence",
-      "why_it_swipes": "Exposes relationship compartmentalization"
+      "headline": "\"Tomorrow for sure\" isn't busyness. It's control.",
+      "why_it_swipes": "Shatters the comforting illusion of overwhelming work schedules."
     },
     {
       "framework": "mistake",
-      "headline": "You make excuses for him while ruining your weekend",
-      "why_it_swipes": "Calls out the waiting mode trap"
+      "headline": "Mistake: smiling through delays and lost time.",
+      "why_it_swipes": "Exposes the asymmetric emotional cost of accommodating chronic postponements."
+    },
+    {
+      "framework": "mechanism",
+      "headline": "How the 24-hour postponement loop traps you.",
+      "why_it_swipes": "Explains the rolling delay mechanism behind unresolved conversations."
     },
     {
       "framework": "specific_result",
-      "headline": "3 signs you are only his weekday routine slot",
-      "why_it_swipes": "High save intent diagnostic framework"
+      "headline": "3 signs separating real emergencies from delays.",
+      "why_it_swipes": "Actionable diagnostic framework with immediate save appeal."
     }
   ],
-  "hook_rationale": "Hook 1 captures the specific micro-scene of the Friday communication blackout followed by the casual Monday morning check-in, driving instant curiosity and emotional resonance.",
+  "hook_rationale": "Hook #1 (pain / micro-scene) was chosen because concrete timestamps (1:20 PM and 11:41 PM) create instant relatable recognition and a strong information gap between daytime anticipation and midnight letdown, compelling the viewer to swipe.",
   "slide_count": 9,
   "grid": {
     "cols": 3,
@@ -43,97 +45,90 @@
     {
       "index": 1,
       "role": "hook",
-      "headline": "Friday 6 PM silence. Monday: «How was it?»",
-      "body": "",
+      "headline": "1:20 PM: \"Call tonight\". 11:41 PM: \"Tomorrow\".",
+      "body": "And tomorrow is already midweek. Your evening is on hold again.",
       "animal": "cat",
-      "animal_metaphor": "sensing the hidden truth",
-      "victoria": true,
-      "notes": "Instant recognizable scene of weekend disappearance"
+      "animal_metaphor": "Sharp-eyed black cat near a cooling cup of tea — intuition sensing the recurring delay trap.",
+      "victoria": false
     },
     {
       "index": 2,
       "role": "problem",
-      "headline": "48 hours of silence after 5 warm days",
-      "body": "All week he texts every hour. But Saturday hits — and suddenly you disappear from his world.",
+      "headline": "You keep your evening open",
+      "body": "You turn down plans and wait for the call. Near midnight, you're left feeling pushed aside once again.",
       "animal": "dog",
-      "animal_metaphor": "loyalty to the waiting screen",
-      "victoria": false,
-      "notes": "The painful contrast between weekdays and weekends"
+      "animal_metaphor": "Loyal dog waiting beside a dark phone screen — the exhausting emotional holding pattern.",
+      "victoria": false
     },
     {
       "index": 3,
       "role": "mistake",
-      "headline": "You make excuses for his silence",
-      "body": "«He's busy», «He needs rest». But a man who truly cares takes 10 seconds to send a single text.",
+      "headline": "Mistake: \"No worries, get some rest\"",
+      "body": "You hide your frustration behind understanding, teaching him that your time has zero value.",
       "animal": "dog",
-      "animal_metaphor": "the faithful waiting trap",
-      "victoria": false,
-      "notes": "The trap of making excuses for lack of effort"
+      "animal_metaphor": "Dog with head lowered at a closed door — accommodating behavior at your own expense.",
+      "victoria": false
     },
     {
       "index": 4,
       "role": "mechanism",
-      "headline": "You are just a weekday routine slot",
-      "body": "During work hours you cure his boredom. But when real life happens on weekends, you are kept outside.",
+      "headline": "The 24-Hour Postponement Loop",
+      "body": "A tiny daytime promise buys 12 hours of your patience and loyalty with zero effort on his part.",
       "animal": "cat",
-      "animal_metaphor": "intuition spots the boundary",
-      "victoria": false,
-      "notes": "The psychological mechanism of compartmentalization"
+      "animal_metaphor": "Black cat watching clock hands tick — spotting the subtle pattern of low-effort control.",
+      "victoria": false
     },
     {
       "index": 5,
-      "role": "save_decoder",
-      "headline": "What he says vs what it means",
-      "body": "«Off my phone on weekends» → Just not in your chat.\n«Too busy» → You are not in his rest priority.\n«Not a texter» → Yet texts all week.",
-      "animal": "owl",
-      "animal_metaphor": "night clarity and seeing through fog",
-      "victoria": false,
-      "notes": "High-value decoder framework for bookmarks"
+      "role": "save_framework",
+      "headline": "Late-Night Reschedule Decoder",
+      "body": "• \"Drained today, tomorrow 100%\" → No capacity for depth, but wants to keep you on reserve.\n• \"Let's talk soon\" → Easing his immediate guilt.",
+      "animal": "none",
+      "animal_metaphor": "none",
+      "victoria": false
     },
     {
       "index": 6,
       "role": "save_checklist",
-      "headline": "3 signs you are in the waiting trap",
-      "body": "1. You never know his weekend plans.\n2. He never invites you out spontaneously.\n3. His affection only exists during his office hours.",
+      "headline": "3 Signs of Chronic Delay",
+      "body": "1. The message arrives past 11 PM.\n2. No specific replacement time is set.\n3. The loop repeats for the second time this week.",
       "animal": "owl",
-      "animal_metaphor": "sober diagnostic check",
-      "victoria": false,
-      "notes": "Checklist for relationship status clarity"
+      "animal_metaphor": "Owl in the night shadows against neon clock glow — clear-eyed vision cutting through excuses.",
+      "victoria": false
     },
     {
       "index": 7,
-      "role": "save_rule",
-      "headline": "Your weekend belongs to you",
-      "body": "Stop being the backup plan for his workday routine. Put the phone down and take your Saturday back.",
+      "role": "reframe",
+      "headline": "Your schedule is not a waiting room",
+      "body": "When a call drops at the last minute, your evening isn't lost. It belongs right back to you.",
       "animal": "cat",
-      "animal_metaphor": "reclaiming personal sovereignty",
-      "victoria": false,
-      "notes": "Actionable rule for breaking the waiting loop"
+      "animal_metaphor": "Cat stepping away from the empty chair — reclaiming personal time and healthy boundaries.",
+      "victoria": false
     },
     {
       "index": 8,
-      "role": "recap",
-      "headline": "True interest shows in free time",
-      "body": "A man's true feelings are revealed when he is completely free, not when he is just killing time at work.",
+      "role": "rule",
+      "headline": "The Golden Midweek Rule",
+      "body": "A man who wants connection makes specific time. A man who doubts feeds you with \"tomorrow\".",
       "animal": "owl",
-      "animal_metaphor": "core insight",
-      "victoria": false,
-      "notes": "Core takeaway of the carousel"
+      "animal_metaphor": "Owl holding the Today Tarot medallion — final clarity and stepping out of illusions.",
+      "victoria": false
     },
     {
       "index": 9,
       "role": "cta",
-      "headline": "Comment WEEKEND",
-      "body": "Audio reading in my app.",
-      "cta": "Write WEEKEND in the comments",
-      "animal": null,
-      "victoria": true,
-      "notes": "CTA: trigger WEEKEND leads to Essence–Shadow–Vector audio reading in the app"
+      "headline": "Comment TOMORROW",
+      "body": "Audio reading in the app. Essence–Shadow–Vector.",
+      "cta": "Write TOMORROW in the comments",
+      "animal": "none",
+      "animal_metaphor": "none",
+      "victoria": false
     }
   ],
   "save_value": [
-    "slide-05 excuse decoder: What he says vs What it means",
-    "slide-06 checklist: 3 signs you are in the waiting trap",
-    "slide-07 boundary rule: Reclaim your weekend"
+    "slide-05 decoder",
+    "slide-06 checklist",
+    "slide-07 shift",
+    "slide-08 rule"
   ]
 }

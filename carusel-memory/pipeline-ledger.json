@@ -42,16 +42,20 @@
     },
     "copywriter": {
       "id": "copywriter",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "2129b35e97094aa39b61570de50aa900",
+      "started_at": "2026-09-01T08:30:56Z",
+      "finished_at": "2026-09-01T08:35:18Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
-      "model": null
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+        "carusel-memory/design/CAROUSEL_CAPTION.json",
+        "carusel-memory/design/CAROUSEL_CAPTION.md"
+      ],
+      "fragment": "carusel-memory/fragments/copywriter.md",
+      "incident_report": "none",
+      "model": "gemini-3.7-flash-high"
     },
     "designer": {
       "id": "designer",
