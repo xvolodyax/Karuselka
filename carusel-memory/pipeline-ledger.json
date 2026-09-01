@@ -27,15 +27,17 @@
     },
     "researcher": {
       "id": "researcher",
-      "status": "dispatched",
+      "status": "ok",
       "dispatched_via": "Task(generalPurpose)",
       "dispatch_id": "cc574ce77a69454c8a493ac8c9778fa9",
       "started_at": "2026-09-01T08:26:33Z",
-      "finished_at": null,
+      "finished_at": "2026-09-01T08:29:43Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/research/carousel-research-dossier.md"
+      ],
+      "fragment": "carusel-memory/fragments/researcher.md",
+      "incident_report": "none",
       "model": "gemini-3.7-flash-high"
     },
     "copywriter": {
