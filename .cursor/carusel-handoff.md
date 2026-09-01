@@ -29,6 +29,22 @@ Face lock: none (no host portrait, no Victoria)
 incident_report: none
 HANDOFF_NEXT: designer
 === CARUSEL-DESIGNER ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: 50dd866559b844039733c2ae39ecf4c2
+Family: animals_viktoria_collage
+face_lock: none
+host_portrait: false
+slice_method: seam
+Score: 90
+Trigger RU: ЗАВТРА
+Trigger EN: TOMORROW
+Product: app_audio
+Master: carusel-memory/output/master/master.png (pending slice)
+Animals: cat 01/04/07, dog 02/03, owl 06/08
+Save cards: 05 decoder, 06 checklist
+incident_report: none
+HANDOFF_NEXT: image-prompter
 === CARUSEL-IMAGE-PROMPTER ===
 === CARUSEL-SLICE ===
 === CARUSEL-MOTION-DIRECTOR ===
