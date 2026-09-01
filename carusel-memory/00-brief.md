@@ -9,8 +9,8 @@ face_lock: none
 host_portrait: false
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: (Gemini researcher locks — seed ЗАВТРА)
-trigger_word_en: (Gemini researcher locks — seed TOMORROW)
+trigger_word: ЗАВТРА
+trigger_word_en: TOMORROW
 product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор / Essence–Shadow–Vector)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads
