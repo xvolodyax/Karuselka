@@ -9,8 +9,8 @@ face_lock: none
 host_portrait: false
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: (researcher locks — seed ПЛАН; not a day-name clone)
-trigger_word_en: (researcher locks — seed PLAN; RU ≠ EN)
+trigger_word: ПЛАН
+trigger_word_en: SLOT
 product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор / Essence–Shadow–Vector)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads

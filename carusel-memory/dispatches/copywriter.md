@@ -22,7 +22,7 @@ HARD RULES
 - End with fragment carusel-memory/fragments/copywriter.md.
 - Fragment MUST contain:
   dispatched_via: Task(generalPurpose)
-  dispatch_id: 1e4dbcee0efe44da8353ed1fe17c02a9
+  dispatch_id: 1e967e534c9149b2a08f2cd478f086bd
   incident_report: none
   HANDOFF_NEXT: designer
 - Instagram: no raw URLs; say links are in the profile. CTA is one comment trigger word.
@@ -33,7 +33,7 @@ HARD RULES
 - If previous artifacts are missing: fragment ❌ BLOCKER and stop.
 
 DISPATCH
-dispatch_id: 1e4dbcee0efe44da8353ed1fe17c02a9
+dispatch_id: 1e967e534c9149b2a08f2cd478f086bd
 step_id: copywriter
 via: Task(generalPurpose)
 workspace: /workspace
