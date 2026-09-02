@@ -11,7 +11,11 @@
   "cta_style": "comment_trigger",
   "trigger_words": {"ru": "ПЛАН", "en": "SLOT"},
   "langs": ["ru", "en"],
-  "already_live": false,
+  "already_live": true,
+  "already_live_posts": {
+    "ru": "https://www.instagram.com/p/Dcx7CK1lV0F/",
+    "en": "https://www.instagram.com/p/Dcx7DGam5AN/"
+  },
   "publish_requested": true,
   "skip_motion": true,
   "skip_animate": true,

@@ -146,6 +146,28 @@
       "permalink": "https://www.instagram.com/p/DcvVOcPFe5h/",
       "media_id": "18385449295203014",
       "posted_at": "2026-09-01T09:23:43+0000"
+    },
+    {
+      "date": "2026-09-02",
+      "pack_id": "2026-09-02",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ПЛАН",
+      "permalink": "https://www.instagram.com/p/Dcx7CK1lV0F/",
+      "media_id": "17905668447514427",
+      "posted_at": "2026-09-02T09:32:44+0000"
+    },
+    {
+      "date": "2026-09-02",
+      "pack_id": "2026-09-02",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "SLOT",
+      "permalink": "https://www.instagram.com/p/Dcx7DGam5AN/",
+      "media_id": "18618303673046980",
+      "posted_at": "2026-09-02T09:32:44+0000"
     }
   ]
 }
