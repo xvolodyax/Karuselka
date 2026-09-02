@@ -1,0 +1,44 @@
+{
+  "generation_mode": "grid_3x3",
+  "taskId": "9b7bcafcfb787eefb0ee21409777ea3d",
+  "resultUrls": [
+    "https://tempfile.aiquickdraw.com/p/9b7bcafcfb787eefb0ee21409777ea3d_1_1788339162_9013.png"
+  ],
+  "prompt": "No host, no woman, no Victoria, no presenter portrait. Без лица ведущей. Животные, объекты и типографика.\nMaster 3:4 @ 4K, сетка 3x3 из 9 панелей 3:4, row-major 01–09.\nСтиль: animals_viktoria_collage. Графит #111111–#1a1a1a, маджента #ff006e, белый #ffffff, золото.\nСетка: slice_method seam, тонкие белые желоба (thin white gutters) на 1/3 и 2/3. Отступы ≥12% от линий реза и краёв. Текст не у нижнего края.\nТипографика: строгий verbatim-текст, без лишних надписей, без подписи Victoria. Крупный белый гротеск, рукописный маджента.\n\nПанели 01–09:\n01 (hook): «На этой неделе увидимся». Среда. Дня нет. Кот смотрит на календарь-без-дня, маджента-скотч, телефон экраном вниз.\n02 (pain): «Четверг и пятница уже заморожены» / «Неделя за половиной. Вечера в полурезерве. Ты не берёшь другие планы — в голове висит его «на неделе».» Пёс, пустые фишки-дни.\n03 (mistake): «Ошибка — ждать «напишет в последний миг»» / «Кажется: он занят, дотянет и напишет. Ты отдаёшь календарь тому, кто свой даже не открыл.» Пёс, закрытый календарь.\n04 (mechanism): ««На неделе» — бронь без обязательств» / «Ему галочка «я проявил внимание». Тебе ожидание. Слить встречу легко: конкретного дня не было.» Кот, карточка брони.\n05 (decoder): «Что говорит — и что это значит» / ««Пересечёмся на днях» → слышишь «скучает» → реально: держит в поле зрения даром. «Ближе к делу спишемся» → слышишь «подстроится» → реально: позовёт, если не найдётся лучше.» Сова.\n06 (checklist): «3 признака настоящего приглашения» / «1) Назван день. 2) Есть время или место. 3) Спросил: «тебе удобно?». Всё остальное — фоновый шум.» Сова.\n07 (rule): «Нет дня к вечеру — неделя закрыта» / «Если к вечеру среды нет дня и времени — эта неделя в твоём календаре для него закрыта. Строй планы без «а вдруг».» Кот.\n08 (recap): «Бронирует время, не занимает тревогу» / «Кто хочет тебя видеть — ставит слот в календарь. Кто нет — держит твою неделю вопросом.» Сова.\n09 (cta): «Напиши ПЛАН» / «Аудиоразбор в моём приложении. Суть – Тень – Вектор.» Крупный рукописный «ПЛАН» маджента, кофе, телефон экраном вниз, маджента-скотч, карточка брони.\n\nИзбегать: host portrait, woman face, female presenter, Victoria portrait, Victoria face, Alena, human model, foreign faces, sticker halo, die-cut, white outline around animals, cutout, zero-gutter touching cells, horizontal strip, 2x3 grid, sheet clothes, white cami, ivory blazer, jeans, platinum hair, white-blonde hair, skulls, blood, dripping candles, ouija, horror, blurry, low resolution, duplicate text, extra slogans, watermark, Portuguese text, bot spreads",
+  "aspect_ratio": "3:4",
+  "aspect_ratio_requested": "3:4",
+  "aspect_ratio_fallback": false,
+  "aspect_ratio_fallback_reason": null,
+  "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slide_count": 9,
+  "source_path": "/workspace/carusel-memory/output/master/source.png",
+  "source_clean_path": null,
+  "slides_dir": "/workspace/carusel-memory/output/slides",
+  "animate_slide": 1,
+  "slice_method": "seam",
+  "slice_status": "ok",
+  "gutter_cleanup": {
+    "enabled": false,
+    "method": "near-white pixels on exact cut-lines; no crop, no resize",
+    "strip": 5,
+    "report": "/workspace/carusel-memory/output/debug/remove-grid-gutters-report.json"
+  },
+  "edge_cleanup": {
+    "enabled": true,
+    "method": "copy interior pixels over outer edge strips after slice; no crop, no resize",
+    "strip": 10,
+    "report": "/workspace/carusel-memory/output/debug/clean-slide-edges-report.json",
+    "leftover_gutter_px": 0,
+    "status": "ok"
+  },
+  "gutter_qa": {
+    "enabled": true,
+    "report": "/workspace/carusel-memory/output/debug/grid-gutter-qa-clean.json",
+    "mode": "seam",
+    "status": "ok"
+  }
+}
