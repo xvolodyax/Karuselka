@@ -67,3 +67,17 @@ HANDOFF_NEXT: image-prompter
 Family: animals_viktoria_collage
 Score: 90
 No Kie JSON. No pixels.
+
+=== CARUSEL-IMAGE-PROMPTER ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: 8c29e05c8bcb4055adfe86b35ba02fee
+written_by: gemini
+incident_report: none
+HANDOFF_NEXT: slice
+Prompt chars: RU 2085, EN 2186 (both ≤2200)
+Input URLs: https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png
+face_lock: none (no host portrait)
+slice_method: seam (thin white gutters at 1/3 and 2/3)
+product: app_audio (ПЛАН / SLOT)
+
