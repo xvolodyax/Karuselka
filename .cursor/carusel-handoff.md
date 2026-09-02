@@ -104,4 +104,18 @@ FACE_CHECK: ABSENT
 GATE: PASS
 Report: carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md
 
+=== CARUSEL-UPLOAD ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: f443bbe658dd4a15950f5ed36d878baf
+provider: kie_file_upload_api
+file1_kind: png
+this_run: static_all_pngs
+No mp4. No Instagram. No Telegram. No Composio.
+RU file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-09-02-1110-static-ru/slide-01.png
+EN file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-09-02-1110-static-en/slide-01.png
+Ledger: carusel-memory/output/publish-urls.json (top-level = RU; ru/en nests)
+incident_report: none
+HANDOFF_NEXT: publish
+
 
