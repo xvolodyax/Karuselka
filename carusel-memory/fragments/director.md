@@ -4,7 +4,7 @@ dispatched_via: parent
 lang: ru
 handle: @todaytaro_ru
 skill: skills/director-carusel/SKILL.md
-Кратко: intake + ledger init. Worker steps not started.
+Кратко: intake 2026-09-02 Wednesday bilingual pair. face_lock=none. Static PNG. publish_requested=true. Seed = midweek floating week-plan, not ЗАВТРА/TOMORROW. Worker steps not started.
 Артефакты:
 - carusel-memory/00-brief.md
 - carusel-memory/pipeline-ledger.json
