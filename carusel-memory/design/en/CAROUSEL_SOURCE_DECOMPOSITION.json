@@ -3,43 +3,119 @@
     "step": "designer",
     "required": true,
     "visual_twin_of": "ru",
-    "dispatch_id": "b10a4a88db134fc38e2cc9d5838339c3"
+    "dispatch_id": "d28a556162be41d4a9185ea2303887d2"
   },
   "lang": "en",
+  "pack_id": "2026-09-02",
   "carousel_family": "animals_viktoria_collage",
+  "source_first": true,
+  "face_lock": "none",
+  "host_portrait": false,
+  "victoria_slides": [],
   "reference_role": {
-    "style": "animals-viktoria-style-lock / image-851e — palette + collage rhythm only",
+    "style": "animals-viktoria-style-lock / image-851e — palette + collage rhythm only. Never a face ref.",
     "layout": "3x3 seam gutters, identical to RU",
-    "typography": "heavy white sans + magenta script; EN strings",
-    "mood": "same dark fashion-lifestyle tarot",
-    "face": "Виктория.png ONLY"
+    "typography": "heavy white sans + thin magenta script for SLOT; EN strings",
+    "mood": "same dark fashion-lifestyle tarot, midweek",
+    "content_inspiration": "OLD slide-04 depth informs slide 05 decoder only",
+    "face": "none. No host. No woman. No Victoria."
   },
   "preserve": [
-    "RU visual lock: wardrobe, poses, animals, palette, seams, Victoria 1+9 in-scene"
+    "dark field",
+    "magenta + white type mix",
+    "torn-paper pills",
+    "animals-as-metaphor",
+    "seam slice",
+    "no host portrait",
+    "RU visual lock: objects, animals, palette, seams"
   ],
   "change": [
-    "EN verbatim copy",
-    "WEEKEND trigger"
+    "topic objects: calendar-without-a-day, empty weekday chips, floating reservation card",
+    "exact locked EN copy",
+    "which animal on which slide",
+    "SLOT trigger"
   ],
   "do_not_borrow": [
-    "Portuguese text, foreign faces, Alena, sheet/29.08 outfits, horror, Academy, bot, RU letters"
+    "Portuguese text",
+    "foreign faces",
+    "other brands",
+    "horror table",
+    "Victoria / Alena",
+    "yesterday's 23:41 clock-as-hero",
+    "sheet clothes",
+    "platinum hair",
+    "any woman",
+    "RU letters",
+    "Academy, bot"
   ],
   "panel_archetype_map": {
-    "01": "hero_scene_collage",
-    "02": "type_heavy_pain",
-    "03": "type_heavy_mistake",
-    "04": "mechanism_boundary",
-    "05": "save_decoder_table",
-    "06": "save_checklist",
-    "07": "save_rule",
-    "08": "recap_insight",
-    "09": "cta_hero"
+    "01": {
+      "source_archetype": "hero_scene_collage",
+      "adapt": "cat + calendar-without-a-day + Monday→Wednesday hook",
+      "victoria": false,
+      "animal": "cat"
+    },
+    "02": {
+      "source_archetype": "type_heavy_pain",
+      "adapt": "empty weekday chips; dog waiting",
+      "victoria": false,
+      "animal": "dog"
+    },
+    "03": {
+      "source_archetype": "type_heavy_mistake",
+      "adapt": "last-minute ping hope; dog at closed calendar door",
+      "victoria": false,
+      "animal": "dog"
+    },
+    "04": {
+      "source_archetype": "mechanism_hold",
+      "adapt": "floating reservation card; cat sees the one-sided hold",
+      "victoria": false,
+      "animal": "cat"
+    },
+    "05": {
+      "source_archetype": "save_decoder_table",
+      "adapt": "says / you hear / reality; owl night vision",
+      "victoria": false,
+      "animal": "owl"
+    },
+    "06": {
+      "source_archetype": "save_checklist",
+      "adapt": "3 signs of a real invitation; owl diagnostic",
+      "victoria": false,
+      "animal": "owl"
+    },
+    "07": {
+      "source_archetype": "save_rule",
+      "adapt": "no day by evening — week is yours; cat reclaiming autonomy",
+      "victoria": false,
+      "animal": "cat"
+    },
+    "08": {
+      "source_archetype": "recap_insight",
+      "adapt": "he books your time, not your anxiety; owl wisdom",
+      "victoria": false,
+      "animal": "owl"
+    },
+    "09": {
+      "source_archetype": "cta_objects",
+      "adapt": "coffee + phone face-down + tape + huge magenta SLOT + app_audio",
+      "victoria": false,
+      "animal": null
+    }
   },
   "thumbnail_test": {
-    "must_read_in_2s": "Friday 6 PM silence. Monday: «How was it?»",
-    "visual_anchor": "Victoria oatmeal knit + cat + silent phone"
+    "slide": 1,
+    "must_read_in_2s": "Monday: \"this week\". Wednesday. No day.",
+    "visual_anchor": "charcoal cat + calendar-without-a-day + magenta tape — no woman",
+    "fail_if": "hook is a mechanic title, a woman/face appears, clock 23:41 is the hero, or extra labels appear"
   },
   "save_test": {
-    "screenshot_panels": [5, 6, 7]
+    "screenshot_panels": [5, 6, 7],
+    "why": [
+      "05 decoder: says / you hear / reality",
+      "06 checklist: 3 signs of a real invitation",
+      "07 rule: no day by evening — week is yours"
+    ]
   }
 }

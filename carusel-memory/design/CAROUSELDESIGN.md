@@ -1,14 +1,16 @@
 ---
-name: ТАРО СЕЙЧАС / Today Tarot — Weekend Vacuum
-pack_id: 2026-08-30
-run_id: 2026-08-30-1110
+name: ТАРО СЕЙЧАС / Today Tarot — Floating Week-Plan
+pack_id: 2026-09-02
+run_id: 2026-09-02-1110
 slot: 11:10 MSK
+weekday: Wednesday
 lang_pair: ru+en
 product: app_audio
 pipeline_gate: required
 step: designer
 handoff_next: image-prompter
-dispatch_id: b10a4a88db134fc38e2cc9d5838339c3
+dispatch_id: d28a556162be41d4a9185ea2303887d2
+dispatched_via: Task(generalPurpose)
 format:
   generation_mode: "grid_3x3"
   slide_count: 9
@@ -33,10 +35,10 @@ colors:
 typography:
   slide-headline: "heavy sans, white, #ffffff"
   slide-body: "medium sans, white 85–92%"
-  slide-cta: "huge thin script / handwritten, magenta #ff006e"
-  slide-number: "small white or gold pill, bottom-right, never on seam"
-  slide-script: "thin magenta script for secondary words only"
-  slide-pill: "magenta torn-tape / pill blocks for short labels"
+  slide-cta: "huge thin script / handwritten, magenta #ff006e — ПЛАН / SLOT"
+  slide-number: "optional small white or gold pill, bottom-right, never on seam; no extra words"
+  slide-script: "thin magenta script for secondary word only (ПЛАН / SLOT on slide 9)"
+  slide-pill: "magenta torn-tape / pill blocks — quote locked copy fragments only, no new slogans"
 grid:
   cols: 3
   rows: 3
@@ -51,10 +53,11 @@ carousel_system:
   carousel_family: "animals_viktoria_collage"
   narrative: "hook-pain-mistake-mechanism-save-save-save-recap-cta"
   product: "app_audio"
-  trigger_ru: "СУББОТА"
-  trigger_en: "WEEKEND"
-  face_lock: "Виктория.png"
-  victoria_slides: [1, 9]
+  trigger_ru: "ПЛАН"
+  trigger_en: "SLOT"
+  face_lock: "none"
+  host_portrait: false
+  victoria_slides: []
   slide_roles:
     - hook
     - problem
@@ -65,26 +68,28 @@ carousel_system:
     - save_rule
     - recap
     - cta
-wardrobe_lock:
-  carousel_date: "2026-08-30"
-  rule: "new clothes + pose this carousel; never copy sheet or 29.08"
-  slide_1:
-    garment: "rumpled weekend-at-home oatmeal knit (heather wheat-oat, NOT white cami)"
-    bottom: "soft charcoal lounge knit pants (NOT jeans)"
-    pose: "sitting 3/4 on dark sofa, phone face-down on thigh, looking off-camera; NOT hand-on-chin"
-  slide_9:
-    garment: "midnight-blue silk slip + open charcoal cardigan"
-    pose: "standing 3/4, weight on back hip, one hand on cardigan edge; NOT hand-on-chin"
-  do_not_repeat:
-    - "sheet white cami + jeans + hand-on-chin"
-    - "29.08 graphite pajama"
-    - "29.08 petrol-teal + espresso jacket"
+object_wardrobe:
+  carousel_date: "2026-09-02"
+  rule: "new objects this pack; never reuse yesterday 23:41 clock-as-hero"
+  pack_objects:
+    - calendar-without-a-day
+    - empty weekday chips
+    - floating reservation card
+    - coffee cup
+    - phone face-down
+    - magenta tape
+  forbidden_hero:
+    - "Tuesday 23:41 clock as hero"
+    - "tomorrow-loop phone-clock"
 identity:
-  face_file: "carusel-memory/references/Виктория.png"
-  box_copy: "/workspace/cover-refs/Виктория.png"
-  eyes: "green with slight hazel, same every slide"
-  hair: "warm honey/wheat blonde, darker roots, NOT platinum"
+  face_lock: none
+  host_portrait: false
+  victoria: false
+  women: false
+  presenter: false
+  style_lock: "carusel-memory/references/animals-viktoria-style-lock.png — PALETTE/RHYTHM ONLY, never a face ref"
   forbidden_face_files:
+    - "Виктория.png"
     - "viktoriaref.png"
     - "victoria-sheet.png"
     - "victoria.png"
@@ -92,65 +97,74 @@ identity:
     - "alena*.png"
 ---
 
-# CAROUSELDESIGN — 2026-08-30 Weekend Vacuum
+# CAROUSELDESIGN — 2026-09-02 Floating Week-Plan
 
 Design contract only. No Kie prompt JSON. No pixels. No publish.
 
 `carousel_family`: **animals_viktoria_collage**
-`slice_method`: **seam** (thin white gutters at 1/3 and 2/3)
+`face_lock`: **none** · `host_portrait`: **false** · `victoria_slides`: **[]**
+`slice_method`: **seam** (Excalibur thin white gutters at 1/3 and 2/3)
 `generation_mode`: **grid_3x3** · master **3:4 @ 4K** · static PNG
-`product`: **app_audio** · slide 9 huge magenta **СУББОТА** / **WEEKEND**
+`product`: **app_audio** · slide 9 huge thin magenta script **ПЛАН** / **SLOT**
+
+Copy is **LOCKED**. Headlines and bodies are verbatim from
+`CAROUSEL_SLIDE_COPY.json` (RU) and `design/en/CAROUSEL_SLIDE_COPY.json` (EN).
+Do not rewrite copy. Do not add labels. Do not sign Victoria.
 
 ## Source Replication Doctrine
 
-User reference = law. Style lock is the animals-Victoria collage family
-(`animals-viktoria-style-lock.png` / `image-851e.png` for palette + collage
-rhythm only). Face lock is **Виктория.png only**. Never i2i the style lock
-as a face. Never restore deleted files.
+User reference = law. Style lock
+(`animals-viktoria-style-lock.png` / `image-851e.png`) is **palette + collage
+rhythm only**. Never i2i it as a face. Never restore deleted face files.
+Never draw a woman.
 
-Decompose first, then adapt topic objects and Sunday wardrobe.
+Decompose first, then swap topic objects and animal seats. Do not remake
+Tuesday’s 24-hour tomorrow-loop (clock 23:41 as hero).
 
 - **preserve**: dark charcoal field, magenta + white type mix, torn-paper
-  pills, animals-as-metaphor, Victoria in-scene on 1+9 (no sticker halo),
-  seam slice, 3:4 cells, soft gold metal accents.
-- **change**: weekend-vacuum topic objects, verbatim copy, which animal on
-  which slide, NEW Sunday wardrobe and poses.
-- **do_not_borrow**: Portuguese text, foreign faces, Alena, sheet outfit,
-  29.08 graphite pajama / petrol-teal + espresso jacket, horror table,
-  bot-offer, watermarks, Victoria signature.
+  pills, animals-as-metaphor, seam slice, no host portrait, 3:4 cells,
+  soft gold metal accents.
+- **change**: midweek floating-plan objects (calendar-without-a-day, empty
+  weekday chips, floating reservation card, coffee cup, phone face-down,
+  magenta tape), exact locked copy, which animal sits on which slide.
+- **do_not_borrow**: Portuguese text, foreign faces, other brands, horror
+  table, Victoria / Alena / any woman, yesterday’s 23:41 clock-as-hero,
+  sheet clothes, platinum hair, sticker die-cut halo, bot-offer,
+  watermarks, Victoria signature.
 
 ## Composition Lock
 
 Fixed on all 9 panels:
 
 1. Matte charcoal / black `#111111`–`#1a1a1a` full-bleed per cell.
-2. Heavy white sans headlines; magenta script / torn-tape accents.
-3. Soft gold only as foil (medallion, buttons, thin highlight) — never as
-   a pastel wash.
+2. Heavy white sans headlines; thin magenta script only for the secondary
+   word **ПЛАН** / **SLOT** on slide 9.
+3. Soft gold only as foil (medallion, thin highlight) — never a pastel wash.
 4. Thin **white** gutters on the master at 1/3 and 2/3. Cells do not bleed
-   type or faces across seams.
+   type or animals across seams.
 5. Safe area ≥10–12% from every cell edge and gutter.
-6. Verbatim copy from `CAROUSEL_SLIDE_COPY.json` (RU) / `design/en/` (EN).
-   No extra labels. No watermarks. No Victoria signature.
-7. One woman. Twelve angles of ONE face. Eyes green + slight hazel. Hair
-   warm honey/wheat with darker roots.
-8. Animals are metaphors, not cute pets. Minimum 3 slides (this pack uses
-   cat/dog/owl on 8 of 9).
-9. Victoria **in-scene** on slides 1 and 9 only. No die-cut halo.
+6. Verbatim copy. No extra slogans. No «Сцена». No watermarks. No signature.
+7. **No host. No woman. No presenter. No faces.** `victoria: false` on every slide.
+8. Animals are metaphors, not cute pets. This pack: cat 01/04/07, dog 02/03,
+   owl 05/06/08, none on 09 (8 of 9 — above the ≥3 minimum).
+9. Animals sit **in-scene** on the charcoal field. No white die-cut / sticker
+   halo (style-lock cutouts are rhythm only — do not copy the outline).
 
 ## Philosophy & Vibe
 
-Sunday-morning emptiness after a warm weekday chat. Not horror. Not beige
-lifestyle. Not a pajama hangover from 29.08.
+Wednesday evening. Monday he said «на этой неделе увидимся». The week is
+past the equator. The calendar slot is held open for a date that was never
+written. Not a 24-hour «давай завтра». Not a day-name clone of «СРЕДА».
 
-The room is dark and lived-in. The phone is quiet. The cat already knows.
-The dog waits. The owl reads the excuses. Victoria is at home, rumpled
-oatmeal knit on the hook, then standing in midnight-blue silk + charcoal
-cardigan for the CTA — one woman, two Sunday looks, neither from the
-character sheet.
+The room is dark and still. A calendar with no day. Hollow weekday chips.
+A reservation card that floats because it has nothing to pin to. Coffee
+going cold. A phone face-down — not a clock shouting 23:41.
 
-Tone: adult, tender, clear. Contrast is structural (5 warm days / 48 hours
-of vacuum), not theatrical.
+The cat already senses the promise dissolving. The dog stays loyal to a
+door that never opened. The owl reads the words against the meaning.
+
+Tone: adult, clear, midweek. Contrast is structural (promise without a
+weekday), not theatrical. Not horror. Not beige lifestyle.
 
 ## Grid Rules
 
@@ -161,19 +175,21 @@ of vacuum), not theatrical.
 - If a seam is missing or crooked → rebuild the whole canvas. Never patch
   one cell.
 - Each cell is a self-contained 3:4 Instagram portrait. Not 4:5. Not 1:1.
-- Hook (01) = large scene line + Victoria + one animal (cat).
+- Hook (01) = large scene line + one animal (cat) + calendar-without-a-day.
+  Readable in **2 seconds** at thumbnail. No host.
 - Internal (02–08) = 50–60% type, smaller animal at bottom or side.
-- CTA (09) = Victoria + **huge magenta script** trigger word.
-- Static PNG only this run. Slide 01 is not video.
+- CTA (09) = huge thin magenta script trigger + objects (coffee, phone
+  face-down, tape, reservation card). No host. No animal required.
+- Static PNG only. Slide 01 is not video.
 
 ## Color Guidance
 
 | Role | Hex | Use |
 |------|-----|-----|
 | background | `#111111`–`#1a1a1a` | full-bleed charcoal |
-| accent | `#ff006e` | script, pills, tape, lips, trigger word |
+| accent | `#ff006e` | script, pills, tape, trigger word |
 | type | `#ffffff` | heavy sans headlines + body |
-| metal | soft gold `#d4af37` | medallion, buttons, light foil |
+| metal | soft gold `#d4af37` | medallion, light foil |
 
 No pastel rainbow. No beige lifestyle wash. No horror red/black candle table.
 WCAG: white on `#111111` and magenta on `#111111` both pass for large type.
@@ -181,67 +197,73 @@ WCAG: white on `#111111` and magenta on `#111111` both pass for large type.
 ## Typography & Readability
 
 - Hook must read in **2 seconds** at thumbnail (~200 px).
-- Headline: heavy white sans. One idea per panel.
-- Body: 1–3 short lines. Decoder (05) and checklist (06) may use stacked
-  lines; keep inside the safe area.
-- CTA: **huge** magenta handwritten **СУББОТА** (RU) / **WEEKEND** (EN).
-  This is the largest word on the canvas.
+- Headline: heavy white sans. One idea per panel. Verbatim.
+- Body: 1–3 short lines. Decoder (05) and checklist (06) may stack lines
+  inside the safe area.
+- CTA: **huge thin magenta handwritten** **ПЛАН** (RU) / **SLOT** (EN).
+  Largest word on the canvas. «Напиши» / «Comment» stays heavy white sans.
 - Layer type behind and in front of subjects, but never across a gutter.
-- Verbatim copy only. No «Сцена» label. No extra watermarks.
+- Torn-tape pills may echo a locked fragment («на неделе» / «this week»).
+  No new brand labels. No Victoria signature.
 
 ## Slide Rhythm
 
 ```text
-01 hook scene     Victoria + cat + Friday 18:00 silence
-02 problem        dog waits at the silent screen
-03 mistake        dog loyalty trap / excuses
-04 mechanism      cat sees the weekday-slot boundary
-05 save decoder   owl: says vs means
-06 save checklist owl: 3 waiting-zone signs
-07 save rule      cat reclaims Saturday
-08 recap          owl: free time is the proof
-09 CTA            Victoria + huge magenta СУББОТА / WEEKEND
+01 hook scene     cat + calendar-without-a-day
+02 problem        dog + empty weekday chips (Thu/Fri frozen)
+03 mistake        dog waits at a closed calendar door
+04 mechanism      cat + floating reservation card (hold, no day)
+05 save decoder   owl: говорит / слышишь / реально
+06 save checklist owl: 3 признака настоящего приглашения
+07 save rule      cat closes the week (нет дня к вечеру)
+08 recap          owl: бронирует время, не занимает тревогу
+09 CTA            objects + huge magenta ПЛАН / SLOT — no host
 ```
 
 Product lock on 09: аудиоразбор **в моём приложении** / audio reading in
 my app. Суть – Тень – Вектор / Essence–Shadow–Vector. Not the bot.
+Links in the profile. No raw URLs.
 
-## Sunday Wardrobe (30.08) — NEW
+## Object Wardrobe (02.09) — NEW
 
-**Slide 1.** Rumpled weekend-at-home knit, oatmeal / heather wheat-oat.
-Slightly oversized waffle or slouchy crew. Soft charcoal lounge pants.
-Sitting 3/4 on a dark sofa. Phone face-down on the thigh. Tender, knowing.
-Cat alert beside her. **Not** white cami. **Not** jeans. **Not**
-hand-on-chin.
+Do not reuse Tuesday’s tomorrow-loop hero (clock 23:41, «вечером → завтра»).
 
-**Slide 9.** Standing 3/4. Midnight-blue silk slip. Open charcoal cardigan
-(soft merino, slouchy — not a structured jacket). Soft gold hoop or small
-medallion. One hand on the cardigan edge or a cup held low. Huge magenta
-trigger word. **Not** graphite pajama. **Not** petrol-teal. **Not**
-espresso jacket.
+| Slide | Hero object | Animal |
+|-------|-------------|--------|
+| 01 | calendar-without-a-day (ghost week, no circled weekday) + magenta tape | cat |
+| 02 | empty weekday chips (hollow evening slots, no extra slogans) | dog |
+| 03 | closed / unopened planner door + empty chips | dog |
+| 04 | floating reservation card hovering over a dateless calendar | cat |
+| 05 | decoder stack; small ghost calendar as support | owl |
+| 06 | 1–3 checklist; filled slot vs empty chip contrast | owl |
+| 07 | week-closed calendar; reservation card turned away | cat |
+| 08 | booked slot vs question-mark hold | owl |
+| 09 | coffee cup + phone face-down + magenta tape + reservation card | none |
 
-Same woman. New clothes. New poses. Eyes and hair locked.
+Phone face-down is a still object, not a lit lock-screen clock. Optional light
+tarot card if it does not cover a headline. Optional gold medallion if native.
 
 ## Do's and Don'ts
 
 **Do**
 
-- Face lock `Виктория.png` only. Eyes green + slight hazel. Honey/wheat
-  hair with darker roots.
+- `face_lock: none`. Scene + type + animal / object. Never a woman.
 - Animals as emotion on every slide that names an animal in copy.
 - Thin white seams. Self-contained cells. Verbatim copy.
-- Huge magenta **СУББОТА** / **WEEKEND** on slide 9.
-- In-scene Victoria on 1 and 9, no sticker halo.
+- Huge thin magenta **ПЛАН** / **SLOT** on slide 9.
+- New midweek objects listed above.
 
 **Don't**
 
-- i2i `viktoriaref.png` / `victoria-sheet.png` / `victoria.png` / Alena /
-  style-lock as a face.
-- Platinum / white-blonde hair. Brown-only, grey, or blue eyes.
-- Copy sheet white cami + jeans + hand-on-chin.
-- Copy 29.08 graphite pajama or petrol-teal + espresso jacket.
-- White halo / die-cut around Victoria or animals.
+- Draw Victoria, Alena, any woman, any presenter, any face.
+- i2i `Виктория.png` / `viktoriaref.png` / `victoria-sheet.png` /
+  `victoria.png` / style-lock as a face.
+- Platinum hair, sheet clothes, white cami, jeans, hand-on-chin.
+- Clock 23:41 as hero. Tomorrow-loop props as the cover.
+- White halo / die-cut / «вырезка» around animals.
 - Horror, skulls, blood, dripping candles, ouija, demon faces.
 - Portuguese text, foreign faces, other brands, Victoria signature.
 - Bot prize, «3 бесплатных расклада», Academy (EN), raw URLs.
+- Word «Сцена» / «Scene» as a label.
+- Video / motion / Grok this run.
 - Write Kie prompt JSON (image-prompter) or generate pixels (slice).

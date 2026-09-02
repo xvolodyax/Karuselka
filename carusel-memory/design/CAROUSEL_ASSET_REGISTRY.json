@@ -1,23 +1,65 @@
 {
   "pipeline_gate": {"step": "designer", "required": true, "pixels": "none_this_step"},
   "carousel_family": "animals_viktoria_collage",
-  "note": "Designer registers intended assets. No Kie task ids yet. image-prompter + slice fill generation fields.",
+  "face_lock": "none",
+  "host_portrait": false,
+  "note": "Designer registers intended assets. No Kie task ids yet. image-prompter + slice fill generation fields. No face file in input_urls.",
   "assets": [
-    {
-      "id": "face-lock-victoria",
-      "local_path": "carusel-memory/references/Виктория.png",
-      "box_path": "/workspace/cover-refs/Виктория.png",
-      "role": "face_lock",
-      "input_url_slot": 0,
-      "only_face_file": true,
-      "status": "locked"
-    },
     {
       "id": "style-lock-animals",
       "local_path": "carusel-memory/references/animals-viktoria-style-lock.png",
-      "role": "palette_layout_only",
+      "role": "palette_rhythm_only",
       "never_i2i_as_face": true,
+      "never_face_ref": true,
       "status": "reference_only"
+    },
+    {
+      "id": "object-calendar-without-a-day",
+      "role": "topic_object",
+      "status": "designed"
+    },
+    {
+      "id": "object-empty-weekday-chips",
+      "role": "topic_object",
+      "status": "designed"
+    },
+    {
+      "id": "object-floating-reservation-card",
+      "role": "topic_object",
+      "status": "designed"
+    },
+    {
+      "id": "object-coffee-cup",
+      "role": "topic_object",
+      "status": "designed"
+    },
+    {
+      "id": "object-phone-face-down",
+      "role": "topic_object",
+      "status": "designed"
+    },
+    {
+      "id": "object-magenta-tape",
+      "role": "topic_object",
+      "status": "designed"
+    },
+    {
+      "id": "animal-cat",
+      "role": "metaphor",
+      "slides": [1, 4, 7],
+      "status": "designed"
+    },
+    {
+      "id": "animal-dog",
+      "role": "metaphor",
+      "slides": [2, 3],
+      "status": "designed"
+    },
+    {
+      "id": "animal-owl",
+      "role": "metaphor",
+      "slides": [5, 6, 8],
+      "status": "designed"
     },
     {
       "id": "master-grid",
@@ -32,5 +74,11 @@
     "victoria.png",
     "victoria_ref.jpg",
     "alena*.png"
+  ],
+  "forbidden_input_urls": [
+    "Виктория.png",
+    "viktoriaref.png",
+    "victoria-sheet.png",
+    "victoria.png"
   ]
 }

@@ -4,9 +4,9 @@
     "status": "ready_for_verify",
     "required": true,
     "handoff_next": "image-prompter",
-    "dispatch_id": "b10a4a88db134fc38e2cc9d5838339c3"
+    "dispatch_id": "d28a556162be41d4a9185ea2303887d2"
   },
-  "pack_id": "2026-08-30",
+  "pack_id": "2026-09-02",
   "lang": "ru",
   "carousel_family": "animals_viktoria_collage",
   "generation_mode": "grid_3x3",
@@ -15,125 +15,136 @@
   "slice_method": "seam",
   "gutters": "thin white at 1/3 and 2/3",
   "safe_area_pct": 12,
-  "face_lock": "Виктория.png",
+  "face_lock": "none",
+  "host_portrait": false,
+  "victoria_slides": [],
   "product": "app_audio",
   "verbatim_copy_source": "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
-  "wardrobe": {
-    "slide_1": "rumpled weekend-at-home oatmeal knit + charcoal lounge pants; sitting 3/4; phone face-down; NOT white cami / jeans / hand-on-chin; NOT 29.08 graphite pajama",
-    "slide_9": "standing 3/4 midnight-blue silk slip + open charcoal cardigan; NOT petrol-teal + espresso jacket; NOT hand-on-chin"
+  "object_wardrobe": {
+    "01": "calendar-without-a-day + magenta tape",
+    "02": "empty weekday chips",
+    "03": "closed calendar door + empty chips",
+    "04": "floating reservation card",
+    "05": "decoder stack + ghost calendar support",
+    "06": "filled slot chip vs empty chips",
+    "07": "week-closed calendar + reservation card turned away",
+    "08": "booked slot vs question-mark hold",
+    "09": "coffee cup + phone face-down + magenta tape + reservation card"
   },
   "preserve": [
-    "dark field, magenta+white type, torn pills, animals-as-metaphor, Victoria 1+9 in-scene, seam gutters"
+    "dark field, magenta+white type, torn pills, animals-as-metaphor, seam gutters, no host portrait"
   ],
   "change": [
-    "weekend-vacuum objects, verbatim copy, Sunday wardrobe, animal assignment"
+    "calendar / empty day chips / reservation card objects, exact locked copy, animal assignment"
   ],
   "do_not_borrow": [
-    "Portuguese text, foreign faces, Alena, sheet/29.08 outfits, horror, bot offer"
+    "Portuguese text, foreign faces, other brands, horror table, Victoria/Alena, 23:41 clock-as-hero, sheet clothes, platinum hair, any woman"
   ],
   "panel_archetype_map": {
     "01": "hero_scene_collage",
     "02": "type_heavy_pain",
     "03": "type_heavy_mistake",
-    "04": "mechanism_boundary",
+    "04": "mechanism_hold",
     "05": "save_decoder_table",
     "06": "save_checklist",
     "07": "save_rule",
     "08": "recap_insight",
-    "09": "cta_hero"
+    "09": "cta_objects"
   },
   "slides": [
     {
       "index": 1,
       "role": "hook",
       "archetype": "hero_scene_collage",
-      "headline": "Пятница 18:00 — тишина. В понедельник: «Как ты?»",
+      "headline": "«На этой неделе увидимся». Среда. Дня нет.",
       "body": "",
-      "victoria": true,
+      "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "чуешь неладное",
-      "wardrobe": "rumpled oatmeal weekend-at-home knit, charcoal lounge pants",
-      "pose": "sitting 3/4 on dark sofa, phone face-down on thigh, looking off-camera, tender knowing; NOT hand-on-chin",
-      "in_scene": true,
-      "sticker_halo": false,
+      "animal_metaphor": "чуешь, что обещание уже растворяется",
+      "object": "calendar-without-a-day + magenta tape",
       "zones": {
         "headline": "upper 38%, heavy white sans, 2 lines, safe 12%",
-        "hero": "Victoria mid-cell in-scene, oatmeal knit, no halo",
-        "animal": "cat lower-left or on sofa arm, alert, watching the silent phone",
-        "object": "dark phone face-down, Friday 18:00 implied, no extra words",
-        "number": "pill 01 bottom-right, inside safe area"
+        "hero": "dateless week calendar mid-cell, no circled weekday",
+        "animal": "charcoal cat lower-left or on the calendar edge, alert, in-scene, no halo",
+        "object": "magenta tape pinning a blank; phone face-down optional support — never 23:41 clock",
+        "number": "pill 01 bottom-right, inside safe area, no extra words"
       },
       "type_share_pct": 40,
-      "notes": "Thumbnail hook. Scene, not mechanic title. No word Сцена."
+      "notes": "Thumbnail hook. Scene, not mechanic title. No word Сцена. No host. No woman."
     },
     {
       "index": 2,
       "role": "problem",
       "archetype": "type_heavy_pain",
-      "headline": "48 часов вакуума после пяти тёплых дней",
-      "body": "Всю рабочую неделю он на связи каждые полчаса. Но наступает суббота — и ты словно перестаёшь существовать.",
+      "headline": "Четверг и пятница уже заморожены",
+      "body": "Неделя за половиной. Вечера в полурезерве. Ты не берёшь другие планы — в голове висит его «на неделе».",
       "victoria": false,
       "animal": "dog",
-      "animal_metaphor": "верность ожиданию у экрана",
+      "animal_metaphor": "верность неотвеченному обещанию",
+      "object": "empty weekday chips",
       "zones": {
         "headline": "top 28%, heavy white sans",
         "body": "mid 30%, 2 short lines white",
-        "animal": "loyal dog lower third by a dark silent phone / empty Saturday window",
+        "animal": "loyal dog lower third beside hollow evening chips",
+        "object": "empty weekday chips — visual hollow slots, no extra slogans",
         "number": "pill 02 bottom-right"
       },
       "type_share_pct": 55,
-      "notes": "Contrast weekday warmth vs Saturday void."
+      "notes": "Calendar freeze: life paused for an empty slot."
     },
     {
       "index": 3,
       "role": "mistake",
       "archetype": "type_heavy_mistake",
-      "headline": "Ты оправдываешь его делами и усталостью",
-      "body": "«Он занят с семьёй», «устал от экрана». Но если человек хочет быть рядом, он находит 10 секунд на одно сообщение.",
+      "headline": "Ошибка — ждать «напишет в последний миг»",
+      "body": "Кажется: он занят, дотянет и напишет. Ты отдаёшь календарь тому, кто свой даже не открыл.",
       "victoria": false,
       "animal": "dog",
-      "animal_metaphor": "ловушка преданного ожидания",
+      "animal_metaphor": "ждёт у закрытой двери календаря",
+      "object": "closed calendar / unopened planner door",
       "zones": {
         "headline": "top 26%, white sans",
-        "pills": "magenta torn-tape for «занят» / «устал» — short, not extra copy",
+        "pills": "magenta torn-tape may echo locked fragment «напишет в последний миг» only",
         "body": "mid, 2 lines",
-        "animal": "dog head on paws, lower-right",
+        "animal": "dog at a closed calendar door, lower-right",
         "number": "pill 03 bottom-right"
       },
       "type_share_pct": 58,
-      "notes": "Excuse loop. Pills quote existing copy fragments only."
+      "notes": "Hidden cost of hope. Pills quote existing copy fragments only."
     },
     {
       "index": 4,
       "role": "mechanism",
-      "archetype": "mechanism_boundary",
-      "headline": "Ты для него лишь удобный будничный слот",
-      "body": "В рабочие часы ты спасаешь его от рутины и скуки. Но в свою настоящую, свободную жизнь он тебя не впускает.",
+      "archetype": "mechanism_hold",
+      "headline": "«На неделе» — бронь без обязательств",
+      "body": "Ему галочка «я проявил внимание». Тебе ожидание. Слить встречу легко: конкретного дня не было.",
       "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "интуиция видит границу",
+      "animal_metaphor": "чуешь выгодную только ему броню",
+      "object": "floating reservation card",
       "zones": {
         "headline": "top 28%",
         "body": "mid",
-        "split": "subtle weekday-warm vs weekend-dark vertical or diagonal divide — stays inside cell",
-        "animal": "cat sitting on the dark side of the boundary",
+        "object": "reservation card hovering — no day, no time, no place — over a dateless calendar",
+        "animal": "cat watching the one-sided hold",
         "number": "pill 04 bottom-right"
       },
       "type_share_pct": 52,
-      "notes": "Compartmentalization made visible. No Victoria."
+      "notes": "Floating-slot mechanism. No Victoria. No 23:41 clock."
     },
     {
       "index": 5,
       "role": "save_decoder",
       "archetype": "save_decoder_table",
-      "headline": "Что он говорит и что это значит",
-      "body": "«На выходных без телефона» → Не в твоём диалоге.\n«Много дел» → Ты не в приоритете его отдыха.\n«Я не любитель чатов» → Но в будни пишет сам.",
+      "headline": "Что говорит — и что это значит",
+      "body": "«Пересечёмся на днях» → слышишь «скучает» → реально: держит в поле зрения даром.\n«Ближе к делу спишемся» → слышишь «подстроится» → реально: позовёт, если не найдётся лучше.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "ночная ясность и зрение в темноте",
+      "animal_metaphor": "ночная ясность: слова против смысла",
+      "object": "decoder stack + ghost calendar support",
       "zones": {
         "headline": "top 20%",
-        "decoder": "three stacked says→means lines, 50–60% of cell, high save value",
+        "decoder": "two stacked says→hears→reality lines, 50–60% of cell, high save value",
         "animal": "owl upper-right or perched above the stack, small",
         "number": "pill 05 bottom-right"
       },
@@ -145,11 +156,12 @@
       "index": 6,
       "role": "save_checklist",
       "archetype": "save_checklist",
-      "headline": "3 признака, что ты в зоне ожидания",
-      "body": "1. Ты не знаешь его планов на уикенд.\n2. Он никогда не зовёт тебя в субботу спонтанно.\n3. Вся его инициатива привязана к его рабочему графику.",
+      "headline": "3 признака настоящего приглашения",
+      "body": "1) Назван день.\n2) Есть время или место.\n3) Спросил: «тебе удобно?».\nВсё остальное — фоновый шум.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "трезвая оценка фактов",
+      "animal_metaphor": "трезвый чеклист вместо надежды",
+      "object": "filled slot chip vs empty chips",
       "zones": {
         "headline": "top 22%",
         "list": "numbered 1–3, large, screenshot-worthy",
@@ -158,21 +170,22 @@
       },
       "type_share_pct": 60,
       "save_card": true,
-      "notes": "Diagnostic checklist."
+      "notes": "Diagnostic checklist: real step vs slot hold."
     },
     {
       "index": 7,
       "role": "save_rule",
       "archetype": "save_rule",
-      "headline": "Твои выходные принадлежат только тебе",
-      "body": "Перестань быть дежурным экраном для чужой скуки. Убери телефон и верни субботу и воскресенье своей собственной жизни.",
+      "headline": "Нет дня к вечеру — неделя закрыта",
+      "body": "Если к вечеру среды нет дня и времени — эта неделя в твоём календаре для него закрыта. Строй планы без «а вдруг».",
       "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "возвращение себе автономии",
+      "animal_metaphor": "возвращаешь себе автономию календаря",
+      "object": "week-closed calendar",
       "zones": {
         "headline": "top 28%",
         "body": "mid 2 lines",
-        "animal": "cat turning away from the phone toward an open window / own Saturday",
+        "animal": "cat turning away from the floating reservation toward a closed week",
         "number": "pill 07 bottom-right"
       },
       "type_share_pct": 55,
@@ -183,11 +196,12 @@
       "index": 8,
       "role": "recap",
       "archetype": "recap_insight",
-      "headline": "Кому ты важна — находит место в жизни",
-      "body": "Мужчина проявляется не в рабочее время от скуки, а тогда, когда он абсолютно свободен и сам выбирает, с кем быть.",
+      "headline": "Бронирует время, не занимает тревогу",
+      "body": "Кто хочет тебя видеть — ставит слот в календарь. Кто нет — держит твою неделю вопросом.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "мудрость выбора",
+      "animal_metaphor": "короткое правило на перечитывание",
+      "object": "booked slot vs question-mark hold",
       "zones": {
         "headline": "top 30%",
         "body": "mid",
@@ -200,29 +214,26 @@
     {
       "index": 9,
       "role": "cta",
-      "archetype": "cta_hero",
-      "headline": "Напиши СУББОТА",
-      "body": "Аудиоразбор в моём приложении.",
-      "cta": "Слово СУББОТА в комментариях",
-      "trigger_word": "СУББОТА",
-      "trigger_treatment": "huge magenta handwritten script — largest word on the canvas",
+      "archetype": "cta_objects",
+      "headline": "Напиши ПЛАН",
+      "body": "Аудиоразбор в моём приложении. Суть – Тень – Вектор.",
+      "cta": "Слово ПЛАН в комментариях",
+      "trigger_word": "ПЛАН",
+      "trigger_treatment": "huge thin magenta handwritten script — largest word on the canvas",
       "product": "app_audio",
       "offer": "аудиоразбор в моём приложении — Суть – Тень – Вектор",
-      "victoria": true,
+      "victoria": false,
       "animal": null,
-      "wardrobe": "midnight-blue silk slip + open charcoal cardigan",
-      "pose": "standing 3/4, weight on back hip, one hand on cardigan edge or cup held low; soft tender; NOT hand-on-chin",
-      "in_scene": true,
-      "sticker_halo": false,
+      "object": "coffee cup + phone face-down + magenta tape + floating reservation card",
       "zones": {
-        "trigger": "upper-mid, huge magenta СУББОТА",
-        "headline": "Напиши + trigger; white + magenta",
-        "body": "small white: Аудиоразбор в моём приложении.",
-        "hero": "Victoria standing 3/4 in-scene, midnight-blue slip, charcoal cardigan, no halo",
+        "trigger": "upper-mid, huge thin magenta ПЛАН",
+        "headline": "Напиши (white sans) + ПЛАН (magenta script)",
+        "body": "small white: Аудиоразбор в моём приложении. Суть – Тень – Вектор.",
+        "hero": "still-life objects only — no host, no woman, no face",
         "number": "pill 09 bottom-right"
       },
       "type_share_pct": 40,
-      "notes": "CTA only. No bot. No 3 free spreads. No raw URL. No Academy."
+      "notes": "CTA only. No bot. No 3 free spreads. No raw URL. No Academy. No host."
     }
   ]
 }
