@@ -138,3 +138,12 @@ trigger: ПЛАН / SLOT
 incident_report: none
 
 
+
+=== CARUSEL-DIRECTOR ===
+Статус: ✅ LIVE
+GATE: PASS
+FACE_CHECK: ABSENT
+RU: https://www.instagram.com/p/Dcx7CK1lV0F/ alias=instagram-ru trigger=ПЛАН
+EN: https://www.instagram.com/p/Dcx7DGam5AN/ alias=instagram-en trigger=SLOT
+Pipeline complete. Fixic skipped (no-open-incidents).
+incident_report: none

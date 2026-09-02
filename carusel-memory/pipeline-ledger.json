@@ -173,28 +173,30 @@
     },
     "publish": {
       "id": "publish",
-      "status": "dispatched",
+      "status": "ok",
       "dispatched_via": "Task(generalPurpose)",
       "dispatch_id": "444107e56cc64bca87838bea27813657",
       "started_at": "2026-09-02T09:29:42Z",
-      "finished_at": null,
+      "finished_at": "2026-09-02T09:35:26Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/output/publish-log.md"
+      ],
+      "fragment": "carusel-memory/fragments/publish.md",
+      "incident_report": "none",
       "model": null
     },
     "fixic": {
       "id": "fixic",
-      "status": "pending",
-      "dispatched_via": null,
+      "status": "skipped",
+      "dispatched_via": "skip:no-open-incidents",
       "dispatch_id": null,
       "started_at": null,
-      "finished_at": null,
-      "skip_reason": null,
+      "finished_at": "2026-09-02T09:35:26Z",
+      "skip_reason": "no-open-incidents",
       "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "fragment": "carusel-memory/fragments/fixic.md",
+      "incident_report": "none",
       "model": null
     }
   }
