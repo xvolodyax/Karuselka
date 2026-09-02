@@ -81,3 +81,15 @@ face_lock: none (no host portrait)
 slice_method: seam (thin white gutters at 1/3 and 2/3)
 product: app_audio (ПЛАН / SLOT)
 
+=== CARUSEL-SLICE ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: c58bf94fb67149df8066d35dfbc10a40
+incident_report: none
+HANDOFF_NEXT: design-guardian
+Mode: grid_3x3 seam --split-mode gutter
+RU kept: 9b7bcafcfb787eefb0ee21409777ea3d (attempt 0, 0 crooked)
+EN kept: 0f45adfb5c9cb231b023d43d4fab17b1 (attempt 6; discarded 6 whole-masters)
+Slides: 9+9 PNG 1080×1440. Gate output = RU. No mp4.
+
+
