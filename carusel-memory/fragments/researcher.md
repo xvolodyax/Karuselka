@@ -1,17 +1,18 @@
-dispatched_via: Task(generalPurpose)
-dispatch_id: d8c1039a17c94a3681dd2836647e8979
-incident_report: none
-HANDOFF_NEXT: copywriter
-written_by: gemini
-
 === CARUSEL-RESEARCHER ===
 Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: 6fd084545d3c44c69dc1f2f6a985eab2
+written_by: gemini
+incident_report: none
+HANDOFF_NEXT: copywriter
+
 Файл: carusel-memory/research/carousel-research-dossier.md
-Top hook: В пятницу в 18:00 чат замирает. В понедельник в 09:15 он снова онлайн с «Доброе утро, как прошли выходные?».
-Chosen topic RU: Он пропадает на выходных: будни тёплые, суббота пустая
-Chosen topic EN: He disappears on weekends: weekdays warm, Saturday empty
-Recommended trigger RU: СУББОТА
-Recommended trigger EN: WEEKEND
+Top hook RU: В понедельник он написал: «На этой неделе увидимся». Сегодня среда, вечер. Ни дня, ни времени, ни места.
+Top hook EN: On Monday he texted: "Let's meet sometime this week". It is Wednesday evening. No day, no time, no location.
+Chosen topic RU: «На этой неделе увидимся»: среда наступила, а дня и времени всё нет (план-фантом без даты)
+Chosen topic EN: "Let's meet this week": Wednesday is here, still no day, time, or place (the floating plan loop)
+Recommended trigger RU: ПЛАН
+Recommended trigger EN: SLOT
 Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
-Visual family: animals_viktoria_collage (Face lock Виктория.png)
+Visual family: animals_viktoria_collage (no host portrait, face_lock: none)
 incident_report: none
