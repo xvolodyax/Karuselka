@@ -1,22 +1,22 @@
-# Caption EN — Today Tarot (2026-08-30)
+# Caption EN — Today Tarot (2026-09-02)
 
 written_by: gemini
 lang: en
-trigger_word: WEEKEND
+trigger_word: SLOT
 product: app_audio
 
 ## Hook
-Friday 6 PM silence. Monday: «How was it?»
+Monday: "this week". Wednesday. No day.
 
 ## Body
-All week long he texts every half hour: memes, voice notes, sweet check-ins. But the moment Friday evening arrives, the chat goes cold until Monday morning.
+On Monday he texted "let's meet sometime this week". It is midweek. Still no day, no time, no place.
 
-When someone vanishes on weekends, it's rarely about being «busy» or «needing a screen break». We all find 10 seconds for the people who truly matter to us.
+You have been holding Thursday and Friday half-open — just in case he writes. He has not even opened a calendar. "This week" sounds like care. It is a hold on your attention with zero commitment.
 
-If you only feel wanted during his work hours, you're merely filling his workday void while staying locked out of his real life. Swipe through to take your weekends back.
+Swipe for how to tell a real invite from a floating plan — and take your evenings back.
 
 ## CTA
-Comment the word WEEKEND below.
+Comment the word SLOT below.
 We'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.
 Links are in the profile.
 
@@ -24,4 +24,4 @@ Links are in the profile.
 @todaytaro_bot / Clarity now
 
 ## Hashtags
-#todaytarot #relationships #datingadvice #claritynow #boundaries #selfworth
+#todaytarot #relationships #datingadvice #claritynow #boundaries #situationship

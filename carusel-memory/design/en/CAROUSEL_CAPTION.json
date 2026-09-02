@@ -1,9 +1,9 @@
 {
   "lang": "en",
-  "hook": "Friday 6 PM silence. Monday: «How was it?»",
-  "body": "All week long he texts every half hour: memes, voice notes, sweet check-ins. But the moment Friday evening arrives, the chat goes cold until Monday morning.\n\nWhen someone vanishes on weekends, it's rarely about being «busy» or «needing a screen break». We all find 10 seconds for the people who truly matter to us.\n\nIf you only feel wanted during his work hours, you're merely filling his workday void while staying locked out of his real life. Swipe through to take your weekends back.",
-  "cta": "Comment the word WEEKEND below.\nWe'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.\nLinks are in the profile.",
-  "trigger_word": "WEEKEND",
+  "hook": "Monday: \"this week\". Wednesday. No day.",
+  "body": "On Monday he texted \"let's meet sometime this week\". It is midweek. Still no day, no time, no place.\n\nYou have been holding Thursday and Friday half-open — just in case he writes. He has not even opened a calendar. \"This week\" sounds like care. It is a hold on your attention with zero commitment.\n\nSwipe for how to tell a real invite from a floating plan — and take your evenings back.",
+  "cta": "Comment the word SLOT below.\nWe'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.\nLinks are in the profile.",
+  "trigger_word": "SLOT",
   "product": "app_audio",
   "hashtags": [
     "#todaytarot",
@@ -11,13 +11,13 @@
     "#datingadvice",
     "#claritynow",
     "#boundaries",
-    "#selfworth"
+    "#situationship"
   ],
   "mentions": [
     "@todaytaro_bot"
   ],
-  "full_caption": "Friday 6 PM silence. Monday: «How was it?»\n\nAll week long he texts every half hour: memes, voice notes, sweet check-ins. But the moment Friday evening arrives, the chat goes cold until Monday morning.\n\nWhen someone vanishes on weekends, it's rarely about being «busy» or «needing a screen break». We all find 10 seconds for the people who truly matter to us.\n\nIf you only feel wanted during his work hours, you're merely filling his workday void while staying locked out of his real life. Swipe through to take your weekends back.\n\nComment the word WEEKEND below.\nWe'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.\nLinks are in the profile.\n\n@todaytaro_bot / Clarity now\n\n#todaytarot #relationships #datingadvice #claritynow #boundaries #selfworth",
-  "char_count": 786,
+  "full_caption": "Monday: \"this week\". Wednesday. No day.\n\nOn Monday he texted \"let's meet sometime this week\". It is midweek. Still no day, no time, no place.\n\nYou have been holding Thursday and Friday half-open — just in case he writes. He has not even opened a calendar. \"This week\" sounds like care. It is a hold on your attention with zero commitment.\n\nSwipe for how to tell a real invite from a floating plan — and take your evenings back.\n\nComment the word SLOT below.\nWe'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.\nLinks are in the profile.\n\n@todaytaro_bot / Clarity now\n\n#todaytarot #relationships #datingadvice #claritynow #boundaries #situationship",
+  "char_count": 670,
   "hashtag_count": 6,
   "written_by": "gemini"
 }

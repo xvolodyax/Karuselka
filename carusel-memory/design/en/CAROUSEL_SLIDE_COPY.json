@@ -1,39 +1,43 @@
 {
   "lang": "en",
-  "topic": "He disappears on weekends: weekdays warm, Saturday empty",
+  "topic": "\"Let's meet this week\": Wednesday is here, still no day, time, or place (the floating plan loop)",
   "visual_family": "animals_viktoria_collage",
   "hook_is_scene": true,
-  "trigger_word": "WEEKEND",
+  "trigger_word": "SLOT",
   "product": "app_audio",
   "written_by": "gemini",
+  "face_lock": "none",
+  "host_portrait": false,
+  "pack_id": "2026-09-02",
+  "run_id": "2026-09-02-1110",
   "hook_options": [
     {
       "framework": "pain",
-      "headline": "Friday 6 PM silence. Monday: «How was it?»",
-      "why_it_swipes": "Instant recognition of the weekend vacuum after weekday intimacy"
+      "headline": "Monday: \"this week\". Wednesday. No day.",
+      "why_it_swipes": "Instant midweek recognition: the early-week promise is already dissolving, and no slot exists"
     },
     {
       "framework": "contrarian",
-      "headline": "He is not busy: we make time for what matters",
-      "why_it_swipes": "Breaks the rationalization illusion"
-    },
-    {
-      "framework": "mechanism",
-      "headline": "5 warm days vs 48 hours of complete silence",
-      "why_it_swipes": "Exposes relationship compartmentalization"
+      "headline": "\"Let's meet this week\" is not a date",
+      "why_it_swipes": "Reframes a romantic line as a free hold on her attention"
     },
     {
       "framework": "mistake",
-      "headline": "You make excuses for him while ruining your weekend",
-      "why_it_swipes": "Calls out the waiting mode trap"
+      "headline": "You kept three nights open for a ghost",
+      "why_it_swipes": "Exposes the calendar self-sacrifice: she froze her week; he never opened his"
+    },
+    {
+      "framework": "mechanism",
+      "headline": "A date with no weekday is a hold",
+      "why_it_swipes": "Names the floating-slot loop: wait Thursday, hope Friday, get nothing"
     },
     {
       "framework": "specific_result",
-      "headline": "3 signs you are only his weekday routine slot",
-      "why_it_swipes": "High save intent diagnostic framework"
+      "headline": "3 signs \"this week\" never becomes Friday",
+      "why_it_swipes": "Diagnostic checklist with high save intent"
     }
   ],
-  "hook_rationale": "Hook 1 captures the specific micro-scene of the Friday communication blackout followed by the casual Monday morning check-in, driving instant curiosity and emotional resonance.",
+  "hook_rationale": "Pain-scene hook wins: Monday \"let's meet this week\" → Wednesday, still no day. Information gap = midweek recognition plus \"is this care or a cost-free hold?\". Situation, not a mechanic label, not a WEDNESDAY day-name clone.",
   "slide_count": 9,
   "grid": {
     "cols": 3,
@@ -43,97 +47,98 @@
     {
       "index": 1,
       "role": "hook",
-      "headline": "Friday 6 PM silence. Monday: «How was it?»",
+      "headline": "Monday: \"this week\". Wednesday. No day.",
       "body": "",
       "animal": "cat",
-      "animal_metaphor": "sensing the hidden truth",
-      "victoria": true,
-      "notes": "Instant recognizable scene of weekend disappearance"
+      "animal_metaphor": "sensing the promise already dissolving",
+      "victoria": false,
+      "notes": "static PNG; scene hook; readable under 2 sec; no host portrait"
     },
     {
       "index": 2,
       "role": "problem",
-      "headline": "48 hours of silence after 5 warm days",
-      "body": "All week he texts every hour. But Saturday hits — and suddenly you disappear from his world.",
+      "headline": "Thursday and Friday nights are frozen",
+      "body": "The week is half gone. Evenings sit on hold. You decline other plans because his \"this week\" is taking up space.",
       "animal": "dog",
-      "animal_metaphor": "loyalty to the waiting screen",
+      "animal_metaphor": "loyalty to the unanswered promise",
       "victoria": false,
-      "notes": "The painful contrast between weekdays and weekends"
+      "notes": "Calendar freeze: life paused for an empty slot"
     },
     {
       "index": 3,
       "role": "mistake",
-      "headline": "You make excuses for his silence",
-      "body": "«He's busy», «He needs rest». But a man who truly cares takes 10 seconds to send a single text.",
+      "headline": "The mistake: waiting for a last-minute ping",
+      "body": "You tell yourself he is busy and will reach out last minute. You hand your calendar to someone who never opened his.",
       "animal": "dog",
-      "animal_metaphor": "the faithful waiting trap",
+      "animal_metaphor": "waiting at a closed calendar door",
       "victoria": false,
-      "notes": "The trap of making excuses for lack of effort"
+      "notes": "Hidden cost of hope: control of time given with no return step"
     },
     {
       "index": 4,
       "role": "mechanism",
-      "headline": "You are just a weekday routine slot",
-      "body": "During work hours you cure his boredom. But when real life happens on weekends, you are kept outside.",
+      "headline": "\"This week\" books you with zero cost",
+      "body": "He gets the credit of showing interest. You get the wait. Cancelling costs him nothing: no day was set.",
       "animal": "cat",
-      "animal_metaphor": "intuition spots the boundary",
+      "animal_metaphor": "sensing a hold that only benefits him",
       "victoria": false,
-      "notes": "The psychological mechanism of compartmentalization"
+      "notes": "Floating-slot mechanism: involvement status without a date"
     },
     {
       "index": 5,
       "role": "save_decoder",
       "headline": "What he says vs what it means",
-      "body": "«Off my phone on weekends» → Just not in your chat.\n«Too busy» → You are not in his rest priority.\n«Not a texter» → Yet texts all week.",
+      "body": "\"Let's catch up this week\" → you hear \"he misses me\" → reality: keeping you warm at zero cost.\n\"I'll text closer to the weekend\" → you hear \"he's flexible\" → reality: you are option B if nothing better appears.",
       "animal": "owl",
-      "animal_metaphor": "night clarity and seeing through fog",
+      "animal_metaphor": "night clarity: words versus meaning",
       "victoria": false,
-      "notes": "High-value decoder framework for bookmarks"
+      "notes": "Save card: Says / You hear / Reality decoder"
     },
     {
       "index": 6,
       "role": "save_checklist",
-      "headline": "3 signs you are in the waiting trap",
-      "body": "1. You never know his weekend plans.\n2. He never invites you out spontaneously.\n3. His affection only exists during his office hours.",
+      "headline": "3 signs of a real invitation",
+      "body": "1) A specific day is named.\n2) A time or place is proposed.\n3) He asks if it fits your schedule.\nAnything else is placeholder noise.",
       "animal": "owl",
-      "animal_metaphor": "sober diagnostic check",
+      "animal_metaphor": "sober checklist instead of hope",
       "victoria": false,
-      "notes": "Checklist for relationship status clarity"
+      "notes": "Save checklist: real step vs slot hold"
     },
     {
       "index": 7,
       "role": "save_rule",
-      "headline": "Your weekend belongs to you",
-      "body": "Stop being the backup plan for his workday routine. Put the phone down and take your Saturday back.",
+      "headline": "No day by evening — week is yours",
+      "body": "If there is no day and time by Wednesday evening, your week is closed to him. Make plans without waiting for a ping.",
       "animal": "cat",
-      "animal_metaphor": "reclaiming personal sovereignty",
+      "animal_metaphor": "reclaiming calendar autonomy",
       "victoria": false,
-      "notes": "Actionable rule for breaking the waiting loop"
+      "notes": "Save rule: close the floating slot at midweek"
     },
     {
       "index": 8,
       "role": "recap",
-      "headline": "True interest shows in free time",
-      "body": "A man's true feelings are revealed when he is completely free, not when he is just killing time at work.",
+      "headline": "He books your time, not your anxiety",
+      "body": "Someone who wants to see you puts a slot on the calendar. Someone who does not holds your week as a question mark.",
       "animal": "owl",
-      "animal_metaphor": "core insight",
+      "animal_metaphor": "short rule worth rereading",
       "victoria": false,
-      "notes": "Core takeaway of the carousel"
+      "notes": "Decision rule / recap for saves"
     },
     {
       "index": 9,
       "role": "cta",
-      "headline": "Comment WEEKEND",
-      "body": "Audio reading in my app.",
-      "cta": "Write WEEKEND in the comments",
+      "headline": "Comment SLOT",
+      "body": "Audio reading in my app. Essence–Shadow–Vector.",
+      "cta": "Write SLOT in the comments",
       "animal": null,
-      "victoria": true,
-      "notes": "CTA: trigger WEEKEND leads to Essence–Shadow–Vector audio reading in the app"
+      "victoria": false,
+      "notes": "One action: comment SLOT → Direct audio reading in the app. Links in the profile. Not the bot."
     }
   ],
   "save_value": [
-    "slide-05 excuse decoder: What he says vs What it means",
-    "slide-06 checklist: 3 signs you are in the waiting trap",
-    "slide-07 boundary rule: Reclaim your weekend"
+    "slide-05 decoder: Says / You hear / Reality",
+    "slide-06 checklist: 3 signs of a real invitation",
+    "slide-07 rule: no day by evening — week is yours",
+    "slide-08 recap: he books your time, not your anxiety"
   ]
 }

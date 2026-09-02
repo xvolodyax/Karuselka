@@ -36,3 +36,24 @@ Recommended trigger EN: SLOT
 Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
 Visual family: animals_viktoria_collage (no host portrait, face_lock: none)
 incident_report: none
+
+=== CARUSEL-COPYWRITER ===
+Статус: ✅ OK
+dispatched_via: Task(generalPurpose)
+dispatch_id: 1e967e534c9149b2a08f2cd478f086bd
+written_by: gemini
+incident_report: none
+HANDOFF_NEXT: designer
+
+Кратко: 9 RU + 9 EN, hook = сцена. Trigger ПЛАН / SLOT. product app_audio. victoria false.
+Slide 01 RU: «На этой неделе увидимся». Среда. Дня нет.
+Slide 01 EN: Monday: "this week". Wednesday. No day.
+Артефакты:
+- carusel-memory/design/CAROUSEL_SLIDE_COPY.json
+- carusel-memory/design/CAROUSEL_CAPTION.json
+- carusel-memory/design/CAROUSEL_CAPTION.md
+- carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json
+- carusel-memory/design/en/CAROUSEL_CAPTION.json
+- carusel-memory/design/en/CAROUSEL_CAPTION.md
+- carusel-memory/fragments/copywriter.md
+incident_report: none
