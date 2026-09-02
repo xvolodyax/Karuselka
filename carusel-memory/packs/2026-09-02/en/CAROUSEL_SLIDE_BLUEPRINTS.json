@@ -1,0 +1,165 @@
+{
+  "pipeline_gate": {
+    "step": "designer",
+    "required": true,
+    "visual_twin_of": "ru",
+    "dispatch_id": "d28a556162be41d4a9185ea2303887d2"
+  },
+  "lang": "en",
+  "pack_id": "2026-09-02",
+  "carousel_family": "animals_viktoria_collage",
+  "generation_mode": "grid_3x3",
+  "master_aspect": "3:4",
+  "resolution": "4K",
+  "slice_method": "seam",
+  "gutters": "thin white at 1/3 and 2/3",
+  "safe_area_pct": 12,
+  "face_lock": "none",
+  "host_portrait": false,
+  "victoria_slides": [],
+  "product": "app_audio",
+  "verbatim_copy_source": "carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json",
+  "preserve": [
+    "same visual as RU: dark field, magenta+white type, torn pills, animals-as-metaphor, seam gutters, no host"
+  ],
+  "change": [
+    "EN verbatim copy",
+    "SLOT trigger",
+    "same topic objects as RU"
+  ],
+  "do_not_borrow": [
+    "Portuguese text, foreign faces, other brands, horror, Victoria/Alena, 23:41 clock-as-hero, sheet clothes, platinum, any woman, RU letters"
+  ],
+  "panel_archetype_map": {
+    "01": "hero_scene_collage",
+    "02": "type_heavy_pain",
+    "03": "type_heavy_mistake",
+    "04": "mechanism_hold",
+    "05": "save_decoder_table",
+    "06": "save_checklist",
+    "07": "save_rule",
+    "08": "recap_insight",
+    "09": "cta_objects"
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "archetype": "hero_scene_collage",
+      "headline": "Monday: \"this week\". Wednesday. No day.",
+      "body": "",
+      "victoria": false,
+      "animal": "cat",
+      "animal_metaphor": "sensing the promise already dissolving",
+      "object": "calendar-without-a-day + magenta tape",
+      "zones": {
+        "headline": "upper 38%, heavy white sans, 2 lines, safe 12%",
+        "hero": "dateless week calendar mid-cell, no circled weekday",
+        "animal": "charcoal cat in-scene, no halo",
+        "object": "magenta tape pinning a blank; phone face-down optional — never 23:41 clock"
+      },
+      "type_share_pct": 40,
+      "notes": "Thumbnail hook. Scene, not mechanic title. No host. No woman."
+    },
+    {
+      "index": 2,
+      "role": "problem",
+      "archetype": "type_heavy_pain",
+      "headline": "Thursday and Friday nights are frozen",
+      "body": "The week is half gone. Evenings sit on hold. You decline other plans because his \"this week\" is taking up space.",
+      "victoria": false,
+      "animal": "dog",
+      "animal_metaphor": "loyalty to the unanswered promise",
+      "object": "empty weekday chips",
+      "type_share_pct": 55
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "archetype": "type_heavy_mistake",
+      "headline": "The mistake: waiting for a last-minute ping",
+      "body": "You tell yourself he is busy and will reach out last minute. You hand your calendar to someone who never opened his.",
+      "victoria": false,
+      "animal": "dog",
+      "animal_metaphor": "waiting at a closed calendar door",
+      "object": "closed calendar / unopened planner door",
+      "type_share_pct": 58
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "archetype": "mechanism_hold",
+      "headline": "\"This week\" books you with zero cost",
+      "body": "He gets the credit of showing interest. You get the wait. Cancelling costs him nothing: no day was set.",
+      "victoria": false,
+      "animal": "cat",
+      "animal_metaphor": "sensing a hold that only benefits him",
+      "object": "floating reservation card",
+      "type_share_pct": 52
+    },
+    {
+      "index": 5,
+      "role": "save_decoder",
+      "archetype": "save_decoder_table",
+      "headline": "What he says vs what it means",
+      "body": "\"Let's catch up this week\" → you hear \"he misses me\" → reality: keeping you warm at zero cost.\n\"I'll text closer to the weekend\" → you hear \"he's flexible\" → reality: you are option B if nothing better appears.",
+      "victoria": false,
+      "animal": "owl",
+      "animal_metaphor": "night clarity: words versus meaning",
+      "save_card": true,
+      "type_share_pct": 62
+    },
+    {
+      "index": 6,
+      "role": "save_checklist",
+      "archetype": "save_checklist",
+      "headline": "3 signs of a real invitation",
+      "body": "1) A specific day is named.\n2) A time or place is proposed.\n3) He asks if it fits your schedule.\nAnything else is placeholder noise.",
+      "victoria": false,
+      "animal": "owl",
+      "animal_metaphor": "sober checklist instead of hope",
+      "save_card": true,
+      "type_share_pct": 60
+    },
+    {
+      "index": 7,
+      "role": "save_rule",
+      "archetype": "save_rule",
+      "headline": "No day by evening — week is yours",
+      "body": "If there is no day and time by Wednesday evening, your week is closed to him. Make plans without waiting for a ping.",
+      "victoria": false,
+      "animal": "cat",
+      "animal_metaphor": "reclaiming calendar autonomy",
+      "save_card": true,
+      "type_share_pct": 55
+    },
+    {
+      "index": 8,
+      "role": "recap",
+      "archetype": "recap_insight",
+      "headline": "He books your time, not your anxiety",
+      "body": "Someone who wants to see you puts a slot on the calendar. Someone who does not holds your week as a question mark.",
+      "victoria": false,
+      "animal": "owl",
+      "animal_metaphor": "short rule worth rereading",
+      "type_share_pct": 55
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "archetype": "cta_objects",
+      "headline": "Comment SLOT",
+      "body": "Audio reading in my app. Essence–Shadow–Vector.",
+      "cta": "Write SLOT in the comments",
+      "trigger_word": "SLOT",
+      "trigger_treatment": "huge thin magenta handwritten SLOT",
+      "product": "app_audio",
+      "offer": "audio reading in my app — Essence–Shadow–Vector",
+      "victoria": false,
+      "animal": null,
+      "object": "coffee cup + phone face-down + magenta tape + floating reservation card",
+      "type_share_pct": 40,
+      "notes": "CTA only. No bot. No 3 free readings. No raw URL. No Academy. No host."
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "lang": "en",
+  "topic": "\"Let's meet this week\": Wednesday is here, still no day, time, or place (the floating plan loop)",
+  "visual_family": "animals_viktoria_collage",
+  "hook_is_scene": true,
+  "trigger_word": "SLOT",
+  "product": "app_audio",
+  "written_by": "gemini",
+  "face_lock": "none",
+  "host_portrait": false,
+  "pack_id": "2026-09-02",
+  "run_id": "2026-09-02-1110",
+  "hook_options": [
+    {
+      "framework": "pain",
+      "headline": "Monday: \"this week\". Wednesday. No day.",
+      "why_it_swipes": "Instant midweek recognition: the early-week promise is already dissolving, and no slot exists"
+    },
+    {
+      "framework": "contrarian",
+      "headline": "\"Let's meet this week\" is not a date",
+      "why_it_swipes": "Reframes a romantic line as a free hold on her attention"
+    },
+    {
+      "framework": "mistake",
+      "headline": "You kept three nights open for a ghost",
+      "why_it_swipes": "Exposes the calendar self-sacrifice: she froze her week; he never opened his"
+    },
+    {
+      "framework": "mechanism",
+      "headline": "A date with no weekday is a hold",
+      "why_it_swipes": "Names the floating-slot loop: wait Thursday, hope Friday, get nothing"
+    },
+    {
+      "framework": "specific_result",
+      "headline": "3 signs \"this week\" never becomes Friday",
+      "why_it_swipes": "Diagnostic checklist with high save intent"
+    }
+  ],
+  "hook_rationale": "Pain-scene hook wins: Monday \"let's meet this week\" → Wednesday, still no day. Information gap = midweek recognition plus \"is this care or a cost-free hold?\". Situation, not a mechanic label, not a WEDNESDAY day-name clone.",
+  "slide_count": 9,
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slides": [
+    {
+      "index": 1,
+      "role": "hook",
+      "headline": "Monday: \"this week\". Wednesday. No day.",
+      "body": "",
+      "animal": "cat",
+      "animal_metaphor": "sensing the promise already dissolving",
+      "victoria": false,
+      "notes": "static PNG; scene hook; readable under 2 sec; no host portrait"
+    },
+    {
+      "index": 2,
+      "role": "problem",
+      "headline": "Thursday and Friday nights are frozen",
+      "body": "The week is half gone. Evenings sit on hold. You decline other plans because his \"this week\" is taking up space.",
+      "animal": "dog",
+      "animal_metaphor": "loyalty to the unanswered promise",
+      "victoria": false,
+      "notes": "Calendar freeze: life paused for an empty slot"
+    },
+    {
+      "index": 3,
+      "role": "mistake",
+      "headline": "The mistake: waiting for a last-minute ping",
+      "body": "You tell yourself he is busy and will reach out last minute. You hand your calendar to someone who never opened his.",
+      "animal": "dog",
+      "animal_metaphor": "waiting at a closed calendar door",
+      "victoria": false,
+      "notes": "Hidden cost of hope: control of time given with no return step"
+    },
+    {
+      "index": 4,
+      "role": "mechanism",
+      "headline": "\"This week\" books you with zero cost",
+      "body": "He gets the credit of showing interest. You get the wait. Cancelling costs him nothing: no day was set.",
+      "animal": "cat",
+      "animal_metaphor": "sensing a hold that only benefits him",
+      "victoria": false,
+      "notes": "Floating-slot mechanism: involvement status without a date"
+    },
+    {
+      "index": 5,
+      "role": "save_decoder",
+      "headline": "What he says vs what it means",
+      "body": "\"Let's catch up this week\" → you hear \"he misses me\" → reality: keeping you warm at zero cost.\n\"I'll text closer to the weekend\" → you hear \"he's flexible\" → reality: you are option B if nothing better appears.",
+      "animal": "owl",
+      "animal_metaphor": "night clarity: words versus meaning",
+      "victoria": false,
+      "notes": "Save card: Says / You hear / Reality decoder"
+    },
+    {
+      "index": 6,
+      "role": "save_checklist",
+      "headline": "3 signs of a real invitation",
+      "body": "1) A specific day is named.\n2) A time or place is proposed.\n3) He asks if it fits your schedule.\nAnything else is placeholder noise.",
+      "animal": "owl",
+      "animal_metaphor": "sober checklist instead of hope",
+      "victoria": false,
+      "notes": "Save checklist: real step vs slot hold"
+    },
+    {
+      "index": 7,
+      "role": "save_rule",
+      "headline": "No day by evening — week is yours",
+      "body": "If there is no day and time by Wednesday evening, your week is closed to him. Make plans without waiting for a ping.",
+      "animal": "cat",
+      "animal_metaphor": "reclaiming calendar autonomy",
+      "victoria": false,
+      "notes": "Save rule: close the floating slot at midweek"
+    },
+    {
+      "index": 8,
+      "role": "recap",
+      "headline": "He books your time, not your anxiety",
+      "body": "Someone who wants to see you puts a slot on the calendar. Someone who does not holds your week as a question mark.",
+      "animal": "owl",
+      "animal_metaphor": "short rule worth rereading",
+      "victoria": false,
+      "notes": "Decision rule / recap for saves"
+    },
+    {
+      "index": 9,
+      "role": "cta",
+      "headline": "Comment SLOT",
+      "body": "Audio reading in my app. Essence–Shadow–Vector.",
+      "cta": "Write SLOT in the comments",
+      "animal": null,
+      "victoria": false,
+      "notes": "One action: comment SLOT → Direct audio reading in the app. Links in the profile. Not the bot."
+    }
+  ],
+  "save_value": [
+    "slide-05 decoder: Says / You hear / Reality",
+    "slide-06 checklist: 3 signs of a real invitation",
+    "slide-07 rule: no day by evening — week is yours",
+    "slide-08 recap: he books your time, not your anxiety"
+  ]
+}

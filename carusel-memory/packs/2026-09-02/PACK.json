@@ -1,0 +1,22 @@
+{
+  "pack_id": "2026-09-02",
+  "date": "2026-09-02",
+  "slot": "11:10 MSK",
+  "topic": {"ru": "План-фантом без даты", "en": "The floating week-plan"},
+  "visual_family": "animals_viktoria_collage",
+  "face_lock": "none",
+  "host_portrait": false,
+  "slice_method": "seam",
+  "product": "app_audio",
+  "cta_style": "comment_trigger",
+  "trigger_words": {"ru": "ПЛАН", "en": "SLOT"},
+  "langs": ["ru", "en"],
+  "already_live": false,
+  "publish_requested": true,
+  "skip_motion": true,
+  "skip_animate": true,
+  "profiles": {
+    "ru": {"brand": "ТАРО СЕЙЧАС", "handle": "@todaytaro_ru", "slogan": "Ясность сейчас"},
+    "en": {"brand": "Today Tarot", "handle": "@todaytaro_bot", "slogan": "Clarity now", "no_academy": true}
+  }
+}

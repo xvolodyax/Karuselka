@@ -1,0 +1,188 @@
+{
+  "pipeline_gate": {
+    "step": "designer",
+    "status": "ready_for_verify",
+    "required": true,
+    "handoff_next": "image-prompter",
+    "dispatch_id": "d28a556162be41d4a9185ea2303887d2",
+    "dispatched_via": "Task(generalPurpose)",
+    "visual_twin_of": "ru",
+    "pixels": "forbidden_this_step",
+    "kie_prompt": "forbidden_this_step"
+  },
+  "pack_id": "2026-09-02",
+  "run_id": "2026-09-02-1110",
+  "lang": "en",
+  "bilingual_pair": true,
+  "carousel_family": "animals_viktoria_collage",
+  "product": "app_audio",
+  "trigger_word": "SLOT",
+  "trigger_word_en": "SLOT",
+  "topic": "\"Let's meet this week\": Wednesday is here, still no day, time, or place (the floating plan loop)",
+  "generation_mode": "grid_3x3",
+  "master_aspect": "3:4",
+  "resolution": "4K",
+  "panel_aspect": "3:4",
+  "slide_count": 9,
+  "output": "static_png",
+  "skip_motion": true,
+  "skip_animate": true,
+  "slice_method": "seam",
+  "face_lock": "none",
+  "host_portrait": false,
+  "victoria_slides": [],
+  "victoria": false,
+  "palette": {
+    "background": "#111111",
+    "background_range": "#111111–#1a1a1a",
+    "surface": "#1a1a1a",
+    "accent": "#ff006e",
+    "type": "#ffffff",
+    "metal": "soft gold",
+    "metal_hex": "#d4af37"
+  },
+  "typography": {
+    "headline": "heavy sans, white #ffffff",
+    "body": "medium sans, white",
+    "script": "thin handwritten / script, magenta #ff006e — secondary word only",
+    "cta_trigger": "huge thin magenta script — SLOT",
+    "pills": "magenta torn-tape / pill blocks quoting locked fragments only",
+    "verbatim": true,
+    "no_extra_labels": true,
+    "no_victoria_signature": true
+  },
+  "preserve": [
+    "dark field",
+    "magenta + white type mix",
+    "torn-paper pills",
+    "animals-as-metaphor",
+    "seam slice",
+    "no host portrait",
+    "same visual as RU: objects, animals, palette, seams, no woman"
+  ],
+  "change": [
+    "topic objects: calendar-without-a-day, empty weekday chips, floating reservation card, coffee cup, phone face-down, magenta tape",
+    "exact locked EN copy from design/en/CAROUSEL_SLIDE_COPY.json",
+    "which animal on which slide: cat 01/04/07, dog 02/03, owl 05/06/08, none on 09",
+    "English lettering only; huge thin magenta SLOT (not ПЛАН)"
+  ],
+  "do_not_borrow": [
+    "Portuguese text",
+    "foreign faces",
+    "other brands",
+    "horror table",
+    "Victoria / Alena",
+    "yesterday's 23:41 clock-as-hero",
+    "sheet clothes",
+    "platinum hair",
+    "any woman",
+    "RU letters on EN canvas",
+    "Academy, bot offer, raw URLs"
+  ],
+  "panel_archetype_map": {
+    "01": "hero_scene_collage",
+    "02": "type_heavy_pain",
+    "03": "type_heavy_mistake",
+    "04": "mechanism_hold",
+    "05": "save_decoder_table",
+    "06": "save_checklist",
+    "07": "save_rule",
+    "08": "recap_insight",
+    "09": "cta_objects"
+  },
+  "prompt_hints": {
+    "reference_role": {
+      "style": "animals-viktoria-style-lock.png — palette, collage rhythm ONLY. Never i2i as a face. Never a face ref.",
+      "layout": "3x3 seam gutters, identical to RU visual",
+      "typography": "heavy white sans headlines + thin magenta script for SLOT + torn-tape pills",
+      "mood": "dark fashion-lifestyle tarot, adult, midweek, not horror, not beige",
+      "content_inspiration": "OLD slide-04 depth informs slide 05 decoder structure only",
+      "face": "none. No host. No woman. No Victoria. No presenter. No faces."
+    },
+    "preserve": [
+      "dark field",
+      "magenta + white type mix",
+      "torn-paper pills",
+      "animals-as-metaphor",
+      "seam slice",
+      "no host portrait",
+      "identical objects, animals, palette, seams to RU"
+    ],
+    "change": [
+      "topic objects (calendar / empty day chips / reservation card)",
+      "exact locked EN copy",
+      "which animal on which slide",
+      "English lettering only; SLOT not ПЛАН"
+    ],
+    "do_not_borrow": [
+      "Portuguese text",
+      "foreign faces",
+      "other brands",
+      "horror table",
+      "Victoria / Alena",
+      "yesterday's 23:41 clock-as-hero",
+      "sheet clothes",
+      "platinum hair",
+      "any woman",
+      "RU type on EN master"
+    ],
+    "typography_rules": {
+      "verbatim": "CAROUSEL_SLIDE_COPY.json EN strings only; no substitutions, no extra labels",
+      "hook": "largest white sans in cell 01; readable at thumbnail in 2 seconds",
+      "internal": "50–60% type on slides 02–08",
+      "cta": "slide 09: huge thin magenta handwritten SLOT — largest word on canvas; Comment stays heavy white sans",
+      "layering": "type may sit behind and in front of subjects inside a cell; never across a gutter",
+      "language": "EN master uses EN copy; do not mix RU",
+      "no_victoria_signature": true,
+      "no_extra_labels": true
+    },
+    "grid_rules": {
+      "generation_mode": "grid_3x3",
+      "aspect": "3:4",
+      "resolution": "4K",
+      "order": "row-major 01-09",
+      "slice_method": "seam",
+      "gutters": "Excalibur thin white lines at 1/3 and 2/3 horizontal and vertical",
+      "cell": "self-contained 3:4 portrait, no bleed",
+      "safe_area_pct": 12,
+      "rebuild_if_crooked": true,
+      "never_patch_one_cell": true
+    },
+    "negative_constraints": [
+      "no host",
+      "no woman",
+      "no Victoria",
+      "no faces",
+      "no platinum",
+      "no horror",
+      "no skulls",
+      "no candles",
+      "no Alena",
+      "no viktoriaref",
+      "no video",
+      "no 23:41 clock as hero",
+      "no pixels this step",
+      "no Kie JSON this step",
+      "no Academy, no bot, no raw URLs",
+      "no RU letters on EN canvas"
+    ],
+    "per_panel_scene_hints": {
+      "01": "No host. No woman. No face. Sleek charcoal cat staring at a calendar-without-a-day: ghost week grid, no weekday circled. Magenta tape pins a blank. Huge white hook: Monday: \"this week\". Wednesday. No day. Phone face-down optional — never a 23:41 clock hero. Metaphor: sensing the promise already dissolving. In-scene cat, no die-cut halo.",
+      "02": "No host. Type-heavy. Loyal dog beside empty weekday chips — hollow Thursday and Friday evening slots, no extra slogans. Metaphor: loyalty to the unanswered promise. Headline: Thursday and Friday nights are frozen.",
+      "03": "No host. Type-heavy. Dog waiting at a closed calendar / unopened planner door. Metaphor: waiting at a closed calendar door. Headline: The mistake: waiting for a last-minute ping.",
+      "04": "No host. Cat watching a floating reservation card hover over a dateless calendar — a hold with no day, no time, no place. Magenta tape as visual hold. Metaphor: sensing a hold that only benefits him. Headline: \"This week\" books you with zero cost.",
+      "05": "No host. Owl, night-clarity, perched above a decoder stack (says → you hear → reality). Metaphor: night clarity: words versus meaning. Headline: What he says vs what it means.",
+      "06": "No host. Owl perched above a 1-2-3 checklist. Visual contrast: one filled slot chip vs empty chips. Metaphor: sober checklist instead of hope. Headline: 3 signs of a real invitation.",
+      "07": "No host. Cat turning away from the floating reservation card, closing a week calendar. Metaphor: reclaiming calendar autonomy. Headline: No day by evening — week is yours.",
+      "08": "No host. Owl as quiet witness beside a real booked slot vs a question-mark hold. Metaphor: short rule worth rereading. Headline: He books your time, not your anxiety.",
+      "09": "No host. No woman. No face. No animal required. Coffee cup, phone face-down (not a lit 23:41 clock), magenta tape, floating reservation card. Huge thin magenta handwritten SLOT. White sans: Comment. Body verbatim: Audio reading in my app. Essence–Shadow–Vector. Product app_audio. No bot. No Academy. Links in the profile."
+    }
+  },
+  "thumbnail_test": "Slide 01 must read at ~200px: Monday: \"this week\". Wednesday. No day. plus cat + dateless calendar. Fail if a woman appears or clock 23:41 is the hero.",
+  "save_test": "Slides 05 (says / you hear / reality), 06 (3 signs), 07 (no day by evening — week is yours) are the bookmark cards.",
+  "cta": {
+    "product": "app_audio",
+    "en": "Comment SLOT. Audio reading in my app. Essence–Shadow–Vector.",
+    "forbidden": ["bot", "3 free readings", "Academy", "raw URL"]
+  }
+}

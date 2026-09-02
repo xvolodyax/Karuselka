@@ -1,0 +1,152 @@
+{
+  "version": "2",
+  "generation_mode": "grid_3x3",
+  "model": "gpt-image-2-image-to-image",
+  "prompt": "No host, no woman, no Victoria, no presenter portrait. Без лица ведущей. Животные, объекты и типографика.\nMaster 3:4 @ 4K, сетка 3x3 из 9 панелей 3:4, row-major 01–09.\nСтиль: animals_viktoria_collage. Графит #111111–#1a1a1a, маджента #ff006e, белый #ffffff, золото.\nСетка: slice_method seam, тонкие белые желоба (thin white gutters) на 1/3 и 2/3. Отступы ≥12% от линий реза и краёв. Текст не у нижнего края.\nТипографика: verbatim-текст, без лишних надписей, без подписи Victoria. Крупный белый гротеск, рукописный маджента.\n\nПанели 01–09:\n01 (hook): \"Monday: \\\"this week\\\". Wednesday. No day.\" Кот, calendar-without-a-day, маджента-скотч, телефон экраном вниз.\n02 (pain): \"Thursday and Friday nights are frozen\" / \"The week is half gone. Evenings sit on hold. You decline other plans because his \\\"this week\\\" is taking up space.\" Пёс, пустые фишки.\n03 (mistake): \"The mistake: waiting for a last-minute ping\" / \"You tell yourself he is busy and will reach out last minute. You hand your calendar to someone who never opened his.\" Пёс.\n04 (mechanism): \"\\\"This week\\\" books you with zero cost\" / \"He gets the credit of showing interest. You get the wait. Cancelling costs him nothing: no day was set.\" Кот, карточка брони.\n05 (decoder): \"What he says vs what it means\" / \"\\\"Let's catch up this week\\\" → you hear \\\"he misses me\\\" → reality: keeping you warm at zero cost. \\\"I'll text closer to the weekend\\\" → you hear \\\"he's flexible\\\" → reality: you are option B if nothing better appears.\" Сова.\n06 (checklist): \"3 signs of a real invitation\" / \"1) A specific day is named. 2) A time or place is proposed. 3) He asks if it fits your schedule. Anything else is placeholder noise.\" Сова.\n07 (rule): \"No day by evening — week is yours\" / \"If there is no day and time by Wednesday evening, your week is closed to him. Make plans without waiting for a ping.\" Кот.\n08 (recap): \"He books your time, not your anxiety\" / \"Someone who wants to see you puts a slot on the calendar. Someone who does not holds your week as a question mark.\" Сова.\n09 (cta): \"Comment SLOT\" / \"Audio reading in my app. Essence–Shadow–Vector.\" Рукописный \"SLOT\" маджента, кофе, телефон экраном вниз, маджента-скотч, карточка брони.",
+  "negative_prompt": "host portrait, woman face, female presenter, Victoria portrait, Victoria face, Alena, human model, foreign faces, sticker halo, die-cut, white outline around animals, cutout, zero-gutter touching cells, horizontal strip, 2x3 grid, sheet clothes, white cami, ivory blazer, jeans, platinum hair, white-blonde hair, skulls, blood, dripping candles, ouija, horror, blurry, low resolution, duplicate text, extra slogans, watermark, Portuguese text, bot spreads, Academy",
+  "input_urls": [
+    "https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png"
+  ],
+  "reference_upload_method": "upload_stream",
+  "i2i_source": "carusel-memory/references/animals-viktoria-style-lock.png",
+  "aspect_ratio": "3:4",
+  "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major"
+  },
+  "slice_method": "seam",
+  "face_lock": "none",
+  "host_portrait": false,
+  "carousel_family": "animals_viktoria_collage",
+  "visual_family": "animals_viktoria_collage",
+  "product": "app_audio",
+  "trigger_word": "SLOT",
+  "lang": "en",
+  "pack_id": "2026-09-02",
+  "prompt_char_count": 2186,
+  "prompt_compacted": true,
+  "reference_contract": {
+    "reference_role": "style + layout + palette reference only (never a face ref)",
+    "preserve": [
+      "dark field (#111111–#1a1a1a charcoal/matte black full-bleed)",
+      "magenta #ff006e + white #ffffff type mix",
+      "torn-paper magenta pills",
+      "animals-as-metaphor (cat=sensing dissolving promise, dog=loyalty to unanswered question, owl=night clarity)",
+      "seam slice with thin white gutters on 1/3 and 2/3 lines",
+      "no host portrait, face_lock none",
+      "safe margin ≥12% from cut lines and cell edges",
+      "verbatim copy from en/CAROUSEL_SLIDE_COPY.json"
+    ],
+    "change": [
+      "topic: midweek floating week-plan (Monday 'this week' → Wednesday, no day)",
+      "topic objects: calendar-without-a-day, empty weekday chips, floating reservation card, coffee cup, phone face-down, magenta tape",
+      "exact locked copy for 9 English slides",
+      "trigger word SLOT as huge thin magenta handwritten script on slide 9"
+    ],
+    "do_not_borrow": [
+      "Portuguese collage text and foreign faces",
+      "Victoria, Alena, or any presenter/woman portrait",
+      "deleted face files (Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png)",
+      "yesterday 23:41 clock-as-hero and tomorrow-loop phone-clock cover",
+      "sheet white cami, jeans, ivory blazer",
+      "platinum or white-blonde hair",
+      "sticker halo, die-cut, white outline around animals",
+      "horror elements, skulls, blood, candles",
+      "bot offer, 3 free spreads, Academy, raw URLs, Victoria signature"
+    ]
+  },
+  "typography_rules": {
+    "exact_text": true,
+    "no_extra_text": true,
+    "no_victoria_signature": true,
+    "hierarchy": "headline (heavy white sans) > body (white medium) > script accent (magenta) > pills (magenta torn-tape)",
+    "safe_margins": "≥12% from cut lines and cell boundaries; no text near bottom edge",
+    "cta_trigger_treatment": "huge thin magenta handwritten script SLOT on slide 9"
+  },
+  "panel_visual_brief": [
+    {
+      "slide": 1,
+      "role": "hook",
+      "headline": "Monday: \"this week\". Wednesday. No day.",
+      "animal": "cat",
+      "animal_metaphor": "sensing the promise already dissolving",
+      "object": "calendar-without-a-day + magenta tape + phone face-down",
+      "visual_only": "Sleek charcoal cat looking at a dateless calendar grid with no circled weekdays; magenta tape strip pinning a blank; phone face-down as quiet support; upper 38% heavy white sans headline; no host portrait."
+    },
+    {
+      "slide": 2,
+      "role": "problem",
+      "headline": "Thursday and Friday nights are frozen",
+      "animal": "dog",
+      "animal_metaphor": "loyalty to the unanswered promise",
+      "object": "empty weekday chips",
+      "visual_only": "Loyal dog sitting beside hollow evening weekday chips; type-heavy upper 55% layout; dark charcoal background."
+    },
+    {
+      "slide": 3,
+      "role": "mistake",
+      "headline": "The mistake: waiting for a last-minute ping",
+      "animal": "dog",
+      "animal_metaphor": "waiting at a closed calendar door",
+      "object": "closed calendar / unopened planner door",
+      "visual_only": "Dog waiting at a closed planner door with empty day chips; heavy white sans headline and short body; magenta tape pill."
+    },
+    {
+      "slide": 4,
+      "role": "mechanism",
+      "headline": "\"This week\" books you with zero cost",
+      "animal": "cat",
+      "animal_metaphor": "sensing a hold that only benefits him",
+      "object": "floating reservation card",
+      "visual_only": "Charcoal cat watching a glowing translucent floating reservation card hovering over a blank calendar without day/time."
+    },
+    {
+      "slide": 5,
+      "role": "save_decoder",
+      "headline": "What he says vs what it means",
+      "animal": "owl",
+      "animal_metaphor": "night clarity: words versus meaning",
+      "object": "decoder stack + ghost calendar support",
+      "visual_only": "Wise owl perched above a 2-part decoder table (says → hears → reality); high-contrast legible editorial card."
+    },
+    {
+      "slide": 6,
+      "role": "save_checklist",
+      "headline": "3 signs of a real invitation",
+      "animal": "owl",
+      "animal_metaphor": "sober checklist instead of hope",
+      "object": "filled slot chip vs empty chips",
+      "visual_only": "Owl beside a clear 1-2-3 checklist; visual contrast between one filled gold slot chip and empty chips."
+    },
+    {
+      "slide": 7,
+      "role": "save_rule",
+      "headline": "No day by evening — week is yours",
+      "animal": "cat",
+      "animal_metaphor": "reclaiming calendar autonomy",
+      "object": "week-closed calendar",
+      "visual_only": "Cat walking away from the hovering reservation card toward a closed week calendar; reclaiming autonomy."
+    },
+    {
+      "slide": 8,
+      "role": "recap",
+      "headline": "He books your time, not your anxiety",
+      "animal": "owl",
+      "animal_metaphor": "short rule worth rereading",
+      "object": "booked slot vs question-mark hold",
+      "visual_only": "Quiet owl witness beside a defined booked slot vs a faded question-mark card; golden decision rule."
+    },
+    {
+      "slide": 9,
+      "role": "cta",
+      "headline": "Comment SLOT",
+      "animal": null,
+      "animal_metaphor": "none",
+      "object": "coffee cup + phone face-down + magenta tape + floating reservation card",
+      "visual_only": "Lifestyle still life objects: coffee cup, phone face-down, magenta tape strip, reservation card; huge thin magenta handwritten script SLOT; white sans 'Comment' and app audio offer text; no host."
+    }
+  ],
+  "written_by": "gemini"
+}
