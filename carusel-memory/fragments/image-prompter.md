@@ -1,26 +1,32 @@
-dispatched_via: Task(generalPurpose)
-dispatch_id: 092303bb6b314cac95d5a37b2870d354
-incident_report: none
-HANDOFF_NEXT: slice
-written_by: gemini
-
 === CARUSEL-IMAGE-PROMPTER ===
 Статус: ✅ OK
-Face Lock: Виктория.png (green with slight hazel eyes, honey blonde + darker roots)
-Mode: grid_3x3 3:4 @ 4K (static PNG)
-Slice method: seam (thin white gutters at 1/3 and 2/3)
-Prompt char count RU: 1960 (target 1900–2100, max 2200)
-Prompt char count EN: 2097 (target 1900–2100, max 2200)
-Trigger RU: СУББОТА (slide 09 huge magenta)
-Trigger EN: WEEKEND (slide 09 huge magenta)
-Product: app_audio (Суть – Тень – Вектор)
-Wardrobe 01: oatmeal knit + charcoal lounge pants, sitting 3/4 on dark sofa, phone face-down, cat
-Wardrobe 09: midnight-blue silk slip + open charcoal cardigan, standing 3/4, no animals
+Кратко: No-host 3×3 seam prompts for midnight-window pack. Style lock uploaded. Verbatim ПОЛНОЧЬ / MIDNIGHT. No Kie. No slice.
 
-Файлы:
-- /workspace/carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md
-- /workspace/carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md
-- /workspace/carusel-memory/packs/2026-08-30/ru/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/packs/2026-08-30/en/CAROUSEL_IMAGE_PROMPT.json
+Артефакты:
+- carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md
+- carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md
+- carusel-memory/packs/2026-09-03/ru/CAROUSEL_IMAGE_PROMPT.json
+- carusel-memory/packs/2026-09-03/en/CAROUSEL_IMAGE_PROMPT.json
+
+prompt_char_count RU: 1879
+prompt_char_count EN: 1929
+face_lock: none
+host_portrait: false
+generation_mode: grid_3x3
+slice_method: seam
+product: app_audio
+Trigger RU: ПОЛНОЧЬ
+Trigger EN: MIDNIGHT
+input_urls: 1 HTTPS style-lock (palette only)
+reference_upload_method: upload_stream
+i2i_source: carusel-memory/references/animals-viktoria-style-lock.png
+animals: owl 01/04/08/09, dog 02/03/07, cat 05/06
+panel_visual_brief: 9
+slide_01: static_png
+
+dispatched_via: Task(generalPurpose)
+dispatch_id: 77e766d8ef6442ac8c3491a2e098c332
+incident_report: none
+HANDOFF_NEXT: slice

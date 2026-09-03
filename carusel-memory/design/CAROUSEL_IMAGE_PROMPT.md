@@ -1,41 +1,60 @@
-# CAROUSEL IMAGE PROMPT (RU) — 2026-08-30
+# CAROUSEL_IMAGE_PROMPT — RU 2026-09-03
 
-## Спецификация генерации Kie i2i
+**Шаг:** image-prompter. Пикселей нет. Kie не запускался. Slice не стартовал.
 
-- **Модель:** `gpt-image-2-image-to-image`
-- **Режим:** `grid_3x3` (один master-холст 3:4 @ 4K)
-- **Метод нарезки:** `seam` (тонкие белые швы на 1/3 и 2/3)
-- **Face Lock:** `Виктория.png` (first `input_url`, 12 ракурсов)
-- **Style Reference:** `animals-viktoria-style-lock.png` (только палитра, шрифт, коллажный ритм)
-- **Формат:** Статичный PNG (no video / motion)
-- **Длина промпта:** 1960 символов (лимит ≤ 2200, диапазон 1900–2100)
+## Lock
 
-## Стилевой и визуальный контракт
+| Поле | Значение |
+|------|----------|
+| pack_id | 2026-09-03 |
+| topic | Он пишет только после полуночи — днём тебя нет |
+| trigger | ПОЛНОЧЬ |
+| product | app_audio |
+| face_lock | none |
+| host_portrait | false |
+| generation_mode | grid_3x3 |
+| aspect / res | 3:4 @ 4K |
+| slice_method | seam — thin white gutters at 1/3 and 2/3 (Excalibur) |
+| output | static PNG, slide-01 still |
+| prompt_char_count | 1879 (gate ≤2200, target 1600–2000) |
 
-1. **Лицо и образ Виктории:**
-   - Та же женщина, что в `Виктория.png`, одно лицо.
-   - Глаза: зелёные с лёгким карим оттенком (`green with a slight hazel-brown tint`).
-   - Волосы: тёплый медовый блонд с более тёмными корнями (НЕ платина).
-   - Слайд 01: помятый домашний свитер цвета овсянки (`rumpled oatmeal knit`) + свободные брюки цвета графита (`charcoal lounge pants`), поза 3/4 сидя на темном диване, телефон экраном вниз на бедре, рядом внимательный кот.
-   - Слайд 09: шелковая комбинация цвета midnight-blue + расстегнутый мериносовый кардиган цвета мокрого асфальта (`charcoal cardigan`), поза 3/4 стоя, мягкий понимающий взгляд.
+## Style ref
 
-2. **Сетка и типографика:**
-   - 9 равных вертикальных ячеек 3:4 в сетке 3×3.
-   - Тонкие белые линии разметки на 1/3 и 2/3.
-   - Безопасный отступ для текста ≥ 12% от всех краев и линий реза.
-   - Текст строго дословный (`verbatim`) из `CAROUSEL_SLIDE_COPY.json` в кавычках.
-   - Слайд 09: огромный рукописный маджента триггер «СУББОТА».
+- HTTPS (upload_stream): `https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png`
+- Local: `carusel-memory/references/animals-viktoria-style-lock.png`
+- Роль: палитра / ритм коллажа. **Не лицо.** Не i2i как портрет.
+- **Не** в `input_urls`: `Виктория.png`, `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`.
 
-3. **Животные-метафоры:**
-   - Слайды 1, 4, 7: Кот (интуиция, чует неладное, возврат автономии).
-   - Слайды 2, 3: Собака (верность ожиданию, капкан надежды).
-   - Слайды 5, 6, 8: Сова (ночная ясность, трезвая диагностика фактов, мудрость).
-   - Слайд 9: Без животных.
+## Prompt logic
 
-4. **Запреты (Negative Constraints):**
-   - Никаких старых референсов лица (`viktoriaref.png`, `victoria-sheet.png`, `alena`).
-   - Никаких белых маек с бретельками, джинсов, позы «рука у подбородка».
-   - Никаких пижам от 29.08 и жакетов эспрессо.
-   - Никаких белых ореолов/стикерных вырезок вокруг людей и животных.
-   - Никакого хоррора, черепов, свечей, крови.
-   - Никаких ботов и предложений 3 бесплатных раскладов.
+Промпт короткий, на русском, с verbatim-цитатами из `CAROUSEL_SLIDE_COPY.json` этого прогона (не СУББОТА). Старт: no host / no woman / без лица / без портрет.
+
+9 панелей row-major:
+
+| # | Animal | Role | Headline |
+|---|--------|------|----------|
+| 01 | owl | hook | 00:47 голосовое. 14:20 — нет галочек. |
+| 02 | dog | problem | Ночью выбранная. Днём — пустое место. |
+| 03 | dog | mistake | Ошибка — двигать сон под его 01:12 |
+| 04 | owl | mechanism | Полночь — часы без свидетелей |
+| 05 | cat | save_decoder | Говорит / Слышишь / Есть |
+| 06 | cat | save_checklist | 3 дневные проверки |
+| 07 | dog | save_questions | 3 вопроса до его полуночи |
+| 08 | owl | recap | Ночь без дня — окно, не выбор |
+| 09 | owl | cta | Напиши ПОЛНОЧЬ + Аудиоразбор в моём приложении. + Суть – Тень – Вектор |
+
+Панель 09 = app_audio. Не бот. Не 3 бесплатных расклада. Не Academy.
+
+## Preserve / change / do_not_borrow
+
+- **Preserve:** charcoal #111111, magenta #ff006e, white heavy sans, torn pills, seam gutters, animals-as-metaphor, no host.
+- **Change:** midnight-window objects + verbatim ПОЛНОЧЬ copy. Hook/CTA = owl + object + type.
+- **Do not borrow:** Portuguese lettering, host face, weekend suitcase, horror/skulls, bot prize, prior triggers (СУББОТА / WEEKEND / …).
+
+## Typography
+
+Verbatim only. Headline > body > magenta script trigger. Safe 12% from seams and edges. No extra labels. No Victoria signature. No word «Сцена».
+
+## Handoff
+
+`HANDOFF_NEXT: slice` — один master 3:4@4K, seam cut. Не motion. Не publish.

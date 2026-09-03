@@ -54,6 +54,26 @@ incident_report: none
 HANDOFF_NEXT: image-prompter
 
 === CARUSEL-IMAGE-PROMPTER ===
+Статус: ✅ OK
+Кратко: No-host 3×3 seam prompts. Style lock uploaded. Verbatim ПОЛНОЧЬ / MIDNIGHT. No Kie. No slice.
+Prompt: carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
+EN Prompt: carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
+aspect_ratio: 3:4 | resolution: 4K
+prompt_char_count RU: 1879
+prompt_char_count EN: 1929
+face_lock: none
+host_portrait: false
+generation_mode: grid_3x3
+slice_method: seam
+Trigger RU: ПОЛНОЧЬ
+Trigger EN: MIDNIGHT
+product: app_audio
+input_urls: 1 HTTPS style-lock (palette only)
+reference_upload_method: upload_stream
+dispatched_via: Task(generalPurpose)
+dispatch_id: 77e766d8ef6442ac8c3491a2e098c332
+incident_report: none
+HANDOFF_NEXT: slice
 
 === CARUSEL-SLICE ===
 === CARUSEL-MOTION-DIRECTOR ===
