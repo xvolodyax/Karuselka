@@ -54,7 +54,7 @@ incident_report: none
 
 ## Модель и правила (Владимир 03.09.2026)
 
-- **Модель:** только Gemini 3.8 Flash High (Cloud: `gemini-3.8-flash` + `reasoning_effort=high`, канон: `gemini-3.8-flash-high`).
+- **Модель:** только Gemini 3.8 Flash High: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
 - **written_by: gemini** обязательно во всех артефактах шага.
 - **NO DEFAULT FALLBACK:** дефолтный агент / director НИКОГДА не пишет research/dossier сам при недоступной Gemini. При недоступности Gemini — только FAIL.
 

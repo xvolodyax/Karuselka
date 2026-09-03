@@ -310,8 +310,8 @@ class PipelineGateTest(unittest.TestCase):
         self.assertIn("dispatch_id:", packet)
         self.assertIn("Do only this step", packet)
         self.assertIn("shared/swarm-spawn-contract.md", packet)
-        self.assertIn("required_model: gemini-3.8-flash-high", packet)
-        self.assertIn("Task(generalPurpose, model=gemini-3.8-flash-high)", packet)
+        self.assertIn("required_model: model=gemini-3.8-flash + reasoning_effort=high", packet)
+        self.assertIn("Task(generalPurpose, model=gemini-3.8-flash, reasoning_effort=high)", packet)
 
     def test_wrong_plugin_task_name_rejected(self) -> None:
         self.run_cmd("init", "--lang", "ru")
@@ -422,6 +422,7 @@ class GeminiAndDryRunTest(unittest.TestCase):
         )
         ledger = gate.load_ledger(self.tmp)
         self.assertEqual(ledger["steps"]["researcher"]["model"], "gemini-3.8-flash")
+        self.assertEqual(ledger["steps"]["researcher"]["reasoning_effort"], "high")
 
     def test_dry_run_records_eleven_workers_without_pixels(self) -> None:
         rc = self.run_cmd("dry-run", "--lang", "ru", "--topic", "ТАРО СЕЙЧАС")
@@ -440,7 +441,9 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertEqual(ledger["steps"]["fixic"]["status"], "skipped")
         self.assertEqual(ledger["steps"]["fixic"]["skip_reason"], "no-open-incidents")
         self.assertEqual(ledger["steps"]["researcher"]["model"], gate.GEMINI_MODEL)
+        self.assertEqual(ledger["steps"]["researcher"]["reasoning_effort"], "high")
         self.assertEqual(ledger["steps"]["copywriter"]["model"], gate.GEMINI_MODEL)
+        self.assertEqual(ledger["steps"]["copywriter"]["reasoning_effort"], "high")
         pixels = [
             p
             for p in self.tmp.rglob("*")
@@ -466,7 +469,7 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertEqual(self.run_cmd("dispatch-prompt", "--step", "copywriter"), 0)
         packet = (self.tmp / "carusel-memory" / "dispatches" / "copywriter.md").read_text()
         self.assertIn("Caption is THIS step", packet)
-        self.assertIn("required_model: gemini-3.8-flash-high", packet)
+        self.assertIn("required_model: model=gemini-3.8-flash + reasoning_effort=high", packet)
         self.assertIn("written_by: gemini", packet)
         self.assertIn("cta-app-audio-contract.md", packet)
         self.assertIn("app_audio", packet)

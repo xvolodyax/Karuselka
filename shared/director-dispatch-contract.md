@@ -40,12 +40,12 @@ Local plugin agents (`Task(carusel-researcher)` и остальные `carusel-*
 
 1. **Desktop plugin:** `Task(<task_name>)` из `pipeline-steps.json` (`carusel-researcher`, …).
 2. **Cloud / нет plugin types:** отдельный `Task(generalPurpose)` на **один** шаг. В промпт целиком входят `agents/carusel-*.md` + `skills/carusel-*/SKILL.md` + этот контракт + `shared/swarm-spawn-contract.md` + brief. Промпт печатает `pipeline_gate.py dispatch-prompt`.
-3. **researcher + copywriter (caption = тот же шаг, правило Владимира 03.09.2026):** модель **`gemini-3.8-flash-high`** (Cloud: `gemini-3.8-flash` + `reasoning_effort=high`). Не inherit модели Director. Артефакты обязаны нести `written_by: gemini`.
+3. **researcher + copywriter (caption = тот же шаг, правило Владимира 03.09.2026):** модель **`gemini-3.8-flash`** + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id строго `gemini-3.8-flash`). Не inherit модели Director. Артефакты обязаны нести `written_by: gemini`.
 4. **NO DEFAULT FALLBACK ДЛЯ ТЕКСТА (правило 03.09.2026):** Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini. Никакого fallback на дефолтную модель (Claude, Sonnet, Opus, Composer, GPT) или выполнение директором в родительском чате. При недоступности Gemini — **только FAIL**.
 5. **Task недоступен вообще:** стоп. Не делать шаг в родительском чате. Не писать «я теперь копирайтер».
 
 ```text
-❌ БЛОКЕР: среда не поддерживает subagents или Gemini 3.8 Flash High недоступна.
+❌ БЛОКЕР: среда не поддерживает subagents или Gemini недоступна.
 Нельзя выполнить шаг в родительском чате. Default fallback запрещён: только FAIL.
 ```
 
@@ -68,7 +68,7 @@ python scripts/pipeline_gate.py --workspace . record-dispatch --step <id> --via 
 # или на cloud:
 python scripts/pipeline_gate.py --workspace . record-dispatch --step <id> --via 'Task(generalPurpose)'
 # researcher / copywriter (только Gemini 3.8 Flash High):
-python scripts/pipeline_gate.py --workspace . record-dispatch --step copywriter --via 'Task(generalPurpose)' --model gemini-3.8-flash-high
+python scripts/pipeline_gate.py --workspace . record-dispatch --step copywriter --via 'Task(generalPurpose)' --model gemini-3.8-flash
 python scripts/pipeline_gate.py --workspace . dispatch-prompt --step <id>
 ```
 

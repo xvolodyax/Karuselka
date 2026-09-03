@@ -41,7 +41,7 @@ Publish по умолчанию `skip: publish-not-requested`. Не Instagram / 
 
 Vladimir: «весь текст пишет gemini».
 Жёсткое правило Владимира 03.09.2026: researcher и copywriter (текст карусели) — **только Gemini 3.8 Flash High**.
-Cloud: `gemini-3.8-flash` + `reasoning_effort=high` (канон: `gemini-3.8-flash-high`).
+В Cloud Agents **НЕТ id `gemini-3.8-flash-high`**. Параметры: `model=gemini-3.8-flash` + `reasoning_effort=high`.
 
 | Артефакт | Кто пишет | Stamp |
 |----------|-----------|--------|
@@ -50,7 +50,7 @@ Cloud: `gemini-3.8-flash` + `reasoning_effort=high` (канон: `gemini-3.8-fla
 | caption | copywriter (тот же шаг) | `written_by: gemini` |
 | image prompts | image-prompter | своя модель |
 
-Spawn: `model=gemini-3.8-flash-high` (Cloud: `gemini-3.8-flash` + `reasoning_effort=high`). Не inherit модели Director.
+Spawn: `model=gemini-3.8-flash` + `reasoning_effort=high`. Не inherit модели Director.
 
 ### НЕТ ДЕФОЛТНОГО FALLBACK (NO DEFAULT FALLBACK)
 Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini.

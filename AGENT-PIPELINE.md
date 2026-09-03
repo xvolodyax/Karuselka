@@ -43,7 +43,7 @@ flowchart TD
 
 ## Текстовые роли (Правило Владимира 03.09.2026)
 
-- **Researcher** и **copywriter** (текст карусели) — **только Gemini 3.8 Flash High** (Cloud: `gemini-3.8-flash` + `reasoning_effort=high`, канон: `gemini-3.8-flash-high`).
+- **Researcher** и **copywriter** (текст карусели) — **только Gemini 3.8 Flash High**: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
 - **NO DEFAULT FALLBACK:** Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini. Никакого fallback на дефолтную модель — только FAIL.
 
 Документация: `shared/carousel-grid-design.md`
