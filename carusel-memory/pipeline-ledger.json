@@ -143,41 +143,47 @@
     },
     "design-guardian": {
       "id": "design-guardian",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "6c5cb7d0c0b44057ac7acb6a546f1464",
+      "started_at": "2026-09-03T09:03:46Z",
+      "finished_at": "2026-09-03T09:11:59Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md"
+      ],
+      "fragment": "carusel-memory/fragments/design-guardian.md",
+      "incident_report": "none",
       "model": null
     },
     "upload": {
       "id": "upload",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "90dfbe20799d4a708d8b9021348190dc",
+      "started_at": "2026-09-03T09:13:27Z",
+      "finished_at": "2026-09-03T09:15:16Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/output/publish-urls.json"
+      ],
+      "fragment": "carusel-memory/fragments/upload.md",
+      "incident_report": "none",
       "model": null
     },
     "publish": {
       "id": "publish",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "4a032bba09f946c78096a11ec5092d01",
+      "started_at": "2026-09-03T09:16:17Z",
+      "finished_at": "2026-09-03T09:21:08Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/output/publish-log.md"
+      ],
+      "fragment": "carusel-memory/fragments/publish.md",
+      "incident_report": "none",
       "model": null
     },
     "fixic": {
