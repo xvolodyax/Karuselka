@@ -27,8 +27,11 @@ flowchart TD
 
 ## Шаги
 
-| # | Agent | Выход |
-|---|-------|-------|
+| # | Agent | Модель / Роль | Выход |
+|---|-------|---------------|-------|
+| 1 | carusel-researcher | Gemini 3.8 Flash High (`reasoning_effort=high`, no fallback, only FAIL) | `carousel-researcher-dossier.md` |
+| 2 | carusel-copywriter | Gemini 3.8 Flash High (`reasoning_effort=high`, no fallback, only FAIL) | `CAROUSEL_SLIDE_COPY.json`, `CAROUSEL_CAPTION.*` |
+| 3 | carusel-designer | designer grid | `CAROUSELDESIGN.md` |
 | 4 | carusel-image-prompter | `CAROUSEL_IMAGE_PROMPT.json` (grid_3x3) |
 | 5 | carusel-slice | 9× PNG |
 | 6 | carusel-motion-director | `CAROUSEL_VIDEO_PROMPT.json` |
@@ -37,5 +40,10 @@ flowchart TD
 | 9 | carusel-upload | `publish-urls.json` (file1–file9) |
 | 10 | carusel-publish | video + 8 images |
 | 11 | carusel-fixic | incidents |
+
+## Текстовые роли (Правило Владимира 03.09.2026)
+
+- **Researcher** и **copywriter** (текст карусели) — **только Gemini 3.8 Flash High**: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
+- **NO DEFAULT FALLBACK:** Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini. Никакого fallback на дефолтную модель — только FAIL.
 
 Документация: `shared/carousel-grid-design.md`

@@ -17,6 +17,11 @@ alwaysApply: true
 
 Если начинаешь выдавать готовые слайды / caption / design docs без **Task** — ты **ломаешь** пайплайн.
 
+### Жёсткое правило Владимира 03.09.2026
+- Researcher и copywriter (текст карусели) — **только Gemini 3.8 Flash High**: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
+- Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini.
+- Запрещён default fallback на основную модель директора (Claude, GPT, Composer) или чат: при недоступности Gemini — **только FAIL**.
+
 ### Файл обмена
 
 Путь: **`.cursor/carusel-handoff.md`** от корня текущего workspace.
@@ -67,8 +72,8 @@ Professional gates:
 
 | Task | Роль |
 |------|------|
-| `carusel-researcher` | Research, конкуренты, хуки |
-| `carusel-copywriter` | Текст 9 слайдов + caption |
+| `carusel-researcher` | Research, конкуренты, хуки (только Gemini 3.8 Flash High; no fallback, only FAIL) |
+| `carusel-copywriter` | Текст 9 слайдов + caption (только Gemini 3.8 Flash High; no fallback, only FAIL) |
 | `carusel-designer` | Дизайн-контракт, репликация референса |
 | `carusel-image-prompter` | Промпт для Kie.ai (стиль референса, grid 3×3, 9 панелей) |
 | `carusel-slice` | Kie generate + нарезка master → slides |

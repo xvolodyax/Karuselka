@@ -59,8 +59,18 @@ LEGAL_SKIP = {
 }
 SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | re.I)
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
-GEMINI_MODEL = "gemini-3.8-flash-high"
-GEMINI_WRITERS = frozenset({"gemini", "gemini-3.8-flash-high"})
+GEMINI_MODEL = "gemini-3.8-flash"
+GEMINI_REASONING_EFFORT = "high"
+GEMINI_MODELS = frozenset({"gemini-3.8-flash", "gemini-3.8-flash-high"})
+GEMINI_WRITERS = frozenset(
+    {
+        "gemini",
+        "gemini-3.8-flash",
+        "gemini-3.8-flash-high",
+        "gemini-3.7-flash-high",
+        "gemini-3.7-flash",
+    }
+)
 PIXEL_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".mp4", ".mov"}
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 WRITTEN_BY_RE = re.compile(r"written_by[\s:*]*([A-Za-z0-9][A-Za-z0-9._-]*)", re.I)
@@ -154,8 +164,9 @@ def is_gemini_writer(value: Any) -> bool:
 def written_by_error(rel: str, value: Any) -> str:
     return (
         f"{rel} written_by must be gemini (got {value!r}). "
-        "Hall/Director: spawn researcher+copywriter on gemini-3.8-flash-high. "
-        "Director must not author slides/captions."
+        "Hall/Director: spawn researcher+copywriter with model=gemini-3.8-flash and reasoning_effort=high. "
+        "Note: in Cloud Agents there is NO id gemini-3.8-flash-high. "
+        "Director / default agent must NEVER author slides/captions/CTA. Only FAIL. No default fallback."
     )
 
 
@@ -442,10 +453,13 @@ def cmd_next(workspace: Path, repo_root: Path) -> int:
     print(f"next={nxt}")
     print(f"role={spec['role']}")
     print(f"plugin_task=Task({spec['task_name']})")
-    print("cloud_fallback=Task(generalPurpose)")
     if nxt in GEMINI_STEPS:
         print(f"required_model={GEMINI_MODEL}")
+        print(f"reasoning_effort={GEMINI_REASONING_EFFORT}")
         print("caption_is_copywriter_job=true" if nxt == "copywriter" else "research_only=true")
+        print("default_fallback=FAIL (director/default agent must NEVER write text)")
+    else:
+        print("cloud_fallback=Task(generalPurpose)")
     print(f"skill={spec['skill']}")
     print(f"agent={spec['agent']}")
     print("STOP if you were about to write these artifacts in the parent chat:")
@@ -465,16 +479,17 @@ def cmd_record_dispatch(
         raise SystemExit(
             f"illegal dispatched_via={via!r} for {step_id}. "
             f"Use Task({PLUGIN_TASK[step_id]}) or Task(generalPurpose). "
-            "inline/parent/self is forbidden."
+            "inline/parent/self is forbidden. Default agent / director must never write text."
         )
-    if step_id in {"motion-director", "animate"}:
-        brief = parse_brief(workspace)
-        if brief.get("static_png_only", True):
-            raise SystemExit(
-                "static PNG lock: skip motion/animate (static-png-only). "
-                "Do not dispatch Grok video. Read shared/static-carousel-lock.md."
-            )
     ledger = load_ledger(workspace)
+    if step_id in {"motion-director", "animate"}:
+        if ledger.get("mode") != "dry-run":
+            brief = parse_brief(workspace)
+            if brief.get("static_png_only", True):
+                raise SystemExit(
+                    "static PNG lock: skip motion/animate (static-png-only). "
+                    "Do not dispatch Grok video. Read shared/static-carousel-lock.md."
+                )
     require_previous_done(ledger, step_id)
     state = ledger["steps"][step_id]
     if state.get("status") == "ok":
@@ -483,27 +498,32 @@ def cmd_record_dispatch(
     resolved_model = model
     if step_id in GEMINI_STEPS:
         resolved_model = (model or GEMINI_MODEL).strip()
-        if resolved_model != GEMINI_MODEL:
+        if resolved_model not in GEMINI_MODELS:
             raise SystemExit(
-                f"{step_id} must spawn with model {GEMINI_MODEL}, got {resolved_model!r}"
+                f"{step_id} must spawn with model={GEMINI_MODEL} and reasoning_effort={GEMINI_REASONING_EFFORT}, got {resolved_model!r}. "
+                "Note: in Cloud Agents there is NO id gemini-3.8-flash-high. "
+                "Default agent / director fallback is forbidden. Only FAIL."
             )
-    state.update(
-        {
-            "status": "dispatched",
-            "dispatched_via": via,
-            "dispatch_id": dispatch_id,
-            "started_at": utc_now(),
-            "finished_at": None,
-            "skip_reason": None,
-            "model": resolved_model,
-        }
-    )
+    step_data: dict[str, Any] = {
+        "status": "dispatched",
+        "dispatched_via": via,
+        "dispatch_id": dispatch_id,
+        "started_at": utc_now(),
+        "finished_at": None,
+        "skip_reason": None,
+        "model": resolved_model,
+    }
+    if step_id in GEMINI_STEPS:
+        step_data["reasoning_effort"] = GEMINI_REASONING_EFFORT
+    state.update(step_data)
     ledger["dispatch_mode"] = infer_dispatch_mode(via)
     save_ledger(workspace, ledger)
     print(f"recorded {step_id} via={via}")
     print(f"dispatch_id={dispatch_id}")
     if resolved_model:
         print(f"model={resolved_model}")
+        if step_id in GEMINI_STEPS:
+            print(f"reasoning_effort={GEMINI_REASONING_EFFORT}")
     print("now call Task, then: pipeline_gate.py verify --step", step_id)
     return 0
 
@@ -550,9 +570,9 @@ def verify_gemini_artifacts(workspace: Path, step_id: str, state: dict[str, Any]
     errors: list[str] = []
     if step_id not in GEMINI_STEPS:
         return errors
-    if state.get("model") and state.get("model") != GEMINI_MODEL:
+    if state.get("model") and state.get("model") not in GEMINI_MODELS:
         errors.append(
-            f"{step_id} ledger model must be {GEMINI_MODEL}, got {state.get('model')!r}"
+            f"{step_id} ledger model must be in {sorted(GEMINI_MODELS)}, got {state.get('model')!r}"
         )
     if step_id == "researcher":
         rel = "carusel-memory/research/carousel-research-dossier.md"
@@ -832,10 +852,15 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
     ]
     if step_id in GEMINI_STEPS:
         extra_hard.append(
-            f"- required_model: {GEMINI_MODEL}. Spawn Task(generalPurpose, model={GEMINI_MODEL}) "
-            f"or Task({PLUGIN_TASK[step_id]}) with that model. Do not inherit Director model."
+            f"- required_model: model={GEMINI_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT}. "
+            f"Spawn Task(generalPurpose, model={GEMINI_MODEL}, reasoning_effort={GEMINI_REASONING_EFFORT}) "
+            f"or Task({PLUGIN_TASK[step_id]}) with that model. Note: in Cloud Agents there is NO id gemini-3.8-flash-high; "
+            f"the model parameter is strictly {GEMINI_MODEL} with reasoning_effort={GEMINI_REASONING_EFFORT}. Do not inherit Director model."
         )
-        extra_hard.append(f"- Refuse if spawned on any model other than {GEMINI_MODEL}.")
+        extra_hard.append(
+            f"- Refuse if spawned on any model other than {GEMINI_MODEL} with reasoning_effort={GEMINI_REASONING_EFFORT}. "
+            "NO DEFAULT FALLBACK: if Gemini is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself."
+        )
     if step_id == "copywriter":
         extra_hard.append(
             "- Caption is THIS step. Write Instagram caption here. There is no separate caption worker."
@@ -911,7 +936,7 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
         )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (
-        f"Task(generalPurpose, model={GEMINI_MODEL})"
+        f"Task(generalPurpose, model={GEMINI_MODEL}, reasoning_effort={GEMINI_REASONING_EFFORT}) [NO DEFAULT FALLBACK]"
         if step_id in GEMINI_STEPS
         else "Task(generalPurpose) — real Task, not Director inline"
     )
@@ -922,6 +947,7 @@ step: {step_id}
 via: {state['dispatched_via']}
 cloud_fallback: {spawn_line}
 required_model: {state.get('model') or (GEMINI_MODEL if step_id in GEMINI_STEPS else 'inherit')}
+reasoning_effort: {state.get('reasoning_effort') or (GEMINI_REASONING_EFFORT if step_id in GEMINI_STEPS else 'none')}
 
 HARD RULES
 - Do only this step ({step_id}). Do not start the next role.
@@ -929,6 +955,7 @@ HARD RULES
 - Read shared/taro-seichas-canon.md, shared/animals-viktoria-collage.md,
   shared/agent-pipeline-pitfalls.md and shared/locale-brand-contract.md.
 {extra_hard_block}
+- NO DEFAULT FALLBACK: if Gemini ({GEMINI_MODEL}) is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself.
 - lang={brief['lang']}. Brand handle={brief['handle']}.
 - Write artifacts only to the paths listed below.
 - End with fragment {spec['fragment']}.
@@ -1257,7 +1284,10 @@ def cmd_dry_run(
     print("pixels: none")
     print("publish: skipped (publish-not-requested)")
     print("fixic: skipped (no-open-incidents)")
-    print(f"researcher+copywriter+caption model: {GEMINI_MODEL}")
+    print(
+        f"researcher+copywriter+caption model: {GEMINI_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT} "
+        "(in Cloud Agents there is NO id gemini-3.8-flash-high; no default fallback)"
+    )
     print(
         "steps recorded: researcher copywriter designer image-prompter slice "
         "motion-director animate design-guardian upload publish(skip) fixic(skip)"
@@ -1287,7 +1317,7 @@ def build_parser() -> argparse.ArgumentParser:
     rec.add_argument(
         "--model",
         default=None,
-        help="Required for researcher/copywriter: gemini-3.8-flash-high",
+        help="Required for researcher/copywriter: gemini-3.8-flash (with reasoning_effort=high; no default fallback)",
     )
     ver = sub.add_parser("verify")
     ver.add_argument("--step", required=True, choices=STEP_IDS)

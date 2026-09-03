@@ -138,7 +138,10 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 
 `Task(carusel-*)` если plugin types есть. Иначе отдельный `Task(generalPurpose)` на шаг
 (`shared/director-dispatch-contract.md` + `shared/swarm-spawn-contract.md` +
-`scripts/pipeline_gate.py`). researcher + copywriter (caption) = `gemini-3.8-flash-high`.
+`scripts/pipeline_gate.py`).
+
+Жёсткое правило Владимира 03.09.2026: researcher + copywriter (текст карусели: dossier, 9 слайдов, caption, CTA) — только Gemini 3.8 Flash High: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
+Дефолтный агент / director НИКОГДА не пишет captions/slides/CTA сам при недоступной Gemini. Никакого default fallback (на основную модель директора, Claude, Sonnet, Opus, Composer, GPT) — только FAIL.
 
 Director **не** делает worker-шаг сам. Нет parent remake. Нет proof-pack
 rerender live 30.08 СУББОТА / WEEKEND. Новые кадры без Вики = **новый pack / новый пост**.
