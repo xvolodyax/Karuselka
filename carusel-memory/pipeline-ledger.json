@@ -59,28 +59,36 @@
     },
     "designer": {
       "id": "designer",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "005c5291288c443dab2a36d37c4e81fa",
+      "started_at": "2026-09-03T08:26:46Z",
+      "finished_at": "2026-09-03T08:32:45Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSELDESIGN.md",
+        "carusel-memory/design/CAROUSEL_SERIES_CONCEPT.json",
+        "carusel-memory/design/CAROUSEL_SOURCE_DECOMPOSITION.json",
+        "carusel-memory/design/CAROUSEL_SLIDE_BLUEPRINTS.json"
+      ],
+      "fragment": "carusel-memory/fragments/designer.md",
+      "incident_report": "none",
       "model": null
     },
     "image-prompter": {
       "id": "image-prompter",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "77e766d8ef6442ac8c3491a2e098c332",
+      "started_at": "2026-09-03T08:32:49Z",
+      "finished_at": "2026-09-03T08:36:42Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json",
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md"
+      ],
+      "fragment": "carusel-memory/fragments/image-prompter.md",
+      "incident_report": "none",
       "model": null
     },
     "slice": {
