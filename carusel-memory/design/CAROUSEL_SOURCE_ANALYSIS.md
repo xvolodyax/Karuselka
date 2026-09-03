@@ -1,30 +1,34 @@
-# Source analysis — animals_viktoria_collage
+# Source analysis — animals_viktoria_collage (pack 2026-09-03)
 
 ## What the reference is
 
 The live family is a dark fashion-lifestyle collage: charcoal field, hot magenta
-script, heavy white sans, torn-tape pills, animals used as emotion, Victoria
-in-scene on hook and CTA. Style lock files are **palette + rhythm only**.
+script, heavy white sans, torn-tape pills, animals used as emotion. Style lock
+files (`animals-viktoria-style-lock.png` / `image-851e.png`) are **palette +
+rhythm only**. Never i2i as a face.
 
-Face law is separate: **Виктория.png**. One woman. Green eyes with slight hazel.
-Warm honey/wheat hair, darker roots. Never platinum. Never Alena. Never the
-deleted sheet files.
+Face law for this run: **none**. No host. No women's faces. No doubles.
+`Виктория.png` is not a carousel input.
 
 ## What we keep
 
-Grid 3×3, 3:4 cells, seam gutters, type mix, animal metaphors, Victoria 1+9
-in-scene, app_audio CTA shape, no horror, no beige wash.
+Grid 3×3, 3:4 cells, seam gutters, type mix, animal metaphors, app_audio CTA
+shape, no horror, no beige wash, no host portrait.
 
-## What we change this Sunday
+## What we change this Thursday
 
-Topic = weekend vacuum (Friday 18:00 silence → Monday «Как ты?»).
-Copy is verbatim from Gemini. Wardrobe is new: oatmeal rumpled knit (1),
-midnight-blue slip + charcoal cardigan (9). Animals follow copy: cat / dog / owl.
+Topic = midnight-only window (00:47 voice note → 14:20 no ticks).
+Copy is verbatim from Gemini. Hook and CTA have no woman: owl + phone/lamp
+on 01, owl + huge magenta trigger on 09. Animals follow copy: owl / dog / cat.
+
+New objects: phone at 00:47, missing blue ticks, night lamp, voice-note
+waveform, empty daytime chat.
 
 ## What we refuse
 
-Portuguese lettering, foreign faces, sheet outfit, 29.08 graphite pajama,
-29.08 petrol-teal + espresso jacket, sticker halos, bot offer, prior triggers.
+Portuguese lettering, foreign faces, other brands, horror table,
+`Виктория.png`, host portrait, weekend-suitcase objects as the main story,
+bot offer, prior triggers (including СУББОТА / WEEKEND).
 
 ## Depth reference
 

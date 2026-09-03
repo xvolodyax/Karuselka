@@ -1,29 +1,35 @@
-# Series concept — Weekend Vacuum / 2026-08-30
+# Series concept — Midnight Window / 2026-09-03
 
 `carousel_family`: **animals_viktoria_collage**
 `pipeline_gate`: required · step designer · next **image-prompter**
+`face_lock`: **none** · `victoria_slides`: **[]**
 
 ## Lock
 
 - Master: one static **3:4 @ 4K** PNG, **grid_3x3**, row-major 01–09.
 - Slice: **seam**, thin white gutters at 1/3 and 2/3.
 - Palette: `#111111` / `#ff006e` / `#ffffff` / soft gold.
-- Face: **Виктория.png** only. Eyes green + slight hazel. Hair honey/wheat, darker roots.
-- Victoria in-scene on **1** and **9**, no sticker halo.
-- Product: **app_audio**. Slide 9 huge magenta **СУББОТА** / **WEEKEND**.
+- Face: **none**. No host. No Vika. No `Виктория.png` in generation.
+- Hook (01) and CTA (09) = scene + type + animal / object. Not a woman.
+- Product: **app_audio**. Slide 9 huge magenta **ПОЛНОЧЬ** / **MIDNIGHT**.
 
-## Sunday wardrobe (NEW vs 29.08)
+## Topic objects (NEW vs 30.08)
 
-| Slide | Look | Pose |
-|-------|------|------|
-| 1 | Rumpled oatmeal weekend-at-home knit + charcoal lounge pants | Sitting 3/4, phone face-down, not hand-on-chin |
-| 9 | Midnight-blue silk slip + open charcoal cardigan | Standing 3/4, hand on cardigan edge |
+| Object | Job |
+|--------|-----|
+| Phone at 00:47 | night window is open |
+| Voice-note waveform | density of the night text |
+| Night lamp | ordinary night, not horror |
+| Missing blue ticks | 14:20 emptiness |
+| Empty daytime chat | you are not in his day |
 
-Do not copy sheet white cami/jeans/hand-on-chin. Do not copy 29.08 graphite pajama or petrol-teal + espresso jacket.
+Do not use weekend-suitcase / Friday 18:00 / Saturday calendar as the main story.
 
 ## Animals
 
-Cat 01/04/07 · Dog 02/03 · Owl 05/06/08 · none on 09.
+Owl 01 / 04 / 08 / 09 · Dog 02 / 03 / 07 · Cat 05 / 06.
+
+Cat = «чуешь». Dog = loyalty to the unanswered day. Owl = night watch.
 
 ## Preserve / change / do_not_borrow
 

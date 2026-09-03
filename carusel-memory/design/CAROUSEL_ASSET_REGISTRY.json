@@ -1,17 +1,9 @@
 {
   "pipeline_gate": {"step": "designer", "required": true, "pixels": "none_this_step"},
   "carousel_family": "animals_viktoria_collage",
-  "note": "Designer registers intended assets. No Kie task ids yet. image-prompter + slice fill generation fields.",
+  "face_lock": "none",
+  "note": "Designer registers intended assets. No Kie task ids yet. image-prompter + slice fill generation fields. No face file is an input.",
   "assets": [
-    {
-      "id": "face-lock-victoria",
-      "local_path": "carusel-memory/references/Виктория.png",
-      "box_path": "/workspace/cover-refs/Виктория.png",
-      "role": "face_lock",
-      "input_url_slot": 0,
-      "only_face_file": true,
-      "status": "locked"
-    },
     {
       "id": "style-lock-animals",
       "local_path": "carusel-memory/references/animals-viktoria-style-lock.png",
@@ -25,6 +17,15 @@
       "role": "master_3x3",
       "status": "pending_slice"
     }
+  ],
+  "forbidden_as_input": [
+    "Виктория.png",
+    "viktoriaref.png",
+    "victoria-sheet.png",
+    "victoria.png",
+    "victoria_ref.jpg",
+    "alena*.png",
+    "character-sheet-2k"
   ],
   "forbidden_restore": [
     "viktoriaref.png",

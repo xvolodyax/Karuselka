@@ -1,6 +1,8 @@
 {
   "pipeline_gate": {"step": "designer", "required": true},
   "carousel_family": "animals_viktoria_collage",
+  "face_lock": "none",
+  "victoria_slides": [],
   "master": {
     "aspect": "3:4",
     "resolution": "4K",
@@ -15,15 +17,15 @@
     [7, 8, 9]
   ],
   "cell_shapes": {
-    "01": "hero portrait collage, subject mid, type top",
-    "02": "type stack + animal footer",
-    "03": "type stack + pill row + animal footer",
-    "04": "type + internal boundary split + cat",
-    "05": "decoder stack + small owl",
-    "06": "numbered list + small owl",
-    "07": "type + cat turning away",
-    "08": "type + owl witness",
-    "09": "hero standing 3/4 + huge magenta script above/beside"
+    "01": "hero scene collage: type top, owl + phone/lamp/waveform mid-lower. No host.",
+    "02": "type stack + dog footer at dark daytime screen",
+    "03": "type stack + dog + 01:12 clock footer",
+    "04": "type + night-window split + owl",
+    "05": "decoder stack + small cat",
+    "06": "numbered list + small cat",
+    "07": "numbered questions + dog standing up from the screen",
+    "08": "type + owl witness + optional light tarot (not on headline)",
+    "09": "huge magenta script + owl + phone/app. No host."
   },
-  "no_cross_gutter": ["faces", "trigger word", "headlines", "animals"]
+  "no_cross_gutter": ["trigger word", "headlines", "animals", "faces"]
 }
