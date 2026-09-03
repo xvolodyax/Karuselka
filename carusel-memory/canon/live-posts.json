@@ -92,6 +92,28 @@
       "media_id": "18131243815645836",
       "posted_at": "2026-08-30T12:37:32+0000",
       "note": "Same texts as DcqJGCblQqv; new frames without host portrait. Old post stays."
+    },
+    {
+      "date": "2026-09-03",
+      "pack_id": "2026-09-03",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ПОЛНОЧЬ",
+      "permalink": "https://www.instagram.com/p/Dc0eQ6WlSBg/",
+      "media_id": "17979719996901806",
+      "posted_at": "2026-09-03T09:19:10+0000"
+    },
+    {
+      "date": "2026-09-03",
+      "pack_id": "2026-09-03",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "MIDNIGHT",
+      "permalink": "https://www.instagram.com/p/Dc0eRt5m1zA/",
+      "media_id": "18100135304525551",
+      "posted_at": "2026-09-03T09:19:10+0000"
     }
   ]
 }

@@ -1,5 +1,14 @@
 # publish-log
 
+## 2026-09-03T09:15:35Z
+status: fail
+reason: composio-error
+via: composio
+telegram: forbidden
+api_key_source: env COMPOSIO_API_KEY
+alias_required: instagram-ru / instagram-en (never default)
+Composio Instagram alias instagram-ru (@todaytaro_ru) not found. Alias is required; default account is forbidden.
+
 ## 2026-09-03T09:19:10Z
 status: ok
 reason: composio

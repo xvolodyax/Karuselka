@@ -110,5 +110,30 @@ incident_report: none
 HANDOFF_NEXT: upload
 
 === CARUSEL-UPLOAD ===
+Статус: ✅ OK
+provider: kie_file_upload_api
+publish-urls.json: carusel-memory/output/publish-urls.json
+file1_kind: png
+this_run: static_all_pngs
+RU file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-09-03-1110-static-ru/slide-01.png
+EN file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-09-03-1110-static-en/slide-01.png
+RU pack: carusel-memory/packs/2026-09-03/ru/publish-urls.json
+EN pack: carusel-memory/packs/2026-09-03/en/publish-urls.json
+dispatched_via: Task(generalPurpose)
+dispatch_id: 90dfbe20799d4a708d8b9021348190dc
+incident_report: none
+HANDOFF_NEXT: publish
 === CARUSEL-PUBLISH ===
+Статус: ✅ OK
+Кратко: Both carousels live via Composio MCP. No Telegram. No browser. REST script skipped.
+RU: https://www.instagram.com/p/Dc0eQ6WlSBg/
+EN: https://www.instagram.com/p/Dc0eRt5m1zA/
+alias: instagram-ru / instagram-en
+RU media_id: 17979719996901806
+EN media_id: 18100135304525551
+trigger: ПОЛНОЧЬ / MIDNIGHT
+dispatched_via: Task(generalPurpose)
+dispatch_id: 4a032bba09f946c78096a11ec5092d01
+incident_report: none
+HANDOFF_NEXT: fixic
 === CARUSEL-FIXIC ===
