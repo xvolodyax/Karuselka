@@ -138,7 +138,7 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 
 `Task(carusel-*)` если plugin types есть. Иначе отдельный `Task(generalPurpose)` на шаг
 (`shared/director-dispatch-contract.md` + `shared/swarm-spawn-contract.md` +
-`scripts/pipeline_gate.py`). researcher + copywriter (caption) = `gemini-3.7-flash-high`.
+`scripts/pipeline_gate.py`). researcher + copywriter (caption) = `gemini-3.8-flash-high`.
 
 Director **не** делает worker-шаг сам. Нет parent remake. Нет proof-pack
 rerender live 30.08 СУББОТА / WEEKEND. Новые кадры без Вики = **новый pack / новый пост**.
