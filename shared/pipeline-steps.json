@@ -21,7 +21,9 @@
       "id": "researcher",
       "role": "carusel-researcher",
       "task_name": "carusel-researcher",
-      "model": "gemini-3.7-flash-high",
+      "model": "gemini-3.8-flash-high",
+      "cloud_model": "gemini-3.8-flash",
+      "reasoning_effort": "high",
       "skill": "skills/carusel-researcher/SKILL.md",
       "agent": "agents/carusel-researcher.md",
       "required_artifacts": [
@@ -36,7 +38,9 @@
       "id": "copywriter",
       "role": "carusel-copywriter",
       "task_name": "carusel-copywriter",
-      "model": "gemini-3.7-flash-high",
+      "model": "gemini-3.8-flash-high",
+      "cloud_model": "gemini-3.8-flash",
+      "reasoning_effort": "high",
       "skill": "skills/carusel-copywriter/SKILL.md",
       "agent": "agents/carusel-copywriter.md",
       "required_artifacts": [

@@ -88,6 +88,17 @@ Caption chars: N
 incident_report: none
 ```
 
+## Модель и правила (Владимир 03.09.2026)
+
+- **Модель:** только Gemini 3.8 Flash High (Cloud: `gemini-3.8-flash` + `reasoning_effort=high`, канон: `gemini-3.8-flash-high`).
+- **written_by: gemini** обязательно в `CAROUSEL_SLIDE_COPY.json`, `CAROUSEL_CAPTION.json`, `CAROUSEL_CAPTION.md`, fragment.
+- **NO DEFAULT FALLBACK:** дефолтный агент / director НИКОГДА не пишет captions/slides/CTA сам при недоступной Gemini. Никакого fallback на дефолтную модель (Claude, Sonnet, Opus, Composer, GPT) — только FAIL.
+
+## Запреты
+
+- Дефолтному агенту / директору запрещено писать captions/slides/CTA при недоступной Gemini (только FAIL).
+- Запрещено использовать любые модели кроме Gemini 3.8 Flash High для текстов.
+
 ## Конец задачи
 
 `shared/subagent-end-of-task-contract.md`

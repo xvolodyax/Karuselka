@@ -52,7 +52,14 @@ incident_report: none
 
 `shared/subagent-end-of-task-contract.md` — pitfalls, incident queue, `incident_report` в fragment.
 
+## Модель и правила (Владимир 03.09.2026)
+
+- **Модель:** только Gemini 3.8 Flash High (Cloud: `gemini-3.8-flash` + `reasoning_effort=high`, канон: `gemini-3.8-flash-high`).
+- **written_by: gemini** обязательно во всех артефактах шага.
+- **NO DEFAULT FALLBACK:** дефолтный агент / director НИКОГДА не пишет research/dossier сам при недоступной Gemini. При недоступности Gemini — только FAIL.
+
 ## Запреты
 
 - Не писать финальный текст слайдов (это copywriter)
 - Не генерировать изображения
+- Дефолтному агенту / директору запрещено выполнять этот шаг вместо Gemini

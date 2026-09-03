@@ -47,9 +47,15 @@ Memory: `{PROJECT_ROOT}/carusel-memory/` (включая `pipeline-fix-queue.md`
 
 Не пиши сам research, copy, design, prompts, slice, motion, animate, QA, upload, publish, fixic.
 
-## Cloud Task fallback
+## Cloud Task fallback и жёсткое правило Владимира 03.09.2026
 
 Если `Task(carusel-*)` недоступен — **Task**(`generalPurpose`) с полным промптом из `agents/carusel-*.md` + skill.
+
+**Жёсткое правило Владимира 03.09.2026:**
+Researcher и copywriter (текст карусели) — **только Gemini 3.8 Flash High**. Cloud: `gemini-3.8-flash` + `reasoning_effort=high` (канон: `gemini-3.8-flash-high`).
+**НЕТ ДЕФОЛТНОГО FALLBACK:** Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini. Никакого перехода на дефолтную модель (Claude, GPT, Composer) и никакого написания текста директором. Только FAIL:
+
+`❌ БЛОКЕР: Gemini 3.8 Flash High недоступна для текстовой роли (researcher/copywriter). Дефолтный fallback запрещён — только FAIL.`
 
 Если Task вообще недоступен:
 

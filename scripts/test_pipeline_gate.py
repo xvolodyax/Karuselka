@@ -310,8 +310,8 @@ class PipelineGateTest(unittest.TestCase):
         self.assertIn("dispatch_id:", packet)
         self.assertIn("Do only this step", packet)
         self.assertIn("shared/swarm-spawn-contract.md", packet)
-        self.assertIn("required_model: gemini-3.7-flash-high", packet)
-        self.assertIn("Task(generalPurpose, model=gemini-3.7-flash-high)", packet)
+        self.assertIn("required_model: gemini-3.8-flash-high", packet)
+        self.assertIn("Task(generalPurpose, model=gemini-3.8-flash-high)", packet)
 
     def test_wrong_plugin_task_name_rejected(self) -> None:
         self.run_cmd("init", "--lang", "ru")
@@ -384,7 +384,8 @@ class GeminiAndDryRunTest(unittest.TestCase):
                 "--model",
                 "inherit",
             )
-        self.assertIn("gemini-3.7-flash-high", str(ctx.exception))
+        self.assertIn("gemini-3.8-flash", str(ctx.exception))
+        self.assertIn("fallback is forbidden. Only FAIL", str(ctx.exception))
 
     def test_copywriter_wrong_model_rejected(self) -> None:
         self.run_cmd("init", "--lang", "en")
@@ -402,7 +403,25 @@ class GeminiAndDryRunTest(unittest.TestCase):
                 "--model",
                 "composer-2.5",
             )
-        self.assertIn("gemini-3.7-flash-high", str(ctx.exception))
+        self.assertIn("gemini-3.8-flash", str(ctx.exception))
+        self.assertIn("fallback is forbidden. Only FAIL", str(ctx.exception))
+
+    def test_gemini_38_flash_cloud_model_accepted(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.assertEqual(
+            self.run_cmd(
+                "record-dispatch",
+                "--step",
+                "researcher",
+                "--via",
+                "Task(generalPurpose)",
+                "--model",
+                "gemini-3.8-flash",
+            ),
+            0,
+        )
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(ledger["steps"]["researcher"]["model"], "gemini-3.8-flash")
 
     def test_dry_run_records_eleven_workers_without_pixels(self) -> None:
         rc = self.run_cmd("dry-run", "--lang", "ru", "--topic", "ТАРО СЕЙЧАС")
@@ -447,7 +466,7 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertEqual(self.run_cmd("dispatch-prompt", "--step", "copywriter"), 0)
         packet = (self.tmp / "carusel-memory" / "dispatches" / "copywriter.md").read_text()
         self.assertIn("Caption is THIS step", packet)
-        self.assertIn("required_model: gemini-3.7-flash-high", packet)
+        self.assertIn("required_model: gemini-3.8-flash-high", packet)
         self.assertIn("written_by: gemini", packet)
         self.assertIn("cta-app-audio-contract.md", packet)
         self.assertIn("app_audio", packet)

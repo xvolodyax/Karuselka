@@ -37,9 +37,11 @@ Desktop plugin: `Task(carusel-<role>)`. Один Task = один шаг. `inline
 
 Publish по умолчанию `skip: publish-not-requested`. Не Instagram / Composio / Make.
 
-## Весь человеческий текст = Gemini
+## Весь человеческий текст = Gemini (Правило Владимира 03.09.2026)
 
 Vladimir: «весь текст пишет gemini».
+Жёсткое правило Владимира 03.09.2026: researcher и copywriter (текст карусели) — **только Gemini 3.8 Flash High**.
+Cloud: `gemini-3.8-flash` + `reasoning_effort=high` (канон: `gemini-3.8-flash-high`).
 
 | Артефакт | Кто пишет | Stamp |
 |----------|-----------|--------|
@@ -48,8 +50,12 @@ Vladimir: «весь текст пишет gemini».
 | caption | copywriter (тот же шаг) | `written_by: gemini` |
 | image prompts | image-prompter | своя модель |
 
-Spawn: `model=gemini-3.7-flash-high`. Не inherit модели Director.
-Если runtime не умеет вызвать Gemini по имени — Hall/Director запускает эти два шага на Gemini вручную.
+Spawn: `model=gemini-3.8-flash-high` (Cloud: `gemini-3.8-flash` + `reasoning_effort=high`). Не inherit модели Director.
+
+### НЕТ ДЕФОЛТНОГО FALLBACK (NO DEFAULT FALLBACK)
+Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini.
+Никакого fallback на дефолтную модель (Claude, Sonnet, Opus, Composer, GPT) или исполнение в родительском чате.
+Если Gemini недоступна в runtime — **только FAIL**.
 Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus/sonnet/composer = FAIL).
 Не переписывать голос Gemini.
 

@@ -9,6 +9,11 @@ description: Директор Carusel — intake, orchestration, handoff. Use wh
 
 Координирует пайплайн карусели. **Не** выполняет работу субагентов.
 
+### Жёсткое правило Владимира 03.09.2026
+- Researcher и copywriter (текст карусели) — **только Gemini 3.8 Flash High** (Cloud: `gemini-3.8-flash` + `reasoning_effort=high`, канон: `gemini-3.8-flash-high`).
+- Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini.
+- Запрещён default fallback на основную модель директора (Claude, GPT, Composer) — при недоступности Gemini **только FAIL**.
+
 ## Intake checklist
 
 Записать в `carusel-memory/00-brief.md`:
@@ -55,8 +60,8 @@ Professional quality:
 
 ## Цепочка Task
 
-1. carusel-researcher
-2. carusel-copywriter
+1. carusel-researcher (только Gemini 3.8 Flash High; no default fallback, otherwise FAIL)
+2. carusel-copywriter (только Gemini 3.8 Flash High; no default fallback, otherwise FAIL)
 3. carusel-designer
 4. **carusel-image-prompter** — промпт для Kie
 5. carusel-slice
