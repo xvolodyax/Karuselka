@@ -59,8 +59,8 @@ LEGAL_SKIP = {
 }
 SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | re.I)
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
-GEMINI_MODEL = "gemini-3.7-flash-high"
-GEMINI_WRITERS = frozenset({"gemini", "gemini-3.7-flash-high"})
+GEMINI_MODEL = "gemini-3.8-flash-high"
+GEMINI_WRITERS = frozenset({"gemini", "gemini-3.8-flash-high"})
 PIXEL_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".mp4", ".mov"}
 RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 WRITTEN_BY_RE = re.compile(r"written_by[\s:*]*([A-Za-z0-9][A-Za-z0-9._-]*)", re.I)
@@ -154,7 +154,7 @@ def is_gemini_writer(value: Any) -> bool:
 def written_by_error(rel: str, value: Any) -> str:
     return (
         f"{rel} written_by must be gemini (got {value!r}). "
-        "Hall/Director: spawn researcher+copywriter on gemini-3.7-flash-high. "
+        "Hall/Director: spawn researcher+copywriter on gemini-3.8-flash-high. "
         "Director must not author slides/captions."
     )
 
@@ -1287,7 +1287,7 @@ def build_parser() -> argparse.ArgumentParser:
     rec.add_argument(
         "--model",
         default=None,
-        help="Required for researcher/copywriter: gemini-3.7-flash-high",
+        help="Required for researcher/copywriter: gemini-3.8-flash-high",
     )
     ver = sub.add_parser("verify")
     ver.add_argument("--step", required=True, choices=STEP_IDS)

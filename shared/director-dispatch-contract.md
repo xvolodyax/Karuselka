@@ -40,7 +40,7 @@ Local plugin agents (`Task(carusel-researcher)` и остальные `carusel-*
 
 1. **Desktop plugin:** `Task(<task_name>)` из `pipeline-steps.json` (`carusel-researcher`, …).
 2. **Cloud / нет plugin types:** отдельный `Task(generalPurpose)` на **один** шаг. В промпт целиком входят `agents/carusel-*.md` + `skills/carusel-*/SKILL.md` + этот контракт + `shared/swarm-spawn-contract.md` + brief. Промпт печатает `pipeline_gate.py dispatch-prompt`.
-3. **researcher + copywriter (caption = тот же шаг):** модель **`gemini-3.7-flash-high`**. Не inherit модели Director. Артефакты обязаны нести `written_by: gemini`.
+3. **researcher + copywriter (caption = тот же шаг):** модель **`gemini-3.8-flash-high`**. Не inherit модели Director. Артефакты обязаны нести `written_by: gemini`.
 4. **Task недоступен вообще:** стоп. Не делать шаг в родительском чате. Не писать «я теперь копирайтер».
 
 ```text
@@ -66,7 +66,7 @@ python scripts/pipeline_gate.py --workspace . record-dispatch --step <id> --via 
 # или на cloud:
 python scripts/pipeline_gate.py --workspace . record-dispatch --step <id> --via 'Task(generalPurpose)'
 # researcher / copywriter:
-python scripts/pipeline_gate.py --workspace . record-dispatch --step copywriter --via 'Task(generalPurpose)' --model gemini-3.7-flash-high
+python scripts/pipeline_gate.py --workspace . record-dispatch --step copywriter --via 'Task(generalPurpose)' --model gemini-3.8-flash-high
 python scripts/pipeline_gate.py --workspace . dispatch-prompt --step <id>
 ```
 

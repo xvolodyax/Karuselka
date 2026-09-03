@@ -48,7 +48,7 @@ Vladimir: «весь текст пишет gemini».
 | caption | copywriter (тот же шаг) | `written_by: gemini` |
 | image prompts | image-prompter | своя модель |
 
-Spawn: `model=gemini-3.7-flash-high`. Не inherit модели Director.
+Spawn: `model=gemini-3.8-flash-high`. Не inherit модели Director.
 Если runtime не умеет вызвать Gemini по имени — Hall/Director запускает эти два шага на Gemini вручную.
 Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus/sonnet/composer = FAIL).
 Не переписывать голос Gemini.
