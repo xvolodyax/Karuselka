@@ -1,40 +1,37 @@
-dispatched_via: Task(generalPurpose)
-dispatch_id: f841fd31358146d8a885227c407fb868
-incident_report: none
-HANDOFF_NEXT: design-guardian
 === CARUSEL-SLICE ===
 Статус: ✅ OK
+Кратко: Bilingual seam slice. RU+EN 9+9 static PNG 1080×1440. Face lock none — no host/Vika on any canvas. Slide 01 PNG only. No mp4. No Grok. No publish. No animate.
+
 Mode: grid_3x3 seam
-Face lock: Виктория.png only (2191823 bytes, 1341×1173)
-Regen: RU 1 whole-master (crooked canvas). EN 0. No cell patches.
-taskId RU kept: e1a671f38c9a353d1e5000d9607eceda
-taskId RU discarded: 7b36f100723a40e9c61d82e6bff3f473
-taskId EN kept: c24d9b62c05f8cf5cdac1fa829a0d65e
-No mp4. No publish. No animate.
+slice_method: seam
+face_lock: none
+host_portrait: false
+slide_01: static_png
+product: app_audio
+Trigger RU: ПОЛНОЧЬ
+Trigger EN: MIDNIGHT
 
-RU slides (1080×1440 PNG) + gate copies:
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-01.png 1468768
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-02.png 1332579
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-03.png 1395049
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-04.png 1129884
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-05.png 1287743
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-06.png 1258456
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-07.png 1389468
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-08.png 1361357
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-09.png 1206251
+Regen: RU 2 whole-master (crooked + Kie 500). EN 1 whole-master (gutter QA white right edge). Never patched a cell.
+taskId RU kept: a6a96b6f6dca07b2a6f67d48164589e2
+taskId RU discarded: 68bf1d71a6d42974985235cc78de822a (crooked), 6d1f7ea93d376c8ac9a2ee74217a2705 (500)
+taskId EN kept: cfa9188ac6c7de8b70331288de3c34d1
+taskId EN discarded: a6812e537dc8b306cf5be2af401dc116 (gutter QA)
+Face appeared: no
+prompt_compacted: no
 
-EN slides (1080×1440 PNG):
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-01.png 1742085
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-02.png 1249355
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-03.png 1555242
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-04.png 1673027
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-05.png 1164019
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-06.png 1195929
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-07.png 1368130
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-08.png 1471010
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-09.png 1250949
+Артефакты:
+- carusel-memory/output/slides/slide-01.png … slide-09.png (RU, 1080×1440)
+- carusel-memory/output/slice-manifest.json
+- carusel-memory/output/master/master.png
+- carusel-memory/output/kie-task-log.json
+- carusel-memory/packs/2026-09-03/ru/slides/slide-01.png … 09
+- carusel-memory/packs/2026-09-03/en/slides/slide-01.png … 09
+- carusel-memory/packs/2026-09-03/PIXELS.md
 
-Gate: /workspace/carusel-memory/output/slides/slide-01.png … slide-09.png (RU)
-Master: /workspace/carusel-memory/output/master/master.png 2480×3312
-Manifest: /workspace/carusel-memory/output/slice-manifest.json
-PIXELS: /workspace/carusel-memory/packs/2026-08-30/PIXELS.md
+RU sizes (bytes): 1451848 1205487 1325060 1338097 1424796 1399049 1223645 1373418 1279346
+EN sizes (bytes): 1313765 1289431 1229170 1328132 1415085 1148193 1348784 1386182 1173049
+
+dispatched_via: Task(generalPurpose)
+dispatch_id: f6ea3ba7e6544488a60cce5998c152f8
+incident_report: none
+HANDOFF_NEXT: design-guardian

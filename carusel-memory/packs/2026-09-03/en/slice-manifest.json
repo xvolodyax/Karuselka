@@ -16,22 +16,22 @@
     "split_mode": "gutter_detect",
     "v_gutters_px": [
       {
-        "start": 818,
-        "end": 829
+        "start": 820,
+        "end": 827
       },
       {
-        "start": 1645,
-        "end": 1656
+        "start": 1648,
+        "end": 1655
       }
     ],
     "h_gutters_px": [
       {
-        "start": 1096,
+        "start": 1099,
         "end": 1107
       },
       {
-        "start": 2204,
-        "end": 2215
+        "start": 2205,
+        "end": 2213
       }
     ],
     "max_center_offset_px": 3.5,
@@ -55,7 +55,7 @@
     "/workspace/carusel-memory/output/slides/slide-08.png",
     "/workspace/carusel-memory/output/slides/slide-09.png"
   ],
-  "lang": "ru",
+  "lang": "en",
   "pack_id": "2026-09-03",
-  "taskId": "a6a96b6f6dca07b2a6f67d48164589e2"
+  "taskId": "cfa9188ac6c7de8b70331288de3c34d1"
 }
