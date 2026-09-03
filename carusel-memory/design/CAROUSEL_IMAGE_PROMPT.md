@@ -1,41 +1,65 @@
-# CAROUSEL IMAGE PROMPT (RU) — 2026-08-30
+# CAROUSEL IMAGE PROMPT — RU
 
-## Спецификация генерации Kie i2i
+**Pack ID:** `2026-09-01`  
+**Topic:** Вторничное «завтра»: днем «сегодня вечером созвонимся», в 23:41 «сорри, давай завтра»  
+**Visual family:** `animals_viktoria_collage`  
+**Face lock:** `none` (No host portrait, no Victoria, no presenter face)  
+**Slice method:** `seam` (Thin white gutters at 1/3 and 2/3, Excalibur method)  
+**Format:** Grid 3×3 (9 equal 3:4 panels), Master 3:4 @ 4K, Static PNG  
+**Trigger word:** `ЗАВТРА` (Slide 9 huge magenta script)  
+**Product:** `app_audio` (Суть – Тень – Вектор)  
+**Input URLs:** `["carusel-memory/references/animals-viktoria-style-lock.png"]` (Palette/rhythm only, not a face)  
+**Prompt char count:** 1787 chars (target 1900–2100, max 2200)
 
-- **Модель:** `gpt-image-2-image-to-image`
-- **Режим:** `grid_3x3` (один master-холст 3:4 @ 4K)
-- **Метод нарезки:** `seam` (тонкие белые швы на 1/3 и 2/3)
-- **Face Lock:** `Виктория.png` (first `input_url`, 12 ракурсов)
-- **Style Reference:** `animals-viktoria-style-lock.png` (только палитра, шрифт, коллажный ритм)
-- **Формат:** Статичный PNG (no video / motion)
-- **Длина промпта:** 1960 символов (лимит ≤ 2200, диапазон 1900–2100)
+---
 
-## Стилевой и визуальный контракт
+## Reference Contract & Style Lock
 
-1. **Лицо и образ Виктории:**
-   - Та же женщина, что в `Виктория.png`, одно лицо.
-   - Глаза: зелёные с лёгким карим оттенком (`green with a slight hazel-brown tint`).
-   - Волосы: тёплый медовый блонд с более тёмными корнями (НЕ платина).
-   - Слайд 01: помятый домашний свитер цвета овсянки (`rumpled oatmeal knit`) + свободные брюки цвета графита (`charcoal lounge pants`), поза 3/4 сидя на темном диване, телефон экраном вниз на бедре, рядом внимательный кот.
-   - Слайд 09: шелковая комбинация цвета midnight-blue + расстегнутый мериносовый кардиган цвета мокрого асфальта (`charcoal cardigan`), поза 3/4 стоя, мягкий понимающий взгляд.
+- **Preserve:**
+  - Dark matte charcoal `#111111`–`#1a1a1a` full-bleed background
+  - Hot magenta `#ff006e` accent + handwritten script + torn-tape pills
+  - White `#ffffff` heavy sans typography hierarchy
+  - Soft gold foil accents used sparingly and natively
+  - 3×3 master grid 3:4 @ 4K with thin white seams at 1/3 and 2/3
+  - Animals as emotion metaphors (cat 1/4/7, dog 2/3, owl 6/8)
+  - Safe text margin ≥12% from edges and seams
+  - No host portrait / no female faces
 
-2. **Сетка и типографика:**
-   - 9 равных вертикальных ячеек 3:4 в сетке 3×3.
-   - Тонкие белые линии разметки на 1/3 и 2/3.
-   - Безопасный отступ для текста ≥ 12% от всех краев и линий реза.
-   - Текст строго дословный (`verbatim`) из `CAROUSEL_SLIDE_COPY.json` в кавычках.
-   - Слайд 09: огромный рукописный маджента триггер «СУББОТА».
+- **Change:**
+  - Midweek tomorrow-loop objects (cooling tea, clock 23:41, dark phone, torn tape)
+  - Verbatim Tuesday Russian copy from `CAROUSEL_SLIDE_COPY.json`
+  - Huge magenta trigger word `ЗАВТРА` on slide 9
 
-3. **Животные-метафоры:**
-   - Слайды 1, 4, 7: Кот (интуиция, чует неладное, возврат автономии).
-   - Слайды 2, 3: Собака (верность ожиданию, капкан надежды).
-   - Слайды 5, 6, 8: Сова (ночная ясность, трезвая диагностика фактов, мудрость).
-   - Слайд 9: Без животных.
+- **Do Not Borrow:**
+  - `Виктория.png`, `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`
+  - Any recognizable host face or woman portrait
+  - Sheet wardrobe (white cami, jeans, ivory blazer)
+  - Portuguese collage text and foreign logos
+  - Sticker halos / die-cut outlines, horror candle table, bot offer, raw URLs
 
-4. **Запреты (Negative Constraints):**
-   - Никаких старых референсов лица (`viktoriaref.png`, `victoria-sheet.png`, `alena`).
-   - Никаких белых маек с бретельками, джинсов, позы «рука у подбородка».
-   - Никаких пижам от 29.08 и жакетов эспрессо.
-   - Никаких белых ореолов/стикерных вырезок вокруг людей и животных.
-   - Никакого хоррора, черепов, свечей, крови.
-   - Никаких ботов и предложений 3 бесплатных раскладов.
+---
+
+## Active Kie Prompt (RU)
+
+```text
+No host portrait. No woman. No Victoria. No presenter face. Без портрета ведущей, без лиц, без Вик. Style lock = palette only (#111111 matte charcoal, white heavy sans, #ff006e hot magenta, soft gold foil), not a face.
+Одно статичное PNG 3:4@4K, сетка 3×3. Thin white gutters at 1/3 and 2/3 (Excalibur seam_slice). Текст ≥12% от швов. Animals + objects only. Без видео.
+
+01 cat, cooling tea, phone: "13:20: «вечером созвон». 23:41: «давай завтра».".
+02 dog by dark phone: "Ты держишь вечер открытым" / "Отказываешься от планов и ждешь звонка. А около полуночи остаешься с чувством, что тебя снова подвинули.".
+03 dog at closed door, pills: "Ошибка — писать: «Конечно, отдыхай»" / "Ты прячешь досаду за понимающей улыбкой, приучая человека к тому, что твое время ничего не стоит.".
+04 cat watching clock loop: "Механизм 24-часовой петли" / "Короткое дневное обещание удерживает твою лояльность 12 часов без малейших реальных усилий с его стороны.".
+05 screenshot decoder card: "Декодер вечерних переносов" / "• «Без сил, завтра 100%» → Ресурса на близость нет, но важно держать тебя про запас.\n• «Давай на днях» → Снимает с себя вину прямо сейчас.".
+06 owl by neon 23:41 clock: "3 маркера хронического переноса" / "1. Сообщение приходит после 23:00.\n2. Нет нового точного времени.\n3. Петля повторяется второй раз за неделю.".
+07 cat leaves empty chair: "Твой вечер — не зал ожидания" / "Если созвон отменился в последнюю минуту — вечер не потерян. Он мгновенно возвращается в твое распоряжение.".
+08 owl, gold medallion: "Главное правило середины недели" / "Тот, кто действительно хочет контакта, ищет точное время. Тот, кто сомневается, кормит словом «завтра».".
+09 huge magenta ЗАВТРА, phone, no people: "Напиши ЗАВТРА" / "Аудиоразбор в приложении. Суть – Тень – Вектор." / "Слово ЗАВТРА в комментариях".
+```
+
+---
+
+## Negative Prompt
+
+```text
+Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png, woman, girl, host portrait, female face, presenter, human face, Alena, platinum hair, white cami, jeans, ivory blazer, host wardrobe, horror, skulls, dripping candles, blood, sticker outline, white halo around subjects, cutout border, bot, 3 free spreads, Academy, video, animated
+```

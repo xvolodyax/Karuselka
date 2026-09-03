@@ -1,0 +1,45 @@
+{
+  "lang": "en",
+  "max_attempts": 8,
+  "attempts": [
+    {
+      "attempt": 0,
+      "exit_code": 1,
+      "taskId": "9997ecd4bc4fa55fac408c49f09fd100",
+      "crooked_canvas": false,
+      "slice_status": "ok",
+      "finished_at": "2026-09-01T08:56:33Z"
+    },
+    {
+      "attempt": 1,
+      "exit_code": 1,
+      "taskId": "44088962c775cdcb5929901b2e0d2cd6",
+      "crooked_canvas": false,
+      "slice_status": "ok",
+      "finished_at": "2026-09-01T08:56:59Z"
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "taskId": "4511b5050376b8a5b9b2d199e07a63d9",
+      "crooked_canvas": false,
+      "slice_status": "ok",
+      "finished_at": "2026-09-01T08:59:39Z"
+    }
+  ],
+  "kept": {
+    "attempt": 2,
+    "exit_code": 0,
+    "taskId": "4511b5050376b8a5b9b2d199e07a63d9",
+    "crooked_canvas": false,
+    "slice_status": "ok",
+    "finished_at": "2026-09-01T08:59:39Z"
+  },
+  "regen_count": 2,
+  "discarded_taskIds": [
+    "9997ecd4bc4fa55fac408c49f09fd100",
+    "44088962c775cdcb5929901b2e0d2cd6"
+  ],
+  "status": "ok",
+  "finished_at": "2026-09-01T08:59:39Z"
+}

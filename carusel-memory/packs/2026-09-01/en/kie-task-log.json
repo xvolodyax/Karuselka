@@ -1,0 +1,44 @@
+{
+  "generation_mode": "grid_3x3",
+  "taskId": "4511b5050376b8a5b9b2d199e07a63d9",
+  "resultUrls": [
+    "https://tempfile.aiquickdraw.com/h/4511b5050376b8a5b9b2d199e07a63d9_1788253100.png"
+  ],
+  "prompt": "No host portrait. No woman. No Victoria. No presenter face. Без портрета ведущей, без лиц, без Вик. Style lock = palette only (#111111 matte charcoal, white heavy sans, #ff006e hot magenta, soft gold foil), not a face.\nОдно статичное PNG 3:4@4K, сетка 3×3. Thin white gutters at 1/3 and 2/3 (Excalibur seam_slice). Текст ≥12% от швов. Animals + objects only. Без видео.\n\n01 cat, cooling tea, phone: \"1:20 PM: \\\"Call tonight\\\". 11:41 PM: \\\"Tomorrow\\\".\".\n02 dog by dark phone: \"You keep your evening open\" / \"You turn down plans and wait for the call. Near midnight, you're left feeling pushed aside once again.\".\n03 dog at closed door, pills: \"Mistake: \\\"No worries, get some rest\\\"\" / \"You hide your frustration behind understanding, teaching him that your time has zero value.\".\n04 cat watching clock loop: \"The 24-Hour Postponement Loop\" / \"A tiny daytime promise buys 12 hours of your patience and loyalty with zero effort on his part.\".\n05 screenshot decoder card: \"Late-Night Reschedule Decoder\" / \"• \\\"Drained today, tomorrow 100%\\\" → No capacity for depth, but wants to keep you on reserve.\\n• \\\"Let's talk soon\\\" → Easing his immediate guilt.\".\n06 owl by neon 11:41 PM clock: \"3 Signs of Chronic Delay\" / \"1. The message arrives past 11 PM.\\n2. No specific replacement time is set.\\n3. The loop repeats for the second time this week.\".\n07 cat leaves empty chair: \"Your schedule is not a waiting room\" / \"When a call drops at the last minute, your evening isn't lost. It belongs right back to you.\".\n08 owl, gold medallion: \"The Golden Midweek Rule\" / \"A man who wants connection makes specific time. A man who doubts feeds you with \\\"tomorrow\\\".\".\n09 huge magenta TOMORROW, phone, no people: \"Comment TOMORROW\" / \"Audio reading in the app. Essence–Shadow–Vector.\" / \"Write TOMORROW in the comments\".\n\nИзбегать: Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png, woman, girl, host portrait, female face, presenter, human face, Alena, platinum hair, white cami, jeans, ivory blazer, host wardrobe, horror, skulls, dripping candles, blood, sticker outline, white halo around subjects, cutout border, bot, 3 free spreads, Academy, video, animated",
+  "aspect_ratio": "3:4",
+  "aspect_ratio_requested": "3:4",
+  "aspect_ratio_fallback": false,
+  "aspect_ratio_fallback_reason": null,
+  "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slide_count": 9,
+  "source_path": "/workspace/carusel-memory/output/master/source.png",
+  "source_clean_path": null,
+  "slides_dir": "/workspace/carusel-memory/output/slides",
+  "animate_slide": 1,
+  "slice_method": "seam",
+  "slice_status": "ok",
+  "gutter_cleanup": {
+    "enabled": false,
+    "method": "near-white pixels on exact cut-lines; no crop, no resize",
+    "strip": 5,
+    "report": "/workspace/carusel-memory/output/debug/remove-grid-gutters-report.json"
+  },
+  "edge_cleanup": {
+    "enabled": true,
+    "method": "copy interior pixels over outer edge strips after slice; no crop, no resize",
+    "strip": 10,
+    "report": "/workspace/carusel-memory/output/debug/clean-slide-edges-report.json",
+    "leftover_gutter_px": 2,
+    "status": "ok"
+  },
+  "gutter_qa": {
+    "enabled": true,
+    "report": "/workspace/carusel-memory/output/debug/grid-gutter-qa-clean.json",
+    "mode": "seam",
+    "status": "ok"
+  }
+}

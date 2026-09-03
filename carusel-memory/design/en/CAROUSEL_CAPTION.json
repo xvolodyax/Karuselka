@@ -1,23 +1,26 @@
 {
+  "written_by": "gemini",
   "lang": "en",
-  "hook": "Friday 6 PM silence. Monday: «How was it?»",
-  "body": "All week long he texts every half hour: memes, voice notes, sweet check-ins. But the moment Friday evening arrives, the chat goes cold until Monday morning.\n\nWhen someone vanishes on weekends, it's rarely about being «busy» or «needing a screen break». We all find 10 seconds for the people who truly matter to us.\n\nIf you only feel wanted during his work hours, you're merely filling his workday void while staying locked out of his real life. Swipe through to take your weekends back.",
-  "cta": "Comment the word WEEKEND below.\nWe'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.\nLinks are in the profile.",
-  "trigger_word": "WEEKEND",
   "product": "app_audio",
-  "hashtags": [
-    "#todaytarot",
-    "#relationships",
-    "#datingadvice",
-    "#claritynow",
-    "#boundaries",
-    "#selfworth"
-  ],
+  "trigger_word": "TOMORROW",
+  "hook": "1:20 PM: \"Call tonight\". 11:41 PM: \"Tomorrow\".",
+  "body": "You clear your schedule, turn down other plans, and get ready to talk. Near midnight, a dry text arrives and leaves you on hold once again.\n\n\"Tomorrow\" without a set time isn't a busy calendar. It's a low-effort way to keep your loyalty and attention without real presence.\n\nWhen someone is genuinely invested, they offer a specific time. When they are unsure or avoiding depth, they feed you a rolling 24-hour delay.\n\nYour schedule is not a waiting room for someone else. Swipe through to see the diagnostic signs of chronic postponement and reclaim your evening.",
+  "cta": "Comment the word TOMORROW below. We'll DM an audio reading in the app for this topic: Essence–Shadow–Vector. Links are in the profile.",
   "mentions": [
     "@todaytaro_bot"
   ],
-  "full_caption": "Friday 6 PM silence. Monday: «How was it?»\n\nAll week long he texts every half hour: memes, voice notes, sweet check-ins. But the moment Friday evening arrives, the chat goes cold until Monday morning.\n\nWhen someone vanishes on weekends, it's rarely about being «busy» or «needing a screen break». We all find 10 seconds for the people who truly matter to us.\n\nIf you only feel wanted during his work hours, you're merely filling his workday void while staying locked out of his real life. Swipe through to take your weekends back.\n\nComment the word WEEKEND below.\nWe'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.\nLinks are in the profile.\n\n@todaytaro_bot / Clarity now\n\n#todaytarot #relationships #datingadvice #claritynow #boundaries #selfworth",
-  "char_count": 786,
-  "hashtag_count": 6,
-  "written_by": "gemini"
+  "hashtags": [
+    "#todaytarot",
+    "#relationshipadvice",
+    "#boundaries",
+    "#selfworth",
+    "#claritynow",
+    "#relationshippatterns",
+    "#tarotonline",
+    "#emotionalclarity"
+  ],
+  "has_url": false,
+  "full_caption": "1:20 PM: \"Call tonight\". 11:41 PM: \"Tomorrow\".\n\nYou clear your schedule, turn down other plans, and get ready to talk. Near midnight, a dry text arrives and leaves you on hold once again.\n\n\"Tomorrow\" without a set time isn't a busy calendar. It's a low-effort way to keep your loyalty and attention without real presence.\n\nWhen someone is genuinely invested, they offer a specific time. When they are unsure or avoiding depth, they feed you a rolling 24-hour delay.\n\nYour schedule is not a waiting room for someone else. Swipe through to see the diagnostic signs of chronic postponement and reclaim your evening.\n\nComment the word TOMORROW below. We'll DM an audio reading in the app for this topic: Essence–Shadow–Vector. Links are in the profile.\n\n@todaytaro_bot / Clarity now\n\n#todaytarot #relationshipadvice #boundaries #selfworth #claritynow #relationshippatterns #tarotonline #emotionalclarity",
+  "char_count": 918,
+  "hashtag_count": 8
 }

@@ -1,160 +1,121 @@
 # Carusel — новая сессия
 
-Slot: 2026-08-30 11:10 MSK (late, deliver today)
+Slot: 2026-09-01 11:10 MSK (Tuesday, late — publish immediately after GATE PASS)
 Pair: RU @todaytaro_ru + EN @todaytaro_bot
-Face lock: Виктория.png only
-Static PNG only. Publish after GATE via Composio.
+Face lock: none (no host portrait, no Victoria)
+Static PNG only. Slide-01 is PNG. Publish after GATE via Composio.
 
 === CARUSEL-RESEARCHER ===
 Статус: ✅ OK
 Файл: carusel-memory/research/carousel-research-dossier.md
-Top hook: В пятницу в 18:00 чат замирает. В понедельник в 09:15 он снова онлайн с «Доброе утро, как прошли выходные?».
-Chosen topic RU: Он пропадает на выходных: будни тёплые, суббота пустая
-Chosen topic EN: He disappears on weekends: weekdays warm, Saturday empty
-Recommended trigger RU: СУББОТА
-Recommended trigger EN: WEEKEND
-Product: app_audio (Direct = аудиоразбор в приложении: Суть – Тень – Вектор / Essence–Shadow–Vector)
-Visual family: animals_viktoria_collage (Face lock Виктория.png)
+Top hook RU: 13:20 — «вечером созвонимся». 23:41 — «завал, давай завтра точно». А завтра уже среда.
+Top hook EN: 1:20 PM: "Let's call tonight". 11:41 PM: "Crazy day, tomorrow for sure". Tomorrow is already Wednesday.
+Trigger RU: ЗАВТРА
+Trigger EN: TOMORROW
+Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
+Face lock: none (no host portrait)
 incident_report: none
 === CARUSEL-COPYWRITER ===
-dispatched_via: Task(generalPurpose)
-dispatch_id: 1e4dbcee0efe44da8353ed1fe17c02a9
+Статус: ✅ OK
+written_by: gemini
+Slides RU: carusel-memory/design/CAROUSEL_SLIDE_COPY.json
+Caption RU chars: 894
+Slides EN: carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json
+Caption EN chars: 918
+Trigger RU: ЗАВТРА
+Trigger EN: TOMORROW
+Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
+Face lock: none (no host portrait, no Victoria)
 incident_report: none
 HANDOFF_NEXT: designer
-written_by: gemini
-
-Status: ✅ OK
-Topic RU: Он пропадает на выходных: будни тёплые, суббота пустая
-Topic EN: He disappears on weekends: weekdays warm, Saturday empty
-Trigger RU: СУББОТА
-Trigger EN: WEEKEND
-Product: app_audio (Суть – Тень – Вектор / Essence–Shadow–Vector)
-Visual Family: animals_viktoria_collage
-Slide 01 Hook RU: «Пятница 18:00 — тишина. В понедельник: «Как ты?»» (48 chars)
-Slide 01 Hook EN: «Friday 6 PM silence. Monday: «How was it?»» (42 chars)
-Animals present on slides: 1 (cat), 2 (dog), 3 (dog), 4 (cat), 5 (owl), 6 (owl), 7 (cat), 8 (owl)
-Victoria present on slides: 1, 9
-Save frameworks: slide-05 decoder, slide-06 checklist, slide-07 boundary rule
-Slide count: 9 slides RU + 9 slides EN
-RU Slide Copy: /workspace/carusel-memory/design/CAROUSEL_SLIDE_COPY.json
-RU Caption JSON: /workspace/carusel-memory/design/CAROUSEL_CAPTION.json
-RU Caption MD: /workspace/carusel-memory/design/CAROUSEL_CAPTION.md
-EN Slide Copy: /workspace/carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json
-EN Caption JSON: /workspace/carusel-memory/design/en/CAROUSEL_CAPTION.json
-EN Caption MD: /workspace/carusel-memory/design/en/CAROUSEL_CAPTION.md
-Pack RU: /workspace/carusel-memory/packs/2026-08-30/ru/
-Pack EN: /workspace/carusel-memory/packs/2026-08-30/en/
 === CARUSEL-DESIGNER ===
+Статус: ✅ OK
 dispatched_via: Task(generalPurpose)
-dispatch_id: b10a4a88db134fc38e2cc9d5838339c3
+dispatch_id: 50dd866559b844039733c2ae39ecf4c2
+Family: animals_viktoria_collage
+face_lock: none
+host_portrait: false
+slice_method: seam
+Score: 90
+Trigger RU: ЗАВТРА
+Trigger EN: TOMORROW
+Product: app_audio
+Master: carusel-memory/output/master/master.png (pending slice)
+Animals: cat 01/04/07, dog 02/03, owl 06/08
+Save cards: 05 decoder, 06 checklist
 incident_report: none
 HANDOFF_NEXT: image-prompter
-=== CARUSEL-DESIGNER ===
-Статус: ✅ OK
-Family: animals_viktoria_collage
-Score: 90
-Wardrobe 1: rumpled oatmeal weekend-at-home knit + charcoal lounge pants, sitting 3/4, phone face-down
-Wardrobe 9: standing 3/4 midnight-blue silk slip + open charcoal cardigan
-Trigger: СУББОТА / WEEKEND
-Product: app_audio
-No Kie JSON. No pixels.
 === CARUSEL-IMAGE-PROMPTER ===
+Статус: ✅ OK
 dispatched_via: Task(generalPurpose)
-dispatch_id: 092303bb6b314cac95d5a37b2870d354
+dispatch_id: ac4dbad654404a0dadba4d2304e8a1a4
+Prompt RU: carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json (1787 chars)
+Prompt EN: carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json (1827 chars)
+aspect_ratio: 3:4 | resolution: 4K | grid: 3x3 | slice_method: seam
+face_lock: none | host_portrait: false
+input_urls: ["carusel-memory/references/animals-viktoria-style-lock.png"]
 incident_report: none
 HANDOFF_NEXT: slice
-written_by: gemini
-
-Статус: ✅ OK
-Face Lock: Виктория.png (green with slight hazel eyes, honey blonde + darker roots)
-Mode: grid_3x3 3:4 @ 4K (static PNG, seam slice)
-Prompt RU chars: 1960 (target 1900–2100, max 2200)
-Prompt EN chars: 2097 (target 1900–2100, max 2200)
-Trigger RU: СУББОТА | Trigger EN: WEEKEND
-Product: app_audio
-RU JSON: carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
-EN JSON: carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
-Pack RU: carusel-memory/packs/2026-08-30/ru/CAROUSEL_IMAGE_PROMPT.json
-Pack EN: carusel-memory/packs/2026-08-30/en/CAROUSEL_IMAGE_PROMPT.json
 === CARUSEL-SLICE ===
+Статус: ✅ OK
 dispatched_via: Task(generalPurpose)
-dispatch_id: f841fd31358146d8a885227c407fb868
+dispatch_id: c2ed83416240408395d9dd7ebab7d6d8
+Mode: grid_3x3 seam
+Face lock: none
+taskId RU kept: 6a57700c48ff77dfc019d355f3fce282
+taskId EN kept: 4511b5050376b8a5b9b2d199e07a63d9
+Regen: RU 2 (Kie 500) EN 2 (Kie 500) crooked 0
+No mp4. Slide-01 PNG. Ledger slides = RU.
 incident_report: none
 HANDOFF_NEXT: design-guardian
-=== CARUSEL-SLICE ===
-Статус: ✅ OK
-Mode: grid_3x3 seam
-Face lock: Виктория.png only (2191823 bytes, 1341×1173)
-Regen: RU 1 whole-master (crooked canvas). EN 0. No cell patches.
-taskId RU kept: e1a671f38c9a353d1e5000d9607eceda
-taskId RU discarded: 7b36f100723a40e9c61d82e6bff3f473
-taskId EN kept: c24d9b62c05f8cf5cdac1fa829a0d65e
-No mp4. No publish. No animate.
-
-RU slides (1080×1440 PNG) + gate copies:
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-01.png 1468768
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-02.png 1332579
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-03.png 1395049
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-04.png 1129884
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-05.png 1287743
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-06.png 1258456
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-07.png 1389468
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-08.png 1361357
-- /workspace/carusel-memory/packs/2026-08-30/ru/slides/slide-09.png 1206251
-
-EN slides (1080×1440 PNG):
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-01.png 1742085
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-02.png 1249355
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-03.png 1555242
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-04.png 1673027
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-05.png 1164019
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-06.png 1195929
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-07.png 1368130
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-08.png 1471010
-- /workspace/carusel-memory/packs/2026-08-30/en/slides/slide-09.png 1250949
-
-Gate: /workspace/carusel-memory/output/slides/slide-01.png … slide-09.png (RU)
-Master: /workspace/carusel-memory/output/master/master.png 2480×3312
-Manifest: /workspace/carusel-memory/output/slice-manifest.json
-PIXELS: /workspace/carusel-memory/packs/2026-08-30/PIXELS.md
 === CARUSEL-MOTION-DIRECTOR ===
 === CARUSEL-ANIMATE ===
 === CARUSEL-DESIGN-GUARDIAN ===
+Статус: ✅ OK
 dispatched_via: Task(generalPurpose)
-dispatch_id: fd3d207afc5d47a587d2d7e81472bcd8
+dispatch_id: f9ca0db7bd1a411293c729cf8b74d9cd
+Verdict: ✅ DESIGN OK
+Score: 91
+FACE_CHECK: verdict ABSENT
+GATE: PASS
+Report: carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md
+FACE_CHECK: carusel-memory/packs/2026-09-01/FACE_CHECK.md
+GATE.md: carusel-memory/packs/2026-09-01/GATE.md
+Product: app_audio ЗАВТРА / TOMORROW
+Face lock: none — no host portrait
+WARN: CAT, COOLING TEA, PHONE crumbs on RU+EN 01 (hook on phone)
 incident_report: none
 HANDOFF_NEXT: upload
-Verdict: ✅ DESIGN OK
-Score: 93
-Report: carusel-memory/design/CAROUSEL_DESIGN_GUARDIAN_REPORT.md
-FACE_CHECK: carusel-memory/packs/2026-08-30/FACE_CHECK.md
-verdict: MATCH
-GATE: carusel-memory/packs/2026-08-30/GATE.md
-Статус: ✅ OK
-Кратко: RU+EN 9+9 PNG seam. Face Виктория.png MATCH. Eyes green+hazel. CTA app_audio СУББОТА/WEEKEND. No P0. No publish.
 === CARUSEL-UPLOAD ===
+Статус: ✅ OK
 dispatched_via: Task(generalPurpose)
-dispatch_id: a0bf9cebbfa54c5cb2a783172f8b0fb0
-incident_report: none
-HANDOFF_NEXT: publish
-=== CARUSEL-UPLOAD ===
-Статус: ✅ OK
+dispatch_id: d411d8a34a0e48e29b16824e2aaea948
 provider: kie_file_upload_api
 file1_kind: png
 this_run: static_all_pngs
-No mp4. No Instagram. No Telegram.
-RU: carusel-memory/output/publish-urls.json (ledger) + packs/2026-08-30/ru/publish-urls.json
-EN: carusel-memory/packs/2026-08-30/en/publish-urls.json
-RU file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-1110-static-ru/slide-01.png
-EN file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-08-30-1110-static-en/slide-01.png
-All 9+9 keys HTTPS PNG. file1 = slide-01.png.
-=== CARUSEL-PUBLISH ===
-dispatched_via: Task(generalPurpose)
-dispatch_id: 9cb5285a418f42b78b3aa437cad123b8
+No mp4. No Instagram. No Telegram. No Composio.
+RU file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-09-01-1110-static-ru/slide-01.png
+EN file1: https://tempfile.redpandaai.co/kieai/378019/carusel/instagram/2026-09-01-1110-static-en/slide-01.png
+Ledger: carusel-memory/output/publish-urls.json (top-level = RU; ru/en nests)
 incident_report: none
-HANDOFF_NEXT: fixic
+HANDOFF_NEXT: publish
 === CARUSEL-PUBLISH ===
 Статус: ✅ OK
-RU: https://www.instagram.com/p/DcqJGCblQqv/
-EN: https://www.instagram.com/p/DcqJS--m0op/
+dispatched_via: Task(generalPurpose)
+dispatch_id: f907744288624261b6f8a3ffdede5b3a
+reason: composio
+alias: instagram-ru / instagram-en
+live RU: https://www.instagram.com/p/DcvVF5Wm6fM/
+live EN: https://www.instagram.com/p/DcvVOcPFe5h/
+RU media_id: 17968814088137847
+EN media_id: 18385449295203014
+trigger: ЗАВТРА / TOMORROW
+telegram: not sent
+incident_report: none
+HANDOFF_NEXT: fixic
 === CARUSEL-FIXIC ===
+Статус: ⏭️ SKIPPED
+dispatched_via: skip:no-open-incidents
+skip_reason: no-open-incidents
+incident_report: none
+HANDOFF_NEXT: done

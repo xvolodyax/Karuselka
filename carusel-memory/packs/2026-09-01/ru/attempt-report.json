@@ -1,0 +1,62 @@
+{
+  "lang": "ru",
+  "max_attempts": 8,
+  "attempts": [
+    {
+      "attempt": 0,
+      "exit_code": 1,
+      "taskId": "e1a671f38c9a353d1e5000d9607eceda",
+      "crooked_canvas": false,
+      "slice_status": "ok",
+      "finished_at": "2026-09-01T08:51:34Z"
+    },
+    {
+      "attempt": 1,
+      "exit_code": 1,
+      "taskId": "e1a671f38c9a353d1e5000d9607eceda",
+      "crooked_canvas": false,
+      "slice_status": "ok",
+      "finished_at": "2026-09-01T08:52:00Z"
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "taskId": "6a57700c48ff77dfc019d355f3fce282",
+      "crooked_canvas": false,
+      "slice_status": "ok",
+      "finished_at": "2026-09-01T08:54:41Z"
+    }
+  ],
+  "kept": {
+    "attempt": 2,
+    "exit_code": 0,
+    "taskId": "6a57700c48ff77dfc019d355f3fce282",
+    "crooked_canvas": false,
+    "slice_status": "ok",
+    "finished_at": "2026-09-01T08:54:41Z"
+  },
+  "regen_count": 2,
+  "discarded_taskIds": [
+    "13791a054de0fe1443a481f4ac4dcbd1",
+    "d10da2252466cf589bb66257cae96f8e"
+  ],
+  "status": "ok",
+  "finished_at": "2026-09-01T08:54:41Z",
+  "stdout_taskIds": [
+    {
+      "attempt": 0,
+      "taskId": "13791a054de0fe1443a481f4ac4dcbd1",
+      "result": "500 Internal Error"
+    },
+    {
+      "attempt": 1,
+      "taskId": "d10da2252466cf589bb66257cae96f8e",
+      "result": "500 Internal Error"
+    },
+    {
+      "attempt": 2,
+      "taskId": "6a57700c48ff77dfc019d355f3fce282",
+      "result": "kept"
+    }
+  ]
+}
