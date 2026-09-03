@@ -92,6 +92,82 @@
       "media_id": "18131243815645836",
       "posted_at": "2026-08-30T12:37:32+0000",
       "note": "Same texts as DcqJGCblQqv; new frames without host portrait. Old post stays."
+    },
+    {
+      "date": "2026-08-30",
+      "pack_id": "2026-08-30-ru-scout",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ОНЛАЙН",
+      "permalink": "https://www.instagram.com/p/DcqlmXDoLLZ/",
+      "note": "PR #12 scout, still OPEN on 2026-08-31. Do not remake. New Monday pack must not reuse ОНЛАЙН."
+    },
+    {
+      "date": "2026-08-31",
+      "pack_id": "2026-08-31",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ПОНЕДЕЛЬНИК",
+      "permalink": "https://www.instagram.com/p/DcszHTWIHS5/",
+      "media_id": "18009334409955562",
+      "posted_at": "2026-08-31T09:47:10+0000"
+    },
+    {
+      "date": "2026-08-31",
+      "pack_id": "2026-08-31",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "MONDAY",
+      "permalink": "https://www.instagram.com/p/DcszQubG-bl/",
+      "media_id": "18093108425438526",
+      "posted_at": "2026-08-31T09:48:21+0000"
+    },
+    {
+      "date": "2026-09-01",
+      "pack_id": "2026-09-01",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ЗАВТРА",
+      "permalink": "https://www.instagram.com/p/DcvVF5Wm6fM/",
+      "media_id": "17968814088137847",
+      "posted_at": "2026-09-01T09:22:28+0000"
+    },
+    {
+      "date": "2026-09-01",
+      "pack_id": "2026-09-01",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "TOMORROW",
+      "permalink": "https://www.instagram.com/p/DcvVOcPFe5h/",
+      "media_id": "18385449295203014",
+      "posted_at": "2026-09-01T09:23:43+0000"
+    },
+    {
+      "date": "2026-09-02",
+      "pack_id": "2026-09-02",
+      "lang": "ru",
+      "handle": "@todaytaro_ru",
+      "alias": "instagram-ru",
+      "trigger": "ПЛАН",
+      "permalink": "https://www.instagram.com/p/Dcx7CK1lV0F/",
+      "media_id": "17905668447514427",
+      "posted_at": "2026-09-02T09:32:44+0000"
+    },
+    {
+      "date": "2026-09-02",
+      "pack_id": "2026-09-02",
+      "lang": "en",
+      "handle": "@todaytaro_bot",
+      "alias": "instagram-en",
+      "trigger": "SLOT",
+      "permalink": "https://www.instagram.com/p/Dcx7DGam5AN/",
+      "media_id": "18618303673046980",
+      "posted_at": "2026-09-02T09:32:44+0000"
     }
   ]
 }

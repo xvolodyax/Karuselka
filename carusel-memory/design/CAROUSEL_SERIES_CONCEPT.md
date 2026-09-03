@@ -1,29 +1,37 @@
-# Series concept — Weekend Vacuum / 2026-08-30
+# Series concept — Floating Week-Plan / 2026-09-02
 
 `carousel_family`: **animals_viktoria_collage**
 `pipeline_gate`: required · step designer · next **image-prompter**
+`face_lock`: **none** · `host_portrait`: **false** · `victoria_slides`: **[]**
 
 ## Lock
 
 - Master: one static **3:4 @ 4K** PNG, **grid_3x3**, row-major 01–09.
-- Slice: **seam**, thin white gutters at 1/3 and 2/3.
-- Palette: `#111111` / `#ff006e` / `#ffffff` / soft gold.
-- Face: **Виктория.png** only. Eyes green + slight hazel. Hair honey/wheat, darker roots.
-- Victoria in-scene on **1** and **9**, no sticker halo.
-- Product: **app_audio**. Slide 9 huge magenta **СУББОТА** / **WEEKEND**.
+- Slice: **seam**, Excalibur thin white gutters at 1/3 and 2/3.
+- Palette: `#111111`–`#1a1a1a` / `#ff006e` / `#ffffff` / soft gold.
+- Face: **none**. No host. No woman. No Victoria. No presenter.
+- Style lock `animals-viktoria-style-lock.png` = palette / rhythm only — never a face ref.
+- Product: **app_audio**. Slide 9 huge thin magenta script **ПЛАН** / **SLOT**.
+- Copy: verbatim from locked `CAROUSEL_SLIDE_COPY.json`. Do not rewrite.
 
-## Sunday wardrobe (NEW vs 29.08)
+## Object wardrobe (NEW vs 01.09)
 
-| Slide | Look | Pose |
-|-------|------|------|
-| 1 | Rumpled oatmeal weekend-at-home knit + charcoal lounge pants | Sitting 3/4, phone face-down, not hand-on-chin |
-| 9 | Midnight-blue silk slip + open charcoal cardigan | Standing 3/4, hand on cardigan edge |
+| Object | Job |
+|--------|-----|
+| calendar-without-a-day | week grid with no weekday written |
+| empty weekday chips | hollow Thu/Fri evening holds |
+| floating reservation card | hold without a date |
+| coffee cup | still midweek evening |
+| phone face-down | quiet object — not a 23:41 clock hero |
+| magenta tape | torn-paper accent / visual бронь |
 
-Do not copy sheet white cami/jeans/hand-on-chin. Do not copy 29.08 graphite pajama or petrol-teal + espresso jacket.
+Do not reuse Tuesday’s tomorrow-loop clock 23:41 as the cover.
 
 ## Animals
 
 Cat 01/04/07 · Dog 02/03 · Owl 05/06/08 · none on 09.
+
+≥3 animal-metaphor slides (this pack uses 8).
 
 ## Preserve / change / do_not_borrow
 

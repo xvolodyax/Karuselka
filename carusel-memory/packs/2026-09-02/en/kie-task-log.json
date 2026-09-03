@@ -1,0 +1,44 @@
+{
+  "generation_mode": "grid_3x3",
+  "taskId": "0f45adfb5c9cb231b023d43d4fab17b1",
+  "resultUrls": [
+    "https://tempfile.aiquickdraw.com/a2/0f45adfb5c9cb231b023d43d4fab17b1_1788340301740.png"
+  ],
+  "prompt": "No host, no woman, no Victoria, no presenter portrait. Без лица ведущей. Животные, объекты и типографика.\nMaster 3:4 @ 4K, сетка 3x3 из 9 панелей 3:4, row-major 01–09.\nСтиль: animals_viktoria_collage. Графит #111111–#1a1a1a, маджента #ff006e, белый #ffffff, золото.\nСетка: slice_method seam, тонкие белые желоба (thin white gutters) на 1/3 и 2/3. Отступы ≥12% от линий реза и краёв. Текст не у нижнего края.\nТипографика: verbatim-текст, без лишних надписей, без подписи Victoria. Крупный белый гротеск, рукописный маджента.\n\nПанели 01–09:\n01 (hook): \"Monday: \\\"this week\\\". Wednesday. No day.\" Кот, calendar-without-a-day, маджента-скотч, телефон экраном вниз.\n02 (pain): \"Thursday and Friday nights are frozen\" / \"The week is half gone. Evenings sit on hold. You decline other plans because his \\\"this week\\\" is taking up space.\" Пёс, пустые фишки.\n03 (mistake): \"The mistake: waiting for a last-minute ping\" / \"You tell yourself he is busy and will reach out last minute. You hand your calendar to someone who never opened his.\" Пёс.\n04 (mechanism): \"\\\"This week\\\" books you with zero cost\" / \"He gets the credit of showing interest. You get the wait. Cancelling costs him nothing: no day was set.\" Кот, карточка брони.\n05 (decoder): \"What he says vs what it means\" / \"\\\"Let's catch up this week\\\" → you hear \\\"he misses me\\\" → reality: keeping you warm at zero cost. \\\"I'll text closer to the weekend\\\" → you hear \\\"he's flexible\\\" → reality: you are option B if nothing better appears.\" Сова.\n06 (checklist): \"3 signs of a real invitation\" / \"1) A specific day is named. 2) A time or place is proposed. 3) He asks if it fits your schedule. Anything else is placeholder noise.\" Сова.\n07 (rule): \"No day by evening — week is yours\" / \"If there is no day and time by Wednesday evening, your week is closed to him. Make plans without waiting for a ping.\" Кот.\n08 (recap): \"He books your time, not your anxiety\" / \"Someone who wants to see you puts a slot on the calendar. Someone who does not holds your week as a question mark.\" Сова.\n09 (cta): \"Comment SLOT\" / \"Audio reading in my app. Essence–Shadow–Vector.\" Рукописный \"SLOT\" маджента, кофе, телефон экраном вниз, маджента-скотч, карточка брони.\n\nИзбегать: host portrait, woman face, female presenter, Victoria portrait, Victoria face, Alena, human model, foreign faces, sticker halo, die-cut, white outline around animals, cutout, zero-gutter touching cells, horizontal strip, 2x3 grid, sheet clothes, white cami, ivory blazer, jeans, platinum hair, white-blonde hair, skulls, blood, dripping candles, ouija, horror, blurry, low resolution, duplicate text, extra slogans, watermark, Portuguese text, bot spreads, Academy",
+  "aspect_ratio": "3:4",
+  "aspect_ratio_requested": "3:4",
+  "aspect_ratio_fallback": false,
+  "aspect_ratio_fallback_reason": null,
+  "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3
+  },
+  "slide_count": 9,
+  "source_path": "/workspace/carusel-memory/output/master/source.png",
+  "source_clean_path": null,
+  "slides_dir": "/workspace/carusel-memory/output/slides",
+  "animate_slide": 1,
+  "slice_method": "seam",
+  "slice_status": "ok",
+  "gutter_cleanup": {
+    "enabled": false,
+    "method": "near-white pixels on exact cut-lines; no crop, no resize",
+    "strip": 5,
+    "report": "/workspace/carusel-memory/output/debug/remove-grid-gutters-report.json"
+  },
+  "edge_cleanup": {
+    "enabled": true,
+    "method": "copy interior pixels over outer edge strips after slice; no crop, no resize",
+    "strip": 10,
+    "report": "/workspace/carusel-memory/output/debug/clean-slide-edges-report.json",
+    "leftover_gutter_px": 0,
+    "status": "ok"
+  },
+  "gutter_qa": {
+    "enabled": true,
+    "report": "/workspace/carusel-memory/output/debug/grid-gutter-qa-clean.json",
+    "mode": "seam",
+    "status": "ok"
+  }
+}

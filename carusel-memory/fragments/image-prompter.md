@@ -1,26 +1,21 @@
-dispatched_via: Task(generalPurpose)
-dispatch_id: 092303bb6b314cac95d5a37b2870d354
-incident_report: none
-HANDOFF_NEXT: slice
-written_by: gemini
-
 === CARUSEL-IMAGE-PROMPTER ===
 Статус: ✅ OK
-Face Lock: Виктория.png (green with slight hazel eyes, honey blonde + darker roots)
-Mode: grid_3x3 3:4 @ 4K (static PNG)
-Slice method: seam (thin white gutters at 1/3 and 2/3)
-Prompt char count RU: 1960 (target 1900–2100, max 2200)
-Prompt char count EN: 2097 (target 1900–2100, max 2200)
-Trigger RU: СУББОТА (slide 09 huge magenta)
-Trigger EN: WEEKEND (slide 09 huge magenta)
-Product: app_audio (Суть – Тень – Вектор)
-Wardrobe 01: oatmeal knit + charcoal lounge pants, sitting 3/4 on dark sofa, phone face-down, cat
-Wardrobe 09: midnight-blue silk slip + open charcoal cardigan, standing 3/4, no animals
+dispatched_via: Task(generalPurpose)
+dispatch_id: 8c29e05c8bcb4055adfe86b35ba02fee
+written_by: gemini
+incident_report: none
+HANDOFF_NEXT: slice
 
-Файлы:
-- /workspace/carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md
-- /workspace/carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md
-- /workspace/carusel-memory/packs/2026-08-30/ru/CAROUSEL_IMAGE_PROMPT.json
-- /workspace/carusel-memory/packs/2026-08-30/en/CAROUSEL_IMAGE_PROMPT.json
+## Summary
+- **Prompt RU Character Count:** 2085 / 2200 max (`CAROUSEL_IMAGE_PROMPT.json`)
+- **Prompt EN Character Count:** 2186 / 2200 max (`en/CAROUSEL_IMAGE_PROMPT.json`)
+- **Slice Method:** `seam` (Excalibur thin white gutters at 1/3 and 2/3)
+- **Face Lock:** `none` (no host portrait, no Victoria, no presenter portrait, animals + objects + typography only)
+- **Reference Upload:** Fresh HTTPS upload via `KieFileUploadClient.upload_stream()`: `https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png`
+- **Product & CTA:** `app_audio` (RU: `ПЛАН` → Direct аудиоразбор в приложении: Суть – Тень – Вектор / EN: `SLOT` → Direct audio reading in the app: Essence–Shadow–Vector). No bot prize, no 3 free spreads.
+- **Objects:** calendar-without-a-day, empty weekday chips, floating reservation card, coffee cup, phone face-down, magenta tape (NOT yesterday's 23:41 clock hero).
+- **Artifacts:**
+  - `carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json`
+  - `carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md`
+  - `carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json`
+  - `carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md`
