@@ -1,0 +1,65 @@
+{
+  "pack_id": "2026-09-03",
+  "date": "2026-09-03",
+  "slot": "11:10 MSK",
+  "topic": {
+    "ru": "Он пишет только после полуночи — днём тебя нет",
+    "en": "He only writes after midnight — by day you don't exist"
+  },
+  "note": "New Thursday midnight-window pair. Face lock none. Static 9 PNG slides only — no Grok/motion/animate. Posts are not live yet. Do not set already_live true.",
+  "live_posts_do_not_touch": {
+    "ru": [
+      "https://www.instagram.com/p/Dci-EP1ErI-/",
+      "https://www.instagram.com/p/DclVIfUoDqQ/",
+      "https://www.instagram.com/p/Dcnrh0nm7pp/",
+      "https://www.instagram.com/p/DcqJGCblQqv/",
+      "https://www.instagram.com/p/Dcqh0UnG48J/"
+    ],
+    "en": [
+      "https://www.instagram.com/p/Dci-ozwAH4l/",
+      "https://www.instagram.com/p/DclVSGMGwAj/",
+      "https://www.instagram.com/p/Dcnrht_lVca/",
+      "https://www.instagram.com/p/DcqJS--m0op/"
+    ]
+  },
+  "already_live": false,
+  "visual_family": "animals_viktoria_collage",
+  "face_lock": "none",
+  "host_portrait": false,
+  "slice_method": "seam",
+  "product": "app_audio",
+  "cta_style": "comment_trigger",
+  "trigger_words": {
+    "ru": "ПОЛНОЧЬ",
+    "en": "MIDNIGHT"
+  },
+  "langs": ["ru", "en"],
+  "publish_requested": true,
+  "publish_actor": "Director via Composio aliases instagram-ru and instagram-en after GATE",
+  "skip_motion": true,
+  "skip_animate": true,
+  "skip_glavred": true,
+  "profiles": {
+    "ru": {
+      "brand": "ТАРО СЕЙЧАС",
+      "handle": "@todaytaro_ru",
+      "slogan": "Ясность сейчас"
+    },
+    "en": {
+      "brand": "Today Tarot",
+      "handle": "@todaytaro_bot",
+      "slogan": "Clarity now",
+      "no_academy": true
+    }
+  },
+  "swarm": {
+    "mode": "live",
+    "dispatch": "Task(generalPurpose) one step each",
+    "text_model": "gemini-3.7-flash-high",
+    "written_by": "gemini",
+    "pixels": "Kie via kie_carousel_gen.py",
+    "publish": "composio instagram-ru + instagram-en after upload",
+    "motion": "skipped",
+    "animate": "skipped"
+  }
+}
