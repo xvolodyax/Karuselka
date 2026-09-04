@@ -1,11 +1,11 @@
-# Carusel brief — ТАРО СЕЙЧАС / Today Tarot — 2026-08-30 slot 11:10 MSK
+# Carusel brief — ТАРО СЕЙЧАС / Today Tarot — 2026-09-04 slot 11:10 MSK
 
 lang: ru
 topic: Он пропадает на выходных — будни тёплые, суббота пустая
 handle: @todaytaro_ru
 publish_requested: true
 visual_family: animals_viktoria_collage
-face_lock: Виктория.png
+face_lock: none
 slice_method: seam
 cta_style: comment_trigger
 trigger_word: СУББОТА
@@ -24,10 +24,9 @@ bilingual_pair: true
 en_handle: @todaytaro_bot
 en_brand: Today Tarot
 slot: 11:10 MSK
-date: 2026-08-30
-late: true
-pack_id: 2026-08-30
-**run_id:** 2026-08-30-1110
+date: 2026-09-04
+pack_id: 2026-09-04
+**run_id:** 2026-09-04-1110
 
 ## Intake
 
@@ -41,13 +40,13 @@ pack_id: 2026-08-30
 
 ## One swarm, one chain (this run)
 
-researcher (Gemini 3.7) → Gemini copywriter (9 RU + RU caption AND 9 EN + EN caption) → designer → Gemini image-prompter → slice (Kie pixels) → skip motion → skip animate → design-guardian + FACE_CHECK vs Виктория.png → upload → publish via Composio aliases instagram-ru + instagram-en
+researcher (Gemini via inherit) → Gemini copywriter (9 RU + RU caption AND 9 EN + EN caption, via inherit) → designer → Gemini image-prompter → slice (Kie pixels) → skip motion → skip animate → design-guardian + FACE_CHECK ABSENT (no host portrait) → upload → publish via Composio aliases instagram-ru + instagram-en
 
 SKIP this run: motion-director, animate/Grok video, Glavred, Telegram.
 
 Static 9 slides per language. Slide-01 is PNG, not MP4. No video, no animation.
 
-Hall does not write, draw, review slides, or publish. Director publishes after GATE PASS + FACE MATCH.
+Hall does not write, draw, review slides, or publish. Director publishes after GATE PASS + FACE_CHECK ABSENT.
 
 ## Topic lock (Gemini researcher locks the exact hook)
 
@@ -80,17 +79,14 @@ Do not write «личный аудиоразбор». EN: no Academy.
 
 ## Face + cut
 
-- i2i ONLY `carusel-memory/references/Виктория.png` (2 191 823 bytes, 1341×1173; one woman, 12 angles)
-- NEVER i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`, or `animals-viktoria-style-lock.png` as a face
-- Eyes green with a slight hazel tint on every slide
-- Hair: warm honey/wheat blonde, darker roots; platinum = reject, rebuild the whole canvas
-- New clothes and pose; do not copy sheet outfits
+- No host portrait on any slide (face_lock: none). Do not put any presenter portrait in generation.
+- NEVER i2i `Виктория.png`, `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`, or `animals-viktoria-style-lock.png` as a face
 - Seam slice: Excalibur white gutters at 1/3 and 2/3
 - On CROOKED CANVAS: regen whole master, never patch one cell
 
 ## Publish
 
-After GATE PASS + FACE_CHECK MATCH vs Виктория.png: publish yourself via Composio aliases `instagram-ru` (@todaytaro_ru) and `instagram-en` (@todaytaro_bot).
+After GATE PASS + FACE_CHECK ABSENT (no host portrait): publish yourself via Composio aliases `instagram-ru` (@todaytaro_ru) and `instagram-en` (@todaytaro_bot).
 Do not wait for Hall. Do not send to Telegram. Do not log into Instagram in a browser.
 
-GATE FAIL (bot-offer on slide 9, wrong face, video, duplicate code word, missing 9+9): stop, do not publish.
+GATE FAIL (bot-offer on slide 9, host face on slide, video, duplicate code word, missing 9+9): stop, do not publish.

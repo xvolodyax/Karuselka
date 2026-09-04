@@ -1,9 +1,10 @@
 # Carusel — новая сессия
 
-Slot: 2026-08-30 11:10 MSK (late, deliver today)
+Slot: 2026-09-04 11:10 MSK
 Pair: RU @todaytaro_ru + EN @todaytaro_bot
-Face lock: Виктория.png only
-Static PNG only. Publish after GATE via Composio.
+Face lock: none (no host portrait, без лица Вики)
+Static PNG only (9+9). Publish after GATE via Composio aliases instagram-ru and instagram-en.
+Model policy: Parent Gemini 3.8 Flash High -> workers model="inherit" (NO slug gemini-3.8-flash in Task). NO default fallback.
 
 === CARUSEL-RESEARCHER ===
 Статус: ✅ OK

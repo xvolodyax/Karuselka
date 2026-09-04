@@ -88,16 +88,16 @@ Caption chars: N
 incident_report: none
 ```
 
-## Модель и правила (Владимир 03.09.2026)
+## Модель и правила (Владимир 03.09.2026 + 04.09.2026)
 
-- **Модель:** только Gemini 3.8 Flash High: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
+- **Модель:** `model="inherit"` (наследует Gemini родителя `gemini-3.8-flash` + `reasoning_effort=high`). Не передавать slug `gemini-3.8-flash` в Task (отсутствует в каталоге воркеров).
 - **written_by: gemini** обязательно в `CAROUSEL_SLIDE_COPY.json`, `CAROUSEL_CAPTION.json`, `CAROUSEL_CAPTION.md`, fragment.
 - **NO DEFAULT FALLBACK:** дефолтный агент / director НИКОГДА не пишет captions/slides/CTA сам при недоступной Gemini. Никакого fallback на дефолтную модель (Claude, Sonnet, Opus, Composer, GPT) — только FAIL.
 
 ## Запреты
 
 - Дефолтному агенту / директору запрещено писать captions/slides/CTA при недоступной Gemini (только FAIL).
-- Запрещено использовать любые модели кроме Gemini 3.8 Flash High для текстов.
+- Запрещено использовать любые модели кроме Gemini (через inherit) для текстов.
 
 ## Конец задачи
 
