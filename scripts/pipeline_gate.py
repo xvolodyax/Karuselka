@@ -3,6 +3,10 @@
 
 Director may orchestrate. Director may not silently do worker steps.
 Each worker step needs a Task(...) dispatch record plus artifacts + fragment.
+
+CLI, not a novel. Director: run commands. Do not re-read this file in a loop.
+If status says STALE_LEDGER or next=new-day → run `new-day`, then spawn Task.
+If Task is missing or publish auth fails → `hole` and STOP.
 """
 
 from __future__ import annotations
@@ -59,9 +63,12 @@ LEGAL_SKIP = {
 }
 SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | re.I)
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
-GEMINI_MODEL = "gemini-3.8-flash"
+GEMINI_PARENT_MODEL = "gemini-3.8-flash"
+GEMINI_WORKER_MODEL = "inherit"
+GEMINI_MODEL = GEMINI_WORKER_MODEL
 GEMINI_REASONING_EFFORT = "high"
-GEMINI_MODELS = frozenset({"gemini-3.8-flash", "gemini-3.8-flash-high"})
+GEMINI_MODELS = frozenset({GEMINI_WORKER_MODEL})
+GEMINI_SLUG_FORBIDDEN = frozenset({"gemini-3.8-flash", "gemini-3.8-flash-high"})
 GEMINI_WRITERS = frozenset(
     {
         "gemini",
@@ -93,6 +100,13 @@ OPEN_INCIDENT_RE = re.compile(r"^status:\s+open\s*$", re.M | re.I)
 LANG_RE = re.compile(r"^lang:\s*(ru|en)\s*$", re.M | re.I)
 HANDLE_RE = re.compile(r"^handle:\s*(@\S+)\s*$", re.M | re.I)
 PUBLISH_RE = re.compile(r"^publish_requested:\s*(true|false)\s*$", re.M | re.I)
+BRIEF_DATE_RE = re.compile(r"^date:\s*(\S+)\s*$", re.M | re.I)
+PACK_ID_RE = re.compile(r"^pack_id:\s*(\S+)\s*$", re.M | re.I)
+RUN_ID_LINE_RE = re.compile(r"^(?:\*\*)?run_id:(?:\*\*)?\s*(\S+)\s*$", re.M | re.I)
+ISO_DATE_RE = re.compile(r"(\d{4}-\d{2}-\d{2})")
+YMD_COMPACT_RE = re.compile(r"(?<!\d)(\d{4})(\d{2})(\d{2})(?!\d)")
+DIRECTOR_ONCE = "shared/director-once.md"
+NO_REREAD = ("scripts/pipeline_gate.py", "scripts/composio_instagram_publish.py")
 
 
 def utc_now() -> str:
@@ -164,10 +178,104 @@ def is_gemini_writer(value: Any) -> bool:
 def written_by_error(rel: str, value: Any) -> str:
     return (
         f"{rel} written_by must be gemini (got {value!r}). "
-        "Hall/Director: spawn researcher+copywriter with model=gemini-3.8-flash and reasoning_effort=high. "
-        "Note: in Cloud Agents there is NO id gemini-3.8-flash-high. "
+        "Hall/Director: spawn researcher+copywriter with model=inherit "
+        f"(parent is {GEMINI_PARENT_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT}). "
+        "Do NOT pass gemini-3.8-flash slug to Task — it is not in the worker catalog. "
         "Director / default agent must NEVER author slides/captions/CTA. Only FAIL. No default fallback."
     )
+
+
+def extract_iso_date(value: Any) -> str | None:
+    text = str(value or "").strip()
+    if not text or text.upper() == "PENDING":
+        return None
+    iso = ISO_DATE_RE.search(text)
+    if iso:
+        return iso.group(1)
+    compact = YMD_COMPACT_RE.search(text)
+    if compact:
+        return f"{compact.group(1)}-{compact.group(2)}-{compact.group(3)}"
+    return None
+
+
+def today_iso() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
+def print_director_banner() -> None:
+    print(f"DIRECTOR_ONCE={DIRECTOR_ONCE}")
+    print("DO_NOT_REREAD=" + " ".join(NO_REREAD))
+    print("CLI_ONLY=1")
+    print(f"parent_canon={GEMINI_PARENT_MODEL} reasoning_effort={GEMINI_REASONING_EFFORT}")
+    print(f"worker_model={GEMINI_WORKER_MODEL}")
+
+
+def archive_file(src: Path, dest: Path) -> None:
+    if not src.is_file():
+        return
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+
+
+def stamp_brief_dates(text: str, date: str, run_id: str, pack_id: str) -> str:
+    replacements = (
+        (BRIEF_DATE_RE, f"date: {date}"),
+        (PACK_ID_RE, f"pack_id: {pack_id}"),
+        (re.compile(r"^\*\*run_id:\*\*\s*\S+\s*$", re.M | re.I), f"**run_id:** {run_id}"),
+        (re.compile(r"^run_id:\s*\S+\s*$", re.M | re.I), f"run_id: {run_id}"),
+    )
+    out = text
+    for pattern, repl in replacements:
+        if pattern.search(out):
+            out = pattern.sub(repl, out, count=1)
+    if not BRIEF_DATE_RE.search(out):
+        out = out.rstrip() + f"\n\ndate: {date}\npack_id: {pack_id}\nrun_id: {run_id}\n"
+    return out
+
+
+def pending_handoff_text(date: str) -> str:
+    return "\n".join(
+        [
+            "# Carusel — новая сессия",
+            "",
+            f"Slot: {date} (pending new-day)",
+            "Pair: RU @todaytaro_ru + EN @todaytaro_bot",
+            "Face lock: none (без лица Вики)",
+            "Static PNG only (9+9). CTA = app audio, not bot.",
+            f"Model policy: parent {GEMINI_PARENT_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT};",
+            f"text Task workers model={GEMINI_WORKER_MODEL}. NO slug gemini-3.8-flash. NO Claude/GPT fallback.",
+            "Archive Instagram permalinks are FORBIDDEN as today's report.",
+            "",
+            "=== CARUSEL-RESEARCHER ===",
+            "Статус: pending",
+            "",
+        ]
+    )
+
+
+def stale_reason(workspace: Path, ledger: dict[str, Any], today: str | None = None) -> str | None:
+    today = today or today_iso()
+    ledger_date = extract_iso_date(ledger.get("run_id"))
+    brief_date = None
+    brief_path_ok = brief_path(workspace).is_file()
+    if brief_path_ok:
+        brief_text = brief_path(workspace).read_text(encoding="utf-8")
+        date_m = BRIEF_DATE_RE.search(brief_text)
+        if date_m:
+            raw = date_m.group(1)
+            brief_date = None if raw.upper() == "PENDING" else extract_iso_date(raw)
+    all_done = first_pending(ledger) is None
+    if brief_date and ledger_date and brief_date != ledger_date:
+        return f"brief date {brief_date} != ledger run_id date {ledger_date}"
+    if all_done and ledger_date and ledger_date != today:
+        return f"ledger {ledger.get('run_id')} is complete for {ledger_date}, today={today}"
+    if all_done and brief_date is None and ledger_date:
+        return f"ledger {ledger.get('run_id')} is complete; brief date is PENDING — run new-day"
+    if all_done and ledger_date:
+        pack_dir = memory_dir(workspace) / "packs" / ledger_date
+        if not pack_dir.is_dir():
+            return f"ledger claims done for {ledger_date} but pack dir missing"
+    return None
 
 
 def empty_step_state(step_id: str) -> dict[str, Any]:
@@ -244,6 +352,10 @@ def parse_brief(workspace: Path) -> dict[str, Any]:
     # Owner lock: Instagram carousels are static PNGs unless Hall asks for video.
     skip_motion = skip_flags.get("motion", True)
     skip_animate = skip_flags.get("animate", True)
+    date_m = BRIEF_DATE_RE.search(text)
+    pack_m = PACK_ID_RE.search(text)
+    run_m = RUN_ID_LINE_RE.search(text)
+    raw_date = date_m.group(1) if date_m else None
     return {
         "lang": lang,
         "handle": handle,
@@ -251,6 +363,9 @@ def parse_brief(workspace: Path) -> dict[str, Any]:
         "skip_motion": skip_motion,
         "skip_animate": skip_animate,
         "static_png_only": skip_motion and skip_animate,
+        "date": None if not raw_date or raw_date.upper() == "PENDING" else extract_iso_date(raw_date),
+        "pack_id": pack_m.group(1) if pack_m else None,
+        "run_id": run_m.group(1) if run_m else None,
         "text": text,
     }
 
@@ -309,7 +424,14 @@ def infer_dispatch_mode(via: str) -> str:
     return "unknown"
 
 
-def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run_id: str | None) -> int:
+def cmd_init(
+    workspace: Path,
+    repo_root: Path,
+    lang: str,
+    topic: str | None,
+    run_id: str | None,
+    force: bool = False,
+) -> int:
     if lang not in ALLOWED_LANG:
         raise SystemExit("lang must be ru|en")
     topic = topic or DEFAULT_TOPICS[lang]
@@ -325,11 +447,24 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
     ledger = new_ledger(lang, topic, run_id)
     if ledger_path(workspace).is_file():
         existing = load_ledger(workspace)
-        if existing.get("steps", {}).get("researcher", {}).get("status") not in {None, "pending"}:
+        started = existing.get("steps", {}).get("researcher", {}).get("status") not in {
+            None,
+            "pending",
+        }
+        if started and not force:
             raise SystemExit(
-                "ledger already has a started run. Start a new workspace/run "
-                "or delete carusel-memory/pipeline-ledger.json after user OK."
+                "ledger already has a started run. Run: "
+                "python scripts/pipeline_gate.py --workspace . new-day --date YYYY-MM-DD --lang ru "
+                "or init --force. Do not re-read this file."
             )
+        if started and force:
+            stamp = utc_now().replace(":", "")
+            old_id = existing.get("run_id") or "prev"
+            archive_file(
+                ledger_path(workspace),
+                mem / "archive" / f"ledger-{old_id}-{stamp}.json",
+            )
+            ledger_path(workspace).unlink()
     save_ledger(workspace, ledger)
 
     if not brief_path(workspace).is_file():
@@ -354,6 +489,9 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
                     "slide_01: static_png",
                     "skip_motion: true",
                     "skip_animate: true",
+                    "date: PENDING",
+                    "pack_id: PENDING",
+                    "run_id: PENDING",
                     "",
                     "## Intake",
                     "- audience:",
@@ -419,11 +557,23 @@ def cmd_init(workspace: Path, repo_root: Path, lang: str, topic: str | None, run
 
 def cmd_status(workspace: Path, repo_root: Path) -> int:
     ledger = load_ledger(workspace)
+    print_director_banner()
     print(f"run_id={ledger.get('run_id')} lang={ledger.get('lang')} handle={ledger.get('handle')}")
     print(
         f"mode={ledger.get('mode', 'live')} dispatch_mode={ledger.get('dispatch_mode')} "
         f"publish_requested={ledger.get('publish_requested')}"
     )
+    stale = stale_reason(workspace, ledger)
+    if stale:
+        print("STALE_LEDGER=1")
+        print(f"stale_reason={stale}")
+        print("next=new-day")
+        print(
+            "command: python scripts/pipeline_gate.py --workspace . new-day "
+            f"--date {today_iso()} --lang {ledger.get('lang') or 'ru'}"
+        )
+        print("STOP. Do not re-read this file. Run new-day, then Task researcher model=inherit.")
+        return 0
     for spec in load_steps(repo_root):
         state = ledger["steps"][spec["id"]]
         status = state.get("status") or "pending"
@@ -433,6 +583,9 @@ def cmd_status(workspace: Path, repo_root: Path) -> int:
         print(f"- {spec['id']:18} {status:10} via={via}{extra}")
     nxt = first_pending(ledger)
     print(f"next={nxt or 'done'}")
+    if nxt in GEMINI_STEPS:
+        print(f"spawn=Task(generalPurpose, model={GEMINI_WORKER_MODEL})")
+        print("IF_NO_TASK: python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'")
     return 0
 
 
@@ -445,6 +598,18 @@ def first_pending(ledger: dict[str, Any]) -> str | None:
 
 def cmd_next(workspace: Path, repo_root: Path) -> int:
     ledger = load_ledger(workspace)
+    stale = stale_reason(workspace, ledger)
+    if stale:
+        print_director_banner()
+        print("STALE_LEDGER=1")
+        print(f"stale_reason={stale}")
+        print("next=new-day")
+        print(
+            "command: python scripts/pipeline_gate.py --workspace . new-day "
+            f"--date {today_iso()} --lang {ledger.get('lang') or 'ru'}"
+        )
+        print("STOP. Do not re-read this file. Do not treat archive Instagram URLs as today.")
+        return 0
     nxt = first_pending(ledger)
     if nxt is None:
         print("next=done")
@@ -454,10 +619,13 @@ def cmd_next(workspace: Path, repo_root: Path) -> int:
     print(f"role={spec['role']}")
     print(f"plugin_task=Task({spec['task_name']})")
     if nxt in GEMINI_STEPS:
-        print(f"required_model={GEMINI_MODEL}")
+        print(f"required_model={GEMINI_WORKER_MODEL}")
+        print(f"parent_canon={GEMINI_PARENT_MODEL}")
         print(f"reasoning_effort={GEMINI_REASONING_EFFORT}")
         print("caption_is_copywriter_job=true" if nxt == "copywriter" else "research_only=true")
         print("default_fallback=FAIL (director/default agent must NEVER write text)")
+        print(f"spawn=Task(generalPurpose, model={GEMINI_WORKER_MODEL})")
+        print("IF_NO_TASK: python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'")
     else:
         print("cloud_fallback=Task(generalPurpose)")
     print(f"skill={spec['skill']}")
@@ -497,11 +665,17 @@ def cmd_record_dispatch(
     dispatch_id = uuid.uuid4().hex
     resolved_model = model
     if step_id in GEMINI_STEPS:
-        resolved_model = (model or GEMINI_MODEL).strip()
+        resolved_model = (model or GEMINI_WORKER_MODEL).strip()
+        if resolved_model in GEMINI_SLUG_FORBIDDEN:
+            raise SystemExit(
+                f"{step_id} must spawn with model={GEMINI_WORKER_MODEL} (parent {GEMINI_PARENT_MODEL}). "
+                f"Slug {resolved_model!r} is not in the Task worker catalog. "
+                "Default agent / director fallback is forbidden. Only FAIL."
+            )
         if resolved_model not in GEMINI_MODELS:
             raise SystemExit(
-                f"{step_id} must spawn with model={GEMINI_MODEL} and reasoning_effort={GEMINI_REASONING_EFFORT}, got {resolved_model!r}. "
-                "Note: in Cloud Agents there is NO id gemini-3.8-flash-high. "
+                f"{step_id} must spawn with model={GEMINI_WORKER_MODEL} (inheriting parent Gemini "
+                f"{GEMINI_PARENT_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT}), got {resolved_model!r}. "
                 "Default agent / director fallback is forbidden. Only FAIL."
             )
     step_data: dict[str, Any] = {
@@ -524,7 +698,10 @@ def cmd_record_dispatch(
         print(f"model={resolved_model}")
         if step_id in GEMINI_STEPS:
             print(f"reasoning_effort={GEMINI_REASONING_EFFORT}")
-    print("now call Task, then: pipeline_gate.py verify --step", step_id)
+    print(f"now call Task(generalPurpose, model={resolved_model or GEMINI_WORKER_MODEL})")
+    print("IF_NO_TASK: python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'")
+    print("then: pipeline_gate.py verify --step", step_id)
+    print("DO_NOT_REREAD this file. Packet is in carusel-memory/dispatches/ after dispatch-prompt.")
     return 0
 
 
@@ -848,18 +1025,20 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
             break
         prev_artifacts.extend(item.get("required_artifacts") or [])
     extra_hard: list[str] = [
-        "- Read shared/swarm-spawn-contract.md and shared/director-dispatch-contract.md.",
+        "- Already-read: execute THIS step only. Do not re-read scripts/pipeline_gate.py.",
+        "- Do not re-read scripts/composio_instagram_publish.py.",
     ]
     if step_id in GEMINI_STEPS:
         extra_hard.append(
-            f"- required_model: model={GEMINI_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT}. "
-            f"Spawn Task(generalPurpose, model={GEMINI_MODEL}, reasoning_effort={GEMINI_REASONING_EFFORT}) "
-            f"or Task({PLUGIN_TASK[step_id]}) with that model. Note: in Cloud Agents there is NO id gemini-3.8-flash-high; "
-            f"the model parameter is strictly {GEMINI_MODEL} with reasoning_effort={GEMINI_REASONING_EFFORT}. Do not inherit Director model."
+            f"- required_model: inherit (parent Gemini {GEMINI_PARENT_MODEL} + "
+            f"reasoning_effort={GEMINI_REASONING_EFFORT}). "
+            f"Spawn Task(generalPurpose, model={GEMINI_WORKER_MODEL}). "
+            "Do NOT pass gemini-3.8-flash slug to worker. Inherit Gemini from parent."
         )
         extra_hard.append(
-            f"- Refuse if spawned on any model other than {GEMINI_MODEL} with reasoning_effort={GEMINI_REASONING_EFFORT}. "
-            "NO DEFAULT FALLBACK: if Gemini is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself."
+            "- Refuse if spawned on Claude/GPT/Composer/Grok or any non-Gemini inherit. "
+            "NO DEFAULT FALLBACK: if Gemini is unavailable, FAIL immediately. "
+            "Director/default agent must NEVER write slides/caption/CTA himself."
         )
     if step_id == "copywriter":
         extra_hard.append(
@@ -936,7 +1115,7 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
         )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (
-        f"Task(generalPurpose, model={GEMINI_MODEL}, reasoning_effort={GEMINI_REASONING_EFFORT}) [NO DEFAULT FALLBACK]"
+        f"Task(generalPurpose, model={GEMINI_WORKER_MODEL}) [NO DEFAULT FALLBACK - inherit parent Gemini]"
         if step_id in GEMINI_STEPS
         else "Task(generalPurpose) — real Task, not Director inline"
     )
@@ -946,16 +1125,15 @@ SPAWN
 step: {step_id}
 via: {state['dispatched_via']}
 cloud_fallback: {spawn_line}
-required_model: {state.get('model') or (GEMINI_MODEL if step_id in GEMINI_STEPS else 'inherit')}
+required_model: {state.get('model') or GEMINI_WORKER_MODEL}
 reasoning_effort: {state.get('reasoning_effort') or (GEMINI_REASONING_EFFORT if step_id in GEMINI_STEPS else 'none')}
 
 HARD RULES
 - Do only this step ({step_id}). Do not start the next role.
-- Read and follow {spec['skill']} and {spec['agent']} verbatim.
-- Read shared/taro-seichas-canon.md, shared/animals-viktoria-collage.md,
-  shared/agent-pipeline-pitfalls.md and shared/locale-brand-contract.md.
+- Follow {spec['skill']} and {spec['agent']} (inlined below). Do not re-open pipeline_gate.py.
+- Canon already inlined: no host portrait, 9+9 static PNG, CTA = app audio not bot.
 {extra_hard_block}
-- NO DEFAULT FALLBACK: if Gemini ({GEMINI_MODEL}) is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself.
+- NO DEFAULT FALLBACK: if Gemini is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself.
 - lang={brief['lang']}. Brand handle={brief['handle']}.
 - Write artifacts only to the paths listed below.
 - End with fragment {spec['fragment']}.
@@ -1257,7 +1435,7 @@ def cmd_dry_run(
 
     for step_id in DRY_RUN_WORKERS:
         via = "Task(generalPurpose)"
-        model = GEMINI_MODEL if step_id in GEMINI_STEPS else None
+        model = GEMINI_WORKER_MODEL if step_id in GEMINI_STEPS else None
         rc = cmd_record_dispatch(workspace, repo_root, step_id, via, model=model)
         if rc != 0:
             return rc
@@ -1285,8 +1463,9 @@ def cmd_dry_run(
     print("publish: skipped (publish-not-requested)")
     print("fixic: skipped (no-open-incidents)")
     print(
-        f"researcher+copywriter+caption model: {GEMINI_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT} "
-        "(in Cloud Agents there is NO id gemini-3.8-flash-high; no default fallback)"
+        f"researcher+copywriter+caption model: {GEMINI_WORKER_MODEL} "
+        f"(parent {GEMINI_PARENT_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT}; "
+        "no slug, no default fallback)"
     )
     print(
         "steps recorded: researcher copywriter designer image-prompter slice "
@@ -1309,6 +1488,11 @@ def build_parser() -> argparse.ArgumentParser:
     init.add_argument("--lang", required=True, choices=ALLOWED_LANG)
     init.add_argument("--topic", default=None)
     init.add_argument("--run-id", default=None)
+    init.add_argument(
+        "--force",
+        action="store_true",
+        help="Archive a started ledger and start a fresh run (prefer new-day)",
+    )
     sub.add_parser("status")
     sub.add_parser("next")
     rec = sub.add_parser("record-dispatch")
@@ -1317,7 +1501,7 @@ def build_parser() -> argparse.ArgumentParser:
     rec.add_argument(
         "--model",
         default=None,
-        help="Required for researcher/copywriter: gemini-3.8-flash (with reasoning_effort=high; no default fallback)",
+        help="researcher/copywriter: inherit only (parent Gemini). Slug gemini-3.8-flash is forbidden.",
     )
     ver = sub.add_parser("verify")
     ver.add_argument("--step", required=True, choices=STEP_IDS)
@@ -1336,7 +1520,92 @@ def build_parser() -> argparse.ArgumentParser:
     dry.add_argument("--lang", required=True, choices=ALLOWED_LANG)
     dry.add_argument("--topic", default=None)
     dry.add_argument("--force", action="store_true")
+    new_day = sub.add_parser(
+        "new-day",
+        help="Archive a completed/stale ledger and start a pending run for --date",
+    )
+    new_day.add_argument("--date", required=True, help="YYYY-MM-DD slot date")
+    new_day.add_argument("--lang", default="ru", choices=ALLOWED_LANG)
+    new_day.add_argument("--topic", default=None)
+    hole = sub.add_parser(
+        "hole",
+        help="Write FAIL+HOLE and stop. Use when Task is missing or publish auth fails.",
+    )
+    hole.add_argument("--reason", required=True)
     return parser
+
+
+def cmd_new_day(
+    workspace: Path,
+    repo_root: Path,
+    date: str,
+    lang: str,
+    topic: str | None,
+) -> int:
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+        raise SystemExit("new-day --date must be YYYY-MM-DD")
+    if lang not in ALLOWED_LANG:
+        raise SystemExit("lang must be ru|en")
+    topic = topic or DEFAULT_TOPICS[lang]
+    run_id = f"{date}-1110"
+    stamp = utc_now().replace(":", "")
+    mem = memory_dir(workspace)
+    mem.mkdir(parents=True, exist_ok=True)
+    if ledger_path(workspace).is_file():
+        existing = load_json(ledger_path(workspace))
+        old_id = existing.get("run_id") or "prev"
+        archive_file(ledger_path(workspace), mem / "archive" / f"ledger-{old_id}-{stamp}.json")
+        ledger_path(workspace).unlink()
+    if brief_path(workspace).is_file():
+        archive_file(brief_path(workspace), mem / "archive" / f"brief-{stamp}.md")
+    handoff = workspace / ".cursor" / "carusel-handoff.md"
+    if handoff.is_file():
+        archive_file(handoff, mem / "archive" / f"handoff-{stamp}.md")
+    rc = cmd_init(workspace, repo_root, lang, topic, run_id, force=True)
+    if rc != 0:
+        return rc
+    if brief_path(workspace).is_file():
+        stamped = stamp_brief_dates(
+            brief_path(workspace).read_text(encoding="utf-8"),
+            date=date,
+            run_id=run_id,
+            pack_id=date,
+        )
+        write_text_file(brief_path(workspace), stamped)
+    write_text_file(handoff, pending_handoff_text(date))
+    hole = mem / "HOLE.md"
+    if hole.is_file():
+        hole.unlink()
+    print_director_banner()
+    print(f"new-day date={date} run_id={run_id} lang={lang}")
+    print("next=researcher")
+    print(f"spawn=Task(generalPurpose, model={GEMINI_WORKER_MODEL})")
+    print("IF_NO_TASK: python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'")
+    print("DO_NOT_REREAD scripts. Run record-dispatch then dispatch-prompt then Task.")
+    return 0
+
+
+def cmd_hole(workspace: Path, reason: str) -> int:
+    path = memory_dir(workspace) / "HOLE.md"
+    write_text_file(
+        path,
+        "\n".join(
+            [
+                "# HOLE",
+                "status: FAIL",
+                f"reason: {reason}",
+                f"created_at: {utc_now()}",
+                "permalink: FORBIDDEN — do not copy live-posts.json or handoff archive URLs",
+                "loop: STOP. Do not re-read scripts/pipeline_gate.py or scripts/composio_instagram_publish.py.",
+                "",
+            ]
+        ),
+    )
+    print("FAIL")
+    print(f"HOLE={path.as_posix()}")
+    print(f"reason={reason}")
+    print("STOP. Do not reread scripts. Do not substitute archive Instagram URLs.")
+    return 2
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -1344,7 +1613,9 @@ def main(argv: list[str] | None = None) -> int:
     workspace = resolve_workspace(args.workspace)
     repo_root = Path(args.repo_root).expanduser().resolve()
     if args.cmd == "init":
-        return cmd_init(workspace, repo_root, args.lang, args.topic, args.run_id)
+        return cmd_init(
+            workspace, repo_root, args.lang, args.topic, args.run_id, force=args.force
+        )
     if args.cmd == "status":
         return cmd_status(workspace, repo_root)
     if args.cmd == "next":
@@ -1365,6 +1636,10 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_assert_complete(workspace)
     if args.cmd == "dry-run":
         return cmd_dry_run(workspace, repo_root, args.lang, args.topic, args.force)
+    if args.cmd == "new-day":
+        return cmd_new_day(workspace, repo_root, args.date, args.lang, args.topic)
+    if args.cmd == "hole":
+        return cmd_hole(workspace, args.reason)
     raise SystemExit(f"unknown cmd {args.cmd}")
 
 

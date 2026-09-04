@@ -1,15 +1,15 @@
-# Carusel brief — ТАРО СЕЙЧАС / Today Tarot — 2026-08-30 slot 11:10 MSK
+# Carusel brief — ТАРО СЕЙЧАС / Today Tarot — PENDING new-day
 
 lang: ru
-topic: Он пропадает на выходных — будни тёплые, суббота пустая
+topic: ТАРО СЕЙЧАС
 handle: @todaytaro_ru
-publish_requested: true
+publish_requested: false
 visual_family: animals_viktoria_collage
-face_lock: Виктория.png
+face_lock: none
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: СУББОТА
-trigger_word_en: WEEKEND
+trigger_word: PENDING
+trigger_word_en: PENDING
 product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор / Essence–Shadow–Vector)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads
@@ -19,53 +19,60 @@ slide_01: static_png
 skip_motion: true
 skip_animate: true
 skip_glavred: true
-skip_publish: false
+skip_publish: true
 bilingual_pair: true
 en_handle: @todaytaro_bot
 en_brand: Today Tarot
 slot: 11:10 MSK
-date: 2026-08-30
-late: true
-pack_id: 2026-08-30
-**run_id:** 2026-08-30-1110
+date: PENDING
+pack_id: PENDING
+**run_id:** PENDING
+
+## Canon (next swarm)
+
+- Parent: `gemini-3.8-flash` + `reasoning_effort=high`
+- Text Task workers: `model="inherit"` only. No slug `gemini-3.8-flash`. No Claude/GPT/Composer fallback. No Gemini → FAIL + HOLE
+- No host portrait (без лица Вики). FACE_CHECK ABSENT
+- 9+9 static PNG. Slide-01 is PNG
+- CTA = app audio, not bot
+- Director reads `shared/director-once.md` once, then CLI + Task. Do not loop-read gate/publish scripts
+- Archive Instagram permalinks (including 30.08 `DcqJGCblQqv` / `DcqJS--m0op`) are FORBIDDEN as today's report
 
 ## Intake
 
 - audience: женщины 20–50, отношения (~78%). Не целиться в 13–17. Не пугать одиночеством.
 - goal: лиды в приложение через comment trigger → Direct аудиоразбор (Суть – Тень – Вектор / Essence–Shadow–Vector)
-- reference_carousel: family `animals_viktoria_collage`; live 27.08 Pause posts stay; packs `2026-08-27-swarm` (Ping vs step), `2026-08-27-v2` (Pause), `2026-08-28` (Тепло / WARMTH), `2026-08-29` (Ярлыки / СТАТУС / LABELS) are FORBIDDEN repeats
-- slide_copy_notes: auto — Gemini пишет 9 RU + 9 EN + две подписи. Director не пишет слайды.
+- reference_carousel: family `animals_viktoria_collage`; live packs 27.08–30.08 are FORBIDDEN repeats
+- slide_copy_notes: auto — Gemini (inherit) пишет 9 RU + 9 EN + две подписи. Director не пишет слайды.
 - cta_target: header_link — «ссылки в шапке профиля» / «links in the profile». No raw URLs.
-- brand: ТАРО СЕЙЧАС / Today Tarot. Dark + magenta. Victoria face lock = `carusel-memory/references/Виктория.png` only (2 191 823 bytes, 1341×1173). NEVER i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`. Eyes: green with a slight hazel tint, same on every slide. Hair: warm honey/wheat blonde with darker roots, not platinum. New pose and clothes every time; do not copy sheet white cami / jeans / hand-on-chin.
-- caption_preferences: Gemini writes RU caption AND EN caption in the same copywriter step. Product `app_audio`. No Glavred this run.
+- brand: ТАРО СЕЙЧАС / Today Tarot. Dark + magenta. No host portrait.
+- caption_preferences: Gemini writes RU caption AND EN caption in the same copywriter step. Product `app_audio`.
 
 ## One swarm, one chain (this run)
 
-researcher (Gemini 3.7) → Gemini copywriter (9 RU + RU caption AND 9 EN + EN caption) → designer → Gemini image-prompter → slice (Kie pixels) → skip motion → skip animate → design-guardian + FACE_CHECK vs Виктория.png → upload → publish via Composio aliases instagram-ru + instagram-en
+researcher (Gemini via inherit) → copywriter (9 RU + RU caption AND 9 EN + EN caption, via inherit) → designer → image-prompter → slice (Kie pixels) → skip motion → skip animate → design-guardian + FACE_CHECK ABSENT → upload → publish only if Hall set publish_requested true
 
 SKIP this run: motion-director, animate/Grok video, Glavred, Telegram.
 
-Static 9 slides per language. Slide-01 is PNG, not MP4. No video, no animation.
+Hall does not write, draw, review slides, or publish. Start with:
 
-Hall does not write, draw, review slides, or publish. Director publishes after GATE PASS + FACE MATCH.
+```bash
+python scripts/pipeline_gate.py --workspace . new-day --date YYYY-MM-DD --lang ru
+```
 
 ## Topic lock (Gemini researcher locks the exact hook)
 
-Seed for Sunday 30.08 (slot already due): weekend disappearance — weekdays warm, Saturday empty.
-
-Researcher may refine the hook/mechanism but MUST pick a NEW relationship-pain topic.
+Researcher MUST pick a NEW relationship-pain topic. Code word must be new. RU ≠ EN.
 
 FORBIDDEN repeats:
 - «Пауза или конец» / Pause or over
 - «Пинг или шаг» / Ping vs step
-- «Спишь?» after 24 days of silence
-- «Тепло – холодно» / Hot & Cold (pack 2026-08-28)
-- «Зачем вешать ярлыки» / Why Put Labels On It (pack 2026-08-29, live RU https://www.instagram.com/p/Dcnrh0nm7pp/ EN https://www.instagram.com/p/Dcnrht_lVca/)
-- triggers ШАГ / STEP / ПАУЗА / PAUSE / ТЕПЛО / WARMTH / ПРОЧИТАНО / СТАТУС / STATUS / LABELS
-- B18 «парень пропал после близости»
+- «Тепло – холодно» / Hot & Cold (2026-08-28)
+- «Зачем вешать ярлыки» / Why Put Labels On It (2026-08-29)
+- «Он пропадает на выходных» / weekend vacuum (2026-08-30 СУББОТА / WEEKEND)
+- triggers ШАГ / STEP / ПАУЗА / PAUSE / ТЕПЛО / WARMTH / ПРОЧИТАНО / СТАТУС / STATUS / LABELS / СУББОТА / WEEKEND
 
-Code word must be new. RU ≠ EN. Topic-tied. Never reuse yesterday’s STATUS / LABELS / СТАТУС.
-Never use the word «Сцена» on slides or in caption. First slide is the situation itself, no label.
+Never use the word «Сцена» on slides or in caption.
 Write «в моём приложении», never «в нашем приложении».
 
 ## CTA (hard gate)
@@ -73,24 +80,19 @@ Write «в моём приложении», never «в нашем приложе
 Last slide + caption sell the IN-APP audio reading on THIS carousel topic.
 - RU: «Суть – Тень – Вектор»
 - EN: Essence–Shadow–Vector
-Comment a unique code word → Direct gets the app audio.
-Do NOT sell 3 free bot spreads. Do NOT sell the bot. Do NOT write «3 бесплатных расклада».
-No raw URLs in Instagram captions — only «ссылки в шапке профиля» / «links in the profile».
-Do not write «личный аудиоразбор». EN: no Academy.
+Do NOT sell 3 free bot spreads. Do NOT sell the bot.
+No raw URLs — only «ссылки в шапке профиля» / «links in the profile».
 
 ## Face + cut
 
-- i2i ONLY `carusel-memory/references/Виктория.png` (2 191 823 bytes, 1341×1173; one woman, 12 angles)
-- NEVER i2i `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`, `character-sheet-2k`, or `animals-viktoria-style-lock.png` as a face
-- Eyes green with a slight hazel tint on every slide
-- Hair: warm honey/wheat blonde, darker roots; platinum = reject, rebuild the whole canvas
-- New clothes and pose; do not copy sheet outfits
+- No host portrait on any slide (face_lock: none)
+- NEVER i2i `Виктория.png`, `viktoriaref.png`, `victoria-sheet.png`, `victoria.png`, `victoria_ref.jpg`, `alena*.png`
 - Seam slice: Excalibur white gutters at 1/3 and 2/3
 - On CROOKED CANVAS: regen whole master, never patch one cell
 
 ## Publish
 
-After GATE PASS + FACE_CHECK MATCH vs Виктория.png: publish yourself via Composio aliases `instagram-ru` (@todaytaro_ru) and `instagram-en` (@todaytaro_bot).
-Do not wait for Hall. Do not send to Telegram. Do not log into Instagram in a browser.
-
-GATE FAIL (bot-offer on slide 9, wrong face, video, duplicate code word, missing 9+9): stop, do not publish.
+Default: `publish_requested: false`. Hall must flip it to true for a live day.
+After GATE PASS + FACE_CHECK ABSENT: Composio aliases `instagram-ru` / `instagram-en`.
+403 / no tool_execution → FAIL + HOLE. Do not copy archive URLs.
+GATE FAIL (bot-offer, host face, video, duplicate code word, missing 9+9): stop, do not publish.

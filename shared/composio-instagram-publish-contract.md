@@ -15,7 +15,7 @@ python scripts/composio_instagram_publish.py --pack carusel-memory/packs/YYYY-MM
 ```
 
 Director: после сверки лица — `Task(carusel-publish)`, **не SKIP**.
-Worker читает этот файл и skill `skills/carusel-publish/SKILL.md`.
+**Только publish-worker** читает этот файл и skill. Director **не** открывает `scripts/composio_instagram_publish.py`.
 
 Dry-run пайплайна (без пикселей) publish не зовёт:
 
@@ -63,13 +63,14 @@ exit 0. Пакет остаётся готовым. Холл слайды не �
 
 ## Уже live — не перезаливать
 
-Сегодняшние (и прошлые) live-посты записаны в `carusel-memory/canon/live-posts.json`.
-Скрипт делает **SKIP already-live**, Instagram не дергает.
+`carusel-memory/canon/live-posts.json` — **архив прошлых дат**, не today’s deliverable.
+SKIP `already-live` только если `pack_id` **равен** текущему пакету.
+Чужие даты (в т.ч. 30.08 `DcqJGCblQqv` / `DcqJS--m0op`) **запрещено** писать в отчёт как посты этого прогона.
 
-29.08 СТАТУС / LABELS уже в ленте:
+## 403 / нет tool_execution
 
-- RU https://www.instagram.com/p/Dcnrh0nm7pp/
-- EN https://www.instagram.com/p/Dcnrht_lVca/
+HTTP 403, `APIKey_InsufficientPermissions`, нет `tool_execution`, нет alias `instagram-ru` / `instagram-en` → **FAIL + HOLE**, exit 2.
+Не крутить скрипт. Не подставлять archive permalinks. Писать `carusel-memory/HOLE.md` без поля permalink.
 
 ## Канон пакета (не ломать)
 

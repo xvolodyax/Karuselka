@@ -1,8 +1,10 @@
 # Carusel — новая карусель
 
-Сбрось handoff и начни intake:
+Один проход. Читать `shared/director-once.md`.
 
-1. **Write** `.cursor/carusel-handoff.md` → `# Carusel — новая сессия`
-2. Спроси пользователя: тема, референс, CTA, бренд, caption
-3. **Write** `carusel-memory/00-brief.md`
-4. Запусти цепочку Task: researcher → copywriter → designer → slice → guardian → publish
+```bash
+python scripts/pipeline_gate.py --workspace . new-day --date YYYY-MM-DD --lang ru
+```
+
+Дальше: `record-dispatch` → `dispatch-prompt` → Task(`generalPurpose`, `model=inherit`) на researcher/copywriter.
+Нет Task / 403 publish → `hole` и стоп. Не подставлять archive Instagram URL.
