@@ -61,7 +61,7 @@ SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | 
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
 GEMINI_MODEL = "gemini-3.8-flash"
 GEMINI_REASONING_EFFORT = "high"
-GEMINI_MODELS = frozenset({"gemini-3.8-flash", "gemini-3.8-flash-high"})
+GEMINI_MODELS = frozenset({"gemini-3.8-flash", "gemini-3.8-flash-high", "inherit"})
 GEMINI_WRITERS = frozenset(
     {
         "gemini",
@@ -497,11 +497,10 @@ def cmd_record_dispatch(
     dispatch_id = uuid.uuid4().hex
     resolved_model = model
     if step_id in GEMINI_STEPS:
-        resolved_model = (model or GEMINI_MODEL).strip()
+        resolved_model = (model or "inherit").strip()
         if resolved_model not in GEMINI_MODELS:
             raise SystemExit(
-                f"{step_id} must spawn with model={GEMINI_MODEL} and reasoning_effort={GEMINI_REASONING_EFFORT}, got {resolved_model!r}. "
-                "Note: in Cloud Agents there is NO id gemini-3.8-flash-high. "
+                f"{step_id} must spawn with model=inherit (inheriting parent Gemini) or {GEMINI_MODEL}, got {resolved_model!r}. "
                 "Default agent / director fallback is forbidden. Only FAIL."
             )
     step_data: dict[str, Any] = {
@@ -852,13 +851,12 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
     ]
     if step_id in GEMINI_STEPS:
         extra_hard.append(
-            f"- required_model: model={GEMINI_MODEL} + reasoning_effort={GEMINI_REASONING_EFFORT}. "
-            f"Spawn Task(generalPurpose, model={GEMINI_MODEL}, reasoning_effort={GEMINI_REASONING_EFFORT}) "
-            f"or Task({PLUGIN_TASK[step_id]}) with that model. Note: in Cloud Agents there is NO id gemini-3.8-flash-high; "
-            f"the model parameter is strictly {GEMINI_MODEL} with reasoning_effort={GEMINI_REASONING_EFFORT}. Do not inherit Director model."
+            f"- required_model: model=inherit (inheriting parent Gemini) or {GEMINI_MODEL}. "
+            "Spawn Task(generalPurpose, model=inherit). Do NOT pass gemini-3.8-flash slug to worker. "
+            "Inherit Gemini from parent."
         )
         extra_hard.append(
-            f"- Refuse if spawned on any model other than {GEMINI_MODEL} with reasoning_effort={GEMINI_REASONING_EFFORT}. "
+            "- Refuse if spawned on any model other than Gemini via inherit. "
             "NO DEFAULT FALLBACK: if Gemini is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself."
         )
     if step_id == "copywriter":
@@ -936,7 +934,7 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
         )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (
-        f"Task(generalPurpose, model={GEMINI_MODEL}, reasoning_effort={GEMINI_REASONING_EFFORT}) [NO DEFAULT FALLBACK]"
+        "Task(generalPurpose, model=inherit) [NO DEFAULT FALLBACK - inherit parent Gemini]"
         if step_id in GEMINI_STEPS
         else "Task(generalPurpose) — real Task, not Director inline"
     )
@@ -946,7 +944,7 @@ SPAWN
 step: {step_id}
 via: {state['dispatched_via']}
 cloud_fallback: {spawn_line}
-required_model: {state.get('model') or (GEMINI_MODEL if step_id in GEMINI_STEPS else 'inherit')}
+required_model: {state.get('model') or 'inherit'}
 reasoning_effort: {state.get('reasoning_effort') or (GEMINI_REASONING_EFFORT if step_id in GEMINI_STEPS else 'none')}
 
 HARD RULES
@@ -955,7 +953,7 @@ HARD RULES
 - Read shared/taro-seichas-canon.md, shared/animals-viktoria-collage.md,
   shared/agent-pipeline-pitfalls.md and shared/locale-brand-contract.md.
 {extra_hard_block}
-- NO DEFAULT FALLBACK: if Gemini ({GEMINI_MODEL}) is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself.
+- NO DEFAULT FALLBACK: if Gemini is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself.
 - lang={brief['lang']}. Brand handle={brief['handle']}.
 - Write artifacts only to the paths listed below.
 - End with fragment {spec['fragment']}.

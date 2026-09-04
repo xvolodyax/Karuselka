@@ -310,8 +310,8 @@ class PipelineGateTest(unittest.TestCase):
         self.assertIn("dispatch_id:", packet)
         self.assertIn("Do only this step", packet)
         self.assertIn("shared/swarm-spawn-contract.md", packet)
-        self.assertIn("required_model: model=gemini-3.8-flash + reasoning_effort=high", packet)
-        self.assertIn("Task(generalPurpose, model=gemini-3.8-flash, reasoning_effort=high)", packet)
+        self.assertIn("required_model: inherit", packet)
+        self.assertIn("Task(generalPurpose, model=inherit)", packet)
 
     def test_wrong_plugin_task_name_rejected(self) -> None:
         self.run_cmd("init", "--lang", "ru")
@@ -370,7 +370,7 @@ class GeminiAndDryRunTest(unittest.TestCase):
             0,
         )
         ledger = gate.load_ledger(self.tmp)
-        self.assertEqual(ledger["steps"]["researcher"]["model"], gate.GEMINI_MODEL)
+        self.assertEqual(ledger["steps"]["researcher"]["model"], "inherit")
 
     def test_wrong_gemini_model_rejected(self) -> None:
         self.run_cmd("init", "--lang", "ru")
@@ -382,9 +382,8 @@ class GeminiAndDryRunTest(unittest.TestCase):
                 "--via",
                 "Task(generalPurpose)",
                 "--model",
-                "inherit",
+                "claude-opus-5",
             )
-        self.assertIn("gemini-3.8-flash", str(ctx.exception))
         self.assertIn("fallback is forbidden. Only FAIL", str(ctx.exception))
 
     def test_copywriter_wrong_model_rejected(self) -> None:
@@ -469,7 +468,7 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertEqual(self.run_cmd("dispatch-prompt", "--step", "copywriter"), 0)
         packet = (self.tmp / "carusel-memory" / "dispatches" / "copywriter.md").read_text()
         self.assertIn("Caption is THIS step", packet)
-        self.assertIn("required_model: model=gemini-3.8-flash + reasoning_effort=high", packet)
+        self.assertIn("required_model: inherit", packet)
         self.assertIn("written_by: gemini", packet)
         self.assertIn("cta-app-audio-contract.md", packet)
         self.assertIn("app_audio", packet)

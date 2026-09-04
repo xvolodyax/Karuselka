@@ -41,9 +41,9 @@ flowchart TD
 | 10 | carusel-publish | video + 8 images |
 | 11 | carusel-fixic | incidents |
 
-## Текстовые роли (Правило Владимира 03.09.2026)
+## Текстовые роли (Правило Владимира 03.09.2026 + 04.09.2026)
 
-- **Researcher** и **copywriter** (текст карусели) — **только Gemini 3.8 Flash High**: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
+- **Researcher** и **copywriter** (текст карусели) — **только Gemini**: родитель запущен на `gemini-3.8-flash` + `reasoning_effort=high`, а текстовые Task спавнятся с `model="inherit"` (или без override). НЕ передавать slug `gemini-3.8-flash` в Task — его нет в worker catalog.
 - **NO DEFAULT FALLBACK:** Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini. Никакого fallback на дефолтную модель — только FAIL.
 
 Документация: `shared/carousel-grid-design.md`
