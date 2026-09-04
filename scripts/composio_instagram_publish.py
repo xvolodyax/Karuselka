@@ -9,7 +9,11 @@ Canon:
 - Telegram is forbidden.
 - No key + GATE PASS → SKIP «нет COMPOSIO_API_KEY», exit 0.
 - GATE FAIL / чужое лицо / CTA бота → do not publish, exit 2.
-- Already-live today's carousels are not republished.
+- Already-live applies only when pack_id equals THIS pack. Past rows are a denylist.
+- 403 / no tool_execution → FAIL + HOLE, exit 2. Do not reread this file. Do not use archive URLs.
+- Permalinks in the report must come from THIS run's API response only.
+
+Director: do not re-read this file. Run the CLI once. Worker only.
 """
 
 from __future__ import annotations
@@ -46,6 +50,14 @@ RAW_URL_RE = re.compile(r"https?://|instagram\.com/|t\.me/|telegram\.me/", re.I)
 GATE_PASS_RE = re.compile(r"^verdict:\s*PASS\s*$", re.I | re.M)
 DEFAULT_ACCOUNT_RE = re.compile(r"\bdefault\b", re.I)
 SECRET_ENV_NAMES = (API_KEY_ENV, "COMPOSIO_API_KEY")
+PERMALINK_RE = re.compile(r"instagram\.com/p/([A-Za-z0-9_-]+)", re.I)
+AUTH_FAIL_MARKERS = (
+    "403",
+    "tool_execution",
+    "apikey_insufficientpermissions",
+    "insufficient permissions",
+    "does not have the permissions",
+)
 
 Transport = Callable[[str, str, dict[str, str], dict[str, Any] | None], dict[str, Any]]
 
@@ -61,6 +73,10 @@ class PublishSkip(RuntimeError):
         super().__init__(detail or reason)
         self.reason = reason
         self.detail = detail or reason
+
+
+class PublishAuthFail(PublishBlocked):
+    """403 / missing tool_execution — write HOLE and stop. Never loop."""
 
 
 def utc_now() -> str:
@@ -134,11 +150,80 @@ def http_transport(
         data = {"raw": redact_secrets(resp.text[:400])}
     if not isinstance(data, dict):
         data = {"data": data}
+    blob = redact_secrets(f"Composio HTTP {resp.status_code}: {data}")
+    if resp.status_code == 403 or is_auth_fail_text(blob):
+        raise PublishAuthFail(blob)
     if resp.status_code >= 400:
-        raise PublishBlocked(
-            redact_secrets(f"Composio HTTP {resp.status_code}: {data}")
-        )
+        raise PublishBlocked(blob)
     return data
+
+
+def is_auth_fail_text(text: str) -> bool:
+    low = str(text or "").lower()
+    return any(marker.lower() in low for marker in AUTH_FAIL_MARKERS)
+
+
+def permalink_shortcode(url: str | None) -> str | None:
+    if not url:
+        return None
+    match = PERMALINK_RE.search(url)
+    return match.group(1) if match else None
+
+
+def live_permalink_dates(repo_root: Path) -> dict[str, str]:
+    index: dict[str, str] = {}
+    for post in load_live_posts(repo_root):
+        code = permalink_shortcode(str(post.get("permalink") or ""))
+        date = str(post.get("date") or "").strip()
+        if code and date:
+            index[code] = date
+    return index
+
+
+def pack_date(pack: Path, manifest: dict[str, Any] | None = None) -> str:
+    data = manifest if manifest is not None else load_json_if_exists(pack / "PACK.json")
+    return str(data.get("date") or data.get("pack_id") or pack.name)
+
+
+def assert_permalink_fresh(
+    permalink: str | None,
+    pack: Path,
+    repo_root: Path,
+) -> str:
+    if not permalink:
+        raise PublishBlocked(
+            "publish API returned no permalink — FAIL. "
+            "Do not copy live-posts.json / handoff archive URLs into this run."
+        )
+    code = permalink_shortcode(permalink)
+    dated = live_permalink_dates(repo_root)
+    this_date = pack_date(pack)
+    if code and code in dated and dated[code] != this_date:
+        raise PublishBlocked(
+            f"STALE permalink {permalink} belongs to {dated[code]}, not pack {this_date}. "
+            "FAIL. Do not write archive Instagram URLs into this run's report."
+        )
+    return permalink
+
+
+def write_hole(pack: Path, repo_root: Path, reason: str) -> Path:
+    body = "\n".join(
+        [
+            "# HOLE",
+            "status: FAIL",
+            f"reason: {reason}",
+            f"created_at: {utc_now()}",
+            "permalink: FORBIDDEN — do not copy live-posts.json or handoff archive URLs",
+            "loop: STOP. Do not re-read scripts/composio_instagram_publish.py or scripts/pipeline_gate.py.",
+            "",
+        ]
+    )
+    pack_hole = pack / "HOLE.md"
+    root_hole = repo_root / "carusel-memory" / "HOLE.md"
+    for path in (pack_hole, root_hole):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(body, encoding="utf-8")
+    return root_hole
 
 
 def flatten_accounts(payload: Any) -> list[dict[str, Any]]:
@@ -471,6 +556,7 @@ def publish_lang(
     transport: Transport,
     env: dict[str, str] | None = None,
     execute: bool = True,
+    repo_root: Path | None = None,
 ) -> dict[str, Any]:
     alias = required_alias(lang)
     accounts = list_instagram_accounts(api_key, transport=transport, env=env)
@@ -524,13 +610,18 @@ def publish_lang(
         transport=transport,
         env=env,
     )
+    permalink = assert_permalink_fresh(
+        permalink_from_payload(published),
+        pack,
+        repo_root or repo_root_from_script(),
+    )
     result.update(
         {
             "status": "published",
             "executed": True,
             "ig_user_id": ig_user_id,
             "creation_id": creation_id,
-            "permalink": permalink_from_payload(published),
+            "permalink": permalink,
             "media_id": creation_id_from_payload(published) if published else None,
         }
     )
@@ -629,12 +720,26 @@ def run_pack(
                     transport=transport,
                     env=env,
                     execute=execute,
+                    repo_root=repo_root,
                 )
             )
     except Exception as exc:
+        detail = redact_secrets(str(exc), env)
+        if isinstance(exc, PublishAuthFail) or is_auth_fail_text(detail):
+            hole = write_hole(pack, repo_root, detail)
+            write_publish_log(
+                log_path,
+                format_log(
+                    "fail",
+                    "auth-fail",
+                    [{k: v for k, v in row.items() if k != "permalink"} for row in rows],
+                    extra=f"HOLE {hole} {detail}",
+                ),
+            )
+            raise PublishAuthFail(detail) from exc
         write_publish_log(
             log_path,
-            format_log("fail", "composio-error", rows, extra=redact_secrets(str(exc), env)),
+            format_log("fail", "composio-error", rows, extra=detail),
         )
         raise
 
@@ -687,6 +792,15 @@ def main(argv: list[str] | None = None) -> int:
         print(f"publish: SKIP {skip.reason}")
         print(redact_secrets(skip.detail))
         return 0
+    except PublishAuthFail as auth:
+        print("FAIL", file=sys.stderr)
+        print(f"HOLE publish auth: {redact_secrets(str(auth))}", file=sys.stderr)
+        print(
+            "STOP. Do not reread scripts/composio_instagram_publish.py. "
+            "Do not substitute archive Instagram URLs.",
+            file=sys.stderr,
+        )
+        return 2
     except PublishBlocked as blocked:
         print(f"publish: REFUSE {redact_secrets(str(blocked))}", file=sys.stderr)
         return 2

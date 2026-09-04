@@ -309,9 +309,9 @@ class PipelineGateTest(unittest.TestCase):
         self.assertIn("skills/carusel-researcher/SKILL.md", packet)
         self.assertIn("dispatch_id:", packet)
         self.assertIn("Do only this step", packet)
-        self.assertIn("shared/swarm-spawn-contract.md", packet)
-        self.assertIn("required_model: model=gemini-3.8-flash + reasoning_effort=high", packet)
-        self.assertIn("Task(generalPurpose, model=gemini-3.8-flash, reasoning_effort=high)", packet)
+        self.assertIn("required_model: inherit", packet)
+        self.assertIn("Task(generalPurpose, model=inherit)", packet)
+        self.assertNotIn("Do not inherit Director model", packet)
 
     def test_wrong_plugin_task_name_rejected(self) -> None:
         self.run_cmd("init", "--lang", "ru")
@@ -382,9 +382,8 @@ class GeminiAndDryRunTest(unittest.TestCase):
                 "--via",
                 "Task(generalPurpose)",
                 "--model",
-                "inherit",
+                "claude-opus-5",
             )
-        self.assertIn("gemini-3.8-flash", str(ctx.exception))
         self.assertIn("fallback is forbidden. Only FAIL", str(ctx.exception))
 
     def test_copywriter_wrong_model_rejected(self) -> None:
@@ -403,12 +402,11 @@ class GeminiAndDryRunTest(unittest.TestCase):
                 "--model",
                 "composer-2.5",
             )
-        self.assertIn("gemini-3.8-flash", str(ctx.exception))
         self.assertIn("fallback is forbidden. Only FAIL", str(ctx.exception))
 
-    def test_gemini_38_flash_cloud_model_accepted(self) -> None:
+    def test_gemini_slug_rejected_for_workers(self) -> None:
         self.run_cmd("init", "--lang", "ru")
-        self.assertEqual(
+        with self.assertRaises(SystemExit) as ctx:
             self.run_cmd(
                 "record-dispatch",
                 "--step",
@@ -417,12 +415,9 @@ class GeminiAndDryRunTest(unittest.TestCase):
                 "Task(generalPurpose)",
                 "--model",
                 "gemini-3.8-flash",
-            ),
-            0,
-        )
-        ledger = gate.load_ledger(self.tmp)
-        self.assertEqual(ledger["steps"]["researcher"]["model"], "gemini-3.8-flash")
-        self.assertEqual(ledger["steps"]["researcher"]["reasoning_effort"], "high")
+            )
+        self.assertIn("inherit", str(ctx.exception))
+        self.assertIn("catalog", str(ctx.exception))
 
     def test_dry_run_records_eleven_workers_without_pixels(self) -> None:
         rc = self.run_cmd("dry-run", "--lang", "ru", "--topic", "ТАРО СЕЙЧАС")
@@ -469,7 +464,7 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertEqual(self.run_cmd("dispatch-prompt", "--step", "copywriter"), 0)
         packet = (self.tmp / "carusel-memory" / "dispatches" / "copywriter.md").read_text()
         self.assertIn("Caption is THIS step", packet)
-        self.assertIn("required_model: model=gemini-3.8-flash + reasoning_effort=high", packet)
+        self.assertIn("required_model: inherit", packet)
         self.assertIn("written_by: gemini", packet)
         self.assertIn("cta-app-audio-contract.md", packet)
         self.assertIn("app_audio", packet)
@@ -560,6 +555,87 @@ class GeminiAndDryRunTest(unittest.TestCase):
             ),
         )
         self.assertEqual(self.run_cmd("verify", "--step", "researcher"), 2)
+
+
+class NewDayStaleAndHoleTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="carusel-gate-"))
+        self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
+        self.repo = ROOT
+
+    def run_cmd(self, *argv: str) -> int:
+        return gate.main(["--workspace", str(self.tmp), "--repo-root", str(self.repo), *argv])
+
+    def _complete_old_ledger(self, run_id: str = "2026-08-30-1110") -> None:
+        self.run_cmd("init", "--lang", "ru", "--run-id", run_id)
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in gate.STEP_IDS:
+            ledger["steps"][step_id]["status"] = "ok"
+            ledger["steps"][step_id]["dispatched_via"] = "Task(generalPurpose)"
+        ledger["steps"]["director"]["dispatched_via"] = "parent"
+        gate.save_ledger(self.tmp, ledger)
+        brief = (self.tmp / "carusel-memory" / "00-brief.md").read_text(encoding="utf-8")
+        write(
+            self.tmp / "carusel-memory" / "00-brief.md",
+            brief.replace("date: PENDING", "date: 2026-08-30"),
+        )
+
+    def test_status_marks_completed_old_ledger_stale(self) -> None:
+        self._complete_old_ledger()
+        import io
+        from contextlib import redirect_stdout
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = self.run_cmd("status")
+        self.assertEqual(rc, 0)
+        out = buf.getvalue()
+        self.assertIn("STALE_LEDGER=1", out)
+        self.assertIn("next=new-day", out)
+        self.assertIn("DO_NOT_REREAD", out)
+        self.assertNotIn("next=done", out)
+
+    def test_new_day_archives_and_resets(self) -> None:
+        self._complete_old_ledger()
+        rc = self.run_cmd("new-day", "--date", "2026-09-05", "--lang", "ru")
+        self.assertEqual(rc, 0)
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(ledger["run_id"], "2026-09-05-1110")
+        self.assertEqual(ledger["steps"]["director"]["status"], "ok")
+        self.assertEqual(ledger["steps"]["researcher"]["status"], "pending")
+        self.assertEqual(gate.first_pending(ledger), "researcher")
+        brief = (self.tmp / "carusel-memory" / "00-brief.md").read_text(encoding="utf-8")
+        self.assertIn("date: 2026-09-05", brief)
+        self.assertIn("pack_id: 2026-09-05", brief)
+        archives = list((self.tmp / "carusel-memory" / "archive").glob("ledger-*.json"))
+        self.assertTrue(archives)
+        import io
+        from contextlib import redirect_stdout
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            self.run_cmd("status")
+        self.assertIn("next=researcher", buf.getvalue())
+        self.assertNotIn("STALE_LEDGER=1", buf.getvalue())
+
+    def test_hole_writes_fail_and_exits_2(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        rc = self.run_cmd("hole", "--reason", "Task tool missing")
+        self.assertEqual(rc, 2)
+        hole = (self.tmp / "carusel-memory" / "HOLE.md").read_text(encoding="utf-8")
+        self.assertIn("status: FAIL", hole)
+        self.assertIn("Task tool missing", hole)
+        self.assertIn("FORBIDDEN", hole)
+        self.assertNotIn("DcqJGCblQqv", hole)
+
+    def test_init_force_archives_started_run(self) -> None:
+        self.run_cmd("init", "--lang", "ru", "--run-id", "old-run")
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        rc = self.run_cmd("init", "--lang", "ru", "--run-id", "fresh-run", "--force")
+        self.assertEqual(rc, 0)
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(ledger["run_id"], "fresh-run")
+        self.assertEqual(ledger["steps"]["researcher"]["status"], "pending")
 
 
 if __name__ == "__main__":

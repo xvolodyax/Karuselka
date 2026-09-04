@@ -377,6 +377,57 @@ class ComposioPublishTest(unittest.TestCase):
         for call in posts:
             self.assertIn(call[2]["connected_account_id"], used_ids)
 
+    def test_stale_permalink_from_archive_refused(self) -> None:
+        write_json(
+            self.repo / "carusel-memory" / "canon" / "live-posts.json",
+            {
+                "posts": [
+                    {
+                        "date": "2026-08-30",
+                        "pack_id": "2026-08-30",
+                        "permalink": "https://www.instagram.com/p/DcqJGCblQqv/",
+                    }
+                ]
+            },
+        )
+        with self.assertRaises(pub.PublishBlocked) as ctx:
+            pub.assert_permalink_fresh(
+                "https://www.instagram.com/p/DcqJGCblQqv/",
+                self.pack,
+                self.repo,
+            )
+        self.assertIn("STALE", str(ctx.exception))
+        self.assertIn("DcqJGCblQqv", str(ctx.exception))
+
+    def test_missing_permalink_is_fail_not_archive(self) -> None:
+        with self.assertRaises(pub.PublishBlocked) as ctx:
+            pub.assert_permalink_fresh(None, self.pack, self.repo)
+        self.assertIn("no permalink", str(ctx.exception))
+        self.assertIn("archive", str(ctx.exception).lower())
+
+    def test_auth_403_writes_hole_without_permalink(self) -> None:
+        def boom(*_args: Any, **_kwargs: Any) -> dict[str, Any]:
+            raise pub.PublishAuthFail(
+                "Composio HTTP 403: APIKey_InsufficientPermissions tool_execution"
+            )
+
+        with self.assertRaises(pub.PublishAuthFail):
+            pub.run_pack(
+                self.pack,
+                self.repo,
+                env={"COMPOSIO_API_KEY": "cmp_no_write"},
+                execute=True,
+                transport=boom,
+            )
+        hole = (self.repo / "carusel-memory" / "HOLE.md").read_text(encoding="utf-8")
+        self.assertIn("status: FAIL", hole)
+        self.assertIn("403", hole)
+        self.assertNotIn("instagram.com/p/", hole)
+        log = (self.pack / "publish-log.md").read_text(encoding="utf-8")
+        self.assertIn("status: fail", log)
+        self.assertIn("auth-fail", log)
+        self.assertNotIn("DcqJGCblQqv", log)
+
 
 if __name__ == "__main__":
     unittest.main()

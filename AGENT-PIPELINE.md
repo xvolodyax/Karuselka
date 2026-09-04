@@ -1,15 +1,16 @@
 # Carusel — Пайплайн Instagram Carousel (9 slides, grid 3×3)
 
+Первое чтение Директора: **`shared/director-once.md`**. Не крутить `scripts/pipeline_gate.py` / `scripts/composio_instagram_publish.py`.
+
 ```mermaid
 flowchart TD
-    Start([Тема + референс]) --> Res[researcher]
-    Res --> Copy[copywriter 9 slides]
+    Start([Тема + референс]) --> Res[researcher inherit]
+    Res --> Copy[copywriter inherit]
     Copy --> Design[designer grid]
     Design --> Prompt[image-prompter 3:4 4K master]
     Prompt --> Slice[Kie + slice 3x3]
-    Slice --> Motion[motion-director slide-01]
-    Motion --> Anim[animate Grok 5s]
-    Anim --> QA[design-guardian]
+    Slice --> Skip[skip motion/animate]
+    Skip --> QA[design-guardian]
     QA -->|OK| Upload[upload 9 URLs]
     Upload --> Pub[publish MCP]
     Pub --> Fixic[fixic]
@@ -20,30 +21,47 @@ flowchart TD
 
 | Параметр | Значение |
 |----------|----------|
-| Слайдов | **9** |
-| Генерация | **1** Kie task `3:4` @ `4K` |
+| Слайдов | **9 + 9** (RU + EN) static PNG |
+| Генерация | **1** Kie task `3:4` @ `4K` на язык |
 | Нарезка | **3×3** grid |
-| Анимация | **slide-01** only |
+| Лицо | **none** (без лица Вики) |
+| Анимация | skip (`static-png-only`) |
+| CTA | приложение (аудиоразбор), не бот |
 
 ## Шаги
 
 | # | Agent | Модель / Роль | Выход |
 |---|-------|---------------|-------|
-| 1 | carusel-researcher | Gemini 3.8 Flash High (`reasoning_effort=high`, no fallback, only FAIL) | `carousel-researcher-dossier.md` |
-| 2 | carusel-copywriter | Gemini 3.8 Flash High (`reasoning_effort=high`, no fallback, only FAIL) | `CAROUSEL_SLIDE_COPY.json`, `CAROUSEL_CAPTION.*` |
+| 1 | carusel-researcher | inherit (parent Gemini 3.8 Flash High) | `carousel-researcher-dossier.md` |
+| 2 | carusel-copywriter | inherit (parent Gemini 3.8 Flash High) | `CAROUSEL_SLIDE_COPY.json`, `CAROUSEL_CAPTION.*` |
 | 3 | carusel-designer | designer grid | `CAROUSELDESIGN.md` |
 | 4 | carusel-image-prompter | `CAROUSEL_IMAGE_PROMPT.json` (grid_3x3) |
 | 5 | carusel-slice | 9× PNG |
-| 6 | carusel-motion-director | `CAROUSEL_VIDEO_PROMPT.json` |
-| 7 | carusel-animate | `slide-01.mp4` |
-| 8 | carusel-design-guardian | QA ×9 |
+| 6 | carusel-motion-director | SKIP static-png-only |
+| 7 | carusel-animate | SKIP static-png-only |
+| 8 | carusel-design-guardian | QA ×9, FACE_CHECK ABSENT |
 | 9 | carusel-upload | `publish-urls.json` (file1–file9) |
-| 10 | carusel-publish | video + 8 images |
+| 10 | carusel-publish | 9+9 PNG via Composio aliases |
 | 11 | carusel-fixic | incidents |
 
-## Текстовые роли (Правило Владимира 03.09.2026)
+## Текстовые роли (Правило Владимира 03.09.2026 + fix 04.09.2026)
 
-- **Researcher** и **copywriter** (текст карусели) — **только Gemini 3.8 Flash High**: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
-- **NO DEFAULT FALLBACK:** Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini. Никакого fallback на дефолтную модель — только FAIL.
+- **Parent** Cloud Agent — только `gemini-3.8-flash` + `reasoning_effort=high`.
+- **Researcher** и **copywriter** — Task с `model="inherit"`. НЕ передавать slug `gemini-3.8-flash` (его нет в каталоге воркеров).
+- **NO DEFAULT FALLBACK:** Director / дефолтный агент **НИКОГДА** не пишет captions/slides/CTA сам. Нет fallback на Claude / GPT / Composer / Grok. Нет Gemini → только **FAIL + HOLE**.
 
-Документация: `shared/carousel-grid-design.md`
+## Как Холл будит рой
+
+1. Стартовать Cloud Agent с **этого main** (не с `cursor/fix-gemini-worker-inherit-9eda`).
+2. Модель родителя: `gemini-3.8-flash`, `reasoning_effort=high`.
+3. Промпт: «Собери карусель на ДАТУ. Читай только `shared/director-once.md`. `new-day --date ДАТА`. Воркеры `model=inherit`. Не публикуй archive URL. Нет Task / 403 → hole и стоп.»
+4. Директор: `status` → при STALE `new-day` → `record-dispatch` → `dispatch-prompt` → **один** Task на шаг.
+5. Publish только если brief `publish_requested: true` и Hall явно просила live. Иначе skip.
+
+## Anti-stale / anti-loop
+
+- Вчерашний ledger с `next=done` — это **STALE**, не сегодняшняя карусель. Команда: `new-day`.
+- В отчёт и `live-posts` писать только permalinks **текущего** API-прогона. `DcqJGCblQqv` / `DcqJS--m0op` и прочие чужие даты — запрещены как «сегодня».
+- 403 / нет `tool_execution` → FAIL + `carusel-memory/HOLE.md`, без подстановки архива.
+
+Документация: `shared/carousel-grid-design.md`, `shared/director-once.md`

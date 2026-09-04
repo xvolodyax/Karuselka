@@ -37,11 +37,11 @@ Desktop plugin: `Task(carusel-<role>)`. Один Task = один шаг. `inline
 
 Publish по умолчанию `skip: publish-not-requested`. Не Instagram / Composio / Make.
 
-## Весь человеческий текст = Gemini (Правило Владимира 03.09.2026)
+## Весь человеческий текст = Gemini (Правило Владимира 03.09.2026 + fix 04.09.2026)
 
 Vladimir: «весь текст пишет gemini».
-Жёсткое правило Владимира 03.09.2026: researcher и copywriter (текст карусели) — **только Gemini 3.8 Flash High**.
-В Cloud Agents **НЕТ id `gemini-3.8-flash-high`**. Параметры: `model=gemini-3.8-flash` + `reasoning_effort=high`.
+Researcher и copywriter — **только Gemini**. Parent уже `gemini-3.8-flash` + `reasoning_effort=high`.
+В каталоге Task **нет** slug `gemini-3.8-flash`. Текстовые воркеры спавнятся с `model="inherit"`.
 
 | Артефакт | Кто пишет | Stamp |
 |----------|-----------|--------|
@@ -50,12 +50,12 @@ Vladimir: «весь текст пишет gemini».
 | caption | copywriter (тот же шаг) | `written_by: gemini` |
 | image prompts | image-prompter | своя модель |
 
-Spawn: `model=gemini-3.8-flash` + `reasoning_effort=high`. Не inherit модели Director.
+Spawn: `model="inherit"`. НЕ передавать slug `gemini-3.8-flash` в Task.
 
 ### НЕТ ДЕФОЛТНОГО FALLBACK (NO DEFAULT FALLBACK)
 Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini.
 Никакого fallback на дефолтную модель (Claude, Sonnet, Opus, Composer, GPT) или исполнение в родительском чате.
-Если Gemini недоступна в runtime — **только FAIL**.
+Если inherit не даёт Gemini в runtime — **только FAIL + HOLE**. Не читать гейт/publish-скрипт в цикле.
 Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus/sonnet/composer = FAIL).
 Не переписывать голос Gemini.
 

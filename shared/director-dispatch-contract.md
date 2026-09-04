@@ -15,7 +15,8 @@ Instagram carousels are static PNGs. Slide 01 is PNG. See `shared/static-carouse
 ```
 
 Машина: `shared/pipeline-steps.json` + `shared/swarm-spawn-contract.md`.  
-Проверка: `python scripts/pipeline_gate.py --workspace . status`
+Проверка: `python scripts/pipeline_gate.py --workspace . status`  
+Первое чтение: `shared/director-once.md`. Не перечитывать `scripts/pipeline_gate.py`.
 
 ## Почему cloud ломал цепочку
 
@@ -40,9 +41,9 @@ Local plugin agents (`Task(carusel-researcher)` и остальные `carusel-*
 
 1. **Desktop plugin:** `Task(<task_name>)` из `pipeline-steps.json` (`carusel-researcher`, …).
 2. **Cloud / нет plugin types:** отдельный `Task(generalPurpose)` на **один** шаг. В промпт целиком входят `agents/carusel-*.md` + `skills/carusel-*/SKILL.md` + этот контракт + `shared/swarm-spawn-contract.md` + brief. Промпт печатает `pipeline_gate.py dispatch-prompt`.
-3. **researcher + copywriter (caption = тот же шаг, правило Владимира 03.09.2026):** модель **`gemini-3.8-flash`** + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id строго `gemini-3.8-flash`). Не inherit модели Director. Артефакты обязаны нести `written_by: gemini`.
+3. **researcher + copywriter (caption = тот же шаг, правило Владимира 03.09.2026 + 04.09.2026):** модель **`inherit`** (родитель уже `gemini-3.8-flash` + `reasoning_effort=high`). НЕ передавать slug `gemini-3.8-flash` в Task — его нет в worker catalog. Артефакты обязаны нести `written_by: gemini`.
 4. **NO DEFAULT FALLBACK ДЛЯ ТЕКСТА (правило 03.09.2026):** Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini. Никакого fallback на дефолтную модель (Claude, Sonnet, Opus, Composer, GPT) или выполнение директором в родительском чате. При недоступности Gemini — **только FAIL**.
-5. **Task недоступен вообще:** стоп. Не делать шаг в родительском чате. Не писать «я теперь копирайтер».
+5. **Task недоступен вообще:** `python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'` и выход. Не делать шаг в родительском чате. Не читать гейт/publish-скрипт в цикле.
 
 ```text
 ❌ БЛОКЕР: среда не поддерживает subagents или Gemini недоступна.
@@ -67,8 +68,8 @@ python scripts/pipeline_gate.py --workspace . next
 python scripts/pipeline_gate.py --workspace . record-dispatch --step <id> --via 'Task(carusel-<role>)'
 # или на cloud:
 python scripts/pipeline_gate.py --workspace . record-dispatch --step <id> --via 'Task(generalPurpose)'
-# researcher / copywriter (только Gemini 3.8 Flash High):
-python scripts/pipeline_gate.py --workspace . record-dispatch --step copywriter --via 'Task(generalPurpose)' --model gemini-3.8-flash
+# researcher / copywriter (только inherit parent Gemini):
+python scripts/pipeline_gate.py --workspace . record-dispatch --step copywriter --via 'Task(generalPurpose)' --model inherit
 python scripts/pipeline_gate.py --workspace . dispatch-prompt --step <id>
 ```
 

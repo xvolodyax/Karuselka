@@ -42,12 +42,15 @@ GATE PASS + нет `COMPOSIO_API_KEY` → **SKIP «нет COMPOSIO_API_KEY»**, 
 python scripts/pipeline_gate.py --workspace . skip --step publish --reason 'нет COMPOSIO_API_KEY'
 ```
 
-## Уже live
+## Уже live / anti-stale
 
-Сегодняшние live карусели не перезаливать. Реестр: `carusel-memory/canon/live-posts.json`.
-SKIP `already-live`.
+`live-posts.json` — архив прошлых дат. SKIP `already-live` только для **того же** `pack_id`.
+Чужие permalinks (30.08 `DcqJGCblQqv` / `DcqJS--m0op` и любые URL другой даты) **запрещено** писать как посты этого прогона.
+В отчёт — только permalink из API текущего вызова.
 
-29.08 уже в ленте: RU `Dcnrh0nm7pp` / EN `Dcnrht_lVca`.
+## 403 / нет tool_execution
+
+FAIL + `HOLE.md`, exit 2. Не крутить этот skill и не перечитывать `composio_instagram_publish.py`.
 
 ## Make MCP (устарел)
 

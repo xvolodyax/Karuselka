@@ -26,8 +26,8 @@
 | Зона | Компоненты | Назначение |
 | --- | --- | --- |
 | Оркестрация | `rules/`, `agents/director.md`, `skills/director-carusel/` | Управляет пайплайном и handoff между агентами |
-| Ресерч | `agents/carusel-researcher.md`, `skills/carusel-researcher/` | Анализ темы, аудитории, конкурентов и углов подачи (только Gemini 3.8 Flash High) |
-| Текст | `agents/carusel-copywriter.md`, `skills/carusel-copywriter/` | 9 слайдов, caption, CTA и структура сторителлинга (только Gemini 3.8 Flash High, no fallback) |
+| Ресерч | `agents/carusel-researcher.md`, `skills/carusel-researcher/` | Анализ темы, аудитории, конкурентов и углов подачи (Gemini via inherit, no fallback) |
+| Текст | `agents/carusel-copywriter.md`, `skills/carusel-copywriter/` | 9 слайдов, caption, CTA и структура сторителлинга (Gemini via inherit, no fallback) |
 | Дизайн | `agents/carusel-designer.md`, `skills/carusel-designer/`, `shared/CAROUSELDESIGN_SPEC.md` | Визуальная система, композиция, style lock |
 | Image prompt | `agents/carusel-image-prompter.md`, `skills/carusel-image-prompter/` | JSON/MD prompt для Kie, 9 panel briefs, compact prompt policy |
 | Генерация и slice | `agents/carusel-slice.md`, `scripts/kie_carousel_gen.py`, `scripts/slice_grid.py` | Master image 3:4 @ 4K и нарезка 3×3 |
