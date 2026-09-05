@@ -17,8 +17,9 @@ alwaysApply: true
 
 Если начинаешь выдавать готовые слайды / caption / design docs без **Task** — ты **ломаешь** пайплайн.
 
-### Жёсткое правило Владимира 03.09.2026
-- Researcher и copywriter (текст карусели) — **только Gemini 3.8 Flash High**: `model=gemini-3.8-flash` + `reasoning_effort=high` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
+### Жёсткое правило Владимира 03.09.2026 + token-burn lock 05.09.2026
+- Researcher и copywriter (текст карусели) — **только Gemini 3.8 Flash**: parent `gemini-3.8-flash` + `reasoning_effort=low`; Task-воркеры `model=inherit` (в Cloud Agents нет id `gemini-3.8-flash-high`, id модели строго `gemini-3.8-flash`).
+- high только если Владимир явно переопределил (`KARUSEL_REASONING_EFFORT`).
 - Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini.
 - Запрещён default fallback на основную модель директора (Claude, GPT, Composer) или чат: при недоступности Gemini — **только FAIL**.
 
@@ -57,6 +58,8 @@ alwaysApply: true
 `motion-director` и `animate` **не вызывать**. Ledger уже `skipped: static-png-only`. Нет Grok / mp4 / ANIMATE.md.
 
 Не открывай Read-ом `scripts/pipeline_gate.py` / `scripts/composio_instagram_publish.py`. Это CLI: один `status`/`next`/`verify`, потом Task.
+После GATE PASS / READY — EXIT. Нет sleep/poll в ожидании слота.
+Max 2 Read одного gate-файла за run; третий = FAIL + hole + EXIT.
 
 **carusel-publish** не вызывать до **OK** от design-guardian.
 
@@ -74,8 +77,8 @@ Professional gates:
 
 | Task | Роль |
 |------|------|
-| `carusel-researcher` | Research, конкуренты, хуки (только Gemini 3.8 Flash High; no fallback, only FAIL) |
-| `carusel-copywriter` | Текст 9 слайдов + caption (только Gemini 3.8 Flash High; no fallback, only FAIL) |
+| `carusel-researcher` | Research, конкуренты, хуки (Gemini inherit + reasoning_effort=low; no fallback, only FAIL) |
+| `carusel-copywriter` | Текст 9 слайдов + caption (Gemini inherit + reasoning_effort=low; no fallback, only FAIL) |
 | `carusel-designer` | Дизайн-контракт, репликация референса |
 | `carusel-image-prompter` | Промпт для Kie.ai (стиль референса, grid 3×3, 9 панелей) |
 | `carusel-slice` | Kie generate + нарезка master → 9 PNG (не video) |

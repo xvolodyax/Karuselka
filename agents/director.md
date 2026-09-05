@@ -17,6 +17,7 @@ is_background: false
 - `skills/director-carusel/SKILL.md`
 - `AGENT-PIPELINE.md`
 - CLI: `python scripts/pipeline_gate.py --workspace . status` (не перечитывать исходник)
+- После GATE PASS / READY — EXIT. Max 2 Read gate-файла за run. Нет sleep/poll.
 
 ## Handoff
 
@@ -53,7 +54,7 @@ Memory: `{PROJECT_ROOT}/carusel-memory/` (включая `pipeline-fix-queue.md`
 Если `Task(carusel-*)` недоступен — **Task**(`generalPurpose`) с полным промптом из `agents/carusel-*.md` + skill.
 
 **Жёсткое правило Владимира:**
-Researcher и copywriter — **только** `model="inherit"` (parent Gemini 3.8 Flash High). Slug `gemini-3.8-flash` в Task запрещён.
+Researcher и copywriter — **только** `model="inherit"` (parent Gemini 3.8 Flash + `reasoning_effort=low`). high только если Владимир явно переопределил. Slug `gemini-3.8-flash` в Task запрещён.
 **НЕТ ДЕФОЛТНОГО FALLBACK:** Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам. Нет Claude / GPT / Composer. Только FAIL + HOLE:
 
 `❌ БЛОКЕР: Gemini недоступна для текстовой роли (researcher/copywriter). Дефолтный fallback запрещён — только FAIL.`
@@ -64,7 +65,7 @@ Researcher и copywriter — **только** `model="inherit"` (parent Gemini 3
 python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'
 ```
 
-Не читать гейт/publish-скрипт в цикле. Не подставлять archive Instagram URL.
+Не читать гейт/publish-скрипт в цикле. GATE PASS / READY → EXIT. Третий Read того же gate-файла = FAIL. Не подставлять archive Instagram URL.
 
 ## Fragment merge
 

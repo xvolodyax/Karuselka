@@ -16,6 +16,7 @@ python scripts/composio_instagram_publish.py --pack carusel-memory/packs/YYYY-MM
 
 Director: после сверки лица — `Task(carusel-publish)`, **не SKIP**.
 **Только publish-worker** читает этот файл и skill. Director **не** открывает `scripts/composio_instagram_publish.py`.
+После **GATE PASS / READY** Director **EXIT**. Нет sleep/poll. Max 2 Read gate-файла за run.
 
 Dry-run пайплайна (без пикселей) publish не зовёт:
 
@@ -49,10 +50,12 @@ GATE PASS + нет `COMPOSIO_API_KEY` → **не падать**:
 
 ```text
 GATE PASS
+READY
+EXIT=1
 publish: SKIP нет COMPOSIO_API_KEY
 ```
 
-exit 0. Пакет остаётся готовым. Холл слайды не ревьюит.
+exit 0. Пакет остаётся готовым. Director EXIT. Холл слайды не ревьюит.
 
 ## Когда не публиковать (жёсткий отказ, exit 2)
 

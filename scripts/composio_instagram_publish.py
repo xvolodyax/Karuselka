@@ -12,6 +12,8 @@ Canon:
 - Already-live applies only when pack_id equals THIS pack. Past rows are a denylist.
 - 403 / no tool_execution → FAIL + HOLE, exit 2. Do not reread this file. Do not use archive URLs.
 - Permalinks in the report must come from THIS run's API response only.
+- After GATE PASS / READY: Director EXIT immediately. No sleep/poll for a slot.
+- Max 2 Reads of this file per run. Third Read = FAIL + hole + EXIT.
 
 Director: do not re-read this file. Run the CLI once. Worker only.
 """
@@ -215,6 +217,7 @@ def write_hole(pack: Path, repo_root: Path, reason: str) -> Path:
             f"created_at: {utc_now()}",
             "permalink: FORBIDDEN — do not copy live-posts.json or handoff archive URLs",
             "loop: STOP. Do not re-read scripts/composio_instagram_publish.py or scripts/pipeline_gate.py.",
+            "EXIT now. Max 2 Reads of a gate file per run. No sleep/poll for a slot.",
             "",
         ]
     )
@@ -789,6 +792,9 @@ def main(argv: list[str] | None = None) -> int:
         )
     except PublishSkip as skip:
         print(f"GATE PASS")
+        print("READY")
+        print("EXIT=1")
+        print("Director EXIT now. Do not re-read this file. Do not sleep/poll for a slot.")
         print(f"publish: SKIP {skip.reason}")
         print(redact_secrets(skip.detail))
         return 0

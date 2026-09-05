@@ -142,7 +142,7 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 (`shared/director-dispatch-contract.md` + `shared/swarm-spawn-contract.md` +
 `scripts/pipeline_gate.py`).
 
-Жёсткое правило Владимира: researcher + copywriter (текст карусели: dossier, 9 слайдов, caption, CTA) — только Gemini. Parent: `gemini-3.8-flash` + `reasoning_effort=high`. Task-воркеры: `model="inherit"`. Slug `gemini-3.8-flash` в Task запрещён (нет в каталоге).
+Жёсткое правило Владимира: researcher + copywriter (текст карусели: dossier, 9 слайдов, caption, CTA) — только Gemini. Parent: `gemini-3.8-flash` + `reasoning_effort=low`. high только если Владимир явно переопределил. Task-воркеры: `model="inherit"`. Slug `gemini-3.8-flash` в Task запрещён (нет в каталоге).
 Дефолтный агент / director НИКОГДА не пишет captions/slides/CTA сам при недоступной Gemini. Никакого default fallback (Claude, Sonnet, Opus, Composer, GPT) — только FAIL + HOLE.
 
 Director **не** делает worker-шаг сам. Нет parent remake. Нет proof-pack
