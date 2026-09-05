@@ -48,13 +48,15 @@ alwaysApply: true
 3. **Task**(`carusel-copywriter`) — 9 слайдов grid 3×3 + caption.
 4. **Task**(`carusel-designer`) — CAROUSELDESIGN + артефакты AURA-style.
 5. **Task**(`carusel-image-prompter`) — русский промпт для Kie **3:4 @ 4K master 3×3** (`CAROUSEL_IMAGE_PROMPT.json`).
-6. **Task**(`carusel-slice`) — Kie generate + grid slice → **9 PNG**.
-7. **Task**(`carusel-motion-director`) — анализ slide-01 + русский промпт Grok.
-8. **Task**(`carusel-animate`) — запуск Grok → slide-01.mp4 (5s loop).
-9. **Task**(`carusel-design-guardian`) — QA серии.
-10. При OK → **Task**(`carusel-upload`) — HTTPS URL для MCP.
-11. **Task**(`carusel-publish`) — MCP `t4528_carrusel_instagram`.
-12. Если в `carusel-memory/pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`) — durable fix в plugin.
+6. **Task**(`carusel-slice`) — Kie generate + grid slice → **9 static PNG**. HANDOFF_NEXT = design-guardian.
+7. **Task**(`carusel-design-guardian`) — QA серии. FACE_CHECK ABSENT. Нет video QA.
+8. При OK → **Task**(`carusel-upload`) — `--static-all-pngs`, file1 = slide-01.png.
+9. **Task**(`carusel-publish`) — только если brief `publish_requested: true`.
+10. Если в `carusel-memory/pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`).
+
+`motion-director` и `animate` **не вызывать**. Ledger уже `skipped: static-png-only`. Нет Grok / mp4 / ANIMATE.md.
+
+Не открывай Read-ом `scripts/pipeline_gate.py` / `scripts/composio_instagram_publish.py`. Это CLI: один `status`/`next`/`verify`, потом Task.
 
 **carusel-publish** не вызывать до **OK** от design-guardian.
 
@@ -76,10 +78,8 @@ Professional gates:
 | `carusel-copywriter` | Текст 9 слайдов + caption (только Gemini 3.8 Flash High; no fallback, only FAIL) |
 | `carusel-designer` | Дизайн-контракт, репликация референса |
 | `carusel-image-prompter` | Промпт для Kie.ai (стиль референса, grid 3×3, 9 панелей) |
-| `carusel-slice` | Kie generate + нарезка master → slides |
-| `carusel-motion-director` | Анализ slide-01, стратегия motion, русский промпт |
-| `carusel-animate` | Grok video slide-01, 5s loop |
-| `carusel-upload` | HTTPS URL → publish-urls.json |
+| `carusel-slice` | Kie generate + нарезка master → 9 PNG (не video) |
+| `carusel-upload` | HTTPS URL → publish-urls.json (`--static-all-pngs`) |
 | `carusel-design-guardian` | Сверка серии |
 | `carusel-publish` | Загрузка в Instagram MCP |
 | `carusel-fixic` | Post-run: incidents → правки skills/scripts/pitfalls |
@@ -104,4 +104,6 @@ Pitfalls (plugin): `shared/agent-pipeline-pitfalls.md`
 
 - Не публиковать без guardian OK.
 - Не пропускать intake (тема + референс).
-- Не менять формат слайдов без brief (default: **9 слайдов**, grid **3×3**, панель **3:4**, Kie **4K**; slide-01 → video).
+- Не менять формат слайдов без brief (default: **9 слайдов**, grid **3×3**, панель **3:4**, Kie **4K**; slide-01 тоже PNG).
+- Не диспатчить motion/animate. Не писать сегодняшние слайды в старый pack (например `2026-08-30`).
+- `new-day --date СЕГОДНЯ` создаёт `carusel-memory/packs/YYYY-MM-DD/` с `face_lock: none`.

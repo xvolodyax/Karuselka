@@ -1,13 +1,13 @@
 ---
 name: carusel-slice
-description: Kie.ai one grid master -> 3x3 slice -> 9 slides. slide-01 later animated.
+description: Kie.ai one grid master -> 3x3 slice -> 9 static PNG. No video.
 ---
 
 # Carusel Slice
 
 ## Роль
 
-Одна генерация Kie -> **сетка 3×3** -> **9 PNG**. Слайд 1 потом оживляет `carusel-animate`.
+Одна генерация Kie -> **сетка 3×3** -> **9 static PNG**. Slide-01 тоже PNG. Нет Grok / mp4 / `carusel-animate`.
 
 ## Вход
 
@@ -64,7 +64,7 @@ python scripts/kie_run_prompt.py \
 07 08 09
 ```
 
-slide-01 = верхний левый → motion + video.
+slide-01 = верхний левый, тоже static PNG. HANDOFF_NEXT = design-guardian.
 
 ## Валидация
 
@@ -124,11 +124,20 @@ python scripts/kie_run_prompt.py --workspace . --prompt-json carusel-memory/desi
 
 ## Fragment
 
+Пиши слайды в `carusel-memory/output/slides/` **и** копируй в
+`carusel-memory/packs/YYYY-MM-DD/{lang}/slides/` (дата из brief / `new-day`).
+Никогда не клади сегодняшний прогон в `packs/2026-08-30` или другой старый pack.
+
+FACE_CHECK: `verdict: ABSENT`, `face_lock: none`. Не требовать и не указывать `Виктория.png` как face ref.
+
 ```text
 === CARUSEL-SLICE ===
 Статус: ✅ OK | ⚠️ WARN | ❌ FAIL
 Mode: grid_3x3
 Slides: slide-01.png … slide-09.png
+face_lock: none
+FACE_CHECK: ABSENT
+HANDOFF_NEXT: design-guardian
 incident_report: none
 ```
 

@@ -61,6 +61,9 @@ LEGAL_SKIP = {
     "motion-director": "static-png-only",
     "animate": "static-png-only",
 }
+STATIC_SKIP_STEPS = frozenset({"motion-director", "animate"})
+STATIC_REQUIRED_WORKERS = tuple(step_id for step_id in WORKER_STEPS if step_id not in STATIC_SKIP_STEPS)
+ARCHIVE_SHORTCODES = ("DcqJGCblQqv", "DcqJS--m0op")
 SKIP_FLAG_RE = re.compile(r"^skip_(motion|animate):\s*(true|false)\s*$", re.M | re.I)
 GEMINI_STEPS = frozenset({"researcher", "copywriter"})
 GEMINI_PARENT_MODEL = "gemini-3.8-flash"
@@ -137,6 +140,84 @@ def resolve_workspace(raw: str | None) -> Path:
 
 def memory_dir(workspace: Path) -> Path:
     return workspace / "carusel-memory"
+
+
+def pack_root(workspace: Path, date: str) -> Path:
+    return memory_dir(workspace) / "packs" / date
+
+
+def ensure_run_pack(workspace: Path, date: str, run_id: str) -> Path:
+    """Create today's dated pack. Never write this run into an older pack."""
+    if not date or date.upper() == "PENDING":
+        raise SystemExit("pack date missing — run new-day --date YYYY-MM-DD")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+        raise SystemExit(f"pack date must be YYYY-MM-DD, got {date!r}")
+    if brief_path(workspace).is_file():
+        brief = parse_brief(workspace)
+        brief_pack = str(brief.get("pack_id") or "")
+        if brief_pack and brief_pack.upper() != "PENDING" and brief_pack != date:
+            raise SystemExit(
+                f"STALE pack_id={brief_pack}: this run is {date}. "
+                "Never write today's slides into an old pack (e.g. 2026-08-30)."
+            )
+    stale = memory_dir(workspace) / "packs" / "2026-08-30"
+    pack = pack_root(workspace, date)
+    if date != "2026-08-30" and stale.is_dir() and pack.resolve() == stale.resolve():
+        raise SystemExit("Refuse to reuse packs/2026-08-30 for a new run.")
+    pack.mkdir(parents=True, exist_ok=True)
+    (pack / "ru" / "slides").mkdir(parents=True, exist_ok=True)
+    (pack / "en" / "slides").mkdir(parents=True, exist_ok=True)
+    manifest_path = pack / "PACK.json"
+    manifest = {
+        "pack_id": date,
+        "date": date,
+        "run_id": run_id,
+        "face_lock": "none",
+        "visual_family": "animals_viktoria_collage",
+        "product": "app_audio",
+        "langs": ["ru", "en"],
+        "slide_01": "static_png",
+        "static_png_only": True,
+        "already_live": False,
+        "already_live_posts": {},
+    }
+    if manifest_path.is_file():
+        existing = load_json(manifest_path)
+        existing_id = str(existing.get("pack_id") or existing.get("date") or "")
+        if existing_id and existing_id != date:
+            raise SystemExit(
+                f"STALE pack {existing_id} under packs/{date}. "
+                "Refuse to contaminate today's run."
+            )
+        existing.update(
+            {
+                "pack_id": date,
+                "date": date,
+                "run_id": run_id,
+                "face_lock": "none",
+                "slide_01": "static_png",
+                "static_png_only": True,
+            }
+        )
+        if existing.get("visual_family") not in {None, "animals_viktoria_collage"}:
+            existing["visual_family"] = "animals_viktoria_collage"
+        write_json(manifest_path, existing)
+    else:
+        write_json(manifest_path, manifest)
+    write_text_file(
+        pack / "FACE_CHECK.md",
+        "\n".join(
+            [
+                "verdict: ABSENT",
+                "face_lock: none",
+                "no host portrait",
+                "без лица Вики",
+                "Do not FACE MATCH. Host portrait is forbidden on every slide.",
+                "",
+            ]
+        ),
+    )
+    return pack
 
 
 def ledger_path(workspace: Path) -> Path:
@@ -389,12 +470,32 @@ def previous_step(step_id: str) -> str | None:
     return STEP_IDS[idx - 1]
 
 
+def is_static_skip_state(step_id: str, state: dict[str, Any]) -> bool:
+    return (
+        step_id in STATIC_SKIP_STEPS
+        and state.get("status") == "skipped"
+        and state.get("skip_reason") == LEGAL_SKIP.get(step_id)
+    )
+
+
+def previous_gate_step(ledger: dict[str, Any], step_id: str) -> str | None:
+    """Walk back past motion/animate when they are already static-png-only skipped."""
+    idx = STEP_IDS.index(step_id)
+    while idx > 0:
+        idx -= 1
+        prev = STEP_IDS[idx]
+        if is_static_skip_state(prev, ledger["steps"][prev]):
+            continue
+        return prev
+    return None
+
+
 def step_is_done(state: dict[str, Any]) -> bool:
     return state.get("status") in {"ok", "skipped"}
 
 
 def require_previous_done(ledger: dict[str, Any], step_id: str) -> None:
-    prev = previous_step(step_id)
+    prev = previous_gate_step(ledger, step_id)
     if prev is None:
         return
     state = ledger["steps"][prev]
@@ -550,12 +651,15 @@ def cmd_init(
         "incident_report": "none",
     }
     save_ledger(workspace, ledger)
+    apply_static_video_skips(workspace, repo_root)
     print(f"initialized lang={lang} handle={HANDLES[lang]} run_id={ledger['run_id']}")
     print("next: researcher")
+    print("static_png_only: motion-director+animate skipped (static-png-only)")
     return 0
 
 
 def cmd_status(workspace: Path, repo_root: Path) -> int:
+    apply_static_video_skips(workspace, repo_root)
     ledger = load_ledger(workspace)
     print_director_banner()
     print(f"run_id={ledger.get('run_id')} lang={ledger.get('lang')} handle={ledger.get('handle')}")
@@ -597,6 +701,7 @@ def first_pending(ledger: dict[str, Any]) -> str | None:
 
 
 def cmd_next(workspace: Path, repo_root: Path) -> int:
+    apply_static_video_skips(workspace, repo_root)
     ledger = load_ledger(workspace)
     stale = stale_reason(workspace, ledger)
     if stale:
@@ -841,6 +946,14 @@ def verify_copy_locale(workspace: Path, lang: str) -> list[str]:
 def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
     if step_id not in STEP_IDS:
         raise SystemExit(f"unknown step {step_id}")
+    apply_static_video_skips(workspace, repo_root)
+    if step_id in STATIC_SKIP_STEPS:
+        brief = parse_brief(workspace) if brief_path(workspace).is_file() else {}
+        if brief.get("static_png_only", True):
+            print(f"✅ VERIFY SKIP {step_id} reason=static-png-only")
+            print("HANDOFF_NEXT: design-guardian")
+            print("Director: do not dispatch motion/animate. Next is design-guardian.")
+            return 0
     ledger = load_ledger(workspace)
     spec = step_map(repo_root)[step_id]
     state = ledger["steps"][step_id]
@@ -897,6 +1010,10 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
         ok = "✅ DESIGN OK" in report or re.search(r"Score:\s*(9\d|100)\b", report)
         if not ok and "❌" in report:
             errors.append("guardian report is not DESIGN OK / score>=90")
+    if step_id == "slice":
+        errors.extend(verify_slice_pack(workspace))
+    if step_id == "upload" and file_ok(workspace, "carusel-memory/output/publish-urls.json"):
+        errors.extend(verify_publish_urls_this_run(workspace, ledger))
 
     if errors:
         print("❌ VERIFY FAIL", step_id)
@@ -919,46 +1036,133 @@ def cmd_verify(workspace: Path, repo_root: Path, step_id: str) -> int:
     save_ledger(workspace, ledger)
     print(f"✅ VERIFY OK {step_id}")
     if step_id == "slice":
-        maybe_auto_skip_video_steps(workspace, repo_root)
-    nxt = spec.get("handoff_next")
+        apply_static_video_skips(workspace, repo_root)
+        nxt = "design-guardian"
+    else:
+        nxt = spec.get("handoff_next")
+        if nxt in STATIC_SKIP_STEPS:
+            brief = parse_brief(workspace) if brief_path(workspace).is_file() else {}
+            if brief.get("static_png_only", True):
+                nxt = "design-guardian"
     if nxt:
         print(f"HANDOFF_NEXT: {nxt}")
         print("Director: record-dispatch the next step. Do not do it yourself.")
     return 0
 
 
-def maybe_auto_skip_video_steps(workspace: Path, repo_root: Path) -> None:
-    """Owner lock: static PNG carousels. Skip motion/animate unless Hall asks."""
+def verify_slice_pack(workspace: Path) -> list[str]:
+    errors: list[str] = []
+    if not brief_path(workspace).is_file():
+        return errors
+    brief = parse_brief(workspace)
+    date = brief.get("date")
+    if not date:
+        return errors
+    pack = pack_root(workspace, date)
+    if not pack.is_dir():
+        errors.append(
+            f"missing pack dir carusel-memory/packs/{date} — "
+            "never write today's slides into an older pack"
+        )
+        return errors
+    manifest_path = pack / "PACK.json"
+    if manifest_path.is_file():
+        data = load_json(manifest_path)
+        if str(data.get("pack_id") or "") != date:
+            errors.append(f"PACK.json pack_id must be {date}, not an archive pack")
+        if str(data.get("face_lock") or "none") not in {"none", "no_host", "absent", ""}:
+            errors.append("PACK.json face_lock must be none (no host portrait)")
+        want_run = brief.get("run_id")
+        got_run = data.get("run_id")
+        if want_run and want_run != "PENDING" and got_run and got_run != want_run:
+            errors.append(f"PACK.json run_id={got_run} is not this run {want_run}")
+    face_path = pack / "FACE_CHECK.md"
+    if face_path.is_file():
+        text = face_path.read_text(encoding="utf-8")
+        if re.search(r"verdict:\s*MATCH", text, re.I):
+            errors.append("FACE_CHECK MATCH is retired; verdict must be ABSENT")
+        if re.search(r"compared:\s*Виктория|face ref.*Виктория|face_lock:\s*Виктория", text, re.I):
+            errors.append("FACE_CHECK must not treat Виктория.png as a face ref")
+        if not re.search(r"verdict:\s*ABSENT", text, re.I):
+            errors.append("FACE_CHECK.md needs verdict: ABSENT")
+    return errors
+
+
+def verify_publish_urls_this_run(workspace: Path, ledger: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    rel = "carusel-memory/output/publish-urls.json"
+    data = load_json(workspace / rel)
+    brief = parse_brief(workspace) if brief_path(workspace).is_file() else {}
+    want = brief.get("run_id") or ledger.get("run_id")
+    got = data.get("run_id")
+    if want and str(want).upper() != "PENDING" and not got:
+        errors.append(f"{rel} missing run_id — URLs must come from this run only")
+    if want and str(want).upper() != "PENDING" and got and got != want:
+        errors.append(f"{rel} run_id={got} is not this run {want}. Refuse archive URLs.")
+    blob = json.dumps(data, ensure_ascii=False)
+    for code in ARCHIVE_SHORTCODES:
+        if code in blob:
+            errors.append(f"{rel} contains archive permalink {code}")
+    if brief.get("static_png_only", True):
+        file1 = str(data.get("file1") or "")
+        if file1.endswith(".mp4") or data.get("file1_kind") == "mp4":
+            errors.append("static lock: file1 must be PNG (--static-all-pngs), not mp4")
+    return errors
+
+
+def apply_static_video_skips(workspace: Path, repo_root: Path) -> None:
+    """Owner lock: skip motion/animate on init so Director never dispatches them."""
+    if not brief_path(workspace).is_file() or not ledger_path(workspace).is_file():
+        return
     brief = parse_brief(workspace)
     if not brief.get("static_png_only", True):
         return
-    for step_id in ("motion-director", "animate"):
+    for step_id in STATIC_SKIP_STEPS:
         state = load_ledger(workspace)["steps"][step_id]
-        if state.get("status") == "skipped" and state.get("skip_reason") == "static-png-only":
+        if is_static_skip_state(step_id, state):
             continue
-        cmd_skip(workspace, repo_root, step_id, "static-png-only")
+        if state.get("status") == "ok":
+            continue
+        mark_step_skipped(workspace, repo_root, step_id, "static-png-only", check_previous=False)
 
 
-def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int:
+def maybe_auto_skip_video_steps(workspace: Path, repo_root: Path) -> None:
+    apply_static_video_skips(workspace, repo_root)
+
+
+def mark_step_skipped(
+    workspace: Path,
+    repo_root: Path,
+    step_id: str,
+    reason: str,
+    check_previous: bool = True,
+) -> int:
     if step_id not in LEGAL_SKIP:
         raise SystemExit(f"step {step_id} cannot be skipped")
     expected = LEGAL_SKIP[step_id]
     if reason != expected:
         raise SystemExit(f"skip reason for {step_id} must be {expected!r}")
     ledger = load_ledger(workspace)
-    require_previous_done(ledger, step_id)
+    if check_previous:
+        require_previous_done(ledger, step_id)
     brief = parse_brief(workspace)
     if step_id == "publish" and brief["publish_requested"]:
         raise SystemExit("publish_requested is true; cannot skip publish")
     if step_id == "fixic" and has_open_incidents(workspace):
         raise SystemExit("open incidents exist; Task(carusel-fixic) is required")
-    if step_id in {"motion-director", "animate"} and not brief.get("static_png_only", True):
+    if step_id in STATIC_SKIP_STEPS and not brief.get("static_png_only", True):
         raise SystemExit("Hall asked for video; cannot skip motion/animate")
 
     spec = step_map(repo_root)[step_id]
     fragment_rel = spec["fragment"]
     fragment = workspace / fragment_rel
     fragment.parent.mkdir(parents=True, exist_ok=True)
+    handoff = spec.get("handoff_next") or "done"
+    if step_id in STATIC_SKIP_STEPS and brief.get("static_png_only", True):
+        if step_id == "motion-director":
+            handoff = "design-guardian"
+        elif step_id == "animate":
+            handoff = "design-guardian"
     fragment.write_text(
         "\n".join(
             [
@@ -968,7 +1172,7 @@ def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int
                 f"skip_reason: {reason}",
                 f"lang: {brief['lang']}",
                 "incident_report: none",
-                f"HANDOFF_NEXT: {spec.get('handoff_next') or 'done'}",
+                f"HANDOFF_NEXT: {handoff}",
                 "",
             ]
         ),
@@ -996,6 +1200,10 @@ def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int
     save_ledger(workspace, ledger)
     print(f"skipped {step_id} reason={reason}")
     return 0
+
+
+def cmd_skip(workspace: Path, repo_root: Path, step_id: str, reason: str) -> int:
+    return mark_step_skipped(workspace, repo_root, step_id, reason, check_previous=True)
 
 
 def cmd_assert_ready(workspace: Path, step_id: str) -> int:
@@ -1106,12 +1314,25 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
         extra_hard.append(
             "- STATIC PNG ONLY. Slide 01 is a still PNG. Do not generate mp4, "
             "do not run grok_video_*, do not write ANIMATE.md. "
-            "Read shared/static-carousel-lock.md."
+            "HANDOFF_NEXT is design-guardian. Never motion-director or animate."
+        )
+        extra_hard.append(
+            "- Write 9 PNG into carusel-memory/output/slides AND copy into "
+            f"carusel-memory/packs/{brief.get('date') or 'YYYY-MM-DD'}/{{lang}}/slides/. "
+            "Never write today's slides into packs/2026-08-30 or any other old pack."
+        )
+        extra_hard.append(
+            "- FACE_CHECK.md verdict ABSENT. face_lock none. "
+            "Do not require or mention Виктория.png as a face ref."
         )
     if step_id == "upload":
         extra_hard.append(
             "- Upload with --static-all-pngs. file1 is slide-01.png. "
             "Do not upload or require slide-01.mp4. Read shared/static-carousel-lock.md."
+        )
+        extra_hard.append(
+            "- publish-urls.json must carry THIS run_id only. "
+            "Refuse archive permalinks (DcqJGCblQqv, DcqJS--m0op, live-posts.json of another date)."
         )
     extra_hard_block = "\n".join(extra_hard)
     spawn_line = (
@@ -1197,8 +1418,6 @@ DRY_RUN_WORKERS = (
     "designer",
     "image-prompter",
     "slice",
-    "motion-director",
-    "animate",
     "design-guardian",
     "upload",
 )
@@ -1346,14 +1565,10 @@ def write_dry_run_artifacts(workspace: Path, lang: str) -> None:
         {
             "dry_run": True,
             "pixels": "forbidden",
+            "face_lock": "none",
             "slides": [{"id": n, "file": None} for n in range(1, 10)],
         },
     )
-    write_text_file(
-        mem / "design" / "CAROUSEL_MOTION_ANALYSIS.md",
-        "# Dry-run motion brief\n\nNo MP4.\n",
-    )
-    write_json(mem / "design" / "CAROUSEL_VIDEO_PROMPT.json", {"dry_run": True, "clips": []})
     write_text_file(
         mem / "design" / "CAROUSEL_DESIGN_GUARDIAN_REPORT.md",
         "✅ DESIGN OK\n\nDry-run: no pixels to review.\n",
@@ -1469,7 +1684,8 @@ def cmd_dry_run(
     )
     print(
         "steps recorded: researcher copywriter designer image-prompter slice "
-        "motion-director animate design-guardian upload publish(skip) fixic(skip)"
+        "motion-director(skip static-png-only) animate(skip static-png-only) "
+        "design-guardian upload publish(skip) fixic(skip)"
     )
     cmd_status(workspace, repo_root)
     return cmd_assert_complete(workspace)
@@ -1572,12 +1788,17 @@ def cmd_new_day(
             pack_id=date,
         )
         write_text_file(brief_path(workspace), stamped)
+    apply_static_video_skips(workspace, repo_root)
+    pack = ensure_run_pack(workspace, date, run_id)
     write_text_file(handoff, pending_handoff_text(date))
     hole = mem / "HOLE.md"
     if hole.is_file():
         hole.unlink()
     print_director_banner()
     print(f"new-day date={date} run_id={run_id} lang={lang}")
+    print(f"pack={pack.as_posix()}")
+    print("face_lock=none FACE_CHECK=ABSENT")
+    print("static_png_only: motion-director+animate skipped")
     print("next=researcher")
     print(f"spawn=Task(generalPurpose, model={GEMINI_WORKER_MODEL})")
     print("IF_NO_TASK: python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'")

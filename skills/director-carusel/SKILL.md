@@ -37,8 +37,6 @@ description: Директор Carusel — intake, orchestration, handoff. Use wh
 === CARUSEL-DESIGNER ===
 === CARUSEL-IMAGE-PROMPTER ===
 === CARUSEL-SLICE ===
-=== CARUSEL-MOTION-DIRECTOR ===
-=== CARUSEL-ANIMATE ===
 === CARUSEL-DESIGN-GUARDIAN ===
 === CARUSEL-UPLOAD ===
 === CARUSEL-PUBLISH ===
@@ -66,13 +64,13 @@ Professional quality:
 2. carusel-copywriter (`model=inherit`; no default fallback, otherwise FAIL)
 3. carusel-designer
 4. **carusel-image-prompter** — промпт для Kie
-5. carusel-slice
-6. **carusel-motion-director** — анализ + промпт (RU)
-7. carusel-animate — Grok
-8. carusel-design-guardian
-9. **carusel-upload** — HTTPS
-10. carusel-publish
-11. **carusel-fixic** — если в `pipeline-fix-queue.md` есть `status: open` (после publish или терминального blocker)
+5. carusel-slice — 9 static PNG; HANDOFF_NEXT = design-guardian
+6. carusel-design-guardian
+7. **carusel-upload** — `--static-all-pngs`
+8. carusel-publish — только если `publish_requested: true`
+9. **carusel-fixic** — если в `pipeline-fix-queue.md` есть `status: open`
+
+`motion-director` / `animate` / Grok / mp4 — **не вызывать**. Уже skip `static-png-only`.
 
 Перед **Task** на шаг N+1 проверь fragment шага N: должна быть строка `incident_report`.
 

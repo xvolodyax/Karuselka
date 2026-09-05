@@ -310,7 +310,7 @@ def run_grid_3x3(
         "source_path": str(source_out.resolve()),
         "source_clean_path": str(source_clean_out.resolve()) if method != "seam" and gutter_cleanup else None,
         "slides_dir": str(slides_dir.resolve()),
-        "animate_slide": 1,
+        "animate_slide": 0,
         "slice_method": method,
         "slice_status": "pending",
         "gutter_cleanup": {

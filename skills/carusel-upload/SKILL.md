@@ -13,10 +13,12 @@ description: Kie.ai File Upload API — HTTPS URL для Instagram (stream + url
 
 ## Методы (авто)
 
+Default Instagram carousel = **9 static PNG** (`--static-all-pngs`). file1 = `slide-01.png`.
+
 | Слайд | Kie метод |
 |-------|-----------|
-| file1 видео | **URL upload** — берём `resultUrls[0]` из `grok-video-task-log.json` |
-| file2–file9 PNG | **Stream upload** — `slide-02.png` … `slide-09.png` |
+| file1–file9 PNG | **Stream upload** всех `slide-01.png` … `slide-09.png` |
+| video (только если Hall просила) | URL/stream mp4 — не default |
 
 Документация: https://docs.kie.ai/file-upload-api/quickstart  
 Контракт: `shared/carousel-asset-upload-contract.md`
@@ -26,8 +28,11 @@ description: Kie.ai File Upload API — HTTPS URL для Instagram (stream + url
 ```bash
 python scripts/upload_carousel_assets.py \
   --workspace <WORKSPACE> \
-  --run-id <run_id>
+  --run-id <run_id> \
+  --static-all-pngs
 ```
+
+`publish-urls.json` обязан нести **этот** `run_id`. Archive permalinks запрещены.
 
 `--run-id` auto из brief/caption если не указан → Kie path `carusel/instagram/{run_id}` — уникальные URL на run.
 Если fresh Guardian предупреждает, что MP4 размер отличается от PNG slides, перед publish использовать нормализованный локальный file1:
@@ -50,7 +55,7 @@ python scripts/upload_carousel_assets.py \
 ## Важно
 
 - Файлы на Kie **временные (~24ч)** — сразу после upload → `carusel-publish`
-- Если нет grok log и нет `slide-01.mp4` → BLOCKER
+- Static mode: нет mp4 — это норма. Не требовать grok log / `slide-01.mp4`.
 - `kie_file_upload.py` stream upload уже снимает inherited `Content-Type: application/json`, чтобы requests поставил multipart boundary.
 - Скрипты находятся в plugin: `<CURSOR_PLUGIN_DIR>/carusel\scripts\...`; не предполагай `Carusel/scripts`.
 - В логах/print не использовать Unicode arrows на Windows; только ASCII.

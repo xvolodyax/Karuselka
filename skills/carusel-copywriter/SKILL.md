@@ -61,7 +61,7 @@ Fragment: `carusel-memory/fragments/copywriter.md`
   "slide_count": 9,
   "grid": { "cols": 3, "rows": 3 },
   "slides": [
-    { "index": 1, "role": "hook", "headline": "...", "body": "", "notes": "animate; readable under 2 sec" },
+    { "index": 1, "role": "hook", "headline": "...", "body": "", "notes": "static PNG; readable under 2 sec" },
     { "index": 2, "role": "problem", "headline": "...", "body": "...", "notes": "" },
     ...
     { "index": 9, "role": "cta", "headline": "...", "body": "...", "cta": "..." }

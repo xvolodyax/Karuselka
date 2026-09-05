@@ -28,13 +28,23 @@ def resolve_run_id(workspace: Path) -> str | None:
     if caption.exists():
         data = json.loads(caption.read_text(encoding="utf-8"))
         rid = data.get("run_id")
-        if isinstance(rid, str) and rid.strip():
+        if isinstance(rid, str) and rid.strip() and rid.strip().upper() != "PENDING":
             return rid.strip()
     brief = workspace / "carusel-memory/00-brief.md"
     if brief.exists():
-        m = re.search(r"\*\*run_id:\*\*\s*(\S+)", brief.read_text(encoding="utf-8"))
-        if m:
-            return m.group(1)
+        text = brief.read_text(encoding="utf-8")
+        for pattern in (
+            re.compile(r"^run_id:\s*(\S+)\s*$", re.M | re.I),
+            re.compile(r"^\*\*run_id:\*\*\s*(\S+)\s*$", re.M | re.I),
+        ):
+            match = pattern.search(text)
+            if match and match.group(1).upper() != "PENDING":
+                return match.group(1)
+    ledger = workspace / "carusel-memory/pipeline-ledger.json"
+    if ledger.exists():
+        rid = json.loads(ledger.read_text(encoding="utf-8")).get("run_id")
+        if isinstance(rid, str) and rid.strip() and rid.strip().upper() != "PENDING":
+            return rid.strip()
     return None
 
 

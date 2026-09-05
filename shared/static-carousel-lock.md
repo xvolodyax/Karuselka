@@ -15,11 +15,10 @@ explicitly asks for video.
 
 ```text
 researcher → copywriter → designer → image-prompter → slice
-  → skip motion-director (static-png-only)
-  → skip animate (static-png-only)
   → design-guardian → upload → publish(skip unless asked)
 ```
 
-Skip reason: `static-png-only`.
+`motion-director` and `animate` are **skipped at init** (`skip_reason: static-png-only`).
+Director must never dispatch them. After slice, `HANDOFF_NEXT` is `design-guardian`.
 
 `skip_motion: false` / `skip_animate: false` in the brief only if Hall asks for video.

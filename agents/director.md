@@ -1,7 +1,7 @@
 ---
 name: director
 description: |
-  Директор Carusel: intake → researcher → copywriter → designer → image-prompter → slice → motion → animate → guardian → upload → publish → fixic. Handoff через carusel-handoff.md. Субагенты только через Task.
+  Директор Carusel: intake → researcher → copywriter → designer → image-prompter → slice → design-guardian → upload → publish → fixic. Static PNG only. Never motion/animate. Handoff через carusel-handoff.md. Субагенты только через Task.
 model: inherit
 readonly: false
 is_background: false
@@ -38,15 +38,15 @@ Memory: `{PROJECT_ROOT}/carusel-memory/` (включая `pipeline-fix-queue.md`
 2. **Task**(`carusel-copywriter`)
 3. **Task**(`carusel-designer`)
 4. **Task**(`carusel-image-prompter`)
-5. **Task**(`carusel-slice`)
-6. **Task**(`carusel-motion-director`)
-7. **Task**(`carusel-animate`)
-8. **Task**(`carusel-design-guardian`)
-9. При OK → **Task**(`carusel-upload`)
-10. **Task**(`carusel-publish`)
-11. Если в `pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`)
+5. **Task**(`carusel-slice`) — 9 static PNG. HANDOFF_NEXT = **design-guardian**
+6. **Task**(`carusel-design-guardian`)
+7. При OK → **Task**(`carusel-upload` `--static-all-pngs`)
+8. **Task**(`carusel-publish`) только если brief `publish_requested: true`
+9. Если в `pipeline-fix-queue.md` есть `status: open` → **Task**(`carusel-fixic`)
 
-Не пиши сам research, copy, design, prompts, slice, motion, animate, QA, upload, publish, fixic.
+`motion-director` и `animate` уже **skipped: static-png-only**. Не диспатчить. Нет Grok / mp4 / ANIMATE.md.
+
+Не пиши сам research, copy, design, prompts, slice, QA, upload, publish, fixic.
 
 ## Cloud Task fallback и жёсткое правило Владимира 03.09.2026
 

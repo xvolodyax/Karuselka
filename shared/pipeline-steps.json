@@ -121,6 +121,8 @@
       "may_run_in_parent": false,
       "handoff_next": "animate",
       "skip_allowed": true,
+      "default_skip": true,
+      "skip_reason": "static-png-only",
       "skip_reason_required": "static-png-only"
     },
     {
@@ -136,6 +138,8 @@
       "may_run_in_parent": false,
       "handoff_next": "design-guardian",
       "skip_allowed": true,
+      "default_skip": true,
+      "skip_reason": "static-png-only",
       "skip_reason_required": "static-png-only"
     },
     {
