@@ -40,7 +40,7 @@ Publish по умолчанию `skip: publish-not-requested`. Не Instagram / 
 ## Весь человеческий текст = Gemini (Правило Владимира 03.09.2026 + fix 04.09.2026)
 
 Vladimir: «весь текст пишет gemini».
-Researcher и copywriter — **только Gemini**. Parent уже `gemini-3.8-flash` + `reasoning_effort=high`.
+Researcher и copywriter — **только Gemini**. Parent уже `gemini-3.8-flash` + `reasoning_effort=low`. high только если Владимир явно переопределил.
 В каталоге Task **нет** slug `gemini-3.8-flash`. Текстовые воркеры спавнятся с `model="inherit"`.
 
 | Артефакт | Кто пишет | Stamp |
@@ -56,6 +56,7 @@ Spawn: `model="inherit"`. НЕ передавать slug `gemini-3.8-flash` в T
 Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini.
 Никакого fallback на дефолтную модель (Claude, Sonnet, Opus, Composer, GPT) или исполнение в родительском чате.
 Если inherit не даёт Gemini в runtime — **только FAIL + HOLE**. Не читать гейт/publish-скрипт в цикле.
+После GATE PASS / READY — EXIT. Max 2 Read одного gate-файла; третий = FAIL. Нет sleep/poll.
 Gate **отклоняет** copy/caption/brief без `written_by: gemini` (opus/sonnet/composer = FAIL).
 Не переписывать голос Gemini.
 

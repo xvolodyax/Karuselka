@@ -311,7 +311,11 @@ class PipelineGateTest(unittest.TestCase):
         self.assertIn("Do only this step", packet)
         self.assertIn("required_model: inherit", packet)
         self.assertIn("Task(generalPurpose, model=inherit)", packet)
+        self.assertIn("reasoning_effort: low", packet)
+        self.assertIn("After GATE PASS / READY", packet)
+        self.assertIn("Max 2 Reads", packet)
         self.assertNotIn("Do not inherit Director model", packet)
+        self.assertNotIn("reasoning_effort: high", packet)
 
     def test_wrong_plugin_task_name_rejected(self) -> None:
         self.run_cmd("init", "--lang", "ru")
@@ -440,9 +444,9 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertEqual(ledger["steps"]["fixic"]["status"], "skipped")
         self.assertEqual(ledger["steps"]["fixic"]["skip_reason"], "no-open-incidents")
         self.assertEqual(ledger["steps"]["researcher"]["model"], gate.GEMINI_MODEL)
-        self.assertEqual(ledger["steps"]["researcher"]["reasoning_effort"], "high")
+        self.assertEqual(ledger["steps"]["researcher"]["reasoning_effort"], "low")
         self.assertEqual(ledger["steps"]["copywriter"]["model"], gate.GEMINI_MODEL)
-        self.assertEqual(ledger["steps"]["copywriter"]["reasoning_effort"], "high")
+        self.assertEqual(ledger["steps"]["copywriter"]["reasoning_effort"], "low")
         pixels = [
             p
             for p in self.tmp.rglob("*")
@@ -472,7 +476,12 @@ class GeminiAndDryRunTest(unittest.TestCase):
         self.assertIn("written_by: gemini", packet)
         self.assertIn("cta-app-audio-contract.md", packet)
         self.assertIn("app_audio", packet)
+        self.assertIn("reasoning_effort: low", packet)
+        self.assertIn("After GATE PASS / READY", packet)
+        self.assertIn("Max 2 Reads", packet)
         self.assertNotIn("Telegram bot, not an app", packet)
+        self.assertNotIn("reasoning_effort: high", packet)
+        self.assertNotIn("reasoning_effort=high", packet)
 
     def _complete_researcher(self) -> None:
         self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
@@ -793,6 +802,85 @@ class StaticPngOnlyPipelineTest(unittest.TestCase):
             ),
         )
         self.assertEqual(self.run_cmd("verify", "--step", "slice"), 2)
+
+
+class TokenBurnLockTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="carusel-gate-"))
+        self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
+        self.repo = ROOT
+
+    def run_cmd(self, *argv: str) -> int:
+        return gate.main(["--workspace", str(self.tmp), "--repo-root", str(self.repo), *argv])
+
+    def test_default_reasoning_effort_is_low(self) -> None:
+        self.assertEqual(gate.GEMINI_REASONING_EFFORT, "low")
+        self.assertEqual(gate.MAX_GATE_FILE_READS, 2)
+        steps = {item["id"]: item for item in gate.load_steps(self.repo)}
+        self.assertEqual(steps["researcher"]["reasoning_effort"], "low")
+        self.assertEqual(steps["copywriter"]["reasoning_effort"], "low")
+
+    def test_note_read_fails_on_third_gate_file(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.assertEqual(self.run_cmd("note-read", "--file", "scripts/pipeline_gate.py"), 0)
+        self.assertEqual(self.run_cmd("note-read", "--file", "scripts/pipeline_gate.py"), 0)
+        self.assertEqual(self.run_cmd("note-read", "--file", "scripts/pipeline_gate.py"), 2)
+        hole = (self.tmp / "carusel-memory" / "HOLE.md").read_text(encoding="utf-8")
+        self.assertIn("status: FAIL", hole)
+        self.assertIn("Token-burn lock", hole)
+
+    def test_status_after_ready_fails_on_third_idle(self) -> None:
+        today = gate.today_iso()
+        self.run_cmd("init", "--lang", "ru", "--run-id", f"{today}-1110")
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in gate.STEP_IDS:
+            ledger["steps"][step_id]["status"] = "ok"
+            ledger["steps"][step_id]["dispatched_via"] = "Task(generalPurpose)"
+        ledger["steps"]["director"]["dispatched_via"] = "parent"
+        brief = (self.tmp / "carusel-memory" / "00-brief.md").read_text(encoding="utf-8")
+        write(self.tmp / "carusel-memory" / "00-brief.md", brief.replace("date: PENDING", f"date: {today}"))
+        (self.tmp / "carusel-memory" / "packs" / today).mkdir(parents=True)
+        gate.save_ledger(self.tmp, ledger)
+        import io
+        from contextlib import redirect_stdout
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = self.run_cmd("status")
+        self.assertEqual(rc, 0)
+        self.assertIn("EXIT=1", buf.getvalue())
+        self.assertIn("GATE PASS", buf.getvalue())
+        self.assertEqual(self.run_cmd("status"), 0)
+        self.assertEqual(self.run_cmd("status"), 2)
+
+    def test_dispatch_prompt_fails_on_third_emit(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.run_cmd("record-dispatch", "--step", "researcher", "--via", "Task(generalPurpose)")
+        self.assertEqual(self.run_cmd("dispatch-prompt", "--step", "researcher"), 0)
+        self.assertEqual(self.run_cmd("dispatch-prompt", "--step", "researcher"), 0)
+        self.assertEqual(self.run_cmd("dispatch-prompt", "--step", "researcher"), 2)
+
+    def test_no_default_reasoning_effort_high_stamps(self) -> None:
+        forbidden = (
+            "reasoning_effort: high",
+            "reasoning_effort=high",
+        )
+        roots = [
+            ROOT / "scripts" / "pipeline_gate.py",
+            ROOT / "shared" / "pipeline-steps.json",
+            ROOT / "agents" / "carusel-researcher.md",
+            ROOT / "agents" / "carusel-copywriter.md",
+            ROOT / "agents" / "director.md",
+            ROOT / "skills" / "carusel-researcher" / "SKILL.md",
+            ROOT / "skills" / "carusel-copywriter" / "SKILL.md",
+            ROOT / "skills" / "director-carusel" / "SKILL.md",
+            ROOT / "shared" / "director-once.md",
+            ROOT / "AGENT-PIPELINE.md",
+        ]
+        for path in roots:
+            text = path.read_text(encoding="utf-8")
+            for needle in forbidden:
+                self.assertNotIn(needle, text, path.name)
 
 
 if __name__ == "__main__":

@@ -11,7 +11,9 @@ description: Директор Carusel — intake, orchestration, handoff. Use wh
 
 ### Жёсткое правило Владимира 03.09.2026 + fix 04.09.2026
 - Читать **один раз** `shared/director-once.md`. Не крутить `scripts/pipeline_gate.py` / `scripts/composio_instagram_publish.py`.
-- Researcher и copywriter — **только** `model="inherit"` (parent уже `gemini-3.8-flash` + `reasoning_effort=high`). Slug в Task запрещён.
+- После **GATE PASS / READY** — **EXIT**. Не ждать слот. Нет sleep/poll.
+- Один и тот же gate-файл — максимум **2 Read** за run. Третий = FAIL + hole + EXIT.
+- Researcher и copywriter — **только** `model="inherit"` (parent уже `gemini-3.8-flash` + `reasoning_effort=low`). high только если Владимир явно переопределил. Slug в Task запрещён.
 - Дефолтный агент / director **НИКОГДА** не пишет captions/slides/CTA сам при недоступной Gemini.
 - Запрещён default fallback на Claude / GPT / Composer — нет Gemini → **FAIL + HOLE**.
 - Нет лица Вики. 9+9 static PNG. CTA = приложение, не бот.

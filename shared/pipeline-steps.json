@@ -22,7 +22,7 @@
       "role": "carusel-researcher",
       "task_name": "carusel-researcher",
       "model": "inherit",
-      "reasoning_effort": "high",
+      "reasoning_effort": "low",
       "skill": "skills/carusel-researcher/SKILL.md",
       "agent": "agents/carusel-researcher.md",
       "required_artifacts": [
@@ -38,7 +38,7 @@
       "role": "carusel-copywriter",
       "task_name": "carusel-copywriter",
       "model": "inherit",
-      "reasoning_effort": "high",
+      "reasoning_effort": "low",
       "skill": "skills/carusel-copywriter/SKILL.md",
       "agent": "agents/carusel-copywriter.md",
       "required_artifacts": [

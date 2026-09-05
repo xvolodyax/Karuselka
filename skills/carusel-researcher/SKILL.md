@@ -54,7 +54,7 @@ incident_report: none
 
 ## Модель и правила (Владимир 03.09.2026 + 04.09.2026)
 
-- **Модель:** `model="inherit"` (наследует Gemini родителя `gemini-3.8-flash` + `reasoning_effort=high`). Не передавать slug `gemini-3.8-flash` в Task.
+- **Модель:** `model="inherit"` (наследует Gemini родителя `gemini-3.8-flash` + `reasoning_effort=low`). high только если Владимир явно переопределил. Не передавать slug `gemini-3.8-flash` в Task.
 - **written_by: gemini** обязательно во всех артефактах шага.
 - **NO DEFAULT FALLBACK:** дефолтный агент / director НИКОГДА не пишет research/dossier сам при недоступной Gemini. При недоступности Gemini — только FAIL.
 

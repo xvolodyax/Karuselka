@@ -115,7 +115,13 @@
 - **BLOCKER:** `grid-gutter-qa-clean.json` не `status: ok`
 - **Кто:** image-prompter, slice, design-guardian
 
-## 12. Incident memory
+## 12. Token-burn: reasoning_effort high + Read-loop
+
+- **Симптом:** отменённый run всё ещё печатает `dispatch-prompt` с высоким reasoning; Director крутит Read `pipeline_gate.py` / `composio_instagram_publish.py` и ждёт слот
+- **Решение:** parent + text workers default `reasoning_effort=low` (high только если Владимир явно переопределил). После GATE PASS / READY — EXIT. Max 2 Read одного gate-файла, иначе FAIL + hole. Нет sleep/poll
+- **Кто:** Director, pipeline_gate, researcher, copywriter
+
+## 13. Incident memory
 
 - Проблема не в списке → **incident** в `carusel-memory/pipeline-fix-queue.md`
 - После run → **carusel-fixic**

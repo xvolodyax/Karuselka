@@ -11,3 +11,4 @@ python scripts/pipeline_gate.py --workspace . new-day --date YYYY-MM-DD --lang r
 
 Дальше: `record-dispatch` → `dispatch-prompt` → Task(`generalPurpose`, `model=inherit`) на researcher/copywriter.
 Нет Task / 403 publish → `hole` и стоп. Не подставлять archive Instagram URL. Не Read-loop гейта.
+GATE PASS / READY → EXIT. Max 2 Read gate-файла. Нет sleep/poll. Parent `reasoning_effort=low`.

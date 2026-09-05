@@ -5,6 +5,9 @@ Director may orchestrate. Director may not silently do worker steps.
 Each worker step needs a Task(...) dispatch record plus artifacts + fragment.
 
 CLI, not a novel. Director: run commands. Do not re-read this file in a loop.
+Max 2 Reads of this file (or composio_instagram_publish.py) per run.
+Third Read of the same gate file = FAIL + hole + EXIT.
+After GATE PASS / READY: EXIT immediately. No sleep/poll waiting for a slot.
 If status says STALE_LEDGER or next=new-day → run `new-day`, then spawn Task.
 If Task is missing or publish auth fails → `hole` and STOP.
 """
@@ -13,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import uuid
@@ -69,7 +73,11 @@ GEMINI_STEPS = frozenset({"researcher", "copywriter"})
 GEMINI_PARENT_MODEL = "gemini-3.8-flash"
 GEMINI_WORKER_MODEL = "inherit"
 GEMINI_MODEL = GEMINI_WORKER_MODEL
-GEMINI_REASONING_EFFORT = "high"
+# Token-burn lock: default is low. high only if Vladimir explicitly overrides
+# via KARUSEL_REASONING_EFFORT. Never default workers/parent to high.
+_REASONING_OVERRIDE = (os.environ.get("KARUSEL_REASONING_EFFORT") or "").strip().lower()
+GEMINI_REASONING_EFFORT = _REASONING_OVERRIDE if _REASONING_OVERRIDE in {"low", "high"} else "low"
+MAX_GATE_FILE_READS = 2
 GEMINI_MODELS = frozenset({GEMINI_WORKER_MODEL})
 GEMINI_SLUG_FORBIDDEN = frozenset({"gemini-3.8-flash", "gemini-3.8-flash-high"})
 GEMINI_WRITERS = frozenset(
@@ -283,9 +291,67 @@ def today_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
+def director_watch(ledger: dict[str, Any]) -> dict[str, Any]:
+    watch = ledger.get("director_watch")
+    if not isinstance(watch, dict):
+        watch = {}
+        ledger["director_watch"] = watch
+    return watch
+
+
+def bump_director_watch(workspace: Path, key: str, step_id: str | None = None) -> int:
+    ledger = load_ledger(workspace)
+    watch = director_watch(ledger)
+    if step_id:
+        bucket = watch.get(key)
+        if not isinstance(bucket, dict):
+            bucket = {}
+            watch[key] = bucket
+        count = int(bucket.get(step_id) or 0) + 1
+        bucket[step_id] = count
+    else:
+        count = int(watch.get(key) or 0) + 1
+        watch[key] = count
+    save_ledger(workspace, ledger)
+    return count
+
+
+def fail_gate_reread(workspace: Path, rel: str, count: int) -> int:
+    cmd_hole(
+        workspace,
+        f"{rel} read {count} times this run (max {MAX_GATE_FILE_READS}). "
+        "Token-burn lock: FAIL and EXIT. Do not sleep/poll for a slot.",
+    )
+    print(f"FAIL: {rel} counted {count} times (max {MAX_GATE_FILE_READS}). EXIT now.")
+    return 2
+
+
+def note_gate_file_read(workspace: Path, rel: str) -> int:
+    """Count a Director Read of a gate source file. Third Read = FAIL + hole."""
+    if rel not in NO_REREAD:
+        raise SystemExit(f"unknown gate file {rel}")
+    count = bump_director_watch(workspace, "gate_file_reads", rel)
+    print(f"gate_file_read={rel} count={count} max={MAX_GATE_FILE_READS}")
+    if count > MAX_GATE_FILE_READS:
+        return fail_gate_reread(workspace, rel, count)
+    return 0
+
+
+def print_exit_now(reason: str) -> None:
+    print("READY")
+    print("GATE PASS")
+    print("EXIT=1")
+    print(f"Director EXIT now. {reason}")
+    print("Do not re-read scripts/pipeline_gate.py or scripts/composio_instagram_publish.py.")
+    print("Do not sleep/poll waiting for a slot. Token-burn lock.")
+
+
 def print_director_banner() -> None:
     print(f"DIRECTOR_ONCE={DIRECTOR_ONCE}")
     print("DO_NOT_REREAD=" + " ".join(NO_REREAD))
+    print(f"MAX_GATE_FILE_READS={MAX_GATE_FILE_READS}")
+    print("AFTER_READY_OR_GATE_PASS=EXIT")
+    print("NO_SLEEP_POLL=1")
     print("CLI_ONLY=1")
     print(f"parent_canon={GEMINI_PARENT_MODEL} reasoning_effort={GEMINI_REASONING_EFFORT}")
     print(f"worker_model={GEMINI_WORKER_MODEL}")
@@ -676,7 +742,8 @@ def cmd_status(workspace: Path, repo_root: Path) -> int:
             "command: python scripts/pipeline_gate.py --workspace . new-day "
             f"--date {today_iso()} --lang {ledger.get('lang') or 'ru'}"
         )
-        print("STOP. Do not re-read this file. Run new-day, then Task researcher model=inherit.")
+        print("STOP. Do not re-read this file. Do not sleep/poll for a slot.")
+        print("Run new-day, then Task researcher model=inherit. Or EXIT if this run is cancelled.")
         return 0
     for spec in load_steps(repo_root):
         state = ledger["steps"][spec["id"]]
@@ -687,9 +754,17 @@ def cmd_status(workspace: Path, repo_root: Path) -> int:
         print(f"- {spec['id']:18} {status:10} via={via}{extra}")
     nxt = first_pending(ledger)
     print(f"next={nxt or 'done'}")
+    if nxt is None:
+        print_exit_now("Pipeline is READY / GATE PASS.")
+        hits = bump_director_watch(workspace, "ready_status_hits")
+        print(f"ready_status_hits={hits} max={MAX_GATE_FILE_READS}")
+        if hits > MAX_GATE_FILE_READS:
+            return fail_gate_reread(workspace, "status-after-ready", hits)
+        return 0
     if nxt in GEMINI_STEPS:
         print(f"spawn=Task(generalPurpose, model={GEMINI_WORKER_MODEL})")
         print("IF_NO_TASK: python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'")
+    print("Do not Read scripts/pipeline_gate.py. CLI only. No sleep/poll for a slot.")
     return 0
 
 
@@ -713,11 +788,17 @@ def cmd_next(workspace: Path, repo_root: Path) -> int:
             "command: python scripts/pipeline_gate.py --workspace . new-day "
             f"--date {today_iso()} --lang {ledger.get('lang') or 'ru'}"
         )
-        print("STOP. Do not re-read this file. Do not treat archive Instagram URLs as today.")
+        print("STOP. Do not re-read this file. Do not sleep/poll for a slot.")
+        print("Do not treat archive Instagram URLs as today.")
         return 0
     nxt = first_pending(ledger)
     if nxt is None:
         print("next=done")
+        print_exit_now("Pipeline is READY / GATE PASS.")
+        hits = bump_director_watch(workspace, "ready_status_hits")
+        print(f"ready_status_hits={hits} max={MAX_GATE_FILE_READS}")
+        if hits > MAX_GATE_FILE_READS:
+            return fail_gate_reread(workspace, "next-after-ready", hits)
         return 0
     spec = step_map(repo_root)[nxt]
     print(f"next={nxt}")
@@ -807,6 +888,7 @@ def cmd_record_dispatch(
     print("IF_NO_TASK: python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'")
     print("then: pipeline_gate.py verify --step", step_id)
     print("DO_NOT_REREAD this file. Packet is in carusel-memory/dispatches/ after dispatch-prompt.")
+    print("After GATE PASS / READY: EXIT. Max 2 Reads of this file per run.")
     return 0
 
 
@@ -1235,11 +1317,19 @@ def cmd_dispatch_prompt(workspace: Path, repo_root: Path, step_id: str) -> int:
     extra_hard: list[str] = [
         "- Already-read: execute THIS step only. Do not re-read scripts/pipeline_gate.py.",
         "- Do not re-read scripts/composio_instagram_publish.py.",
+        "- After GATE PASS / READY: Director EXIT immediately. No sleep/poll waiting for a slot.",
+        f"- Max {MAX_GATE_FILE_READS} Reads of scripts/pipeline_gate.py or "
+        "scripts/composio_instagram_publish.py per run. Third Read = FAIL + hole + EXIT.",
     ]
+    prompt_hits = bump_director_watch(workspace, "dispatch_prompt_hits", step_id)
+    print(f"dispatch_prompt_hits={step_id} count={prompt_hits} max={MAX_GATE_FILE_READS}", file=sys.stderr)
+    if prompt_hits > MAX_GATE_FILE_READS:
+        return fail_gate_reread(workspace, f"dispatch-prompt:{step_id}", prompt_hits)
     if step_id in GEMINI_STEPS:
         extra_hard.append(
             f"- required_model: inherit (parent Gemini {GEMINI_PARENT_MODEL} + "
-            f"reasoning_effort={GEMINI_REASONING_EFFORT}). "
+            f"reasoning_effort={GEMINI_REASONING_EFFORT}; default low — high only if "
+            "Vladimir explicitly overrides KARUSEL_REASONING_EFFORT). "
             f"Spawn Task(generalPurpose, model={GEMINI_WORKER_MODEL}). "
             "Do NOT pass gemini-3.8-flash slug to worker. Inherit Gemini from parent."
         )
@@ -1407,8 +1497,10 @@ def cmd_assert_complete(workspace: Path) -> int:
         for step_id in pending:
             print(f"- missing {step_id} status={ledger['steps'][step_id].get('status')}")
         print("STOP. Dispatch the missing step. Do not finish the carousel yourself.")
+        print("Do not sleep/poll. Do not re-read scripts/pipeline_gate.py.")
         return 2
     print("✅ PIPELINE COMPLETE (all 12 steps ok or legally skipped)")
+    print_exit_now("assert-complete is READY / GATE PASS.")
     return 0
 
 
@@ -1748,6 +1840,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="Write FAIL+HOLE and stop. Use when Task is missing or publish auth fails.",
     )
     hole.add_argument("--reason", required=True)
+    note = sub.add_parser(
+        "note-read",
+        help="Count a Director Read of a gate source file. Third Read = FAIL + EXIT.",
+    )
+    note.add_argument(
+        "--file",
+        required=True,
+        choices=list(NO_REREAD),
+        help="scripts/pipeline_gate.py or scripts/composio_instagram_publish.py",
+    )
     return parser
 
 
@@ -1803,6 +1905,7 @@ def cmd_new_day(
     print(f"spawn=Task(generalPurpose, model={GEMINI_WORKER_MODEL})")
     print("IF_NO_TASK: python scripts/pipeline_gate.py --workspace . hole --reason 'Task tool missing'")
     print("DO_NOT_REREAD scripts. Run record-dispatch then dispatch-prompt then Task.")
+    print("After GATE PASS / READY: EXIT. No sleep/poll for a slot.")
     return 0
 
 
@@ -1825,7 +1928,8 @@ def cmd_hole(workspace: Path, reason: str) -> int:
     print("FAIL")
     print(f"HOLE={path.as_posix()}")
     print(f"reason={reason}")
-    print("STOP. Do not reread scripts. Do not substitute archive Instagram URLs.")
+    print("STOP. EXIT now. Do not reread scripts. Do not sleep/poll for a slot.")
+    print("Do not substitute archive Instagram URLs.")
     return 2
 
 
@@ -1861,6 +1965,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_new_day(workspace, repo_root, args.date, args.lang, args.topic)
     if args.cmd == "hole":
         return cmd_hole(workspace, args.reason)
+    if args.cmd == "note-read":
+        return note_gate_file_read(workspace, args.file)
     raise SystemExit(f"unknown cmd {args.cmd}")
 
 
