@@ -1,6 +1,7 @@
 {
   "pipeline_gate": {"step": "designer", "required": true},
   "carousel_family": "animals_viktoria_collage",
+  "face_lock": "none",
   "master": {
     "aspect": "3:4",
     "resolution": "4K",
@@ -15,15 +16,15 @@
     [7, 8, 9]
   ],
   "cell_shapes": {
-    "01": "hero portrait collage, subject mid, type top",
-    "02": "type stack + animal footer",
-    "03": "type stack + pill row + animal footer",
-    "04": "type + internal boundary split + cat",
-    "05": "decoder stack + small owl",
-    "06": "numbered list + small owl",
-    "07": "type + cat turning away",
-    "08": "type + owl witness",
-    "09": "hero standing 3/4 + huge magenta script above/beside"
+    "01": "hero scene collage: dark phone + alert black cat + large white headline (NO human face)",
+    "02": "type stack + silhouette of loyal dog waiting by dark screen",
+    "03": "type stack + magenta torn-tape pill («Вдруг он занят?») + dog resting head on paws",
+    "04": "type stack + boundary divide + autonomous cat on the line",
+    "05": "diagnostic decoder stack (3 lines with magenta arrows) + owl perched above",
+    "06": "numbered checklist cards (1-2-3) with subtle gold borders + owl perched lower-left",
+    "07": "rule type stack + cat turning away toward open space / stars",
+    "08": "recap type + wise owl witness",
+    "09": "hero cta: antique dark mirror frame with subtle gold tarot glyphs + huge magenta script ЗЕРКАЛО / MIRROR (NO human face)"
   },
-  "no_cross_gutter": ["faces", "trigger word", "headlines", "animals"]
+  "no_cross_gutter": ["trigger word", "headlines", "animals", "domain objects"]
 }

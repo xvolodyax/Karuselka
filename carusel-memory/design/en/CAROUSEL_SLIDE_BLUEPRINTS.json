@@ -3,21 +3,31 @@
     "step": "designer",
     "required": true,
     "visual_twin_of": "ru",
-    "dispatch_id": "b10a4a88db134fc38e2cc9d5838339c3"
+    "dispatch_id": "710bbd98dea442e294a26d7365f0cdc1"
   },
+  "pack_id": "2026-09-05",
   "lang": "en",
   "carousel_family": "animals_viktoria_collage",
   "generation_mode": "grid_3x3",
+  "master_aspect": "3:4",
+  "resolution": "4K",
   "slice_method": "seam",
-  "face_lock": "Виктория.png",
+  "gutters": "thin white at 1/3 and 2/3",
+  "safe_area_pct": 12,
+  "face_lock": "none",
   "product": "app_audio",
-  "wardrobe": {
-    "slide_1": "rumpled oatmeal weekend-at-home knit + charcoal lounge pants; sitting 3/4; phone face-down",
-    "slide_9": "standing 3/4 midnight-blue silk slip + open charcoal cardigan"
-  },
-  "preserve": ["same visual as RU"],
-  "change": ["EN copy", "WEEKEND trigger"],
-  "do_not_borrow": ["RU letters", "sheet/29.08 outfits", "Alena", "halo", "Academy"],
+  "verbatim_copy_source": "carusel-memory/design/en/CAROUSEL_SLIDE_COPY.json",
+  "preserve": [
+    "same visual as RU: dark charcoal field, magenta + white type, torn pills, animals-as-metaphor, seam gutters"
+  ],
+  "change": [
+    "EN copy from en/CAROUSEL_SLIDE_COPY.json",
+    "MIRROR trigger as huge magenta handwritten script on slide 9",
+    "face_lock: none (NO host portrait, NO Victoria face on any slide)"
+  ],
+  "do_not_borrow": [
+    "host portrait, Victoria, Alena, human faces, Portuguese text, sheet outfits, horror, bot offer"
+  ],
   "panel_archetype_map": {
     "01": "hero_scene_collage",
     "02": "type_heavy_pain",
@@ -34,106 +44,177 @@
       "index": 1,
       "role": "hook",
       "archetype": "hero_scene_collage",
-      "headline": "Friday 6 PM silence. Monday: «How was it?»",
+      "headline": "You stopped texting first. 4 days. The chat died.",
       "body": "",
-      "victoria": true,
+      "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "sensing the hidden truth",
-      "wardrobe": "rumpled oatmeal weekend-at-home knit",
-      "pose": "sitting 3/4, phone face-down, not hand-on-chin",
+      "animal_metaphor": "instinct senses emotional distance",
       "in_scene": true,
-      "sticker_halo": false
+      "sticker_halo": false,
+      "zones": {
+        "headline": "upper 40%, heavy white sans, 2 lines, safe 12%",
+        "hero_object": "dark smartphone screen dimly glowing with '4 days ago' message / 0 notifications",
+        "animal": "sleek black cat alert beside phone, amber-green eyes watching the silence, no halo",
+        "number": "pill 01 bottom-right, inside safe area"
+      },
+      "type_share_pct": 45,
+      "notes": "Thumbnail hook. Readable under 2 seconds. Strictly no human face."
     },
     {
       "index": 2,
       "role": "problem",
       "archetype": "type_heavy_pain",
-      "headline": "48 hours of silence after 5 warm days",
-      "body": "All week he texts every hour. But Saturday hits — and suddenly you disappear from his world.",
+      "headline": "The pain isn't silence, it's who carried it",
+      "body": "All along, this bond existed purely on your fuel. The second you let go of the wheel, the car simply stopped moving.",
       "victoria": false,
       "animal": "dog",
-      "animal_metaphor": "loyalty to the waiting screen"
+      "animal_metaphor": "faithful waiting by the silent screen",
+      "zones": {
+        "headline": "top 28%, heavy white sans",
+        "body": "mid 32%, 2 short lines white sans",
+        "animal": "loyal retriever/hound silhouette lower third by dark silent screen",
+        "number": "pill 02 bottom-right"
+      },
+      "type_share_pct": 55,
+      "notes": "Pain of realizing one-sided fuel. Dog waiting at the unringing phone."
     },
     {
       "index": 3,
       "role": "mistake",
       "archetype": "type_heavy_mistake",
-      "headline": "You make excuses for his silence",
-      "body": "«He's busy», «He needs rest». But a man who truly cares takes 10 seconds to send a single text.",
+      "headline": "The trap: «Maybe he's just really busy?»",
+      "body": "You make excuses and itch to reach out again. But being busy is never four whole days without a single syllable.",
       "victoria": false,
       "animal": "dog",
-      "animal_metaphor": "the faithful waiting trap"
+      "animal_metaphor": "stubborn loyalty to an unasked question",
+      "zones": {
+        "headline": "top 26%, white sans",
+        "pills": "magenta torn-tape pill highlighting «Maybe he's just really busy?»",
+        "body": "mid 30%, 2 lines",
+        "animal": "dog resting head on paws near excuse pill, lower-right",
+        "number": "pill 03 bottom-right"
+      },
+      "type_share_pct": 58,
+      "notes": "Excuse loop. Pills quote existing copy fragments only."
     },
     {
       "index": 4,
       "role": "mechanism",
       "archetype": "mechanism_boundary",
-      "headline": "You are just a weekday routine slot",
-      "body": "During work hours you cure his boredom. But when real life happens on weekends, you are kept outside.",
+      "headline": "He doesn't dislike you. He's a passenger",
+      "body": "He is happy to ride along as long as you buy the gas and drive. But he won't take a single step to make things happen.",
       "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "intuition spots the boundary"
+      "animal_metaphor": "cold feline autonomy cuts through false hope",
+      "zones": {
+        "headline": "top 28%, white sans",
+        "body": "mid 30%",
+        "split": "subtle divide between active driver wheel and empty passenger seat",
+        "animal": "cat sitting calmly on the dividing boundary, looking on with detachment",
+        "number": "pill 04 bottom-right"
+      },
+      "type_share_pct": 55,
+      "notes": "Passenger mechanism. Feline autonomy."
     },
     {
       "index": 5,
       "role": "save_decoder",
       "archetype": "save_decoder_table",
-      "headline": "What he says vs what it means",
-      "body": "«Off my phone on weekends» → Just not in your chat.\n«Too busy» → You are not in his rest priority.\n«Not a texter» → Yet texts all week.",
+      "headline": "Replying vs Initiating: The honest test",
+      "body": "«Replies to texts» → Polite passivity.\n«Sends random memes» → Bored in line.\n«Asks to see you» → He actually wants you.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "night clarity and seeing through fog",
-      "save_card": true
+      "animal_metaphor": "night clarity cutting through confusion",
+      "zones": {
+        "headline": "top 20%",
+        "decoder": "three stacked diagnostic lines with magenta arrows, 55% of cell, high save value",
+        "animal": "owl perched atop antique dark mirror frame above stack, small",
+        "number": "pill 05 bottom-right"
+      },
+      "type_share_pct": 62,
+      "save_card": true,
+      "notes": "Bookmark decoder table. Contrast passive politeness vs active desire."
     },
     {
       "index": 6,
       "role": "save_checklist",
       "archetype": "save_checklist",
-      "headline": "3 signs you are in the waiting trap",
-      "body": "1. You never know his weekend plans.\n2. He never invites you out spontaneously.\n3. His affection only exists during his office hours.",
+      "headline": "3 signs your chat is on life support",
+      "body": "1. Without your prompt, the chat freezes for days.\n2. Future plans are always «sometime soon».\n3. His warmth only exists in your questions.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "sober diagnostic check",
-      "save_card": true
+      "animal_metaphor": "objective appraisal of cold facts",
+      "zones": {
+        "headline": "top 22%",
+        "list": "numbered 1–3 checklist cards with gold accent borders, 55% of cell",
+        "animal": "owl perched lower-left, sober and alert",
+        "number": "pill 06 bottom-right"
+      },
+      "type_share_pct": 60,
+      "save_card": true,
+      "notes": "Diagnostic checklist for saves. Clear objective markers."
     },
     {
       "index": 7,
       "role": "save_rule",
       "archetype": "save_rule",
-      "headline": "Your weekend belongs to you",
-      "body": "Stop being the backup plan for his workday routine. Put the phone down and take your Saturday back.",
+      "headline": "Never remind someone who's fine without you",
+      "body": "He is perfectly at ease without hearing your voice. Take your energy back to where it builds your life, not his comfort.",
       "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "reclaiming personal sovereignty",
-      "save_card": true
+      "animal_metaphor": "reclaiming personal sovereignty and pride",
+      "zones": {
+        "headline": "top 28%",
+        "body": "mid 2 lines",
+        "animal": "black cat turning away from phone toward dark open window / starlight",
+        "number": "pill 07 bottom-right"
+      },
+      "type_share_pct": 55,
+      "save_card": true,
+      "notes": "Boundary rule. Cat walks away from the waiting post."
     },
     {
       "index": 8,
       "role": "recap",
       "archetype": "recap_insight",
-      "headline": "True interest shows in free time",
-      "body": "A man's true feelings are revealed when he is completely free, not when he is just killing time at work.",
+      "headline": "True reciprocity doesn't need CPR",
+      "body": "If a bond only survives when you keep pumping air into it, it's not a relationship. It's a monologue at a closed door.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "core insight"
+      "animal_metaphor": "wisdom of letting go of illusions",
+      "zones": {
+        "headline": "top 30%",
+        "body": "mid 32%",
+        "animal": "owl as quiet witness, lower third",
+        "number": "pill 08 bottom-right"
+      },
+      "type_share_pct": 55,
+      "save_card": true,
+      "notes": "Golden rule recap for screenshot."
     },
     {
       "index": 9,
       "role": "cta",
       "archetype": "cta_hero",
-      "headline": "Comment WEEKEND",
+      "headline": "Comment MIRROR",
       "body": "Audio reading in my app.",
-      "cta": "Write WEEKEND in the comments",
-      "trigger_word": "WEEKEND",
-      "trigger_treatment": "huge magenta handwritten WEEKEND",
+      "cta": "Write MIRROR in the comments",
+      "trigger_word": "MIRROR",
+      "trigger_treatment": "huge magenta handwritten script — largest word on the canvas",
       "product": "app_audio",
       "offer": "audio reading in my app — Essence–Shadow–Vector",
-      "victoria": true,
+      "victoria": false,
       "animal": null,
-      "wardrobe": "midnight-blue silk slip + open charcoal cardigan",
-      "pose": "standing 3/4, not hand-on-chin",
-      "in_scene": true,
-      "sticker_halo": false
+      "zones": {
+        "trigger": "upper-mid, huge magenta handwritten MIRROR",
+        "headline": "Comment + trigger; white sans + magenta script",
+        "body": "small white: Audio reading in my app.",
+        "badge": "magenta torn-tape pill: Write MIRROR in the comments",
+        "object": "antique dark mirror with subtle gold tarot glyphs (#d4af37), cold reflection",
+        "number": "pill 09 bottom-right"
+      },
+      "type_share_pct": 45,
+      "notes": "CTA only. Strictly app_audio. No bot. No 3 free spreads. No raw URL. Strictly NO human face."
     }
   ]
 }

@@ -1,107 +1,152 @@
 {
   "version": "2",
-  "lang": "en",
-  "pack_id": "2026-08-30",
-  "topic": "He disappears on weekends: weekdays warm, Saturday empty",
-  "trigger_word": "WEEKEND",
-  "product": "app_audio",
   "generation_mode": "grid_3x3",
   "model": "gpt-image-2-image-to-image",
+  "prompt": "No host, no woman, no Victoria, no presenter portrait. Без лица ведущей. Животные, объекты и типографика.\nMaster 3:4 @ 4K, сетка 3x3 из 9 панелей 3:4, row-major 01–09.\nСтиль: animals_viktoria_collage. Графит #111111–#18181b, маджента #ff006e, белый #ffffff, золото.\nСетка: slice_method seam, тонкие белые желоба (thin white gutters) на 1/3 и 2/3. Отступы ≥12% от линий реза и краёв. Текст не у нижнего края.\nТипографика: verbatim-текст, без лишних надписей, без подписи Victoria. Крупный белый гротеск, рукописный маджента.\n\nПанели 01–09:\n01 (hook): \"You stopped texting first. 4 days. The chat died.\". Alert cat, dark screen, magenta tape.\n02 (problem): \"The pain isn't silence, it's who carried it\" / \"All along, this bond existed purely on your fuel. The second you let go of the wheel, the car simply stopped moving.\". Dog by screen.\n03 (mistake): \"The trap: «Maybe he's just really busy?»\" / \"You make excuses and itch to reach out again. But being busy is never four whole days without a single syllable.\". Dog, tape pill.\n04 (mechanism): \"He doesn't dislike you. He's a passenger\" / \"He is happy to ride along as long as you buy the gas and drive. But he won't take a single step to make things happen.\". Cat on divide.\n05 (save_decoder): \"Replying vs Initiating: The honest test\" / \"«Replies to texts» → Polite passivity. «Sends random memes» → Bored in line. «Asks to see you» → He actually wants you.\". Owl, mirror frame.\n06 (save_checklist): \"3 signs your chat is on life support\" / \"1. Without your prompt, the chat freezes for days. 2. Future plans are always «sometime soon». 3. His warmth only exists in your questions.\". Owl, checklist.\n07 (save_rule): \"Never remind someone who's fine without you\" / \"He is perfectly at ease without hearing your voice. Take your energy back to where it builds your life, not his comfort.\". Cat at window.\n08 (recap): \"True reciprocity doesn't need CPR\" / \"If a bond only survives when you keep pumping air into it, it's not a relationship. It's a monologue at a closed door.\". Owl witness.\n09 (cta): \"Comment MIRROR\" / \"Audio reading in my app.\" / \"Write MIRROR in the comments\". Handwritten \"MIRROR\" magenta, dark mirror, tarot glyphs.",
+  "negative_prompt": "host portrait, woman face, female presenter, Victoria portrait, Victoria face, Alena, human model, foreign faces, sticker halo, die-cut, white outline around animals, cutout, zero-gutter touching cells, horizontal strip, 2x3 grid, sheet clothes, white cami, ivory blazer, jeans, platinum hair, white-blonde hair, skulls, blood, dripping candles, ouija, horror, blurry, low resolution, duplicate text, extra slogans, watermark, Portuguese text, bot spreads, 3 free spreads, Academy, video, animated",
+  "input_urls": [
+    "https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png"
+  ],
+  "reference_upload_method": "upload_stream",
+  "i2i_source": "carusel-memory/references/animals-viktoria-style-lock.png",
   "aspect_ratio": "3:4",
   "resolution": "4K",
+  "grid": {
+    "cols": 3,
+    "rows": 3,
+    "order": "row-major"
+  },
   "slice_method": "seam",
-  "face_lock": "Виктория.png",
-  "i2i_source": "carusel-memory/references/Виктория.png",
-  "i2i_file_name": "Виктория.png",
-  "input_urls": [
-    "carusel-memory/references/Виктория.png"
-  ],
-  "written_by": "gemini",
-  "prompt": "Same woman as Виктория.png; same face, one woman. Eyes green with a slight hazel-brown tint (зелёные с лёгким карим). Warm honey blonde with darker roots, not platinum. Soft tender expression.\nОдно статичное PNG 3:4@4K, сетка 3×3. Тонкие белые gutters ровно на 1/3 и 2/3 (Excalibur seam). #111111 + белый heavy sans + #ff006e. Текст ≥12% от швов. In-scene. Без видео.\n\n01 oatmeal knit + charcoal lounge pants, sitting 3/4 on dark sofa, phone face-down, alert cat: \"Friday 6 PM silence. Monday: «How was it?»\".\n02 loyal dog waiting by dark silent smartphone screen, 55% text: \"48 hours of silence after 5 warm days\" / \"All week he texts every hour. But Saturday hits — and suddenly you disappear from his world.\".\n03 faithful dog head on paws, magenta pills for excuses: \"You make excuses for his silence\" / \"«He’s busy», «He needs rest». But a man who truly cares takes 10 seconds to send a single text.\".\n04 sleek cat at light-dark weekday-to-weekend boundary wall: \"You are just a weekday routine slot\" / \"During work hours you cure his boredom. But when real life happens on weekends, you are kept outside.\".\n05 wise owl, says vs means stacked decoder table: \"What he says vs what it means\" / \"«Off my phone on weekends» → Just not in your chat. «Too busy» → You are not in his rest priority. «Not a texter» → Yet texts all week.\".\n06 wise owl above diagnostic 1-2-3 checklist: \"3 signs you are in the waiting trap\" / \"1. You never know his weekend plans. 2. He never invites you out spontaneously. 3. His affection only exists during his office hours.\".\n07 independent cat turning away from phone toward open Saturday morning: \"Your weekend belongs to you\" / \"Stop being the backup plan for his workday routine. Put the phone down and take your Saturday back.\".\n08 wise owl as quiet witness, core takeaway recap: \"True interest shows in free time\" / \"A man’s true feelings are revealed when he is completely free, not when he is just killing time at work.\".\n09 standing 3/4 midnight-blue silk slip + open charcoal cardigan, huge magenta WEEKEND: \"Comment WEEKEND\" / \"Audio reading in my app.\".",
-  "prompt_char_count": 2097,
-  "negative_prompt": "viktoriaref.png, victoria-sheet.png, alena, white cami, jeans, hand on chin, graphite pajama, petrol teal, espresso jacket, platinum white hair, blue eyes, brown eyes, horror, skulls, blood, sticker outline, die-cut halo, white border around people, blurry, lowres, bot, 3 free spreads, Academy, video, animated",
+  "face_lock": "none",
+  "host_portrait": false,
+  "carousel_family": "animals_viktoria_collage",
+  "visual_family": "animals_viktoria_collage",
+  "product": "app_audio",
+  "trigger_word": "MIRROR",
+  "lang": "en",
+  "pack_id": "2026-09-05",
+  "prompt_char_count": 2187,
+  "prompt_compacted": true,
   "reference_contract": {
-    "reference_role": "style + layout reference (animals-viktoria-style-lock.png palette/rhythm only; Виктория.png for face lock)",
+    "reference_role": "style + layout + palette reference only (never a face ref)",
     "preserve": [
-      "dark matte charcoal #111111–#1a1a1a background",
-      "hot magenta #ff006e accent + script + pill highlights",
-      "white #ffffff heavy sans typography hierarchy",
-      "3x3 master grid 3:4 @ 4K with thin white seams at 1/3 and 2/3",
-      "Victoria in-scene on slides 1 and 9 without sticker halo",
-      "animals as emotion metaphors (cat 1/4/7, dog 2/3, owl 5/6/8)",
-      "safe text margin >= 12% from edges and seams"
+      "dark field (#111111–#18181b charcoal/matte black full-bleed)",
+      "magenta #ff006e + white #ffffff type mix",
+      "torn-paper magenta pills and tape strips",
+      "animals-as-metaphor (cat=instinct and sovereignty, dog=devotion to unanswered screen, owl=night clarity and objective facts)",
+      "seam slice with thin white gutters on 1/3 and 2/3 lines",
+      "no host portrait, face_lock none",
+      "safe margin ≥12% from cut lines and cell edges",
+      "verbatim copy from en/CAROUSEL_SLIDE_COPY.json",
+      "soft gold foil (#d4af37) accents for delicate tarot glyphs"
     ],
     "change": [
-      "topic: weekend disappearance — weekdays warm, Saturday empty",
-      "Sunday 30.08 wardrobe: oatmeal knit + charcoal lounge pants (slide 1), midnight-blue silk slip + charcoal cardigan (slide 9)",
-      "sitting 3/4 with phone face-down (slide 1) and standing 3/4 (slide 9)",
-      "verbatim English copy from CAROUSEL_SLIDE_COPY.json",
-      "huge magenta trigger word WEEKEND on slide 9"
+      "topic: The Mirror Test: You stop reaching out first — and the chat goes extinct",
+      "topic objects: dark smartphone screen with 4 days silence / 0 notifications, cracked cold mirror frame, life-support connection metaphor, off-hook phone, cold coffee cup, magenta tape",
+      "exact locked copy for 9 English slides from en/CAROUSEL_SLIDE_COPY.json",
+      "trigger word MIRROR as huge thin magenta handwritten script on slide 9"
     ],
     "do_not_borrow": [
-      "deleted face files: viktoriaref.png, victoria-sheet.png, victoria.png, alena*.png",
-      "sheet cami + jeans + hand-on-chin pose",
-      "29.08 graphite pajama, petrol-teal slip, espresso jacket",
-      "platinum/white-blonde hair, grey/blue/pure-brown eyes",
-      "Portuguese text or foreign collage lettering",
-      "sticker halos, white cutout outlines",
-      "horror elements, blood, skulls, dripping candles",
-      "bot offer, 3 free spreads, Academy, raw URLs"
+      "Portuguese collage text and foreign faces",
+      "Victoria, Alena, or any presenter/woman portrait",
+      "deleted face files (Виктория.png, viktoriaref.png, victoria-sheet.png, victoria.png, victoria_ref.jpg, alena*.png)",
+      "sheet white cami, jeans, ivory blazer, pajamas",
+      "platinum or white-blonde hair",
+      "sticker halo, die-cut, white outline around animals",
+      "horror elements, skulls, blood, dripping candles, ouija",
+      "bot offer, 3 free spreads, Academy, raw URLs, Victoria signature"
     ]
   },
   "typography_rules": {
     "exact_text": true,
     "no_extra_text": true,
-    "hierarchy": "headline heavy sans > short body medium sans > magenta pill/script",
-    "verbatim": true,
-    "no_extra_labels": true,
-    "no_victoria_signature": true
+    "no_victoria_signature": true,
+    "hierarchy": "headline (heavy white sans) > body (white medium sans) > script accent (magenta #ff006e) > pills (magenta torn-tape)",
+    "safe_margins": "≥12% from cut lines and cell boundaries; no text near bottom edge",
+    "cta_trigger_treatment": "huge thin magenta handwritten script MIRROR on slide 9"
   },
   "panel_visual_brief": [
     {
       "slide": 1,
       "role": "hook",
-      "visual_only": "Victoria in-scene sitting 3/4 on dark sofa in rumpled oatmeal knit and charcoal lounge pants, phone face-down on thigh, sleek alert cat beside her; headline top 38% heavy white sans"
+      "headline": "You stopped texting first. 4 days. The chat died.",
+      "animal": "cat",
+      "animal_metaphor": "instinct senses emotional distance",
+      "object": "dark smartphone screen dimly glowing with 4 days silence / 0 notifications + magenta tape",
+      "visual_only": "Sleek black cat alert beside dark smartphone screen showing 4 days silence; luminous amber-green eyes piercing through the dark; magenta tape strip; upper 40% heavy white sans headline; readable under 2 sec; no host portrait."
     },
     {
       "slide": 2,
       "role": "problem",
-      "visual_only": "Loyal dog sitting by silent dark smartphone screen, empty Saturday window, 55% type coverage with contrast message"
+      "headline": "The pain isn't silence, it's who carried it",
+      "animal": "dog",
+      "animal_metaphor": "faithful waiting by the silent screen",
+      "object": "silent smartphone screen + dark road wheel metaphor",
+      "visual_only": "Loyal retriever/hound silhouette sitting in shadow by a silent dark screen; type-heavy upper 55% layout; matte charcoal background."
     },
     {
       "slide": 3,
       "role": "mistake",
-      "visual_only": "Faithful dog with head on paws near magenta torn-tape pills quoting excuses, loyal waiting trap visual metaphor"
+      "headline": "The trap: «Maybe he's just really busy?»",
+      "animal": "dog",
+      "animal_metaphor": "stubborn loyalty to an unasked question",
+      "object": "magenta torn-tape pill «Maybe he's just really busy?»",
+      "visual_only": "Dog resting head on paws near magenta torn-tape excuse pill quoting «Maybe he's just really busy?»; heavy white sans headline and short body."
     },
     {
       "slide": 4,
       "role": "mechanism",
-      "visual_only": "Sleek cat seated at stark light-dark boundary dividing warm weekday zone from dark weekend silence wall"
+      "headline": "He doesn't dislike you. He's a passenger",
+      "animal": "cat",
+      "animal_metaphor": "cold feline autonomy cuts through false hope",
+      "object": "divide between driver steering wheel and empty passenger seat",
+      "visual_only": "Sleek charcoal cat perched on a dividing boundary between active driver wheel and empty passenger seat; calm detachment."
     },
     {
       "slide": 5,
       "role": "save_decoder",
-      "visual_only": "Wise owl perched above 3-line stacked decoder table comparing excuses to reality, high bookmark value layout"
+      "headline": "Replying vs Initiating: The honest test",
+      "animal": "owl",
+      "animal_metaphor": "night clarity cutting through confusion",
+      "object": "antique dark mirror frame + 3-line diagnostic decoder stack",
+      "visual_only": "Wise barn owl perched atop antique dark mirror frame above high-contrast 3-line stacked decoder table with magenta arrows."
     },
     {
       "slide": 6,
       "role": "save_checklist",
-      "visual_only": "Owl beside clean 1-2-3 numbered diagnostic checklist of waiting trap signs, sober factual arrangement"
+      "headline": "3 signs your chat is on life support",
+      "animal": "owl",
+      "animal_metaphor": "objective appraisal of cold facts",
+      "object": "1-2-3 checklist card with subtle gold borders",
+      "visual_only": "Owl perched beside clean numbered 1-2-3 diagnostic checklist card with gold foil accents; high bookmark value."
     },
     {
       "slide": 7,
       "role": "save_rule",
-      "visual_only": "Independent cat turning its back on the phone toward bright open Saturday morning window, autonomy reclaimed"
+      "headline": "Never remind someone who's fine without you",
+      "animal": "cat",
+      "animal_metaphor": "reclaiming personal sovereignty and pride",
+      "object": "dark open window toward starlight",
+      "visual_only": "Sleek black cat turning its back completely on the silent phone, walking toward dark open window and starlight; sovereignty reclaimed."
     },
     {
       "slide": 8,
       "role": "recap",
-      "visual_only": "Quiet owl as witness beside core insight recap typography on clean dark surface"
+      "headline": "True reciprocity doesn't need CPR",
+      "animal": "owl",
+      "animal_metaphor": "wisdom of letting go of illusions",
+      "object": "dark closed door + subtle gold tarot glyphs",
+      "visual_only": "Quiet owl as witness beside closed door motif with delicate gold tarot glyphs; golden rule recap for screenshot."
     },
     {
       "slide": 9,
       "role": "cta",
-      "visual_only": "Victoria standing 3/4 in midnight-blue silk slip and open charcoal cardigan, soft tender gaze, huge handwritten magenta trigger WEEKEND, direct audio reading offer"
+      "headline": "Comment MIRROR",
+      "animal": null,
+      "animal_metaphor": "none",
+      "object": "antique dark mirror + subtle gold tarot glyphs + magenta tape pill",
+      "visual_only": "Antique dark mirror with subtle gold tarot glyphs (#d4af37) and cold reflection; huge thin magenta handwritten script MIRROR; white sans headline and app audio offer; magenta tape pill: Write MIRROR in the comments; no people."
     }
-  ]
+  ],
+  "written_by": "gemini"
 }

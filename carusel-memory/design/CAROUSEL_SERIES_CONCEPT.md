@@ -1,25 +1,25 @@
-# Series concept — Weekend Vacuum / 2026-08-30
+# Series concept — Зеркальный холод / 2026-09-05
 
 `carousel_family`: **animals_viktoria_collage**
+`face_lock`: **none** (NO host portrait, NO Victoria face on any slide)
 `pipeline_gate`: required · step designer · next **image-prompter**
 
 ## Lock
 
 - Master: one static **3:4 @ 4K** PNG, **grid_3x3**, row-major 01–09.
 - Slice: **seam**, thin white gutters at 1/3 and 2/3.
-- Palette: `#111111` / `#ff006e` / `#ffffff` / soft gold.
-- Face: **Виктория.png** only. Eyes green + slight hazel. Hair honey/wheat, darker roots.
-- Victoria in-scene on **1** and **9**, no sticker halo.
-- Product: **app_audio**. Slide 9 huge magenta **СУББОТА** / **WEEKEND**.
+- Palette: `#111111` / `#18181b` / `#ff006e` / `#ffffff` / soft gold `#d4af37`.
+- Face: **none**. Zero human portraits across all 9 panels.
+- Product: **app_audio**. Slide 9 huge magenta script **ЗЕРКАЛО** (RU) / **MIRROR** (EN).
+- Offer: Direct audio reading in the app («Суть – Тень – Вектор» / «Essence–Shadow–Vector»).
 
-## Sunday wardrobe (NEW vs 29.08)
+## Human Presence Rule
 
-| Slide | Look | Pose |
-|-------|------|------|
-| 1 | Rumpled oatmeal weekend-at-home knit + charcoal lounge pants | Sitting 3/4, phone face-down, not hand-on-chin |
-| 9 | Midnight-blue silk slip + open charcoal cardigan | Standing 3/4, hand on cardigan edge |
-
-Do not copy sheet white cami/jeans/hand-on-chin. Do not copy 29.08 graphite pajama or petrol-teal + espresso jacket.
+Strictly **absent**. In compliance with canon `face_lock: none`, there is NO host portrait, NO Victoria, NO presenter, NO female model on any slide.
+Visual power and human resonance are carried entirely through:
+1. High-contrast typography and torn-paper pills.
+2. Poignant domain objects (silent dark phone screen showing 4 days of silence, cracked antique mirror, life-support metaphors).
+3. Expressive animal metaphors (cat, dog, owl).
 
 ## Animals
 

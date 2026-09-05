@@ -1,14 +1,15 @@
 ---
-name: ТАРО СЕЙЧАС / Today Tarot — Weekend Vacuum
-pack_id: 2026-08-30
-run_id: 2026-08-30-1110
+name: ТАРО СЕЙЧАС / Today Tarot — Зеркальный холод
+pack_id: 2026-09-05
+run_id: 2026-09-05-1110
 slot: 11:10 MSK
+date: 2026-09-05
 lang_pair: ru+en
 product: app_audio
 pipeline_gate: required
 step: designer
 handoff_next: image-prompter
-dispatch_id: b10a4a88db134fc38e2cc9d5838339c3
+dispatch_id: 710bbd98dea442e294a26d7365f0cdc1
 format:
   generation_mode: "grid_3x3"
   slide_count: 9
@@ -27,7 +28,7 @@ colors:
   background: "#111111"
   on-background: "#ffffff"
   accent: "#ff006e"
-  surface: "#1a1a1a"
+  surface: "#18181b"
   outline: "#d4af37"
   metal: "soft gold"
 typography:
@@ -51,10 +52,10 @@ carousel_system:
   carousel_family: "animals_viktoria_collage"
   narrative: "hook-pain-mistake-mechanism-save-save-save-recap-cta"
   product: "app_audio"
-  trigger_ru: "СУББОТА"
-  trigger_en: "WEEKEND"
-  face_lock: "Виктория.png"
-  victoria_slides: [1, 9]
+  trigger_ru: "ЗЕРКАЛО"
+  trigger_en: "MIRROR"
+  face_lock: "none"
+  victoria_slides: []
   slide_roles:
     - hook
     - problem
@@ -65,26 +66,12 @@ carousel_system:
     - save_rule
     - recap
     - cta
-wardrobe_lock:
-  carousel_date: "2026-08-30"
-  rule: "new clothes + pose this carousel; never copy sheet or 29.08"
-  slide_1:
-    garment: "rumpled weekend-at-home oatmeal knit (heather wheat-oat, NOT white cami)"
-    bottom: "soft charcoal lounge knit pants (NOT jeans)"
-    pose: "sitting 3/4 on dark sofa, phone face-down on thigh, looking off-camera; NOT hand-on-chin"
-  slide_9:
-    garment: "midnight-blue silk slip + open charcoal cardigan"
-    pose: "standing 3/4, weight on back hip, one hand on cardigan edge; NOT hand-on-chin"
-  do_not_repeat:
-    - "sheet white cami + jeans + hand-on-chin"
-    - "29.08 graphite pajama"
-    - "29.08 petrol-teal + espresso jacket"
 identity:
-  face_file: "carusel-memory/references/Виктория.png"
-  box_copy: "/workspace/cover-refs/Виктория.png"
-  eyes: "green with slight hazel, same every slide"
-  hair: "warm honey/wheat blonde, darker roots, NOT platinum"
+  face_lock: "none"
+  host_portrait: "absent"
+  rule: "NO host portrait on any slide. NO Victoria face, NO presenter, NO female model, NO Alena."
   forbidden_face_files:
+    - "Виктория.png"
     - "viktoriaref.png"
     - "victoria-sheet.png"
     - "victoria.png"
@@ -92,156 +79,123 @@ identity:
     - "alena*.png"
 ---
 
-# CAROUSELDESIGN — 2026-08-30 Weekend Vacuum
+# CAROUSELDESIGN — 2026-09-05 Зеркальный холод
 
 Design contract only. No Kie prompt JSON. No pixels. No publish.
 
 `carousel_family`: **animals_viktoria_collage**
+`face_lock`: **none** (NO host portrait, NO Victoria face on any slide)
 `slice_method`: **seam** (thin white gutters at 1/3 and 2/3)
-`generation_mode`: **grid_3x3** · master **3:4 @ 4K** · static PNG
-`product`: **app_audio** · slide 9 huge magenta **СУББОТА** / **WEEKEND**
+`generation_mode`: **grid_3x3** · master **3:4 @ 4K** · static PNG (9 slides)
+`product`: **app_audio** · slide 9 huge magenta script **ЗЕРКАЛО** (RU) / **MIRROR** (EN)
 
 ## Source Replication Doctrine
 
-User reference = law. Style lock is the animals-Victoria collage family
-(`animals-viktoria-style-lock.png` / `image-851e.png` for palette + collage
-rhythm only). Face lock is **Виктория.png only**. Never i2i the style lock
-as a face. Never restore deleted files.
+User reference = law. Style lock is the animals collage family (`animals-viktoria-style-lock.png` / `image-851e.png` for palette + collage rhythm only).
+**Canon rule for 2026-09-05**: NO host portrait. Face lock is **none**. Zero human portraits across all 9 panels.
 
-Decompose first, then adapt topic objects and Sunday wardrobe.
+Decompose first, then adapt topic objects and animal metaphors.
 
-- **preserve**: dark charcoal field, magenta + white type mix, torn-paper
-  pills, animals-as-metaphor, Victoria in-scene on 1+9 (no sticker halo),
-  seam slice, 3:4 cells, soft gold metal accents.
-- **change**: weekend-vacuum topic objects, verbatim copy, which animal on
-  which slide, NEW Sunday wardrobe and poses.
-- **do_not_borrow**: Portuguese text, foreign faces, Alena, sheet outfit,
-  29.08 graphite pajama / petrol-teal + espresso jacket, horror table,
-  bot-offer, watermarks, Victoria signature.
+- **preserve**: dark matte charcoal field `#111111`–`#18181b`, magenta `#ff006e` + white `#ffffff` type mix, torn-paper pills, animals-as-metaphor (cat, dog, owl), seam slice with thin white gutters, 3:4 cells, soft gold `#d4af37` metal foil accents.
+- **change**: topic metaphors (mirrors with cold reflections, silent smartphone screens, 4-day silence, life-support metaphors), verbatim copy from `CAROUSEL_SLIDE_COPY.json`, animal assignment per panel, NO human figures.
+- **do_not_borrow**: host portrait (NO Victoria, NO Alena), Portuguese text, foreign faces, watermarks, horror elements (skulls/dripping blood), bot-offer, raw URLs.
 
 ## Composition Lock
 
 Fixed on all 9 panels:
 
-1. Matte charcoal / black `#111111`–`#1a1a1a` full-bleed per cell.
-2. Heavy white sans headlines; magenta script / torn-tape accents.
-3. Soft gold only as foil (medallion, buttons, thin highlight) — never as
-   a pastel wash.
-4. Thin **white** gutters on the master at 1/3 and 2/3. Cells do not bleed
-   type or faces across seams.
+1. Matte charcoal / obsidian `#111111`–`#18181b` full-bleed per cell with subtle paper/film grain.
+2. Heavy white sans headlines (`#ffffff`); vibrant magenta script / torn-tape accents (`#ff006e`).
+3. Soft gold (`#d4af37`) foil sparingly as delicate tarot glyphs, constellation lines, or medallion borders.
+4. Thin **white** gutters on the master at 1/3 and 2/3. Cells do not bleed type or objects across seams.
 5. Safe area ≥10–12% from every cell edge and gutter.
-6. Verbatim copy from `CAROUSEL_SLIDE_COPY.json` (RU) / `design/en/` (EN).
-   No extra labels. No watermarks. No Victoria signature.
-7. One woman. Twelve angles of ONE face. Eyes green + slight hazel. Hair
-   warm honey/wheat with darker roots.
-8. Animals are metaphors, not cute pets. Minimum 3 slides (this pack uses
-   cat/dog/owl on 8 of 9).
-9. Victoria **in-scene** on slides 1 and 9 only. No die-cut halo.
+6. Verbatim copy from `CAROUSEL_SLIDE_COPY.json`. No extra labels. No watermarks. No «Сцена» word.
+7. **Strictly NO human faces or portraits**. Visual anchor relies on symbolic domain objects (mirrors, silent phones, clocks) and animal metaphors.
+8. Animal metaphors: **cat**, **dog**, **owl**. Handled with artistic dignity and emotional weight, never cartoonish or cute pets.
+9. Slide 09 CTA is anchored by a huge magenta handwritten trigger word **ЗЕРКАЛО** (RU) / **MIRROR** (EN), accompanied by clean tarot and mirror iconography.
 
 ## Philosophy & Vibe
 
-Sunday-morning emptiness after a warm weekday chat. Not horror. Not beige
-lifestyle. Not a pajama hangover from 29.08.
+«Зеркальный холод» (The Mirror Test): The chilling silence when you stop reaching out first, and an entire chat dies because only you were breathing life into it.
 
-The room is dark and lived-in. The phone is quiet. The cat already knows.
-The dog waits. The owl reads the excuses. Victoria is at home, rumpled
-oatmeal knit on the hook, then standing in midnight-blue silk + charcoal
-cardigan for the CTA — one woman, two Sunday looks, neither from the
-character sheet.
+Atmosphere: contemplative, psychologically mature, sober, empowering. Not horror, not panic, not beige lifestyle fluff.
+The room is quiet. The smartphone screen lies dark with zero notifications after 4 days. The cat knows instantly that the energy has shifted. The loyal dog rests by the silent device, waiting. The owl watches with sharp night clarity, decoding the difference between polite replies and genuine pursuit.
 
-Tone: adult, tender, clear. Contrast is structural (5 warm days / 48 hours
-of vacuum), not theatrical.
+Tone: adult, clear-eyed, restorative of self-worth.
 
 ## Grid Rules
 
 - One master canvas, **3:4 @ 4K**, **3×3**, row-major:
   `01 02 03 / 04 05 06 / 07 08 09`.
-- **Seam slice**: prompt thin white gutters on the 1/3 and 2/3 lines.
-  Code-cut with `scripts/seam_slice_grid.py --split-mode gutter`.
-- If a seam is missing or crooked → rebuild the whole canvas. Never patch
-  one cell.
-- Each cell is a self-contained 3:4 Instagram portrait. Not 4:5. Not 1:1.
-- Hook (01) = large scene line + Victoria + one animal (cat).
-- Internal (02–08) = 50–60% type, smaller animal at bottom or side.
-- CTA (09) = Victoria + **huge magenta script** trigger word.
-- Static PNG only this run. Slide 01 is not video.
+- **Seam slice**: prompt thin white gutters on the 1/3 and 2/3 lines (horizontal and vertical).
+  Code-cut with `scripts/seam_slice_grid.py --split-mode gutter` or canonical slice pipeline.
+- If a seam is missing or crooked → rebuild the whole canvas. Never patch one cell.
+- Each cell is a self-contained 3:4 Instagram portrait.
+- Hook (01) = dramatic scene with silent phone + alert cat + large high-contrast hook typography.
+- Internals (02–08) = 50–60% typography balance, animal metaphor integrated at bottom or side, clean spatial separation.
+- CTA (09) = **huge magenta script** trigger word + app audio offer + elegant cold mirror / tarot foil motif.
+- Static PNG only this run. Slide 01 is static PNG, no video.
 
 ## Color Guidance
 
 | Role | Hex | Use |
 |------|-----|-----|
-| background | `#111111`–`#1a1a1a` | full-bleed charcoal |
-| accent | `#ff006e` | script, pills, tape, lips, trigger word |
-| type | `#ffffff` | heavy sans headlines + body |
-| metal | soft gold `#d4af37` | medallion, buttons, light foil |
+| background | `#111111`–`#18181b` | full-bleed matte charcoal / obsidian |
+| accent | `#ff006e` | script, torn-tape pills, highlight boxes, trigger word |
+| type | `#ffffff` | heavy sans headlines + crisp body text |
+| surface | `#1a1a1a` | card containers, subtle backing shapes |
+| metal | `#d4af37` | soft gold foil, delicate tarot glyphs, constellation dots |
 
-No pastel rainbow. No beige lifestyle wash. No horror red/black candle table.
-WCAG: white on `#111111` and magenta on `#111111` both pass for large type.
+WCAG: High contrast white and vibrant magenta on `#111111` pass AAA for headlines and AA for body.
 
 ## Typography & Readability
 
-- Hook must read in **2 seconds** at thumbnail (~200 px).
-- Headline: heavy white sans. One idea per panel.
-- Body: 1–3 short lines. Decoder (05) and checklist (06) may use stacked
-  lines; keep inside the safe area.
-- CTA: **huge** magenta handwritten **СУББОТА** (RU) / **WEEKEND** (EN).
-  This is the largest word on the canvas.
-- Layer type behind and in front of subjects, but never across a gutter.
-- Verbatim copy only. No «Сцена» label. No extra watermarks.
+- Hook must read in **2 seconds** at thumbnail size (~200 px).
+- Headline: heavy white sans (`#ffffff`). One clear thought per slide.
+- Body: 1–3 short lines. Decoder (05) and checklist (06) use structured stacked lines inside safe areas.
+- CTA: **huge** magenta handwritten **ЗЕРКАЛО** (RU) / **MIRROR** (EN) — the most prominent word on slide 09.
+- Layering: typography integrates with atmospheric shadows and torn tape, but never crosses a gutter seam.
+- Verbatim copy only. Never use the word «Сцена». Write «в моём приложении», never «в нашем приложении».
 
 ## Slide Rhythm
 
 ```text
-01 hook scene     Victoria + cat + Friday 18:00 silence
-02 problem        dog waits at the silent screen
-03 mistake        dog loyalty trap / excuses
-04 mechanism      cat sees the weekday-slot boundary
-05 save decoder   owl: says vs means
-06 save checklist owl: 3 waiting-zone signs
-07 save rule      cat reclaims Saturday
-08 recap          owl: free time is the proof
-09 CTA            Victoria + huge magenta СУББОТА / WEEKEND
+01 hook scene     Dark phone, 4 days silence + alert cat (инстинкт чует отчуждение)
+02 problem        Silent screen + loyal dog (верность ожиданию у замолчавшего экрана)
+03 mistake        Dog head on paws near excuse pills «Вдруг он занят?»
+04 mechanism      Cat observing boundary: passenger vs driver of the connection
+05 save decoder   Owl night clarity: «Отвечает на вопрос» vs «Сам зовёт на встречу»
+06 save checklist Owl diagnostic: 3 признака связи на аппарате ИВЛ
+07 save rule      Cat turning away with autonomy: не напоминай тому, кому и так тепло
+08 recap          Owl wisdom: взаимность не держится на спасателях
+09 CTA            Huge magenta script ЗЕРКАЛО + audio reading in the app
 ```
 
-Product lock on 09: аудиоразбор **в моём приложении** / audio reading in
-my app. Суть – Тень – Вектор / Essence–Shadow–Vector. Not the bot.
+Product lock on 09: аудиоразбор **в моём приложении** (Суть – Тень – Вектор) / audio reading in my app (Essence–Shadow–Vector). Not the bot.
 
-## Sunday Wardrobe (30.08) — NEW
+## Animal Metaphors (Canon)
 
-**Slide 1.** Rumpled weekend-at-home knit, oatmeal / heather wheat-oat.
-Slightly oversized waffle or slouchy crew. Soft charcoal lounge pants.
-Sitting 3/4 on a dark sofa. Phone face-down on the thigh. Tender, knowing.
-Cat alert beside her. **Not** white cami. **Not** jeans. **Not**
-hand-on-chin.
-
-**Slide 9.** Standing 3/4. Midnight-blue silk slip. Open charcoal cardigan
-(soft merino, slouchy — not a structured jacket). Soft gold hoop or small
-medallion. One hand on the cardigan edge or a cup held low. Huge magenta
-trigger word. **Not** graphite pajama. **Not** petrol-teal. **Not**
-espresso jacket.
-
-Same woman. New clothes. New poses. Eyes and hair locked.
+1. **Cat** (Slides 01, 04, 07): Metaphor for razor-sharp intuition, detachment, and emotional sovereignty. Senses the cold before logic admits it; refuses to beg for warmth.
+2. **Dog** (Slides 02, 03): Metaphor for devoted, faithful waiting by a silent device and the painful trap of generating endless excuses for an unasked question.
+3. **Owl** (Slides 05, 06, 08): Metaphor for piercing nocturnal wisdom and objective discernment. Sees straight through comforting illusions to cold, objective facts.
 
 ## Do's and Don'ts
 
 **Do**
-
-- Face lock `Виктория.png` only. Eyes green + slight hazel. Honey/wheat
-  hair with darker roots.
-- Animals as emotion on every slide that names an animal in copy.
-- Thin white seams. Self-contained cells. Verbatim copy.
-- Huge magenta **СУББОТА** / **WEEKEND** on slide 9.
-- In-scene Victoria on 1 and 9, no sticker halo.
+- Follow visual family `animals_viktoria_collage` with `face_lock: none`.
+- Animal metaphors on slides 1–8 (cat, dog, owl).
+- Thin white seams at 1/3 and 2/3. Self-contained 3:4 cells.
+- Safe area 10–12% from every edge and gutter.
+- Verbatim copy from `CAROUSEL_SLIDE_COPY.json`.
+- Huge magenta script **ЗЕРКАЛО** / **MIRROR** on slide 9.
+- Offer: Direct audio reading in the app («Суть – Тень – Вектор» / «Essence–Shadow–Vector»).
 
 **Don't**
-
-- i2i `viktoriaref.png` / `victoria-sheet.png` / `victoria.png` / Alena /
-  style-lock as a face.
-- Platinum / white-blonde hair. Brown-only, grey, or blue eyes.
-- Copy sheet white cami + jeans + hand-on-chin.
-- Copy 29.08 graphite pajama or petrol-teal + espresso jacket.
-- White halo / die-cut around Victoria or animals.
-- Horror, skulls, blood, dripping candles, ouija, demon faces.
-- Portuguese text, foreign faces, other brands, Victoria signature.
-- Bot prize, «3 бесплатных расклада», Academy (EN), raw URLs.
-- Write Kie prompt JSON (image-prompter) or generate pixels (slice).
+- Generate ANY host portrait, woman face, presenter, selfie, or human figure.
+- Reference or use `Виктория.png`, `viktoriaref.png`, `victoria-sheet.png`, `alena*.png`.
+- Allow typography or subjects to cross the gutter seams.
+- Add white sticker halos or die-cut outlines around animals or objects.
+- Add horror elements (skulls, blood, dripping candles, ouija).
+- Add Portuguese text, foreign watermarks, or fake logos.
+- Offer bot spreads, «3 бесплатных расклада», bot prizes, or raw URLs.
+- Write Kie prompt JSON (reserved for `carusel-image-prompter`).

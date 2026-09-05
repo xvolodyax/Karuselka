@@ -4,9 +4,9 @@
     "status": "ready_for_verify",
     "required": true,
     "handoff_next": "image-prompter",
-    "dispatch_id": "b10a4a88db134fc38e2cc9d5838339c3"
+    "dispatch_id": "710bbd98dea442e294a26d7365f0cdc1"
   },
-  "pack_id": "2026-08-30",
+  "pack_id": "2026-09-05",
   "lang": "ru",
   "carousel_family": "animals_viktoria_collage",
   "generation_mode": "grid_3x3",
@@ -15,21 +15,17 @@
   "slice_method": "seam",
   "gutters": "thin white at 1/3 and 2/3",
   "safe_area_pct": 12,
-  "face_lock": "Виктория.png",
+  "face_lock": "none",
   "product": "app_audio",
   "verbatim_copy_source": "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
-  "wardrobe": {
-    "slide_1": "rumpled weekend-at-home oatmeal knit + charcoal lounge pants; sitting 3/4; phone face-down; NOT white cami / jeans / hand-on-chin; NOT 29.08 graphite pajama",
-    "slide_9": "standing 3/4 midnight-blue silk slip + open charcoal cardigan; NOT petrol-teal + espresso jacket; NOT hand-on-chin"
-  },
   "preserve": [
-    "dark field, magenta+white type, torn pills, animals-as-metaphor, Victoria 1+9 in-scene, seam gutters"
+    "dark charcoal field, magenta + white type, torn pills, animals-as-metaphor, seam gutters"
   ],
   "change": [
-    "weekend-vacuum objects, verbatim copy, Sunday wardrobe, animal assignment"
+    "mirror test objects, verbatim copy, animal assignment, face_lock: none (NO host portrait, NO Victoria face on any slide)"
   ],
   "do_not_borrow": [
-    "Portuguese text, foreign faces, Alena, sheet/29.08 outfits, horror, bot offer"
+    "host portrait, Victoria, Alena, human faces, Portuguese text, sheet outfits, horror, bot offer"
   ],
   "panel_archetype_map": {
     "01": "hero_scene_collage",
@@ -47,57 +43,54 @@
       "index": 1,
       "role": "hook",
       "archetype": "hero_scene_collage",
-      "headline": "Пятница 18:00 — тишина. В понедельник: «Как ты?»",
+      "headline": "Ты решила не писать первой. Прошло 4 дня. Диалог умер.",
       "body": "",
-      "victoria": true,
+      "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "чуешь неладное",
-      "wardrobe": "rumpled oatmeal weekend-at-home knit, charcoal lounge pants",
-      "pose": "sitting 3/4 on dark sofa, phone face-down on thigh, looking off-camera, tender knowing; NOT hand-on-chin",
+      "animal_metaphor": "инстинкт чует отчуждение",
       "in_scene": true,
       "sticker_halo": false,
       "zones": {
-        "headline": "upper 38%, heavy white sans, 2 lines, safe 12%",
-        "hero": "Victoria mid-cell in-scene, oatmeal knit, no halo",
-        "animal": "cat lower-left or on sofa arm, alert, watching the silent phone",
-        "object": "dark phone face-down, Friday 18:00 implied, no extra words",
+        "headline": "upper 40%, heavy white sans, 2 lines, safe 12%",
+        "hero_object": "dark smartphone screen dimly glowing with '4 days ago' message / 0 notifications",
+        "animal": "sleek black cat alert beside phone, amber-green eyes watching the silence, no halo",
         "number": "pill 01 bottom-right, inside safe area"
       },
-      "type_share_pct": 40,
-      "notes": "Thumbnail hook. Scene, not mechanic title. No word Сцена."
+      "type_share_pct": 45,
+      "notes": "Thumbnail hook. Readable under 2 seconds. Strictly no human face. No word Сцена."
     },
     {
       "index": 2,
       "role": "problem",
       "archetype": "type_heavy_pain",
-      "headline": "48 часов вакуума после пяти тёплых дней",
-      "body": "Всю рабочую неделю он на связи каждые полчаса. Но наступает суббота — и ты словно перестаёшь существовать.",
+      "headline": "Боль не в тишине, а в том, кто тянул связь",
+      "body": "Всё это время диалог существовал только на твоём топливе. Стоило отпустить руль — и машина просто встала.",
       "victoria": false,
       "animal": "dog",
-      "animal_metaphor": "верность ожиданию у экрана",
+      "animal_metaphor": "преданное ожидание у замолчавшего экрана",
       "zones": {
         "headline": "top 28%, heavy white sans",
-        "body": "mid 30%, 2 short lines white",
-        "animal": "loyal dog lower third by a dark silent phone / empty Saturday window",
+        "body": "mid 32%, 2 short lines white sans",
+        "animal": "loyal retriever/hound silhouette lower third by dark silent screen",
         "number": "pill 02 bottom-right"
       },
       "type_share_pct": 55,
-      "notes": "Contrast weekday warmth vs Saturday void."
+      "notes": "Pain of realizing one-sided fuel. Dog waiting at the unringing phone."
     },
     {
       "index": 3,
       "role": "mistake",
       "archetype": "type_heavy_mistake",
-      "headline": "Ты оправдываешь его делами и усталостью",
-      "body": "«Он занят с семьёй», «устал от экрана». Но если человек хочет быть рядом, он находит 10 секунд на одно сообщение.",
+      "headline": "Ловушка оправданий: «Вдруг он занят?»",
+      "body": "Ты ищешь ему объяснения и тянешься написать снова. Но занятость — это не про 4 дня без единого слова.",
       "victoria": false,
       "animal": "dog",
-      "animal_metaphor": "ловушка преданного ожидания",
+      "animal_metaphor": "покорная верность безответному вопросу",
       "zones": {
         "headline": "top 26%, white sans",
-        "pills": "magenta torn-tape for «занят» / «устал» — short, not extra copy",
-        "body": "mid, 2 lines",
-        "animal": "dog head on paws, lower-right",
+        "pills": "magenta torn-tape pill highlighting «Вдруг он занят?»",
+        "body": "mid 30%, 2 lines",
+        "animal": "dog resting head on paws near excuse pill, lower-right",
         "number": "pill 03 bottom-right"
       },
       "type_share_pct": 58,
@@ -107,122 +100,120 @@
       "index": 4,
       "role": "mechanism",
       "archetype": "mechanism_boundary",
-      "headline": "Ты для него лишь удобный будничный слот",
-      "body": "В рабочие часы ты спасаешь его от рутины и скуки. Но в свою настоящую, свободную жизнь он тебя не впускает.",
+      "headline": "Он не против тебя. Он просто попутчик",
+      "body": "Ему удобно ехать, пока ты платишь за бензин и держишь руль. Но сам он ради встречи с места не сдвинется.",
       "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "интуиция видит границу",
+      "animal_metaphor": "холодная кошачья автономия видит правду",
       "zones": {
-        "headline": "top 28%",
-        "body": "mid",
-        "split": "subtle weekday-warm vs weekend-dark vertical or diagonal divide — stays inside cell",
-        "animal": "cat sitting on the dark side of the boundary",
+        "headline": "top 28%, white sans",
+        "body": "mid 30%",
+        "split": "subtle divide between active driver wheel and empty passenger seat",
+        "animal": "cat sitting calmly on the dividing boundary, looking on with detachment",
         "number": "pill 04 bottom-right"
       },
-      "type_share_pct": 52,
-      "notes": "Compartmentalization made visible. No Victoria."
+      "type_share_pct": 55,
+      "notes": "Passenger mechanism. Feline autonomy."
     },
     {
       "index": 5,
       "role": "save_decoder",
       "archetype": "save_decoder_table",
-      "headline": "Что он говорит и что это значит",
-      "body": "«На выходных без телефона» → Не в твоём диалоге.\n«Много дел» → Ты не в приоритете его отдыха.\n«Я не любитель чатов» → Но в будни пишет сам.",
+      "headline": "Отвечает или проявляется: честный тест",
+      "body": "«Отвечает на вопрос» → Пассивная вежливость.\n«Шлёт мемы» → Скука в очереди.\n«Сам зовёт на встречу» → Ты ему нужна.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "ночная ясность и зрение в темноте",
+      "animal_metaphor": "ночная ясность видит скрытую правду",
       "zones": {
         "headline": "top 20%",
-        "decoder": "three stacked says→means lines, 50–60% of cell, high save value",
-        "animal": "owl upper-right or perched above the stack, small",
+        "decoder": "three stacked diagnostic lines with magenta arrows, 55% of cell, high save value",
+        "animal": "owl perched atop antique dark mirror frame above stack, small",
         "number": "pill 05 bottom-right"
       },
       "type_share_pct": 62,
       "save_card": true,
-      "notes": "Bookmark decoder. Meaning depth like OLD slide-04, not that visual."
+      "notes": "Bookmark decoder table. Contrast passive politeness vs active desire."
     },
     {
       "index": 6,
       "role": "save_checklist",
       "archetype": "save_checklist",
-      "headline": "3 признака, что ты в зоне ожидания",
-      "body": "1. Ты не знаешь его планов на уикенд.\n2. Он никогда не зовёт тебя в субботу спонтанно.\n3. Вся его инициатива привязана к его рабочему графику.",
+      "headline": "3 признака связи на аппарате ИВЛ",
+      "body": "1. Без твоей подачи чат висит сутками.\n2. В планах звучит «как-нибудь потом».\n3. Внимание появляется лишь по твоему запросу.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "трезвая оценка фактов",
+      "animal_metaphor": "трезвая оценка фактов без иллюзий",
       "zones": {
         "headline": "top 22%",
-        "list": "numbered 1–3, large, screenshot-worthy",
-        "animal": "owl lower-left, small, sober",
+        "list": "numbered 1–3 checklist cards with gold accent borders, 55% of cell",
+        "animal": "owl perched lower-left, sober and alert",
         "number": "pill 06 bottom-right"
       },
       "type_share_pct": 60,
       "save_card": true,
-      "notes": "Diagnostic checklist."
+      "notes": "Diagnostic checklist for saves. Clear objective markers."
     },
     {
       "index": 7,
       "role": "save_rule",
       "archetype": "save_rule",
-      "headline": "Твои выходные принадлежат только тебе",
-      "body": "Перестань быть дежурным экраном для чужой скуки. Убери телефон и верни субботу и воскресенье своей собственной жизни.",
+      "headline": "Не напоминай тому, кому и так тепло",
+      "body": "Человек спокойно живёт без твоего голоса. Забери внимание туда, где оно создаёт твою ценность, а не чужой комфорт.",
       "victoria": false,
       "animal": "cat",
-      "animal_metaphor": "возвращение себе автономии",
+      "animal_metaphor": "возвращение себе гордости и покоя",
       "zones": {
         "headline": "top 28%",
         "body": "mid 2 lines",
-        "animal": "cat turning away from the phone toward an open window / own Saturday",
+        "animal": "black cat turning away from phone toward dark open window / starlight",
         "number": "pill 07 bottom-right"
       },
       "type_share_pct": 55,
       "save_card": true,
-      "notes": "Autonomy rule. Cat leaves the waiting post."
+      "notes": "Boundary rule. Cat walks away from the waiting post."
     },
     {
       "index": 8,
       "role": "recap",
       "archetype": "recap_insight",
-      "headline": "Кому ты важна — находит место в жизни",
-      "body": "Мужчина проявляется не в рабочее время от скуки, а тогда, когда он абсолютно свободен и сам выбирает, с кем быть.",
+      "headline": "Взаимность не держится на спасателях",
+      "body": "Если связь живёт только пока греешь её ты — это не отношения двух людей. Это твой монолог перед закрытой дверью.",
       "victoria": false,
       "animal": "owl",
-      "animal_metaphor": "мудрость выбора",
+      "animal_metaphor": "мудрость отпускания иллюзий",
       "zones": {
         "headline": "top 30%",
-        "body": "mid",
+        "body": "mid 32%",
         "animal": "owl as quiet witness, lower third",
         "number": "pill 08 bottom-right"
       },
       "type_share_pct": 55,
-      "notes": "Golden rule recap."
+      "save_card": true,
+      "notes": "Golden rule recap for screenshot."
     },
     {
       "index": 9,
       "role": "cta",
       "archetype": "cta_hero",
-      "headline": "Напиши СУББОТА",
+      "headline": "Напиши ЗЕРКАЛО",
       "body": "Аудиоразбор в моём приложении.",
-      "cta": "Слово СУББОТА в комментариях",
-      "trigger_word": "СУББОТА",
+      "cta": "Слово ЗЕРКАЛО в комментариях",
+      "trigger_word": "ЗЕРКАЛО",
       "trigger_treatment": "huge magenta handwritten script — largest word on the canvas",
       "product": "app_audio",
       "offer": "аудиоразбор в моём приложении — Суть – Тень – Вектор",
-      "victoria": true,
+      "victoria": false,
       "animal": null,
-      "wardrobe": "midnight-blue silk slip + open charcoal cardigan",
-      "pose": "standing 3/4, weight on back hip, one hand on cardigan edge or cup held low; soft tender; NOT hand-on-chin",
-      "in_scene": true,
-      "sticker_halo": false,
       "zones": {
-        "trigger": "upper-mid, huge magenta СУББОТА",
-        "headline": "Напиши + trigger; white + magenta",
+        "trigger": "upper-mid, huge magenta handwritten ЗЕРКАЛО",
+        "headline": "Напиши + trigger; white sans + magenta script",
         "body": "small white: Аудиоразбор в моём приложении.",
-        "hero": "Victoria standing 3/4 in-scene, midnight-blue slip, charcoal cardigan, no halo",
+        "badge": "magenta torn-tape pill: Слово ЗЕРКАЛО в комментариях",
+        "object": "antique dark mirror with subtle gold tarot glyphs (#d4af37), cold reflection",
         "number": "pill 09 bottom-right"
       },
-      "type_share_pct": 40,
-      "notes": "CTA only. No bot. No 3 free spreads. No raw URL. No Academy."
+      "type_share_pct": 45,
+      "notes": "CTA only. Strictly app_audio. No bot. No 3 free spreads. No raw URL. Strictly NO human face."
     }
   ]
 }

@@ -1,175 +1,171 @@
 # Carousel Research Dossier — ТАРО СЕЙЧАС / Today Tarot
 
 written_by: gemini
-date: 2026-08-30
+date: 2026-09-05
 slot: 11:10 MSK
-pack_id: 2026-08-30
+pack_id: 2026-09-05
+run_id: 2026-09-05-1110
 bilingual_pair: true
 product: app_audio
 visual_family: animals_viktoria_collage
-face_lock: Виктория.png
+face_lock: none
 
 ---
 
 ## 1. Meta & Topic Locks
 
-- **chosen_topic_ru**: Он пропадает на выходных: будни тёплые, суббота пустая
-- **chosen_topic_en**: He disappears on weekends: weekdays warm, Saturday empty
-- **recommended_trigger_ru**: СУББОТА
-- **recommended_trigger_en**: WEEKEND
+- **chosen_topic_ru**: Зеркальный холод: ты перестаёшь писать первой — и общение умирает
+- **chosen_topic_en**: The Mirror Test: You stop reaching out first — and the chat goes extinct
+- **recommended_trigger_ru**: ЗЕРКАЛО
+- **recommended_trigger_en**: MIRROR
+- **alternative_triggers**: RU СИТУАЦИЯ / EN CLARITY; RU БАЛАНС / EN BALANCE
 - **product**: app_audio (Direct = аудиоразбор в приложении: RU «Суть – Тень – Вектор» / EN «Essence–Shadow–Vector»)
 - **bot_vs_app**: Strictly app_audio. No bot selling, no 3 free spreads.
-- **forbidden_triggers_checked**: ШАГ, STEP, ПАУЗА, PAUSE, ТЕПЛО, WARMTH, ПРОЧИТАНО, СТАТУС, STATUS, LABELS — ALL EXCLUDED.
-- **forbidden_topics_checked**: Pause or over, Ping vs step, Спишь? after 24 days, Тепло-холодно, Зачем вешать ярлыки / Why Put Labels On It, B18 — ALL EXCLUDED.
+- **forbidden_triggers_checked**: ШАГ, STEP, ПАУЗА, PAUSE, ТЕПЛО, WARMTH, ПРОЧИТАНО, СТАТУС, STATUS, LABELS, СУББОТА, WEEKEND — ALL EXCLUDED.
+- **forbidden_topics_checked**:
+  - «Пауза или конец» / Pause or over — EXCLUDED.
+  - «Пинг или шаг» / Ping vs step — EXCLUDED.
+  - «Тепло – холодно» / Hot & Cold (2026-08-28) — EXCLUDED.
+  - «Зачем вешать ярлыки» / Why Put Labels On It (2026-08-29) — EXCLUDED.
+  - «Он пропадает на выходных» / weekend vacuum (2026-08-30) — EXCLUDED.
+- **forbidden_words_checked**: No word «Сцена» used in slide copy or captions. No host portrait. Never write «в нашем приложении» (only «в моём приложении»).
 
 ---
 
-## 2. Hook Lab & Top Angles
+## 2. Topic & Client Pain (Исследование боли и контекста)
 
-Hook must start with a concrete **SCENE** (not a mechanic title, never using the word «Сцена»).
+### The Core Scene
+Суббота, середина дня. Ты решаешь провести эксперимент — не писать первой ни строчки, не присылать утренний мем, не спрашивать «как спалось». Проходят сутки, вторые, неделя. Телефон молчит. Диалог, который казался бурным и живым, существовал только потому, что ты его тащила.
 
-### 5–7 Hook Candidates:
-
-1. **Hook 1 (Pain / Scene — TOP 1 PICK)**:
-   - *RU*: В пятницу в 18:00 чат замирает. В понедельник в 09:15 он снова онлайн с «Доброе утро, как прошли выходные?».
-   - *EN*: Friday 6 PM the chat goes silent. Monday 9:15 AM he texts: "Morning, how was your weekend?".
-   - *Framework*: Pain / Micro-scene
-   - *Information Gap*: 10/10 — instant recognition of the weekend vacuum after weekday intimacy.
-
-2. **Hook 2 (Contrarian)**:
-   - *RU*: Он не «занят дачей и друзьями». Человек, которому ты важна по-настоящему, находит 10 секунд на один смайлик.
-   - *EN*: He isn't "busy with family and chores". A man who truly values you takes 10 seconds to send one emoji.
-   - *Framework*: Contrarian
-   - *Information Gap*: 8.5/10 — breaks the rationalization illusion.
-
-3. **Hook 3 (Mechanism / Contrast — TOP 2 PICK)**:
-   - *RU*: Пять дней в неделю он держит тебя на связи, а на 48 часов субботы и воскресенья вычёркивает из жизни.
-   - *EN*: Five days a week he keeps you hooked, but for 48 weekend hours you are erased from his life.
-   - *Framework*: Mechanism
-   - *Information Gap*: 9/10 — highlights the structural compartmentalization of the relationship.
-
-4. **Hook 4 (Mistake / Psychology — TOP 3 PICK)**:
-   - *RU*: Ты придумываешь ему уважительные причины все выходные, а он просто живёт жизнью, в которой для тебя нет места.
-   - *EN*: You spend your entire weekend making excuses for him, while he simply lives a life where you don't fit.
-   - *Framework*: Mistake / Blind spot
-   - *Information Gap*: 9/10 — exposes the internal waiting trap and projection.
-
-5. **Hook 5 (Specific result / Decision rule)**:
-   - *RU*: Разница между «устает от телефона» и «держит тебя в будничном слоте»: 3 признака выходной тишины.
-   - *EN*: The difference between "social battery drained" and "you are only a weekday slot": 3 weekend signs.
-   - *Framework*: Specific result / Diagnostic
-   - *Information Gap*: 8/10 — high save intent, more analytical.
-
-6. **Hook 6 (Before / After tension)**:
-   - *RU*: Будни: голосовые на 5 минут и мемы. Выходные: серое поле «был в сети вчера».
-   - *EN*: Weekdays: 5-minute voice notes and memes. Weekends: "Last seen yesterday".
-   - *Framework*: Before / After tension
-   - *Information Gap*: 8.5/10 — visceral contrast.
-
-### Top 3 Hooks Selected:
-- **Primary (Slide 01)**: Hook 1 (The Friday 18:00 to Monday 09:15 silence loop).
-- **Alternative A**: Hook 3 (5-day warmth vs 48-hour disappearance).
-- **Alternative B**: Hook 4 (Rationalizing excuses vs real priority).
+### Client Pain & Psychology:
+1. **Односторонний мотор отношений**: Женщина отдаёт 90% энергии на инициативу (темы, встречи, вопросы, интерес), а мужчина лишь благосклонно отвечает («реагирует, но не инициирует»).
+2. **Иллюзия взаимности**: Пока она пишет — он отвечает тепло, шутит, шлёт голосовые. Из-за этого создаётся ощущение, что «всё хорошо». Но как только она отпускает руль, машина останавливается.
+3. **Унизительное прозрение («Зеркальный тест»)**: Страх проверить контакт молчанием, потому что подсознательно она знает ответ: если она замолчит, она исчезнет из его мира.
+4. **Чувство вины и ломка**: На 3-й день тишины начинается самобичевание: «Может, он подумал, что я обиделась? Может, у него что-то случилось? Напишу сама, сниму напряжение». И круг замыкается.
+5. **Истинный запрос**: Получить честную ясность без самообмана, вернуть себе достоинство и энергию, перестать вкладываться в иллюзию взаимности.
 
 ---
 
-## 3. Аудитория (Audience Profile)
+## 3. Hook Lab (5–7 Frameworks & Information Gap Assessment)
 
-- **Сегмент**: Женщины 20–50 лет (фокус ~24–42), находящиеся в подвешенных, полудистанционных или развивающихся отношениях.
-- **Главная боль**: Контраст между будничной вовлечённостью (флирт, поддержка, созвоны в рабочее время) и полным вакуумом в личное/выходное время мужчины.
-- **Внутренний конфликт**: «В будни он такой внимательный, мы на связи каждые полчаса... Но как только наступают суббота и воскресенье, он исчезает. Неужели у него другая жизнь, семья или я для него просто офисный таймкиллер?»
-- **Ловушка мышления**: Оправдание («он занят», «у него дела», «он отдыхает от экрана») и залипание в телефоне в ожидании уведомления, портящее собственные выходные.
-- **Желание**: Ясность без иллюзий и истерик — понять его реальную позицию, перестать быть «удобным будничным слотом» и вернуть контроль над своим вниманием.
-- **Тональность**: Спокойная, взрослая, поддерживающая, глубокая. Без обвинений, без дешевой драмы, без запугивания одиночеством.
+| # | Framework | Headline (RU / EN) | Why it swipes / Information Gap | Risk & Score |
+|---|-----------|-------------------|---------------------------------|--------------|
+| 1 | **Pain / Micro-scene (TOP 1 PICK)** | **RU**: Ты решила не писать первой. Прошло 4 дня. Диалог умер.<br>**EN**: You decided not to text first. 4 days passed. The chat died. | Мгновенный триггер узнавания. Травматичный опыт тысяч женщин: проверка тишиной, которая обернулась пустотой. Оценка: **10/10**. | Риск драмы минимален при трезвом тоне. |
+| 2 | **Contrarian** | **RU**: Он не потерял интерес внезапно. Ты просто перестала делать за него его половину работы.<br>**EN**: He didn't lose interest suddenly. You just stopped doing his half of the job. | Ломает рационализацию «что я сделала не так». Фокус на распределении усилий. Оценка: **9/10**. | Может звучать нравоучительно, если не смягчить. |
+| 3 | **Mistake** | **RU**: Ошибка зеркального теста: ты замолчала, чтобы он испугался, а он просто вздохнул с облегчением.<br>**EN**: The silence test mistake: you went quiet hoping he'd chase, but he just felt relieved. | Бьёт точно в скрытую манипулятивную надежду («я замолчу, а он поймёт, кого теряет»). Оценка: **9.5/10**. | Высокая уязвимость читателя. |
+| 4 | **Mechanism** | **RU**: Разница между «он занят» и «ты держишь этот диалог на аппарате ИВЛ»: тест одного шага назад.<br>**EN**: The difference between "he's busy" and "you're keeping this chat on life support": the one-step-back rule. | Чёткая метафора «ИВЛ общения». Инструментальный подход. Оценка: **8.5/10**. | Слегка аналитично для первого слайда. |
+| 5 | **Specific Result** | **RU**: Что означает его молчание на 3-й день твоего эксперимента: 3 честных сценария.<br>**EN**: What his silence on day 3 of your test really means: 3 honest scenarios. | Обещание чётких ответов без гадания на кофейной гуще. Оценка: **8/10**. | Классический формат списка. |
+| 6 | **Before / After tension** | **RU**: Неделю назад: 50 сообщений в день по твоей инициативе. Сегодня: ноль, потому что ты сделала шаг назад.<br>**EN**: Last week: 50 texts a day powered by you. Today: zero, because you took one step back. | Цифровой контраст усилий. Наглядно показывает дисбаланс. Оценка: **8.5/10**. | Чуть длинный текст для обложки. |
 
----
-
-## 4. Анализ конкурентов в нише (2026 Carousel Landscape)
-
-1. **Generic Tarot Blogs**:
-   - *Слабость*: «Расклад: что он делает в выходные? Выбери карту 1, 2 или 3». Поверхностно, превращает аудиторию в пассивных наблюдателей.
-   - *Наше преимущество*: Глубокий психологический разбор + четкий паттерн отношений + инструмент диагностики «Суть – Тень – Вектор».
-
-2. **Pop-Psychology Carousels**:
-   - *Слабость*: Слишком много теории («Компартментализация внимания при избегающем типе привязанности»). Сухо, без вовлекающей сцены и живой эмоции.
-   - *Наше преимущество*: Мгновенный хук-сцена + метафоры через образы (Victoria + животные) + screenshot-worthy таблицы «Что говорит vs Что значит».
-
-3. **High-Converting Relationship Coaches**:
-   - *Паттерн*: 9 слайдов, контрастный крупный текст, saveable checklist на слайдах 06-08, 1 четкое слово в комментариях.
-   - *Что берем*: Формат 9-панельной арки, жесткая структура ценности для сохранения, один триггер в CTA.
+### Selected Top Hook:
+- **Slide 01 Hook (Top 1)**:
+  - *RU*: Ты решила не писать первой. Прошло 4 дня. Диалог умер.
+  - *EN*: You decided not to text first. 4 days passed. The chat died.
 
 ---
 
-## 5. Тренды 2026 & Save Value
+## 4. Аудитория: язык, барьеры и триггеры
 
-- **Save Value Trigger**: Слайды 05, 06 и 07 — ядро ценности. Таблица декодирования поведения («Говорит vs Слышишь vs Реальность») и 3 маркера «Будничного слота». Это контент, который женщина сохраняет в закладки, чтобы перечитать в следующую субботу, когда рука потянется написать первой.
-- **9-Panel Grid Arc (Row-Major 3×3)**:
-  - Row 1 (01–03): Сцена → Боль ожидания → Ошибка проекции / самообмана.
-  - Row 2 (04–06): Механизм явления → Декодер «Говорит vs Скрывает» → Тест «Ты в центре или на периферии?».
-  - Row 3 (07–09): Правило выхода из режима ожидания → Резюме / Главный инсайт → CTA с триггером на аудиоразбор.
+- **Сегмент**: Женщины 20–50 лет (ядро 25–40). Отношения на этапе неопределённости, вялотекущего дейтинга или остывающего союза.
+- **Словарь аудитории**: «не хочу навязываться», «игра в одни ворота», «проверить его», «на связи только когда я пишу», «тянуть на себе», «пропал интерес», «держать лицо».
+- **Желание**: Перестать мучиться неопределённостью, не унижаться выпрашиванием внимания, увидеть честную картину отношений и понять свой вектор действий.
+- **Чего избегать**: Запугивания («ты останешься одна»), токсичных советов («манипулируй им», «вызови ревность»), банальностей («полюби себя»).
 
 ---
 
-## 6. Рекомендации для Copywriter (9-Panel Arc)
+## 5. Конкурентный ландшафт (2026 Carousel Landscape)
+
+1. **Таро-блоги старой формации**:
+   - *Слабость*: «Выбери карту: напишет ли он сам? 1 — напишет, 2 — гордый, 3 — забыл». Подпитывают инфантильную надежду и зависимость от внешнего фактора.
+   - *Наш отрыв*: Психологическая зрелость + отрезвляющая рамка фактов + глубокий разбор «Суть – Тень – Вектор».
+2. **Поп-психологические reels / карусели**:
+   - *Слабость*: Общие слова («установите личные границы», «партнёр должен проявлять инициативу»). Нет практического декодера ситуаций.
+   - *Наш отрыв*: Высокая плотность смысла на слайд, формат «Слышишь vs Реальность», сохраняемые чек-листы.
+3. **Save-First паблики 2026**:
+   - *Паттерн*: Слайд-карточка как памятка, которую скринят и перечитывают в моменты сомнений.
+   - *Наш отрыв*: Фокус на слайдах 05–08 как на опорных таблицах самопроверки.
+
+---
+
+## 6. Save Value: почему карусель будут сохранять
+
+- **Слайд 05 (Декодер «Отвечает vs Проявляется»)**: Таблица различий между пассивной вежливостью и реальным интересом мужчины. Сохраняют, чтобы не обманываться тёплыми ответами.
+- **Слайд 06 (Чек-лист «Отношения на ИВЛ»)**: 3 критерия односторонней связи. Сохраняют как диагностический тест.
+- **Слайд 07 (Правило выхода из режима ожидания)**: Пошаговый алгоритм, что делать с руками и вниманием, когда тянет сорваться и написать первой.
+- **Слайд 08 (Главный закон баланса)**: Ёмкая формула-рекап для скриншота на экран блокировки.
+
+---
+
+## 7. 9-Panel Arc (Row-Major 3×3 Recommendations for Copywriter)
+
+```text
+[01: Hook Scene]      [02: The Shock / Pain]     [03: The Trap / Rationalization]
+[04: The Mechanism]   [05: Save Card A (Table)]  [06: Save Card B (Checklist)]
+[07: The Antidote]    [08: The Golden Rule]      [09: CTA / App Audio]
+```
 
 - **Panel 01 (Hook)**:
-  - *RU Сцена*: Пятница, 18:00 — чат замолкает. Суббота — тишина. В понедельник в 09:15: «Привет, как прошли выходные?».
-  - *EN Scene*: Friday 6 PM — chat goes silent. Saturday — void. Monday 9:15 AM: "Hey, how was your weekend?".
-  - *Суть*: Зацепить за 2 секунды знакомой до боли сценой.
+  - *RU*: Ты решила не писать первой. Прошло 4 дня. Диалог умер.
+  - *EN*: You decided not to text first. 4 days passed. The chat died.
+  - *Суть*: Зацепить за 2 секунды конкретным экспериментом и его исходом.
 
-- **Panel 02 (Pain / The Weekend Void)**:
-  - *Тезис*: Почему 48 часов тишины ранят сильнее, чем неделя молчания. Контраст: в будни ты чувствуешь себя нужной, в субботу — забытой.
+- **Panel 02 (Pain / The Vacuum)**:
+  - *RU Тезис*: Боль не в том, что он молчит. Боль в осознании: всё это время близость существовала только за счёт твоего топлива.
+  - *EN Thesis*: The pain isn't just silence. It's realizing that intimacy only existed because you were fueling it alone.
 
-- **Panel 03 (Mistake / Rationalization Loop)**:
-  - *Тезис*: Ошибка — придумывать ему уважительные причины («он с родителями», «он без связи»), пока сама каждые 20 минут проверяешь телефон.
+- **Panel 03 (Mistake / The Justification Loop)**:
+  - *RU Тезис*: Ловушка мысли: «Вдруг он гордый? Вдруг занят? Напишу разок». Ты путаешь занятость с отсутствием человека в твоём приоритете.
+  - *EN Thesis*: The mental trap: "Maybe he's proud? Maybe busy? I'll text once". You confuse being busy with not being a priority.
 
-- **Panel 04 (Mechanism / The "Weekday Slot" Phenomenon)**:
-  - *Тезис*: Что происходит на самом деле: ты закрываешь его потребность в общении в рабочие часы, но в личную жизнь тебя не пускают.
+- **Panel 04 (Mechanism / The "Responsive Bystander")**:
+  - *RU Тезис*: Механика «вежливого попутчика»: он с удовольствием едет на твоей инициативе, пока бензин покупаешь ты. Но сам руль не перехватит.
+  - *EN Thesis*: The "polite passenger" mechanism: he enjoys the ride as long as you provide the gas. But he will never take the wheel.
 
-- **Panel 05 (Save Card A / Says vs Reality Decoder)**:
-  - *Тезис*: Говорит: «В выходные я без телефона» → Реальность: он в телефоне, просто не в твоем диалоге. Говорит: «Много дел» → Реальность: ты не в приоритете его отдыха.
+- **Panel 05 (Save Card A / Diagnostic Table: "Answers vs Initiates")**:
+  - *RU Тезис*: «Отвечает на сообщение» ≠ «Хочет быть рядом». Он отвечает из вежливости или скуки; инициирует — когда ты ему нужна.
+  - *EN Thesis*: "Replying to you" ≠ "Wanting you". Replying is passive convenience; initiating is active choice.
 
-- **Panel 06 (Save Card B / Diagnostic Questions)**:
-  - *Тезис*: 3 проверки: Знаешь ли ты его планы на субботу? Пишет ли он сам без повода в выходной? Появляется ли он только тогда, когда ему скучно на работе?
+- **Panel 06 (Save Card B / 3 Signs of a One-Sided Connection)**:
+  - *RU Тезис*: 3 маркера: 1) Без твоего вопроса диалог зависает на сутки; 2) Он никогда не предлагает конкретный день встречи; 3) Его внимание появляется только по твоему запросу.
+  - *EN Thesis*: 3 markers: 1) Chat halts without your prompt; 2) Never suggests a concrete day/plan; 3) His warmth only exists inside your questions.
 
-- **Panel 07 (Shift / Reclaiming Power)**:
-  - *Тезис*: Перестань быть спасательным кругом для его будничной рутины. Твои выходные принадлежат тебе, а не экрану ожидания.
+- **Panel 07 (Action / Reclaiming Power)**:
+  - *RU Тезис*: Не напоминай о себе тому, кто спокойно обходится без твоего голоса. Забери внимание туда, где оно создаёт твою жизнь.
+  - *EN Thesis*: Don't remind someone of your existence if they're perfectly comfortable without your voice. Pull your energy back into your life.
 
-- **Panel 08 (Recap / Golden Rule)**:
-  - *Тезис*: Правило: человек, который хочет быть частью твоей жизни, находит место для тебя в те дни, когда он свободен, а не только когда он на работе.
+- **Panel 08 (Recap / The Golden Rule)**:
+  - *RU Тезис*: Взаимность не требует постоянных спасательных операций. Если связь держится на одном человеке — это не связь, это монолог.
+  - *EN Thesis*: Reciprocity doesn't require CPR. If a connection relies entirely on one person's effort, it's not a bond — it's a monologue.
 
 - **Panel 09 (CTA / App Audio Offer)**:
-  - *RU*: Напиши **СУББОТА** в комментариях. В Direct пришлём аудиоразбор в приложении: Суть – Тень – Вектор. Ссылки в профиле.
-  - *EN*: Comment **WEEKEND** below. We'll DM an audio reading in the app: Essence–Shadow–Vector. Links in profile.
+  - *RU*: Напиши **ЗЕРКАЛО** в комментариях. В Direct пришлём аудиоразбор в приложении: Суть – Тень – Вектор. Ссылки в профиле.
+  - *EN*: Comment **MIRROR** below. We'll DM an audio reading in the app: Essence–Shadow–Vector. Links in profile.
 
 ---
 
-## 7. Рекомендации для Designer & Image Prompter
+## 8. Recommendations for Designer & Visual Translation
 
-### Visual Family & Design Translation
 - **Visual Family**: `animals_viktoria_collage`.
-- **Palette**: Matte charcoal `#111111`–`#1a1a1a`, hot magenta `#ff006e` (accent script, pills, torn tape), crisp white `#ffffff` (heavy typography), subtle soft gold accents.
-- **Hero Face**: Victoria lock (`carusel-memory/references/Виктория.png` only). Green+hazel eyes, warm honey blonde with darker roots. NO platinum, NO Alena, NO studio-blazer.
-- **Panel Distribution**:
-  - Victoria on Slide 01 (Hook) and Slide 09 (CTA) in fresh casual-chic outfit (e.g., modern black knit / casual relaxed styling with espresso cup or sunglasses, new pose, never copying the white cami sheet).
-  - Animals-as-metaphor on ≥3 slides:
-    - *Dog* on Slide 02/03 (metaphor for faithful waiting at the door / loyalty to silence).
-    - *Cat* on Slide 01/04 (keen intuition / knowing something doesn't add up).
-    - *Owl* on Slide 05/06 (night thoughts / clarity / seeing through the dark).
-- **Design Translation Rules**:
-  - `Preserve`: Dark atmospheric collage, bold typography contrast, torn paper pills, animals as emotional metaphors, clean 3:4 panel ratio.
-  - `Change`: Topic objects (calendar, weekend clock, weekend city coffee, quiet phone screen), fresh Victoria outfit and gesture.
-  - `Do Not Borrow`: Portuguese text, foreign faces, skulls/horror elements, raw watermarks, Victoria signature.
+- **Palette**: Deep matte charcoal `#121214` to obsidian `#18181b`, striking accent magenta `#ff006e` (tears, script, pills, highlight boxes), stark typographic white `#ffffff`, delicate champagne/gold touches `#d4af37` (subtle glyphs, tarot icons).
+- **Face Lock Rule**: **NONE**. Absolutely NO host portrait, NO Victoria face, NO presenter, NO Alena, NO doubles. Slide 01 and Slide 09 rely strictly on typography, symbolic objects, and animal metaphors.
+- **Animals-as-Metaphors (≥3 required by canon)**:
+  - *Slide 01 or 02*: **Cat** staring into dark reflections or turning away from an empty glass / phone — instinct sensing emotional detachment before logic catches up («чуешь»).
+  - *Slide 03 or 06*: **Dog** sitting quietly beside an unringing vintage telephone / doorway — metaphor for stubborn, loyal waiting on an unanswered question.
+  - *Slide 04 or 05*: **Owl** perched amidst antique mirrors / clocks — metaphor for sharp night clarity, seeing hidden truths through the dark without rationalization.
+- **Design Translation Notes (Reference Fidelity)**:
+  - *Preserve*: 3×3 grid with strict 3:4 aspect ratio per panel; raw torn paper strips for badges; strong layered typography (heavy sans + magenta cursive); high contrast; atmospheric shadows and noise.
+  - *Change*: Topic metaphors (mirrors with cracked reflections, silent smartphone screen with 0 notifications, vintage telephone off the hook, sand timer running out).
+  - *Do Not Borrow*: Any foreign human faces or Portuguese text from moodboards, watermarks, horror elements (skulls/dripping blood), occult clutter.
 
 ---
 
-## 8. Prompt Risks & Mitigations
+## 9. Prompt Risks & Mitigations
 
-1. **Risk: Text bleeding across vertical gutters in 3x3 grid**:
-   - *Mitigation*: Ensure 10–12% safe padding from borders in every panel prompt plan.
-2. **Risk: Victoria face drift or platinum hair generation**:
-   - *Mitigation*: Strict reference callout to `Виктория.png`, explicit green+hazel eyes and warm honey blonde with darker roots lock in prompt.
-3. **Risk: Accidental bot / 3 free readings mentions**:
-   - *Mitigation*: Strict product lock to `app_audio` with «Суть – Тень – Вектор» / «Essence–Shadow–Vector».
-4. **Risk: Vague vibe slides without actionable meaning**:
-   - *Mitigation*: Panels 05, 06, 08 designed specifically as high-utility save cards with distinct diagnostic framework.
+1. **Risk: Text bleeding across vertical or horizontal cut gutters in 3×3 grid**:
+   - *Mitigation*: Strictly mandate 10–12% internal margins on all text zones and badges within each cell.
+2. **Risk: Accidental generation of human faces / host portrait**:
+   - *Mitigation*: Hard negative constraints in image prompt: `no host portrait, no women faces, no selfies, no presenter, face_lock: none`. Rely entirely on symbolic objects and animals.
+3. **Risk: Mentioning the bot or 3 free spreads**:
+   - *Mitigation*: Locked contract: product is `app_audio`, offer is in-app reading «Суть – Тень – Вектор» / «Essence–Shadow–Vector».
+4. **Risk: Vague inspirational fluff without diagnostic substance**:
+   - *Mitigation*: Panels 05, 06, and 08 are strictly constructed as actionable diagnostic save cards.

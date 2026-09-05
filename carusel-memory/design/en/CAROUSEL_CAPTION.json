@@ -1,23 +1,24 @@
 {
   "lang": "en",
-  "hook": "Friday 6 PM silence. Monday: «How was it?»",
-  "body": "All week long he texts every half hour: memes, voice notes, sweet check-ins. But the moment Friday evening arrives, the chat goes cold until Monday morning.\n\nWhen someone vanishes on weekends, it's rarely about being «busy» or «needing a screen break». We all find 10 seconds for the people who truly matter to us.\n\nIf you only feel wanted during his work hours, you're merely filling his workday void while staying locked out of his real life. Swipe through to take your weekends back.",
-  "cta": "Comment the word WEEKEND below.\nWe'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.\nLinks are in the profile.",
-  "trigger_word": "WEEKEND",
+  "hook": "You stopped texting first. 4 days. The chat died.",
+  "body": "Up until now, it felt like something real: quick replies, inside jokes, instant story views. But the moment you took your foot off the gas, everything ground to a complete halt.\n\nThe sharpest sting isn't just the quiet phone. It's the sobering realization that this dynamic only survived because you were carrying all the weight alone. He wasn't necessarily pulling away; he was just passively enjoying the ride.\n\nWhen genuine interest is there, someone finds 10 seconds to reach out first. Swipe through the carousel to stop resuscitating a one-sided connection.",
+  "cta": "Comment the word MIRROR below.\nWe'll DM an audio reading in the app: Essence–Shadow–Vector.\nLinks are in the profile.",
+  "trigger_word": "MIRROR",
   "product": "app_audio",
   "hashtags": [
     "#todaytarot",
     "#relationships",
     "#datingadvice",
-    "#claritynow",
+    "#mirrortest",
     "#boundaries",
-    "#selfworth"
+    "#selfworth",
+    "#claritynow"
   ],
   "mentions": [
     "@todaytaro_bot"
   ],
-  "full_caption": "Friday 6 PM silence. Monday: «How was it?»\n\nAll week long he texts every half hour: memes, voice notes, sweet check-ins. But the moment Friday evening arrives, the chat goes cold until Monday morning.\n\nWhen someone vanishes on weekends, it's rarely about being «busy» or «needing a screen break». We all find 10 seconds for the people who truly matter to us.\n\nIf you only feel wanted during his work hours, you're merely filling his workday void while staying locked out of his real life. Swipe through to take your weekends back.\n\nComment the word WEEKEND below.\nWe'll DM an audio reading in the app for this topic: Essence–Shadow–Vector.\nLinks are in the profile.\n\n@todaytaro_bot / Clarity now\n\n#todaytarot #relationships #datingadvice #claritynow #boundaries #selfworth",
-  "char_count": 786,
-  "hashtag_count": 6,
+  "full_caption": "You stopped texting first. 4 days. The chat died.\n\nUp until now, it felt like something real: quick replies, inside jokes, instant story views. But the moment you took your foot off the gas, everything ground to a complete halt.\n\nThe sharpest sting isn't just the quiet phone. It's the sobering realization that this dynamic only survived because you were carrying all the weight alone. He wasn't necessarily pulling away; he was just passively enjoying the ride.\n\nWhen genuine interest is there, someone finds 10 seconds to reach out first. Swipe through the carousel to stop resuscitating a one-sided connection.\n\nComment the word MIRROR below.\nWe'll DM an audio reading in the app: Essence–Shadow–Vector.\nLinks are in the profile.\n\n@todaytaro_bot / Clarity now\n\n#todaytarot #relationships #datingadvice #mirrortest #boundaries #selfworth #claritynow",
+  "char_count": 878,
+  "hashtag_count": 7,
   "written_by": "gemini"
 }

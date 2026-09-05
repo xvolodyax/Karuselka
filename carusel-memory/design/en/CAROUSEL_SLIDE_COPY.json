@@ -1,39 +1,39 @@
 {
   "lang": "en",
-  "topic": "He disappears on weekends: weekdays warm, Saturday empty",
+  "topic": "The Mirror Test: You stop reaching out first — and the chat goes extinct",
   "visual_family": "animals_viktoria_collage",
   "hook_is_scene": true,
-  "trigger_word": "WEEKEND",
+  "trigger_word": "MIRROR",
   "product": "app_audio",
   "written_by": "gemini",
   "hook_options": [
     {
       "framework": "pain",
-      "headline": "Friday 6 PM silence. Monday: «How was it?»",
-      "why_it_swipes": "Instant recognition of the weekend vacuum after weekday intimacy"
+      "headline": "You stopped texting first. 4 days. The chat died.",
+      "why_it_swipes": "Instant recognition of the silence test backfiring into complete void"
     },
     {
       "framework": "contrarian",
-      "headline": "He is not busy: we make time for what matters",
-      "why_it_swipes": "Breaks the rationalization illusion"
-    },
-    {
-      "framework": "mechanism",
-      "headline": "5 warm days vs 48 hours of complete silence",
-      "why_it_swipes": "Exposes relationship compartmentalization"
+      "headline": "He didn't suddenly go cold. You stopped doing his job",
+      "why_it_swipes": "Shatters self-blame and exposes the dynamic's imbalance"
     },
     {
       "framework": "mistake",
-      "headline": "You make excuses for him while ruining your weekend",
-      "why_it_swipes": "Calls out the waiting mode trap"
+      "headline": "The silence mistake: you went quiet, he felt relieved",
+      "why_it_swipes": "Targets the hidden hope that silence would make him chase"
+    },
+    {
+      "framework": "mechanism",
+      "headline": "The gap between «too busy» and «chat on life support»",
+      "why_it_swipes": "Diagnostic metaphor for resuscitating a one-way dynamic"
     },
     {
       "framework": "specific_result",
-      "headline": "3 signs you are only his weekday routine slot",
-      "why_it_swipes": "High save intent diagnostic framework"
+      "headline": "His silence on day 3 of your test: 3 honest scenarios",
+      "why_it_swipes": "Direct diagnostic framework offering clarity without sugarcoating"
     }
   ],
-  "hook_rationale": "Hook 1 captures the specific micro-scene of the Friday communication blackout followed by the casual Monday morning check-in, driving instant curiosity and emotional resonance.",
+  "hook_rationale": "Hook 1 captures the raw, relatable micro-moment of the silence test backfiring into total void, creating an immediate information gap and high swipe intent.",
   "slide_count": 9,
   "grid": {
     "cols": 3,
@@ -43,97 +43,97 @@
     {
       "index": 1,
       "role": "hook",
-      "headline": "Friday 6 PM silence. Monday: «How was it?»",
+      "headline": "You stopped texting first. 4 days. The chat died.",
       "body": "",
       "animal": "cat",
-      "animal_metaphor": "sensing the hidden truth",
-      "victoria": true,
-      "notes": "Instant recognizable scene of weekend disappearance"
+      "animal_metaphor": "instinct senses emotional distance",
+      "victoria": false,
+      "notes": "Instant recognizable scene of the silence test; readable under 2 sec"
     },
     {
       "index": 2,
       "role": "problem",
-      "headline": "48 hours of silence after 5 warm days",
-      "body": "All week he texts every hour. But Saturday hits — and suddenly you disappear from his world.",
+      "headline": "The pain isn't silence, it's who carried it",
+      "body": "All along, this bond existed purely on your fuel. The second you let go of the wheel, the car simply stopped moving.",
       "animal": "dog",
-      "animal_metaphor": "loyalty to the waiting screen",
+      "animal_metaphor": "faithful waiting by the silent screen",
       "victoria": false,
-      "notes": "The painful contrast between weekdays and weekends"
+      "notes": "Realizing the one-sided dynamic"
     },
     {
       "index": 3,
       "role": "mistake",
-      "headline": "You make excuses for his silence",
-      "body": "«He's busy», «He needs rest». But a man who truly cares takes 10 seconds to send a single text.",
+      "headline": "The trap: «Maybe he's just really busy?»",
+      "body": "You make excuses and itch to reach out again. But being busy is never four whole days without a single syllable.",
       "animal": "dog",
-      "animal_metaphor": "the faithful waiting trap",
+      "animal_metaphor": "stubborn loyalty to an unasked question",
       "victoria": false,
-      "notes": "The trap of making excuses for lack of effort"
+      "notes": "The illusion of waiting and self-rationalization"
     },
     {
       "index": 4,
       "role": "mechanism",
-      "headline": "You are just a weekday routine slot",
-      "body": "During work hours you cure his boredom. But when real life happens on weekends, you are kept outside.",
+      "headline": "He doesn't dislike you. He's a passenger",
+      "body": "He is happy to ride along as long as you buy the gas and drive. But he won't take a single step to make things happen.",
       "animal": "cat",
-      "animal_metaphor": "intuition spots the boundary",
+      "animal_metaphor": "cold feline autonomy cuts through false hope",
       "victoria": false,
-      "notes": "The psychological mechanism of compartmentalization"
+      "notes": "Mechanism of the passive companion"
     },
     {
       "index": 5,
       "role": "save_decoder",
-      "headline": "What he says vs what it means",
-      "body": "«Off my phone on weekends» → Just not in your chat.\n«Too busy» → You are not in his rest priority.\n«Not a texter» → Yet texts all week.",
+      "headline": "Replying vs Initiating: The honest test",
+      "body": "«Replies to texts» → Polite passivity.\n«Sends random memes» → Bored in line.\n«Asks to see you» → He actually wants you.",
       "animal": "owl",
-      "animal_metaphor": "night clarity and seeing through fog",
+      "animal_metaphor": "night clarity cutting through confusion",
       "victoria": false,
-      "notes": "High-value decoder framework for bookmarks"
+      "notes": "Diagnostic decoder framework to save"
     },
     {
       "index": 6,
       "role": "save_checklist",
-      "headline": "3 signs you are in the waiting trap",
-      "body": "1. You never know his weekend plans.\n2. He never invites you out spontaneously.\n3. His affection only exists during his office hours.",
+      "headline": "3 signs your chat is on life support",
+      "body": "1. Without your prompt, the chat freezes for days.\n2. Future plans are always «sometime soon».\n3. His warmth only exists in your questions.",
       "animal": "owl",
-      "animal_metaphor": "sober diagnostic check",
+      "animal_metaphor": "objective appraisal of cold facts",
       "victoria": false,
-      "notes": "Checklist for relationship status clarity"
+      "notes": "Diagnostic checklist for saves"
     },
     {
       "index": 7,
       "role": "save_rule",
-      "headline": "Your weekend belongs to you",
-      "body": "Stop being the backup plan for his workday routine. Put the phone down and take your Saturday back.",
+      "headline": "Never remind someone who's fine without you",
+      "body": "He is perfectly at ease without hearing your voice. Take your energy back to where it builds your life, not his comfort.",
       "animal": "cat",
-      "animal_metaphor": "reclaiming personal sovereignty",
+      "animal_metaphor": "reclaiming personal sovereignty and pride",
       "victoria": false,
-      "notes": "Actionable rule for breaking the waiting loop"
+      "notes": "Rule to break the waiting loop"
     },
     {
       "index": 8,
       "role": "recap",
-      "headline": "True interest shows in free time",
-      "body": "A man's true feelings are revealed when he is completely free, not when he is just killing time at work.",
+      "headline": "True reciprocity doesn't need CPR",
+      "body": "If a bond only survives when you keep pumping air into it, it's not a relationship. It's a monologue at a closed door.",
       "animal": "owl",
-      "animal_metaphor": "core insight",
+      "animal_metaphor": "wisdom of letting go of illusions",
       "victoria": false,
-      "notes": "Core takeaway of the carousel"
+      "notes": "The golden takeaway rule"
     },
     {
       "index": 9,
       "role": "cta",
-      "headline": "Comment WEEKEND",
+      "headline": "Comment MIRROR",
       "body": "Audio reading in my app.",
-      "cta": "Write WEEKEND in the comments",
+      "cta": "Write MIRROR in the comments",
       "animal": null,
-      "victoria": true,
-      "notes": "CTA: trigger WEEKEND leads to Essence–Shadow–Vector audio reading in the app"
+      "victoria": false,
+      "notes": "CTA: trigger MIRROR leads to Essence–Shadow–Vector audio reading in the app"
     }
   ],
   "save_value": [
-    "slide-05 excuse decoder: What he says vs What it means",
-    "slide-06 checklist: 3 signs you are in the waiting trap",
-    "slide-07 boundary rule: Reclaim your weekend"
+    "slide-05 decoder: Replying vs Initiating",
+    "slide-06 checklist: 3 signs your chat is on life support",
+    "slide-07 boundary rule: Never remind someone who's fine without you"
   ]
 }

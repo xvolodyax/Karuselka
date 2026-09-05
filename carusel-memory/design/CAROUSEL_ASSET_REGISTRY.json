@@ -1,23 +1,32 @@
 {
-  "pipeline_gate": {"step": "designer", "required": true, "pixels": "none_this_step"},
+  "pipeline_gate": {
+    "step": "image-prompter",
+    "required": true,
+    "pixels": "none_this_step"
+  },
   "carousel_family": "animals_viktoria_collage",
-  "note": "Designer registers intended assets. No Kie task ids yet. image-prompter + slice fill generation fields.",
+  "face_lock": "none",
+  "note": "image-prompter registered prompt artifacts. Slice fills generation fields and master pixel status.",
   "assets": [
-    {
-      "id": "face-lock-victoria",
-      "local_path": "carusel-memory/references/Виктория.png",
-      "box_path": "/workspace/cover-refs/Виктория.png",
-      "role": "face_lock",
-      "input_url_slot": 0,
-      "only_face_file": true,
-      "status": "locked"
-    },
     {
       "id": "style-lock-animals",
       "local_path": "carusel-memory/references/animals-viktoria-style-lock.png",
+      "remote_url": "https://tempfile.redpandaai.co/kieai/378019/carusel-style-lock/animals-viktoria-style-lock.png",
       "role": "palette_layout_only",
       "never_i2i_as_face": true,
-      "status": "reference_only"
+      "status": "ready"
+    },
+    {
+      "id": "prompt-ru",
+      "local_path": "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json",
+      "role": "kie_prompt_ru",
+      "status": "ready"
+    },
+    {
+      "id": "prompt-en",
+      "local_path": "carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json",
+      "role": "kie_prompt_en",
+      "status": "ready"
     },
     {
       "id": "master-grid",
@@ -27,6 +36,7 @@
     }
   ],
   "forbidden_restore": [
+    "Виктория.png",
     "viktoriaref.png",
     "victoria-sheet.png",
     "victoria.png",

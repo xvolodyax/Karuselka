@@ -6,18 +6,21 @@
   },
   "carousel_family": "animals_viktoria_collage",
   "minimum_meaningful_image_assets": 1,
-  "face_lock": "carusel-memory/references/Виктория.png",
+  "face_lock": "none",
   "style_lock_not_face": "carusel-memory/references/animals-viktoria-style-lock.png",
+  "human_presence": "absent",
   "zones": [
     {"id": "slide-01-headline", "slide": 1, "type": "type", "required_for_fidelity": true, "status": "designed"},
-    {"id": "slide-01-victoria", "slide": 1, "type": "photo", "required_for_fidelity": true, "implementation": "i2i-Виктория.png", "status": "ready"},
-    {"id": "slide-01-cat", "slide": 1, "type": "cutout", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-01-phone", "slide": 1, "type": "object", "required_for_fidelity": true, "status": "designed"},
+    {"id": "slide-01-cat", "slide": 1, "type": "cutout", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-02-headline", "slide": 2, "type": "type", "required_for_fidelity": true, "status": "designed"},
+    {"id": "slide-02-body", "slide": 2, "type": "type", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-02-dog", "slide": 2, "type": "cutout", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-03-headline", "slide": 3, "type": "type", "required_for_fidelity": true, "status": "designed"},
+    {"id": "slide-03-pill", "slide": 3, "type": "pill", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-03-dog", "slide": 3, "type": "cutout", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-04-headline", "slide": 4, "type": "type", "required_for_fidelity": true, "status": "designed"},
+    {"id": "slide-04-split", "slide": 4, "type": "shape", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-04-cat", "slide": 4, "type": "cutout", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-05-decoder", "slide": 5, "type": "type", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-05-owl", "slide": 5, "type": "cutout", "required_for_fidelity": true, "status": "designed"},
@@ -28,7 +31,7 @@
     {"id": "slide-08-recap", "slide": 8, "type": "type", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-08-owl", "slide": 8, "type": "cutout", "required_for_fidelity": true, "status": "designed"},
     {"id": "slide-09-trigger", "slide": 9, "type": "type", "required_for_fidelity": true, "status": "designed"},
-    {"id": "slide-09-victoria", "slide": 9, "type": "photo", "required_for_fidelity": true, "implementation": "i2i-Виктория.png", "status": "ready"},
+    {"id": "slide-09-mirror-object", "slide": 9, "type": "object", "required_for_fidelity": true, "status": "designed"},
     {"id": "master-white-seams", "slide": 0, "type": "shape", "required_for_fidelity": true, "status": "designed"}
   ]
 }

@@ -1,15 +1,15 @@
 # Carusel brief — ТАРО СЕЙЧАС / Today Tarot — PENDING new-day
 
 lang: ru
-topic: ТАРО СЕЙЧАС
+topic: Зеркальный холод: ты перестаёшь писать первой — и общение умирает
 handle: @todaytaro_ru
-publish_requested: false
+publish_requested: true
 visual_family: animals_viktoria_collage
 face_lock: none
 slice_method: seam
 cta_style: comment_trigger
-trigger_word: PENDING
-trigger_word_en: PENDING
+trigger_word: ЗЕРКАЛО
+trigger_word_en: MIRROR
 product: app_audio
 cta_offer: comment trigger → Direct audio reading in the APP (Суть – Тень – Вектор / Essence–Shadow–Vector)
 bot_vs_app: sell the APP audio reading, not 3 free bot spreads
@@ -19,15 +19,14 @@ slide_01: static_png
 skip_motion: true
 skip_animate: true
 skip_glavred: true
-skip_publish: true
+skip_publish: false
 bilingual_pair: true
 en_handle: @todaytaro_bot
 en_brand: Today Tarot
 slot: 11:10 MSK
-date: PENDING
-pack_id: PENDING
-**run_id:** PENDING
-
+date: 2026-09-05
+pack_id: 2026-09-05
+**run_id:** 2026-09-05-1110
 ## Canon (next swarm)
 
 - Parent: `gemini-3.8-flash` + `reasoning_effort=high`

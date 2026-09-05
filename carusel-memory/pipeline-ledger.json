@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "run_id": "PENDING",
+  "run_id": "2026-09-05-1110",
   "lang": "ru",
   "topic": "ТАРО СЕЙЧАС",
   "handle": "@todaytaro_ru",
-  "created_at": "2026-09-04T20:50:00Z",
-  "dispatch_mode": "unknown",
-  "publish_requested": false,
+  "created_at": "2026-09-05T08:37:59Z",
+  "dispatch_mode": "generalPurpose-fallback",
+  "publish_requested": true,
   "mode": "live",
   "pixels": "allowed",
   "steps": {
@@ -15,8 +15,8 @@
       "status": "ok",
       "dispatched_via": "parent",
       "dispatch_id": null,
-      "started_at": "2026-09-04T20:50:00Z",
-      "finished_at": "2026-09-04T20:50:00Z",
+      "started_at": "2026-09-05T08:37:59Z",
+      "finished_at": "2026-09-05T08:37:59Z",
       "skip_reason": null,
       "artifacts": [
         "carusel-memory/00-brief.md",
@@ -27,55 +27,73 @@
     },
     "researcher": {
       "id": "researcher",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "0dce8d9988ef45b2962bf6e7ab8a6b45",
+      "started_at": "2026-09-05T08:38:06Z",
+      "finished_at": "2026-09-05T08:41:22Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
-      "model": null
+      "artifacts": [
+        "carusel-memory/research/carousel-research-dossier.md"
+      ],
+      "fragment": "carusel-memory/fragments/researcher.md",
+      "incident_report": "none",
+      "model": "inherit",
+      "reasoning_effort": "high"
     },
     "copywriter": {
       "id": "copywriter",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "28c28d801d454bfe977c0eddfdc9c240",
+      "started_at": "2026-09-05T08:41:31Z",
+      "finished_at": "2026-09-05T08:44:54Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
-      "model": null
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_SLIDE_COPY.json",
+        "carusel-memory/design/CAROUSEL_CAPTION.json",
+        "carusel-memory/design/CAROUSEL_CAPTION.md"
+      ],
+      "fragment": "carusel-memory/fragments/copywriter.md",
+      "incident_report": "none",
+      "model": "inherit",
+      "reasoning_effort": "high"
     },
     "designer": {
       "id": "designer",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "710bbd98dea442e294a26d7365f0cdc1",
+      "started_at": "2026-09-05T08:45:03Z",
+      "finished_at": "2026-09-05T08:50:03Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
-      "model": null
+      "artifacts": [
+        "carusel-memory/design/CAROUSELDESIGN.md",
+        "carusel-memory/design/CAROUSEL_SERIES_CONCEPT.json",
+        "carusel-memory/design/CAROUSEL_SOURCE_DECOMPOSITION.json",
+        "carusel-memory/design/CAROUSEL_SLIDE_BLUEPRINTS.json"
+      ],
+      "fragment": "carusel-memory/fragments/designer.md",
+      "incident_report": "none",
+      "model": "inherit"
     },
     "image-prompter": {
       "id": "image-prompter",
-      "status": "pending",
-      "dispatched_via": null,
-      "dispatch_id": null,
-      "started_at": null,
-      "finished_at": null,
+      "status": "ok",
+      "dispatched_via": "Task(generalPurpose)",
+      "dispatch_id": "f3793eb268704ea697db6dd482e71903",
+      "started_at": "2026-09-05T08:50:09Z",
+      "finished_at": "2026-09-05T08:56:00Z",
       "skip_reason": null,
-      "artifacts": [],
-      "fragment": null,
-      "incident_report": null,
-      "model": null
+      "artifacts": [
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.json",
+        "carusel-memory/design/CAROUSEL_IMAGE_PROMPT.md",
+        "carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.json",
+        "carusel-memory/design/en/CAROUSEL_IMAGE_PROMPT.md"
+      ],
+      "fragment": "carusel-memory/fragments/image-prompter.md",
+      "incident_report": "none",
+      "model": "inherit"
     },
     "slice": {
       "id": "slice",

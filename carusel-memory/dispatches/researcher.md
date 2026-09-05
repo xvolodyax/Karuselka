@@ -3,25 +3,27 @@ You are carusel-researcher for the Carusel plugin.
 SPAWN
 step: researcher
 via: Task(generalPurpose)
-cloud_fallback: Task(generalPurpose, model=gemini-3.7-flash-high)
-required_model: gemini-3.7-flash-high
+cloud_fallback: Task(generalPurpose, model=inherit) [NO DEFAULT FALLBACK - inherit parent Gemini]
+required_model: inherit
+reasoning_effort: high
 
 HARD RULES
 - Do only this step (researcher). Do not start the next role.
-- Read and follow skills/carusel-researcher/SKILL.md and agents/carusel-researcher.md verbatim.
-- Read shared/taro-seichas-canon.md, shared/animals-viktoria-collage.md,
-  shared/agent-pipeline-pitfalls.md and shared/locale-brand-contract.md.
-- Read shared/swarm-spawn-contract.md and shared/director-dispatch-contract.md.
-- required_model: gemini-3.7-flash-high. Spawn Task(generalPurpose, model=gemini-3.7-flash-high) or Task(carusel-researcher) with that model. Do not inherit Director model.
-- Refuse if spawned on any model other than gemini-3.7-flash-high.
+- Follow skills/carusel-researcher/SKILL.md and agents/carusel-researcher.md (inlined below). Do not re-open pipeline_gate.py.
+- Canon already inlined: no host portrait, 9+9 static PNG, CTA = app audio not bot.
+- Already-read: execute THIS step only. Do not re-read scripts/pipeline_gate.py.
+- Do not re-read scripts/composio_instagram_publish.py.
+- required_model: inherit (parent Gemini gemini-3.8-flash + reasoning_effort=high). Spawn Task(generalPurpose, model=inherit). Do NOT pass gemini-3.8-flash slug to worker. Inherit Gemini from parent.
+- Refuse if spawned on Claude/GPT/Composer/Grok or any non-Gemini inherit. NO DEFAULT FALLBACK: if Gemini is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself.
 - Write a research brief (topic, client pain, one meaning, why this hook). Not a caption. Stamp written_by: gemini on the dossier and fragment.
 - Product is app audio reading, not 3 free bot spreads. Recommend a topic-tied comment trigger (different RU vs EN).
+- NO DEFAULT FALLBACK: if Gemini is unavailable, FAIL immediately. Director/default agent must NEVER write slides/caption/CTA himself.
 - lang=ru. Brand handle=@todaytaro_ru.
 - Write artifacts only to the paths listed below.
 - End with fragment carusel-memory/fragments/researcher.md.
 - Fragment MUST contain:
   dispatched_via: Task(generalPurpose)
-  dispatch_id: d8c1039a17c94a3681dd2836647e8979
+  dispatch_id: 0dce8d9988ef45b2962bf6e7ab8a6b45
   incident_report: none
   HANDOFF_NEXT: copywriter
 - Instagram: no raw URLs; say links are in the profile. CTA is one comment trigger word.
@@ -32,7 +34,7 @@ HARD RULES
 - If previous artifacts are missing: fragment ❌ BLOCKER and stop.
 
 DISPATCH
-dispatch_id: d8c1039a17c94a3681dd2836647e8979
+dispatch_id: 0dce8d9988ef45b2962bf6e7ab8a6b45
 step_id: researcher
 via: Task(generalPurpose)
 workspace: /workspace
@@ -51,14 +53,17 @@ copywriter
 ---
 name: carusel-researcher
 description: Research по теме карусели, конкуренты, хуки. Director MUST delegate via Task.
-model: gemini-3.7-flash
+model: inherit
+reasoning_effort: high
 readonly: false
 is_background: false
 ---
 
 **Язык:** русский.
 
-**Модель:** `gemini-3.7-flash` (канон: `gemini-3.7-flash-high`). Хуки и dossier — Gemini. Не inherit Director.
+**Модель:** `model="inherit"` (наследует Gemini родителя `gemini-3.8-flash` + `reasoning_effort=high`). Хуки и dossier — только Gemini. НЕ передавать slug `gemini-3.8-flash` в Task.
+
+**Правило Владимира (NO DEFAULT FALLBACK):** Дефолтный агент / director НИКОГДА не пишет dossier сам при недоступной Gemini. Никакого fallback на дефолтную модель — только FAIL.
 
 Следуй skill `skills/carusel-researcher/SKILL.md`.
 
@@ -118,8 +123,15 @@ incident_report: none
 
 `shared/subagent-end-of-task-contract.md` — pitfalls, incident queue, `incident_report` в fragment.
 
+## Модель и правила (Владимир 03.09.2026 + 04.09.2026)
+
+- **Модель:** `model="inherit"` (наследует Gemini родителя `gemini-3.8-flash` + `reasoning_effort=high`). Не передавать slug `gemini-3.8-flash` в Task.
+- **written_by: gemini** обязательно во всех артефактах шага.
+- **NO DEFAULT FALLBACK:** дефолтный агент / director НИКОГДА не пишет research/dossier сам при недоступной Gemini. При недоступности Gemini — только FAIL.
+
 ## Запреты
 
 - Не писать финальный текст слайдов (это copywriter)
 - Не генерировать изображения
+- Дефолтному агенту / директору запрещено выполнять этот шаг вместо Gemini
 
