@@ -44,7 +44,7 @@ Fragment: `carusel-memory/fragments/image-prompter.md`
   "aspect_ratio": "3:4",
   "resolution": "4K",
   "grid": { "cols": 3, "rows": 3, "order": "row-major" },
-  "animate_slide": 1,
+  "animate_slide": 0,
   "reference_contract": {
     "reference_role": "style + layout reference",
     "preserve": ["..."],

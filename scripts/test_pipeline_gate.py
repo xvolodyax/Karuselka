@@ -431,6 +431,10 @@ class GeminiAndDryRunTest(unittest.TestCase):
             self.assertEqual(state["status"], "ok", step_id)
             self.assertEqual(state["dispatched_via"], "Task(generalPurpose)", step_id)
             self.assertTrue(state.get("dispatch_id"), step_id)
+        self.assertEqual(ledger["steps"]["motion-director"]["status"], "skipped")
+        self.assertEqual(ledger["steps"]["motion-director"]["skip_reason"], "static-png-only")
+        self.assertEqual(ledger["steps"]["animate"]["status"], "skipped")
+        self.assertEqual(ledger["steps"]["animate"]["skip_reason"], "static-png-only")
         self.assertEqual(ledger["steps"]["publish"]["status"], "skipped")
         self.assertEqual(ledger["steps"]["publish"]["skip_reason"], "publish-not-requested")
         self.assertEqual(ledger["steps"]["fixic"]["status"], "skipped")
@@ -636,6 +640,159 @@ class NewDayStaleAndHoleTest(unittest.TestCase):
         ledger = gate.load_ledger(self.tmp)
         self.assertEqual(ledger["run_id"], "fresh-run")
         self.assertEqual(ledger["steps"]["researcher"]["status"], "pending")
+
+
+class StaticPngOnlyPipelineTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tmp = Path(tempfile.mkdtemp(prefix="carusel-gate-"))
+        self.addCleanup(lambda: shutil.rmtree(self.tmp, ignore_errors=True))
+        self.repo = ROOT
+
+    def run_cmd(self, *argv: str) -> int:
+        return gate.main(["--workspace", str(self.tmp), "--repo-root", str(self.repo), *argv])
+
+    def test_static_pipeline_steps_exclude_motion_and_animate(self) -> None:
+        self.assertNotIn("motion-director", gate.STATIC_REQUIRED_WORKERS)
+        self.assertNotIn("animate", gate.STATIC_REQUIRED_WORKERS)
+        self.assertIn("slice", gate.STATIC_REQUIRED_WORKERS)
+        self.assertIn("design-guardian", gate.STATIC_REQUIRED_WORKERS)
+        steps = {item["id"]: item for item in gate.load_steps(self.repo)}
+        self.assertEqual(steps["slice"]["handoff_next"], "design-guardian")
+        self.assertTrue(steps["motion-director"].get("default_skip"))
+        self.assertEqual(steps["motion-director"].get("skip_reason"), "static-png-only")
+        self.assertTrue(steps["animate"].get("default_skip"))
+        self.assertEqual(steps["animate"].get("skip_reason"), "static-png-only")
+
+    def test_init_auto_skips_motion_and_animate(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in ("motion-director", "animate"):
+            self.assertEqual(ledger["steps"][step_id]["status"], "skipped", step_id)
+            self.assertEqual(ledger["steps"][step_id]["skip_reason"], "static-png-only", step_id)
+        self.assertEqual(gate.first_pending(ledger), "researcher")
+
+    def test_after_slice_next_is_design_guardian_not_motion(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in ("researcher", "copywriter", "designer", "image-prompter", "slice"):
+            ledger["steps"][step_id]["status"] = "ok"
+            ledger["steps"][step_id]["dispatched_via"] = "Task(generalPurpose)"
+        gate.save_ledger(self.tmp, ledger)
+        self.assertEqual(gate.first_pending(ledger), "design-guardian")
+        self.assertEqual(gate.previous_gate_step(ledger, "design-guardian"), "slice")
+
+    def test_cannot_dispatch_motion_when_static(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        with self.assertRaises(SystemExit) as ctx:
+            self.run_cmd(
+                "record-dispatch",
+                "--step",
+                "motion-director",
+                "--via",
+                "Task(generalPurpose)",
+            )
+        self.assertIn("static", str(ctx.exception).lower())
+
+    def test_verify_motion_autoskips_without_video_artifacts(self) -> None:
+        self.run_cmd("init", "--lang", "ru")
+        self.assertEqual(self.run_cmd("verify", "--step", "motion-director"), 0)
+        self.assertEqual(self.run_cmd("verify", "--step", "animate"), 0)
+        self.assertFalse(
+            (self.tmp / "carusel-memory" / "output" / "video" / "slide-01.mp4").exists()
+        )
+
+    def test_new_day_creates_today_pack_with_absent_face(self) -> None:
+        self.run_cmd("init", "--lang", "ru", "--run-id", "2026-08-30-1110")
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in gate.STEP_IDS:
+            ledger["steps"][step_id]["status"] = "ok"
+            ledger["steps"][step_id]["dispatched_via"] = "Task(generalPurpose)"
+        ledger["steps"]["director"]["dispatched_via"] = "parent"
+        gate.save_ledger(self.tmp, ledger)
+        brief = (self.tmp / "carusel-memory" / "00-brief.md").read_text(encoding="utf-8")
+        write(
+            self.tmp / "carusel-memory" / "00-brief.md",
+            brief.replace("date: PENDING", "date: 2026-08-30"),
+        )
+        self.assertEqual(self.run_cmd("new-day", "--date", "2026-09-05", "--lang", "ru"), 0)
+        pack = self.tmp / "carusel-memory" / "packs" / "2026-09-05"
+        manifest = json.loads((pack / "PACK.json").read_text(encoding="utf-8"))
+        self.assertEqual(manifest["pack_id"], "2026-09-05")
+        self.assertEqual(manifest["run_id"], "2026-09-05-1110")
+        self.assertEqual(manifest["face_lock"], "none")
+        face = (pack / "FACE_CHECK.md").read_text(encoding="utf-8")
+        self.assertIn("verdict: ABSENT", face)
+        self.assertIn("face_lock: none", face)
+        self.assertNotIn("Виктория.png", face)
+        self.assertFalse((self.tmp / "carusel-memory" / "packs" / "2026-08-30").exists())
+        ledger = gate.load_ledger(self.tmp)
+        self.assertEqual(ledger["steps"]["motion-director"]["status"], "skipped")
+        self.assertEqual(ledger["steps"]["animate"]["status"], "skipped")
+        self.assertEqual(gate.first_pending(ledger), "researcher")
+
+    def test_upload_verify_rejects_stale_publish_urls(self) -> None:
+        self.run_cmd("new-day", "--date", "2026-09-05", "--lang", "ru")
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in ("researcher", "copywriter", "designer", "image-prompter", "slice", "design-guardian"):
+            ledger["steps"][step_id]["status"] = "ok"
+            ledger["steps"][step_id]["dispatched_via"] = "Task(generalPurpose)"
+        gate.save_ledger(self.tmp, ledger)
+        self.run_cmd("record-dispatch", "--step", "upload", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["upload"]["dispatch_id"]
+        write(
+            self.tmp / "carusel-memory" / "output" / "publish-urls.json",
+            json.dumps(
+                {
+                    "run_id": "2026-08-30-1110",
+                    "file1": "https://cdn.example.test/DcqJGCblQqv/slide-01.png",
+                }
+            ),
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "upload.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-UPLOAD ===",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        self.assertEqual(self.run_cmd("verify", "--step", "upload"), 2)
+
+    def test_slice_verify_rejects_victoria_face_ref(self) -> None:
+        self.run_cmd("new-day", "--date", "2026-09-05", "--lang", "ru")
+        ledger = gate.load_ledger(self.tmp)
+        for step_id in ("researcher", "copywriter", "designer", "image-prompter"):
+            ledger["steps"][step_id]["status"] = "ok"
+            ledger["steps"][step_id]["dispatched_via"] = "Task(generalPurpose)"
+        gate.save_ledger(self.tmp, ledger)
+        self.run_cmd("record-dispatch", "--step", "slice", "--via", "Task(generalPurpose)")
+        ledger = gate.load_ledger(self.tmp)
+        dispatch_id = ledger["steps"]["slice"]["dispatch_id"]
+        for i in range(1, 10):
+            write(self.tmp / "carusel-memory" / "output" / "slides" / f"slide-{i:02d}.png", "png")
+        write(self.tmp / "carusel-memory" / "output" / "slice-manifest.json", '{"grid":{"cols":3,"rows":3}}')
+        write(
+            self.tmp / "carusel-memory" / "packs" / "2026-09-05" / "FACE_CHECK.md",
+            "verdict: MATCH\ncompared: Виктория.png\n",
+        )
+        write(
+            self.tmp / "carusel-memory" / "fragments" / "slice.md",
+            "\n".join(
+                [
+                    "=== CARUSEL-SLICE ===",
+                    "dispatched_via: Task(generalPurpose)",
+                    f"dispatch_id: {dispatch_id}",
+                    "incident_report: none",
+                    "",
+                ]
+            ),
+        )
+        self.assertEqual(self.run_cmd("verify", "--step", "slice"), 2)
 
 
 if __name__ == "__main__":

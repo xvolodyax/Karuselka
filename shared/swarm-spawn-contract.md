@@ -20,9 +20,9 @@ director (parent intake)
   → copywriter          Task + Gemini     slides AND caption; written_by: gemini
   → designer            Task              layout/style only
   → image-prompter      Task              prompts from locked copy; no face ref
-  → slice               Task
-  → motion-director     SKIP static-png-only (unless Hall asks for video)
-  → animate             SKIP static-png-only
+  → slice               Task          HANDOFF_NEXT=design-guardian
+  → motion-director     SKIP at init  static-png-only (do not dispatch)
+  → animate             SKIP at init  static-png-only (do not dispatch)
   → design-guardian     Task
   → upload              Task
   → publish             SKIP unless brief.publish_requested true

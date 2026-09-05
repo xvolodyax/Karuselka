@@ -134,7 +134,9 @@ Live-посты 27.08 (Pause + Ping vs Step) уже вышли с ботом —
 Не изобретать новый рой. Цепочка та же:
 
 `director → researcher → copywriter → designer → image-prompter → slice
- → motion-director → animate → design-guardian → upload → publish → fixic`
+ → design-guardian → upload → publish → fixic`
+
+(`motion-director` / `animate` skipped: `static-png-only`. Нет video.)
 
 `Task(carusel-*)` если plugin types есть. Иначе отдельный `Task(generalPurpose)` на шаг
 (`shared/director-dispatch-contract.md` + `shared/swarm-spawn-contract.md` +

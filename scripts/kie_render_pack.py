@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -24,7 +25,27 @@ from kie_client import KieImageClient  # noqa: E402
 from kie_file_upload import KieFileUploadClient  # noqa: E402
 
 STYLE_LOCK = REPO / "carusel-memory" / "references" / "animals-viktoria-style-lock.png"
-DEFAULT_PACK = REPO / "carusel-memory" / "packs" / "2026-08-30-ru-noface"
+
+
+def resolve_pack_from_brief(repo: Path) -> Path | None:
+    brief = repo / "carusel-memory" / "00-brief.md"
+    if not brief.is_file():
+        return None
+    text = brief.read_text(encoding="utf-8")
+    for pattern in (
+        re.compile(r"^pack_id:\s*(\d{4}-\d{2}-\d{2})\s*$", re.M | re.I),
+        re.compile(r"^date:\s*(\d{4}-\d{2}-\d{2})\s*$", re.M | re.I),
+    ):
+        match = pattern.search(text)
+        if match:
+            date = match.group(1)
+            if date == "2026-08-30":
+                raise SystemExit(
+                    "Refuse stale pack 2026-08-30. Run new-day --date TODAY "
+                    "and pass --pack carusel-memory/packs/YYYY-MM-DD."
+                )
+            return repo / "carusel-memory" / "packs" / date
+    return None
 
 
 def load_json(path: Path) -> dict:
@@ -109,10 +130,25 @@ def render_lang(
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Kie render without host face ref")
-    parser.add_argument("--pack", default=str(DEFAULT_PACK))
+    parser.add_argument(
+        "--pack",
+        default=None,
+        help="Dated pack dir carusel-memory/packs/YYYY-MM-DD (today). Never 2026-08-30.",
+    )
     parser.add_argument("--langs", default="ru")
     args = parser.parse_args(argv)
-    pack = Path(args.pack).expanduser().resolve()
+    if args.pack:
+        pack = Path(args.pack).expanduser().resolve()
+    else:
+        resolved = resolve_pack_from_brief(REPO)
+        if resolved is None:
+            raise SystemExit(
+                "Pass --pack carusel-memory/packs/YYYY-MM-DD for TODAY's run. "
+                "Do not default to 2026-08-30."
+            )
+        pack = resolved
+    if pack.name == "2026-08-30" or "2026-08-30" in pack.as_posix():
+        raise SystemExit("Refuse stale pack 2026-08-30. Use today's dated pack.")
     manifest = load_json(pack / "PACK.json") if (pack / "PACK.json").is_file() else {}
     pack_id = str(manifest.get("pack_id") or pack.name)
     if is_live_host_face_pack(pack_id):

@@ -44,19 +44,11 @@ description: Design QA Instagram carousel — token drift, seams, hook, CTA, sco
 4. **Typography test:** exact intended key text, no random labels, no duplicate text.
 5. **Save test:** slides 7-8 should work as standalone checklist/recap.
 6. **CTA test:** slide 9 has one clear action.
-7. **Motion test:** if video exists, text remains stable and loop has no hard cut.
+7. **Static PNG:** missing `slide-01.mp4` is **not** a blocker. Skip video_frame_qa unless Hall asked for video.
 8. **Bleed test:** inspect top 40px of slides 04–09 for orphan text from row above. If P0, request master regeneration with stronger safe-area; do not approve per-slide crop as publish asset.
-9. **Video source test:** frame 0 of `slide-01.mp4` must match `slide-01.png` (MAE ≤35):
-10. **No-frame QA:** verify `carusel-memory/output/debug/grid-gutter-qa-clean.json` exists and has `status: ok`. White edge artifacts after canonical cleanup = P0.
-11. **Kie recovery provenance:** if slice recovered from Kie `400 Internal Error`, verify the successful run stayed `3:4 @ 4K` and used compact prompt retry before any aspect/resolution change. `prompt_char_count > 4500` after recovery is P0.
-12. **No host portrait:** FACE_CHECK.md `verdict: ABSENT`. P0 if Vika or any recognizable presenter is on a slide. Do not FACE MATCH `Виктория.png`.
-
-```bash
-python scripts/video_frame_qa.py \
-  --video carusel-memory/output/video/slide-01.mp4 \
-  --png carusel-memory/output/slides/slide-01.png \
-  --loop-check
-```
+9. **No-frame QA:** verify `carusel-memory/output/debug/grid-gutter-qa-clean.json` exists and has `status: ok`. White edge artifacts after canonical cleanup = P0.
+10. **Kie recovery provenance:** if slice recovered from Kie `400 Internal Error`, verify the successful run stayed `3:4 @ 4K` and used compact prompt retry before any aspect/resolution change. `prompt_char_count > 4500` after recovery is P0.
+11. **No host portrait:** FACE_CHECK.md `verdict: ABSENT`, `face_lock: none`. P0 if Vika or any recognizable presenter is on a slide. Do not FACE MATCH and do not name `Виктория.png` as a required face ref.
 
 ## Scoring
 

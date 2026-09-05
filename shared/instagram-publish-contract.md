@@ -10,14 +10,14 @@ tool: t4528_carrusel_instagram
 ## Carousel format (default)
 
 - **9 slides** from grid 3×3
-- **slide-01** = Grok video → MCP `file1`
-- **slide-02 … slide-09** = PNG → `file2` … `file9`
+- **All 9 including slide-01** = static PNG (`--static-all-pngs`)
+- Video / Grok / mp4 only if Hall explicitly asks
 
 ## Arguments (schema)
 
 | Param | Slide | Type | Note |
 |-------|-------|------|------|
-| `file1` | 1 | HTTPS URL | **video** mp4 (Grok) |
+| `file1` | 1 | HTTPS URL | **PNG** (`slide-01.png`). mp4 only if Hall asked |
 | `file2` | 2 | string | |
 | `File3` | 3 | string | **Capital F** |
 | `file4` | 4 | string | |
@@ -53,16 +53,17 @@ Instagram publish is not idempotent.
 ## Pre-publish validation
 
 1. `carusel-memory/output/slides/slide-01.png` … `slide-09.png` (9 PNG после slice).
-2. `carusel-memory/output/video/slide-01.mp4` после animate.
-3. **HTTPS** URLs в `publish-urls.json` (Kie File Upload, scoped by `run_id`).
-4. `caption` из `CAROUSEL_CAPTION.json`.
-5. `python scripts/publish_preflight.py` — no URL overlap with prior runs in `publish-log.md`.
+2. **HTTPS** URLs в `publish-urls.json` (Kie File Upload, scoped by **this** `run_id` only).
+3. `caption` из `CAROUSEL_CAPTION.json`.
+4. `python scripts/publish_preflight.py` — no URL overlap with prior runs in `publish-log.md`.
+5. Refuse archive permalinks (`DcqJGCblQqv`, `DcqJS--m0op`, `live-posts.json` of another date).
+6. Do not require `slide-01.mp4` in static mode.
 
-## Video slide 1
+## Slide 1 (static default)
 
-- `file1` = HTTPS `slide-01.mp4` — Grok, 5s loop
+- `file1` = HTTPS `slide-01.png`
 - `file2`–`file9` = PNG slides 2–9
-- Still `slide-01.png` используется motion-director + Grok input
+- Upload: `--static-all-pngs`
 
 ## Log
 

@@ -4,9 +4,9 @@
 
 [![Telegram](https://img.shields.io/badge/Telegram-Maya%20Pro-ff006e?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/maya_pro)
 
-**Каруселька** — локальный плагин для Cursor, который собирает Instagram-карусели через цепочку специализированных AI-агентов: от ресерча и текста до дизайна, генерации изображения, анимации первого слайда, QA, загрузки ассетов и публикации через MCP.
+**Каруселька** — локальный плагин для Cursor, который собирает Instagram-карусели через цепочку специализированных AI-агентов: от ресерча и текста до дизайна, генерации изображения, нарезки 9 PNG, QA, загрузки ассетов и публикации через MCP.
 
-Плагин сделан для формата **9 слайдов сеткой 3×3**: один большой master-image генерируется в едином стиле, затем режется на 9 вертикальных карточек. Первый слайд может быть заменён коротким MP4 loop-видео, а остальные остаются PNG.
+Плагин сделан для формата **9 слайдов сеткой 3×3**: один большой master-image генерируется в едином стиле, затем режется на 9 вертикальных PNG. Slide-01 тоже PNG. Motion/Grok video не входят в default pipeline.
 
 ## Что умеет
 
@@ -15,7 +15,7 @@
 - Раскладывает визуальную концепцию по панелям сетки 3×3.
 - Готовит компактный prompt для Kie.ai / GPT Image 2.
 - Генерирует master image и режет его на 9 одинаковых слайдов.
-- Анимирует первый слайд через Grok Video.
+- Default: 9 static PNG (включая slide-01). Motion/Grok — только по явной просьбе Hall.
 - Проверяет дизайн, bleed, текст, размер и соответствие референсу.
 - Загружает финальные ассеты на HTTPS-хранилище Kie.
 - Публикует карусель через Instagram MCP / Make-сценарий.
@@ -31,7 +31,7 @@
 | Дизайн | `agents/carusel-designer.md`, `skills/carusel-designer/`, `shared/CAROUSELDESIGN_SPEC.md` | Визуальная система, композиция, style lock |
 | Image prompt | `agents/carusel-image-prompter.md`, `skills/carusel-image-prompter/` | JSON/MD prompt для Kie, 9 panel briefs, compact prompt policy |
 | Генерация и slice | `agents/carusel-slice.md`, `scripts/kie_carousel_gen.py`, `scripts/slice_grid.py` | Master image 3:4 @ 4K и нарезка 3×3 |
-| Motion | `agents/carusel-motion-director.md`, `agents/carusel-animate.md`, `scripts/grok_video_gen.py` | Сценарий анимации и MP4 для первого слайда |
+| Motion (opt-in) | `agents/carusel-motion-director.md`, `agents/carusel-animate.md` | SKIP `static-png-only` unless Hall asks for video |
 | QA | `agents/carusel-design-guardian.md`, `scripts/video_frame_qa.py` | Проверка дизайна, bleed, aspect ratio, frame0 fidelity |
 | Upload | `agents/carusel-upload.md`, `scripts/upload_carousel_assets.py` | HTTPS upload, run-scoped paths, MP4 normalization |
 | Publish | `agents/carusel-publish.md`, `scripts/publish_preflight.py` | MCP publish без blind retry и дублей |
@@ -86,12 +86,12 @@ director
   -> designer
   -> image-prompter
   -> slice
-  -> motion-director
-  -> animate
   -> design-guardian
-  -> upload
+  -> upload (--static-all-pngs)
   -> publish
   -> fixic
+
+motion-director + animate = skipped (static-png-only)
 ```
 
 Рабочие артефакты по умолчанию создаются в `carusel-memory/` внутри проекта пользователя. Эта папка считается runtime-memory и не должна попадать в публичные коммиты.
